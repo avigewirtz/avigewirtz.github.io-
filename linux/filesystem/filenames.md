@@ -14,6 +14,6 @@ While any filename adhering to these rules is considered valid, some filenames a
 
 A filename extension is a suffix added to the end of a filename, separated by a dot, that usually indicates the format or type of the file. It is usually composed of three or four letters, but it can also be longer. For example, in the filename "document.txt", the extension is ".txt", which indicates that the file is a text file. Other common extensions include ".jpg" for image files, ".mp3" for audio files, and ".pdf" for document files.&#x20;
 
-Filename extensions are not a feature of Linux filesystems; therefore, from Linux’s point of view, they are completely optional and treated like ordinary filename characters. Some programs, however, require input files to have filename extensions, as they rely on them to determine the file type or to enforce specific conventions. For example, the GCC compiler will not compile a C program unless it has a `.c` extension.&#x20;
+Filename extensions are not an inherent feature of Linux filesystems; thus, from Linux's perspective, they are entirely optional and treated as ordinary filename characters. However, some programs require input files to have filename extensions, as they depend on them to determine the file type or enforce specific conventions. For instance, the GCC compiler will not compile a C program unless it has a .c extension.&#x20;
 
-Using filename extensions is generally considered good practice because it helps users and software easily recognize and understand the contents or format of a file.
+Using filename extensions is generally considered good practice because it helps users and software more easily identify the contents of a file. 
