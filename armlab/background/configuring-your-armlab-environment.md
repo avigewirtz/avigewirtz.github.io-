@@ -8,4 +8,4 @@ The first time you log into armlab, you will need to configure your environment.
 ```
 {% endcode %}
 
-If you get the message: `error: bash is not your login shell`, you must revisit [Activating Your armlab Account](activating-your-armlab-account.md) and complete step 2. Otherwise, you will be prompted to enter your name and email. This information will be used for Git configurations.&#x20;
+If you get the message: `error: bash is not your login shell`, you must revisit [Activating Your armlab Account](activating-your-armlab-account.md) and complete step 2. If your shell is configured correctly, you will be prompted to enter your name and email address. This information will be used for Git configurations.&#x20;
