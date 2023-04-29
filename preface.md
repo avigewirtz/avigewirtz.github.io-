@@ -6,7 +6,7 @@ This book is specifically designed for students currently enrolled in _COS217: I
 
 ### Assumed Framework
 
-All code examples in this book were executed on the armlab computer, which runs on the Red Hat Linux distribution. Although the examples are expected to work on any other Unix-like operating systems, such as macOS, subtle variations might occur.
+All code examples in this book have been executed on the armlab computer, running the Red Hat Linux distribution. While these examples are anticipated to function on other Unix-like operating systems, including macOS, minor variations may arise.
 
 ## Conventions used
 
