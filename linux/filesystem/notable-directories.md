@@ -28,7 +28,7 @@ Every directory has at least two hidden directory entries in it: `.` (dot) and `
 
 ### Important standard directories
 
-These directories reside in the root directory and are crucial for the proper functioning of the Linux system, and are typically accessible to the system administrator only. If you are curious about their function, here is a very brief explanation of each:
+These directories reside in the root directory and are crucial for the proper functioning of the Linux system. They are typically accessible to the system administrator only. If you are curious about their function, here is a very brief explanation of each:
 
 * `/bin`: essential binary executables
 * `/boot`: files needed to boot the system
