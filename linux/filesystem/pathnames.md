@@ -26,6 +26,8 @@ dir1/dir2/…/dirN_or_file
 
 <figure><img src="https://lh3.googleusercontent.com/G6fYIoWumsNAoXkf7lnMwc5TEdyJ1zDcFSyqwmyFm-J8xG0YwJB2-zCmzuwDkOFFEv-Tzo3l8e7e7h9KkrJbfBO7qe7Khj5caDlE8P8R_kN2H8RAA_LF2gD-uk5dSEQK23Yv1DxJM0F4chlgWH3tnYE" alt=""><figcaption><p>Figure 4: Relative Pathname Examples</p></figcaption></figure>
 
+It's important to note that the working directory can change during a session, so a relative pathname may point to different locations depending on the current working directory.
+
 {% hint style="info" %}
 You can determine whether a pathname is absolute or relative by inspection: Absolute pathnames always begin with a / (forward slash); relative pathnames do not.&#x20;
 {% endhint %}
