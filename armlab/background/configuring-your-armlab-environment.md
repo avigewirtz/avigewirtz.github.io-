@@ -23,3 +23,4 @@ git config --global user.email "$email": This sets the user's email address for 
 git config --global core.editor emacs: This sets Emacs as the default text editor for Git.
 git config --global color.ui auto: This enables automatic colorization of Git output in the terminal.
 exec bash: This command replaces the current shell with a new instance of Bash, effectively reloading the shell and applying the updated configurations.
+
