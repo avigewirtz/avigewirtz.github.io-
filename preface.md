@@ -2,7 +2,7 @@
 
 ## Target Audience&#x20;
 
-This book is specifically designed for students who are presently taking _COS217: Introduction to Programming Systems_. As such, it assumes the reader is familiar with the core programming concepts taught in COS126, including variables, control structures, loops, and functions.
+This book is specifically designed for students currently enrolled in _COS217: Introduction to Programming Systems_. As such, it presupposes familiarity with fundamental programming concepts covered in COS126, such as variables, control structures, loops, and functions.
 
 ### Assumed Framework
 
