@@ -7,5 +7,5 @@ The term "Linux filesystem" is a bit of a misnomer, as Linux does not have any o
 
 Of the many Linux-supported filesystems, some of these filesystems were specifically designed for Linux, while others were initially created for other operating systems but have since been adapted to work with Linux. This flexibility allows users to choose the filesystem that best suits their needs and preferences.
 
-Some of the commonly used filesystems supported by Linux include Ext4 (used by armlab), XFS, Btrfs, FAT32, and NTFS.&#x20;
+Commonly used filesystems supported by Linux include Ext4 (used by armlab), XFS, Btrfs, FAT32, and NTFS.&#x20;
 {% endhint %}
