@@ -1,6 +1,6 @@
 # Filenames
 
-Every file has a **filename**. (Note that in this context, the term _file_ is used broadly to include directories—which are a special type of file.) On Linux, filenames are case-sensitive; that is, `hello.c`, `Hello.c` and `HELLO.C` refer to three distinct files.&#x20;
+Every file has a **filename**. (In this context, the term _file_ is used broadly to include directories—which are a special type of file.) On Linux, filenames are case-sensitive; that is, `hello.c`, `Hello.c` and `HELLO.C` refer to three distinct files.&#x20;
 
 Very few restrictions are placed on filenames. On armlab, which uses the popular Ext4 filesystem, only the following restrictions are imposed:&#x20;
 
