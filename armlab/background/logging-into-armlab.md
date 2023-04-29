@@ -1,6 +1,6 @@
 # Logging into armlab
 
-You log into armlab via an **SSH client**. An SSH client is a program that uses the [SSH](../../appendices/secure-shell-ssh-protocol/) Protocol to communicate with a remote computer.&#x20;
+You log into armlab via an **SSH client**. An SSH client is a program that employs the [SSH](../../appendices/secure-shell-ssh-protocol/) Protocol to communicate with a remote computer.&#x20;
 
 {% tabs %}
 {% tab title="Mac" %}
