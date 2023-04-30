@@ -30,7 +30,7 @@ The CLI is accessed via a _terminal_. In the nascent days of interactive computi
 
 
 
-Teletypes fell out of use in the 1970s with the widespread adoption of video display terminals, such as the DEC VT100 shown in Figure 2. These terminals, unlike teletypes, used screens as their output device. &#x20;
+Teletypes fell out of use in the 1970s with the widespread adoption of video display terminals, such as the DEC VT100 shown in Figure 2. These terminals, unlike teletypes, employed screens for output display instead of paper-roll printers, making the CLI more efficient and user-friendly.
 
 <figure><img src="https://lh6.googleusercontent.com/NkdzAjWbkb2-A2kfY9i6svIfMSKFxd_e_dUPZ-mfgbZlFPzQb4fPoe7ajYmIH002oDMQNhhzaZNy5oxAvvMX1JwGJo1gPfBO8DQSBbufeUWfDA_-C2qU51MmY5MzYIWTrWOErGR9kKb3RRmLos35cEo" alt=""><figcaption><p>Figure 2: DEC VT100 Terminal</p></figcaption></figure>
 
