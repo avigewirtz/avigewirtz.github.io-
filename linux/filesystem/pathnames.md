@@ -31,5 +31,7 @@ _dir1_ normally represents the parent or child of the working directory, but it 
 It's important to note that the working directory can change during a session, so a relative pathname may point to different locations depending on the current working directory.
 
 {% hint style="info" %}
+
 You can determine whether a pathname is absolute or relative by inspecting the first character. Absolute pathnames begin with a / (forward slash), while relative pathnames do not.&#x20;
+
 {% endhint %}
