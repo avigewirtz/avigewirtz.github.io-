@@ -36,10 +36,7 @@ Teletypes fell out of use in the 1970s with the widespread adoption of video dis
 
 
 
-Nowadays, no one uses hardware terminals anymore. Instead, we access the CLI via a GUI program called a terminal emulator, such as macOS’s Terminal application shown in Figure 3, which mimics the functionality of a hardware terminal.&#x20;
-
-\
-
+Today, hardware terminals have become obsolete. We now access the CLI via a software program called a _terminal emulator._ Terminal emulators are integrated into GUIs, but replicate the functionality of their hardware predecessors, allowing users to interact with their computer using text-based commands. An example of a terminal emulator is macOS's Terminal shown in Figure 3.&#x20;
 
 <figure><img src="https://lh3.googleusercontent.com/D7N-haL7qpFme6x3NkICuiPbAG9LJd1JTni2tkEK-4htGMbvYfCnNBcFZUiOz4x5H8Z8A60wa8qMFF7_S6pO6ZwG9JD8vVTsygHgFSlIzpbZfO9fbw2tXSkdvkHnKvvgixPUvSYxHvA1wo6pd4NWH_0" alt=""><figcaption><p>Figure 3: macOS Terminal Application</p></figcaption></figure>
 
