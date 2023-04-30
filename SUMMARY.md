@@ -19,7 +19,7 @@
   * [Filesystem Layout](linux/filesystem/filesystem-layout.md)
   * [Notable Directories](linux/filesystem/notable-directories.md)
   * [Pathnames](linux/filesystem/pathnames.md)
-* [User Interfaces: GUI and CLI](linux/user-interfaces-gui-and-cli.md)
+* [Command Line User Interface](linux/user-interfaces-gui-and-cli.md)
 * [Shell](linux/shell.md)
 * [Users and Groups](linux/users-and-groups.md)
 * [Further Reading](linux/further-reading.md)
