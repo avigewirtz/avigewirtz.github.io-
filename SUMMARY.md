@@ -21,7 +21,6 @@
   * [Pathnames](linux/filesystem/pathnames.md)
 * [Command Line User Interface](linux/user-interfaces-gui-and-cli.md)
 * [Shell](linux/shell.md)
-* [Users and Groups](linux/users-and-groups.md)
 * [Further Reading](linux/further-reading.md)
 
 ## Bash
@@ -41,6 +40,7 @@
 * [Redirection and Piping](bash/redirection-and-piping.md)
 * [Copying Files and Directories](bash/copying-files-and-directories.md)
 * [Moving and Renaming Files and Directories](bash/moving-and-renaming-files-and-directories.md)
+* [Users and Groups](bash/users-and-groups.md)
 * [File and Directory Access Permissions](bash/file-and-directory-access-permissions.md)
 * [Linux Environment Variables](bash/linux-environment-variables.md)
 * [Bash Configuration Files](bash/bash-configuration-files.md)
