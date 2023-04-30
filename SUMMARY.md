@@ -10,7 +10,7 @@
   * [Logging into armlab](armlab/background/logging-into-armlab.md)
   * [Configuring your armlab environment](armlab/background/configuring-your-armlab-environment.md)
 
-## Linux&#x20;
+## Linux
 
 * [Background](linux/background.md)
 * [Filesystem](linux/filesystem/README.md)
@@ -20,7 +20,6 @@
   * [Notable Directories](linux/filesystem/notable-directories.md)
   * [Pathnames](linux/filesystem/pathnames.md)
 * [User Interfaces: GUI and CLI](linux/user-interfaces-gui-and-cli.md)
-* [Terminal](linux/terminal.md)
 * [Shell](linux/shell.md)
 * [Users and Groups](linux/users-and-groups.md)
 * [Further Reading](linux/further-reading.md)
@@ -33,7 +32,7 @@
 * [Getting Help](bash/getting-help.md)
 * [Navigating the filesystem](bash/navigating-the-filesystem/README.md)
   * [pwd (Print Working Directory)](bash/navigating-the-filesystem/pwd-print-working-directory.md)
-  * [cd  (Change Working Directory)](bash/navigating-the-filesystem/cd-change-working-directory.md)
+  * [cd (Change Working Directory)](bash/navigating-the-filesystem/cd-change-working-directory.md)
   * [ls (List Directory Contents)](bash/navigating-the-filesystem/ls-list-directory-contents.md)
 * [Creating Files and Directories](bash/creating-files-and-directories.md)
 * [Deleting Files and Directories](bash/deleting-files-and-directories.md)
