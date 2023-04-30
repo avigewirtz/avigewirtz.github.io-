@@ -22,6 +22,13 @@ The simplest Bash command consists of just a command name which normally represe
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-04-25 at 3.38.37 PM.png" alt=""><figcaption></figcaption></figure>
 
+A command name normally represents one of two things:
+
+1. &#x20;A function that is built into Bash. This is called a Bash _built-in._&#x20;
+2. An executable file. This represents either an OS utility program or a user-written program.&#x20;
+
+The practical distinction between the two is normally irrelevant, but it does matter in certain contexts, such as when [retrieving documentation](getting-help.md) for a command, which will be covered soon.&#x20;
+
 
 
 ### Options
