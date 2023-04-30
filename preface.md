@@ -18,4 +18,6 @@ Indicates new terms, URLs, filenames, and file extensions.
 
 Used for program listings, as well as within paragraphs to refer to program elements such as variable or function names, data types, environment variables, statements, and keywords.
 
-All-CAPS: Signifies a placeholder, meaning text that should be substituted with user-provided values (e.g., mkdir DIRECTORY\_NAME).
+All-CAPS
+
+\>Signifies a placeholder, meaning text that should be substituted with user-provided values (e.g., >`mkdir DIRECTORY_NAME`).
