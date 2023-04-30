@@ -32,7 +32,7 @@ Here's a breakdown of each command in the given code block:
         exit 1; 
     }
     ```
-4.  Copy configuration files from a specific directory to the user's home directory:
+4.  Copy the ._bash\_profile_, _.bashrc_, _.emacs_, and _.splintrc_ configuration files from the `/u/cos217` directory to the user's home directory:
 
     ```bash
     \cp /u/cos217/.bash_profile /u/cos217/.bashrc /u/cos217/.emacs /u/cos217/.splintrc ~/
