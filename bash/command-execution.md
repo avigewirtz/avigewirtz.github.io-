@@ -9,6 +9,16 @@ The practical distinction between the two is normally irrelevant, but it does ma
 
 
 
+There are three cases:
+
+1. The command name has a / (forward slash) at the start (i.e., /dir1/command\_name).
+2. The command name has a / but not at the start (i.e., dir1/command\_name)
+3. The command name does not have a / (i.e., coommand\_name)
+
+In cases 1 and 2, the shell will interpret the command as referencing a file’s absolute and relative pathname, respectively.&#x20;
+
+
+
 
 
 ### Command execution

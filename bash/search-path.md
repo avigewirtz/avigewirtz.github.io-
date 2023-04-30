@@ -10,7 +10,22 @@ How the shell locates the program depends on how it is invoked on the command li
 
 In cases 1 and 2, the shell will interpret the command as referencing the executable file’s absolute and relative pathname, respectively.&#x20;
 
-In case 1, however—where there is no / in the command name—the shell will search each of the places listed below, in the following order:
+In case 3, however—where there is no / in the command name—the shell will search for the command in the following order:
+
+1. The shell searches for an alias with the command\_name.&#x20;
+2. The shell searches for a shell function with the command\_name.&#x20;
+3. The shell searches the shell's built-in list for a built-in with the command\_name.&#x20;
+4. The shell searches through the directories listed in the $PATH environment variable for an executable file with the command\_name.
+
+\
+\
+
+
+
+
+each of the places listed below, in the following order:
+
+The shell searches for an alias with the command\_name. b. The shell searches for a shell function with the command\_name. c. The shell searches the shell's built-in list for a built-in with the command\_name. d. The shell searches through the directories listed in the $PATH environment variable for an executable file with the command\_name.
 
 1. The shell will search for a shell function with command\_name.&#x20;
 2. The shell will search the shell’s builtin list for a builtin with command\_name.
