@@ -12,6 +12,6 @@ Note that the version of Git included with Xcode is not necessarily the latest v
 {% endtab %}
 
 {% tab title="Windows" %}
-You may already have Git installed thanks to the introcs infrastructure from COS 126, which installs Git Bash. If this is not the case, then browse to http://git- scm.com/download/win and the download and install will start automatically.
+You may already have Git installed thanks to the introcs infrastructure from COS 126, which installs Git Bash. If this is not the case, then click on this link Git website http://git- scm.com/download/win and the download and install will start automatically.
 {% endtab %}
 {% endtabs %}
