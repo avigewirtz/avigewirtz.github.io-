@@ -1,8 +1,6 @@
 # Shell
 
-When you enter commands on the command line, you are ultimately issuing commands to the operating system. However, you are not directly communicating with the OS; rather, you interact with it through an intermediary known as the _shell_.&#x20;
-
-When you input commands on the command line, you're ultimately issuing commands to the operating system (OS). However, instead of directly communicating with the OS, you interact with it through an intermediary called the _shell_. The shell is a program situated between the terminal and the OS that implements the command line interface.&#x20;
+When you enter commands on the command line, you are ultimately issuing commands to the operating system (OS). However, you are not directly communicating with the OS; rather, you interact with it through an intermediary known as the _shell_. The shell is a program situated between the terminal and the OS that implements the command line interface.&#x20;
 
 The shell is both a command interpreter and a programming language. As a programming language, the shell defines the syntax and semantics of CLI commands, specifying the format that commands must adhere to and the range of possible operations.
 
