@@ -20,7 +20,7 @@ When you log into a terminal session, your home directory is by default set as y
 
 ### Hidden files/directories
 
-A file or directory whose name begins with a `.` (period) is called "hidden." Hidden files/directories are (by default) not visible in directory listings—neither as icons in a GUI environment nor as text in a CLI environment. To make hidden entries visible, you must make an explicit request.
+A file or directory whose name begins with a `.` (period) is called _hidden_. Hidden files/directories are (by default) not visible in directory listings—neither as icons in a GUI nor as text in a CLI. To make hidden entries visible, you must make an explicit request.
 
 ### The . (dot) and .. (dot dot) directories
 
