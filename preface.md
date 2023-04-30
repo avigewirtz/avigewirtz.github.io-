@@ -12,12 +12,12 @@ All code examples in this book have been executed on the armlab computer, runnin
 
 _Italic_
 
-Indicates new terms, URLs, filenames, and file extensions.
+> Indicates new terms, URLs, filenames, and file extensions.
 
 `Constant width`
 
-Used for program listings, as well as within paragraphs to refer to program elements such as variable or function names, data types, environment variables, statements, and keywords.
+> Used for program listings, as well as within paragraphs to refer to program elements such as variable or function names, data types, environment variables, statements, and keywords.
 
 All-CAPS
 
-\>Signifies a placeholder, meaning text that should be substituted with user-provided values (e.g., >`mkdir DIRECTORY_NAME`).
+> Signifies a placeholder, meaning text that should be substituted with user-provided values (e.g., `mkdir DIRECTORY_NAME`).
