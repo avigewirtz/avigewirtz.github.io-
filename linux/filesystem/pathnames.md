@@ -6,7 +6,7 @@ Absolute pathnames pinpoint the location of a file or directory by specifying it
 
 ### Absolute pathnames
 
-The absolute pathname of a directory or file, `dirN_or_file,` has the following format:&#x20;
+The absolute pathname of a directory or file has the following format:&#x20;
 
 ```
 /dir1/dir2/…/dirN_or_file
