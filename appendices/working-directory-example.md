@@ -5,7 +5,7 @@ Now that we’ve covered pathnames, the working directory concept should make mo
 \
 Terminal 1 shows the source code of hello.c, the classic Hello World program. When invoking ./hello on both terminals, we anticipate that “Hello, world” will be displayed on both terminals. As you can see in Figure 5, however, invoking ./hello on both terminals produces surprising results. The command succeeds in terminal 1, displaying “Hello, World” on the terminal. It fails in terminal 2, however, with the message: -bash: ./hello: No such file or directory.
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 3.14.12 PM (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 3.14.12 PM.png" alt=""><figcaption></figcaption></figure>
 
 \
 The issue, as you may have realized, has to do with each terminal’s working directory.
@@ -18,4 +18,4 @@ Back to our example. Although it may not be obvious, ./hello is interpreted by t
 \
 
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 3.14.12 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 3.14.12 PM (1).png" alt=""><figcaption></figcaption></figure>
