@@ -1,20 +1,14 @@
 # Shell
 
-When you enter commands on the command line, you are ultimately issuing commands to the operating system, which provides an interface to the computer hardware. However, you are not directly interacting with the OS. Instead, you do so via an intermediary known as the _Shell_.&#x20;
+When you enter commands on the command line, you are ultimately issuing commands to the operating system. However, you are not directly communicating with the OS; rather, you interact with it through an intermediary known as the _shell_.&#x20;
 
-The shell is the program that lies between the terminal and OS and implements the command line interface.&#x20;
-
-The **shell** is a command interpreter and programming language that provides a command line interface to the operating system kernel and utilities.&#x20;
-
-By establishing the syntax and semantics of CLI commands, the shell allows users to communicate their intentions to the computer.
-
-The shell serves as a command interpreter and programming language, providing a command line interface for users to interact with the operating system and execute various tasks. By establishing the syntax and semantics of CLI commands, the shell allows users to communicate their intentions to the computer. The shell, acting as an intermediary, processes and interprets these text-based commands, passing them along to the OS kernel, which in turn interacts with the hardware to execute the requested tasks.
+The shell is a program residing between the terminal and the OS that implements the command line interface. It consists of a command interpreter and a programming language.&#x20;
 
 As a programming language, it specifies the syntax and semantics of CLI commands—that is, the format commands must follow and what sort of operations are possible.&#x20;
 
 As a command interpreter, it reads and interprets textual commands and executes them by invoking the appropriate calls to the operating system (OS) kernel—either directly or by calling other programs that make the calls. The OS kernel then invokes the necessary low-level hardware instructions to complete the task. If there is output for the user, it will be sent back and displayed on the terminal. The relationship between the user, terminal, shell, OS kernel, and hardware looks like the following:
 
-The relationship between the user, terminal, shell, OS kernel, and hardware can be visualized as follows:
+The relationship between the user, terminal, shell, OS kernel, and hardware can be summarized as follows:
 
 1. User: Interacts with the terminal by entering text-based commands.
 2. Terminal: Acts as an interface to the shell, allowing the user to input text-based commands and receive output.

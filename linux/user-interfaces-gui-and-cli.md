@@ -15,7 +15,7 @@ The GUI provides a visually intuitive and user-friendly interface, making it esp
 
 ### Command Line Interface
 
-The CLI is a method of interacting with your computer where you issue commands via text rather than clicking or dragging graphical elements like buttons, icons, or menus. Examples of CLI usage include:
+The CLI is a method of computer interaction where users issue commands by typing sequences of text rather than clicking or dragging graphical elements. Examples of CLI usage include:
 
 1. Opening an application: If a user wants to open an application such as Microsoft Word, they must issue a textual command like `open -a "Microsoft Word"` rather than double-clicking the Microsoft Word icon.
 2. Moving a file: If a user wants to move a file from one folder to another, they must issue a textual command like `mv source_file destination_directory` rather than using the drag-and-drop paradigm.&#x20;
