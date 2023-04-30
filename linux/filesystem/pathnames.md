@@ -1,6 +1,8 @@
 # Pathnames
 
-Each file and directory has a _pathname_, which is a string that uniquely identifies its location in the directory hierarchy. There are two types of pathnames: _absolute_ and _relative_. An absolute pathname identifies the location of a file or directory by specifying its path from the _root_ directory; a relative pathname identifies the location of a file or directory by specifying its path from the _working_ directory.&#x20;
+Every file and directory has a _pathname_, which is a string that uniquely identifies its location in the directory hierarchy. Pathnames can be categorized into two types: _absolute_ and _relative_. 
+
+Absolute pathnames pinpoint the location of a file or directory by specifying its path from the _root_ directory, whereas relative pathnames pinpoint the location of a file or directory by specifying its path from the _working_ directory.&#x20;
 
 ### Absolute pathnames
 
