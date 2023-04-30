@@ -18,18 +18,18 @@ The first _/_ represents the root directory; the intermediate directories, each 
 
 ### Relative pathnames
 
-The relative pathname of `dirN_or_file` has the following format:&#x20;
+The relative pathname of a directory or file has the following format:&#x20;
 
 ```
 dir1/dir2/…/dirN_or_file
 ```
 
-`dir1` normally represents the parent or child of the working directory, but it can also represent the working directory itself. The intermediate directories, each delimited by `/`, represent the directories on the trail from `dir1` to `dirN_or_file`. **Figure 4** shows examples of relative pathnames.&#x20;
+_dir1_ normally represents the parent or child of the working directory, but it can also represent the working directory itself. The intermediate directories, each delimited by _/_, represent the directories on the trail from _dir1_ to _dirN_or_file_. **Figure 4** shows examples of relative pathnames.&#x20;
 
 <figure><img src="https://lh3.googleusercontent.com/G6fYIoWumsNAoXkf7lnMwc5TEdyJ1zDcFSyqwmyFm-J8xG0YwJB2-zCmzuwDkOFFEv-Tzo3l8e7e7h9KkrJbfBO7qe7Khj5caDlE8P8R_kN2H8RAA_LF2gD-uk5dSEQK23Yv1DxJM0F4chlgWH3tnYE" alt=""><figcaption><p>Figure 4: Relative Pathname Examples</p></figcaption></figure>
 
 It's important to note that the working directory can change during a session, so a relative pathname may point to different locations depending on the current working directory.
 
 {% hint style="info" %}
-You can determine whether a pathname is absolute or relative by inspection: Absolute pathnames always begin with a / (forward slash); relative pathnames do not.&#x20;
+You can determine whether a pathname is absolute or relative by inspecting the first character. Absolute pathnames begin with a / (forward slash), while relative pathnames do not.&#x20;
 {% endhint %}
