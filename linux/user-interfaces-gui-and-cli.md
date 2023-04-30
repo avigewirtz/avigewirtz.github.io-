@@ -1,4 +1,4 @@
-# User Interfaces: GUI and CLI
+# Command Line User Interface
 
 A user interface defines the mechanism through which a user issues commands to a computer. Throughout computer history, there have been various types of user interfaces. The primary types of user interfaces are _graphical user interfaces (GUIs)_ and _command-line interfaces (CLIs)_.
 
@@ -24,7 +24,7 @@ Both GUIs and CLIs have their advantages and limitations. GUIs are more intuitiv
 
 ## Terminal
 
-The CLI is accessed via a terminal. In the early days of interactive computing, terminals were hardware devices consisting of a keyboard and display unit. The first terminals were teletype machines, such as the Model 33 ASR shown in Figure 1, whose display unit was a paper-roll printer.
+The CLI is accessed via a _terminal_. In the nascent days of interactive computing, terminals were hardware devices, consisting of a keyboard for entering commands and a display unit for printing output. The first terminals were teletype machines, such as the Model 33 ASR shown in Figure 1, whose display unit was a paper-roll printer.
 
 <figure><img src="https://lh4.googleusercontent.com/Sui_O3OmVfRuG7TS5Ro-pkF7IOJAAbL3Wxb5wHU2xvDIbpFmwGSHkM35HSD2Eic31K5unT9XBYsh63ta-eK33dyWUfQrfJKI48zSJjDUxw2m3LaRKU73PD2WRTUNqETK1FU1RoFPWQSqlph9K8Zoqc4" alt=""><figcaption><p>Figure 1: Teletype Model 33 ASR</p></figcaption></figure>
 
