@@ -8,15 +8,14 @@ On macOS, you will connect to armlab via Terminal by invoking the _ssh_ command.
 
 1. Open Terminal and enter the following command:
 
-```bash
-ssh YOUR_NETID@armlab.cs.princeton.edu
-```
+<pre class="language-bash"><code class="lang-bash">ssh <a data-footnote-ref href="#user-content-fn-1">YOUR_NETID</a>@armlab.cs.princeton.edu
+</code></pre>
 
 {% hint style="info" %}
 The first time you log into armlab, an SSH-related message will appear. Respond “yes”.
 {% endhint %}
 
-2. Input your Princeton password and authenticate your login credentials using DUO Security. (Note that your password will not be visible on the screen as you type it.)
+2. Input your Princeton password and authenticate your login credentials with DUO Security. (Note that your password will not be visible on the screen as you type it.)
 
 If your login is successful, a shell prompt similar to the following will appear in your terminal window:
 
@@ -43,3 +42,5 @@ If your login is successful, a shell prompt like the following will be displayed
 <figure><img src="../../.gitbook/assets/Screenshot 2023-04-23 at 3.12.10 PM.png" alt=""><figcaption></figcaption></figure>
 {% endtab %}
 {% endtabs %}
+
+[^1]: Substitute with your real NetID.
