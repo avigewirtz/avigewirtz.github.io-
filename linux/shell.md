@@ -4,7 +4,7 @@ When you enter commands on the command line, you are ultimately issuing commands
 
 The shell is both a command interpreter and a programming language. As a programming language, it defines the syntax and semantics of CLI commands, specifying the format that commands must adhere to and the range of possible operations.
 
-As a command interpreter, the shell reads and interprets textual commands, executing them by running either a built-in function or invoking an external program, which then makes the necessary OS calls.
+As a command interpreter, it reads and interprets textual commands, executing them by running either a built-in function or invoking an external program, which then makes the necessary OS calls.
 
 The sequence of interactions between the user, terminal (or terminal emulator), shell, operating system (OS), and hardware to process and execute a command can be outlined as follows:
 
