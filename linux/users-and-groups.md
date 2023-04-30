@@ -1,6 +1,6 @@
 # Users and Groups
 
-Linux is a multiuser operating system. In simple terms, that means that a single Linux computer can be shared by many users, all of whom may be logged in at any time–even simultaneously. It goes without saying that we must have some way of uniquely identifying each user on the system.&#x20;
+Linux is a multiuser operating system. In simple terms, that means that a single Linux computer can be shared by many users, all of whom may be logged in simultaneously.&#x20;
 
 {% hint style="info" %}
 If the idea of a multiuser computer seems foreign or reminiscent of the Stone Age when computers were as large and expensive as cars and had to be shared by entire organizations, recall that Armlab is shared by hundreds of students and faculty (some of whom might be logged in the same time that you are).
@@ -9,6 +9,8 @@ If the idea of a multiuser computer seems foreign or reminiscent of the Stone Ag
 ### Users
 
 Each user has a unique login name and a corresponding numeric user ID (UID). UIDs are normally over 500 and are assigned by the system administrator. The system administrator, also known as the superuser, has user ID 0, and normally has the username root.&#x20;
+
+The user's information, such as the username, UID, and other details, are stored in the /etc/passwd file.
 
 ### Groups
 
