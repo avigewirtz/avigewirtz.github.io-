@@ -4,12 +4,14 @@ A user interface defines the mechanism through which a user issues commands to a
 
 ### Graphical User Interface
 
-The GUI is the default interface on macOS and Windows. GUIs are visually intuitive and user-friendly, allowing users to issue commands by clicking on graphical elements such as windows, icons, and menus. They are especially beneficial for users who are less familiar with the technical aspects of computer systems. Common GUI elements include:
+The GUI is the default interface on macOS and Windows. In a GUI, users issue commands by clicking on graphical elements such as windows, icons, and menus. Common GUI elements include:
 
 * **Windows**: Rectangular areas that display content or applications
 * **Icons**: Small images representing files, folders, or applications
 * **Menus**: Lists of options or commands that can be selected by the user
 * **Buttons**: Graphical elements that perform specific actions when clicked
+
+The GUI provides a visually intuitive and user-friendly interface, making it especially beneficial for less technical computer users.
 
 ### Command Line Interface
 
