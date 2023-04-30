@@ -12,7 +12,7 @@ The absolute pathname of a directory or file has the following format:&#x20;
 /dir1/dir2/…/dirN_or_file
 ```
 
-The first `/` represents the root directory; the intermediate directories, each delimited by `/`, represent the directories on the trail from the root directory to `dirN_or_file`. **Figure 3** shows examples of four absolute pathnames.&#x20;
+The first _/_ represents the root directory; the intermediate directories, each delimited by _/_, represent the directories on the trail from the root directory to _dirN_or_file_. **Figure 3** shows examples of four absolute pathnames.&#x20;
 
 <figure><img src="https://lh6.googleusercontent.com/L5AY4VGHdsVYWSKkicK4tU758bIXimYQphD7_ojQwtjKISL6dhGrPlLbFVKurw_vqRGYRbmp4ZTV22RP9QmeL9oNkaf83SRzdP0Ou6oJ7Akomg2DbQrtY7iJa-lKHdbh39qvpm0cceJBFW54y499qbQ" alt=""><figcaption><p>Figure 3: Absolute Pathname Examples</p></figcaption></figure>
 
