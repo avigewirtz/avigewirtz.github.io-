@@ -1,8 +1,8 @@
-# Command Execution
+# How Bash Processes Commands
 
-COMMAND\_NAME normally represents one of two things:
+A command name normally represents one of two things:
 
-1. A Bash function--that is, that is, a function that is built into the Bash shell itself. This is called a Bash _built-in._&#x20;
+1. &#x20;A function that is built into Bash. This is called a Bash _built-in._&#x20;
 2. An executable file. This represents either an OS utility program or a user-written program.&#x20;
 
 The practical distinction between the two is normally irrelevant, but it does matter in certain contexts, such as when [retrieving documentation](getting-help.md) for a command, which will be covered soon.&#x20;
