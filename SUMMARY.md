@@ -27,7 +27,6 @@
 
 * [Background](bash/background.md)
 * [Warm Up Commands](bash/warm-up-commands.md)
-* [How Bash Executes Commands](bash/how-bash-executes-commands.md)
 * [Useful Command-line Features](bash/useful-command-line-features.md)
 * [Getting Help](bash/getting-help.md)
 * [Navigating the filesystem](bash/navigating-the-filesystem/README.md)
@@ -44,9 +43,8 @@
 * [File and Directory Access Permissions](bash/file-and-directory-access-permissions.md)
 * [Linux Environment Variables](bash/linux-environment-variables.md)
 * [Bash Configuration Files](bash/bash-configuration-files.md)
-* [Bash Cheat Sheet](bash/bash-cheat-sheet.md)
 * [Quoting](bash/quoting.md)
-* [Search Path](bash/search-path.md)
+* [Bash Cheat Sheet](bash/bash-cheat-sheet.md)
 * [Further Reading](bash/further-reading.md)
 
 ## Emacs
@@ -128,6 +126,8 @@
 
 ## Appendices
 
+* [How Bash Executes Commands](appendices/how-bash-executes-commands.md)
+* [Search Path](appendices/search-path.md)
 * [Working Directory Example](appendices/working-directory-example.md)
 * [Git Installation](appendices/git-installation.md)
 * [Secure Shell (SSH) Protocol](appendices/secure-shell-ssh-protocol/README.md)
