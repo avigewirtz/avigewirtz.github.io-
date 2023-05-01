@@ -2,7 +2,7 @@
 
 When you log into a Linux system, your working directory is by default your home directory. Unless you are a system administrator, you will rarely need to navigate to directories above your home directory; you will, however, regularly need to navigate to directories below it. To navigate to a directory, you must specify its pathname. As a refresher, each directory has two types of pathnames: absolute and relative. A directory’s absolute pathname specifies its location in the directory hierarchy by tracing its path from the root directory, while a directory’s relative pathname specifies its location by tracing its path from the working directory.&#x20;
 
-To navigate the directory hierarchy seamlessly, it’s helpful to have a visual perception of the distinction between absolute and relative pathnames. As a practical example, in the filesystem snapshot shown in Figure 1, say you want to navigate to navigate to bin (circled in red).
+To navigate the directory hierarchy seamlessly, it’s helpful to have a visual perception of the distinction between absolute and relative pathnames. As a practical example, in the filesystem snapshot shown in Figure 1, say you want to navigate to _bin_ (circled in red).
 
 <figure><img src="https://lh5.googleusercontent.com/zhvz5mD3xu6o89CUIY3hJJkuab6SMH2xkwIXWL8k_gIhYGLCLTO6l8xSj8Vfb2BKycdrFo66aZgKgJhTP60Z2IvCJPtrCVNt214VY_0mAH5H1FdsmEl3pDKMwM1c4PKfGTBSZ2nmlDTdP1AxbfMtWL8" alt=""><figcaption></figcaption></figure>
 
