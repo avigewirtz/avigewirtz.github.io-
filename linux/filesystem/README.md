@@ -1,6 +1,6 @@
 # Filesystem
 
-A fundamental feature of an operating system is the filesystem, which consists of two main components: (1) a collection of files, and (2) a directory structure that organizes these files. Before delving into the details of the Linux filesystem, it's helpful to first provide an overview of Linux files and directories.
+A fundamental feature of an operating system is the filesystem. From the user's point of view, the filesystem consists of two main components: (1) a collection of files, and (2) a directory structure that organizes these files. Before delving into the details of the Linux filesystem, it's helpful to first provide an overview of Linux files and directories.
 
 {% hint style="info" %}
 The term "Linux filesystem" is a bit of a misnomer, as Linux does not have any official filesystems or even an official filesystem standard. Rather, the term refers to a variety of filesystems that are supported by the Linux kernel and share a common set of features inherited from Unix.
