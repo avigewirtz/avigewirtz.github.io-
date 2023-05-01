@@ -27,7 +27,7 @@
 
 * [Background](bash/background.md)
 * [Warm Up Commands](bash/warm-up-commands.md)
-* [How Bash Processes Commands](bash/command-execution.md)
+* [How Bash Executes Commands](bash/how-bash-executes-commands.md)
 * [Useful Command-line Features](bash/useful-command-line-features.md)
 * [Getting Help](bash/getting-help.md)
 * [Navigating the filesystem](bash/navigating-the-filesystem/README.md)
@@ -45,6 +45,7 @@
 * [Linux Environment Variables](bash/linux-environment-variables.md)
 * [Bash Configuration Files](bash/bash-configuration-files.md)
 * [Bash Cheat Sheet](bash/bash-cheat-sheet.md)
+* [Quoting](bash/quoting.md)
 * [Search Path](bash/search-path.md)
 * [Further Reading](bash/further-reading.md)
 
