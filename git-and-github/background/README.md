@@ -2,7 +2,7 @@
 
 ## Git
 
-Git is a popular version control system (VCS). It was originally authored by Linus Torvalds, the founder of the Linux operating system, to manage the Linux kernel's source code. Before delving into the specifics of Git, it is essential to first understand the concept of version control and its significance in the software development process.&#x20;
+Git is a popular version control system (VCS), originally authored by Linux founder Linus Torvalds to manage the Linux kernel's source code. Before delving into the specifics of Git, it is essential to first understand the concept of version control and its significance in the software development process.&#x20;
 
 ## Motivation
 
