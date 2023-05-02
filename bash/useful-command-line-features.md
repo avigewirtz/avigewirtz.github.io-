@@ -7,7 +7,7 @@ Bash offers many useful command-line shortcuts that minimize the need to type ou
 * **TAB completion**: When you type a partial command or file path and press the TAB key, Bash will attempt to autocomplete the text based on the available options. If there is more than one possibility, pressing TAB twice will list all the available options.&#x20;
 * **Command history**: Bash keeps a record of the commands you've entered in a file named `.bash_history`, located in your home directory.  This allows you to perform a few extremely useful operations:&#x20;
   * **Display your command history:**  Invoke `history`.&#x20;
-  * **Search your command history**: Press`Ctrl`-r and type a few characters of the command you're looking for. Press `Ctrl-r` again to cycle through matching commands.
+  * **Search your command history**: Press`Ctrl-r` and type a few characters of the command you're looking for. Press `Ctrl-r` again to cycle through matching commands.
   * **Navigate your command history**: Use the up and down arrow keys.
   * **Reuse commands**: Use the `!` (bang) operator followed by a number (e.g., `!125`), to execute the command with that number in the history.&#x20;
 * **Clearing terminal window**: Invoke `clear` command or press `Ctrl-l`. This clears your terminal screen of all visible content. &#x20;
