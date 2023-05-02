@@ -1,6 +1,6 @@
 # Useful Command-line Features
 
-Bash offers many useful command-line shortcuts that minimize the need to type out long commands, filenames, or pathsnames. Some common shortcuts include:
+Bash offers many useful command-line shortcuts that minimize the need to type out long commands, filenames, or pathnames. Some common shortcuts include:
 
 * **Tilde expansion:** Expands tilde (\~) character into a user's home directory.
   * For example, if your username is `your_NetID`, and your home directory is `/u/your_NetID`,  `~` will expand to `/u/your_NetID`.
