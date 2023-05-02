@@ -4,8 +4,6 @@
 
 In COS217, there is actually no need to install Git on your personal computer, since you can (and should) do all of your development on armlab, which already has Git installed.&#x20;
 
-If you insist on developing with your personal computer, you can refer to Appendix A for Git installation instructions. Keep in mind that you will need to transfer the assignment files from your personal computer to Armlab for submission. Be aware that working on your personal computer is not advised, as the software versions or configurations on Armlab may differ from those on your computer, potentially leading to discrepancies when testing your code.
-
 ### Creating a GitHub Account
 
 GitHub offers both free and paid accounts. For the purposes of COS217, a free GitHub account is sufficient. To create your account, go to [github.com](https://github.com/), click `Sign up` in the top-right corner, and follow the instructions.&#x20;
