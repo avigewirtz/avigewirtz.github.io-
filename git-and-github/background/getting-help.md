@@ -1,6 +1,6 @@
 # Getting Help
 
-If you ever need assistance with a Git command, you can use the Git help command to obtain a comprehensive manual page (manpage). Simply invoke `git help` with the name of the Git command you want. For example, if you want to access the manpage for the `add` command:
+If you need assistance with a Git command, you can use the `git help` command to obtain a comprehensive manual page (_manpage_). For example, if you want to access the _manpage_ for the `add` command:
 
 ```bash
 git help add
