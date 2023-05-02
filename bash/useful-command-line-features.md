@@ -2,7 +2,8 @@
 
 Bash offers many useful command-line shortcuts that minimize the need to type out long commands, filenames, or paths. Some common shortcuts include:
 
-* **Tilde expansion:**&#x20;
+* **Tilde expansion:** Expands tilde (\~) character into a user's home directory.
+  * For example, if your username is `your_NetID`, and your home directory is `/u/your_NetID`,  `~` will expand to `/u/your_NetID`.
 * **TAB completion**: When you type a partial command or file path and press the TAB key, Bash will attempt to autocomplete the text based on the available options. If there is more than one possibility, pressing TAB twice will list all the available options.&#x20;
 * **Command history**: Bash keeps a record of the commands you've entered in a file named `.bash_history`, located in your home directory.  This allows you to perform a few extremely useful operations:&#x20;
   * **Display your command history:**  Invoke `history`.&#x20;
