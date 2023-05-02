@@ -1,8 +1,24 @@
-# Setting Up Your Environment
+# Git Installation
 
 ### Installing Git
 
 In COS217, there is actually no need to install Git, since the armlab computer--where you should do all of your development--already has Git installed. However, if you'd like to obtain Git on your PC, you can do so by following the instructions below.&#x20;
+
+{% tabs %}
+{% tab title="macOS" %}
+There are many ways to install Git on macOS. The easiest method is by installing the Xcode Command Line Tools, which includes a version of Git.&#x20;
+
+* Run the following command in Terminal: `git -v`. If Git is already installed, the command will output `git version x.y.z`. Otherwise, it will prompt you to install Xcode Command Line Tool.&#x20;
+
+{% hint style="info" %}
+Note that the version of Git included with Xcode is not necessarily the latest version. If you specifically want the latest version, download Git using the official Git [installer](https://git-scm.com/download/mac).&#x20;
+{% endhint %}
+{% endtab %}
+
+{% tab title="Windows" %}
+You may already have Git installed thanks to the introcs infrastructure from COS 126, which installs Git Bash. If this is not the case, then click on this link Git website http://git- scm.com/download/win and the download and install will start automatically.
+{% endtab %}
+{% endtabs %}
 
 ### Creating a GitHub Account
 
@@ -33,8 +49,3 @@ git config --global credential.helper store
 
 This creates a file in your home directory that only you can access that contains your GitHub username and PAT, which will be read by Git during subsequent commands. This eliminates the need to enter your credentials manually in future Git operations
 {% endhint %}
-
-
-
-\
-\

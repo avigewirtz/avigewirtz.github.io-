@@ -71,6 +71,7 @@
 ## Git & GitHub
 
 * [Background](git-and-github/background/README.md)
+  * [Git Installation](git-and-github/background/git-installation.md)
   * [Setting Up Your Environment](git-and-github/background/setting-up-your-environment.md)
   * [Getting Help](git-and-github/background/getting-help.md)
 * [Git Fundamentals](git-and-github/git-fundamentals/README.md)
@@ -129,7 +130,6 @@
 * [How Bash Executes Commands](appendices/how-bash-executes-commands.md)
 * [Search Path](appendices/search-path.md)
 * [Working Directory Example](appendices/working-directory-example.md)
-* [Git Installation](appendices/git-installation.md)
 * [Secure Shell (SSH) Protocol](appendices/secure-shell-ssh-protocol/README.md)
   * [Further Reading](appendices/secure-shell-ssh-protocol/further-reading.md)
 * [Operating Systems](appendices/operating-systems/README.md)
