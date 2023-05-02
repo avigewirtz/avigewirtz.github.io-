@@ -8,7 +8,7 @@ Before issuing Git commands, it's important to have a high-level overview of how
 
 Within the .git directory, there are many files and subdirectories, each containing important repository information. A few highlights of what is contained in the .git directory:&#x20;
 
-* A copy of all files under Git version control&#x20;
+* A copy of all the files in your project that are under Git version control&#x20;
 * A record of the changes made to the files at various stages of development. Included in this record is:
   * The names of the authors who made the changes&#x20;
   * Timestamps of the changes&#x20;

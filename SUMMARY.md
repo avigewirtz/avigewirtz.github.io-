@@ -71,11 +71,9 @@
 ## Git & GitHub
 
 * [Background](git-and-github/background/README.md)
-  * [Git Installation](git-and-github/background/git-installation.md)
-  * [Setting Up Your Environment](git-and-github/background/setting-up-your-environment.md)
+  * [Setting Up Your Git Environment](appendices/git-installation.md)
   * [Getting Help](git-and-github/background/getting-help.md)
 * [Git Fundamentals](git-and-github/git-fundamentals/README.md)
-  * [Git Repositories](git-and-github/git-fundamentals/git-repositories.md)
   * [Collaboration in Git](git-and-github/git-fundamentals/collaboration-in-git/README.md)
     * [Collaborative Workflows](git-and-github/git-fundamentals/collaboration-in-git/collaborative-workflows.md)
     * [Remotes](git-and-github/git-fundamentals/collaboration-in-git/remotes.md)
