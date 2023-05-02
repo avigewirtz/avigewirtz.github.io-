@@ -1,4 +1,23 @@
-# Cloning a Git Repository
+# Acquiring a Git Repository
+
+```bash
+git clone https://github.com/avigewirtz/git_practice.git && cd git_practice && rm -rf .git && cd ..
+```
+
+There are two ways you can acquire a Git repository:&#x20;
+
+1. You can create a new Git repository.&#x20;
+2. You can copy an existing Git repository.
+
+## Creating a Git Repository
+
+Creating a repository means initializing a repository for a project that is not currently under Git version control. For example, say your home directory contains directory the _git\_practice_ with the following contents: _README.md_, hello.c, _cirle1.c_ and _circle2.c._&#x20;
+
+
+
+The process of creating a Git repository is extremely simple. You simply navigate (using the cd command) to the directory containing the files you wish to version control and invoke git init. This will create a hidden .git subdirectory that contains all the information needed to version-control your project. Note that creating a Git repository (i.e., invoking git init) does not in itself cause all the files in that directory to be saved to the Git repository. As we’ll discuss later, you must manually add each file you want git to track to the repository.
+
+## Cloning a Git Repository
 
 Cloning a Git repository means making a copy of an existing repository. Unlike a new repository, a cloned repository comes with all project files, history, and other metadata from the source repository. Some information, however—such as configuration settings— is not propagated from to the cloned repository. &#x20;
 
@@ -28,3 +47,4 @@ Where username represents the GitHub username of the account you want to clone f
 
 \
 Replace the URL with the one you copied from the remote repository. This command will create the directory repository\_name in the current working directory.
+
