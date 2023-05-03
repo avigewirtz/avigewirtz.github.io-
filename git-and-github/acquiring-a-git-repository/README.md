@@ -44,33 +44,91 @@ To obtain the git\_practice directory, you can simply paste the following code b
 git clone https://github.com/avigewirtz/git_practice.git && cd git_practice && rm -rf .git
 ```
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 2.27.06 PM.png" alt=""><figcaption></figcaption></figure>
-
 Your working directory will now be git\_practice.
 
 First, invoke `ls -a`, and notice that there is no .git subdirectory:
 
-![](<../../.gitbook/assets/Screenshot 2023-05-03 at 2.29.09 PM.png>)![](<../../.gitbook/assets/Screenshot 2023-05-03 at 2.29.36 PM.png>)![](<../../.gitbook/assets/Screenshot 2023-05-03 at 2.30.38 PM.png>)![](<../../.gitbook/assets/Screenshot 2023-05-03 at 2.31.02 PM.png>)![](<../../.gitbook/assets/Screenshot 2023-05-03 at 2.31.49 PM.png>)![](<../../.gitbook/assets/Screenshot 2023-05-03 at 2.35.19 PM.png>)![](<../../.gitbook/assets/Screenshot 2023-05-03 at 2.35.53 PM.png>)![](<../../.gitbook/assets/Screenshot 2023-05-03 at 2.42.50 PM.png>)![](<../../.gitbook/assets/Screenshot 2023-05-03 at 2.42.08 PM.png>)![](<../../.gitbook/assets/Screenshot 2023-05-03 at 2.41.09 PM.png>)![](<../../.gitbook/assets/Screenshot 2023-05-03 at 2.39.53 PM.png>)![](<../../.gitbook/assets/Screenshot 2023-05-03 at 2.38.26 PM.png>)![](<../../.gitbook/assets/Screenshot 2023-05-03 at 2.44.23 PM.png>)![](<../../.gitbook/assets/Screenshot 2023-05-03 at 2.47.35 PM.png>)![](<../../.gitbook/assets/Screenshot 2023-05-03 at 2.48.07 PM.png>)![](<../../.gitbook/assets/Screenshot 2023-05-03 at 2.27.06 PM (1).png>)
 
 
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 3.56.14 PM.png" alt=""><figcaption></figcaption></figure>
 
-You can also invoke git status--an important command we will elaborate on soon--and you should get the following output: fatal: `not a git repository (or any of the parent directories): .git`. To create a Git repository, simply invoke:
+You can also invoke git status--an important command we will elaborate on soon--and you should get the following output: fatal: `not a git repository (or any of the parent directories): .git`. To create a Git repository, simply invoke git init:
 
-```bash
-git init
-```
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 3.57.17 PM.png" alt=""><figcaption></figcaption></figure>
 
-&#x20;Now invoke ls -a again, and notice that the repository contains a .git subdirectory.&#x20;
+Now invoke ls -a again, and notice that the repository contains a .git subdirectory:
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 3.59.00 PM.png" alt=""><figcaption></figcaption></figure>
 
 We will now perform a few steps to give you the hang of how Git works:
 
 1. git status
 
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.00.05 PM (1).png" alt=""><figcaption></figcaption></figure>
+
+
+
+git add
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.00.59 PM.png" alt=""><figcaption></figcaption></figure>
+
+git status
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.01.22 PM.png" alt=""><figcaption></figcaption></figure>
+
+git commit
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.01.47 PM.png" alt=""><figcaption></figcaption></figure>
+
+
+
+Adding a new file:
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.02.30 PM.png" alt=""><figcaption></figcaption></figure>
+
+git status
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.03.19 PM.png" alt=""><figcaption></figcaption></figure>
+
+git add using \* wildcard
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.04.08 PM.png" alt=""><figcaption></figcaption></figure>
+
+
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.04.58 PM.png" alt=""><figcaption></figcaption></figure>
 
 
 
 
-invoke `ls -a`
+
+
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.05.19 PM.png" alt=""><figcaption></figcaption></figure>
+
+
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.06.35 PM.png" alt=""><figcaption></figcaption></figure>
+
+
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.06.55 PM.png" alt=""><figcaption></figcaption></figure>
+
+
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.08.23 PM.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.09.32 PM.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.09.48 PM.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.10.46 PM.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.11.02 PM.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 3.56.14 PM (1).png" alt=""><figcaption></figcaption></figure>
+
+
 
 ```
 git add hello.c circle1.c circle2.c\
