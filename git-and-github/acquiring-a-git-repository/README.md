@@ -5,189 +5,119 @@ There are two ways you can acquire a Git repository:&#x20;
 1. You can create a new Git repository.&#x20;
 2. You can copy an existing Git repository.
 
+Creating a repository means initializing a Git repository for a project that is not currently under Git version control, while copying a Git repository means duplicating an existing repository.
+
+We will start by creating a Git repository, and we will use that to illustrate the fundamentals of using Git.&#x20;
+
 ## Creating a Git Repository
 
-Creating a repository means initializing a repository in a directory that is not currently under Git version control. The process is extremely simple. You simply navigate to the directory you want to version control and invoke `git init`. For example, to create a Git repository in git\_practice, perform these steps:
+The process of creating a Git repository is extremely simple. You simply navigate to the directory whose contents you want to version control and invoke `git init`. For example, to create a Git repository in your home directory, you'd perform these steps:
 
 ```bash
-# navigate to git_practice
-cd ~/git_practice
-# create a git repository
+cd ~
 git init 
 ```
 
-_git\_practice_ will now contain a _.git_ subdirectory, which contains your Git repository. You can confirm this by invoking _ls -a_.
+Your home directory will now contain a _.git_ subdirectory, which contains your Git repository. You can confirm this by invoking _ls -a_.
 
-An important thing to recognize with Git is that Git does not automatically save any content from your working directory. Therefore, the newly created Git repository is a mere skeleton repository--that is, it does not contain the contents of git\_practice.&#x20;
+An important thing to recognize with Git is that Git does not automatically save any content from your working directory into the repository. In the above example, nothing from your home directory will automatically be saved into your git repository. To save the contents, you must manually tell Git to do so.&#x20;
 
-You must manually tell Git to save the contents. Similarly, if after Git saved a file you modified the file, Git will not contain the updated version. You must tell Git at each point in time that you'd like it to record the contents of the file.&#x20;
+Saving is a two-step process involving _Staging_ and _committing._ In the staging step, you selectively choose the files from the working directory whose contents you want to save and add them to an area called the _index_ or _staging area_. You can stage individual files or a group of files. Once you have staged the files, the next step is to _commit_ them. Committing is the process of permanently saving the staged changes to the repository. This creates a new snapshot in the repository history.&#x20;
 
-## Staging Files
+The reason there is an intermede space for staging files is that it allows you to review, group, or organize the changes before they are permanently saved. Committing is the process of permanently saving the staged changes to the repository or project history. This typically involves adding a descriptive message to explain the changes made and creating a unique identifier (commit ID) for the set of changes.
 
-Saving files essentially involves telling git to save a snapshot of your current project. However, saving is a two-step process. Before you can save files to your repository, you must first add them to an intermediate area called the index or staging area. This process is called "staging." In this step, you must specify which files you want to stage. For example, in git\_practice, i can stage just one file--such as hello.c--two files, or all three.&#x20;
+## Exercise&#x20;
 
+We will practice basic Git commands using a directory named _git\_practice_ containing 3 files in it: _hello.c_, _circle1.c_, and _circle2.c_.&#x20;
 
-
-## Committing Files
-
-To finalize the saving process I need to commit the files in the staging area. However, when I commit I don't specify which files to commit. I simply tell git I want to commit, and it commits all files in the staging area. That is the purpose of the staging area--to selectively choose which files I want to be included.&#x20;
-
-
-
-## Practice
-
-We will practice basic Git commands using a directory named git\_practice containing 3 files: hello.c, circle1.c, and circle2.c.&#x20;
-
-To obtain the git\_practice directory, you can simply paste the following code block on the command line.
+To obtain the git\_practice directory, simply paste the following code block on the command line.
 
 ```bash
 git clone https://github.com/avigewirtz/git_practice.git && cd git_practice && rm -rf .git
 ```
 
-Your working directory will now be git\_practice.
-
-First, invoke `ls -a`, and notice that there is no .git subdirectory:
-
-
+Your working directory will now be _git\_practice_. First, invoke `ls -a`, and notice that there is no _.git_ subdirectory:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 3.56.14 PM.png" alt=""><figcaption></figcaption></figure>
 
-You can also invoke git status--an important command we will elaborate on soon--and you should get the following output: fatal: `not a git repository (or any of the parent directories): .git`. To create a Git repository, simply invoke git init:
+To create a Git repository, simply invoke `git init`:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 3.57.17 PM.png" alt=""><figcaption></figcaption></figure>
 
-Now invoke ls -a again, and notice that the repository contains a .git subdirectory:
+You will not have a Git repository. Invoke ls -a again, Now invoke ls -a again, and notice that git\_practice now contains a .git subdirectory:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 3.59.00 PM.png" alt=""><figcaption></figcaption></figure>
 
-We will now perform a few steps to give you the hang of how Git works:
-
-1. git status
+Now invoke `git status`, a useful command that allows you to view the state of your working directory and the staging area:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.00.05 PM (1).png" alt=""><figcaption></figcaption></figure>
 
+All files that have not previously been staged will be listed as untracked files. For now, we will focus on only one aspect of the `git status` output: Untracked files. Any file that has not previously been staged to Git is untracked. To get Git to begin tracking it, you must stage them.&#x20;
 
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 7.35.05 PM.png" alt=""><figcaption></figcaption></figure>
 
-git add
-
-<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.00.59 PM.png" alt=""><figcaption></figcaption></figure>
-
-git status
-
-<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.01.22 PM.png" alt=""><figcaption></figcaption></figure>
-
-git commit
-
-<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.01.47 PM.png" alt=""><figcaption></figcaption></figure>
+You can now commit them with the `git commit` command. When you commit, you also have to provide a commit message, which serves to document the changes you made. You can do so by supplying the -m option followed by quotation marks, inside which the message goes:
 
 
 
-Adding a new file:
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 7.38.50 PM.png" alt=""><figcaption></figcaption></figure>
+
+Now when you invoke git status, you'll get a message letting you know that your working tree is clean:
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 7.39.56 PM.png" alt=""><figcaption></figcaption></figure>
+
+Case 1: Adding a new file
+
+Say you add a new file, file1.txt, to the working directory. In the following example, I add the file with the touch command. If you invoke git status, you'll notice that file1.txt is Untracked:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.02.30 PM.png" alt=""><figcaption></figcaption></figure>
 
-git status
+Case 2: modifying a file
+
+Now say you modify the hello.c file by changing "Hello, world" to "Hello, everyone". Invokking Git status, you'll see that hello.c is now classified under "changes not staged for commit." To include the changes in the next commit, you must add it again.&#x20;
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.03.19 PM.png" alt=""><figcaption></figcaption></figure>
 
-git add using \* wildcard
+A simple shortcut is if you want to add all new or modified files to the staging area is to use the \* wildcard instead of typing out each filename. Notice below that git status lists file1.txt and hello.c under "Changes to be commited". Any files in this section are in the staging area.&#x20;
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.04.08 PM.png" alt=""><figcaption></figcaption></figure>
 
+Now, say you modify hello.c again, by changing "Hello, everyone" back to "Hello, world". If you invoke git status, you will not see two versions of hello.c:&#x20;
 
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 7.56.28 PM.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.04.58 PM.png" alt=""><figcaption></figcaption></figure>
+One of them is listed under "changed to be commits while the other is listed under "changes not staged for commit". The one staged for commit is the "Hello, everyone" version. The "Hello, world version is not staged for commit, since, if you modify a file after staging it, the modified version will not be reflected in the staged version. Rather, if you want the updated version to be included in the next commit, you must stage it again:&#x20;
 
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 8.05.28 PM.png" alt=""><figcaption></figcaption></figure>
 
+And notice that now the updated version that was previously not staged for commit is staged.&#x20;
 
+You can now commit, which will save the updated&#x20;
 
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 8.06.58 PM.png" alt=""><figcaption></figcaption></figure>
 
+Now say you delete the file1.txt file using the rm command. Although it will be deleted from your working directory, it will not be deleted from your repository. If you invoke git status, you'll notice that file1.txt is listed under "Changes nor staged for commit":
 
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 8.20.08 PM.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.05.19 PM.png" alt=""><figcaption></figcaption></figure>
+Essentially, Git tracks that file1.txt has been deleted, but in order for you to have the deletion reflected in the repository, you need to stage it and then commit it:
 
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 8.22.15 PM.png" alt=""><figcaption></figcaption></figure>
 
+## Summary
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.06.35 PM.png" alt=""><figcaption></figcaption></figure>
-
-
-
-<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.06.55 PM.png" alt=""><figcaption></figcaption></figure>
-
-
-
-<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.08.23 PM.png" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.09.32 PM.png" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.09.48 PM.png" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.10.46 PM.png" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.11.02 PM.png" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 3.56.14 PM (1).png" alt=""><figcaption></figcaption></figure>
+* **Staging files**: There are two types of files you need to be staged with the `git add` command: untracked files, and modified files. Untracked files are files that are "new" to Git--that is, they haven't previously been staged. Modified files are files that were updated after they were last staged.&#x20;
+* **Committing files**: The `git commit` command takes the files in the staging area and stores them permanently in your Git repository. Each commit represents a snapshot of your project's state.
+* **Status of repository**: The `git status` command lists three categories of files.
+  1. **Untracked files**: Files in the working directory that were not previously staged (i.e., "new" files).&#x20;
+  2. **Changes not staged for commit**: Files that were modified or deleted since they were last staged.&#x20;
+  3. **Changes to be committed**: Staged files that are ready to be committed.
 
 
 
-```
-git add hello.c circle1.c circle2.c\
-```
+## Local Git Workflow
 
-```bash
-# alternatively, you can use the "*" wildcard:
-git add *
-```
+The local Git workflow can be summarized as follows:
 
-Once you have added the files to the staging area, you can commit them:
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
-```bash
-git commit 
-```
-
-Git will not open your text editor and prompt you for a commit message. A commit message is simply a means of documenting the changes you made. It can be anything from a simple "first commit" to an "updated xyz bug."&#x20;
-
-Alternatively, you can provide the commit message with the `git commit` command using the `-m` option:
-
-```bash
-git commit -m "descriptive message"
-```
-
-when you commit, you don't specify files. All the files in the staging area will be included in the commit. You don't have to worry about commiting files that you don't want to be included in your snapshot, since only files you previously chose will be in the staging area. In fact, that's precisely the point of the staging are--to allow you to selectively choose which files to include in your commit.&#x20;
-
-## Cloning a Git Repository
-
-Cloning a Git repository means making a copy of an existing repository. As such, it comes populated with the project files.
-
-To clone a Git repository, follow these steps:
-
-1. Obtain the Git URL of the repository you want to clone. A Git URL comes in many forms, depending on which transfer protocol you’re using. Assuming you’re cloning a repository from Github, you’re URL will be in the following format: &#x20;
-
-| https://github.com/username/repository\_name.git |
-| ------------------------------------------------ |
-
-3. Clone the repository:
-
-| git clone https://github.com/username/repository\_name.git |
-| ---------------------------------------------------------- |
-
-\
-Replace the URL with the one you copied from the remote repository. This command will create the directory repository\_name in the current working directory.
-
-
-
-
-
-
-
-## Git workflow:
-
-
-
-The local Git workflow can be summed up in the following diagram. Files in the workspace can be either tracked or untracked.&#x20;
-
-Workspace
-
-Staging area (.git directory)
-
-Repository (.git directory)&#x20;

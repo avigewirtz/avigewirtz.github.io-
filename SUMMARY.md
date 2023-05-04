@@ -75,7 +75,7 @@
   * [Getting Help](git-and-github/background/getting-help.md)
 * [Git Fundamentals](git-and-github/git-fundamentals/README.md)
 * [Acquiring a Git Repository](git-and-github/acquiring-a-git-repository/README.md)
-* [Page 1](git-and-github/page-1.md)
+* [Cloning a Git Repository](git-and-github/cloning-a-git-repository.md)
 * [Collaboration in Git](git-and-github/git-fundamentals/collaboration-in-git/README.md)
   * [Collaborative Workflows](git-and-github/git-fundamentals/collaboration-in-git/collaborative-workflows.md)
   * [Remotes](git-and-github/git-fundamentals/collaboration-in-git/remotes.md)

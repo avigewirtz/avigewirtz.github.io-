@@ -15,4 +15,4 @@ The Emacs interface consists of several key components:&#x20;
 
 The image below provides a visual illustration of these components.
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>Emacs Interface: Visualization of Components</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption><p>Emacs Interface: Visualization of Components</p></figcaption></figure>
