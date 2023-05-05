@@ -155,5 +155,5 @@ Essentially, Git tracks that file1.txt has been deleted, but in order for you to
 
 The local Git workflow can be summarized as follows:
 
-<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 

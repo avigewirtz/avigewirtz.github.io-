@@ -44,3 +44,65 @@ You will be prompted for a passcode, which of course you do not have, and the cl
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-04 at 8.29.51 PM.png" alt=""><figcaption></figcaption></figure>
 
 Note that the password you are prompted for is not the GitHub account's regular login password, but a Personal Access Token, which offers more robust security.&#x20;
+
+## Checkout
+
+The repository on GitHub is a _bare_ repository. That means that it is essentially just a .git directory, with no associated workspace. That is totally fine, since you don't directly develop in that repository, and the bare repository contains a copy of all project files and history.&#x20;
+
+When you clone the bare repository from GitHub, Git automatically creates a directory with the same name as the source repository, places the git repository in a .git subdirectory, and checks out the latest version (i.e., commit) of all project files. &#x20;
+
+For example, when you clone _survey.git_, Git creates a directory named Survey, puts the Git repository in a subdirectory named .git, and then checks out the latest version to the workspace.&#x20;
+
+
+
+<figure><img src="../.gitbook/assets/image (8).png" alt="" width="375"><figcaption></figcaption></figure>
+
+## Syncing Local Repository with Remote Repository
+
+## &#x20;
+
+After cloning a repository, you may want to later sync up the two repositories. Git supports this through operations called _pushing_ (uploading) and _pulling_ (downloading). Pushing and pulling are accomplished with the `git push` and `git pull` commands, respectively.&#x20;
+
+Just like when you Git needed a URL when you cloned a Git repository, Git also needs a URL  for pushing or pulling with a repository. As such, a push or pull operation takes a URL as an argument:
+
+```bash
+git push https://github.com/GITHUB_USERNAME/REPOSITORY_NAME.git
+git pull https://github.com/GITHUB_USERNAME/REPOSITORY_NAME.git
+```
+
+## Remotes
+
+However, Git has this neat feature called _remotes_, which saves you from typing lengthy URLs. A remote is simply an alias for a URL, allowing you to subsequently refer to the source as "origin" instead of its full URL. With a remote, a Git Push or Pull operation might instead be invoked like so:
+
+```bash
+git push ALIAS_NAME
+git pull ALIAS_NAME
+```
+
+
+
+When you clone a Git repository, Git automatically saves the source repository's URL in an alias named _origin_. There is nothing special about origin. It is an arbitrary choice by Git, and you can change the the name if you'd like (though you'd probably not want to, since the name origin is so standard). With this in mind, push or pull operations from a clone to the source repository might look like the following:
+
+```bash
+git push origin 
+```
+
+In fact, it's even simpler; you don't even need to provide "origin" as an argument when interacting with the source repository, since Git defaults to origin when no argument is provided. Thus, you can simply invoke:
+
+```bash
+git push
+git pull
+```
+
+and Git will use the origin as the argument.&#x20;
+
+&#x20;
+
+Note that a repository can have any number of remotes, allowing you to do pull or push operations with multiple remote repositories.&#x20;
+
+
+
+## Git Workflow with Remotes
+
+<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+
