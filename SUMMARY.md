@@ -120,7 +120,7 @@
 ## Gprof
 
 * [Background](gprof/background.md)
-* [Page 1](gprof/page-1.md)
+* [How Gprof Works](gprof/how-gprof-works.md)
 
 ## Appendices
 
