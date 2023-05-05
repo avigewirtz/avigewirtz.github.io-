@@ -121,6 +121,7 @@
 
 * [Background](gprof/background.md)
 * [How Gprof Works](gprof/how-gprof-works.md)
+* [Using Gprof](gprof/using-gprof.md)
 
 ## Appendices
 
