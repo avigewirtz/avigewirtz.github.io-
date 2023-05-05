@@ -1,2 +1,3 @@
 # Background
 
+Performance optimization is a critical aspect of software development, especially for computationally intensive applications. Programmers often strive to identify bottlenecks in their code to optimize its execution time, memory usage, and other performance-related parameters. One way to achieve this is through the process of _profiling_, which involves collecting data about a program's runtime behavior to identify areas for improvement. Gprof is a widely-used performance profiling tool designed for C and C++ programs, providing programmers with valuable insights into their code's performance. In this tutorial, we will delve into the intricacies of Gprof, covering its purpose, usage, and the interpretation of its output.

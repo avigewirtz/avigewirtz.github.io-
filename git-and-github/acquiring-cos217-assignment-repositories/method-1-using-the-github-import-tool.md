@@ -3,7 +3,7 @@
 Method one involves two steps:&#x20;
 
 1. Duplicate the original COS217 GitHub repository to your personal GitHub account.&#x20;
-2. Copy the duplicate to your development computer. This is accomplished via the git clone command.&#x20;
+2. Clone the duplicate to your development computer.&#x20;
 
 Step 1 can be accomplished with the GitHub import tool, while step 2 is accomplished with the Git clone command. We will now briefly explain the GitHub import tool and the git clone command, demonstrating both by using assignment 0. \\
 
