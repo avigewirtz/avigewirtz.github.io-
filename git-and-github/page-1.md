@@ -1,7 +1,7 @@
 # Cloning a Git Repository
 
 \
-Cloning a Git repository means making a copy of an existing repository. As such, the clone comes populated with the source repository's files, history, and other metadata. &#x20;
+Cloning a Git repository means making a copy of an existing repository. The clone comes populated with the source repository's files, history, and other metadata. &#x20;
 
 To process of cloning a repository is extremely simple. You simply invoke:
 
