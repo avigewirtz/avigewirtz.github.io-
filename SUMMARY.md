@@ -76,7 +76,6 @@
 * [Git Fundamentals](git-and-github/git-fundamentals/README.md)
 * [Acquiring a Git Repository](git-and-github/acquiring-a-git-repository/README.md)
 * [Cloning a Git Repository](git-and-github/page-1.md)
-* [Remotes](git-and-github/remotes.md)
 * [Collaboration in Git](git-and-github/git-fundamentals/collaboration-in-git/README.md)
   * [Collaborative Workflows](git-and-github/git-fundamentals/collaboration-in-git/collaborative-workflows.md)
 * [Acquiring COS217 Assignment Repositories](git-and-github/acquiring-cos217-assignment-repositories/README.md)
