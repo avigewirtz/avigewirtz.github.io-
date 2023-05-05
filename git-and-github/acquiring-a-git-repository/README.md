@@ -11,44 +11,80 @@ We will start by creating a Git repository, and we will use that to illustrate t
 
 ## Creating a Git Repository
 
-The process of creating a Git repository is extremely simple. You simply navigate to the directory whose contents you want to version control and invoke `git init`. For example, to create a Git repository in your home directory, you'd perform these steps:
+The process of creating a Git repository is extremely simple. You simply navigate to the directory whose contents you want to version control and invoke `git init`. For example, to create a Git repository in _\~/my\_project_, you'd perform these steps:
 
 ```bash
-cd ~
+cd ~/my_project
 git init 
 ```
 
-Your home directory will now contain a _.git_ subdirectory, which contains your Git repository. You can confirm this by invoking _ls -a_.
+Your my\_project will now contain a _.git_ subdirectory, which contains your Git repository. You can confirm this by invoking _ls -a_.
 
-An important thing to recognize with Git is that Git does not automatically save any content from your working directory into the repository. In the above example, nothing from your home directory will automatically be saved into your git repository. To save the contents, you must manually tell Git to do so.&#x20;
+## How to Save Information to a Git Repository
 
-Saving is a two-step process involving _Staging_ and _committing._ In the staging step, you selectively choose the files from the working directory whose contents you want to save and add them to an area called the _index_ or _staging area_. You can stage individual files or a group of files. Once you have staged the files, the next step is to _commit_ them. Committing is the process of permanently saving the staged changes to the repository. This creates a new snapshot in the repository history.&#x20;
+An important thing to recognize with Git is that it does not automatically save any content from your project into the repository. In the above example, no files from _my\_project_ will automatically be saved into the git repository when it is created. The repository is "empty."&#x20;
+
+To save the contents, you must manually tell Git (1) which files you'd like to save; and (20 when you'd like Git to save them.&#x20;
+
+## Two-step Save Process
+
+Saving is a two-step process involving s_taging_ and _committing._&#x20;
+
+### Staging files
+
+In the staging step, you selectively choose the project files you want Git to save and add them to the _index_ or _staging area_. In this step, you must specify each file you'd like to stage, which can be a single file or all project files. Staging is accomplished with the `git add` command.&#x20;
+
+```bash
+git add FILE(S)
+```
+
+If you want to stage all the relevant project files, you can use file `*` [wildcard](../../bash/useful-command-line-features.md#wildcards) instead of typing out each of their names:
+
+```bash
+git add *
+```
+
+Once you have staged the files, the next step is to _commit_ them.&#x20;
+
+### Committing Files
+
+Committing is the process of permanently saving the staged changes to the repository, which creates a new snapshot in the repository history. When you commit, you don't specify specific files to commit. You simply tell Git to commit, and it commits all the files in the index to the repository. Committing is accomplished with the `git commit` command:&#x20;
+
+```bash
+git commit
+```
+
+After pressing ENTER, Git will open your preferred text editor and prompt you for a _commit message_. A commit message is simply a user-defined message that serves to document the changes made to the repository. As such, commit messages should be descriptive.  &#x20;
+
+Instead of&#x20;
+
+## Purpose of the Staging Area
 
 The reason there is an intermede space for staging files is that it allows you to review, group, or organize the changes before they are permanently saved. Committing is the process of permanently saving the staged changes to the repository or project history. This typically involves adding a descriptive message to explain the changes made and creating a unique identifier (commit ID) for the set of changes.
 
 ## Exercise&#x20;
 
-We will practice basic Git commands using a directory named _git\_practice_ containing 3 files in it: _hello.c_, _circle1.c_, and _circle2.c_.&#x20;
+In this exercise, you will be introduced to the most fundamental Git commands. We will practice basic Git commands using a directory named _git\_practice_ containing 3 files in it: _hello.c_, _circle1.c_, and _circle2.c_.&#x20;
 
-To obtain the git\_practice directory, simply paste the following code block on the command line.
+To obtain _git\_practice_, log into your development computer and paste the following code block on the command line:
 
 ```bash
 git clone https://github.com/avigewirtz/git_practice.git && cd git_practice && rm -rf .git
 ```
 
-Your working directory will now be _git\_practice_. First, invoke `ls -a`, and notice that there is no _.git_ subdirectory:
+This will copy _git\_practice_ to your working directory and then change your working directory to _git\_practice_. If you invoke `ls -a`, you will see three files: _circle1.c_, _circle2.c_, and _hello.c_; however, you will not see a _.git_ directory, since _git\_practice_ is not yet under Git version control.&#x20;
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 3.56.14 PM.png" alt=""><figcaption></figcaption></figure>
 
-To create a Git repository, simply invoke `git init`:
+To create a Git repository in _git\_practice_, invoke `git init`:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 3.57.17 PM.png" alt=""><figcaption></figcaption></figure>
 
-You will not have a Git repository. Invoke ls -a again, Now invoke ls -a again, and notice that git\_practice now contains a .git subdirectory:
+git\_practice will now have a Git repository. You can verify this by invoking ls -a again and confirming that there is a _.git_ subdirectory:&#x20;
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 3.59.00 PM.png" alt=""><figcaption></figcaption></figure>
 
-Now invoke `git status`, a useful command that allows you to view the state of your working directory and the staging area:
+We will now introduce one of the most useful git commands: `git status`. Git status allows you to view the state of your working directory and the staging area.&#x20;
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.00.05 PM (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -108,7 +144,7 @@ Essentially, Git tracks that file1.txt has been deleted, but in order for you to
 
 * **Staging files**: There are two types of files you need to be staged with the `git add` command: untracked files, and modified files. Untracked files are files that are "new" to Git--that is, they haven't previously been staged. Modified files are files that were updated after they were last staged.&#x20;
 * **Committing files**: The `git commit` command takes the files in the staging area and stores them permanently in your Git repository. Each commit represents a snapshot of your project's state.
-* **Status of repository**: The `git status` command lists three categories of files.
+* **Status of project files**: The `git status` command lists three categories of files in the working tree:
   1. **Untracked files**: Files in the working directory that were not previously staged (i.e., "new" files).&#x20;
   2. **Changes not staged for commit**: Files that were modified or deleted since they were last staged.&#x20;
   3. **Changes to be committed**: Staged files that are ready to be committed.
