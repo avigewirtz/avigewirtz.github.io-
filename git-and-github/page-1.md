@@ -17,23 +17,23 @@ The URL for a GitHub-hosted repository looks like the following:
 git clone https://github.com/GITHUB_USERNAME/REPOSITORY_NAME.git
 ```
 
-The value for GITHUB\_USERNAME will depend on which GitHub account the source repository is on. For example, if the source repository is located on the COS217 GitHub account, the username would be cos217. If it is located on your personal account, the username would be your personal GitHub username. Let's now clone the Survey repository for assignment 0:
+The value for GITHUB\_USERNAME will depend on which GitHub account the source repository is stored on. For example, if the source repository is located on the COS217 GitHub account, the username would be cos217. If it is located on your personal account, the username would be your personal GitHub username. Let's now clone the Survey repository for assignment 0, which is stored on the cos217 GitHub account and is named _survey_:
 
 ```bash
 git clone https://github.com/cos217/survey.git
 ```
 
-The output will look like the following:
+Upon success, the output will look like the following:
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-04 at 8.00.49 PM (1).png" alt=""><figcaption></figcaption></figure>
 
-Before moving forward, now is a good time to discuss two important concepts--remotes, and authentication.&#x20;
+Before moving forward, now is a good time to discuss authentication.&#x20;
 
 ## Authentication
 
 It goes without saying that when you upload a repository to GitHub, you don't necessarily want to make it public to the world. As such, you have the option of classifying your repository as either _public_ or _private_. Public repositories are visible to everyone on the Internet, and their contents can be cloned by anyone. In contrast, private repositories are only visible to their owner(s) and explicitly invited collaborators.&#x20;
 
-In the previous example, we were able to clone Survey since it's a public repository. However, if we had tried to clone a private repository--such as another student's COS217 assignment repository--you'd have been prompted for login credentials. For example, lets try to clone the following private repository:
+In the previous example, we were able to clone the survey repository since the COS217 account made it public. However, if we had tried to clone a private repository--such as another student's COS217 assignment repository--you'd have been prompted for login credentials. For example, lets try to clone the following private repository:
 
 ```bash
 git clone https://github.com/avigewirtz/private_repo.git
