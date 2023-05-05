@@ -55,7 +55,7 @@ For example, when you clone _survey.git_, Git creates a directory named Survey, 
 
 
 
-<figure><img src="../.gitbook/assets/image (8).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (9).png" alt="" width="375"><figcaption></figcaption></figure>
 
 ## Syncing Local Repository with Remote Repository
 
@@ -104,5 +104,5 @@ Note that a repository can have any number of remotes, allowing you to do pull o
 
 ## Git Workflow with Remotes
 
-<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
 

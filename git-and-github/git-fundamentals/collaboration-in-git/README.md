@@ -1,8 +1,16 @@
-# Collaboration in Git
+# Collaborative Workflows in Git
 
 Software development is a collaborative process, often involving multiple team members working together on a codebase. For example, in COS217 you will work on several of the assignments with a partner. In such an environment, you and your partner will often need to sync up your personal repositories with one another, ensuring you both have the same version of code.&#x20;
 
-While it is theoretically possible for each of you to sync up your personal repositories directly with each other via push or pull operations, this approach is not ideal for many reasons. Instead, the standard approach is to (1) sync up your repositories via an intermediate repository that neither of you directly develop in; and (2) to host the intermediate repository on a server like GitHub. Using this approach, your workflow might look like the following:
+While it is theoretically possible for each of you to sync up your personal repositories directly with each other via push or pull operations, as shown in Figure X, this approach is not ideal for many reasons.&#x20;
+
+<figure><img src="../../../.gitbook/assets/image (10).png" alt="" width="319"><figcaption></figcaption></figure>
+
+Instead, the standard approach is to (1) sync up your repositories via an intermediate repository that neither of you directly develop in; and (2) to host the intermediate repository on a server like GitHub. This workflow is called the _centralized workflow_.&#x20;
+
+<figure><img src="../../../.gitbook/assets/image (8).png" alt="" width="319"><figcaption></figcaption></figure>
+
+Using this approach, your workflow might look like the following:
 
 1. When beginning an assignment, either you or your partner copies the assignment repository from the COS217 GitHub account to their personal GitHub account and adds their partner as a collaborator. This repository will serve as the shared repository. &#x20;
 2. Each of you clones the repository to your development computer (e.g., armlab).&#x20;
@@ -37,6 +45,8 @@ A repository's classification as local or remote is (1) not indicative of its ph
 
 
 <figure><img src="https://lh5.googleusercontent.com/V9qWq02Y1cNgFrJKH5LB3BcAxF-Xe1QMtuvWCbjiznxzTey1kIhW_wEsGdB4tQQNLdqAi7yFMpLGMy7yldDIeTsw8QUmghasKX6l7_VI6wkNI949454pPaCf8OnblwbH4Ma8l5FiiTYpxZYLA4GFTtU" alt=""><figcaption></figcaption></figure>
+
+
 
 
 
