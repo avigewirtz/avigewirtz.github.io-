@@ -41,7 +41,7 @@ To generate a PAT, follow these steps:
 Your new PAT will be displayed. Be sure to copy it immediately, as GitHub will not show it again. Store it securely and treat it like a password. If you ever lose your PAT, do not worry. Simply generate a new one by following the steps above.
 
 {% hint style="info" %}
-Optional but strongly recommended: You will very quickly tire of copying and pasting your PAT each time you pull or push. You can use your computer’s keychain or password service to save your credentials, or you can use the Git client itself by configuring it using this command:
+Optional but strongly recommended: You will very quickly tire of copying and pasting your PAT to authenticate with GitHub. You can use your computer’s keychain or password service to save your credentials, or you can use the Git client itself by configuring it using this command:
 
 ```bash
 git config --global credential.helper store
