@@ -120,6 +120,7 @@
 ## Gprof
 
 * [Background](gprof/background.md)
+* [Page 1](gprof/page-1.md)
 
 ## Appendices
 
