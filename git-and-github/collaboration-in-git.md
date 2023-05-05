@@ -4,11 +4,11 @@ Software development is a collaborative process, often involving multiple team m
 
 While it is theoretically possible for each of you to sync up your personal repositories directly with each other via push or pull operations, as shown in Figure X, this approach is not ideal for many reasons.&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (10).png" alt="" width="319"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (10).png" alt="" width="319"><figcaption></figcaption></figure>
 
 Instead, the standard approach is to (1) sync up your repositories via an intermediate repository that neither of you directly develop in; and (2) to host the intermediate repository on a server like GitHub. This workflow is called the _centralized workflow_.&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (8).png" alt="" width="319"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8).png" alt="" width="319"><figcaption></figcaption></figure>
 
 Using this approach, your workflow might look like the following:
 
@@ -19,35 +19,11 @@ Using this approach, your workflow might look like the following:
 5. Repeat steps 4-5, until you complete the assignment.&#x20;
 6. Submit the assignment on armlab.&#x20;
 
-
-
-
-
-
-
 {% hint style="info" %}
 When exchanging data with another repository, the repository you are working in is called the local repository, while the repository you are exchanging data with is called the remote repository. However, it is important to note that there is no fundamental difference between local and remote repositories.
 
 Note that a "local" repository need not be located on your "local" computer, and a "remote" repository need not be located on a remote computer. In fact, in COS217 your repository on armlab is your "local" repository, even though armlab is a "remote" computer.&#x20;
 
-A repository's classification as local or remote is (1) not indicative of its physical location; and (2) not indicative of its function. It is only a meaningful term when describing the relationship between two or more repositories from the perspective of one of them. I will illustrate this with an example. Say you and your partner's repositories are both located on the same computer (e.g., armlab), and your repositories both exchange data directly between each other--instead of via an intermediate repository on GitHub. (While this is poor practice, it is theoretically possible.) Which one of these repositories would you classify "local" and which one would you classify as "remote"? It depends! From your perspective, your repository is "local," since it is the one you're developing in, and your partner's repository is "remote," since it is the one you're exchanging data with. From your partner's perspective, however, the opposite is the case. the repository you're developing in is local, while your partner's repository is "remote." From your partner's perspective, however, their repository is "local," while yours is "remote."&#x20;
+A repository's classification as local or remote is (1) not indicative of its physical location; and (2) not indicative of its function. It is only a meaningful term when describing the relationship between two or more repositories from the perspective of one of them. I will illustrate this with an example. Say you and your partner's repositories are both located on the same computer (e.g., armlab), and your repositories both exchange data directly between each other--instead of via an intermediate repository on GitHub. (While this is poor practice, it is theoretically possible.) Which one of these repositories would you classify "local" and which one would you classify as "remote"? It depends! From your perspective, your repository is "local," since it is the one you're developing in, and your partner's repository is "remote," since it is the one you're exchanging data with. From your partner's perspective, however, the opposite is the case. the repository you're developing in is local, while your partner's repository is "remote." From your partner's perspective, however, their repository is "local," while yours is "remote." \
+
 {% endhint %}
-
-
-
-.&#x20;
-
-
-
-&#x20;
-
-\
-
-
-<figure><img src="https://lh5.googleusercontent.com/V9qWq02Y1cNgFrJKH5LB3BcAxF-Xe1QMtuvWCbjiznxzTey1kIhW_wEsGdB4tQQNLdqAi7yFMpLGMy7yldDIeTsw8QUmghasKX6l7_VI6wkNI949454pPaCf8OnblwbH4Ma8l5FiiTYpxZYLA4GFTtU" alt=""><figcaption></figcaption></figure>
-
-
-
-
-
-\
