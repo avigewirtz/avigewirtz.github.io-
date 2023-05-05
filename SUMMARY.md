@@ -79,7 +79,6 @@
 * [Remotes](git-and-github/remotes.md)
 * [Collaboration in Git](git-and-github/git-fundamentals/collaboration-in-git/README.md)
   * [Collaborative Workflows](git-and-github/git-fundamentals/collaboration-in-git/collaborative-workflows.md)
-  * [Remotes](git-and-github/git-fundamentals/collaboration-in-git/remotes.md)
 * [Acquiring COS217 Assignment Repositories](git-and-github/acquiring-cos217-assignment-repositories/README.md)
   * [Method 1: Using the GitHub Import Tool](git-and-github/acquiring-cos217-assignment-repositories/method-1-using-the-github-import-tool.md)
   * [Method 2: Using the Git bare/mirror commands](git-and-github/acquiring-cos217-assignment-repositories/method-2-using-the-git-bare-mirror-commands.md)

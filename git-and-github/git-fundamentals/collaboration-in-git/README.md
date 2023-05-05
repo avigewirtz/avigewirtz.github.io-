@@ -11,11 +11,25 @@ While it is theoretically possible for each of you to sync up your personal repo
 5. Repeat steps 4-5, until you complete the assignment.&#x20;
 6. Submit the assignment on armlab.&#x20;
 
-In this context, the shared repository is called the _remote_ repository, while the repositories each of you are developing in are called _local_ repositories.&#x20;
+In this context, the shared repository is the remote repository, while the repositories you develop in are local repositories. In Git terminology, uploading content from a local repository to a remote repository is called "pushing," and downloading content from a remote repository to a local repository is called "pulling."
 
-In Git jargon, uploading content from a local repository to a remote repository is called _pushing_, while downloading content from a remote repository to a local repository is called _pulling_.&#x20;
+Pushing and pulling are accomplished with the `git push` and `git pull` commands, respectively. When you clone a repository, Git saves the source repository's URL in an alias called "origin," allowing you to subsequently refer to the source as "origin" instead of its full URL. For example, to push updates from a local repository to a remote repository, you can simply invoke:
 
-Pushing and pulling are accomplished with the git push and git pull commands respectively. Just like when you cloned a repository Git needed the source repository's URL in order to locate it, Git also needs the URL of the repository you want to do a push or pull operation with. However, a useful feature of Git is that when you clone a repository, it saves the URL of the source in an alias called _origin_. This way, you need not subsequently remember the source repository's URL, but can instead refer to it as _origin._&#x20;
+```bash
+git push origin 
+```
+
+Instead of:
+
+```bash
+git push https://github.com/GITHUB_USERNAME/REPOSITORY_NAME.git
+```
+
+In fact, it's even simpler; you don't need to provide "origin" as an argument since Git defaults to "origin" when no argument is provided. Thus, you can simply invoke:
+
+```bash
+git push
+```
 
 
 

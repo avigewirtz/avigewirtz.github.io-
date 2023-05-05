@@ -2,7 +2,7 @@
 
 Now that we’ve discussed the basics of how Git and GitHub work, let’s delve into the specifics of obtaining COS217 assignment repositories. While this step may seem straightforward, it is somewhat complicated by the fact that in COS217, you will want to maintain two copies of each COS217 assignment repository–one copy on your (or your partner’s) GitHub account, and one copy on your development computer, and you will want the repository on your development computer to be linked to your repository on GitHub.&#x20;
 
-The copy on your development computer will serve as your working copy, while the copy on GitHub will serve as the repository you synchronize your work with. For single assignments, the benefit is you’re code will be stored permanently on the cloud, and you’ll be able to access it from any computer. For partnered assignment, this will enable you to efficiently sync up your code with that of your partner.&#x20;
+The copy on your development computer will serve as your working copy, while the copy on GitHub will serve as the repository you synchronize your work with. For single assignments, the benefit is your code will be stored permanently on the cloud. For partnered assignments, this will enable you to efficiently sync up your code with that of your partner.&#x20;
 
 \
 \
