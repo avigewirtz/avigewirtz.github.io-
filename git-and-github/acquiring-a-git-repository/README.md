@@ -7,7 +7,7 @@ There are two ways you can acquire a Git repository:&#x20;
 
 Creating a repository means initializing a Git repository for a project that is not currently under Git version control; in contrast, copying a Git repository means duplicating an existing repository.
 
-We will start by creating a Git repository, and we will use that to illustrate the fundamentals of using Git.&#x20;
+We will start by creating a Git repository, and we will use that to illustrate the fundamentals of the Git workflow. We will then cover copying or cloning, an existing Git repository.&#x20;
 
 ## Creating a Git Repository
 
