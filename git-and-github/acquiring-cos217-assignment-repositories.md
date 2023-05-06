@@ -21,16 +21,24 @@ The GitHub import tool can be used to duplicate any Git repository located on th
 * Fill in the COS 217 assignment repository URL in the input box labeled Your old repository’s clone URL. In this example, that would be: [https://github.com/COS217/Survey.git](https://github.com/COS217/Survey.git).&#x20;
 * Choose your new repository’s name, select Private, and click Begin import. GitHub’s servers will do the work and email you when the import is complete.&#x20;
 
+If you follow this method, your development workflow will look like the following:
+
 ### Step 2: Clone the GitHub repository to your development computer&#x20;
 
 To clone a GitHub repository to your development computer, you will use the git clone command. In the following evening, we will clone the assignment 0 Survey repository to your development computer.&#x20;
 
 1. Login to your development computer. From the command line, navigate to the directory you want the repository to reside in using the cd command.&#x20;
-2. Clone the repository by entering the following command: git clone https://github.com/yourGitHubUsername/Survey.git
+2. Clone the repository by entering the following command: git clone https://github.com/yourGitHubUsername/Survey.git. Important: make sure it's your username.
 
-You will now have a local copy of the Survey repository on your development computer.&#x20;
+You will now have a local copy of the Survey repository on your development computer that is linked to your copy on GitHub.&#x20;
 
-Important: make sure you clone the repository from your personal GitHub account, and not from the COS217 GitHub account. If you clone from the COS217 account, your local repository will not be linked to your copy on GitHub.
+
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-05-01 at 2.35.35 PM.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-05-01 at 2.35.54 PM.png" alt=""><figcaption></figcaption></figure>
+
+##
 
 ## Method 2: Using Git Commands
 
