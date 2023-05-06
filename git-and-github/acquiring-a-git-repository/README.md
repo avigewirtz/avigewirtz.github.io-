@@ -48,7 +48,7 @@ Once you have staged the files, the next step is to _commit_ them.&#x20;
 
 ### Committing Files
 
-Committing is the process of permanently saving the staged changes to the repository, which creates a new snapshot in the repository history. When you commit, you don't specify specific files to commit. You simply tell Git to commit, and it commits all the files in the index to the repository. Committing is accomplished with the `git commit` command:&#x20;
+Committing is the process of permanently saving the staged changes to the repository. A commit represents a snapshot of your repository at a specific point in time, containing the changes made to the files in your project since the last commit. When you commit, you don't specify specific files to commit. You simply tell Git to commit, and it commits all the files in the index to the repository. Committing is accomplished with the `git commit` command:&#x20;
 
 ```bash
 git commit
@@ -56,11 +56,17 @@ git commit
 
 After pressing ENTER, Git will open your preferred text editor and prompt you for a _commit message_. A commit message is simply a user-defined message that serves to document the changes made to the repository. As such, commit messages should be descriptive.  &#x20;
 
-Instead of&#x20;
+A simpler way to commit is to specify the commit message along with the git commit command, as so:
+
+```bash
+git commit -m "COMMIT MESSAGE" 
+```
+
+Each commit has associated metadata such as a unique commit ID, the author's name and email address, the commit message, and the date and time of the commit. Commits represent the building blocks of a Git repository.
 
 ## Purpose of the Staging Area
 
-The reason there is an intermede space for staging files is that it allows you to review, group, or organize the changes before they are permanently saved. Committing is the process of permanently saving the staged changes to the repository or project history. This typically involves adding a descriptive message to explain the changes made and creating a unique identifier (commit ID) for the set of changes.
+The reason there is an intermede space for staging files is that it allows you to review, group, or organize the changes before they are permanently saved.&#x20;
 
 ## Exercise&#x20;
 
