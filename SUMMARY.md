@@ -77,7 +77,7 @@
 * [Acquiring a Git Repository](git-and-github/acquiring-a-git-repository/README.md)
 * [Cloning a Git Repository](git-and-github/page-1.md)
 * [Collaborative Workflows in Git](git-and-github/collaboration-in-git.md)
-* [Acquiring COS217 Assignment Repositories](git-and-github/acquiring-cos217-assignment-repositories/README.md)
+* [Obtaining COS217 Assignment Repositories](git-and-github/acquiring-cos217-assignment-repositories/README.md)
   * [Method 1: Using the GitHub Import Tool](git-and-github/acquiring-cos217-assignment-repositories/method-1-using-the-github-import-tool.md)
   * [Method 2: Using the Git bare/mirror commands](git-and-github/acquiring-cos217-assignment-repositories/method-2-using-the-git-bare-mirror-commands.md)
 * [Adding Your Partner To Your GitHub Repository](git-and-github/adding-your-partner-to-your-github-repository.md)
