@@ -98,10 +98,11 @@
 ## GCC
 
 * [The Four Stage Build Process](gcc/the-four-stage-build-process.md)
+* [Untitled](gcc/untitled.md)
 * [Understanding each stage](gcc/understanding-each-stage/README.md)
   * [Machine Code](gcc/understanding-each-stage/machine-code.md)
-  * [Assembly](gcc/understanding-each-stage/assembly.md)
-  * [High-level Languages](gcc/understanding-each-stage/high-level-languages.md)
+  * [Assembly Language](gcc/understanding-each-stage/assembly.md)
+  * [High-level Language](gcc/understanding-each-stage/high-level-languages.md)
 * [Further Reading](gcc/further-reading.md)
 
 ## Make
