@@ -1,44 +1,35 @@
 # Obtaining COS217 Assignment Repositories
 
-Now that we’ve discussed the basics of how Git works, let’s delve into the specifics of obtaining COS217 assignment repositories. All assignment repositories are hosted on the COS217 GitHub account. In COS217, you will want to maintain two copies of each COS217 assignment repository. One copy on your (or your partner’s) GitHub account, and one copy on your development computer. Further, you will want your development repository to be linked to your repository on GitHub.&#x20;
+Now that we’ve discussed the basics of how Git works, let’s delve into the specifics of obtaining COS217 assignment repositories. All COS217 assignment repositories are hosted on the [COS217 GitHub account](https://github.com/orgs/COS217/repositories). You will want to maintain two copies of each such repository. One copy to keep on GitHub, and one copy to keep on your development computer. Further, you want your development repository to be linked to your repository on GitHub.&#x20;
 
-While the process for obtaining two copies is seemingly straightforward, it is somewhat complicated by the fact that by default, Git links a clone to its source. Thus, if you clone the official COS217 repository to your development computer, the clone will be linked to the COS217 repository. This is not what you want, however. You want the clone to be linked to your personal GitHub copy.&#x20;
+While the process for obtaining two such copies is seemingly straightforward, it is somewhat complicated by the fact that in Git, when you clone a repository, the clone is by default automatically linked to the source via a [remote](page-1.md#remotes). Thus, if you clone the official COS217 repository directly to your development computer, the clone will be linked to the official COS217 repository. This is not what you want, however. You want the clone to be linked to your personal GitHub repository.&#x20;
 
 There are numerous ways you can get around this. We will now cover two methods. The first method is much simpler, but it uses the GitHub Import Tool, which is not native to Git.  The second method is more complex, but it uses native Git commands. &#x20;
 
 ## Method 1: Using the GitHub Import Tool
 
-Method 1 involves two steps:&#x20;
+Method 1 involves two steps. Importing the repository to your GitHub account, then cloning it to your development computer. These examples will assume that armlab is your development computer.&#x20;
 
-1. Duplicate the original COS217 GitHub repository to your personal GitHub account.&#x20;
-2. Clone the duplicate to your development computer.&#x20;
+## Step 1: Duplicate the repository to your GitHub account.&#x20;
 
-### Import the Git repository to your GitHub account&#x20;
+You can duplicate the repository with the GitHub Import Tool, which creates an independent copy of the repository on your GitHub account, devoid of any connection to the original. In the following example, we will import the assignment 0 Survey repository to your GitHub account.&#x20;
 
-The GitHub import tool can be used to duplicate any Git repository located on the Internet to your personal GitHub account. The imported repository will be uploaded as an independent copy, devoid of any links to the original. In the following example, we will import the assignment 0 Survey repository to your GitHub account.&#x20;
+1. Browse to https://github.com/new/import and sign into your account. (You can also reach this page by going to the GitHub homepage, signing into your account, then clicking on the plus sign at the top right of the page and choosing _Import Repository_.)
+2. Fill in the repository URL in the input box. In our example, the URL is `https://github.com/COS217/Survey.git`.&#x20;
+3. Under **Your new repository details**, input your desired repository name, (e.g., _Survey_), select **Private**, then click **Begin import**.&#x20;
+4. **Partnered assignments only**: Invite your partner as a collaborator.&#x20;
+   * Go to your repository page and click **Settings**. On the lefthand sidebar, click **Collaborators** and then click **Add people**. Input your partner's GitHub username and click the **Add** button.
 
-* Browse to https://github.com/new/import and sign into your account. (You can also reach this page by going to the GitHub homepage, signing into your account, then clicking on the plus sign at the top right of the page and choosing Import Repository.)
-* Fill in the COS 217 assignment repository URL in the input box labeled Your old repository’s clone URL. In this example, that would be: [https://github.com/COS217/Survey.git](https://github.com/COS217/Survey.git).&#x20;
-* Choose your new repository’s name, select Private, and click Begin import. GitHub’s servers will do the work and email you when the import is complete.&#x20;
+### Step 2: Cloning your GitHub repository to your development computer&#x20;
 
-If you follow this method, your development workflow will look like the following:
+1. Log into armlab and clone the repository:
 
-### Step 2: Clone the GitHub repository to your development computer&#x20;
+<pre class="language-bash"><code class="lang-bash">git clone https://github.com/<a data-footnote-ref href="#user-content-fn-1">YOUR_GITHUB_USERNAME</a>/Survey.git
+</code></pre>
 
-To clone a GitHub repository to your development computer, you will use the git clone command. In the following evening, we will clone the assignment 0 Survey repository to your development computer.&#x20;
-
-1. Login to your development computer. From the command line, navigate to the directory you want the repository to reside in using the cd command.&#x20;
-2. Clone the repository by entering the following command: git clone https://github.com/yourGitHubUsername/Survey.git. Important: make sure it's your username.
-
-You will now have a local copy of the Survey repository on your development computer that is linked to your copy on GitHub.&#x20;
+You will now have a copy of the Survey repository on your development computer that is linked to your copy on GitHub.&#x20;
 
 
-
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-01 at 2.35.35 PM.png" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-01 at 2.35.54 PM.png" alt=""><figcaption></figcaption></figure>
-
-##
 
 ## Method 2: Using Git Commands
 
@@ -50,3 +41,6 @@ The second method is somewhat complicated and involves many more steps than the 
 4. Clone your (updated) GitHub repository to your development computer&#x20;
 5. (Optional) delete the bare clone&#x20;
 
+
+
+[^1]: Your personal username (i.e., not COS217!)
