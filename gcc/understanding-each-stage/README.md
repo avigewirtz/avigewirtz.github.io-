@@ -1,50 +1,86 @@
 # Understanding each stage
 
-## How Computers Store Data
+## How Information is Represented in Computers
 
-Computers store data utilizing the binary system, a base-2 numeral system comprising only two digits: 0 and 1. All types of data, including numerical, text, image, audio, and video, are encoded as sequences of 1s and 0s.
+At its core, all information in computers is stored as a sequence of bits, each of which can be in one of two states of the underlying electrical or magnetic states of the computer's memory components. For instance, a memory cell may consist of a tiny capacitor and transistor. A charged capacitor represents a 1, while a discharged capacitor signifies a 0. Alternatively, magnetic polarities of magnetic material may denote binary digits, with one polarity corresponding to a 1 and the opposite polarity to a 0.
 
-{% hint style="info" %}
-Now, the data is not physically observable 1s and 0s, these binary digits symbolize the underlying electrical or magnetic states of the computer's memory components. For instance, a memory cell may consist of a tiny capacitor and transistor. A charged capacitor represents a 1, while a discharged capacitor signifies a 0. Alternatively, magnetic polarities of magnetic material may denote binary digits, with one polarity corresponding to a 1 and the opposite polarity to a 0.
-
-
-
-Here's a brief overview of how computers represent different types of data:
-
-1. Numerical data:
-   * Integers: Integers are represented using binary notation. Positive integers are represented using a straightforward binary conversion, while negative integers are typically represented using a method called Two's Complement.
-   * Floating-point numbers: Real numbers or decimals are represented using a standard called the IEEE 754 floating-point standard. It consists of three parts: the sign, the exponent, and the mantissa (or significand), which collectively represent the number in a scientific notation-like format.
-2. Text data: Text data is represented using character encoding standards such as ASCII (American Standard Code for Information Interchange) or Unicode. Each character in the text is assigned a unique binary code that the computer can interpret and display.
-3. Image data: Images are represented as a matrix of pixels, where each pixel corresponds to a specific color. The color information is represented using various color models, such as RGB (Red, Green, Blue) or CMYK (Cyan, Magenta, Yellow, Key/Black). Each color channel is represented by a specific number of bits, which determines the range of color values that can be represented.
-4. Audio data: Audio data is typically represented as a continuous waveform, which is then sampled at regular intervals to create a digital representation. Each sample represents the amplitude of the waveform at a specific point in time, and the samples are stored using various audio formats and encoding techniques.
-5. Video data: Video data is essentially a sequence of images (frames) displayed over time. Each frame is represented using image data formats, and the sequence of frames is stored using various video encoding and compression techniques to reduce the file size while maintaining an acceptable level of quality.
-{% endhint %}
+All information, such as numbers, images, audio, videos, and executable programs are stored as sequences of 1s and 0s. You might be wondering how a sequence of 1s and 0s can represent such complex information. The answer is we use encoding schemes.&#x20;
 
 
 
+### Representing Integers
+
+\<FILL IN>
 
 
-You might be wondering how 0s and 1s can represent anything useful.&#x20;
 
-To facilitate human understanding, data can be represented using familiar alphabets. One such representation is the extended ASCII, which utilizes 8 bits to represent each character, allowing for 256 characters. For example, the word "Hello" is represented as follows:
+### Representing Floating-Point Numbers
+
+Floating-point numbers are represented using a standard called the IEEE 754 floating-point standard. This representation uses three components: sign, exponent, and mantissa (or significand). The sign bit indicates the number's sign, the exponent determines the position of the decimal point, and the mantissa represents the actual numerical value. This format allows for a wide range of numbers and precise calculations.
+
+\
+\
+
+
+
+
+### Representing text
+
+1. ASCII (American Standard Code for Information Interchange):
+
+ASCII is a character encoding scheme that was created in the 1960s. It represents text using a 7-bit binary code, which allows for 128 different characters (2^7). The first 32 characters (0-31) are control characters, like line feed and carriage return, and the next 96 characters (32-127) are printable characters, including English letters (both uppercase and lowercase), digits, punctuation marks, and some special symbols.
+
+Each character in ASCII has a unique binary representation. For example, the letter 'A' is represented as 65 in decimal or 1000001 in binary.&#x20;
+
+
 
 H: 01001000 e: 01100101 l: 01101100 l: 01101100 o: 01101111
 
+2. Extended ASCII
+
+Extended ASCII is a collection of character encoding schemes that build upon the original 7-bit ASCII encoding to accommodate additional characters. Extended ASCII schemes use 8 bits to represent a total of 256 characters (2^8).
+
+In extended ASCII encoding schemes, the first 128 characters (0-127) are the same as in the original ASCII encoding, while the additional 128 characters (128-255) vary depending on the specific extended ASCII set used. To represent text using extended ASCII, each character is converted to its corresponding 8-bit binary code and stored in the computer's memory.
+
+However, extended ASCII character sets have limitations in supporting the wide variety of languages and scripts used worldwide. This led to the development of Unicode, a more comprehensive character encoding standard that can represent a vast array of characters from different writing systems.&#x20;
+
+3. Unicode
+
+UTF-8, a popular method for storing and transmitting Unicode characters, has largely replaced extended ASCII in modern computing systems due to its broader language support and efficient encoding of character data.
 
 
-ASCII can be used to encode text files in computers. However, these encoded text files are not directly executable by computers. Computers need instructions to be translated into machine code, the only language they inherently understand.
 
-Machine code comprises sequences of 1s and 0s that correspond to specific instructions for the computer's processor. By converting human-readable programming languages into machine code, computers can execute instructions and perform tasks as required.
+<details>
+
+<summary>A brief overview of how computers represent images, audio, and video</summary>
+
+* Images: Images are represented as a matrix of pixels, where each pixel corresponds to a specific color. The color information is represented using various color models, such as RGB (Red, Green, Blue) or CMYK (Cyan, Magenta, Yellow, Key/Black). Each color channel is represented by a specific number of bits, which determines the range of color values that can be represented.
+
+<!---->
+
+* Audio: Audio data is typically represented as a continuous waveform, which is then sampled at regular intervals to create a digital representation. Each sample represents the amplitude of the waveform at a specific point in time, and the samples are stored using various audio formats and encoding techniques.
+
+<!---->
+
+* Video: Video data is essentially a sequence of images (frames) displayed over time. Each frame is represented using image data formats, and the sequence of frames is stored using various video encoding and compression techniques to reduce the file size while maintaining an acceptable level of quality.
+
+</details>
+
+
+
+### Representing Executable Programs&#x20;
+
+Executable programs consist of machine code instructions, which are sequences of binary numbers that correspond to specific operations for the computer's processor. These instructions include operations like loading data from memory, performing arithmetic or logical operations, and controlling program flow. The specific binary representation of these instructions depends on the processor's instruction set architecture (ISA). Executable program files also contain metadata, such as memory addresses and linking information, to ensure proper execution.
 
 ## Machine Code
 
 Computers today do not inherently understand high-level programming languages such as C, Java, or any others. While these languages are more convenient for human comprehension, they are not directly executable by computers. Computer hardware is designed to implement a simple set of instructions, such as loading a value from memory into a register or adding two numbers and storing the result.
 
-The specific set of instructions a computer can support is defined by its Instruction Set Architecture (ISA). An ISA is a specification that outlines the supported instructions, registers, memory organization, and addressing modes that a computer's processor can execute. The ISA serves as the lowest level software interface to the computer. All instructions must ultimately be translated into this form, as the computer cannot understand anything else.
+The specific set of instructions a computer can support is defined by its Instruction Set Architecture (ISA). An ISA is a specification that outlines the supported instructions, registers, memory organization, and addressing modes that a computer's processor can execute. The ISA serves as the lowest-level software interface to the computer. All instructions must ultimately be translated into this form, as the computer cannot understand anything else.
 
 An instruction is a command that directs the processor to perform a specific operation. Each instruction typically consists of an operation code (opcode) and operands. The opcode identifies the operation to be performed, while the operands provide the necessary data or memory addresses involved in the operation. Some ISAs use fixed-length instructions, with each instruction having the same number of bits, while others use variable-length instructions, where the number of bits can vary between instructions.
 
-Programming in Machine Code: An Example
+### Programming in Machine Code: An Example
 
 To demonstrate what programming in machine code is like, we will write a simple machine code program using the fictional TOY ISA from COS126. Although TOY is not a real computer, it serves as a legitimate example for understanding machine code.
 
