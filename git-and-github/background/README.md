@@ -10,7 +10,7 @@ In important software projects, it is crucial to keep track of all material chan
 
 The most basic approach involves duplicating a codebase on the local filesystem each time a snapshot of its current version is desired. Although this method is reasonably effective for small projects, it rapidly becomes unwieldy and error-prone as projects grow in size.&#x20;
 
-To seamlessly track and manage changes to a codebase over time, developers utilize VCS software. The mosu populat VCS software today is Git. Beyond simple version control, git procides many benefits. For example, it gives developers the ability to create and maintain separate copies of the codebase, allowing them to experiment and test new features without jeopardizing the original codebase’s stability. Aditionally, it allows developers to seamlessly edhange daya between repositores, enabling team members to efficiently collaborate on projects. 
+To seamlessly track and manage changes to a codebase over time, developers utilize VCS software. The most popular VCS software today is Git, which provides many benefits beyond simple version control. For example, it gives developers the ability to create and maintain separate copies of the codebase, allowing them to experiment and test new features without jeopardizing the original codebase’s stability. Aditionally, it allows developers to seamlessly exchange data between repositores, enabling team members to efficiently collaborate on projects. 
 
 ## GitHub
 
