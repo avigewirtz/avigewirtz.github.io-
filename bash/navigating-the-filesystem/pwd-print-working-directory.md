@@ -10,6 +10,6 @@ Upon logging into armlab, your home directory will by default be your working di
 
 Your output should be `/u/yourNetID`, which is the absolute pathname of your home directory.&#x20;
 
-{% hint style="info" %}
+{% hint style="success" %}
 A useful feature of the shell is that the working directory can be displayed in the shell prompt. On armlab, the working directory is displayed in the shell prompt between the colon and dollar sign. In the above example, the working directory is \~ (tilde). (Recall that \~ represents your home directory.) Using that knowledge, you determine the working directory by simply inspecting the shell prompt.&#x20;
 {% endhint %}

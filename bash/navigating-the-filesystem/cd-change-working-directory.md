@@ -1,13 +1,10 @@
-# cd  (Change Working Directory)
+# cd (Change Working Directory)
 
-### Syntax: <mark style="color:red;">`cd`</mark><mark style="color:blue;">`DIRECTORY`</mark>&#x20;
+The `cd` command is used to change the working directory. Its syntax is as follows:  <mark style="color:red;">**`cd`**</mark><mark style="color:blue;">**`DIRECTORY_PATHNAME`**</mark>.
 
-<mark style="color:blue;">**DIRECTORY**</mark> is the target directory you want to navigate to, and it can be specified using either an absolute or relative pathname. If the <mark style="color:blue;">**DIRECTORY**</mark> argument is not supplied, `cd` defaults to your home directory.&#x20;
+The <mark style="color:blue;">**DIRECTORY\_PATHNAME**</mark> parameter represents the absolute or relative pathname of the directory you want to navigate to.&#x20;
 
-Before we begin with examples, let's review some important notation:
-
-* **`..`** (dot dot) refers to the parent of the working directory. You'll need this to travel "up" when using relative pathnames.
-* **`~`** (tilde) refers to the home directory. Knowing this will save you a lot of time when typing absolute pathnames.
+If you don't provide the <mark style="color:blue;">**DIRECTORY\_PATHNAME**</mark> argument, the `cd` defaults to changing the working directory to your home directory.
 
 {% hint style="info" %}
 In the following examples, the absolute pathname of the working directory is highlighted in the [shell prompt](../warm-up-commands.md#shell-prompt). This is to enable you to determine the location of the working directory at all times and to compare the location before and after each command is executed.
@@ -15,11 +12,9 @@ In the following examples, the absolute pathname of the working directory is hig
 
 ### Examples
 
-1. Make `/usr/bin` your working directory; use its absolute pathname:&#x20;
+1. Make _/usr/bin_ your working directory; use its absolute pathname:&#x20;
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-04-25 at 10.09.04 PM.png" alt=""><figcaption></figcaption></figure>
-
-The working directory is now `/usr/bin`, as the shell prompt confirms.
 
 2. Make your home directory your working directory:
 
@@ -27,17 +22,17 @@ The simplest way to change to your home directory is to invoke `cd` without argu
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-04-25 at 10.09.21 PM.png" alt=""><figcaption></figcaption></figure>
 
-However, you can also invoke it with `~` as the argument:
+However, another simple way is to invoke it with _\~_ as the argument:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-04-25 at 11.26.15 PM.png" alt=""><figcaption></figcaption></figure>
 
-3. Make `/usr/bin` your working directory again; this time use the relative pathname:&#x20;
+3. Make _/usr/bin_ your working directory again, this time using the relative pathname:&#x20;
+
+To navigate to /usr/bin using the relative pathname, you need to travel "up" is the hierarchy. To do this, recall that [**`..`**](../../linux/filesystem/notable-directories.md#the-.-dot-and-..-dot-dot-directories) (dot dot) refers to the parent of the working directory.&#x20;
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-04-25 at 10.09.32 PM.png" alt=""><figcaption></figcaption></figure>
 
-Comparing examples 1 and 3, which are functionally identical, you’ll notice that the absolute pathname (`/usr/bin`) is shorter than the relative pathname (`../../usr/bin`). A simple trick is that if a relative pathname contains the root directory, the absolute pathname counterpart is certainly shorter.&#x20;
-
-4. Make `.git` your working directory, using whichever pathname is shorter:
+4. Make _.git_ your working directory, using whichever pathname is shorter:
 
 The absolute pathname (`~/bash_practice/.git`) is clearly shorter than the relative pathname (`../../u/yourNetID/bash_practice/.git`).
 
@@ -45,7 +40,7 @@ The absolute pathname (`~/bash_practice/.git`) is clearly shorter than the relat
 
 5. Change your working directory back to your last working directory:
 
-Neat shortcut: `-` (hyphen) refers to the last working directory. Thus, you can invoke the command like so:
+Neat shortcut: - (hyphen) refers to the last working directory. Thus, you can invoke the command like so:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-04-25 at 10.09.52 PM.png" alt=""><figcaption></figcaption></figure>
 
@@ -53,18 +48,20 @@ Neat shortcut: `-` (hyphen) refers to the last working directory. Thus, you can 
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-04-25 at 10.09.21 PM.png" alt=""><figcaption></figcaption></figure>
 
-7. Change your working directory to `the_odyssey.txt`:
+7. Change your working directory to _the\_odyssey.txt_:
 
-That was intended to fool you. You cannot make `the_odyssey.txt` your working directory since it is a file.&#x20;
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-09 at 5.12.33 PM.png" alt=""><figcaption></figcaption></figure>
 
-8. Change your working directory to `bwk`:
+This example was intended to fool you. You cannot make the\_odyssey.txt your working directory since it is a file.&#x20;
+
+8. Change your working directory to /u/_bwk_:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-04-25 at 10.10.15 PM.png" alt=""><figcaption></figcaption></figure>
 
-Our request to access `bwk` was denied, since `bwk` is another user's home directory--Professor Brian Kernighan, to be specific. We will discuss file and directory access permissions in more detail in a later section.&#x20;
+Our request to access _/u/bwk_ was denied since it is another user's home directory--Professor Brian Kernighan, to be specific. We will discuss file and directory access permissions in more detail in a later section.&#x20;
 
-9. Change your working directory to `/lost+found`:
+9. Change your working directory to _/lost+found_:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-04-25 at 10.10.26 PM.png" alt=""><figcaption></figcaption></figure>
 
-Our request was denied here as well, since `lost+found` is an important directory that only the system administrator is authorized to access. \
+Our request was denied here as well, since _/lost+found_ is an important directory that only the system administrator is authorized to access. \

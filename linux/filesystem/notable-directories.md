@@ -51,7 +51,7 @@ Every Linux filesystem has a set of important directories residing in the root d
 * _/usr_: Files not required for booting but required for normal system operation, including application binaries, libraries, and documentation.
 * _/var_: Variable data such as log files, system databases, and spool files.
 
-{% hint style="info" %}
+{% hint style="warning" %}
 Note that some of these directories are not listed in the above snapshot of the armlab filesystem due to space constraints.
 {% endhint %}
 
