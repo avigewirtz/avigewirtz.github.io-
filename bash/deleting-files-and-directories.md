@@ -3,7 +3,7 @@
 There are two commands for deleting files and directories: one for deleting empty directories only, and the other for deleting everything else.
 
 {% hint style="danger" %}
-Deleting non-empty files or non-empty directories is a dangerous operation. If you’re not careful, the operating system will do exactly what you tell it to do, including destroying every last one of your files and directories. For this reason, deleting non-empty files and directories is deliberately made difficult.&#x20;
+Deleting files and directories is a dangerous operation. If you’re not careful, the operating system will do exactly what you tell it to do, including destroying every last one of your files and directories. For this reason, deleting non-empty files or non-empty directories is deliberately made difficult.&#x20;
 {% endhint %}
 
 
