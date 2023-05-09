@@ -20,15 +20,15 @@ When you log into a terminal session, your home directory is by default set as y
 
 ## Hidden files/directories
 
-A file or directory whose name begins with a `.` (period) is called _hidden_. Hidden files/directories are (by default) not visible in directory listings—neither as icons in a GUI nor as text in a CLI. To make hidden entries visible, you must make an explicit request.
+Files or directories that start with a period (.) are considered _hidden_, meaning they are not displayed in directory listings, whether in a graphical user interface (GUI) or a command-line interface (CLI). To view these hidden entries, you need to explicitly request for them to be displayed.&#x20;
 
 ## The . (dot) and .. (dot dot) directories
 
-Every directory has at least two hidden directory entries in it: `.` (dot) and `..` (dot dot). The former references the directory itself (i.e., the working directory), and the latter references the parent directory (i.e., the parent of the working directory). These entries serve an important role in [pathnames](pathnames.md).
+Each directory contains at least two hidden entries: `.` (dot) and `..` (dot dot). The former refers to the directory itself (the working directory), while the latter refers to the parent directory. These entries play a crucial role in constructing [pathnames](pathnames.md).
 
 ## Important standard directories
 
-Every Linux filesystem has a set of important directories residing in the root directory. These directories are essential for the proper functioning of a Linux system, and the presence of most of them is required by the [Filesystem Hierarchy Standard](https://refspecs.linuxfoundation.org/FHS\_3.0/fhs/index.html) (FHS). Here is a very brief overview the directories on armlab:
+Every Linux filesystem has a set of important directories residing in the root directory. These directories are essential for the proper functioning of a Linux system, and the presence of most of them is required by the [Filesystem Hierarchy Standard](https://refspecs.linuxfoundation.org/FHS\_3.0/fhs/index.html) (FHS). Here is a very brief overview of the directories on armlab:
 
 * _/bin_: Essential binary files, including common commands like `cp`, `mv`, `rm`, and `ls`.
 * _/boot_: Files required for booting, including the kernel, bootloader, and configuration files.
@@ -46,7 +46,7 @@ Every Linux filesystem has a set of important directories residing in the root d
 * _/run_: Rruntime files such as PID files, socket files, and lock files.
 * _/sbin_: System binaries for system administration tasks.&#x20;
 * _/srv_: Used for data served by the system, like website content or FTP files.
-* _/sys_: Iinformation about the system's hardware devices and drivers.
+* _/sys_: Information about the system's hardware devices and drivers.
 * _/tmp_: Used for temporary files created by the system and applications.
 * _/usr_: Files not required for booting but required for normal system operation, including application binaries, libraries, and documentation.
 * _/var_: Variable data such as log files, system databases, and spool files.

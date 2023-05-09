@@ -13,14 +13,17 @@
 ## Linux
 
 * [Background](linux/background.md)
+* [Operating System](linux/operating-system.md)
+* [Command Line User Interface](linux/user-interfaces-gui-and-cli.md)
+* [Untitled](linux/untitled.md)
+* [Terminal](linux/terminal.md)
+* [Shell](linux/shell.md)
 * [Filesystem](linux/filesystem/README.md)
   * [Files and Directories](linux/filesystem/files-and-directories.md)
   * [Filenames](linux/filesystem/filenames.md)
   * [Filesystem Layout](linux/filesystem/filesystem-layout.md)
   * [Notable Directories](linux/filesystem/notable-directories.md)
   * [Pathnames](linux/filesystem/pathnames.md)
-* [Command Line User Interface](linux/user-interfaces-gui-and-cli.md)
-* [Shell](linux/shell.md)
 * [Further Reading](linux/further-reading.md)
 
 ## Bash

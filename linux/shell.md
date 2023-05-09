@@ -1,23 +1,21 @@
 # Shell
 
-When you enter commands on the command line, you are ultimately issuing commands to the operating system (OS). However, you are not directly communicating with the OS; rather, you interact with it through an intermediary program known as the _shell_, which implements the command line interface. The shell serves as the users interface to the operating system. In face, the name shell is derived from its job as a "shell" surrounding the operating system.&#x20;
+We stated earlier that commands issued in the terminal are passed to the OS for execution. However, there is actually an intermediate layer between the terminal and OS, called the _shell_. The shell is the program that actually implements the CLI. It does so in two ways:&#x20;
 
+1. **Defining the language of CLI commands**: The shell defines the syntax and semantics of CLI commands, specifying the format that commands must adhere to and the range of possible operations.
+2. **Interpreting CLI commands**: The shell reads and interprets textual commands entered in the terminal, executing them by running either built-in functions or by invoking external programs.
 
-
-### Linux Shell: Command Interpreter and Programming Language&#x20;
-
-A Linux shell is both a command interpreter and a programming language. As a programming language, it defines the syntax and semantics of CLI commands, specifying the format that commands must adhere to and the range of possible operations.
-
-As a command interpreter, it reads and interprets textual commands, executing them by running either a built-in function or invoking an external program, which then makes the necessary OS calls.
+## Relationship Between User, Terminal. Shell, OS, and Hardware
 
 The sequence of interactions between the user, terminal (or terminal emulator), shell, operating system (OS), and hardware to process and execute a command can be outlined as follows:
 
 1. **User input**: The user types a command with an input device, typically a keyboard, in a terminal or terminal emulator window. This command is a text-based instruction directing the computer system to perform a specific action.
-2. **Terminal/terminal emulator**: The terminal or terminal emulator captures the user's input and transmits the command to the shell upon the user pressing the 'Enter' key.
-3. **Shell**: The shell interprets the user's command, parsing it into its constituent components (e.g., command name, options, arguments), and checks for any syntax errors. The shell then proceeds to execute the command, which might involve running a built-in command or invoking an external program.
-4. **Command execution and output**: After processing the command, the hardware carries out the instructions under the OS's supervision. Any resulting output is sent to the terminal or terminal emulator, which then displays it to the user.
-5. **Command completion**: Once the command has been executed and the output displayed, the shell reverts to displaying its prompt, signaling that it is ready to accept the next command from the user.
+2. **Terminal/terminal emulator**: The terminal or terminal emulator captures the user's input and transmits the command to the shell upon the user pressing the 'Enter' key.&#x20;
+3. **Shell**: The shell interprets the user's command, parsing it into its constituent components (e.g., command name, options, arguments), and checks for any syntax errors. The shell then proceeds to execute the command, either by running a built-in function or by invoking an external program.&#x20;
+4. **Operating System**: The OS takes the commands from the shell and other programs and loads the instructions into memory for execution.&#x20;
+5. **Hardware**: The hardware receives the low-level instructions from the OS and performs the necessary operations, including data processing and I/O operations. This involves the CPU, memory, storage devices, and other hardware components working together.
+6. **Output and prompt**: Once the operations are completed, the output, if any, is sent back to the terminal and displayed to the user. The shell then reverts to displaying its prompt, signaling to the user that it is ready to accept another command.
 
+The sequence of interactions is illustrated in Figure 4.
 
-
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 3.21.28 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 3.21.28 PM.png" alt=""><figcaption><p>Figure 4: Sequence of interactions between the user, terminal, shell, OS, and hardware.</p></figcaption></figure>
