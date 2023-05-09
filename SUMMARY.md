@@ -15,7 +15,6 @@
 * [Background](linux/background.md)
 * [Operating System](linux/operating-system.md)
 * [Command Line User Interface](linux/user-interfaces-gui-and-cli.md)
-* [Untitled](linux/untitled.md)
 * [Terminal](linux/terminal.md)
 * [Shell](linux/shell.md)
 * [Filesystem](linux/filesystem/README.md)
