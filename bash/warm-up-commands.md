@@ -44,7 +44,7 @@ Here are a few more simple example:
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-09 at 3.00.07 PM.png" alt=""><figcaption></figcaption></figure>
 
-### Options
+## Options
 
 Many commands have specially formatted parameters, known as flags or _options_, which modify the default behavior of the command. Options are so-called because they are normally "optional." You can think of options as telling commands _how_ to complete the task:
 
@@ -68,7 +68,7 @@ Many programs allow single-character options to be combined. For example, in the
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-09 at 3.16.28 PM.png" alt=""><figcaption></figcaption></figure>
 
-### Arguments
+## Arguments
 
 An argument is a token that a command acts on, such as a filename, a string of characters, or a number. An argument usually tells a command to act upon a certain object:
 
@@ -82,7 +82,7 @@ Many programs can take multiple arguments. For example, you can provide `sort` t
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-04-25 at 7.00.46 PM.png" alt=""><figcaption></figcaption></figure>
 
-### Commands with Options and Arguments
+## Commands with Options and Arguments
 
 Finally, many commands take both options and arguments. You can imagine as so: &#x20;
 
