@@ -35,5 +35,5 @@ As you can see, instead of creating one directory named "_bad name_", Bash creat
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-09 at 5.46.36 PM.png" alt=""><figcaption></figcaption></figure>
 
-Now _bad name_ appears as a single directory.
+Now _bad name_ appears as a single directory. Quoting is elaborated on in a [later section](quoting.md).&#x20;
 
