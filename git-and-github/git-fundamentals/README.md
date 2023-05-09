@@ -1,8 +1,8 @@
 # Git Fundamentals
 
-Before issuing Git commands, it's important to have a high-level overview of how Git works. &#x20;
+Before executing Git commands, it is crucial to gain a comprehensive understanding of how Git operates. In this section, we will introduce Git repositories and provide an overview of the basic Git workflow.&#x20;
 
-## Git repositories
+## Git Repositories
 
 A Git repository is essentially a database that holds all the necessary information for maintaining and managing a project's files and history. The repository is typically stored at the root of the project’s workspace in a hidden directory named _.git_.
 

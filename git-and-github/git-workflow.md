@@ -8,7 +8,7 @@ git clone https://github.com/avigewirtz/git_practice.git && cd git_practice
 
 This will create a directory named git\_practice, which will be set as your working directory. First, invoke `ls -a.` You should get the following output:&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 3.59.00 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 3.59.00 PM (1).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (11).png" alt="" width="563"><figcaption></figcaption></figure>
 
@@ -91,19 +91,19 @@ git clone https://github.com/avigewirtz/git_practice.git && cd git_practice && r
 
 This will copy _git\_practice_ to your working directory and then change your working directory to _git\_practice_. If you invoke `ls -a`, you will see three files: _circle1.c_, _circle2.c_, and _hello.c_; however, you will not see a _.git_ directory, since _git\_practice_ is not yet under Git version control.&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 3.56.14 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 3.56.14 PM (1).png" alt=""><figcaption></figcaption></figure>
 
 To create a Git repository in _git\_practice_, invoke `git init`:
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 3.57.17 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 3.57.17 PM (1).png" alt=""><figcaption></figcaption></figure>
 
 git\_practice will now have a Git repository. You can verify this by invoking ls -a again and confirming that there is a _.git_ subdirectory:&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 3.59.00 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 3.59.00 PM (1).png" alt=""><figcaption></figcaption></figure>
 
 We will now introduce one of the most useful git commands: `git status`. Git status allows you to view the state of your working directory and the staging area.&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 4.00.05 PM (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 4.00.05 PM.png" alt=""><figcaption></figcaption></figure>
 
 All files that have not previously been staged will be listed as untracked files. For now, we will focus on only one aspect of the `git status` output: Untracked files. Any file that has not previously been staged to Git is untracked. To get Git to begin tracking it, you must stage them.&#x20;
 
@@ -113,11 +113,11 @@ You can now commit them with the `git commit` command. When you commit, you also
 
 
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 7.38.50 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 7.38.50 PM (1).png" alt=""><figcaption></figcaption></figure>
 
 Now when you invoke git status, you'll get a message letting you know that your working tree is clean:
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 7.39.56 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 4.05.19 PM.png" alt=""><figcaption></figcaption></figure>
 
 Case 1: Adding a new file
 
