@@ -28,7 +28,7 @@
 ## Bash
 
 * [Background](bash/background.md)
-* [Warm Up Commands](bash/warm-up-commands.md)
+* [Getting Started](bash/warm-up-commands.md)
 * [Useful Command-line Features](bash/useful-command-line-features.md)
 * [Getting Help](bash/getting-help.md)
 * [Navigating the filesystem](bash/navigating-the-filesystem/README.md)
