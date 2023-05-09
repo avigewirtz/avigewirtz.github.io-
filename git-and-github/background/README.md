@@ -12,7 +12,7 @@ The most basic approach involves duplicating a codebase on the local filesystem 
 
 To seamlessly track and manage changes to a codebase over time, developers utilize VCS software. Some benefits of VCS include:
 
-1. The ability to refer a codebase to a prior state. This is useful in many situations; for example, when a modification introduces a bug.&#x20;
+1. The ability to revert a codebase to a prior state. This is useful in many situations; for example, when a modification introduces a bug.&#x20;
 3. Creating and maintaining separate copies of the codebase. This allows developers to experiment and test new features without jeopardizing the original codebase’s stability.
 
 ## GitHub
