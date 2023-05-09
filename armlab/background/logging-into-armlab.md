@@ -1,6 +1,8 @@
-# Logging Into armlab
+# Logging in & out of armlab
 
-Losing into armlab is accomplished via an _SSH client,_ which is a program that uses the [SSH](../../appendices/secure-shell-ssh-protocol/) Protocol to communicate with a remote computer.
+## Logging into armlab
+
+Logging into armlab is accomplished via an _SSH client,_ which is a program that uses the [SSH](../../appendices/secure-shell-ssh-protocol/) Protocol to communicate with a remote computer.
 
 {% tabs %}
 {% tab title="Mac" %}
@@ -44,5 +46,11 @@ If your login is successful, a shell prompt like the following will be displayed
 <figure><img src="../../.gitbook/assets/Screenshot 2023-04-23 at 3.12.10 PM.png" alt=""><figcaption></figcaption></figure>
 {% endtab %}
 {% endtabs %}
+
+## Logging out of armlab
+
+Logging out of armlab is extremely simple. Simply invoke `logout`, and your terminal session will be closed:
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-09 at 3.44.12 PM.png" alt=""><figcaption></figcaption></figure>
 
 [^1]: Replace with your real NetID.

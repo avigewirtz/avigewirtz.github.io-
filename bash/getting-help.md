@@ -2,28 +2,20 @@
 
 Each Bash command has associated documentation that can be accessed from the command line. Such documentation is helpful when you need a refresher for a command or want more information about the command’s specifics.&#x20;
 
-Retrieving documentation is one context where there is a distinction between OS utility programs and shell builtins. Specifically, the commands used to retrieve documentation for utility programs are different than the ones used for shell builtins, and vice versa.
+The method of documentation differs depending on the type of command you are retrieving documentation for. A command normally represents one of two things:&#x20;
 
+* A shell _built-in_, which is a utility that is implemented within Bash. &#x20;
+* An external program--either an OS utility program or a user-written program.&#x20;
 
+The practical distinction between the two is normally irrelevant, but it does matter in certain contexts, such as when retrieving documentation for a command. Specifically, the commands used to retrieve documentation for utility programs are different than the ones used for shell builtins, and vice versa.
 
-Before moving foraward, let's briefly discuss what the command name represents.
+## Documentation for Utility Programs
 
-#### External Programs and Shell Built-ins
-
-The command name normally represents one of two things:
-
-1. &#x20;A shell _built-in_, which is a utility that is implemented within Bash. &#x20;
-2. An external program--either an OS utility program or a user-written program.&#x20;
-
-The practical distinction between the two is normally irrelevant, but it does matter in certain contexts, such as when [retrieving documentation](getting-help.md) for a command, which will be covered soon.
-
-## Documentation for utility programs
-
-To retrieve documentation for a utility program, you can use the `man` command followed by the name of the utility. For example, `man cal` will display the manual page (_manpage_) for the `cal` utility. The output will be sent through the [`less`](broken-reference) pager, which displays the output one screen at a time. On armlab, the following page will be displayed:&#x20;
+To retrieve documentation for a utility program, you can use the `man` command followed by the name of the utility. For example, `man cal` will display the manual page (_manpage_) for the `cal` utility. The output will be sent through the _less_ pager, which displays the output one screen at a time. On armlab, the following page will be displayed:&#x20;
 
 <figure><img src="https://lh6.googleusercontent.com/jicQ9FFUnwtJyablwzlVk-dSwXGuFimIJoeFH8-uEp5P_oiUJHuuNGu2Jzdb6gC6j4FmTGsOAgdxexY6LfjJIAhEOzmv0mwn-mejK4H9RwKrUpq2jBrHCBa-6TbqaKumyFhY_PdFswbRjUPcAFRuHkY" alt=""><figcaption></figcaption></figure>
 
-## Documentation for Bash built-ins
+## Documentation for Bash Built-ins
 
 If you want documentation for a Bash built-in, you must use the `help` instead of the `man`. For example, to retrieve documentation for the bash built-it `exit`, invoke:
 
