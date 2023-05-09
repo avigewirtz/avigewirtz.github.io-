@@ -53,7 +53,7 @@
 ## Emacs
 
 * [Background](emacs/background.md)
-* [Fundamentals](emacs/fundamentals.md)
+* [Fundamentals](emacs/fundamentals/README.md)
 * [Basic Commands](emacs/basic-commands/README.md)
   * [Launching and Existing Emacs](emacs/basic-commands/launching-and-existing-emacs.md)
   * [Moving the cursor](emacs/basic-commands/moving-the-cursor.md)
