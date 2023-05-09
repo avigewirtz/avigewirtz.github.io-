@@ -26,8 +26,6 @@ Group information is stored in the _/etc/group_ file. Each line in this file rep
 group_name:password:GID:user_list
 ```
 
-
-
 ## Viewing user and group information
 
 You can display your login name, group name, UID, and GID by issuing the `id` command. When I issue it on armlab, I get the following output:
@@ -39,7 +37,5 @@ Let's break that down:
 * `uid=127000(sgewirtz)`: This part of the output shows my User ID (_127000_) and my username (_sgewirtz_).&#x20;
 * `gid=35(utempter)`: This part of the output shows my primary Group ID (_35_) and the associated group name (_utemper_).&#x20;
 * `groups=35(utempter)`: This part of the output lists all the groups that I belong to, which is only one group (_utemper_).&#x20;
-* `context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023`: This part of the output displays the SELinux (Security-Enhanced Linux) context associated with the user. SELinux is a security feature in Linux that enforces access control policies, the details of which are not important for our discussion.&#x20;
-
-\
-\
+* `context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023`: This part of the output displays the SELinux (Security-Enhanced Linux) context associated with the user. SELinux is a security feature in Linux that enforces access control policies, the details of which are not important for our discussion. \
+  \

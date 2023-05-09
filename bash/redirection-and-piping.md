@@ -1,6 +1,6 @@
 # Redirection and Piping
 
-When a program is started up, it by default has three data streams attached to it: one for reading input, one for writing normal output, and one for writing diagnostic or error messages. These streams are referred to as standard input (stdin), standard output (stdout), and standard error (stderr) respectively. By default, standard input is connected to the keyboard, while standard output and standard error are connected to the screen. You can manipulate this default behavior using something called **redirection and output**.&#x20;
+When a program is started up, it by default has three data streams attached to it: one for reading input, one for writing normal output, and one for writing diagnostic or error messages. These streams are referred to as standard input (stdin), standard output (stdout), and standard error (stderr) respectively. By default, standard input is connected to the keyboard, while standard output and standard error are connected to the screen. You can manipulate this default behavior using _redirection and piping_.&#x20;
 
 ## Redirection
 
@@ -28,7 +28,7 @@ less another_nonexistent_file 2>> errors.txt  # Appends error messages to errors
 
 ## Piping
 
-**Piping** (`|`) is the process of connecting the output of one command to the input of another command, allowing you to chain multiple commands together. For example, you can use the `cat` command to send the content of a file to the `sort` command:
+_Piping_ (`|`) is the process of connecting the output of one command to the input of another command, allowing you to chain multiple commands together. For example, you can use the `cat` command to send the content of a file to the `sort` command:
 
 ```bash
 cat file.txt | sort
@@ -36,9 +36,7 @@ cat file.txt | sort
 
 The pipe (`|`) takes the output of `cat` and feeds it as input to `sort`, which sorts the file's contents and displays the output on the terminal screen.
 
-
-
-### Examples
+### Exercises
 
 1. Redirect the standard output of `ls` to a file:&#x20;
 

@@ -40,28 +40,28 @@ einstein_quote.txt
 
 ### Examples
 
-1.  Move `the_odyssey.txt` to a new file named `odyssey.txt`:
+1.  Move _the\_odyssey.txt_ to a new file named _odyssey.txt_:
 
     ```bash
     mv the_odyssey.txt odyssey.txt
     ```
-2.  Move `encyclopaedia.txt` to the `quotes` directory:
+2.  Move _encyclopaedia.txt_ to the _quotes_ directory:
 
     ```bash
     mv encyclopaedia.txt quotes/
     ```
-3.  Rename `berra_quote_backup.txt` to `yogi_berra_quote.txt`:
+3.  Rename _berra\_quote\_backup.txt_ to _yogi\_berra\_quote.txt_:
 
     ```bash
     mv berra_quote_backup.txt yogi_berra_quote.txt
     ```
-4.  Move both `odyssey.txt` and `yogi_berra_quote.txt` to the `quotes` directory:
+4.  Move both _odyssey.txt_ and _yogi\_berra\_quote.txt_ to the _quotes_ directory:
 
     ```bash
     mv odyssey.txt yogi_berra_quote.txt quotes/
     ```
-5.  Assuming you have a directory named `old_directory`, use `mv` to rename it to `new_directory`:
+5.  Assuming you have a directory named _old\_directory_, use `mv` to rename it to _new\_directory_:
 
     ```bash
-    ~/bash_practice$ mv old_directory new_directory
+    mv old_directory new_directory
     ```
