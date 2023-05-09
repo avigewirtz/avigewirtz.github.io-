@@ -1,19 +1,19 @@
 # Navigating the filesystem
 
-When you log into a Linux system, your working directory is by default your home directory. Unless you are a system administrator, you will rarely need to navigate to directories above your home directory; you will, however, regularly need to navigate to directories below it. To navigate to a directory, you must specify its pathname. As a refresher, each directory has two types of pathnames: absolute and relative. A directory’s absolute pathname specifies its location in the directory hierarchy by tracing its path from the root directory, while a directory’s relative pathname specifies its location by tracing its path from the working directory.&#x20;
+To navigate the Linux filesystem, you need only be familiar with three commands: _pwd_, _ls_, and _cd_. These commands are perhaps the most commonly used Bash, so it is worth your while to make the extra effort to master them.&#x20;
 
-To navigate the directory hierarchy seamlessly, it’s helpful to have a visual perception of the distinction between absolute and relative pathnames. As a practical example, in the filesystem snapshot shown in Figure 1, say you want to navigate to _bin_ (circled in red).
+To navigate to a directory, you must specify its [pathname](../../linux/filesystem/pathnames.md)--either absolute or relative. The choice between the two is typically a matter of preference or convenience.&#x20;
 
-<figure><img src="https://lh5.googleusercontent.com/zhvz5mD3xu6o89CUIY3hJJkuab6SMH2xkwIXWL8k_gIhYGLCLTO6l8xSj8Vfb2BKycdrFo66aZgKgJhTP60Z2IvCJPtrCVNt214VY_0mAH5H1FdsmEl3pDKMwM1c4PKfGTBSZ2nmlDTdP1AxbfMtWL8" alt=""><figcaption></figcaption></figure>
+### Navigating with Absolute Pathnames
 
-The first to accomplish this is by specifying bin’s absolute pathname, as shown in Figure 2. In such a case, it makes no difference what your working directory is, since absolute pathnames always take you to the same location, irrespective of your working directory.&#x20;
+When you navigate with a relative pathname, the current location of your working directory does not matter, since absolute pathnames always take you to the same location, irrespective of your working directory. You can think of it like someone asking you for directions from Times Square to Princeton. You can answer the question without knowing that person's current location, as the directions do not depend on that information.&#x20;
 
-<figure><img src="https://lh6.googleusercontent.com/fsuhMi2igXx5_uDBRqn13MQUrJi4ksQEh30Tdq7jU5n3nU3UeUPB1lQD2qJqX9DNqztHBgPh27yVLONYOe8Gxuub6Sc3diq8ix8xNczgqBvq_faelUp2N6ybmdcqWoWyEgqJc6YJXfFLkOpM7cabdr0" alt=""><figcaption></figcaption></figure>
+As a practical example, say you're logged into armlab and want to navigate to _/usr/bin._ If you navigate with its absolute pathname, you need not even be aware of the "location" of your working directory, since the "journey" begins at the root directory regardless, as demonstrated in the figure below.&#x20;
 
-The second way is by specifying bin’s relative pathname, as shown in Figure 3.&#x20;
+<figure><img src="https://lh6.googleusercontent.com/fsuhMi2igXx5_uDBRqn13MQUrJi4ksQEh30Tdq7jU5n3nU3UeUPB1lQD2qJqX9DNqztHBgPh27yVLONYOe8Gxuub6Sc3diq8ix8xNczgqBvq_faelUp2N6ybmdcqWoWyEgqJc6YJXfFLkOpM7cabdr0" alt=""><figcaption><p>Figure 1: Navigating to <em>/usr/bin</em> with Absolute Pathname</p></figcaption></figure>
+
+### Navigating with Relative Pathnames
+
+When you navigate with a relative pathname, you need to be aware of the "location" of your working directory, since that is where you "start" from. In our previous example, imagine that instead of asking you for directions from Times Square to Princeton, that person asked you for directions from their current location to Princeton. Of course, you would need to know their current location before you could provide directions. So too with relative pathnames. The figure below demonstrates navigating to _/usr/bin_ when your working directory is your home directory.
 
 <figure><img src="https://lh5.googleusercontent.com/FraWHki7SFmGbu8SBMKFuNxOKUKnujwUXhvGMeizYJB_CtG1Qcmh5lv-yeXghuSxeojlmpn1i-4pjrtnaBBQT20dXztNWHNvIreerEt0iZNMHNXtFhBifxYGM2G3Vn2NhKZK0yu8A_Gayw6J3SPAQ4Q" alt=""><figcaption></figcaption></figure>
-
-### Bash commands to navigate to filesystem
-
-To navigate the Linux filesystem, you need only be familiar with three commands: pwd, ls, and cd. These commands are perhaps the most popular Linux commands and are invoked in just about every terminal session; thus, it is worth your while to pay particular attention to them and make the effort to master them. The extra time spent now will be miniscule compared to the time saved later.&#x20;
