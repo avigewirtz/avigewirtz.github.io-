@@ -1,74 +1,66 @@
-# Configuring your armlab environment
+# Configuring your armlab Environment
 
-The first time you log into armlab, you will need to configure your environment. To do so, copy the following block and paste it into armlab:
+The first time you log into armlab, you will need to configure your environment. To do so, copy the following block and paste it into armlab. At this early stage of the semester you are not expected to understand the specifics of this code block. However, a commented version of the code block is provided below to give you a high-level overview of what it does.
 
 {% code overflow="wrap" %}
 ```bash
-[ "$SHELL" != "/bin/bash" ] && { echo "error: bash is not your login shell"; exit 1; }; \cp /u/cos217/.bash_profile /u/cos217/.bashrc /u/cos217/.emacs /u/cos217/.splintrc ~/; read -p "Enter your name: " name; read -p "Enter your email address: " email; git config --global user.name "$name"; git config --global user.email "$email"; git config --global core.editor emacs; git config --global color.ui auto; exec bash
+{ if [ "$SHELL" != "/bin/bash" ]; then echo "Error: bash is not your login shell"; else \cp /u/cos217/.bash_profile ~/; \cp /u/cos217/.bashrc ~/; \cp /u/cos217/.emacs ~/; \cp /u/cos217/.splintrc ~/; read -p "Enter your name: " name; read -p "Enter your email address: " email; git config --global user.name "$name"; git config --global user.email "$email"; git config --global core.editor emacs; git config --global color.ui auto; exec bash; fi; }
 ```
 {% endcode %}
 
 If you get the message: `error: bash is not your login shell`, you must revisit [Activating Your armlab Account](activating-your-armlab-account.md) and complete step 2. If your shell is configured correctly, you will be prompted to enter your name and email address. This information will be used for Git configurations.
 
-## Understanding these configurations
+<details>
 
-Here's a breakdown of each command in the given code block:
+<summary>Commented Version</summary>
 
-1.  Check if the current shell is not Bash:
+```bash
+{
+    # If the login shell is not /bin/bash, print an error message
+    if [ "$SHELL" != "/bin/bash" ]; then
+        echo "Error: bash is not your login shell"
+    else
+        # Copy the .bash_profile file from the /u/cos217/ directory 
+        # to the user's home directory (~)
+        \cp /u/cos217/.bash_profile ~/
 
-    ```bash
-    [ "$SHELL" != "/bin/bash" ]
-    ```
-2.  Use logical AND operator to execute following commands if previous condition is true:
+        # Copy the .bashrc file from the /u/cos217/ directory to the 
+        # user's home directory (~)
+        \cp /u/cos217/.bashrc ~/
 
-    ```bash
-    &&
-    ```
-3.  Display an error message and exit the script if the current shell is not Bash:
+        # Copy the .emacs file from the /u/cos217/ directory to the 
+        # user's home directory (~)
+        \cp /u/cos217/.emacs ~/
 
-    ```bash
-    { 
-        echo "error: bash is not your login shell"; 
-        exit 1; 
-    }
-    ```
-4.  Copy the ._bash\_profile_, _.bashrc_, _.emacs_, and _.splintrc_ configuration files from the `/u/cos217` directory to the user's home directory:
+        # Copy the .splintrc file from the /u/cos217/ directory to the 
+        # user's home directory (~)
+        \cp /u/cos217/.splintrc ~/
 
-    ```bash
-    \cp /u/cos217/.bash_profile /u/cos217/.bashrc /u/cos217/.emacs /u/cos217/.splintrc ~/
-    ```
-5.  Prompt the user to enter their name and store it in a variable:
+        # Prompt the user to enter their name and store it in the 
+        # "name" variable
+        read -p "Enter your name: " name
 
-    ```bash
-    read -p "Enter your name: " name
-    ```
-6.  Prompt the user to enter their email address and store it in a variable:
+        # Prompt the user to enter their email address and store it in 
+        # the "email" variable
+        read -p "Enter your email address: " email
+        
+        # Configure Git with the user's name
+        git config --global user.name "$name"
 
-    ```bash
-    read -p "Enter your email address: " email
-    ```
-7.  Set the user's name for Git configuration using the previously entered value:
+        # Configure Git with the user's email address
+        git config --global user.email "$email"
 
-    ```bash
-    git config --global user.name "$name"
-    ```
-8.  Set the user's email address for Git configuration using the previously entered value:
+        # Configure Git to use Emacs as the default text editor
+        git config --global core.editor emacs
 
-    ```bash
-    git config --global user.email "$email"
-    ```
-9.  Set Emacs as the default text editor for Git:
+        # Configure Git to enable colored output
+        git config --global color.ui auto
 
-    ```bash
-    git config --global core.editor emacs
-    ```
-10. Enable automatic colorization of Git output in the terminal:
+        # Start a new instance of the Bash shell
+        exec bash
+    fi
+}
+```
 
-    ```bash
-    git config --global color.ui auto
-    ```
-11. Replace the current shell with a new instance of Bash to reload the shell and apply the updated configurations:
+</details>
 
-    ```bash
-    exec bash
-    ```

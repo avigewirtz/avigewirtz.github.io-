@@ -1,6 +1,6 @@
-# Logging into armlab
+# Logging Into armlab
 
-You log into armlab via an **SSH client**. An SSH client is a program that employs the [SSH](../../appendices/secure-shell-ssh-protocol/) Protocol to communicate with a remote computer.
+Losing into armlab is accomplished via an _SSH client,_ which is a program that uses the [SSH](../../appendices/secure-shell-ssh-protocol/) Protocol to communicate with a remote computer.
 
 {% tabs %}
 {% tab title="Mac" %}
@@ -20,6 +20,8 @@ The first time you log into armlab, an SSH-related message will appear. Respond 
 If your login is successful, a shell prompt similar to the following will appear in your terminal window:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-04-23 at 3.12.10 PM.png" alt=""><figcaption></figcaption></figure>
+
+Note that the prompt may either state armlab01 or armlab02. These computers are interconnected and share the same filesystem, so inconsequential which one you are logged into.
 {% endtab %}
 
 {% tab title="Windows" %}
@@ -43,4 +45,4 @@ If your login is successful, a shell prompt like the following will be displayed
 {% endtab %}
 {% endtabs %}
 
-[^1]: Substitute with your real NetID.
+[^1]: Replace with your real NetID.

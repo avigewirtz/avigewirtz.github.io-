@@ -74,7 +74,7 @@ put graphic here&#x20;
 
 commit is two step proccess
 
-
+<figure><img src="../../.gitbook/assets/snapshots-2.png" alt=""><figcaption><p>Courtesy of Git-SCM</p></figcaption></figure>
 
 
 
