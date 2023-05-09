@@ -42,7 +42,7 @@ Upon success, you will get the following output:
 
 ## Authentication
 
-When you clone a Git repository, you will sometimes need to provide credentials to prove that hou are authorized to access the repository. When we cloned the Survey repository from the COS217 GitHub account, we did not need any authentication credentials. That is because the Survey repository is _public_. A public repository can be viewed and cloned by anyone.&#x20;
+When you clone a Git repository, you will sometimes need to provide credentials to prove that you are authorized to access the repository. When we cloned the Survey repository from the COS217 GitHub account, we did not need any authentication credentials. That is because the Survey repository is _public_. A public repository can be viewed and cloned by anyone.&#x20;
 
 It goes without saying that when you upload a repository to GitHub, you don't necessarily want to make it public to the world. As such, you have the option of classifying your repository as either _private_. Private repositories are only visible to their owner(s) and explicitly invited collaborators.&#x20;
 
