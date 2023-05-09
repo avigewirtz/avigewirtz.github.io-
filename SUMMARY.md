@@ -53,10 +53,7 @@
 ## Emacs
 
 * [Background](emacs/background.md)
-* [Fundamentals](emacs/fundamentals/README.md)
-  * [Emacs Interface](emacs/fundamentals/emacs-interface.md)
-  * [Emacs Modes](emacs/fundamentals/emacs-modes.md)
-  * [Key Sequence Notation](emacs/fundamentals/key-sequence-notation.md)
+* [Fundamentals](emacs/fundamentals.md)
 * [Basic Commands](emacs/basic-commands/README.md)
   * [Launching and Existing Emacs](emacs/basic-commands/launching-and-existing-emacs.md)
   * [Moving the cursor](emacs/basic-commands/moving-the-cursor.md)

@@ -2,7 +2,7 @@
 
 The `.emacs` file is a user-specific configuration file for Emacs. It is a plain text file that contains Emacs Lisp code and is located in the user's home directory. When Emacs starts up, it reads and executes the `.emacs` file, which allows the user to customize Emacs to their liking.
 
-Here are some common uses for the `.emacs` file:
+Although familiarity with the _.emacs_ configuration file is not necessary in COS217, here are some common use cases for future reference:&#x20;
 
 1. Setting global variables: You can set global variables in your `.emacs` file to customize the behavior of Emacs. For example, you can set the default font or change the color scheme.
 2. Defining custom functions: You can define your own functions in Emacs Lisp and use them in Emacs. This is useful for automating repetitive tasks or extending the functionality of Emacs.
