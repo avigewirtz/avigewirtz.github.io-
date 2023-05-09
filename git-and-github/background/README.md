@@ -6,7 +6,7 @@ Git is a popular _Version Control System_ (VCS), originally authored by Linux fo
 
 ## Version Control
 
-In important software projects, it is crucial to keep track of all material changes to the codebase. Maintaining such a record provides the capability to revert to a previous version when necessary.&#x20;
+In important software projects, it is crucial to keep track of all material changes made to the codebase over time. Maintaining such a record provides the capability to revert to a previous version when necessary.&#x20;
 
 The most basic approach involves duplicating a codebase on the local filesystem each time a snapshot of its current version is desired. Although this method is reasonably effective for small projects, it rapidly becomes unwieldy and error-prone as projects grow in size.&#x20;
 
