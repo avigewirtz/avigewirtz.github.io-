@@ -30,7 +30,7 @@ Cloning a Git repository means making a copy of an existing repository. The clon
 git clone https://github.com/GITHUB_USERNAME/REPOSITORY_NAME.git
 ```
 
-The value for GITHUB\_USERNAME will depend on which GitHub account the source repository is located on. For example, if the source repository is located on the COS217 GitHub account, the username would be COS217. If it is located on your personal account, the username would be your personal GitHub username. Let's now clone the Assignment 0 Survey repository, which is stored on the COS217 GitHub account:&#x20;
+The value for GITHUB\_USERNAME will depend on which GitHub account the source repository is located on. For example, if the source repository is located on the COS217 GitHub account, the username will be COS217. If it is located on your personal account, the username will be your personal GitHub username. Let's now clone the Assignment 0 Survey repository, which is stored on the COS217 GitHub account. We simply replace GITHUB_USERNAME with COS217 and REPOSITORY_NAME with survey::&#x20;
 
 ```bash
 git clone https://github.com/cos217/survey.git
