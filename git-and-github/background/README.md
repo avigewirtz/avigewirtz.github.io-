@@ -18,11 +18,11 @@ To seamlessly track and manage changes to a codebase over time, developers utili
 
 ## GitHub
 
-GitHub is an online platform that hosts Git repositories. Starter code, data, and tools for COS 217 assignments are stored in repositories hosted on GitHub as part of the COS 217 GitHub organization
+GitHub is an online platform that hosts Git repositories. The benefit of hosting repositories online is it makes them more accessible to others. Each assignment's starter code and files is uploaded as a Git repository on the COS 217 GitHub account.&#x20;
 
 ## Git vs. GitHub
 
-&#x20;While Git and GitHub are closely associated with each other, it is important to understand that they are two distinct entities.&#x20;
+While Git and GitHub are closely associated with each other, it is important to understand that they are two distinct entities.&#x20;
 
 A few key differences between them:
 
@@ -31,4 +31,4 @@ A few key differences between them:
 3. Git is stored locally and can be accessed without an Internet connection; Github is stored on Microsoft servers and requires an Internet connection to access.&#x20;
 4. While Git primarily focuses on version control, GitHub extends its capabilities by offering additional features such as enhanced project collaboration, project management, and code review.
 
-In summary, Git is the underlying version control system used to manage repositories, while GitHub is an online platform that hosts Git repositories and provides tools for collaborative software development.
+In summary, Git is the underlying version control system used to manage repositories, while GitHub is an online platform that hosts Git repositories and provides additional tools for collaborative software development.
