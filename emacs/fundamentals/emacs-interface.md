@@ -16,3 +16,14 @@ The Emacs interface consists of several key components:&#x20;
 The image below provides a visual illustration of these components.
 
 <figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>Emacs Interface: Visualization of Components</p></figcaption></figure>
+
+## Modes
+
+Emacs operates in various _modes_. Modes provide language-specific or file-format-specific features, such as syntax highlighting, indentation, and code completion, making editing and navigating files easier.&#x20;
+
+Within the scope of COS217, you will primarily work with four modes: C mode, Assembler mode, Text mode, and Fundamental mode. Emacs automatically selects the appropriate mode based on the filename extension:
+
+* .c: C mode
+* .s: Assembler mode
+* .txt: Text mode
+* No extension: Fundamental mode
