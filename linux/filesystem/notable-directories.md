@@ -1,32 +1,32 @@
 # Notable Directories
 
-The filesystem has many notable directories you need to be familiar with to become a proficient Linux user. We've already covered the root directory. We will now focus on other notable directories.
+The filesystem has many notable directories you need to be familiar with to effectively utilize the command line. We've already covered the root directory. We will now focus on other notable directories.
 
 <figure><img src="https://lh4.googleusercontent.com/BheXyNU0t154mGoTPcX5POBMs60EjSzSdkn4LJezjzPwmA2I4ABbsnOBp3Errnc2t11JstAjl_JbDticzMOhV42yBJ5OMRF5ZyogG0grk_UKCEIFQ_M3rw1P0LazjLliGXaC6lr9QKD2yRIkupm5j50" alt=""><figcaption></figcaption></figure>
 
-### Home directory
+## Home Directory
 
 Each user on a Linux system is assigned a personal directory, called a _home directory_, for them to store their files and directories. The name of the home directory usually corresponds to the user's login name. On armlab, it corresponds to your NetID.
 
 By default, the contents of a user's home are accessible by the user and the system administrator only, ensuring the privacy and security of the user's files.
 
-Upon login, a user’s home directory is by default their working directory.
+Upon login, a user’s home directory is by default their _working directory_.
 
-### Working directory
+## Working Directory
 
 Each [process](../../appendices/operating-systems/process.md) has a dynamically associated directory, called a _working directory_**,** which, informally, can be thought of as the "location" where the process is currently "working in." (If this idea seems abstract, it should become more concrete when we cover [pathnames](pathnames.md).)
 
-When you log into a terminal session, your home directory is by default set as your working directory. You can change the working directory, however (using the [`cd` command](../../bash/navigating-the-filesystem/cd-change-working-directory.md), which we'll cover later).
+When you log into a terminal session, your home directory is by default set as your working directory. You can change the working directory, however, using the [`cd` command](../../bash/navigating-the-filesystem/cd-change-working-directory.md), which we'll cover later.
 
-### Hidden files/directories
+## Hidden files/directories
 
 A file or directory whose name begins with a `.` (period) is called _hidden_. Hidden files/directories are (by default) not visible in directory listings—neither as icons in a GUI nor as text in a CLI. To make hidden entries visible, you must make an explicit request.
 
-### The . (dot) and .. (dot dot) directories
+## The . (dot) and .. (dot dot) directories
 
 Every directory has at least two hidden directory entries in it: `.` (dot) and `..` (dot dot). The former references the directory itself (i.e., the working directory), and the latter references the parent directory (i.e., the parent of the working directory). These entries serve an important role in [pathnames](pathnames.md).
 
-### Important standard directories
+## Important standard directories
 
 Every Linux filesystem has a set of important directories residing in the root directory. These directories are essential for the proper functioning of a Linux system, and the presence of most of them is required by the [Filesystem Hierarchy Standard](https://refspecs.linuxfoundation.org/FHS\_3.0/fhs/index.html) (FHS). Here is a very brief overview the directories on armlab:
 
