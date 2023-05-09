@@ -6,14 +6,13 @@ Git is a popular _Version Control System_ (VCS), originally authored by Linux fo
 
 ## Version Control
 
-In large-scale projects, it is crucial to keep track of all material changes to the codebase. Maintaining such a record provides the capability to revert to a previous version when necessary.&#x20;
+In important software projects, it is crucial to keep track of all material changes to the codebase. Maintaining such a record provides the capability to revert to a previous version when necessary.&#x20;
 
 The most basic approach involves duplicating a codebase on the local filesystem each time a snapshot of its current version is desired. Although this method is reasonably effective for small projects, it rapidly becomes unwieldy and error-prone as projects grow in size.&#x20;
 
 To seamlessly track and manage changes to a codebase over time, developers utilize VCS software. Some benefits of VCS include:
 
-1. Reverting a codebase to a prior state. This is useful in many situations; for example, when a modification introduces a bug.&#x20;
-2. Keeping a record of modifications to a codebase over time. This enables developers to pinpoint when specific features were added, deleted, or altered.
+1. The ability to refer a codebase to a prior state. This is useful in many situations; for example, when a modification introduces a bug.&#x20;
 3. Creating and maintaining separate copies of the codebase. This allows developers to experiment and test new features without jeopardizing the original codebase’s stability.
 
 ## GitHub
