@@ -10,7 +10,7 @@ If you don't provide the <mark style="color:blue;">**DIRECTORY\_PATHNAME**</mark
 In the following examples, the absolute pathname of the working directory is highlighted in the [shell prompt](../warm-up-commands.md#shell-prompt). This is to enable you to determine the location of the working directory at all times and to compare the location before and after each command is executed.
 {% endhint %}
 
-### Examples
+### Exercises
 
 1. Make _/usr/bin_ your working directory; use its absolute pathname:&#x20;
 
