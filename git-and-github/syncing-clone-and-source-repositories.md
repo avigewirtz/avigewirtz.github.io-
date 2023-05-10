@@ -1,6 +1,6 @@
 # Syncing Clone and Source Repositories
 
-After cloning a repository, you may want to later sync up the two repositories. Git supports this through operations called _pushing_ (uploading) and _pulling_ (downloading). Pushing and pulling are accomplished with the `git push` and `git pull` commands, respectively.&#x20;
+After cloning a repository, you may want to subsequently sync up the clone and the source repositories. Git supports this through operations called _pushing_ (uploading) and _pulling_ (downloading). Pushing and pulling are accomplished with the `git push` and `git pull` commands, respectively.&#x20;
 
 Just like when you Git needed a URL when you cloned a Git repository, Git also needs a URL  for pushing or pulling with a repository. As such, a push or pull operation takes a URL as an argument:
 
