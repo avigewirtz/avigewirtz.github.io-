@@ -16,7 +16,7 @@ Each commit has a unique identifier, which is used by Git to reference it. Git r
 
 There are two important things to recognize with how commits work in Git:
 
-1. **All commits must be done manually**. That is, Git does not automatically commit anything from the worktree. Consequently, whenever you create a new Git repository, the repository will initially be empty--that is, the files previously present in the directory, which are now in the worktree, will not automatically be committed to the Git repository. In fact, they will not even be _tracked_, which we'll cover soon. Similarly, if you modify files in the worktree, the modified version will not automatically be committed.
+1. **All commits must be done manually**. That is, Git does not automatically commit anything from the worktree. Consequently, whenever you create a new Git repository, the repository will initially be empty--that is, the files previously present in the directory, which are now in the worktree, will not automatically be committed to the Git repository. In fact, they will not even be _tracked_ or monitored by Git. Similarly, previously committed files are subsequently modified, the modified versions will not automatically be committed.
 2. **Committing is a two-step process**. Before changes can be committed from the worktree to the repository, they must be added to an intermediate area called the _index_ or _staging area_. In this step, you selectively choose the changes you want to include in the next commit. This allows you to review, group, or organize the changes before you save them to the repository. When you commit changes, you commit the changes that are in the staging area only.&#x20;
 
 ### Staging files
