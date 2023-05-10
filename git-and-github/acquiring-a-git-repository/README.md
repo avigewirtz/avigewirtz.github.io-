@@ -12,7 +12,7 @@ Commits are the foundation of a Git repository. Each commit represents a snapsho
 
 <figure><img src="../../.gitbook/assets/snapshots-2.png" alt=""><figcaption><p>Courtesy of Git-SCM</p></figcaption></figure>
 
-Each Git has a unique identifier, which is used by Git to reference it. Git records important information along with each commit, such as the timestamp of the commit, the author's name and email address, as well as the commit message, which is a short message provided by the commit author that serves to document the commit.&#x20;
+Each commit has a unique identifier, which is used by Git to reference it. Git records important information along with each commit, such as the timestamp of the commit, the author's name and email address, as well as the commit message, which is a short message provided by the commit author that serves to document the commit.&#x20;
 
 There are two important things to recognize with how commits work in Git:
 
