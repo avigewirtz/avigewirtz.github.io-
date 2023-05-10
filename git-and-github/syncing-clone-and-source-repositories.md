@@ -37,7 +37,7 @@ and Git will automatically use origin as the argument.&#x20;
 
 &#x20;
 
-Note that a repository can have any number of remotes, allowing you to do pull or push operations with multiple remote repositories.&#x20;
+A repository may have any number of remotes, allowing it to seamlessly interact with many repositories.&#x20;
 
 {% hint style="info" %}
 When exchanging data with another repository, the repository you are working in is called the local repository, while the repository you are exchanging data with is called the remote repository. However, it is important to note that there is no fundamental difference between local and remote repositories.
