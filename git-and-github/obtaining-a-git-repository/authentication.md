@@ -5,7 +5,7 @@ When you clone a Git repository, you will sometimes need to provide credentials 
 It goes without saying that when you upload a repository to GitHub, you don't necessarily want to make it visible to the world. As such, Github provides you the option of classifying your repository as _private_. Private repositories are only visible to their owner(s) and explicitly invited collaborators. Ad such, when someone attempts to clone a private repository, they need to authenticate themselves. This is done by providing the GitHub username and password of an authorized user. However, instead of using the regular login password, you will need to use a [Personal Access Token](../../appendices/git-installation.md#generating-a-github-personal-access-token), which provides enhanced security measures.
 
 {% hint style="warning" %}
-Note that when uploading data to a repository--the process of which we'll cover soon--you need to authenticate for both public and private repositories.&#x20;
+Note that when uploading data to a repository--the process of which we'll cover soon--you need to authenticate yourself irrespective of whether the repository is public or private.&#x20;
 {% endhint %}
 
 The following diagram illustrates the possible directions of file transfers between the relevant COS217 computers and acccounts:
