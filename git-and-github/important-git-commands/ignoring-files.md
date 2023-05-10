@@ -1,27 +1,26 @@
 # Ignoring Files
 
-In the Decomment assignment, you build decomment.c using distinct gcc217 preproccess, compile, assemble, and link commands. These commands generate the following four output files:&#x20;
+Sometimes you want Git to ignore certain files from the worktree. For example, in the Decomment assignment, your worktree will contain these four files, generated from preprocessing, compiling, assembling, and linking:&#x20;
 
-* decomment.i: Preprocessed output
-* decomment.s: Assembly code
-* decomment.o: Object file
-* decomment: Executable file
+* _decomment.i_: Preprocessed output
+* _decomment.s_: Assembly code
+* _decomment.o_: Object file
+* _decomment_: Executable file
 
-Because these files are not part of the source code, you may not want to include them in your Git repository. In such a case, you don’t want to include them when you stage all files in your repository, such as with&#x20;
+Because these files are not part of the source code, you may not want to include them in your Git repository.&#x20;
 
-git add .&#x20;
+You can tell Git not to ignore them by adding them to the ._gitignore_ file. The _.gitignore_ file in such a case may have the following structure:&#x20;
 
-\
+```txt
+# Ignore object files
+*.o
 
+# Ignore assembly files
+*.s
 
-Instead, add them to a .gitignore file to prevent them from being accidentally committed.
+# Ignore preprocessed output
+*.i
 
-Here's an example of what your .gitignore file could contain:
-
-| <p># Build output files </p><p>*.i </p><p>*.s </p><p>*.o </p><p>decomment</p> |
-| ----------------------------------------------------------------------------- |
-
-After creating or updating the .gitignore file, you should stage and commit it to the repository:
-
-| git add .gitignore |
-| ------------------ |
+# Ignore executable files
+decomment
+```
