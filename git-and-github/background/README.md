@@ -12,7 +12,7 @@ To seamlessly track and manage changes to a codebase over time, developers utili
 
 ## GitHub
 
-GitHub is an online platform that hosts Git repositories. The benefit of hosting repositories online is it makes them more accessible to others. Each assignment's starter code and files is uploaded as a Git repository on the COS 217 GitHub account.
+GitHub is an online platform that hosts Git repositories. The benefit of hosting repositories online is it makes them more accessible to others. The starter code and files for each COS217 assignment is uploaded as a Git repository on the COS 217 GitHub account.
 
 ## Git vs. GitHub
 
