@@ -1,8 +1,24 @@
 # COS217 Development Workflow
 
+Your workflow in COS217 will depend on several factors, such as whether the assignment is an individual or partnered assignment and whether you develop on armlab or your personal computer (not recommended). In this section, we will give an overview of the COS217 workflow for both individual and partnered assignments.&#x20;
 
+### Workflow on Individual Assignments
 
-Software development is a collaborative process, often involving multiple team members working together on a codebase. For example, in COS217 you will work on several of the assignments with a partner. In such an environment, you and your partner will often need to sync up your personal repositories with one another, ensuring you both have the same version of code.&#x20;
+On individual assignments, your workflow might look like the following:
+
+1. When beginning an assignment, you import the assignment repository from the COS217 GitHub account to your personal GitHub. &#x20;
+2. You clone your GitHub repository to armlab.&#x20;
+3. When you are finished developing, you (in either order):
+   1. Submit your assignment on armlab,
+   2. Push the changes to GitHub.
+
+This workflow is summarized in the following diagram:
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-05-01 at 2.35.35 PM.png" alt=""><figcaption></figcaption></figure>
+
+### Workflow on Partnered Assignments
+
+In COS217 you will work on several of the assignments with a partner. In such an environment, you and your partner will often need to sync up your personal repositories with one another, ensuring you both have the same version of code.&#x20;
 
 While it is theoretically possible for each of you to sync up your personal repositories directly with each other via push or pull operations, as shown in Figure X, this approach is not ideal for many reasons.&#x20;
 
@@ -21,24 +37,6 @@ Using this approach, your workflow might look like the following:
 5. Repeat steps 4-5, until you complete the assignment.&#x20;
 6. Submit the assignment on armlab.&#x20;
 
-
-
-
-
-
-
-
-
-After you obtain the repositories, you will be ready&#x20;
-
-
-
-On individual assignments:
-
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-01 at 2.35.35 PM.png" alt=""><figcaption></figcaption></figure>
-
-On partnered assignments:
+This workflow is summarized in the following diagram:
 
 <figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-01 at 2.35.17 PM.png" alt=""><figcaption></figcaption></figure>
