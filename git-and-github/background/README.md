@@ -25,4 +25,4 @@ A few key differences between them:
 3. While Git primarily focuses on version control, GitHub extends its capabilities by offering additional features such as enhanced project collaboration, project management, and code review.
 4. Git is an open-source software project maintained by GNU; Github is a web-based platform owned by Microsoft.
 
-In summary, Git is the underlying version control system used to manage repositories, while GitHub is an online platform that hosts Git repositories and provides additional tools for collaborative software development.
+In summary, Git is the underlying version control system used to manage repositories, while GitHub is an online platform that hosts Git repositories and provides additional tools for collaboration.
