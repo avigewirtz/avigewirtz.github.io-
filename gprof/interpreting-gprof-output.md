@@ -22,11 +22,6 @@ The call graph provides a detailed breakdown of each function's relationships wi
 2. **Function Name**: The name of the function.
 3. **Function Attributes**: The attributes of the function, such as its address in the binary and the source file and line number where it is defined.
 4. **Called/Total Parents**: The number of times the function was called by each parent function (caller), along with the total number of calls made by the parent function.
-5. **Called/Total Children**: The number of times the function called each child function (callee), along with the total number of calls made to the child function.\
-
-
-## Interpreting Gprof Output Effectively
-
-TODO
+5. **Called/Total Children**: The number of times the function called each child function (callee), along with the total number of calls made to the child function.
 
 \
