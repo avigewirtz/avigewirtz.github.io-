@@ -33,7 +33,7 @@ git push
 git pull
 ```
 
-and Git will use the origin as the argument.&#x20;
+and Git will automatically use origin as the argument.&#x20;
 
 &#x20;
 
