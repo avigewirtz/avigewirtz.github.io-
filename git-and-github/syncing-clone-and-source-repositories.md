@@ -11,7 +11,7 @@ git pull https://github.com/GITHUB_USERNAME/REPOSITORY_NAME.git
 
 ### Remotes
 
-Git has this neat feature called _remotes_, which saves you from typing lengthy URLs. A remote is simply an alias for a URL, allowing you to subsequently refer to the source as "origin" instead of its full URL. With a remote, a Git Push or Pull operation might instead be invoked like so:
+Git has a neat feature called _remotes_, which saves you from typing lengthy URLs. A remote is simply an alias for a URL, allowing you to subsequently refer to the source as "origin" instead of its full URL. With a remote, a Git Push or Pull operation might instead be invoked like so:
 
 ```bash
 git push ALIAS_NAME
