@@ -1,7 +1,8 @@
 # Syncing Repositories
 
 After cloning a repository, you may subsequently wish to sync up the clone with the source repository, ensuring that they are both up to date with the latest version of the project. Git supports such data exchange operations through _pushing_ (uploading) and _pulling_ (downloading) models, which are carried out via the `git push` and `git pull` commands respectively.&#x20;
-Just like when you Git needed a URL when you cloned a Git repository, Git also needs a URL  for pushing or pulling with a repository. As such, a push or pull operation takes a URL as an argument:
+
+Just like Git needs a URL to clone a repository, Git needs a URL to push to or pull from a repository. As such, a push or pull operation takes a URL as an argument:
 
 ```bash
 git push https://github.com/GITHUB_USERNAME/REPOSITORY_NAME.git
