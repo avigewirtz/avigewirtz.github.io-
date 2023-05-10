@@ -11,7 +11,7 @@ git pull https://github.com/GITHUB_USERNAME/REPOSITORY_NAME.git
 
 ### Remotes
 
-Git has a neat feature called _remotes_, which enables you to store the URLs of all repositories you may wish to interact with in aliases. This allows you to refer to repositories by using their alias names rather than by their lengthy and hard-to-remember URLs. With remotes, a Git Push or Pull operation might look like the following: 
+Git has a neat feature called _remotes_, which enables you to store the URLs of all repositories you may wish to interact with in aliases. This allows you to refer to repositories with their alias names rather than their lengthy and hard-to-remember URLs. With remotes, a Git Push or Pull operation might look like the following: 
 
 ```bash
 git push ALIAS_NAME
