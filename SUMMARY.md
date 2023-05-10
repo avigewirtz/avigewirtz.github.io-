@@ -61,7 +61,6 @@
   * [Basic Editing Commands](emacs/basic-commands/basic-editing-commands.md)
 * [More Advanced Commands](emacs/more-advanced-commands/README.md)
   * [Managing Windows and Buffers](emacs/more-advanced-commands/managing-windows-and-buffers.md)
-  * [Indenting](emacs/more-advanced-commands/indenting.md)
   * [Search and Replace](emacs/more-advanced-commands/search-and-replace.md)
   * [Building](emacs/more-advanced-commands/building.md)
 * [Emacs Configuration Files](emacs/emacs-configuration-files.md)
