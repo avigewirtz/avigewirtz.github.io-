@@ -81,7 +81,7 @@ We will now introduce `git status`, which is an extremely useful command that al
 
 Any file in the directory that has not previously been staged will be listed under "Untracked files." In our case, since the repository is new, no files in the worktree have been staged yet. This can be illustrated with the following Figure.
 
-<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
 To get Git to begin tracking the files, you must stage them:
 
@@ -89,7 +89,7 @@ To get Git to begin tracking the files, you must stage them:
 
 Notice when we invoke git status again, the files are not listed under "Changes to be commited." That means that they are staged and unmodified. The directory now looks like the following:
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
 We can now commit the files with the `git commit` command. When you commit, you also have to provide a commit message. We will do so by supplying the `-m` option:&#x20;
 
@@ -99,11 +99,7 @@ Now when you invoke git status, you'll get a message letting you know that your 
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 7.39.56 PM.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
-
-
-
-
+<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
 ## Use Cases
 
@@ -117,13 +113,15 @@ Say you add a new file, file1.txt, to the working directory. In the following ex
 
 #### Case 2: modifying an existing file
 
-Now say you modify the hello.c file by changing "Hello, world" to "Hello, everyone". Invokking Git status, you'll see that hello.c is now classified under "changes not staged for commit." To include the changes in the next commit, you must add it again.&#x20;
+Now say you modify the hello.c file by changing "Hello, world" to "Hello, everyone". Invoking Git status, you'll see that _hello.c_ is now classified under "changes not staged for commit."&#x20;
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.03.19 PM.png" alt=""><figcaption></figcaption></figure>
 
-A simple shortcut is if you want to add all new or modified files to the staging area is to use the \* wildcard instead of typing out each filename. Notice below that git status lists file1.txt and hello.c under "Changes to be commited". Any files in this section are in the staging area.&#x20;
+To include the changes in the next commit, you must stage it again. A simple shortcut if you want To add all new or modified files to the staging area, you can use the \* wildcard instead of typing out each filename:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.04.08 PM.png" alt=""><figcaption></figcaption></figure>
+
+#### Case 3: Modifying a file after staging it
 
 Now, say you modify hello.c again, by changing "Hello, everyone" back to "Hello, world". If you invoke git status, you will not see two versions of hello.c:&#x20;
 
