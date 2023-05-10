@@ -47,7 +47,8 @@
 * [Linux Environment Variables](bash/linux-environment-variables.md)
 * [Bash Configuration Files](bash/bash-configuration-files.md)
 * [Quoting](bash/quoting.md)
-* [How Bash Executes Cammands](bash/how-bash-executes-cammands.md)
+* [How Bash Executes Cammands](bash/how-bash-executes-cammands/README.md)
+  * [Path Environment Variable](bash/how-bash-executes-cammands/path-environment-variable.md)
 * [Bash Cheat Sheet](bash/bash-cheat-sheet.md)
 * [Further Reading](bash/further-reading.md)
 
@@ -124,8 +125,8 @@
 
 ## Appendices
 
-* [Search Path](appendices/search-path/README.md)
-  * [How Bash Executes Commands](appendices/search-path/how-bash-executes-commands.md)
+* [Search Path](appendices/search-path.md)
+  * [How Bash Executes Commands](appendices/how-bash-executes-commands.md)
 * [Working Directory Example](appendices/working-directory-example.md)
 * [Secure Shell (SSH) Protocol](appendices/secure-shell-ssh-protocol/README.md)
   * [Further Reading](appendices/secure-shell-ssh-protocol/further-reading.md)
