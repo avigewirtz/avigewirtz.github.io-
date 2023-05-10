@@ -1,5 +1,7 @@
 # Further Reading
 
+If you'd like to learn more about the operating systems, the books listed below are excellent resources. 
+
 ## **Operating Systems**
 
 1. Tanenbaum, A.S., & Bos, H. (2014). _Modern Operating Systems (4th ed.)_. Pearson.
