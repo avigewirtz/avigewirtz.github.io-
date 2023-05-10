@@ -79,8 +79,6 @@
   * [Cloning a Repository](git-and-github/obtaining-a-git-repository/cloning-a-repository.md)
   * [Authentication](git-and-github/obtaining-a-git-repository/authentication.md)
 * [Git Workflow](git-and-github/acquiring-a-git-repository/README.md)
-* [Git Workflow](git-and-github/git-workflow.md)
-* [Cloning a Git Repository](git-and-github/page-1.md)
 * [Pushing and Pulling](git-and-github/pushing-and-pulling.md)
 * [Obtaining COS217 Assignment Repositories](git-and-github/acquiring-cos217-assignment-repositories.md)
 * [COS217 Development Workflow](git-and-github/cos217-development-workflow.md)
