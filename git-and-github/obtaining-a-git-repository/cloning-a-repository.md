@@ -1,6 +1,6 @@
 # Cloning a Repository
 
-The process of cloning a repository is extremely straightforward as well. Just like with creating a repository, you first navigate to the directory you want the clone to reside in. You then invoke the `git clone` command followed by the source repository's URL. A GitHub URL has the following format:&#x20;
+The process of cloning a repository is extremely straightforward as well. You simply navigate to the directory you want the clone to reside in and invoke `git clone` with the source repository's URL as an argument. A GitHub URL has the following format:&#x20;
 
 ```
 https://github.com/GITHUB_USERNAME/REPOSITORY_NAME.git
