@@ -4,13 +4,13 @@ Now that we’ve discussed the basics of how Git works, let’s delve into the s
 
 While the process for obtaining two such copies is seemingly straightforward, it is somewhat complicated by the fact that in Git, when you clone a repository, the clone is by default automatically linked to the source via a [remote](broken-reference). Thus, if you clone the official COS217 repository directly to your development computer, the clone will be linked to the official COS217 repository. This is not what you want, however. You want the clone to be linked to your personal GitHub repository.&#x20;
 
-There are numerous ways you can get around this. We will now cover two methods. The first method is much simpler, but it uses the GitHub Import Tool, which is not native to Git.  The second method is more complex, but it uses native Git commands. &#x20;
+There are numerous ways you can get around this. Two methods are covered in COS217. The first method is much simpler, but it uses the GitHub Import Tool, which is not native to Git. The second method is more complex, but it uses native Git commands. In this tutorial, we will only cover the First method. If you're interested in learning about the second method, you can refer to the Git & GitHub Primer handout.&#x20;
 
 ## Method 1: Using the GitHub Import Tool
 
-Method 1 involves two steps. Importing the repository to your GitHub account, then cloning it to your development computer. These examples will assume that armlab is your development computer.&#x20;
+Method 1 involves two steps. Importing the repository to your GitHub account, then cloning it to your development computer. These examples will assume that armlab is your development computer.
 
-## Step 1: Duplicate the repository to your GitHub account.&#x20;
+#### Step 1: Duplicate the repository to your GitHub account
 
 You can duplicate the repository with the GitHub Import Tool, which creates an independent copy of the repository on your GitHub account, devoid of any connection to the original. In the following example, we will import the assignment 0 Survey repository to your GitHub account.&#x20;
 
@@ -20,26 +20,14 @@ You can duplicate the repository with the GitHub Import Tool, which creates an i
 4. **Partnered assignments only**: Invite your partner as a collaborator.&#x20;
    * Go to your repository page and click **Settings**. On the lefthand sidebar, click **Collaborators** and then click **Add people**. Input your partner's GitHub username and click the **Add** button.
 
-### Step 2: Cloning your GitHub repository to your development computer&#x20;
+#### Step 2: Clone the GitHub repository to armlab
 
-1. Log into armlab and clone the repository:
+Log into armlab and clone the repository:
 
 <pre class="language-bash"><code class="lang-bash">git clone https://github.com/<a data-footnote-ref href="#user-content-fn-1">YOUR_GITHUB_USERNAME</a>/Survey.git
 </code></pre>
 
 You will now have a copy of the Survey repository on your development computer that is linked to your copy on GitHub.&#x20;
-
-
-
-## Method 2: Using Git Commands
-
-The second method is somewhat complicated and involves many more steps than the first method. The steps are as follows:
-
-1. Clone the COS217 GitHub repository to your development computer.&#x20;
-2. Create a new repository on GitHub.&#x20;
-3. Upload the data from your local copy to your repository on GitHub.&#x20;
-4. Clone your (updated) GitHub repository to your development computer&#x20;
-5. (Optional) delete the bare clone&#x20;
 
 
 
