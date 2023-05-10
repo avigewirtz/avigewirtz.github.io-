@@ -125,8 +125,6 @@
 
 ## Appendices
 
-* [Search Path](appendices/search-path.md)
-  * [How Bash Executes Commands](appendices/how-bash-executes-commands.md)
 * [Working Directory Example](appendices/working-directory-example.md)
 * [Secure Shell (SSH) Protocol](appendices/secure-shell-ssh-protocol/README.md)
   * [Further Reading](appendices/secure-shell-ssh-protocol/further-reading.md)
