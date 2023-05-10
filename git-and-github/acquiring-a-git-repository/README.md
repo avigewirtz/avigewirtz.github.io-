@@ -1,157 +1,95 @@
-# Acquiring a Git Repository
+# Git Workflow
 
-There are two ways you can acquire a Git repository:
+## Worktree
 
-1. You can create a new Git repository.
-2. You can clone (copy) an existing Git repository.
+Every (non-bare) Git repository has an associated _worktree_ (also called _working tree_). The worktree is essentially synonymous with the working directory. It is the area you do all of your project development in.&#x20;
 
-Creating a repository entails initializing a Git repository for a project that is not currently under Git version control. Cloning a Git repository, on the other hand, entails duplicating an existing repository--typically for a project already under Git version control.
-
-We will not cover the basics of creating and cloning Git repositories. The instructions below are intended to merely get you started with Git commands; they are not intended to be a comprehensive review.&#x20;
-
-## Creating a Git Repository
-
-The process of creating a Git repository is extremely simple. You simply navigate to the directory whose contents you want to version control and invoke `git init`. For example, to create a Git repository in the directory _\~/my\_project_, you'd invoke these two commands:
-
-```bash
-# navigate to my-project
-cd ~/my_project 
-# create the Git repository
-git init 
-```
-
-Upon execution of these commands, _my\_project_ will be populated with a _.git_ directory, which contains the Git repository. Note that .git is a hidden directory, so it will only be visible when `ls` is invoked with the `-a` option (i.e., `ls -a`).
-
-## Cloning a Git Repository
-
-Cloning a Git repository means making a copy of an existing repository. The clone comes populated with the source repository's files, history, and other metadata. To process of cloning a repository is straightforward. You simply invoke the `git clone` command followed by the repository's URL. For example, to clone a repository from GitHub, run:
-
-```bash
-git clone https://github.com/GITHUB_USERNAME/REPOSITORY_NAME.git
-```
-
-The value for GITHUB\_USERNAME will depend on which GitHub account the source repository is located on. For example, if the source repository is located on the COS217 GitHub account, the username will be COS217. If it is located on your personal account, the username will be your personal GitHub username. Let's now clone the Assignment 0 Survey repository, which is stored on the COS217 GitHub account. We simply replace GITHUB\_USERNAME with COS217 and REPOSITORY\_NAME with survey::
-
-```bash
-git clone https://github.com/cos217/survey.git
-```
-
-Upon success, you will get the following output:
-
-<figure><img src="../../.gitbook/assets/Screenshot 2023-05-04 at 8.00.49 PM (1) (1).png" alt=""><figcaption></figcaption></figure>
-
-## Authentication
-
-When you clone a Git repository, you will sometimes need to provide credentials to prove that you are authorized to access the repository. When we cloned the Survey repository from the COS217 GitHub account, we did not need any authentication credentials. That is because the Survey repository is _public_. A public repository can be viewed and cloned by anyone.
-
-It goes without saying that when you upload a repository to GitHub, you don't necessarily want to make it public to the world. As such, you have the option of classifying your repository as either _private_. Private repositories are only visible to their owner(s) and explicitly invited collaborators.
-
-To clone a private repository, you need to authenticate yourself. You do so by providing the username and password. However, note that this password is not the login password, but a Personal Access Token, which offers more robust security.
-
-##
-
-##
-
-##
-
-##
-
-## How Git Saves Content
+The worktree is distinct from the repository. The repository serves as the area where the project's history is stored. You don't develop in the repository. Instead, you develop in the worktree, and whenever you are ready to save a snapshot of your project, you tell Git to copy the changes from the worktree into the repository. This is called _committing_.&#x20;
 
 ## Commits
 
-Commits are the building blocks of a Git repository. Each commit represents a snapshot of the project at a certain point in time.
-
-```css
-[A1, B1, C1]---[A2, B1, C1, D1]---[A2, B2, C1, D1]---[A3, B2, C2]---[A3, B3, C2, E1] 
-```
-
-put graphic here
-
-commit is two step proccess
+Commits are the foundation of a Git repository. Each commit represents a snapshot of the project at a certain point in time. This idea is illustrated in the Figure below, where each commit is represented as a version of the project.&#x20;
 
 <figure><img src="../../.gitbook/assets/snapshots-2.png" alt=""><figcaption><p>Courtesy of Git-SCM</p></figcaption></figure>
 
-There are two important things to recognize with how Git saves content:
+Each Git has a unique identifier, which is used by Git to reference it. Git records important information along with each commit, such as the timestamp of the commit, the author's name and email address, as well as the commit message, which is a short message provided by the commit author that serves to document the commit.&#x20;
 
-1. Git does not automatically save content. You must explicitly tell it whenever you want it to save content. Consequently, whenever you create a new Git repository, the repository will initially be empty. Similarly, if you modify files after they were saved to the repository, the modified version will not automatically be saved.
-2. You must tell Git which files to save.
+There are two important things to recognize with how commits work in Git:
 
-Saving content to the repository is a two-step process, involving _staging_ and _committing_.
+1. **All commits must be done manually**. That is, Git does not automatically commit anything from the worktree. Consequently, whenever you create a new Git repository, the repository will initially be empty--that is, the files already present in the directory, which are now in the worktree, will not automatically be committed to the Git repository. In fact, they will not even be _tracked_, which we'll cover soon. Similarly, if you modify files in the worktree, the modified version will not automatically be committed.
+2. **Committing is a two-step process**. Before changes can be committed from the worktree to the repository, they must be added to an intermediate area called the _index_ or _staging area_. In this step, you selectively choose the changes you want to include in the next commit. This allows you to review, group, or organize the changes before you save them to the repository. When you commit changes, you commit the changes that are in the staging area only.&#x20;
 
 ### Staging files
 
-Staging is the process of selectively choosing the files you want Git to save a snapshot of and adding them to the _index_ or _staging area_. In this step, you specify each file you'd like to stage. Staging is accomplished with the `git add` command.
+There are two types of files that have to be staged: untracked files and modified files. Untracked files are new files--that is, files that were not previously in the repository. Modified files, on the other hand, are those that were previously in the repository but whose contents have since been modified.&#x20;
+
+Staging is accomplished with the `git add` command, where you specify each of the untracked or modified files you want to stage:&#x20;
 
 ```bash
 git add FILE(S)
 ```
 
-If you want to stage all (non-[ignored](../important-git-commands/ignoring-files.md)) project files, you can save time by using the `*` [wildcard](../../bash/useful-command-line-features.md#wildcards):
+If you want to stage all relevant files, you can save time by using the `*` [wildcard](../../bash/useful-command-line-features.md#wildcards):
 
 ```bash
-git add * # stages all non-ignored files and directories in the working directory
+git add * 
 ```
 
 ### Committing Files
 
-_Committing_ is the process of permanently saving the snapshot of staged files to the repository. When you commit, Git records the timestamp of the commit, along with other information such as the commit author's name, email address, and a commit message.
-
-When you commit, you don't specify specific files to commit. Git commits all files in the staging area. Committing is accomplished with the `git commit` command:
+When you commit, you don't selectively choose which files to commit. You simply commit all files in the staging area. Committing is accomplished with the `git commit` command:
 
 ```bash
 git commit
 ```
 
-After pressing ENTER, Git will open your preferred text editor and prompt you for a _commit message_. A commit message is simply a user-defined message that serves to document the changes made to the repository. As such, commit messages should be descriptive.
+After pressing ENTER, Git will open your preferred text editor and prompt you for a commit message, which is simply a user-defined message whose purpose is to document the changes made to the repository. As such, commit messages should be descriptive.
 
-A simpler way to commit is to specify the commit message along with the git commit command, as so:
+A simpler way to provide the commit message is to specify the commit message along with the git commit command by using the `-m` option:
 
 ```bash
 git commit -m "COMMIT MESSAGE" 
 ```
 
-Each commit has associated metadata such as a unique commit ID, the author's name and email address, the commit message, and the date and time of the commit. Commits represent the building blocks of a Git repository.
-
-## Purpose of the Staging Area
-
-The reason there is an intermede space for staging files is that it allows you to review, group, or organize the changes before they are permanently saved.
-
 ## Exercise
 
-In this exercise, you will be introduced to the most fundamental Git commands. We will practice basic Git commands using a directory named _git\_practice_ containing 3 files in it: _hello.c_, _circle1.c_, and _circle2.c_.
+In this exercise, you will practice the most fundamental Git commands, such as `git add` and `git commit`, and `git status`.&#x20;
 
-To obtain _git\_practice_, log into your development computer and paste the following code block on the command line:
+To follow along, log into your development computer and paste the following code block on the command line:
 
+{% code overflow="wrap" %}
 ```bash
 git clone https://github.com/avigewirtz/git_practice.git && cd git_practice && rm -rf .git
 ```
+{% endcode %}
 
-This will copy _git\_practice_ to your working directory and then change your working directory to _git\_practice_. If you invoke `ls -a`, you will see three files: _circle1.c_, _circle2.c_, and _hello.c_; however, you will not see a _.git_ directory, since _git\_practice_ is not yet under Git version control.
+This will copy a directory named _git\_practice_ to your working directory. _git\_practice_ contains 3 files: _hello.c_, _circle1.c_, and _circle2.c_. You can confirm this by invoking `ls -a`.
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 3.56.14 PM.png" alt=""><figcaption></figcaption></figure>
 
-To create a Git repository in _git\_practice_, invoke `git init`:
+Notice that git-practice does not contain a _.git_ directory. This indicates that it is not under Git version control. To begin version controlling _git\_practice_, invoke `git init`:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 3.57.17 PM.png" alt=""><figcaption></figcaption></figure>
 
-git\_practice will now have a Git repository. You can verify this by invoking ls -a again and confirming that there is a _.git_ subdirectory:
+git\_practice will now have a Git repository. You can verify this by invoking `ls -a` again:&#x20;
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 3.59.00 PM.png" alt=""><figcaption></figcaption></figure>
 
-We will now introduce one of the most useful git commands: `git status`. Git status allows you to view the state of your working directory and the staging area.
+We will now introduce `git status`, which is an extremely useful command that allows you to monitor the state of your worktree. The first time you invoke git status in _git\_practice_, you'll get the following output:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 4.00.05 PM (1).png" alt=""><figcaption></figcaption></figure>
 
-All files that have not previously been staged will be listed as untracked files. For now, we will focus on only one aspect of the `git status` output: Untracked files. Any file that has not previously been staged to Git is untracked. To get Git to begin tracking it, you must stage them.
+Any file in the directory that has not previously been staged will be listed under "Untracked files." In our case, since the repository is new, no files in the worktree have been staged yet. To get Git to begin tracking the files, you must stage them:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 7.35.05 PM.png" alt=""><figcaption></figcaption></figure>
 
-You can now commit them with the `git commit` command. When you commit, you also have to provide a commit message, which serves to document the changes you made. You can do so by supplying the -m option followed by quotation marks, inside which the message goes:
+Notice when we invoke git status again, the files are not listed under "Changes to be commited." That means that they are staged and unmodified.&#x20;
+
+You can now commit the files with the `git commit` command. When you commit, you also have to provide a commit message. We will do so by supplying the `-m` option:&#x20;
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 7.38.50 PM.png" alt=""><figcaption></figcaption></figure>
 
-Now when you invoke git status, you'll get a message letting you know that your working tree is clean:
+Now when you invoke git status, you'll get a message letting you know that your working tree is clean--meaning it contains no new content since it was last committed:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-05-03 at 7.39.56 PM.png" alt=""><figcaption></figcaption></figure>
 
