@@ -81,6 +81,10 @@ The reason there is an intermede space for staging files is that it allows you t
 
 ## Exercise&#x20;
 
+
+
+
+
 In this exercise, you will be introduced to the most fundamental Git commands. We will practice basic Git commands using a directory named _git\_practice_ containing 3 files in it: _hello.c_, _circle1.c_, and _circle2.c_.&#x20;
 
 To obtain _git\_practice_, log into your development computer and paste the following code block on the command line:
@@ -119,58 +123,5 @@ Now when you invoke git status, you'll get a message letting you know that your 
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 4.05.19 PM.png" alt=""><figcaption></figcaption></figure>
 
-Case 1: Adding a new file
 
-Say you add a new file, file1.txt, to the working directory. In the following example, I add the file with the touch command. If you invoke git status, you'll notice that file1.txt is Untracked:
-
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 4.02.30 PM.png" alt=""><figcaption></figcaption></figure>
-
-Case 2: modifying a file
-
-Now say you modify the hello.c file by changing "Hello, world" to "Hello, everyone". Invokking Git status, you'll see that hello.c is now classified under "changes not staged for commit." To include the changes in the next commit, you must add it again.&#x20;
-
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 4.03.19 PM.png" alt=""><figcaption></figcaption></figure>
-
-A simple shortcut is if you want to add all new or modified files to the staging area is to use the \* wildcard instead of typing out each filename. Notice below that git status lists file1.txt and hello.c under "Changes to be commited". Any files in this section are in the staging area.&#x20;
-
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 4.04.08 PM.png" alt=""><figcaption></figcaption></figure>
-
-Now, say you modify hello.c again, by changing "Hello, everyone" back to "Hello, world". If you invoke git status, you will not see two versions of hello.c:&#x20;
-
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 7.56.28 PM.png" alt=""><figcaption></figcaption></figure>
-
-One of them is listed under "changed to be commits while the other is listed under "changes not staged for commit". The one staged for commit is the "Hello, everyone" version. The "Hello, world version is not staged for commit, since, if you modify a file after staging it, the modified version will not be reflected in the staged version. Rather, if you want the updated version to be included in the next commit, you must stage it again:&#x20;
-
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 8.05.28 PM.png" alt=""><figcaption></figcaption></figure>
-
-And notice that now the updated version that was previously not staged for commit is staged.&#x20;
-
-You can now commit, which will save the updated&#x20;
-
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 8.06.58 PM.png" alt=""><figcaption></figcaption></figure>
-
-Now say you delete the file1.txt file using the rm command. Although it will be deleted from your working directory, it will not be deleted from your repository. If you invoke git status, you'll notice that file1.txt is listed under "Changes nor staged for commit":
-
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 8.20.08 PM.png" alt=""><figcaption></figcaption></figure>
-
-Essentially, Git tracks that file1.txt has been deleted, but in order for you to have the deletion reflected in the repository, you need to stage it and then commit it:
-
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-03 at 8.22.15 PM.png" alt=""><figcaption></figcaption></figure>
-
-## Summary
-
-* **Staging files**: There are two types of files you need to be staged with the `git add` command: untracked files, and modified files. Untracked files are files that are "new" to Git--that is, they haven't previously been staged. Modified files are files that were updated after they were last staged.&#x20;
-* **Committing files**: The `git commit` command takes the files in the staging area and stores them permanently in your Git repository. Each commit represents a snapshot of your project's state.
-* **Status of project files**: The `git status` command lists three categories of files in the working tree:
-  1. **Untracked files**: Files in the working directory that were not previously staged (i.e., "new" files).&#x20;
-  2. **Changes not staged for commit**: Files that were modified or deleted since they were last staged.&#x20;
-  3. **Changes to be committed**: Staged files that are ready to be committed.
-
-
-
-## Local Git Workflow
-
-The local Git workflow can be summarized as follows:
-
-<figure><img src="../.gitbook/assets/image (7) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
