@@ -5,7 +5,7 @@ To use Gprof, follow these steps:
 1. Compile and link the program with the `-pg` flag:
 
 ```bash
-gcc -pg -o program.c program
+gcc217 -pg -o program.c program
 ```
 
 2. Execute the instrumented binary, which generates the _gmon.out_ file:
