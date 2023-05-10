@@ -2,12 +2,11 @@
 
 The job of a shell is to find and run commands. This file explains how the shell identifies commands names and then finds the commands to run, such as the `date` command:
 
-1. Performs expansions (such as alias expansion), assignments, and redirections.&#x20;
-2. Assuming there is a resulting command name:
-   1. Searches for a function that matches the command name.
-   2. Searches the shell built-in list for a built-in matching command name.&#x20;
+1. Performs expansions (such as alias expansion), assignments, and redirections. Assuming there is a resulting command name, Bash will perform the next steps:
+2. Search for a function that matches the command name.
+3. Searches for a shell built-in matching command name.&#x20;
 
-If these searches are unsuccessful, there are two cases to consider:
+If searches are all unsuccessful, there are two cases to consider:
 
 1. The command name contains a forward slash (/) (e.g., `/bin/ls` or `../../bin/ls`).
 2. The command name does not contain a forward slash (e.g., `ls`).
@@ -18,29 +17,29 @@ In case 2, the shell searches the directories listed in the PATH environment var
 
 ### Examples
 
-Assume the working directory is /u/NetID and contains an executable file named hello that prints "Hello, World!" on stdout.&#x20;
+To illustrate this idea concretely, here are some examples illustrating how the steps Bash would take when commands are invoked. For these examples, assume the working directory is /u/NetID and that it contains an executable file named hello that prints "Hello, World!" on stdout.&#x20;
 
-* Case 1: Invoking `/bin/ls`
+* **Case 1**: Invoking `/bin/ls`
   1. Any expansions, assignments, and redirections? :heavy\_multiplication\_x:
   2. Is `/bin/ls` a shell function? :heavy\_multiplication\_x:
   3. Is `/bin/ls` a shell built-in?  :heavy\_multiplication\_x:
   4. Does `/bin/ls` contain a forward slash? :heavy\_check\_mark:
   5. Is `/bin/ls` an executable file?  :heavy\_check\_mark:
   6. Execute it.
-* Case 2: Invoking `../../bin/ls`:&#x20;
+* **Case 2:** Invoking `../../bin/ls`:&#x20;
   1. Any expansions, assignments, and redirections? :heavy\_multiplication\_x:
   2. Is `../../bin/ls` a shell function? :heavy\_multiplication\_x:
   3. Is `../../bin/ls` a shell built-in?  :heavy\_multiplication\_x:
   4. Does `../../bin/ls` contain a forward slash? :heavy\_check\_mark:
   5. Is `../../bin/ls` an executable file?  :heavy\_check\_mark:
   6. Execute it.
-* Case 3: Invoking `ls`:&#x20;
+* **Case 3**: Invoking `ls`:&#x20;
   1. Any expansions, assignments, and redirections? :heavy\_check\_mark:&#x20;
   2. Expand ls to ls -a. Use the _first word_ of `ls -a` (i.e., `ls`) as the command name.
   3. Is `ls` a shell function? :heavy\_multiplication\_x:
   4. Is `ls` a shell built-in?  :heavy\_check\_mark:
   5. Execute it
-*   Invoking `hello`:
+*   **Case 4**: Invoking `hello`:
 
     1. Any expansions, assignments, and redirections? :heavy\_multiplication\_x:
     2. Is `hello` a shell function? :heavy\_multiplication\_x:
@@ -50,22 +49,18 @@ Assume the working directory is /u/NetID and contains an executable file named h
     6. Print `-bash: hello: command not found`.
 
 
-
-Invoking `./hello`:
-
-* Any expansions, assignments, and redirections? :heavy\_multiplication\_x:
-* Is `./hello` a shell function? :heavy\_multiplication\_x:
-* Is `./hello` a shell built-in?  :heavy\_multiplication\_x:
-* Does `./hello` contain a forward slash? :heavy\_check\_mark:
-* Does an executable named `hello` exist in the working directory? :heavy\_check\_mark:
-* Execute `hello`.
-
-Invoking `/u/NetID/hello`:
-
-* Any expansions, assignments, and redirections? :heavy\_multiplication\_x:
-* Is `/u/NetID/hello` a shell function? :heavy\_multiplication\_x:
-* Is `/u/NetID/hello` a shell built-in?  :heavy\_multiplication\_x:
-* Does `/u/NetID/hello` contain a forward slash? :heavy\_check\_mark:
-* Does an executable named `hello` exist in `/u/NetID`? :heavy\_check\_mark:
-* Execute `/u/NetID/hello`.
+* Case 5: Invoking `./hello`:
+  * Any expansions, assignments, and redirections? :heavy\_multiplication\_x:
+  * Is `./hello` a shell function? :heavy\_multiplication\_x:
+  * Is `./hello` a shell built-in?  :heavy\_multiplication\_x:
+  * Does `./hello` contain a forward slash? :heavy\_check\_mark:
+  * Does an executable named `hello` exist in the working directory? :heavy\_check\_mark:
+  * Execute `hello`.
+* Case 6: Invoking `/u/NetID/hello`:
+  * Any expansions, assignments, and redirections? :heavy\_multiplication\_x:
+  * Is `/u/NetID/hello` a shell function? :heavy\_multiplication\_x:
+  * Is `/u/NetID/hello` a shell built-in?  :heavy\_multiplication\_x:
+  * Does `/u/NetID/hello` contain a forward slash? :heavy\_check\_mark:
+  * Does an executable named `hello` exist in `/u/NetID`? :heavy\_check\_mark:
+  * Execute `/u/NetID/hello`.
 
