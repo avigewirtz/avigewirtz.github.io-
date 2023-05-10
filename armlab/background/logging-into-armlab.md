@@ -2,7 +2,7 @@
 
 ## Logging into armlab
 
-Logging into armlab is accomplished via an _SSH client,_ which is a program that uses the [SSH](../../appendices/secure-shell-ssh-protocol/) Protocol to communicate with a remote computer.
+Logging into armlab is accomplished via an _SSH client,_ which is a program that uses the [SSH](broken-reference) Protocol to communicate with a remote computer.
 
 {% tabs %}
 {% tab title="Mac" %}

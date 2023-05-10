@@ -126,8 +126,6 @@
 ## Appendices
 
 * [Working Directory Example](appendices/working-directory-example.md)
-* [Secure Shell (SSH) Protocol](appendices/secure-shell-ssh-protocol/README.md)
-  * [Further Reading](appendices/secure-shell-ssh-protocol/further-reading.md)
 * [Operating Systems](appendices/operating-systems/README.md)
   * [Process](appendices/operating-systems/process.md)
 * [Detailed Explanation of I/O and Redirection & Piping](appendices/detailed-explanation-of-i-o-and-redirection-and-piping.md)

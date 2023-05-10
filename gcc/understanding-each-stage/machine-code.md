@@ -1,6 +1,6 @@
 # Machine Code
 
-Computers today do not inherently understand high-level programming languages such as C, Java, or any others. While these languages are more convenient for human comprehension, they are not directly executable by computers. Computer hardware is designed to implement a simple set of instructions, such as loading a value from memory into a register or adding two numbers and storing the result.
+Computers do not understand high-level programming languages such as C, Java, or any others. While these languages are more convenient for human comprehension, they are not directly executable by computers. Computer hardware is designed to implement a simple set of instructions, such as loading a value from memory into a register or adding two numbers and storing the result.
 
 The specific set of instructions a computer can support is defined by its Instruction Set Architecture (ISA). An ISA is a specification that outlines the supported instructions, registers, memory organization, and addressing modes that a computer's processor can execute. The ISA serves as the lowest-level software interface to the computer. All instructions must ultimately be translated into this form, as the computer cannot understand anything else.
 
@@ -35,12 +35,12 @@ This program takes two integer inputs from stdin, calculates their sum, and writ
 
 ## Drawbacks of Machine Code
 
-* Not human readable:&#x20;
+* Not human readable:
 * Not portable:
 * Time-consuming development:
 * Lack of abstraction:
 
-Typing 1s and 0s is undoubtedly cumbersome, but the primary issue lies not in the binary representation but in the lack of structure and human readability. The 1s and 0s can be converted to hexadecimal or ASCII, which makes the code more accessible, but it still lacks the structure and readability offered by high-level programming languages.
+Typing 1s and 0s is undoubtedly cumbersome, but the primary issue lies not in the binary representation but in the lack of structure and human readability. The 1s and 0s can be converted to hexadecimal, as shown below and as is done in COS126, which makes the code more accessible, but it still lacks the structure and readability offered by high-level programming languages.
 
 ```
 1000 1010 1111 1111 => 8AFF

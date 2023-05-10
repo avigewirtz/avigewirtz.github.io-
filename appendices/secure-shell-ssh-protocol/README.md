@@ -1,2 +1,0 @@
-# Secure Shell (SSH) Protocol
-
