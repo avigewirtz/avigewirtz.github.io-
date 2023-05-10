@@ -7,3 +7,7 @@ It goes without saying that when you upload a repository to GitHub, you don't ne
 {% hint style="warning" %}
 Note that when uploading data to a repository--the process of which we'll cover soon--you need to authenticate for both public and private repositories.&#x20;
 {% endhint %}
+
+The following diaram illustrates the possible directions of file transfers between the relevant COS217 computers and acccounts:
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-01 at 2.35.17 PM.png" alt=""><figcaption></figcaption></figure>
