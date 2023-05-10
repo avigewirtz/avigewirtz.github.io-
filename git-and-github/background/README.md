@@ -21,7 +21,7 @@ While Git and GitHub are closely associated with each other, it is important to 
 A few key differences between them:
 
 1. Git is a VCS, while GitHub is a platform that (primarily) hosts Git repositories.
-2. Git is stored locally and can be accessed without an Internet connection; Github is stored on Microsoft servers and requires an Internet connection to access.
+2. Git is a porgam that can be stored locally and accessed without an Internet connection; Github is a platform hosted on Microsoft servers that requires an Internet connection to access.
 3. While Git primarily focuses on version control, GitHub extends its capabilities by offering additional features such as enhanced project collaboration, project management, and code review.
 4. Git is an open-source software maintained by GNU; Github is a web-based platform owned by Microsoft.
 
