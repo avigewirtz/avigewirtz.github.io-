@@ -1,4 +1,4 @@
-# Logging in & out of armlab
+# Logging into & out of armlab
 
 ## Logging into armlab
 
