@@ -1,4 +1,6 @@
-# Preface
+# Table of contents
+
+* [README](README.md)
 * [Preface](preface.md)
 
 ## armlab
