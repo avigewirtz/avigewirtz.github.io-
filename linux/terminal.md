@@ -1,6 +1,6 @@
 # Terminal
 
-CLI commands are issued to the OS via a _terminal_. In the nascent days of interactive computing, terminals were hardware devices, consisting of a keyboard for entering commands and a display unit for printing output. The first hardware terminals were teletype machines, such as the Model 33 ASR shown in Figure 1, whose display unit was a paper-roll printer.
+CLI commands are issued via a _terminal_. In the nascent days of interactive computing, terminals were hardware devices, consisting of a keyboard for entering commands and a display unit for printing output. The first hardware terminals were teletype machines, such as the Model 33 ASR shown in Figure 1, whose display unit was a paper-roll printer.
 
 <figure><img src="https://lh4.googleusercontent.com/Sui_O3OmVfRuG7TS5Ro-pkF7IOJAAbL3Wxb5wHU2xvDIbpFmwGSHkM35HSD2Eic31K5unT9XBYsh63ta-eK33dyWUfQrfJKI48zSJjDUxw2m3LaRKU73PD2WRTUNqETK1FU1RoFPWQSqlph9K8Zoqc4" alt="" width="375"><figcaption><p>Figure 1: Teletype Model 33 ASR</p></figcaption></figure>
 
