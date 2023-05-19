@@ -28,11 +28,3 @@ Let's consider a couple of examples to highlight the distinction:
 
 Both GUIs and CLIs have their advantages and limitations. GUIs are more intuitive and user-friendly, making them suitable for less technical users or for tasks that involve a lot of visual elements. On the other hand, CLIs offer more flexibility and control, making them the preferred choice for advanced users or for tasks that involve automation or repetitive actions. The choice between them depends on the user's level of expertise, personal preferences, and the specific task at hand.
 
-#### Example of CLI Commands
-
-```bash
-javac hello.java
-java Hello
-gcc217 hello.c -o hello
-./hello
-```

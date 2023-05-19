@@ -109,21 +109,7 @@
   * [Assembly Language](gcc/understanding-each-stage/assembly.md)
   * [High-level Language](gcc/understanding-each-stage/high-level-languages.md)
   * [Linking](gcc/understanding-each-stage/linking.md)
-* [FAQ](gcc/faq.md)
 * [Further Reading](gcc/further-reading.md)
-
-***
-
-* [Page 1](page-1.md)
-
-## Make
-
-* [Background](make/background/README.md)
-  * [Further Reading](make/background/further-reading.md)
-
-## Valgrind
-
-* [Background](valgrind/background.md)
 
 ## Gprof
 
