@@ -1,6 +1,6 @@
 # Shell
 
-We stated earlier that commands issued in the terminal are passed to the OS for execution. However, there is actually an intermediate layer between the terminal and OS, called the _shell_. The shell is the program that actually implements the CLI. It does so in two ways:&#x20;
+CLI commands are ultimately executed by the OS. However, the commands are not issued by the user to the OS directly. Instead, they are issued via an intermediary program known as the _shell_. The shell is a program that implements the CLI.&#x20;
 
 1. **Defining the language of CLI commands**: The shell defines the syntax and semantics of CLI commands, specifying the format that commands must adhere to and the range of possible operations.
 2. **Interpreting CLI commands**: The shell reads and interprets textual commands entered in the terminal, executing them by running either built-in functions or by invoking external programs.
