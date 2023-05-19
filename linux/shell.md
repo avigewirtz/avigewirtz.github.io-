@@ -9,25 +9,25 @@ CLI commands are ultimately executed by the OS. However, the commands are not is
 
 A command issued in a Unix-like shell typically has several components:
 
-* **Command name**: This is the name of the actual program that you're asking the shell to run. It can be one of two things: a program or a shell builtin.&#x20;
-  * **Program**: executable program somewhere in the file system. either an OS utility program or a user-written program. It's located on the filesystem in an executable.  the first thing on the command line. Examples include `ls`, `ssh`, `emacs`, `javac`, `java`, `python`, `gcc`, and so on. The shell attempts to locate this program based on the PATH environment variable or an absolute/relative path if provided. The only difference is whether you have to supply a pathname
-  * **Shell Built-in**: In addition to running external programs, the shell has a set of built-in commands that it can execute directly. These include commands like `cd`, `echo`, `exit`, `alias`, `set`, and many others.
+#### Field
 
-#### Option
+In the shell command language, a unit of text that is the result of parameter expansion, arithmetic expansion, command substitution, or field splitting. During command processing, the resulting fields are used as the command name and its arguments.
 
-An argument to a command that is generally used to specify changes in the utility's default behavior
+* **Command name**:
+  * **Executable file**: executable program somewhere in the file system. either an OS utility program or a user-written program. It's located on the filesystem in an executable.  Examples include `ls`, `ssh`, `emacs`, `javac`, `java`, `python`, `gcc`, and so on. The shell attempts to locate this program based on the PATH environment variable or an absolute/relative path if provided. The only difference is whether you have to supply a pathname
+  *   **Shell Built-in**: Built-In Utility (or Built-In)
 
-#### Option-Argument
-
-A parameter that follows certain options. In some cases an option-argument is included within the same argument string as the option-in most cases it is the next argument.
-
-#### Operand
-
-An argument to a command that is generally used as an object supplying information to a utility necessary to complete its processing. Operands generally follow the options in a command line. Defined by utility.&#x20;
+      A utility implemented within the shell.  In addition to running external programs, the shell has a set of built-in commands that it can execute directly. These include commands like `cd`, `echo`, `exit`, `alias`, `set`, and many others.
+  * Function
+* **Argument**: A parameter passed to a utility as the equivalent of a single string in the _argv_ array created by one of the _exec_ functions. An argument is one of the options, option-arguments, or operands following the command name. A parameter that follows certain options
+  * **Option**: An argument to a command that is generally used to specify changes in the utility's default behavior
+  * **Operand**: An argument to a command that is generally used as an object supplying information to a utility necessary to complete its processing. Operands generally follow the options in a command line.&#x20;
 
 
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-19 at 3.47.43 PM.png" alt="" width="563"><figcaption></figcaption></figure>
+&#x20;
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-05-19 at 4.10.11 PM.png" alt="" width="375"><figcaption></figcaption></figure>
 
 #### Example of CLI Commands
 
