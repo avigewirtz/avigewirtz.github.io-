@@ -1,9 +1,9 @@
 # Table of contents
 
-## Preface
+## Getting Started
 
 * [Contents](README.md)
-* [Audience, Framework, and Conventions](<README (1).md>)
+* [Preface](getting-started/readme-1.md)
 
 ## armlab
 
@@ -126,4 +126,4 @@
 
 ## Group 1
 
-* [Glossary](group-1/glossary.md)
+* [Glossary](appendices/glossary.md)
