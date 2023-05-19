@@ -4,14 +4,14 @@
 
 * Background
   * Activating your armlab Account
-  * Logging in & out of armlab
+  * [Logging in & out of armlab](armlab/background/logging-into-armlab.md)
   * Configuring your armlab Environment
 
 ### Linux
 
 * Background
 * Command Line User Interface
-* Terminal
+* [Terminal](linux/terminal.md)
 * Operating System
 * Shell
   * Types of CLI Commands
@@ -27,7 +27,7 @@
 
 ### Bash
 
-* Background
+* [Background](bash/background.md)
 * Getting Started
 * Useful Command-line Features
 * Getting Help
@@ -55,7 +55,7 @@
 
 ### Emacs
 
-* Background
+* [Background](emacs/background.md)
 * Fundamentals
 * Basic Commands
   * Launching and Existing Emacs
@@ -72,7 +72,7 @@
 
 ### Git & GitHub
 
-* Background
+* [Background](git-and-github/background/)
   * Setting Up Your Git Environment
   * Getting Help
 * Git Fundamentals
@@ -99,7 +99,7 @@
 
 ### GCC
 
-* The Four Stage Build Process
+* [The Four Stage Build Process](gcc/the-four-stage-build-process.md)
 * Understanding each stage
   * Machine Code
   * Assembly Language
@@ -109,13 +109,13 @@
 
 ### Gprof
 
-* Background
+* [Background](gprof/background.md)
 * How Gprof Works
 * Using Gprof
 * Interpreting Gprof Output
 
 ### Appendices
 
-* Appendix A: Operating Systems
+* [Appendix A: Operating Systems](appendices/operating-systems/)
 * Appendix B: Detailed Explanation of I/O and Redirection & Piping
 * Glossary
