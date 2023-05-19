@@ -6,9 +6,9 @@ CLI commands are issued via a _terminal_. In the nascent days of interactive com
 
 Teletypes fell out of use in the 1970s with the widespread adoption of video display terminals, such as the DEC VT100 shown in Figure 2. These terminals employed screens to display output instead of paper-roll printers, making the CLI more efficient and user-friendly.
 
-<figure><img src="https://lh6.googleusercontent.com/NkdzAjWbkb2-A2kfY9i6svIfMSKFxd_e_dUPZ-mfgbZlFPzQb4fPoe7ajYmIH002oDMQNhhzaZNy5oxAvvMX1JwGJo1gPfBO8DQSBbufeUWfDA_-C2qU51MmY5MzYIWTrWOErGR9kKb3RRmLos35cEo" alt="" width="375"><figcaption><p>Figure 2: DEC VT100 Terminal</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/1200px-DEC_VT100_terminal_transparent.png" alt="" width="375"><figcaption></figcaption></figure>
 
 Today, hardware terminals have become obsolete. Instead, we access the CLI via _terminal emulators_, which are programs integrated into GUIs that simulate the functionality of their hardware predecessors, allowing users to interact with their computers using text-based commands. An example of a terminal emulator is macOS's Terminal shown in Figure 3.&#x20;
 
-<figure><img src="https://lh3.googleusercontent.com/D7N-haL7qpFme6x3NkICuiPbAG9LJd1JTni2tkEK-4htGMbvYfCnNBcFZUiOz4x5H8Z8A60wa8qMFF7_S6pO6ZwG9JD8vVTsygHgFSlIzpbZfO9fbw2tXSkdvkHnKvvgixPUvSYxHvA1wo6pd4NWH_0" alt="" width="563"><figcaption><p>Figure 3: macOS Terminal Application</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-05-19 at 5.46.26 PM.png" alt="" width="375"><figcaption><p>Figure 3: macOS Terminal Application</p></figcaption></figure>
 
