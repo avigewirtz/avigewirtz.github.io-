@@ -39,7 +39,7 @@
   * [pwd (Print Working Directory)](bash/navigating-the-filesystem/pwd-print-working-directory.md)
   * [cd (Change Working Directory)](bash/navigating-the-filesystem/cd-change-working-directory.md)
   * [ls (List Directory Contents)](bash/navigating-the-filesystem/ls-list-directory-contents.md)
-* [Understanding Working Directories](bash/working-directory-example.md)
+* [Understanding Working Directories](appendices/working-directory-example.md)
 * [Creating Directories](bash/creating-files-and-directories.md)
 * [Creating Files](bash/creating-files.md)
 * [Deleting Files and Directories](bash/deleting-files-and-directories.md)
@@ -134,6 +134,6 @@
 
 ## Appendices
 
-* [Operating Systems](appendices/operating-systems.md)
+* [Operating Systems](appendices/operating-systems/README.md)
 * [Detailed Explanation of I/O and Redirection & Piping](appendices/detailed-explanation-of-i-o-and-redirection-and-piping.md)
 * [Glossary](appendices/glossary.md)

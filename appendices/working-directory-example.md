@@ -1,4 +1,4 @@
-# Working Directory Example
+# Understanding Working Directories
 
 Now that we’ve covered pathnames, the working directory concept should make more sense. In particular, we’ve seen one of its practical functions: to resolve relative pathnames. To make the concept of a working directory even more concrete, here is an example demonstrating a common mistake command-line beginners make. In the screen shown in Figure 5, there are two armlab terminal sessions open simultaneously, labeled 1 and 2.
 
