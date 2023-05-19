@@ -2,7 +2,7 @@
 
 * Armlab
   * Background
-  * Activating your armlab Account
+  * [Activating your armlab Account](../armlab/background/activating-your-armlab-account.md)
   * Logging in & out of armlab
   * Configuring your armlab Environment
     * Linux
