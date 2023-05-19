@@ -1,6 +1,6 @@
 # Operating System
 
-Whether commands are issued by the user via a GUI or a CLI, they are ultimately being issued to the Operating System (OS). The OS is perhaps the most important software that runs on a computer or device. It acts like the "boss" of the computer, managing and coordinating all its activities.
+Whether commands are issued by the user via a GUI or a CLI, they are ultimately issued to the _Operating System_ (OS). The OS is perhaps the most important software that runs on a computer or device. It acts like the "boss" of the computer, managing and coordinating all its activities.
 
 Think of the operating system as a bridge between the computer's hardware (such as the processor, memory, and I/O devices) and the software applications (like web browsers, games, and word processors) that you use. It ensures that these applications can communicate with the hardware and utilize its resources effectively.
 
