@@ -1,13 +1,13 @@
 # Contents
 
-### Armlab
+## Armlab
 
 * [Background](armlab/background.md)
   * [Activating your armlab Account](armlab/background/activating-your-armlab-account.md)
   * [Logging in & out of armlab](armlab/background/logging-into-armlab.md)
   * [Configuring your armlab Environment](armlab/background/configuring-your-armlab-environment.md)
 
-### Linux
+## Linux
 
 * [Background](linux/background.md)
 * [Command Line User Interface](linux/command-line-user-interface.md)
@@ -25,7 +25,7 @@
   * [Pathnames](linux/filesystem/pathnames.md)
 * [Further Reading](linux/further-reading.md)
 
-### Bash
+## Bash
 
 * [Background](bash/background.md)
 * [Getting Started](bash/getting-started.md)
@@ -53,7 +53,7 @@
 * [Bash Cheat Sheet](bash/bash-cheat-sheet.md)
 * [Further Reading](bash/further-reading.md)
 
-### Emacs
+## Emacs
 
 * [Background](emacs/background.md)
 * [Fundamentals](emacs/fundamentals.md)
@@ -70,7 +70,7 @@
 * [Emacs Cheat Sheet](emacs/emacs-cheat-sheet.md)
 * [Further Reading](emacs/further-reading.md)
 
-### Git & GitHub
+## Git & GitHub
 
 * [Background](git-and-github/background.md)
   * [Setting Up Your Git Environment](git-and-github/background/setting-up-your-git-environment.md)
@@ -97,7 +97,7 @@
 * [Git Cheat Sheet](git-and-github/git-cheat-sheet.md)
 * [Further Reading](git-and-github/further-reading.md)
 
-### GCC
+## GCC
 
 * [The Four Stage Build Process](gcc/the-four-stage-build-process.md)
 * [Understanding each stage](gcc/understanding-each-stage.md)
@@ -107,14 +107,14 @@
   * [Linking](gcc/understanding-each-stage/linking.md)
 * [Further Reading](gcc/further-reading.md)
 
-### Gprof
+## Gprof
 
 * [Background](gprof/background.md)
 * [How Gprof Works](gprof/how-gprof-works.md)
 * [Using Gprof](gprof/using-gprof.md)
 * [Interpreting Gprof Output](gprof/interpreting-gprof-output.md)
 
-### Appendices
+## Appendices
 
 * [Appendix A: Operating Systems](appendices/operating-systems.md)
 * [Appendix B: Detailed Explanation of I/O and Redirection & Piping](appendices/detailed-explanation-of-io-and-redirection-piping.md)
