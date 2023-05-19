@@ -20,7 +20,7 @@
 * [Operating System](linux/operating-system.md)
 * [Shell](linux/shell.md)
   * [Types of CLI Commands](linux/shell/types-of-cli-commands.md)
-  * [How the shell executes commands](linux/shell/how-the-shell-executes-commands.md)
+  * [Examples](linux/shell/how-the-shell-executes-commands.md)
 * [Putting it All Together](linux/putting-it-all-together.md)
 * [Filesystem](linux/filesystem/README.md)
   * [Files and Directories](linux/filesystem/files-and-directories.md)
@@ -121,7 +121,6 @@
 
 ## Appendices
 
-* [Appendix A: Operating Systems](appendices/operating-systems/README.md)
 * [Appendix B: Detailed Explanation of I/O and Redirection & Piping](appendices/detailed-explanation-of-i-o-and-redirection-and-piping.md)
 
 ## Group 1
