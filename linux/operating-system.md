@@ -40,11 +40,7 @@ So, in a way, libraries provide an interface to the system call interface, abstr
 
 On top of the libc layer, a set of core utilities or commands are usually built to perform common system tasks, such as copying files (`cp`), listing directory contents (`ls`), or text processing (`grep`, `awk`). These utilities are standalone programs that can be invoked from the command lineThese are the basic tools that come with an OS, which provide a way to interact with the system and perform basic tasks. These can be command-line utilities like 'ls', 'cd', 'mkdir' in Unix-based systems, or GUI tools like Windows Explorer in Windows.
 
-
-
-
-
-
+<figure><img src="../.gitbook/assets/image (16).png" alt="" width="375"><figcaption></figcaption></figure>
 
 
 
