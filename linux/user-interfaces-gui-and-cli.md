@@ -1,6 +1,6 @@
 # Command Line User Interface
 
-A user interface defines the mechanism through which users interact with computers, enabling them to issue commands and perform various tasks. There are two primary types of user interfaces: the _graphical user interface (GUI)_ and the _command-line interface (CLI)_. Each type has distinct characteristics and benefits.
+A user interface defines the mechanism through which users interact with computers, enabling them to issue commands and perform various tasks. There are two primary types of user interfaces: the _graphical user interface (GUI),_ and the _command-line interface (CLI)_. Each type has distinct characteristics and benefits.
 
 ### Graphical User Interface
 
@@ -27,3 +27,12 @@ Let's consider a couple of examples to highlight the distinction:
    * **CLI**: Users must issue a textual command like `mv source_file destination_directory`.
 
 Both GUIs and CLIs have their advantages and limitations. GUIs are more intuitive and user-friendly, making them suitable for less technical users or for tasks that involve a lot of visual elements. On the other hand, CLIs offer more flexibility and control, making them the preferred choice for advanced users or for tasks that involve automation or repetitive actions. The choice between them depends on the user's level of expertise, personal preferences, and the specific task at hand.
+
+#### Example of CLI Commands
+
+```bash
+javac hello.java
+java Hello
+gcc217 hello.c -o hello
+./hello
+```

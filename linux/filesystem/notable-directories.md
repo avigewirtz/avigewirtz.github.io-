@@ -20,11 +20,11 @@ When you log into a terminal session, your home directory is by default set as y
 
 ## Hidden files/directories
 
-Files or directories that start with a period (.) are considered _hidden_, meaning they are not displayed in directory listings, whether in a graphical user interface (GUI) or a command-line interface (CLI). To view these hidden entries, you need to explicitly request for them to be displayed.&#x20;
+Files or directories that start with a period (.) are considered _hidden_, meaning they are not displayed in directory listings, whether in a graphical user interface (GUI) or a command-line interface (CLI). To view these hidden entries, you need to explicitly request for them to be displayed.
 
 ## The . (dot) and .. (dot dot) directories
 
-Each directory contains at least two hidden entries: `.` (dot) and `..` (dot dot). The former refers to the directory itself (the working directory), while the latter refers to the parent directory. These entries play a crucial role in constructing [pathnames](pathnames.md).
+By convention, every directory contains at least two hidden entries: `.` (dot) and `..` (dot dot). These entries refer to the directory itself and to its parent directory, respectively.&#x20;
 
 ## Important standard directories
 
@@ -34,7 +34,7 @@ Every Linux filesystem has a set of important directories residing in the root d
 * _/boot_: Files required for booting, including the kernel, bootloader, and configuration files.
 * _/dev_: Device files that represent hardware devices like hard drives, USB drives, and network devices.
 * _/etc_: System configuration files, including user accounts, system-wide settings, and startup scripts.
-* _/home_: User home directories, where users store personal files and configurations. Note that on armlab, most users home directories are instead stored in a directory names _/u_.&#x20;
+* _/home_: User home directories, where users store personal files and configurations. Note that on armlab, most users home directories are instead stored in a directory names _/u_.
 * /lib: Shared library files required by the system and applications.
 * _/lib64_: Contains shared library files that are required by the system and applications for 64-bit architectures
 * _/lost+found_: Used to store files that are recovered during a file system check.
@@ -44,7 +44,7 @@ Every Linux filesystem has a set of important directories residing in the root d
 * _/proc_: Contains system information such as running processes, memory usage, and CPU information.
 * _/root_: Home directory of the root user.
 * _/run_: Rruntime files such as PID files, socket files, and lock files.
-* _/sbin_: System binaries for system administration tasks.&#x20;
+* _/sbin_: System binaries for system administration tasks.
 * _/srv_: Used for data served by the system, like website content or FTP files.
 * _/sys_: Information about the system's hardware devices and drivers.
 * _/tmp_: Used for temporary files created by the system and applications.
@@ -54,4 +54,3 @@ Every Linux filesystem has a set of important directories residing in the root d
 {% hint style="warning" %}
 Note that some of these directories are not listed in the above snapshot of the armlab filesystem due to space constraints.
 {% endhint %}
-

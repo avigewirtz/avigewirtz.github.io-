@@ -1,7 +1,8 @@
 # Table of contents
 
-* [README](README.md)
-* [Preface](preface.md)
+## Preface
+
+* [Audience, Framework, and Conventions](README.md)
 
 ## armlab
 
@@ -16,7 +17,10 @@
 * [Command Line User Interface](linux/user-interfaces-gui-and-cli.md)
 * [Terminal](linux/terminal.md)
 * [Operating System](linux/operating-system.md)
-* [Shell](linux/shell.md)
+* [Shell](linux/shell/README.md)
+  * [Types of CLI Commands](linux/shell/types-of-cli-commands.md)
+  * [How the shell executes commands](linux/shell/how-the-shell-executes-commands.md)
+* [Putting it All Together](linux/putting-it-all-together.md)
 * [Filesystem](linux/filesystem/README.md)
   * [Files and Directories](linux/filesystem/files-and-directories.md)
   * [Filenames](linux/filesystem/filenames.md)
@@ -106,6 +110,10 @@
   * [Linking](gcc/understanding-each-stage/linking.md)
 * [FAQ](gcc/faq.md)
 * [Further Reading](gcc/further-reading.md)
+
+***
+
+* [Page 1](page-1.md)
 
 ## Make
 
