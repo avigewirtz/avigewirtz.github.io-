@@ -19,10 +19,10 @@ The Command Line Interface (CLI) is a text-based interface where users issue com
 
 Let's consider a couple of examples to highlight the distinction:
 
-1. Opening an application, such as Microsoft Word:
-   * **GUI**: Users can simply double-click on the Microsoft Word icon.
-   * **CLI**: Users need to enter a textual command like `open -a "Microsoft Word"`.
-2. Moving a file:
+1. **Opening an application**:
+   * **GUI**: Users can simply double-click on the application's icon. For example, to open Microsoft Word, simply double-click the _Word_ icon.
+   * **CLI**: Users must enter a textual command. For example, to open Microsoft Word, you can invoke `open -a "Microsoft Word"`.
+2. **Moving a file**:
    * **GUI**: Users can move a file using the _drag-and-drop_ paradigm.
    * **CLI**: Users must issue a textual command like `mv source_file destination_directory`.
 
