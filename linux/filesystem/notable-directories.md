@@ -14,7 +14,7 @@ Upon login, a user’s home directory is by default their _working directory_.
 
 ## Working Directory
 
-Each [process](../../appendices/operating-systems/process.md) has a dynamically associated directory, called a _working directory_**,** which, informally, can be thought of as the "location" where the process is currently "working in." (If this idea seems abstract, it should become more concrete when we cover [pathnames](pathnames.md).)
+Each [process](broken-reference) has a dynamically associated directory, called a _working directory_**,** which, informally, can be thought of as the "location" where the process is currently "working in." (If this idea seems abstract, it should become more concrete when we cover [pathnames](pathnames.md).)
 
 When you log into a terminal session, your home directory is by default set as your working directory. You can change the working directory, however, using the [`cd` command](../../bash/navigating-the-filesystem/cd-change-working-directory.md), which we'll cover later.
 
