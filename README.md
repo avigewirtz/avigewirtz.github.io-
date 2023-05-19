@@ -1,23 +1,121 @@
-# Audience, Framework, and Conventions
+# Contents
 
-## Target Audience
+### Armlab
 
-This book is specifically designed for students currently enrolled in _COS217: Introduction to Programming Systems_. As such, it presupposes familiarity with fundamental programming concepts covered in COS126, including variables, control structures, loops, and functions.
+* Background
+  * Activating your armlab Account
+  * Logging in & out of armlab
+  * Configuring your armlab Environment
 
-### Assumed Framework
+### Linux
 
-All code examples in this book have been executed on armlab, which runs on the Red Hat Linux distribution. While these examples are anticipated to function on other Unix-like operating systems, including macOS, minor variations may occur.
+* Background
+* Command Line User Interface
+* Terminal
+* Operating System
+* Shell
+  * Types of CLI Commands
+  * How the shell executes commands
+* Putting it All Together
+* Filesystem
+  * Files and Directories
+  * Filenames
+  * Filesystem Layout
+  * Notable Directories
+  * Pathnames
+* Further Reading
 
-## Conventions used
+### Bash
 
-_Italic_
+* Background
+* Getting Started
+* Useful Command-line Features
+* Getting Help
+* Navigating the filesystem
+  * pwd (Print Working Directory)
+  * cd (Change Working Directory)
+  * ls (List Directory Contents)
+* Understanding Working Directories
+* Creating Directories
+* Creating Files
+* Deleting Files and Directories
+* Viewing Files
+* Redirection and Piping
+* Copying Files and Directories
+* Moving and Renaming Files and Directories
+* Users and Groups
+* File and Directory Access Permissions
+* Linux Environment Variables
+* Bash Configuration Files
+* Quoting
+* How Bash Executes Cammands
+  * Path Environment Variable
+* Bash Cheat Sheet
+* Further Reading
 
-> Indicates new terms, URLs, and filenames.
+### Emacs
 
-`Code blocks`
+* Background
+* Fundamentals
+* Basic Commands
+  * Launching and Existing Emacs
+  * Moving the cursor
+  * Selecting a Region
+  * Basic Editing Commands
+* More Advanced Commands
+  * Managing Windows and Buffers
+  * Search and Replace
+  * Building
+* Emacs Configuration Files
+* Emacs Cheat Sheet
+* Further Reading
 
-> Used for program listings, as well as within paragraphs to refer to program elements such as variable or function names, data types, environment variables, statements, and keywords.
+### Git & GitHub
 
-All-CAPS
+* Background
+  * Setting Up Your Git Environment
+  * Getting Help
+* Git Fundamentals
+* Obtaining a Git Repository
+  * Creating a Repository
+  * Cloning a Repository
+  * Authentication
+* Git Workflow
+* Pushing and Pulling
+* Obtaining COS217 Assignment Repositories
+* COS217 Development Workflow
+* Revisiting the add, commit, and push commands
+  * git add
+  * git commit
+  * git push
+* Important Git commands
+  * Checking the Status of Your Repository
+  * Viewing Commit History
+  * Ignoring Files
+* Resolving Merge Conflicts
+* Configurations
+* Git Cheat Sheet
+* Further Reading
 
-> Signifies a placeholder, meaning text that should be substituted with user-provided values (e.g., `mkdir DIRECTORY_NAME`).
+### GCC
+
+* The Four Stage Build Process
+* Understanding each stage
+  * Machine Code
+  * Assembly Language
+  * High-level Language
+  * Linking
+* Further Reading
+
+### Gprof
+
+* Background
+* How Gprof Works
+* Using Gprof
+* Interpreting Gprof Output
+
+### Appendices
+
+* Appendix A: Operating Systems
+* Appendix B: Detailed Explanation of I/O and Redirection & Piping
+* Glossary
