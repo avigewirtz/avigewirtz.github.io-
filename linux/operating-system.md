@@ -7,3 +7,30 @@ Think of the operating system as a bridge between the computer's hardware (such 
 The operating system performs several key tasks. It controls how programs are executed, manages the computer's memory to ensure that different programs don't interfere with each other, and handles input and output operations (like displaying information on the screen or printing documents).
 
 Different operating systems exist, such as Windows, macOS, and Linux. Each has its own features and design, but they all serve the same purpose of making the computer usable and providing a platform for running applications.
+
+
+
+## System Call Interface
+
+
+
+
+
+## Libraries
+
+
+
+
+
+## Utility Programs
+
+
+
+
+
+
+
+
+
+
+
