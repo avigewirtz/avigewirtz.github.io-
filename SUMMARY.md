@@ -120,6 +120,6 @@
 
 ## Appendices
 
-* [Operating Systems](appendices/operating-systems/README.md)
-* [Detailed Explanation of I/O and Redirection & Piping](appendices/detailed-explanation-of-i-o-and-redirection-and-piping.md)
+* [Appendix A: Operating Systems](appendices/operating-systems/README.md)
+* [Appendix B: Detailed Explanation of I/O and Redirection & Piping](appendices/detailed-explanation-of-i-o-and-redirection-and-piping.md)
 * [Glossary](appendices/glossary.md)
