@@ -1,4 +1,5 @@
 ---
+cover: .gitbook/assets/Group 4 (3).png
 coverY: 0
 ---
 
