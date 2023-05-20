@@ -1,6 +1,6 @@
 # Layers
 
-When a command is issued in a terminal, what we often perceive as a simple action is actually the culmination of a complex process involving several layers of abstraction within a computer system. This process ultimately leads to the command being executed by the computer hardware.
+When a command is issued in a terminal, what might be perceived as a simple action is actually the culmination of a complex process involving several layers of abstraction within a computer system. This process ultimately leads to the command being executed by the computer hardware.
 
 But let's take a step back to look at these layers, starting from the bottom up, and see how they interact with each other to make the command execution possible.
 
