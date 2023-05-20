@@ -33,4 +33,51 @@ The sequence of interactions is illustrated in Figure 4.
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 3.21.28 PM.png" alt=""><figcaption><p>Figure 4: Sequence of interactions between the user, terminal, shell, OS, and hardware.</p></figcaption></figure>
 
-d
+
+
+
+When a command is issued in a terminal, what we often perceive as a simple action is actually the culmination of a complex process involving several layers of abstraction within a computer system. This process ultimately leads to the command being executed by the computer hardware. 
+
+But let's take a step back to look at these layers, starting from the bottom up, and see how they interact with each other to make the command execution possible.
+
+
+The general idea is that you start with the services offered by the underlying hardware and then add a sequence of layers, each providing a higher (more abstract) level of service. 
+The services provided at the high layers are implemented in terms of the services provided by the low layers. 
+
+At the lowest level, there is the hardware, which includes the central processing unit (CPU), memory, storage devices, and various peripheral devices. All interactions at this level involve electrical or magnetic signals, which are inherently complex and difficult to work with directly.
+Sitting above the hardware is the Instruction Set Architecture (ISA). The ISA abstracts the hardware and provides a more user-friendly software interface. In essence, it defines the machine language that the CPU can understand and process. It is through this layer that programs can communicate with the hardware.
+
+
+Up next is the Operating System (OS) layer, which further abstracts the complexities of the ISA, providing a cleaner, safer, and more efficient interface to the hardware. 
+
+An operating system is a program that, from the programmer’s point of view, adds a variety of new instructions and features, above and beyond what the ISA level provides. 
+
+This level provides the complete set of instructions available to application programmers. The new instructions are called system calls. A system call invokes a predefined operating system service. A typical system call might be to read some data from a file or to…
+
+
+OS Features: 
+- time-sharing. Does this by managing the hardware resources like memory, CPU, and peripherals. 
+
+
+Above the OS Kernel, there is the Standard C Library. This library, among other things, provides a higher-level interface to system calls. In doing so, it simplifies the process of writing software and reduces the chance of errors. It essentially wraps the somewhat arcane system calls in more user-friendly functions.
+The next layer is utilities, which are built on top of the standard library. These utilities are pre-packaged programs that further reduce the need to write your own software for many common tasks. They provide a set of common operations that are used frequently, reducing the need for repetitive coding.
+
+Sitting above utilities and user programs is the shell. The shell provides a language in which commands are issued. It handles tasks like locating programs, handling input and output calls, and starting a new process. The shell essentially provides a cleaner interface and makes it more efficient for users to interact with the system. This is done via the shell's language, which allows programs to be run with simple commands and implements the command-line interface (CLI).
+
+
+At the top of this abstraction pyramid is the terminal or terminal emulator. This is the interface that users interact with directly. It captures input from the user and passes it to the shell for interpretation and execution.
+
+
+Notes: 
+
+1. While these layers provide a simplified view of how commands are issued and executed, it's important to note thinking of a system as a linear sequence of layers is an oversimplification. Many times there are multiple abstractions provided at any given level of the system. Additionally, the division between the layers isn't always clear-cut. For instance, user programs can interact directly with the kernel via system calls without using C library functions or utilities.
+2. This system is a simplification. In reality there are more layers. 
+3. There is a fundamental break between levels 3 and 4. Software in Level 3 and below level mode privileges. Software from level 4 and above is user level. As such, there isn't a fundamental difference between a user-level programs, such as user-written programs and programs such as ssh, emacs, or even Bash. Both are software that interacts with the lower layers of the system, and both are subject to the same rules and limitations.
+
+
+Benefits of layering 
+
+
+1. Layering provides two useful features. First, it decomposes the problem of building a network into more manageable components. Rather than implementing a monolithic piece of software that does everything you will ever want, you can implement several layers, each of which solves one part of the problem.
+2. Second, it provides a more modular design. If you decide that you want to add some new service, you may only need to modify the funconality at one layer, reusing the func!ons provided at all the other layers.
+
