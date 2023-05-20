@@ -1,8 +1,8 @@
-# Logging in & out of armlab
+# Logging in & out of Armlab
 
-## Logging into armlab
+## Logging into Armlab
 
-Logging into armlab is accomplished via an _SSH client,_ which is a program that uses the [SSH](../broken-reference/) Protocol to communicate with a remote computer.
+Logging into Armlab is accomplished via an _SSH client,_ which is a program that uses the [SSH](ssh-protocol.md) Protocol to communicate with a remote computer.
 
 {% tabs %}
 {% tab title="Mac" %}
