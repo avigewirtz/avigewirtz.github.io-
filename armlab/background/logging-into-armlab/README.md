@@ -1,8 +1,8 @@
-# Logging into & out of armlab
+# Logging in & out of armlab
 
 ## Logging into armlab
 
-Logging into armlab is accomplished via an _SSH client,_ which is a program that uses the [SSH](broken-reference) Protocol to communicate with a remote computer.
+Logging into armlab is accomplished via an _SSH client,_ which is a program that uses the [SSH](../broken-reference/) Protocol to communicate with a remote computer.
 
 {% tabs %}
 {% tab title="Mac" %}
@@ -21,7 +21,7 @@ The first time you log into armlab, an SSH-related message will appear. Respond 
 
 If your login is successful, a shell prompt similar to the following will appear in your terminal window:
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-04-23 at 3.12.10 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Screenshot 2023-04-23 at 3.12.10 PM.png" alt=""><figcaption></figcaption></figure>
 
 Note that the prompt may either state armlab01 or armlab02. These computers are interconnected and share the same filesystem, so inconsequential which one you are logged into.
 {% endtab %}
@@ -43,14 +43,14 @@ The PuTTY terminal emulator has a built-in SSH client.
 
 If your login is successful, a shell prompt like the following will be displayed in your terminal window:
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-04-23 at 3.12.10 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Screenshot 2023-04-23 at 3.12.10 PM.png" alt=""><figcaption></figcaption></figure>
 {% endtab %}
 {% endtabs %}
 
 ## Logging out of armlab
 
-to log out of armlab, simply invoke `logout`, and your terminal session will be closed. 
+to log out of armlab, simply invoke `logout`, and your terminal session will be closed.
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-05-09 at 3.44.12 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Screenshot 2023-05-09 at 3.44.12 PM.png" alt=""><figcaption></figcaption></figure>
 
 [^1]: Replace with your real NetID.
