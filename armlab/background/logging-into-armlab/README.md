@@ -1,4 +1,4 @@
-# Logging in & out of Armlab
+# Logging into & out of Armlab
 
 ## Logging into Armlab
 
@@ -23,7 +23,7 @@ If your login is successful, a shell prompt similar to the following will appear
 
 <figure><img src="../../../.gitbook/assets/Screenshot 2023-04-23 at 3.12.10 PM.png" alt=""><figcaption></figcaption></figure>
 
-Note that the prompt may either state armlab01 or armlab02. These computers are interconnected and share the same filesystem, so the distinction is inconsequential.
+Note that the prompt may either state armlab01 or armlab02. These computers are interconnected and share the same filesystem, so it is inconsequential which one you are logged into.
 {% endtab %}
 
 {% tab title="Windows" %}
