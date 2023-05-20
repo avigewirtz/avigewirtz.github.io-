@@ -1,15 +1,15 @@
 # Shell
 
-Commands are issued in the terminal as sequined of text. Just like sequences of text in a program must adhere to specific language structure, such as Java, C, or Python, sequences of text issued in a terminal must adhere to a specific language structure. Similarly, just like programming languages like Java, C, or Python must be compiled or interpreted by a program in order to be executed, so too the commands issued in the terminal must be translated by some program to a lower level form. 
+Commands are issued in the termiank as sequences of text. Just as commands in a programming language like Java, C, or Python must comply with a specific grammatical structure, so must the commands entered in a terminal. Furthermore, just like Java, C, or Python require an interpreter or compiler to translate them into an executable form, commands inputted into the terminal also necessitate a similar translation process.
 
-This is where the shell. The shell is both a programming language and a command interpreter. In other words, the shell implements the CLI interface by performing two functions: 
+Enter the shell - a dual-purpose entity serving as both a programming language and a command interpreter.
 
 1. **Defining the language of CLI commands**: The shell defines the syntax and semantics of CLI commands, specifying the format that commands must adhere to and the range of possible operations.
 2. **Interpreting CLI commands**: The shell reads and interprets textual commands entered in the terminal, executing them by running either built-in functions or by invoking external programs.
 
 The main difference between a language like Java or C and Bash is that instead of Bash being used to write programs, the shell is primarily used to interact with the operating system. When you type a command into the shell, the shell interprets your command and then instructs the operating system accordingly.
 
-essentially, However, sequences of text input into the termianl are issued to OS via the shell, which serves as an intermediary between the user and the OS.
+Essential, the shell serves as an intermediary between the user in the terminal and the OS. 
 
 
 ## Shell Syntax
