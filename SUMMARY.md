@@ -16,7 +16,7 @@
 ## Linux
 
 * [Background](linux/background.md)
-* [Command Line User Interface](linux/user-interfaces-gui-and-cli.md)
+* [User Interface](linux/user-interfaces-gui-and-cli.md)
 * [Terminal](linux/terminal.md)
 * [Shell](linux/shell.md)
   * [Types of CLI Commands](linux/shell/types-of-cli-commands.md)
