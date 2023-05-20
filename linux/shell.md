@@ -22,11 +22,9 @@ In the shell command language, a unit of text that is the result of parameter ex
 
 * **Command name**:
   * **Executable file**: executable program somewhere in the file system. either an OS utility program or a user-written program. It's located on the filesystem in an executable.  Examples include `ls`, `ssh`, `emacs`, `javac`, `java`, `python`, `gcc`, and so on. The shell attempts to locate this program based on the PATH environment variable or an absolute/relative path if provided. The only difference is whether you have to supply a pathname
-  *   **Shell Built-in**: Built-In Utility (or Built-In)
-
-      A utility implemented within the shell.  In addition to running external programs, the shell has a set of built-in commands that it can execute directly. These include commands like `cd`, `echo`, `exit`, `alias`, `set`, and many others.
+  *   **Shell Built-in**: A utility implemented within the shell. These include commands like `cd`, `echo`, `exit`, `alias`, `set`, and many others.
   * Function
-* **Argument**: A parameter passed to a utility as the equivalent of a single string in the _argv_ array created by one of the _exec_ functions. An argument is one of the options, option-arguments, or operands following the command name. A parameter that follows certain options
+* **Argument**: A parameter passed to a utility. An argument is typically an option or an operand. 
   * **Option**: An argument to a command that is generally used to specify changes in the utility's default behavior
   * **Operand**: An argument to a command that is generally used as an object supplying information to a utility necessary to complete its processing. Operands generally follow the options in a command line.&#x20;
 
