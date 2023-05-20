@@ -1,6 +1,8 @@
 # Shell
 
-CLI commands are ultimately executed by the OS. However, the commands are not issued to the OS directly. Instead, they are issued via an intermediary program known as the _shell_, which is the program that implements the CLI.&#x20;
+commands are invoked in terminal
+
+in what language? who interprets. for example, Like C compiler  CLI commands are ultimately executed by the OS. However, the commands are not issued to the OS directly. Instead, they are issued via an intermediary program known as the _shell_, which is the program that implements the CLI.&#x20;
 
 1. **Defining the language of CLI commands**: The shell defines the syntax and semantics of CLI commands, specifying the format that commands must adhere to and the range of possible operations.
 2. **Interpreting CLI commands**: The shell reads and interprets textual commands entered in the terminal, executing them by running either built-in functions or by invoking external programs.
