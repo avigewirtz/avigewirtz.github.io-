@@ -21,7 +21,7 @@ A commands issues in the shell generally consists of a command name followed by 
   * Function
 * **Argument**: A parameter passed to a utility. An argument is typically an option or an operand.
   * **Option**: An argument to a command that is generally used to specify changes in the utility's default behavior
-  * **Operand**: An argument to a command that is generally used as an object which specifies the data to be manipulated or operated on. Operands generally follow the options in a command line.
+  * **Operand**: An argument to a command that generally specifies the data to be manipulated or operated on. Operands generally follow the options in a command line.
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-19 at 4.10.11 PM.png" alt="" width="375"><figcaption></figcaption></figure>
 
