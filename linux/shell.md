@@ -14,11 +14,7 @@ Essential, the shell serves as an intermediary between the user in the terminal 
 
 ## Shell Syntax
 
-A command issued in a Unix-like shell typically has several components:
-
-#### Field
-
-A unit of text that is the result of parameter expansion, arithmetic expansion, command substitution, or field splitting. During command processing, the resulting fields are used as the command name and its arguments.
+A commands issues in the shell generallt consists of a command name followed by arguments. Technically referee to as fields. 
 
 * **Command name**:
   * **Executable file**: executable program somewhere in the file system. either an OS utility program or a user-written program. It's located on the filesystem in an executable.  Examples include `ls`, `ssh`, `emacs`, `javac`, `java`, `python`, `gcc`, and so on. The shell attempts to locate this program based on the PATH environment variable or an absolute/relative path if provided. The only difference is whether you have to supply a pathname
