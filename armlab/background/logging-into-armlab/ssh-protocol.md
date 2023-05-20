@@ -1,4 +1,4 @@
-Secure Shell (SSH) is a network protocol that provides an encrypted communication channel to a remote computer. Its primary function is to enable logging into a remote computer and executing commands.
+Secure Shell (SSH) is a network protocol that provides an encrypted communication channel between computers physically distant computers. Its primary function is to enable logging into a remote computer and executing commands.
 
 SSH Architecture:
 SSH operates on the client-server model, connecting an instance of an SSH client with an instance of an SSH server. Note that programs are distinct from the SSH protocol itself. The SSH protocol defines the rules for secure communication, while software tools like OpenSSH, PuTTY, and others implement these rules in their unique ways.
