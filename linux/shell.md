@@ -1,23 +1,18 @@
 # Shell
 
+Commands are invoked in terminal, but in what languege are they invoked? And who interprets the commands? Both these tasks are implemented by a program called the shell. 
 
-
-commands are invoked in terminal
-
-in what language? who interprets. 
+1. **Defining the language of CLI commands**: The shell defines the syntax and semantics of CLI commands, specifying the format that commands must adhere to and the range of possible operations.
+2. **Interpreting CLI commands**: The shell reads and interprets textual commands entered in the terminal, executing them by running either built-in functions or by invoking external programs.
 
 Imagine a programming language such as C. In C, you write a series of commands, like declaring variables, calling functions, and running loops. Those commands are then compiled by a C compiler like GCC, which translates the instructions into machine code that your computer can execute. The C language serves as a bridge between you, the programmer, and the computer system itself, allowing you to manipulate data and run algorithms without having to work directly with the low-level machine language.
 
 Issuing commands in the CLI is very similar in concept. Commands are also issue in a language, but instead of being used to write programs, it's primarily used to interact with the operating system. When you type a command into the shell, the shell interprets your command and then instructs the operating system accordingly.
 
+essentially, However, sequences of text input into the termianl are issued to OS via the shell, which serves as an intermediary between the user and the OS.
 
 
-CLI commands are ultimately executed by the OS. However, the commands are not issued to the OS directly. Instead, they are issued via an intermediary program known as the _shell_, which is the program that implements the CLI.&#x20;
-
-1. **Defining the language of CLI commands**: The shell defines the syntax and semantics of CLI commands, specifying the format that commands must adhere to and the range of possible operations.
-2. **Interpreting CLI commands**: The shell reads and interprets textual commands entered in the terminal, executing them by running either built-in functions or by invoking external programs.
-
-## Command Syntax
+## Shell Syntax
 
 A command issued in a Unix-like shell typically has several components:
 
