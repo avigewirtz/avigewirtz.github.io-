@@ -1,13 +1,13 @@
 # Shell
 
-Commands are invoked in terminal, but in what languege are they invoked? And who interprets the commands? Both these tasks are implemented by a program called the shell. 
+Commands are issued in the terminal as sequined of text. Just like sequences of text in a program must adhere to specific language structure, such as Java, C, or Python, sequences of text issued in a terminal must adhere to a specific language structure. Similarly, just like programming languages like Java, C, or Python must be compiled or interpreted by a program in order to be executed, so too the commands issued in the terminal must be translated by some program to a lower level form. 
+
+This is where the shell. The shell is both a programming language and a command interpreter. In other words, the shell implements the CLI interface by performing two functions: 
 
 1. **Defining the language of CLI commands**: The shell defines the syntax and semantics of CLI commands, specifying the format that commands must adhere to and the range of possible operations.
 2. **Interpreting CLI commands**: The shell reads and interprets textual commands entered in the terminal, executing them by running either built-in functions or by invoking external programs.
 
-Imagine a programming language such as C. In C, you write a series of commands, like declaring variables, calling functions, and running loops. Those commands are then compiled by a C compiler like GCC, which translates the instructions into machine code that your computer can execute. The C language serves as a bridge between you, the programmer, and the computer system itself, allowing you to manipulate data and run algorithms without having to work directly with the low-level machine language.
-
-Issuing commands in the CLI is very similar in concept. Commands are also issue in a language, but instead of being used to write programs, it's primarily used to interact with the operating system. When you type a command into the shell, the shell interprets your command and then instructs the operating system accordingly.
+The main difference between a language like Java or C and Bash is that instead of Bash being used to write programs, the shell is primarily used to interact with the operating system. When you type a command into the shell, the shell interprets your command and then instructs the operating system accordingly.
 
 essentially, However, sequences of text input into the termianl are issued to OS via the shell, which serves as an intermediary between the user and the OS.
 
