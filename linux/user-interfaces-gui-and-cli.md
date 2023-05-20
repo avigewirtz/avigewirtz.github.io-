@@ -15,7 +15,7 @@ The GUI provides a visually intuitive and user-friendly interface, making it esp
 
 ### Command Line Interface
 
-The CLI is a text-based interface where users issue commands by typing sequences of text instead of clicking on graphical elements. To picture a CLI, think of it as interacting with a computer via a text messaging interface. Despite its more primitive nature, CLIs can perform every action a GUI can--even more, in fact. The difference lies in how the commands are issued by the user.
+The CLI is a text-based interface where users issue commands by typing sequences of text. To picture a CLI, think of it as interacting with a computer via a text messaging interface. Despite its more primitive nature, CLIs can perform every action a GUI can--even more, in fact. The difference lies in only how the commands are issued by the user.
 
 Let's consider a couple of examples to highlight the distinction:
 
