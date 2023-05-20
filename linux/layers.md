@@ -8,7 +8,7 @@ The general idea is that you start with the services offered by the underlying h
 
 ## **Hardware**
 
-At the lowest level, there is the hardware, which provides the raw computing resources, including the central processing unit (CPU), memory (RAM), storage devices (like SSDs or HDDs), and input/output devices (like the keyboard, mouse, and display unit). The CPU carries out the actual computations, RAM holds data that needs to be quickly accessed, and storage devices hold larger amounts of data for long-term storage. At this level, operations are performed in binary, directly manipulating electrical or magnetic signals within the hardware. Hardware is incredibly complex and difficult to work with directly.
+At the lowest level, there is the hardware, which provides the raw computing resources, including the central processing unit (CPU), memory (RAM), storage devices (like SSDs or HDDs), and input/output devices (like the keyboard, mouse, and display unit). The CPU carries out the actual computations, RAM holds data that needs to be quickly accessed, and storage devices hold larger amounts of data for long-term storage. At this level, operations are performed in binary, directly manipulating electrical or magnetic signals within the hardware. Hardware is incredibly complex and difficult to work with directly, and is well out of the scope of computer programming.
 
 ## **Instruction Set Architecture (ISA)**
 
