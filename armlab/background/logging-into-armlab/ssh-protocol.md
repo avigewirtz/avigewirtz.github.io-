@@ -1,10 +1,13 @@
-# SSH Protocol
+# Secure Shell (SSH)
 
-## What even is a protocol?
+Secure Shell (SSH) is a protocol that provides a secure way to access a remote computer. It's primarily used to login to a remote computer and execute commands. 
+
+## What even is a protocal? 
 
 
+## SSH overview
 
-Secure Shell (SSH) is a protocol that provides a secure way to access a remote computer. It's primarily used to login to a remote computer and execute commands. SSH uses the Client-server model, connecting an SSH client instance with an SSH server.
+SSH uses the Client-server model, connecting an SSH client instance with an SSH server.
 
 1. Establishing a Connection: When you want to connect to another computer (the "remote" computer), you use a software application (an "SSH client") to make that request. Your computer is the "local" computer.
 2. Authentication: The remote computer verifies your identity before it opens up a connection. This is often done using a username/password combination, although a more secure method is to use a pair of digital keys (one private, one public).
