@@ -9,24 +9,19 @@ Enter the shell - a dual-purpose entity serving as both a programming language a
 
 The main difference between a language like Java or C and Bash is that instead of Bash being used to write programs, the shell is primarily used to interact with the operating system. When you type a command into the shell, the shell interprets your command and then instructs the operating system accordingly.
 
-Essential, the shell serves as an intermediary between the user in the terminal and the OS. 
-
+Essentially, the shell serves as an intermediary between the user in the terminal and the OS.
 
 ## Shell Syntax
 
-A commands issues in the shell generallt consists of a command name followed by arguments. Technically referee to as fields. 
+A commands issues in the shell generally consists of a command name followed by arguments. Technically referee to as fields.
 
 * **Command name**:
-  * **Executable file**: executable program somewhere in the file system. either an OS utility program or a user-written program. It's located on the filesystem in an executable.  Examples include `ls`, `ssh`, `emacs`, `javac`, `java`, `python`, `gcc`, and so on. The shell attempts to locate this program based on the PATH environment variable or an absolute/relative path if provided. The only difference is whether you have to supply a pathname
-  *   **Shell Built-in**: A utility implemented within the shell. These include commands like `cd`, `echo`, `exit`, `alias`, `set`, and many others.
+  * **Executable file**: executable program somewhere in the file system. either an OS utility program or a user-written program. It's located on the filesystem in an executable. Examples include `ls`, `ssh`, `emacs`, `javac`, `java`, `python`, `gcc`, and so on. The shell attempts to locate this program based on the PATH environment variable or an absolute/relative path if provided. The only difference is whether you have to supply a pathname
+  * **Shell Built-in**: A utility implemented within the shell. These include commands like `cd`, `echo`, `exit`, `alias`, `set`, and many others.
   * Function
-* **Argument**: A parameter passed to a utility. An argument is typically an option or an operand. 
+* **Argument**: A parameter passed to a utility. An argument is typically an option or an operand.
   * **Option**: An argument to a command that is generally used to specify changes in the utility's default behavior
-  * **Operand**: An argument to a command that is generally used as an object supplying information to a utility necessary to complete its processing. Operands generally follow the options in a command line.&#x20;
-
-
-
-&#x20;
+  * **Operand**: An argument to a command that is generally used as an object which specifies the data to be manipulated or operated on. Operands generally follow the options in a command line.
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-19 at 4.10.11 PM.png" alt="" width="375"><figcaption></figcaption></figure>
 
@@ -38,6 +33,3 @@ java Hello
 gcc217 hello.c -o hello
 ./hello
 ```
-
-
-
