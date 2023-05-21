@@ -23,6 +23,7 @@
   * [Examples](linux/shell/how-the-shell-executes-commands.md)
 * [Layers](linux/layers.md)
 * [Operating System](linux/operating-system.md)
+* [Libraries and Utilities](linux/libraries-and-utilities.md)
 * [Putting it All Together](linux/putting-it-all-together.md)
 * [Filesystem](linux/filesystem/README.md)
   * [Files and Directories](linux/filesystem/files-and-directories.md)
