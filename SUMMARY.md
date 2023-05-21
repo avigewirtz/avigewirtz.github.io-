@@ -120,7 +120,9 @@
 * [Background](gprof/background.md)
 * [How Gprof Works](gprof/how-gprof-works.md)
 * [Using Gprof](gprof/using-gprof.md)
-* [Interpreting Gprof Output](gprof/interpreting-gprof-output.md)
+* [Interpreting Gprof Output](gprof/interpreting-gprof-output/README.md)
+  * [Flat Profile](gprof/interpreting-gprof-output/flat-profile.md)
+  * [Call Graph](gprof/interpreting-gprof-output/call-graph.md)
 
 ## Appendices
 

@@ -112,7 +112,7 @@
 * [Background](gprof/background.md)
 * [How Gprof Works](gprof/how-gprof-works.md)
 * [Using Gprof](gprof/using-gprof.md)
-* [Interpreting Gprof Output](gprof/interpreting-gprof-output.md)
+* [Interpreting Gprof Output](gprof/interpreting-gprof-output/)
 
 ## Appendices
 
