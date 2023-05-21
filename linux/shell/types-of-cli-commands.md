@@ -2,7 +2,7 @@
 
 
 
-Shell commands can be categorized into various types:
+Shell commands can be categorized into various types:H
 
 * **File Operations**: These are commands used for creating, deleting, viewing, and manipulating files and directories. Examples include `ls` (list directory contents), `cd` (change directory), `rm` (remove files or directories), `cp` (copy files or directories), `mv` (move or rename files), and `cat` (concatenate and display file content).
 * **Process Control**: These commands control the execution of processes. Examples include `ps` (display current processes), `kill` (terminate a process), `bg` (put a process in the background), `fg` (bring a process to the foreground), and `top` or `htop` (display dynamic real-time view of running processes).

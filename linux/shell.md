@@ -1,6 +1,6 @@
 # Shell
 
-Just as commands issued in a programming language like Java, C, or Python must comply with a specific grammatical structure, so too must the commands entered in a terminal. Similarly, just like Java, C, or Python require an interpreter or compiler to translate them into an executable form, commands inputted into the terminal necessitate a similar translation process.
+Just as commands issued in a programming language like Java, C, or Python must comply with a specific grammatical structure, so too must the commands entered in a terminal. Similarly, just like Java, C, or Python require an interpreter or compiler to translate them into an executable form, commands inputted into the terminal necessitate a similar translation process.H
 
 Enter the shell - a dual-purpose entity serving as both a programming language and a command interpreter.
 

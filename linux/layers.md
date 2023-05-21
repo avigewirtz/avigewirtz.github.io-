@@ -1,6 +1,6 @@
 # Layers
 
-When a command is executed in a terminal, what might be perceived as a simple action is actually the culmination of many complex processes involving several layers of abstraction within the computer system. This process ultimately leads to the command being executed by the computer hardware.
+When a command is executed in a terminal, what might be perceived as a simple action is actually the culmination of many complex processes involving several layers of abstraction within the computer system. This process ultimately leads to the command being executed by the computer hardware.H
 
 But let's take a step back to look at these layers, starting from the bottom up, and see how they interact with each other to make the command execution possible.
 
@@ -12,7 +12,7 @@ At the lowest level, there is the hardware, which provides the raw computing res
 
 ## **Instruction Set Architecture (ISA)**
 
-Sitting above the hardware is the Instruction Set Architecture (ISA), which is the lowest level software interface. The ISA abstracts the hardware by providing a software interface. It's a specification detailing the CPU's functions, including the specific binary codes it understands and how it processes them. ISAs can be complex (CISC - Complex Instruction Set Computer) like x86, or simplified (RISC - Reduced Instruction Set Computer) like ARM.  In essence, it defines the machine language that the CPU can understand and process. It is through this layer that programs can communicate with the hardware
+Sitting above the hardware is the Instruction Set Architecture (ISA), which is the lowest level software interface. The ISA abstracts the hardware by providing a software interface. It's a specification detailing the CPU's functions, including the specific binary codes it understands and how it processes them. ISAs can be complex (CISC - Complex Instruction Set Computer) like x86, or simplified (RISC - Reduced Instruction Set Computer) like ARM. In essence, it defines the machine language that the CPU can understand and process. It is through this layer that programs can communicate with the hardware
 
 ## **Operating System (OS)**
 
@@ -73,7 +73,7 @@ OS Features:
 
 * time-sharing. Does this by managing the hardware resources like memory, CPU, and peripherals. The Operating System provides an interface between the hardware and user-level software, primarily through a feature known as the system call interface. This interface allows user-level applications to request services from the OS, which are typically related to input/output operations, process management, file management, and communication. It's through system calls that a program can access the processor, memory, and other system resources managed by the OS.
 
-## **Libraries:**&#x20;
+## **Libraries:**
 
 Above the OS Kernel, there is the Standard C Library. This library, among other things, provides a higher-level interface to system calls. In doing so, it simplifies the process of writing software and reduces the chance of errors. It essentially wraps the somewhat arcane system calls in more user-friendly functions. The next layer is utilities, which are built on top of the standard library. These utilities are pre-packaged programs that further reduce the need to write your own software for many common tasks. They provide a set of common operations that are used frequently, reducing the need for repetitive coding.
 
@@ -84,8 +84,6 @@ At the top of this abstraction pyramid is the terminal or terminal emulator. Thi
 Programmers seldom interact directly with system calls. Instead, they use library functions, often referred to as "wrapper functions", that call the system calls for them. Libraries offer a multitude of benefits over direct system call use.
 
 The key advantage is portability. System calls are specific to an operating system, meaning that a Linux system call interface differs from those on macOS or Windows. Library functions, in contrast, are typically platform-independent, making code using these libraries portable across different operating systems. Library APIs also offer improved efficiency, security, and ease of use.
-
-
 
 Building off the system call interface, libraries provide a higher-level programming interface to the services provided by the OS. A library is a collection of pre-compiled code that programs can use to perform common tasks. For instance, a standard C library (like glibc in GNU/Linux systems) provides a set of functions (like `printf`, `malloc`, etc.), which in turn use lower-level system calls to interact with the OS.
 
@@ -130,8 +128,6 @@ So, to summarize, the flow of command execution starts from the terminal, where 
 ## Diagram
 
 <figure><img src="../.gitbook/assets/image (1).png" alt="" width="375"><figcaption></figcaption></figure>
-
-
 
 ## Benefits of layering
 
