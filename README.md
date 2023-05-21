@@ -15,7 +15,7 @@
 * [Operating System](linux/operating-system.md)
 * [Shell](linux/shell.md)
   * [Types of CLI Commands](linux/shell/types-of-cli-commands.md)
-  * [How the shell executes commands](linux/shell/how-the-shell-executes-commands.md)
+  * [How the shell executes commands](broken-reference)
 * [Putting it All Together](linux/putting-it-all-together.md)
 * [Filesystem](linux/filesystem.md)
   * [Files and Directories](linux/filesystem/files-and-directories.md)
