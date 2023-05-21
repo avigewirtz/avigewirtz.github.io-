@@ -5,4 +5,4 @@ To complete this step, you need to be connected to the Princeton network. You ca
 {% endhint %}
 
 1. Browse to: [https://eisess200l.princeton.edu/cgi-bin/Shell/nview.pl](https://eisess200l.princeton.edu/cgi-bin/Shell/nview.pl). In the resulting **Update your Unix account** page, select **Enable my Unix account**, then click **Enable my Account**.
-2. Under **Advanced settings**, select **/bin/bash – GNU Bash (/bin/bash)**, then _c_lick **Submit Change**_.H_
+2. Under **Advanced settings**, select **/bin/bash – GNU Bash (/bin/bash)**, then _c_lick **Submit Change**_._

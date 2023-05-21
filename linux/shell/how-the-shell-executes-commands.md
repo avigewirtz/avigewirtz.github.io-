@@ -1,6 +1,6 @@
 # Examples
 
-*   `javac hello.javaH`
+*   `javac hello.java`
 
     `javac` is the Java compiler that translates Java source code into Java Bytecode. The shell interprets `javac` as an executable program, and `hello.java` as the argument to this program. The shell uses a system call to create a new process and then loads the `javac` program into the new process's memory. `javac` then reads the `hello.java` file and compiles it into Java Bytecode, creating a file named `Hello.class`.
 *   `java Hello`

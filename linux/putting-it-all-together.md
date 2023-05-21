@@ -1,6 +1,6 @@
 # Putting it All Together
 
-The sequence of interactions between the user, terminal (or terminal emulator), shell, operating system (OS), and hardware to process and execute a command can be outlined as follows:H
+The sequence of interactions between the user, terminal (or terminal emulator), shell, operating system (OS), and hardware to process and execute a command can be outlined as follows:
 
 1. **User input**: The user types a command with an input device, typically a keyboard, in a terminal or terminal emulator window. This command is a text-based instruction directing the computer system to perform a specific action.
 2. **Terminal/terminal emulator**: The terminal or terminal emulator captures the user's input and transmits the command to the shell upon the user pressing the 'Enter' key.
