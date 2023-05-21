@@ -67,9 +67,19 @@ In this example, the dependencies are fairly straightforward:
 * `intmath.c` depends on `intmath.h`, as it includes this header file to get the prototypes of `gcd` and `lcm` functions.
 * `testintmath.c` also depends on `intmath.h`, as it uses the functions `gcd` and `lcm` which are declared in `intmath.h`. Furthermore, `testintmath.c` depends on `stdio.h` for the `printf` and `scanf` functions.
 
-## **Indirect Dependencies**
 
-For an example of indirect dependencies, let's create a new file, `complexmath.h`, which uses the functions from `intmath.h`.
+
+## Transitive Dependencies
+
+#### Transitive Dependencies
+
+Transitive dependencies describe the principle that if file A depends on B and B depends on C, then A depends on C. This can involve any number of intermediary steps.
+
+To illustrate, let's use the files `intmath.h`, `intmath.c`, and `complexmath.h`, and `complexmath.c`.
+
+1. **Single intermediary step (often referred to as indirect dependency):**
+
+In the case of a single intermediary step, we have an example with `complexmath.c` and `intmath.h`.
 
 **File `complexmath.h`:**
 
@@ -81,23 +91,35 @@ int calculate(int i, int j, int k);
 #endif
 ```
 
-Here, `complexmath.h` indirectly depends on `intmath.h` because it uses the functions declared in `intmath.h`.
+In `complexmath.h`, it includes `intmath.h`. This means any .c file including `complexmath.h` will have a transitive dependency on `intmath.h`.
 
-## Transitive Dependencies
+2. **Multiple intermediary steps:**
 
-Transitive dependencies are a property of indirect dependencies. If file A depends on B and B depends on C, then A depends on C. This is demonstrated in our new file:
+To demonstrate multiple intermediary steps, let's introduce another file, `advancedmath.h`.
 
-**File `complexmath.c`:**
+**File `advancedmath.h`:**
 
 ```c
-cCopy code#include "complexmath.h"
+cCopy code#ifndef ADVANCEDMATH_INCLUDED
+#define ADVANCEDMATH_INCLUDED
+#include "complexmath.h"
+int advancedCalculate(int i, int j, int k, int l);
+#endif
+```
 
-int calculate(int i, int j, int k) {
-    return lcm(i, gcd(j, k));
+**File `advancedmath.c`:**
+
+```c
+cCopy code#include "advancedmath.h"
+
+int advancedCalculate(int i, int j, int k, int l) {
+    return calculate(i, j, k) + l;
 }
 ```
 
-Here, `complexmath.c` has a transitive dependency on `intmath.h` and `intmath.c` through `complexmath.h`. This is because it uses the `lcm` and `gcd` functions, which are defined in `intmath.c` and declared in `intmath.h`.
+Here, `advancedmath.c` includes `advancedmath.h`, which in turn includes `complexmath.h`. Since `complexmath.h` includes `intmath.h`, `advancedmath.c` has a transitive dependency on `intmath.h` through multiple intermediary steps.
+
+In both scenarios, the .c files depend on `intmath.h` and `intmath.c` through other header files, highlighting the concept of transitive dependencies.
 
 ## Cyclic Dependencies
 
