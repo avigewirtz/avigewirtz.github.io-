@@ -1,28 +1,32 @@
 # Syntax of Shell Commands
 
-Commands issued in the shell typically consist of a command name followed by arguments.&#x20;
+Commands issued in the shell typically consist of a _command name_ followed by one or more _arguments_.&#x20;
 
 ## **Command name**
 
-This is the first word of the command, and normally represents either an executable file somewhere in the filesystem or a shell builtin. However, it can also represent a function.&#x20;
+A command name normally represents either an executable file somewhere in the filesystem or a shell builtin. However, it can also represent a function.&#x20;
 
-* **Executable file**: executable program somewhere in the file system. either an OS utility program or a user-written program. It's located on the filesystem in an executable. Examples include `ls`, `ssh`, `emacs`, `javac`, `java`, `python`, `gcc`, and so on. The shell attempts to locate this program based on the PATH environment variable or an absolute/relative path if provided. The only difference is whether you have to supply a pathname
-* **Shell Built-in**: A utility implemented within the shell. These include commands like `cd`, `echo`, `exit`, `alias`, `set`, and many others.
+* **Executable file**: The executable file can either be a OS utility program or a user-written program. Fundamentally there is no difference between the two. expect when invoking a user-written program, you typicaslly need to provide the pathname of the program, instead of just its name like with utility programs. More on that later.&#x20;
+* **Shell Built-in**: A shell builtin is a utility implemented within the shell. The practical distinction between the two is normally irelevant,.
 
 ## **Argument**
 
-An argument is a parameter passed to a utility represented by a command name.  An argument is typically an option or an operand.
+An argument is a parameter passed to the executable file or shell built-in.  An argument is typically an _option_ or an _operand_, but it can also be an option argument.&#x20;
 
-* **Option**: An option is generally used to specify changes in the utility's default behavior
-* **Operand**: An option generally specifies the data to be manipulated or operated on. An operand might represent a filename, a literal, or a variable.&#x20;
+* **Option**: An option is generally a character prefixed by a dash that changes the command's default behavior. Many commands allow several options to be used together.&#x20;
+* **Operand**: An operand generally specifies the data the command should manipulate or operate on. An operand normally represents either a filename, literal, or variable. Many commands allow multiple operands to be supplied together.&#x20;
 
-Typically several options and sometimes even several operands can be supplied. The structure is illustrated in Figure X.&#x20;
+The syntax is summarized in Figure 1.&#x20;
 
-<figure><img src="../../.gitbook/assets/new tree.svg" alt="" width="450"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/new tree.svg" alt="" width="450"><figcaption><p>Figure 1: Common Shell Syntax</p></figcaption></figure>
 
 
 
-## Example of commands:&#x20;
+## Examples of Shell Commands&#x20;
+
+###
+
+###
 
 ### Shell prompt
 
@@ -62,6 +66,6 @@ gcc217 hello.c -o hello
 ./hello
 ```
 
-* `./hello` is a command to execute the `hello` program in the current directory. The `.` in `./` specifies the current directory, and `/hello` is the program to run. The shell uses a system call to create a new process and then loads the `hello` program into the new process's memory. The `hello` program then runs.
+`./hello` is a command to execute the `hello` program in the current directory. The `.` in `./` specifies the current directory, and `/hello` is the program to run. The shell uses a system call to create a new process and then loads the `hello` program into the new process's memory. The `hello` program then runs.
 
 .
