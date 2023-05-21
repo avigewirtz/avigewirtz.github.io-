@@ -20,6 +20,16 @@ Sitting above the hardware is the Instruction Set Architecture (ISA), which is t
 
 ## **Operating System (OS)**
 
+As mentioned above, there is a large gap between what is convenient for peo- ple and what is convenient for computers. People want to do X, but computers can only do Y. This leads to a problem. The goal of this book is to explain how this problem can be solved.
+
+
+The problem can be attacked in two ways: both involve designing a new set of instructions that is more convenient for people to use than the set of built-in ma- chine instructions.
+
+
+As mentioned above, there is a large gap between what is convenient for peo- ple and what is convenient for computers. People want to do X, but computers can only do Y. This leads to a problem. The goal of this book is to explain how this problem can be solved.
+
+
+
 The services provided by the ISA are not ideal to work with. Don't provide enough services. Hard to work with.&#x20;
 
 An operating system is a program that, from the programmer’s point of view, adds a variety of new instructions and features, above and beyond what the ISA level provides.
