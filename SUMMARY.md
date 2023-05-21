@@ -19,6 +19,7 @@
 * [User Interface](linux/user-interfaces-gui-and-cli.md)
 * [Terminal](linux/terminal.md)
 * [Shell](linux/shell.md)
+  * [Syntax of Shell Commands](linux/shell/syntax-of-shell-commands.md)
   * [Types of CLI Commands](linux/shell/types-of-cli-commands.md)
   * [Examples](linux/shell/how-the-shell-executes-commands.md)
 * [Operating System](linux/operating-system.md)
