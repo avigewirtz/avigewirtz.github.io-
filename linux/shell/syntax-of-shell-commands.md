@@ -1,19 +1,24 @@
 # Syntax of Shell Commands
 
-Commands issued in the shell typically consist of a command name followed by arguments. Technically referee to as fields.&#x20;
+Commands issued in the shell typically consist of a command name followed by arguments.&#x20;
 
-* **Command name**: This is the first word of the command, and normally represents either an executable file somewhere in the filesystem or a shell builtin. However, it can also represent a function.&#x20;
-  * **Executable file**: executable program somewhere in the file system. either an OS utility program or a user-written program. It's located on the filesystem in an executable. Examples include `ls`, `ssh`, `emacs`, `javac`, `java`, `python`, `gcc`, and so on. The shell attempts to locate this program based on the PATH environment variable or an absolute/relative path if provided. The only difference is whether you have to supply a pathname
-  * **Shell Built-in**: A utility implemented within the shell. These include commands like `cd`, `echo`, `exit`, `alias`, `set`, and many others.
-* **Argument**: An argument is a parameter passed to a utility represented by command name.  An argument is typically an option or an operand.
-  * **Option**: An option is generally used to specify changes in the utility's default behavior
-  * **Operand**: An option generally specifies the data to be manipulated or operated on. An operand might represent a filename, a literal, or a variable.&#x20;
+## **Command name**
+
+This is the first word of the command, and normally represents either an executable file somewhere in the filesystem or a shell builtin. However, it can also represent a function.&#x20;
+
+* **Executable file**: executable program somewhere in the file system. either an OS utility program or a user-written program. It's located on the filesystem in an executable. Examples include `ls`, `ssh`, `emacs`, `javac`, `java`, `python`, `gcc`, and so on. The shell attempts to locate this program based on the PATH environment variable or an absolute/relative path if provided. The only difference is whether you have to supply a pathname
+* **Shell Built-in**: A utility implemented within the shell. These include commands like `cd`, `echo`, `exit`, `alias`, `set`, and many others.
+
+## **Argument**
+
+An argument is a parameter passed to a utility represented by a command name.  An argument is typically an option or an operand.
+
+* **Option**: An option is generally used to specify changes in the utility's default behavior
+* **Operand**: An option generally specifies the data to be manipulated or operated on. An operand might represent a filename, a literal, or a variable.&#x20;
 
 Typically several options and sometimes even several operands can be supplied. The structure is illustrated in Figure X.&#x20;
 
-
-
-<figure><img src="../../.gitbook/assets/Screenshot 2023-05-19 at 4.10.11 PM.png" alt="" width="375"><figcaption><p>Figure X: Hierarchy of command components</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/new tree.svg" alt="" width="450"><figcaption></figcaption></figure>
 
 
 
