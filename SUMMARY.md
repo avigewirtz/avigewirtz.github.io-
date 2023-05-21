@@ -115,12 +115,18 @@
   * [Linking](gcc/understanding-each-stage/linking.md)
 * [Further Reading](gcc/further-reading.md)
 
+## Make
+
+* [Background](make/background/README.md)
+  * [Code Reusability](make/background/code-reusability.md)
+  * [Dependencies](make/background/dependencies.md)
+
 ## Gprof
 
 * [Background](gprof/background.md)
 * [How Gprof Works](gprof/how-gprof-works.md)
 * [Using Gprof](gprof/using-gprof.md)
-* [Interpreting Gprof Output](gprof/interpreting-gprof-output/README.md)
+* [Interpreting Gprof Output](gprof/interpreting-gprof-output.md)
   * [Flat Profile](gprof/interpreting-gprof-output/flat-profile.md)
   * [Call Graph](gprof/interpreting-gprof-output/call-graph.md)
 
