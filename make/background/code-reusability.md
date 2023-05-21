@@ -97,3 +97,7 @@ System and user-defined header files differ mainly in the way they are included 
 
 * System Header Files: These files are part of the compiler's standard library and accessed using angle brackets in the #include directive, like #include \<stdio.h>. The compiler has predefined paths set for these files.
 * User-defined Header Files: Developers create these header files for their own programs. They are included using double quotes in the #include directive, like #include "functions.h". When quotes are used, the preprocessor searches in the same directory as the file with the #include statement. If it doesn't find it there, it resorts to the directories of the standard system headers.
+
+
+
+MACROS

@@ -21,7 +21,6 @@
 * [Shell](linux/shell.md)
   * [Types of CLI Commands](linux/shell/types-of-cli-commands.md)
   * [Examples](linux/shell/how-the-shell-executes-commands.md)
-* [Layers](linux/layers.md)
 * [Operating System](linux/operating-system.md)
 * [Libraries and Utilities](linux/libraries-and-utilities.md)
 * [Putting it All Together](linux/putting-it-all-together.md)
@@ -120,6 +119,8 @@
 * [Background](make/background/README.md)
   * [Code Reusability](make/background/code-reusability.md)
   * [Dependencies](make/background/dependencies.md)
+  * [Build Automation](make/background/build-automation.md)
+* [Makefiles](make/makefiles.md)
 
 ## Gprof
 
