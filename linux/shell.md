@@ -11,7 +11,7 @@ The main difference between a language like Java or C and Bash is compiled vs in
 
 Essentially, the shell serves as an intermediary between the user in the terminal and the OS.
 
-## Shell Syntax
+## Syntax of Shell Commands
 
 A commands issues in the shell generally consists of a command name followed by arguments. Technically referee to as fields.
 
