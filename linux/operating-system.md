@@ -4,9 +4,9 @@ Between the shell and the hardware lie multiple layers of software. Together, th
 
 You can think of the operating system as the bridge between the computer's hardware (such as the processor, memory, and I/O devices) and the software applications. Whenever applications want to utilize the hardware resources, they do so via the operating system, which ensures that these applications can effectively communicate with the hardware and utilize its resources effectively.
 
-When we issue commands to the shell, begind the scenes the shell communicates with the OS for us.
+When we issue commands to the shell, behind the scenes the shell communicates with the OS for us, requesting the neccessary services from the OS to complete the task. Having the shell as an intermediary to communicate with the OS for us makes programming exponentially easier, as interfacing with the OS directly is no simple feat.&#x20;
 
-To better understand the role rhe OS plays in the computer system, it's helpful to take a step back and briefly discuss the layers below the OS. We will we begin our exploration from the ground up, starting from the computer hardware and building ip to the OS. Note that this coverage is highly simplified.
+To better understand the role the OS plays in the computer system, it's helpful to take a step back and briefly discuss the layers below the OS--the hardware and ISA in particular. We will we begin our exploration from the ground up, starting from the computer hardware and building up to the OS. Note that this coverage is highly simplified.
 
 ## **Hardware**
 
@@ -14,13 +14,13 @@ At the lowest level, there is the hardware, which provides the raw computing res
 
 ## **Instruction Set Architecture (ISA)**
 
-Sitting above the hardware is the Instruction Set Architecture (ISA). This is typically the lowest level software interface to the hardware. The ISA abstracts the hardware implementation details by providing programmers with a predefined set of intructions that the computer supports. Programmers typically don't have a clue how the hardware inplements the We don't It's a specification detailing the CPU's functions, including the specific binary codes it understands and how it processes them. ISAs can be complex (CISC - Complex Instruction Set Computer) like x86, or simplified (RISC - Reduced Instruction Set Computer) like ARM. In essence, it defines the machine language that the CPU can understand and process. It is through this layer that programs can communicate with the hardware
+Sitting above the hardware is the Instruction Set Architecture (ISA). The ISA abstracts the hardware implementation details by providing programmers with the complete set of instructions that the CPU supports. In essence, it defines the machine language that the CPU can understand and process. From the programmer's perspective, the ISA is the lowest level software interface to the computer. ISAs can be complex (CISC - Complex Instruction Set Computer) like x86, or simplified (RISC - Reduced Instruction Set Computer) like ARM.&#x20;
 
 ## **Operating System (OS)**
 
-The problem is that the ISA does not provide the full set of services that we need to efficiently use a computer. Also, the interface that is provides is extremely primitive, making it dificult t communicate with hardware.
+Above the ISA we have another layer--the OS layer. The problem with the ISA level is that the ISA does not provide the full set of services that we need to efficiently use a computer. Also, the interface that is provided is extremely primitive, making it difficult t communicate with the hardware.
 
-The solution is we design a new layer of software, known as the OS, that adds a variety of new instructions and features, above and beyond what the ISA level provides. more convinient to use and offer more services.
+The solution is we design a new layer of software, known as the OS, that adds a variety of new instructions and features, above and beyond what the ISA level provides. more convenient to use and offer more services.
 
 This level provides the complete set of instructions available to application programmers.
 
