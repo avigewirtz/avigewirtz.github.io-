@@ -12,7 +12,7 @@ A command name typically represents either an executable file, a shell built-in,
 
 ## **Argument**
 
-An argument is a parameter passed to the executable file, shell built-in, or function represented by the command name. An argument is typically an _option_ or an _operand_, but it can also be an _option argument_.&#x20;
+An argument is a parameter passed to the executable file, shell built-in, or function. It An typically represents an _option_ or an _operand_, but it can also represent an _option-argument_.&#x20;
 
 *   **Option**: An option is an argument that changes the command's default behavior. An option normally consists of a single character prefixed by a hyphen (e.g., `-a`), but it can also consist of a full word prefixed by two hyphens (i.e., `--list`). The former is called a _short option_, and the latter is called a _long option_. &#x20;
 
