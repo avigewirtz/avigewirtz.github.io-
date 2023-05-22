@@ -12,7 +12,7 @@
 * [Background](linux/background.md)
 * [Command Line User Interface](linux/command-line-user-interface.md)
 * [Terminal](linux/terminal.md)
-* [Operating System](linux/operating-system/)
+* [Operating System](linux/operating-system.md)
 * [Shell](linux/shell.md)
   * [Types of CLI Commands](broken-reference)
   * [How the shell executes commands](broken-reference)
