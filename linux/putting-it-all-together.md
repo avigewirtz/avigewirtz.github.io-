@@ -12,18 +12,14 @@ The general sequence of layers is illustrated in Figure 2.
 
 <figure><img src="../.gitbook/assets/image (1).png" alt="" width="375"><figcaption><p>Figure 2: Layers of Computer System</p></figcaption></figure>
 
-Let's illustrate a potential sequence of interactions The sequence of interactions between all the layers using the ls command:
+Let's illustrate a potential sequence of interactions between all the layers when a is invoked. For this example, we will use the `ls` command, which displays the contents of the working directory. This is a simplification, but it should give a good impression of the flow:
 
-1. **User input**: The user types a command with an input device, typically a keyboard, in a terminal or terminal emulator window. This command is a text-based instruction directing the computer system to perform a specific action.
-2. **Terminal/terminal emulator**: The terminal or terminal emulator captures the user's input and transmits the command to the shell upon the user pressing the 'Enter' key.
-3. **Shell**: The shell interprets the user's command, parsing it into its constituent components (e.g., command name, options, arguments), and checks for any syntax errors. The shell then proceeds to execute the command, either by running a built-in function or by invoking an external program.
-4. **Utilities/application**:
-5. **Standard C library**:
-6. **OS Kernel**: The OS takes the commands from the shell and other programs and loads the instructions into memory for execution.
-7. **ISA:**&#x20;
-8. **Hardware**: The hardware receives the low-level instructions from the OS and performs the necessary operations, including data processing and I/O operations. This involves the CPU, memory, storage devices, and other hardware components working together.
-9. **Output and prompt**: Once the operations are completed, the output, if any, is sent back to the terminal and displayed to the user. The shell then reverts to displaying its prompt, signaling to the user that it is ready to accept another command.
-
-{% hint style="info" %}
-It should be noted that there is a fundamental break between layers 5 and 6. Software in layer 3 and below-level mode privileges. Software from level 4 and above is user level. As such, there isn't a fundamental difference between a user-level programs, such as user-written programs and programs such as ssh, emacs, or even Bash. Both are software that interacts with the lower layers of the system, and both are subject to the same rules and limitations
-{% endhint %}
+1. **User input**: The user types `ls` in the terminal and hits the `Enter` key.
+2. **Terminal/terminal emulator**: The terminal captures the user's keystrokes and passes the command string `ls` to the shell. The terminal waits for the output to display.
+3. **Shell**: The shell, which might be bash or another shell, parses the `ls` command and verifies its syntax. Finding it valid, the shell starts a new process to run the command.
+4. **Core utilities**: The `ls` command is part of the Unix core utilities. It looks up the necessary information about the current directory, using functions provided by the standard C library.
+5. **Standard C library**: The library functions called by `ls`, such as `opendir`, `readdir`, and `closedir`, make system calls to the OS kernel to perform the actual operations.
+6. **OS Kernel**: The kernel receives the system calls, verifies the permissions of the process making the call, and if everything is in order, performs the necessary operations on the file system. It retrieves the list of files and directories in the current directory and passes this information back up to the `ls` command.
+7. **ISA (Instruction Set Architecture)**: This is the level at which the OS kernel's instructions are actually executed on the CPU. The ISA is a specification that describes the low-level machine language instructions that the CPU can understand. The CPU uses the ISA to perform the kernel's instructions, such as accessing the file system to retrieve the directory listing.
+8. **Hardware**: The actual physical components of the computer carry out the instructions. The CPU performs computations and the hard drive or SSD retrieves the file data.
+9. **Output and prompt**: The results of the `ls` command -- the list of files and directories -- are passed back up through the layers to the shell, which hands this data off to the terminal. The terminal then displays this output to the user. After the command has been executed, the shell displays a new prompt, waiting for the next user input.
