@@ -36,5 +36,15 @@ The core utilities act as a toolbox, providing you with ready-to-use tools for m
 
 Utilities are usually packaged with the operating system and installed by default. However, they are generally not considered part of the operating system itself. The operating system's core is the kernel, which interacts directly with the hardware. Core utilities, on the other hand, operate at a higher level, interacting with the kernel and standard C library to provide their functionalities.
 
+## User mode vs. kernel mode
+
+The computer system operates in different modes, called _kernel mode_ and _user mode_, which represent different states of the processor and govern the execution privileges of the code that's running. The OS kernel runs in kernel mode, while other programs, such as utilities and application programs, run in user mode. The division between the two modes is a crucial one.&#x20;
+
+**Kernel Mode**: In kernel mode (also known as supervisor mode, system mode, or privileged mode), the executing code has full access to all hardware resources and all areas of memory. Kernel mode is typically reserved for low-level operations, such as managing I/O devices and manipulating the file systems.
+
+**User Mode**: In user mode, the executing code has restricted access to hardware resources and memory. Code running in user mode must request access to hardware or memory through a system call, which may be granted or denied by the kernel. Most application software runs in user mode to prevent a faulty or malicious program from interfering with the operation of the system as a whole. When a user mode program makes a system call, the system switches to kernel mode while the kernel code executes, and then switches back to user mode once the system call is complete.
+
+It should be noted that all user-level programs, whether they're part of the OS distribution or written by users, operate under the same rules and limitations. For example, the system doesn't distinguish between a shell, an editor, a network service, or a user's own program when it comes to enforcing access controls and resource limits.
+
 
 
