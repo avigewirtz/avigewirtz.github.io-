@@ -7,7 +7,7 @@ Commands issued in the shell typically consist of _fields_, which consist of a _
 A command name typically represents either an executable file, a shell built-in, or a function.&#x20;
 
 * **Executable file**: The executable file can represent any program on the filesystem. It typically represents a utility or a user-written program. There is no fundamental distinction between the two, except that a utility represents a program that can be called by name (rather than _pathname_) and user-written programs must (by default) be called with a pathname. &#x20;
-* **Built-In**: A built-in utility is a utility implemented within the shell. The difference between a shell built-in and an executable file is that a built-in is a feature of the shell itself, while an executable is written by others. The practical implications of this are typically not of concern to the programmers, so we will not cover it here. However, whenever the distinction is pertinent, we will clearly point it out.&#x20;
+* **Built-In**: A built-in utility is a utility implemented within the shell. The difference between a shell built-in and another program is that a shell built-in is a service provided by the shell itself, while other programs represent services provided by external programs. The practical implications of this are typically not of concern to the programmers, so we will not cover it here. However, whenever the distinction is pertinent, we will clearly point it out.&#x20;
 * **Function**: A function is essentially a group of commands that are defined for reuse. You need now be familiar with them in COS217.&#x20;
 
 ## **Argument**
