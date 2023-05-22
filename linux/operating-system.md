@@ -16,7 +16,7 @@ At the lowest level, there is the hardware, which provides the raw computing res
 
 Sitting above the hardware is the Instruction Set Architecture (ISA). The ISA abstracts the hardware implementation details by providing programmers with the complete set of instructions that the CPU supports. In essence, it defines the machine language that the CPU can understand and process. From the programmer's perspective, the ISA is the lowest-level software interface to the computer. ISAs can be complex (CISC - Complex Instruction Set Computer) like x86, or simplified (RISC - Reduced Instruction Set Computer) like ARM.&#x20;
 
-## **Operating System**
+## **OS Kernel**
 
 <>
 
@@ -49,6 +49,3 @@ In kernel mode (also known as supervisor mode, system mode, or privileged mode),
 In user mode, the executing code has restricted access to hardware resources and memory. Code running in user mode must request access to hardware or memory through a system call, which may be granted or denied by the kernel. Most application software runs in user mode to prevent a faulty or malicious program from interfering with the operation of the system as a whole. When a user mode program makes a system call, the system switches to kernel mode while the kernel code executes, and then switches back to user mode once the system call is complete.
 
 It should be noted that all user-level programs, whether they're part of the OS distribution or written by users, operate under the same rules and limitations. For example, the system doesn't distinguish between a shell, an editor, a network service, or a user's own program when it comes to enforcing access controls and resource limits.
-
-
-
