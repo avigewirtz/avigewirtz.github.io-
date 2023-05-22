@@ -51,9 +51,9 @@ javac program.java
 Let's now use an example from COS217. Recall that to compile a C program, you invoke:
 
 ```bash
-gcc217 hello.c -o hello
+gcc hello.c -o hello # For simplicity, we're using 'gcc' instead of 'gcc217'
 ```
 
-`gcc217` is the GNU Compiler Collection. The shell interprets `gcc` as an executable program, and `hello.c`, `-o`, and `hello` as arguments to this program. The shell runs gcc and supplies it with the hello.c, -o, and hello as arguments. gcc then compiles hello.c into machine code, creating an executable file hello. &#x20;
+`gcc` is the GNU Compiler Collection. The shell interprets `gcc` as an executable program, and `hello.c`, `-o`, and `hello` as arguments to this program. The shell runs gcc and supplies it with the hello.c, -o, and hello as arguments. gcc then compiles hello.c into machine code, creating an executable file hello. &#x20;
 
 .
