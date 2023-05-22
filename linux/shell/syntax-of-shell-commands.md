@@ -17,7 +17,7 @@ An argument is a parameter passed to the executable file, shell built-in, or fun
 *   **Option**: An option is an argument that changes the command's default behavior. An option normally consists of a single character prefixed by a hyphen (e.g., `-a`), but it can also consist of a full word prefixed by two hyphens (i.e., `--list`). The former is called a _short option_, and the latter is called a _long option_. &#x20;
 
     Options are defined and interpreted by the program they are supplied to. Thus, the precise syntax and behavior of an option are dependent on the program, not the shell. Many commands allow several short options to be combined.&#x20;
-* **Option argument**: Certain options require an argument. For example, the `-o` option of the`gcc` command requires an argument—an output filename such as `hello`.
+* **Option-Argument**: An option-argument is a parameter that follows certain options. For example, the `-o` option in the `gcc` command uses an argument—an output filename such as `hello`.
 * **Operand**: An operand specifies the data the command should manipulate or operate on, which normally represents either a filename, literal, or variable. Many commands allow multiple operands to be supplied together. Operands generally follow options.
 
 The syntax of a shell command can be summarized as follows:
