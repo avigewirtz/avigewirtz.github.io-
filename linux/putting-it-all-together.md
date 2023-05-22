@@ -1,18 +1,20 @@
 # Putting it All Together
 
-It should be apparent by now that when a command is invoked in a terminal, what might be perceived as a simple action is actually the culmination of many complex processes involving several layers of abstraction within the computer system which ultimately leads to the task being completed. The layers between the terminal and hardware that work together to complete the task are the ISA, OS, standard libraries, core utilities, and shell. This layered approach--where you start with the services offered by the underlying hardware and then add a sequence of layers, each providing a higher (more abstract) level of service--provides many benefits. First, it decomposes the problem of building a system into more manageable components. Rather than implementing a monolithic piece of software that does everything you will ever want, you can implement several layers, each of which solves one part of the problem. Second, it provides a more modular design. If you decide that you want to add some new service, you may only need to modify the functionality at one layer, reusing the functions provided at all the other layers.
-
-{% hint style="info" %}
-It's important to note thinking of a system as a linear sequence of layers is an oversimplification. Many times there are multiple abstractions provided at any given level of the system. Additionally, the division between the layers isn't always clear-cut. For instance, user programs can interact directly with the kernel via system calls without using C library functions or utilities.
-{% endhint %}
-
-The general sequence of layers is illustrated in Figure 2.
+It should be apparent by now that when a command is invoked in a terminal, what might be perceived as a simple action is actually the culmination of many complex processes involving several layers of abstraction within the computer system which ultimately leads to the task being completed. The layers between the terminal and hardware that work together to complete the task are the ISA, OS, standard libraries, core utilities, and shell. This layered approach--where you start with the services offered by the underlying hardware and then add a sequence of layers, each providing a higher (more abstract) level of service--provides many benefits. First, it decomposes the problem of building a system into more manageable components. Rather than implementing a monolithic piece of software that does everything you will ever want, you can implement several layers, each of which solves one part of the problem. Second, it provides a more modular design. If you decide that you want to add some new service, you may only need to modify the functionality at one layer, reusing the functions provided at all the other layers. The general sequence of layers is illustrated in Figure 2.
 
 
 
 <figure><img src="../.gitbook/assets/image (1).png" alt="" width="375"><figcaption><p>Figure 2: Layers of Computer System</p></figcaption></figure>
 
-Let's illustrate a potential sequence of interactions between all the layers when a is invoked. For this example, we will use the `ls` command, which displays the contents of the working directory. This is a simplification, but it should give a good impression of the flow:
+{% hint style="info" %}
+It's important to note thinking of a system as a linear sequence of layers is an oversimplification. Many times there are multiple abstractions provided at any given level of the system. Additionally, the division between the layers isn't always clear-cut. For instance, user programs can interact directly with the kernel via system calls without using C library functions or utilities.
+
+It should be noted that there is a fundamental break between layers 5 and 6. Software in layer 3 and below-level mode privileges. Software from level 4 and above is user level. As such, there isn't a fundamental difference between a user-level programs, such as user-written programs and programs such as ssh, emacs, or even Bash. Both are software that interacts with the lower layers of the system, and both are subject to the same rules and limitations
+{% endhint %}
+
+## Example of a sequence of interactions&#x20;
+
+We will now illustrate a potential sequence of interactions between all the layers when a command is invoked by the user. For this example, we will use the `ls` command, which displays the contents of the working directory. This is a simplification, but it should give a good impression of the flow:
 
 1. **User input**: The user types `ls` in the terminal and hits the `Enter` key.
 2. **Terminal/terminal emulator**: The terminal captures the user's keystrokes and passes the command string `ls` to the shell. The terminal waits for the output to display.
