@@ -24,12 +24,6 @@ The sequence of interactions between all the layers can roughly be outlined as f
 8. **Hardware**: The hardware receives the low-level instructions from the OS and performs the necessary operations, including data processing and I/O operations. This involves the CPU, memory, storage devices, and other hardware components working together.
 9. **Output and prompt**: Once the operations are completed, the output, if any, is sent back to the terminal and displayed to the user. The shell then reverts to displaying its prompt, signaling to the user that it is ready to accept another command.
 
-The is illustrated in Figure 4.
-
-
-
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 3.21.28 PM.png" alt=""><figcaption><p>Figure 3: Sequence of interactions between the user, terminal, shell, OS, and hardware.</p></figcaption></figure>
-
 {% hint style="info" %}
 It should be noted that there is a fundamental break between layers 5 and 6. Software in layer 3 and below-level mode privileges. Software from level 4 and above is user level. As such, there isn't a fundamental difference between a user-level programs, such as user-written programs and programs such as ssh, emacs, or even Bash. Both are software that interacts with the lower layers of the system, and both are subject to the same rules and limitations
 {% endhint %}
