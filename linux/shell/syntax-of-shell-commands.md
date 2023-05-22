@@ -1,6 +1,6 @@
 # Syntax of Shell Commands
 
-Commands issued in the shell typically consist of _fields_, which consist of a _command name_ followed by one or more _arguments_.&#x20;
+Commands issued in the shell typically consist of _fields_, which represent a _command name_ followed by one or more _arguments_.&#x20;
 
 ## **Command name**
 
