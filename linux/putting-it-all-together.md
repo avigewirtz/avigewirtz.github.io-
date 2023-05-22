@@ -12,7 +12,7 @@ The general sequence of layers is illustrated in Figure 2.
 
 <figure><img src="../.gitbook/assets/image (1).png" alt="" width="375"><figcaption><p>Figure 2: Layers of Computer System</p></figcaption></figure>
 
-The sequence of interactions between all the layers can roughly be outlined as follows:
+Let's illustrate a potential sequence of interactions The sequence of interactions between all the layers using the ls command:
 
 1. **User input**: The user types a command with an input device, typically a keyboard, in a terminal or terminal emulator window. This command is a text-based instruction directing the computer system to perform a specific action.
 2. **Terminal/terminal emulator**: The terminal or terminal emulator captures the user's input and transmits the command to the shell upon the user pressing the 'Enter' key.
