@@ -1,13 +1,6 @@
 # Putting it All Together
 
-When a command is executed in a terminal, what might be perceived as a simple action is actually the culmination of many complex processes involving several layers of abstraction within the computer system which ultimately leads to the command being executed by the computer hardware.
-
-The general idea is that you start with the services offered by the underlying hardware and then add a sequence of layers, each providing a higher (more abstract) level of service. The services provided at the high layers are implemented in terms of the services provided by the low layers.
-
-## Benefits of layering
-
-1. Layering provides two useful features. First, it decomposes the problem of building a system into more manageable components. Rather than implementing a monolithic piece of software that does everything you will ever want, you can implement several layers, each of which solves one part of the problem.
-2. Second, it provides a more modular design. If you decide that you want to add some new service, you may only need to modify the functionality at one layer, reusing the functions provided at all the other layers.
+It should be apparent by now that when a command is invoked in a terminal, what might be perceived as a simple action is actually the culmination of many complex processes involving several layers of abstraction within the computer system which ultimately leads to the task being completed. The layers between the terminal and hardware that work together to complete the task are the ISA, OS, standard libraries, core utilities, and shell. This layered approach--where you start with the services offered by the underlying hardware and then add a sequence of layers, each providing a higher (more abstract) level of service--provides many benefits. First, it decomposes the problem of building a system into more manageable components. Rather than implementing a monolithic piece of software that does everything you will ever want, you can implement several layers, each of which solves one part of the problem. Second, it provides a more modular design. If you decide that you want to add some new service, you may only need to modify the functionality at one layer, reusing the functions provided at all the other layers.
 
 
 
