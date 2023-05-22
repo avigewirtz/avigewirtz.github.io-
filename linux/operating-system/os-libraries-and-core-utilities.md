@@ -1,8 +1,4 @@
-# Libraries and Utilities
-
-## **Libraries:**
-
-
+# OS Libraries and Core Utilities
 
 Programmers seldom interact with the OS via system calls directly. Instead, they use library functions, often referred to as "wrapper functions", that call the system calls for them. Libraries offer a multitude of benefits over direct system call use.
 
