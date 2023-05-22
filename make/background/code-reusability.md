@@ -11,7 +11,7 @@ Let's delve into an example to illustrate this concept more clearly.
 Consider a straightforward C program, hello.c, that prints "Hello, World!" on the standard output (stdout):
 
 ```c
-cCopy code#include <stdio.h>
+#include <stdio.h>
 
 int main() {
     printf("Hello, World!\n");
@@ -32,7 +32,7 @@ When compiling C programs, GCC necessitates function prototypes to be declared b
 The function prototype for printf() is:
 
 ```c
-cCopy codeint printf(const char *format, ...);
+int printf(const char *format, ...);
 ```
 
 Here's a breakdown of each component:
@@ -59,7 +59,7 @@ Header files are not only limited to predefined library functions. Developers ca
 For instance, we declare a function multiply() in a user-defined header file functions.h:
 
 ```c
-cCopy code/* File: functions.h */
+/* File: functions.h */
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
@@ -71,7 +71,7 @@ int multiply(int a, int b);
 We can define this function in a separate source file (functions.c):
 
 ```c
-cCopy code/* File: functions.c */
+/* File: functions.c */
 #include "functions.h"
 
 int multiply(int a, int b){
@@ -82,7 +82,7 @@ int multiply(int a, int b){
 In any C program where we need the multiply() function, we include our functions.h file and link with functions.c:
 
 ```c
-cCopy code#include "functions.h"
+#include "functions.h"
 
 int main() {
     int result = multiply(5, 10);
