@@ -1,20 +1,20 @@
 # Operating System
 
-It should come as no surprise that commands issued in the shell aren't directly executed by the hardware. This is because the shell doesn't communicate in the language that the hardware comprehends.
+Between the shell and the hardware lie multiple layers of software. Together, these layers provide the services that enable shell commands to be executed. Among these layers, the one most pertinent to our discussion is the Operating System (OS). 
 
-Between the hardware and the shell lie multiple layers of software, which together provide the services for the higher-level layers to function. Among these layers, the one most pertinent to our discussion is the Operating System (OS). The shell essentially provides a user interface to the OS services.
+You can think of the operating system as the bridge between the computer's hardware (such as the processor, memory, and I/O devices) and the software applications. Whenever applications want to utilize the hardware resources, they do so via the operating system, which ensures that these applications can effectively communicate with the hardware and utilize its resources effectively.
 
-You can think of the operating system as a bridge between the computer's hardware (such as the processor, memory, and I/O devices) and the software applications (like web browsers, games, and word processors) that you use. Whenever applications want to utilize the hardware resources, they do so via the operating system, which ensures that these applications can effectively communicate with the hardware and utilize its resources efficiently.
+When we issue commands to the shell, begind the scenes the shell communicates with the OS for us. 
 
-Before we delve into the details of the OS, it's helpful to first understand where the OS resides within the system. To truly comprehend the role the OS plays in a computer system, it's best to start our exploration from the ground up
+To better understand the role rhe OS plays in the computer system, it's helpful to take a step back and briefly discuss the layers below the OS. We will we begin our exploration from the ground up, starting from the computer hardware and building ip to the OS. Note that this coverage is highly simplified.  
 
 ## **Hardware**
 
-At the lowest level, there is the hardware, which provides the raw computing resources, including the central processing unit (CPU), memory (RAM), storage devices (like SSDs or HDDs), and input/output devices (like the keyboard, mouse, and display unit). The CPU carries out the actual computations, RAM holds data that needs to be quickly accessed, and storage devices hold larger amounts of data for long-term storage. At this level, operations are performed in binary, directly manipulating the electrical or magnetic signals within the hardware. Computer programmers do not work directly with hardware.
+At the lowest level, there is the hardware, which provides the raw computing resources, including the central processing unit (CPU), memory (RAM), storage devices (like SSDs or HDDs), and input/output devices (such as the keyboard, mouse, and display unit). The CPU carries out the actual computations, RAM holds data that needs to be quickly accessed by the CPU, and the storage devices hold larger amounts of data for long-term storage. At this level, operations are performed in binary, directly manipulating the electrical or magnetic signals within the hardware. Working with computers at this level falls out of the realm of computer programming and into the realm of electrical engineering.
 
 ## **Instruction Set Architecture (ISA)**
 
-Sitting above the hardware is the Instruction Set Architecture (ISA), which is the lowest level software interface. The ISA abstracts the hardware by providing a software interface. It's a specification detailing the CPU's functions, including the specific binary codes it understands and how it processes them. ISAs can be complex (CISC - Complex Instruction Set Computer) like x86, or simplified (RISC - Reduced Instruction Set Computer) like ARM. In essence, it defines the machine language that the CPU can understand and process. It is through this layer that programs can communicate with the hardware
+Sitting above the hardware is the Instruction Set Architecture (ISA). This is typically the lowest level software interface to the hardware. The ISA abstracts the hardware implementation details by providing programmers with a predefined set of intructions that the computer supports. Programmers typically don't have a clue how the hardware inplements the We don't It's a specification detailing the CPU's functions, including the specific binary codes it understands and how it processes them. ISAs can be complex (CISC - Complex Instruction Set Computer) like x86, or simplified (RISC - Reduced Instruction Set Computer) like ARM. In essence, it defines the machine language that the CPU can understand and process. It is through this layer that programs can communicate with the hardware
 
 ## **Operating System (OS)**
 
