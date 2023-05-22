@@ -30,13 +30,19 @@ You can think of the OS as acting like the "boss" of the computer, managing and 
 
 ## Libraries
 
-Programmers seldom interact with the OS via system calls directly. Instead, they interact via libraries, which are collections of pre-written functions programs can use to perform common tasks. For instance, a standard C library (like glibc in GNU/Linux systems) provides a set of functions (like `printf`, `malloc`, etc.). Library functions, often referred to as "wrapper functions," essentially "wrap" the system calls with a higher programming interface. So, in a way, libraries provide an interface to the system call interface, abstracting the complexity of the system calls and making programming more accessible and efficient.&#x20;
+Programmers seldom interact with the OS via system calls directly. Instead, they interact via libraries, which are collections of pre-written functions programs can use to perform common tasks. For instance, a standard C library (like _glibc_ in Linux/GNU systems) provides a set of functions (like `printf`, `malloc`, etc.). Library functions, often referred to as "wrapper functions," essentially "wrap" the system calls with a higher programming interface. So, in a way, libraries provide an interface to the system call interface, abstracting the complexity of the system calls and making programming more accessible and efficient.&#x20;
 
 Libraries offer a multitude of benefits over direct system calls. First, using system calls can be quite complex and error-prone. Libraries abstract away many of the details and provide a more convenient and efficient means to perform these tasks. While a programmer could write a program using just system calls, this can be quite complex and error-prone.
 
 The key advantage is portability. System calls are specific to an operating system, meaning that a Linux system call interface differs from those on macOS or Windows. Library functions, in contrast, are typically platform-independent, making code using these libraries portable across different operating systems. Library APIs also offer improved efficiency, security, and ease of use.
 
 ## **Core Utilities**
+
+While the C library provides a collection of functions that a C program can use, core utilities, often referred to as "coreutils," are standalone programs that use these library functions to provide a standard set of features across Unix-like operating systems.
+
+The core utilities act as a toolbox, providing you with ready-to-use tools for most of the basic tasks you might need to perform on a Linux system, such as file management and text processing, without having to write the code from scratch. For example, rather than having to write a C program to list all the files in a directory or to copy a file, you can simply use the `ls` and cp commands respectively, which are part of the core utilities.&#x20;
+
+Utilities are usually packaged with the operating system and installed by default. However, they are generally not considered part of the operating system itself. The operating system's core is the kernel, which interacts directly with the hardware. Core utilities, on the other hand, operate at a higher level, interacting with the kernel and standard C library to provide their functionalities.
 
 
 
