@@ -17,13 +17,15 @@ On macOS, you can connect to Armlab via Terminal by invoking the _ssh_ command.
 The first time you log into armlab, an SSH-related message will appear. Respond “yes”.
 {% endhint %}
 
-2. Input your Princeton password and authenticate your login credentials with DUO Security. (Note that your password will not be visible on the screen as you type it.)
+2. Input your Princeton password and authenticate your login credentials with DUO Security. (Note that your password will not display on the screen as you type it.)
 
 If your login is successful, a shell prompt similar to the following will appear in your terminal window:
 
 <figure><img src="../../../.gitbook/assets/Screenshot 2023-04-23 at 3.12.10 PM.png" alt=""><figcaption></figcaption></figure>
 
-Note that the prompt may either state armlab01 or armlab02. These computers are interconnected and share the same filesystem, so it is inconsequential which one you are logged into.
+{% hint style="info" %}
+The prompt will state either armlab01 or armlab02. These computers are interconnected and share the same filesystem, so it is inconsequential which one you are logged into.
+{% endhint %}
 {% endtab %}
 
 {% tab title="Windows" %}
@@ -47,9 +49,9 @@ If your login is successful, a shell prompt like the following will be displayed
 {% endtab %}
 {% endtabs %}
 
-## Logging out of armlab
+## Logging out of Armlab
 
-to log out of armlab, simply invoke `logout`, and your terminal session will be closed.
+to log out of Armlab, simply invoke `logout`, and your terminal session will be closed.
 
 <figure><img src="../../../.gitbook/assets/Screenshot 2023-05-09 at 3.44.12 PM.png" alt=""><figcaption></figcaption></figure>
 
