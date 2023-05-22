@@ -18,7 +18,7 @@ Sitting above the hardware is the Instruction Set Architecture (ISA). The ISA ab
 
 ## **Operating System (OS)**
 
-Above the ISA sits another layer--the OS layer. The problem with the ISA level is that the ISA does not provide the full set of services that we need to efficiently use a computer. Also, the interface that is provided is extremely primitive, making it difficult t communicate with the hardware.
+Above the ISA sits another layer--the OS layer. The problem with the ISA level is that working with a computer at this level is extremely difficult.  It has the ISA does not provide the full set of services that we need to efficiently use a computer. Also, the interface that is provided is extremely primitive, making it difficult t communicate with the hardware.
 
 The solution is we design a new layer of software, known as the OS, that adds a variety of new instructions and features, above and beyond what the ISA level provides. more convenient to use and offer more services.
 
