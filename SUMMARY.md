@@ -9,7 +9,7 @@
 ## armlab
 
 * [Background](armlab/background/README.md)
-  * [Activating your armlab Account](armlab/background/activating-your-armlab-account.md)
+  * [Activating your Armlab Account](armlab/background/activating-your-armlab-account.md)
   * [Logging into & out of Armlab](armlab/background/logging-into-armlab/README.md)
     * [Secure Shell (SSH) Protocol](armlab/background/logging-into-armlab/ssh-protocol.md)
   * [Configuring your armlab Environment](armlab/background/configuring-your-armlab-environment.md)
