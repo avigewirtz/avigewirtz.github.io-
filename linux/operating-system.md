@@ -14,11 +14,11 @@ At the lowest level, there is the hardware, which provides the raw computing res
 
 ## **Instruction Set Architecture (ISA)**
 
-Sitting above the hardware is the Instruction Set Architecture (ISA). The ISA abstracts the hardware implementation details by providing programmers with the complete set of instructions that the CPU supports. In essence, it defines the machine language that the CPU can understand and process. From the programmer's perspective, the ISA is the lowest level software interface to the computer. ISAs can be complex (CISC - Complex Instruction Set Computer) like x86, or simplified (RISC - Reduced Instruction Set Computer) like ARM.&#x20;
+Sitting above the hardware is the Instruction Set Architecture (ISA). The ISA abstracts the hardware implementation details by providing programmers with the complete set of instructions that the CPU supports. In essence, it defines the machine language that the CPU can understand and process. From the programmer's perspective, the ISA is the lowest-level software interface to the computer. ISAs can be complex (CISC - Complex Instruction Set Computer) like x86, or simplified (RISC - Reduced Instruction Set Computer) like ARM.&#x20;
 
 ## **Operating System (OS)**
 
-Above the ISA we have another layer--the OS layer. The problem with the ISA level is that the ISA does not provide the full set of services that we need to efficiently use a computer. Also, the interface that is provided is extremely primitive, making it difficult t communicate with the hardware.
+Above the ISA sits another layer--the OS layer. The problem with the ISA level is that the ISA does not provide the full set of services that we need to efficiently use a computer. Also, the interface that is provided is extremely primitive, making it difficult t communicate with the hardware.
 
 The solution is we design a new layer of software, known as the OS, that adds a variety of new instructions and features, above and beyond what the ISA level provides. more convenient to use and offer more services.
 
