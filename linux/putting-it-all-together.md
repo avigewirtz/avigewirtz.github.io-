@@ -9,9 +9,7 @@ It should be apparent by now that when a command is invoked in a terminal, what 
 {% hint style="info" %}
 It's important to note thinking of a system as a linear sequence of layers is an oversimplification. In reality, systems are complex and consist of various components that often interact in non-linear and interdependent ways.
 
-For example, an application might interact directly with the OS kernel using system calls, bypassing higher-level abstractions like the standard C library. This is often done when the developer needs more precise control over the system resources than the higher-level libraries provide.
-
-
+For example, the shell or any other program might interact directly with the OS kernel using system calls, bypassing higher-level abstractions like the standard C library. This is often done when the developer needs more precise control over the system resources than the higher-level libraries provide.
 {% endhint %}
 
 ## Example of a sequence of interactions&#x20;
