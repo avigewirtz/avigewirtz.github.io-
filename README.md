@@ -14,7 +14,7 @@
 * [Terminal](linux/terminal.md)
 * [Operating System](linux/operating-system.md)
 * [Shell](linux/shell.md)
-  * [Types of CLI Commands](linux/shell/types-of-cli-commands.md)
+  * [Types of CLI Commands](broken-reference)
   * [How the shell executes commands](broken-reference)
 * [Putting it All Together](linux/putting-it-all-together.md)
 * [Filesystem](linux/filesystem.md)

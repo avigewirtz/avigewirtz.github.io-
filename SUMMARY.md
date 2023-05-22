@@ -20,7 +20,6 @@
 * [Terminal](linux/terminal.md)
 * [Shell](linux/shell.md)
   * [Syntax of Shell Commands](linux/shell/syntax-of-shell-commands.md)
-  * [Types of CLI Commands](linux/shell/types-of-cli-commands.md)
 * [Operating System](linux/operating-system.md)
 * [Libraries and Utilities](linux/libraries-and-utilities.md)
 * [Putting it All Together](linux/putting-it-all-together.md)
