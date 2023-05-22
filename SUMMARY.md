@@ -4,6 +4,7 @@
 
 * [Contents](README.md)
 * [Preface](getting-started/readme-1.md)
+* [Summary](getting-started/summary.md)
 
 ## armlab
 
