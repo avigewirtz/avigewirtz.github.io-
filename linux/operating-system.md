@@ -20,7 +20,7 @@ Above the ISA layer sits the OS layer. The motivation for introducing the OS lay
 
 Another limitation of the ISA is that it does not provide support for time-sharing, referring to the distribution of computational resources, such as memory and CPU, among multiple programs or users. Without inherent support for this feature, the ability to run multiple programs concurrently (a process known as multitasking) is limited.
 
-The solution is to add another layer--the OS layer--that expands the services of the ISA. Among other features, it includes support for time-sharing and provides a standardized interface for interacting with I/O devices.
+The solution to these (and many other) limitations is to add another layer--the OS layer--that expands the services of the ISA. Among other features, it includes support for time-sharing and provides a standardized interface for interacting with I/O devices.
 
 The interface to the OS is called the _system call_ interface. This interface allows user-level applications to request services from the OS, typically related to input/output operations, process management, file management, and communication. It's through system calls that a program can access the processor, memory, and other system resources managed by the OS.
 
