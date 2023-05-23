@@ -28,7 +28,7 @@ _dir1_ normally represents the parent (denoted `..`) or child of the working dir
 
 <figure><img src="https://lh3.googleusercontent.com/G6fYIoWumsNAoXkf7lnMwc5TEdyJ1zDcFSyqwmyFm-J8xG0YwJB2-zCmzuwDkOFFEv-Tzo3l8e7e7h9KkrJbfBO7qe7Khj5caDlE8P8R_kN2H8RAA_LF2gD-uk5dSEQK23Yv1DxJM0F4chlgWH3tnYE" alt=""><figcaption><p>Figure 4: Relative Pathname Examples</p></figcaption></figure>
 
-It's important to note that the working directory can change during a session, so a relative pathname may point to different locations, depending on the current working directory.
+It's important to note that the working directory can change during a session, so the meaning of a relative pathname is context specific.&#x20;
 
 {% hint style="success" %}
 You can determine whether a pathname is absolute or relative by inspecting the first few characters. Absolute pathnames begin with one or more than two forward slashes; relative pathnames do not.
