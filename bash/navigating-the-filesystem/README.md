@@ -4,16 +4,22 @@ To navigate the Linux filesystem, you need only be familiar with three commands:
 
 To navigate to a directory, you must specify its [pathname](../../linux/filesystem/pathnames.md)--either absolute or relative. The choice between the two is typically a matter of preference or convenience.&#x20;
 
-### Navigating with Absolute Pathnames
+When using an absolute pathname to navigate, your working directory's current location is irrelevant. This is because absolute pathnames point to the same location, irrespective of your current working directory. As an analogy, imagine giving someone directions from Times Square to Princeton - you need not be aware of the person's current location, as it has no bearing on the directions.&#x20;
 
-When you navigate with a relative pathname, the current location of your working directory does not matter, since absolute pathnames always take you to the same location, irrespective of your working directory. You can think of it like someone asking you for directions from Times Square to Princeton. You can answer the question without knowing that person's current location, as the directions do not depend on that information.&#x20;
+Conversely, when using a relative pathname to navigate, your working directory's current location becomes significant - it's your starting point. In the previous analogy, imagine giving directions from the person's current location to Princeton. To do this, you would need to know where they are starting from. This is similar to using relative pathnames.
 
-As a practical example, say you're logged into armlab and want to navigate to _/usr/bin._ If you navigate with its absolute pathname, you need not even be aware of the "location" of your working directory, since the "journey" begins at the root directory regardless, as demonstrated in the figure below.&#x20;
+### Example: Navigating to _/usr/bin_&#x20;
+
+As a practical example, say you're logged into Armlab and want to navigate to _/usr/bin._&#x20;
+
+#### Method 1: Navigating with absolute pathname
+
+Using the absolute pathname, your working directory's "location" is inconsequential, since the "journey" begins at the root directory. As such, regardless of your current working directory, you can specify the path as _/usr/bin_, as shown in Figure 1. &#x20;
 
 <figure><img src="https://lh6.googleusercontent.com/fsuhMi2igXx5_uDBRqn13MQUrJi4ksQEh30Tdq7jU5n3nU3UeUPB1lQD2qJqX9DNqztHBgPh27yVLONYOe8Gxuub6Sc3diq8ix8xNczgqBvq_faelUp2N6ybmdcqWoWyEgqJc6YJXfFLkOpM7cabdr0" alt=""><figcaption><p>Figure 1: Navigating to <em>/usr/bin</em> with Absolute Pathname</p></figcaption></figure>
 
-### Navigating with Relative Pathnames
+#### Method 2: Navigating with relative pathname
 
-When you navigate with a relative pathname, you need to be aware of the "location" of your working directory, since that is where you "start" from. In our previous example, imagine that instead of asking you for directions from Times Square to Princeton, that person asked you for directions from their current location to Princeton. Of course, you would need to know their current location before you could provide directions. So too with relative pathnames. The figure below demonstrates navigating to _/usr/bin_ when your working directory is your home directory.
+Conversely, when using a relative pathname to navigate to /usr/bin, you need to be aware of your current working directory. Figure 2 below demonstrates how to navigate to _/usr/bin_ when your working directory is your home directory.
 
 <figure><img src="https://lh5.googleusercontent.com/FraWHki7SFmGbu8SBMKFuNxOKUKnujwUXhvGMeizYJB_CtG1Qcmh5lv-yeXghuSxeojlmpn1i-4pjrtnaBBQT20dXztNWHNvIreerEt0iZNMHNXtFhBifxYGM2G3Vn2NhKZK0yu8A_Gayw6J3SPAQ4Q" alt=""><figcaption></figcaption></figure>
