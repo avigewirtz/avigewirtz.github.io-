@@ -18,11 +18,11 @@ In the following examples, the absolute pathname of the working directory is hig
 
 2. Make your home directory your working directory:
 
-The simplest way to change to your home directory is to invoke `cd` without arguments:&#x20;
+The simplest method is to invoke `cd` without arguments:&#x20;
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-04-25 at 10.09.21 PM.png" alt=""><figcaption></figcaption></figure>
 
-However, another simple way is to invoke it with _\~_ as the argument:
+However, another simple method is to invoke `cd` with _\~_ as the argument:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-04-25 at 11.26.15 PM.png" alt=""><figcaption></figcaption></figure>
 
