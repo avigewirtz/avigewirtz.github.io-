@@ -16,4 +16,4 @@ Note that SSH client or server programs are distinct from the SSH protocol itsel
 
 **Encryption**: Once your identity is authenticated and a connection is established, SSH provides strong encryption for your session. Any data sent over the connection is encrypted on your local computer and decrypted on the remote one. This ensures that even if the data is intercepted during transmission, it cannot be read.&#x20;
 
-**Data integrity**: SSH not only maintains the confidentiality of data but also protects its integrity during transmission. If any data is altered during transmission, the SSH server on the receiving end can it.
+**Data integrity**: SSH not only maintains the confidentiality of data but also protects its integrity during transmission. If any data is altered during transmission, the SSH server on the receiving end can detect it.
