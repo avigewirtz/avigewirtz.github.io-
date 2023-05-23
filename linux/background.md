@@ -10,11 +10,11 @@ In this section, we will cover the basics of the Linux OS and its associated uti
 
 <summary>Aside: What even is Unix?</summary>
 
-The term "Unix" was originally used to refer to a specific operating system (OS) developed in the late 1960s and early 1970s. Pioneered by Ken Thompson, Dennis Ritchie, and others at AT\&T's Bell Labs, Unix was revolutionary in its time for its modularity and the simplicity of its design.
+The term "Unix" was originally used to refer to a specific operating system developed in the late 1960s and early 1970s by Ken Thompson, Dennis Ritchie, and others at AT\&T's Bell Labs.&#x20;
 
 As Unix grew in popularity, AT\&T began to license the Unix OS source code to academic institutions and commercial entities. This broadened the meaning of the term "Unix" as it was no longer confined to the original system developed at Bell Labs. Instead, it came to denote any system that used or was derived from the licensed Unix OS source code. As these Unix-like systems developed independently, they introduced their unique innovations and variations while still maintaining core Unix characteristics.
 
-With the Unix OS code broadly accessible through licensing, a number of clones emerged. These were operating systems designed to mimic the functionality of the Unix system, without necessarily using its original source code. One notable example of such a clone is Linux. Created by Linus Torvalds in 1991, Linux was designed to be similar to Unix but was created from scratch. While not derived from the Unix OS code, it adopted many principles and features from Unix
+Later, a number of clones emerged. These were operating systems designed to mimic the functionality of the Unix system, without necessarily using its original source code. One notable example of such a clone is Linux.
 
 </details>
 
