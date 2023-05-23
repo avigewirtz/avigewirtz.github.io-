@@ -40,7 +40,7 @@ Utilities are usually packaged with the operating system and installed by defaul
 
 ## Kernel Mode and User Mode
 
-The computer system operates in different modes, called _kernel mode_ and _user mode_, which represent different states of the processor and govern the execution privileges of the code that's running. The OS kernel runs in kernel mode, while other programs, such as utilities and application programs, run in user mode. The division between the two modes is a crucial one.&#x20;
+The computer system operates in two modes--_kernel mode_ and _user mode_. These modes represent different states of the processor and govern the execution privileges of the code that's running. The OS kernel runs in kernel mode, while other programs, such as utilities and applications, run in user mode. The division between the two modes is crucial.&#x20;
 
 #### **Kernel Mode**
 
