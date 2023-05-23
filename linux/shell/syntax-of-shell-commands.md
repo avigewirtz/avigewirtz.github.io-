@@ -4,11 +4,11 @@ Shell commands typically consist of _fields_, which represent a _command name_ f
 
 ## **Command name**
 
-A command name typically represents an executable file or a shell built-in, but it can also represent a function.&#x20;
+A command name typically represents an executable file or a shell _built-in_, but it can also represent a _function_.&#x20;
 
-* **Executable file**: The executable file can represent any program on the filesystem. It typically represents a utility, but it can represent any program on the filesystem. There is no fundamental distinction between a utility and a regular program, except that a utility can be called by name alone (rather than _pathname_).
-* **Built-In**: A built-in utility is a utility implemented within the shell. The difference between a shell built-in and another program is that a shell built-in represents a service provided by the shell itself, while other programs represent services provided by external programs. The practical implications of this distinction are typically not of concern to programmers, so we will not cover them here. However, whenever the distinction is pertinent, we will point it out.&#x20;
-* **Function**: A function is essentially a group of commands that are defined for reuse. You need now be familiar with them in COS217.&#x20;
+* **Executable file**: The executable file can represent any program on the filesystem, though it typically represents a utility. There is no fundamental distinction between a utility and a regular program, except that a utility can be called by name alone (rather than _pathname_).
+* **Shell built-In**: A shell built-in is a utility implemented within the shell. The difference between a shell built-in and another program is that a shell built-in represents a service provided by the shell itself, while other programs represent services provided by external programs. The practical implications of this distinction are typically not of concern to programmers, so we will not cover them here. However, whenever the distinction is pertinent, we will point it out.&#x20;
+* **Function**: A function is essentially a group of commands that are defined for reuse.&#x20;
 
 ## **Argument**
 
