@@ -4,10 +4,10 @@ The `cd` command is used to change the working directory. Its syntax is as follo
 
 The <mark style="color:blue;">**DIRECTORY\_PATHNAME**</mark> parameter represents the absolute or relative pathname of the directory you want to navigate to.&#x20;
 
-If you don't provide the <mark style="color:blue;">**DIRECTORY\_PATHNAME**</mark> argument, the `cd` defaults to changing the working directory to your home directory.
+If <mark style="color:blue;">**DIRECTORY\_PATHNAME**</mark> isn't specified, `cd` defaults to your home directory.
 
 {% hint style="info" %}
-In the following examples, the absolute pathname of the working directory is highlighted in the [shell prompt](../warm-up-commands.md#shell-prompt). This is to enable you to determine the location of the working directory at all times and to compare the location before and after each command is executed.
+In the following examples, the absolute pathname of the working directory is highlighted in the [shell prompt](../warm-up-commands.md#shell-prompt). This is to enable you to compare the value of the working directory before and after each command is executed.
 {% endhint %}
 
 ### Exercises
