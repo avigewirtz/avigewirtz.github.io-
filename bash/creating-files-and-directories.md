@@ -1,6 +1,6 @@
 # Creating Directories
 
-The _mkdir_ command is used to create directories (also known as folders). Its syntax is as follows: <mark style="color:red;">**`mkdir`**</mark><mark style="color:blue;">**`DIRECTORY(IES)`**</mark>.
+Directories can be created using the _mkdir_ command, whose syntax is as follows: <mark style="color:red;">**`mkdir`**</mark><mark style="color:blue;">**`DIRECTORY(IES)`**</mark>.
 
 The <mark style="color:blue;">**`DIRECTORY(IES)`**</mark> parameter represents the name(s) of the directories you want to create. You can specify multiple directory names, each separated by spaces. Before creating directories, let's review filenames.&#x20;
 
