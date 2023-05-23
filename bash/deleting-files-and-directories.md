@@ -9,7 +9,7 @@ While both empty and nonempty files and directories can be deleted with the `rm`
 ### Common options
 
 * **`-r`**: Deletes directory(ies), even if they are not empty.
-* **`-i`**: Prompts user for confirmation before deleting each file/directory.&#x20;
+* **`-i`**: Prompts the user for confirmation before deleting each file/directory.&#x20;
 * **`-f`**: Overrides `-i` option (i.e., removes confirmation prompt).
 
 {% hint style="danger" %}
@@ -30,7 +30,7 @@ The operation succeeds since _dir1_ is empty.
 
 The operation fails since _dir2_ is not empty.&#x20;
 
-3. Let's clean things up a bit. Delete `dir3`, `dir4`, `bad`, `name`, and `bad name`:
+3. Let's clean things up a bit. Delete _dir3_, _dir4_, _bad_, _name_, and '_bad name_':
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 4.23.11 PM.png" alt=""><figcaption></figcaption></figure>
 
@@ -38,7 +38,7 @@ The operation fails since _dir2_ is not empty.&#x20;
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 4.29.21 PM.png" alt=""><figcaption></figcaption></figure>
 
-The prompt `rm: remove regular empty file 'file1'?`  is displayed because on armlab, `rm` is aliased to `rm -i`.&#x20;
+The prompt `rm: remove regular empty file 'file1'?`  is displayed because on Armlab, `rm` is aliased to `rm -i`.&#x20;
 
 2. Delete _dir2_:
 
