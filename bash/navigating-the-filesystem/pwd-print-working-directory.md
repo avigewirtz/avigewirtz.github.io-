@@ -1,6 +1,6 @@
 # pwd (Print Working Directory)
 
-The `pwd` command is a simple yet powerful command used to determine the absolute pathname of the working directory.
+The `pwd` command is a simple yet useful command used to determine the absolute pathname of your current working directory.
 
 Upon logging into armlab, your home directory will by default be your working directory. To verify this, [log into](../../armlab/background/logging-into-armlab/#logging-into-armlab) armlab and invoke:
 
