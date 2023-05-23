@@ -14,7 +14,8 @@ Before creating directories, let's revisit filenames. As stated [earlier](../lin
 ```
 {% endcode %}
 
-2. Avoid beginning a file or directory name with a **-** (hyphen) or a **.** (period). This is because a leading hyphen might cause the shell to confuse the file/directory for a command line option, and a leading period will make the file/directory hidden.&#x20;
+2. Avoid beginning a file or directory name with a **-** (hyphen). This is because a leading hyphen might cause the shell to confuse the file/directory for a command line option.
+3. Avoid beginning a file or directory name with a **.** (period), unless you want it to be hidden.&#x20;
 
 ### Exercises
 
