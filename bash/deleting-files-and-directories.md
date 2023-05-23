@@ -13,7 +13,7 @@ While both empty and nonempty files and directories can be deleted with the `rm`
 * **`-f`**: Overrides `-i` option (i.e., removes confirmation prompt).
 
 {% hint style="danger" %}
-Deleting files and directories is a dangerous operation. If you’re not careful, the operating system will do exactly what you tell it to do, including destroying every last one of your files and directories. For this reason, deleting non-empty files or non-empty directories is deliberately made difficult.&#x20;
+Deleting files and directories is a dangerous operation. If you’re not careful, the operating system will do exactly what you tell it to, including destroying every last one of your files and directories. For this reason, deleting non-empty files or non-empty directories is deliberately made difficult.&#x20;
 {% endhint %}
 
 ### Exercises

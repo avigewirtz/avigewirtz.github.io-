@@ -1,6 +1,6 @@
 # Creating Files
 
-There are numerous ways you can create files on the command line. The simplest method is via the `touch` command, which takes filenames as arguments. However, `touch` can only be used to create a file, not to edit or even open a file. For those operations, you need to use tools like the less pager or emacs text editor.&#x20;
+There are numerous ways you can create files on the command line. The simplest method is via the `touch` command, which takes filenames as arguments. However, `touch` can only be used to create a file, not to edit or even open a file. For those operations, you need to use tools like the less pager or emacs text editor. In the following exercises, we will create files using the touch command. Note that if the supplied file already exists, `touch` will update its timestamps.&#x20;
 
 ### Exercises
 
