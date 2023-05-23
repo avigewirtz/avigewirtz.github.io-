@@ -4,11 +4,11 @@ description: This page introduces Bash commands.
 
 # Getting Started
 
-We'll begin our command line journey by executing a few simple Bash commands on armlab. To follow along with these exercises ensure you are [logged into](../armlab/background/logging-into-armlab/) armlab.&#x20;
+We'll begin our command line journey by executing a few simple Bash commands on Armlab. To follow along with these exercises ensure you are [logged into](../armlab/background/logging-into-armlab/) armlab.&#x20;
 
 ### Shell prompt
 
-Every shell displays a prompt on the command line. On armlab, the shell prompt looks like the following:
+The first thing you'll notice on the command line is the shell prompt. On Armlab, it looks like the following:
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-04-25 at 3.08.46 PM.png" alt=""><figcaption></figcaption></figure>
 
