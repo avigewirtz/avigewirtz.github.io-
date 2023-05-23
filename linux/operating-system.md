@@ -2,9 +2,7 @@
 
 Between the shell and the hardware lie multiple layers of software. Together, these layers provide the services that enable shell commands to be executed. Among these layers, the most important one to the application programmer is the Operating System (OS).
 
-You can think of the operating system as the bridge between the computer's hardware (such as the processor, memory, and I/O devices) and the software applications. Whenever applications want to utilize the hardware resources, they do so via the operating system, which ensures that these applications can effectively communicate with the hardware and utilize its resources effectively.
-
-When we issue commands to the shell, behind the scenes the shell communicates with the OS for us, requesting the necessary services from the OS to complete the task. Having the shell as an intermediary to communicate with the OS for us makes programming exponentially easier, as interfacing with the OS directly is extremely intricate.&#x20;
+You can think of the operating system as the bridge between the computer's hardware (such as the processor, memory, and I/O devices) and the software applications. Whenever applications want to utilize the hardware resources, they do so via the operating system, which ensures that these applications can effectively communicate with the hardware and utilize its resources effectively.&#x20;
 
 To better understand the role the OS plays in the computer system, it's helpful to take a step back and briefly discuss the layers below the OS. For our purposes, we will cover the hardware and ISA layers, beginning our exploration from the ground up and building up to the OS. Note that this coverage is highly simplified.
 
