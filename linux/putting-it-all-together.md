@@ -14,7 +14,7 @@ For example, the shell or any other program might interact directly with the OS 
 
 ## Example of a sequence of interactions&#x20;
 
-We will now illustrate a potential sequence of interactions between all the layers when a command is invoked by the user. For this example, we will use the `ls` command, which displays the contents of the working directory. This is a simplification, but it should give a good impression of the flow:
+We will now illustrate a potential sequence of interactions between all the layers when a command is invoked by the user. For this example, we will use the `ls` command, which when invoked in the terminal results in the contents of the working directory being displayed on the screen. The following sequence is an oversimplification, but it should give you a good idea of the flow:
 
 1. **User input**: The user types `ls` in the terminal and hits the `Enter` key.
 2. **Terminal/terminal emulator**: The terminal captures the user's keystrokes and passes the command string `ls` to the shell. The terminal waits for the output to display.
