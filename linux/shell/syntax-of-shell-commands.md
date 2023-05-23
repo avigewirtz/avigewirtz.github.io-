@@ -18,7 +18,7 @@ An argument is a parameter passed to the executable file, shell built-in, or fun
 
     Options are defined and interpreted by the program they are supplied to. Thus, the precise syntax and behavior of an option are dependent on the program, not the shell. Many commands allow several short options to be combined.&#x20;
 * **Option-Argument**: An option-argument is a parameter that follows certain options. For example, the `-o` option in the `gcc` command uses an argument—an output filename such as `hello`.
-* **Operand**: An operand specifies the data that the command manipulates or operates on, usually representing a filename, literal, or variable. Commands often allow multiple operands to be supplied together. The order of options and operands can be significant, depending on the command.&#x20;
+* **Operand**: An operand specifies the data that the command manipulates or operates on, usually representing a literal, variable, or filename. (Note that in this context we use the term _file_ broadly to include directories.) Commands often allow multiple operands to be supplied together. The order of options and operands can be significant, depending on the command.&#x20;
 
 The syntax of a shell command can generally be summarized as follows:
 
