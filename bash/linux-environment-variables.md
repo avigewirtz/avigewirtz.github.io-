@@ -1,8 +1,6 @@
 # Linux Environment Variables
 
-In Linux, environment variables are a type of variable used to store information about the system environment, such as the current user's name, the current system's directory path, or settings for software applications.&#x20;
-
-Standard Linux environment variables include:
+In Linux, environment variables are a type of variable used to store information about the system environment, such as the current user's name, the current system's directory path, or settings for software applications. Standard environment variables on Linux include:
 
 * `PATH`: Stores a list of directories where the shell looks for executable programs when a command is entered. Directories in the `PATH` variable are separated by colons (:) on Linux and semicolons (;) on Windows.
 * `HOME`: Specifies the home directory of the current user. &#x20;

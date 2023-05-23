@@ -15,7 +15,7 @@ In case 1, the command name is interpreted as the (absolute or relative) pathnam
 
 In case 2, the shell searches the directories listed in the PATH environment variable for a filename that matches the command name.&#x20;
 
-### Examples
+## Examples
 
 To illustrate this idea concretely, here are some examples illustrating how the steps Bash would take when commands are invoked. For these examples, assume the working directory is /u/NetID and that it contains an executable file named hello that prints "Hello, World!" on stdout.&#x20;
 

@@ -9,11 +9,21 @@ The `cp` command is used to copy files and directories from a source to a destin
 3. **Source is a directory, destination is a file**: This scenario is invalid, as you cannot copy a directory to a file. You'll get an error stating that the source is a directory, not a file.
 4. **Source is a directory, destination is a directory**: The source directory and its contents (including subdirectories and their contents) will be copied to the destination directory. If the destination directory doesn't exist, it will be created. If it exists, the source directory's contents will be merged with the destination directory's contents. In case of duplicate file names, the destination files will be overwritten. Syntax: `cp -r source_directory destination_directory`. Note that in this case, (I.e., when the source is a directory, you must use the `-r` option for the command to succeed). &#x20;
 
-### Common options&#x20;
+<details>
 
-* &#x20;**`-i`**   —   prompts the user for confirmation before overwriting.&#x20;
-* &#x20;**`-f`**   —   overrides `-i` option (i.e., removes confirmation prompt).&#x20;
-* &#x20;**`-r`**   —   copy directory recursively.&#x20;
+<summary>Common options</summary>
+
+* **`-i`**: Prompts the user for confirmation before overwriting.&#x20;
+
+<!---->
+
+* **`-f`**: Overrides `-i` option (i.e., removes confirmation prompt).&#x20;
+
+<!---->
+
+* **`-r`**: Copies directory recursively.
+
+</details>
 
 ### Examples
 

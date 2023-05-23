@@ -6,11 +6,21 @@ The <mark style="color:blue;">**FILES/DIRECTORY(IES)**</mark> parameter represen
 
 While both empty and nonempty files and directories can be deleted with the `rm` command, you can also use the `rmdir` command to delete empty directories. The benefit of using the `rmdir` command to delete directories is it provides a more explicit and cautious approach to deleting directories. By restricting itself to empty directories, it helps prevent accidental deletion of nonempty directories and their contents.
 
-### Common options
+<details>
+
+<summary>Common options</summary>
 
 * **`-r`**: Deletes directory(ies), even if they are not empty.
+
+<!---->
+
 * **`-i`**: Prompts the user for confirmation before deleting each file/directory.&#x20;
+
+<!---->
+
 * **`-f`**: Overrides `-i` option (i.e., removes confirmation prompt).
+
+</details>
 
 {% hint style="danger" %}
 Deleting files and directories is a dangerous operation. If you’re not careful, the operating system will do exactly what you tell it to, including destroying every last one of your files and directories. For this reason, deleting non-empty files or non-empty directories is deliberately made difficult.&#x20;

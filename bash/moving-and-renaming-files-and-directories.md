@@ -9,11 +9,13 @@ The `mv` command in Bash is used to move or rename files and directories from a 
 3. **Source is a directory, destination is a file**: This scenario is invalid, as you cannot move a directory to a file. You'll get an error stating that the source is a directory, not a file.
 4. **Source is a directory, destination is a directory**: The source directory will be moved to the destination directory. If the destination directory doesn't exist, it will be created, and the source directory will be removed. If it exists, the source directory will be merged with the destination directory, overwriting any files with the same name. Syntax: `mv source_directory/ destination_directory/`
 
-### Common options
+<details>
+
+<summary>Common options</summary>
 
 * `-i`: Prompts the user for confirmation before overwriting existing files.
-* `-n`: Prevents overwriting existing files.
-* `-u`: Moves only when the source file is newer than the destination file, or when the destination file is missing.
+
+</details>
 
 <details>
 

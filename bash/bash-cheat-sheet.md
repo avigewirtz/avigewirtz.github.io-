@@ -1,7 +1,7 @@
 # Bash Cheat Sheet
 
 {% hint style="info" %}
-Uppercase terms (e.g., SOURCE, DESTINATION) indicate placeholders and should be replaced with appropriate values when executing these commands.
+Uppercase terms (e.g., SOURCE, DESTINATION) indicate placeholders for text that should be replaced with user-specified values.
 {% endhint %}
 
 ### Basic Commands
