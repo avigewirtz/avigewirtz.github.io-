@@ -16,4 +16,4 @@ This idea is illustrated in Figure 1, which depicts multiple users logged into A
 
 <figure><img src="../../.gitbook/assets/Group 12 (1) (1).png" alt="" width="563"><figcaption><p>Figure 1: Concurrent SSH Sessions with Armlab </p></figcaption></figure>
 
-Before you can log into Armlab, you must first complete a couple of steps to [activate](activating-your-armlab-account.md) your account.
+Before you can log into Armlab, however, you must first [activate](activating-your-armlab-account.md) your account.

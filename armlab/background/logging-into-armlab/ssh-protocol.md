@@ -4,7 +4,11 @@ Secure Shell (SSH) is a network protocol that provides an encrypted communicatio
 
 ## SSH Architecture
 
-SSH operates on the client-server model, connecting an instance of an SSH client with an instance of an SSH server. Note that these programs are distinct from the SSH protocol itself. The SSH protocol defines the rules for secure communication, while software tools like OpenSSH, PuTTY, and others implement these rules in their unique ways.&#x20;
+SSH operates on the client-server model, connecting an instance of an SSH client with an instance of an SSH server.&#x20;
+
+{% hint style="info" %}
+Note that SSH client or server programs are distinct from the SSH protocol itself. The SSH protocol defines the rules for secure communication, while software tools like OpenSSH and PuTTY implement these rules in their unique ways.&#x20;
+{% endhint %}
 
 ## Key Features of SSH
 
