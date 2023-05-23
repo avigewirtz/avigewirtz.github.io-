@@ -2,9 +2,9 @@
 
 Directories can be created using the _mkdir_ command, whose syntax is as follows: <mark style="color:red;">**`mkdir`**</mark><mark style="color:blue;">**`DIRECTORY(IES)`**</mark>.
 
-The <mark style="color:blue;">**`DIRECTORY(IES)`**</mark> parameter represents the name(s) of the directories you want to create. You can specify multiple directory names, each separated by spaces. Before creating directories, let's review filenames.&#x20;
+<mark style="color:blue;">**`DIRECTORY(IES)`**</mark> represents the name(s) of the directory(ies) you want to create.
 
-As stated [earlier](../linux/filesystem/filenames.md), Linux filesystems impose very few restrictions on file and directory names. That said, not all valid filenames are equal. Some are poorly suited for the shell environment and are best avoided. The following naming suggestions will make your life on the command line easier:&#x20;
+Before creating directories, let's revisit filenames. As stated [earlier](../linux/filesystem/filenames.md), Linux filesystems impose very few restrictions on file and directory names. That said, not all valid filenames are equal. Some are poorly suited for the shell environment and are best avoided. The following naming suggestions will make your life on the command line easier:&#x20;
 
 1. Avoid using whitespace or special characters in filenames, since such files are harder to reference on the command line. The following characters are special:&#x20;
 
