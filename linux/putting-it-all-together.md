@@ -17,7 +17,7 @@ For example, the shell or any other program might interact directly with the OS 
 We will now illustrate a potential sequence of interactions between all the layers when a command is invoked by the user. For this example, we will use the `ls` command, which when invoked in the terminal results in the contents of the working directory being displayed on the screen. The following sequence is an oversimplification, but it should give you a good idea of the flow:
 
 1. **User input**: The user types `ls` in the terminal and hits the `Enter` key.
-2. **Terminal/terminal emulator**: The terminal captures the user's keystrokes and passes the command string `ls` to the shell. The terminal waits for the output to display.
+2. **Terminal/terminal emulator**: The terminal captures the user's keystrokes and passes the command string `ls` to the shell.&#x20;
 3. **Shell**: The shell, which might be bash or another shell, parses the `ls` command and verifies its syntax. Finding it valid, the shell starts a new process to run the command.
 4. **Core utilities**: The `ls` command is part of the Unix core utilities. It looks up the necessary information about the current directory, using functions provided by the standard C library.
 5. **Standard C library**: The library functions called by `ls`, such as `opendir`, `readdir`, and `closedir`, make system calls to the OS kernel to perform the actual operations.
