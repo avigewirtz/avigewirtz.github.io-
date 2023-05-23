@@ -4,7 +4,7 @@ Shell commands typically consist of _fields_, which represent a _command name_ f
 
 ## **Command name**
 
-A command name typically represents either an executable file, a shell built-in, or a function.&#x20;
+A command name typically represents an executable file or a shell built-in, but it can also represent a function.&#x20;
 
 * **Executable file**: The executable file can represent any program on the filesystem. It typically represents a utility or a user-written program. There is no fundamental distinction between the two, except that a utility represents a program that can be called by name (rather than _pathname_) and user-written programs must (by default) be called with a pathname. &#x20;
 * **Built-In**: A built-in utility is a utility implemented within the shell. The difference between a shell built-in and another program is that a shell built-in represents a service provided by the shell itself, while other programs represent services provided by external programs. The practical implications of this distinction are typically not of concern to programmers, so we will not cover them here. However, whenever the distinction is pertinent, we will point it out.&#x20;
