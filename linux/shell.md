@@ -6,6 +6,6 @@ The program that implements the CLI is called the shell, which is both a program
 
 There are various shell implementations available, each offering its own set of features and functionalities. Some popular shell implementations include Bash, Zsh, PowerShell, and Ksh.
 
-Each operating system typically has a default shell: Bash for Linux, Zsh for macOS, and PowerShell for Windows. In COS217, our focus will primarily be on the Bash shell due to its widespread usage, particularly within the Linux environment.
+Each operating system typically has a default shell: Bash for Linux, Zsh for macOS, and PowerShell for Windows. In COS217, our focus will be on the Bash shell due to its widespread usage, particularly in Linux.
 
-While Unix shells such as Bash and Zsh have slight differences in their syntax and capabilities, they share many similarities, making transitioning from one to the other (such as from Bash to Zsh or vice versa) relatively seamless for most users.
+While Unix shells such as Bash and Zsh have slight differences in their syntax and capabilities, they share many similarities, making transitioning from one to the other (such as from Bash to Zsh or vice versa) relatively seamless.

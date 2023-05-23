@@ -14,6 +14,6 @@ Note that SSH client or server programs are distinct from the SSH protocol itsel
 
 **Authentication**: Before establishing a connection, the remote computer authenticates your identity using a username/password combination or a digital key pair (one private, one public).&#x20;
 
-**Encryption**: Once your identity is authenticated and a connection is established, SSH provides strong encryption for your session. Any data sent over the connection is encrypted on your local computer and decrypted on the remote one. This ensures that even if the data is intercepted during transmission, it cannot be read as it is encrypted.&#x20;
+**Encryption**: Once your identity is authenticated and a connection is established, SSH provides strong encryption for your session. Any data sent over the connection is encrypted on your local computer and decrypted on the remote one. This ensures that even if the data is intercepted during transmission, it cannot be read.&#x20;
 
 **Integrity**: SSH not only maintains the confidentiality of your data but also protects the integrity of data transmissions. If any data is altered during transmission, the SSH server on the receiving end can detect such alterations.
