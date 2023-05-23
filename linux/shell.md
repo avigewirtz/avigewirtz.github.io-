@@ -1,6 +1,6 @@
 # Shell
 
-Just as commands issued in a high-level programming language utilize a specific syntactical structure, commands issued in the CLI also have their own syntax. Similarly, just as commands in programming languages are not directly executable by the computer hardware but can only interact with hardware via various intermediary software, so too with CLI commands.
+Just as commands issued in a high-level programming language utilize a specific syntactical structure, commands issued in the CLI also have their own syntax. Similarly, just as commands in programming languages interact with hardware via various intermediary software, so too with CLI commands.
 
 The program that implements the CLI is called the shell, which is both a programming language and a command interpreter. As a programming language, it defines the syntax and semantics of CLI commands, specifying the format that commands must adhere to and the range of possible operations. As a command interpreter, it reads, interprets, and executes commands entered in the terminal.
 

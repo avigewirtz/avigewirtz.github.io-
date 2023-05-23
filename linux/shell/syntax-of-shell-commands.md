@@ -6,7 +6,7 @@ Shell commands typically consist of _fields_, which represent a _command name_ f
 
 A command name typically represents an executable file or a shell built-in, but it can also represent a function.&#x20;
 
-* **Executable file**: The executable file can represent any program on the filesystem. It typically represents a utility or a user-written program. There is no fundamental distinction between the two, except that a utility represents a program that can be called by name (rather than _pathname_) and user-written programs must (by default) be called with a pathname. &#x20;
+* **Executable file**: The executable file can represent any program on the filesystem. It typically represents a utility, but it can represent any program on the filesystem. There is no fundamental distinction between a utility and a regular program, except that a utility can be called by name alone (rather than _pathname_).
 * **Built-In**: A built-in utility is a utility implemented within the shell. The difference between a shell built-in and another program is that a shell built-in represents a service provided by the shell itself, while other programs represent services provided by external programs. The practical implications of this distinction are typically not of concern to programmers, so we will not cover them here. However, whenever the distinction is pertinent, we will point it out.&#x20;
 * **Function**: A function is essentially a group of commands that are defined for reuse. You need now be familiar with them in COS217.&#x20;
 
@@ -18,9 +18,9 @@ An argument is a parameter passed to the executable file, shell built-in, or fun
 
     Options are defined and interpreted by the program they are supplied to. Thus, the precise syntax and behavior of an option are dependent on the program, not the shell. Many commands allow several short options to be combined.&#x20;
 * **Option-Argument**: An option-argument is a parameter that follows certain options. For example, the `-o` option in the `gcc` command uses an argument—an output filename such as `hello`.
-* **Operand**: An operand specifies the data the command should manipulate or operate on, which normally represents either a filename, literal, or variable. Many commands allow multiple operands to be supplied together. Operands generally follow options.
+* **Operand**: An operand specifies the data that the command manipulates or operates on, usually representing a filename, literal, or variable. Commands often allow multiple operands to be supplied together. The order of options and operands can be significant, depending on the command.&#x20;
 
-The syntax of a shell command can be summarized as follows:
+The syntax of a shell command can generally be summarized as follows:
 
 ```css
 COMMAND_NAME OPTION(S) OPERAND(S)
