@@ -1,11 +1,11 @@
 # Further Reading
 
-If you'd like to learn more about the operating systems, the books listed below are excellent resources. 
+If you'd like to learn more about operating systems in general or Linux in particular, the books listed below are excellent resources.
 
 ## **Operating Systems**
 
 1. Tanenbaum, A.S., & Bos, H. (2014). _Modern Operating Systems (4th ed.)_. Pearson.
-   * This textbook provides an in-depth introduction to operating systems, including their design, implementation, and management.&#x20;
+   * This textbook provides an in-depth introduction to operating systems, including their design, implementation, and management.
 2. Silberschatz, A., Galvin, P.B., & Gagne, G. (2018). _Operating System Concepts (10th ed.)_. Wiley.
    * This book covers essential operating system concepts, providing a solid foundation for understanding how modern operating systems work, including Linux, Windows, and macOS.
 

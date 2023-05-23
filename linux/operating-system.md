@@ -16,9 +16,17 @@ At the lowest level, there is the hardware, which provides the raw computing res
 
 Sitting above the hardware is the Instruction Set Architecture (ISA). The ISA abstracts the hardware implementation details by providing programmers with the complete set of instructions that the CPU supports. In essence, it defines the machine language that the CPU can understand and process. From the programmer's perspective, the ISA is the lowest-level software interface to the computer. ISAs can be complex (CISC - Complex Instruction Set Computer) like x86, or simplified (RISC - Reduced Instruction Set Computer) like ARM.&#x20;
 
-## **OS Kernel**
+## **Operating System**
 
-<>
+Above the ISA layer sits the OS layer. The impetus for the OS layer is while the ISA simplifies programming by hiding the low-level details of the hardware, it has limitations that can make certain tasks challenging to perform. For example, the ISA does not provide a standardized I/O interface. Since I/O devices are often external and frequently manufactured by different companies, each one comes with its own unique low-level ISA interface, separate from the CPU’s ISA. The CPU’s ISA doesn't provide a standardized method for interacting with these I/O devices, thus necessitating the programmers to familiarize themselves with the specific low-level interface of each device.
+
+The ISA also doesn't provide support for _time-sharing_, which refers to the distribution of computational resources, such as memory and CPU, among multiple programs or users. The ISA does not inherently support this feature, thereby limiting the ability to run multiple programs concurrently (a process known as multitasking).
+
+The OS adds services on top of those offered by the ISA. Specifically, it adds time-sharing capabilities and provides a standardized interface for interacting with I/O devices.&#x20;
+
+The interface to the OS is called the system call interface. This interface allows user-level applications to request services from the OS, which are typically related to input/output operations, process management, file management, and communication. It's through system calls that a program can access the processor, memory, and other system resources managed by the OS.&#x20;
+
+Operating systems is an advanced topic, so detailed coverage is beyond the scope of COS217. For now, it is sufficient to think of the OS as acting like the "boss" of the computer, managing and coordinating all its activities. It controls how programs are executed, manages the computer's memory to ensure that different programs don't interfere with each other, and handles input and output operations (like displaying information on the screen or printing documents). Different operating systems exist, such as Windows, macOS, and Linux. Each has its own features and design, but they all serve the same purpose of making the computer usable and providing a platform for running applications.
 
 ## Libraries
 
