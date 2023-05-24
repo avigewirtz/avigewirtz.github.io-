@@ -1,6 +1,6 @@
 # COS217 Development Workflow
 
-Your workflow in COS217 will depend on several factors, such as whether the assignment is an individual or partnered assignment and whether you develop on armlab or your personal computer (not recommended). In this section, we will give an overview of the COS217 workflow for both individual and partnered assignments.&#x20;
+Your workflow in COS217 will depend on several factors, such as whether the assignment is an individual or partnered assignment and whether you develop on Armlab or your personal computer. Below we provide an illustration of the COS217 workflow for both individual and partnered assignments. The illustrations assume you are developing on Armlab.&#x20;
 
 ### Workflow on Individual Assignments
 
