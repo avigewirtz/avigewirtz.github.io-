@@ -94,6 +94,7 @@
   * [git add](git-and-github/git-workflow-1/staging-files.md)
   * [git commit](git-and-github/git-workflow-1/committing-staged-files.md)
   * [git push](git-and-github/git-workflow-1/pushing-commits.md)
+  * [git pull](git-and-github/git-workflow-1/git-pull.md)
 * [Important Git commands](git-and-github/important-git-commands/README.md)
   * [Checking the Status of Your Repository](git-and-github/important-git-commands/checking-the-status-of-your-repository.md)
   * [Viewing Commit History](git-and-github/important-git-commands/viewing-commit-history.md)
