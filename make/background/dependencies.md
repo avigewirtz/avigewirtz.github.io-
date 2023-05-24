@@ -1,12 +1,6 @@
 # Dependencies
 
-In our earlier discussion on code reusability, we explained how certain files can be dependent on others for proper execution. For instance, a simple C program, `hello.c`, might depend on the printf library function, and thus, the `stdio.h` header file.
 
-If either the `stdio.h` file or the library function file changes in a way that alters their interfaces, all files that use them can potentially break.
-
-Let's consider an example where the prototype for the `printf` function in the `stdio.h` file is changed from `int printf(const char *format, ...);` to `int printf(int num, const char *format, ...);`. This would break all programs that use `printf` since they would now need to provide an additional integer argument at the beginning.
-
-Will will consider 4 types of dependencies: direct dependencies, indirect dependencies, transitive dependencies, cyclic dependencies.&#x20;
 
 ## Direct Dependencies
 
@@ -25,7 +19,7 @@ int lcm(int i, int j);
 **File `intmath.c`:**
 
 ```c
-cCopy code#include "intmath.h"
+#include "intmath.h"
 
 int gcd(int i, int j) {
     int temp;
@@ -45,7 +39,7 @@ int lcm(int i, int j) {
 **File `testintmath.c`:**
 
 ```c
-cCopy code#include "intmath.h" 
+#include "intmath.h" 
 #include <stdio.h>
 
 int main(void) {
@@ -84,7 +78,7 @@ In the case of a single intermediary step, we have an example with `complexmath.
 **File `complexmath.h`:**
 
 ```c
-cCopy code#ifndef COMPLEXMATH_INCLUDED
+#ifndef COMPLEXMATH_INCLUDED
 #define COMPLEXMATH_INCLUDED
 #include "intmath.h"
 int calculate(int i, int j, int k);
@@ -100,7 +94,7 @@ To demonstrate multiple intermediary steps, let's introduce another file, `advan
 **File `advancedmath.h`:**
 
 ```c
-cCopy code#ifndef ADVANCEDMATH_INCLUDED
+#ifndef ADVANCEDMATH_INCLUDED
 #define ADVANCEDMATH_INCLUDED
 #include "complexmath.h"
 int advancedCalculate(int i, int j, int k, int l);
@@ -110,7 +104,7 @@ int advancedCalculate(int i, int j, int k, int l);
 **File `advancedmath.c`:**
 
 ```c
-cCopy code#include "advancedmath.h"
+#include "advancedmath.h"
 
 int advancedCalculate(int i, int j, int k, int l) {
     return calculate(i, j, k) + l;
@@ -128,7 +122,7 @@ Cyclic dependencies occur when two or more modules depend on each other, either 
 **File `intmath.h` (modified):**
 
 ```c
-cCopy code#ifndef INTMATH_INCLUDED
+#ifndef INTMATH_INCLUDED
 #define INTMATH_INCLUDED
 #include "complexmath.h"
 int gcd(int i, int j); 

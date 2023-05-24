@@ -117,7 +117,7 @@
 ## Make
 
 * [Background](make/background/README.md)
-  * [Code Reusability](make/background/code-reusability.md)
+  * [Dependencies](make/background/code-reusability.md)
   * [Dependencies](make/background/dependencies.md)
   * [Build Automation](make/background/build-automation.md)
 * [Makefiles](make/makefiles.md)

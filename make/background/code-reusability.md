@@ -1,4 +1,89 @@
-# Code Reusability
+# Dependencies
+
+You'd be hard pressed to find a self contained C program. Virtually everyone contains references to other files. essentially dependent on them in order to run. for example, consider the following program, main.c:
+
+```c
+#include "example.h"
+#include <stdio.h>
+
+void print_point(Point p) {
+    printf("Point: (%d, %d)\n", p.x, p.y);
+}
+
+int main() {
+    Point p; 
+    p.x = 5;
+    p.y = 10;
+
+    print_point(p);
+    
+    double area = PI * p.x * p.x;
+    printf("The area of a circle with radius %d is %.2f\n", p.x, area);
+
+    return 0;
+}
+```
+
+Here are the dependencies:
+
+
+
+* Point
+* PI
+* printf&#x20;
+
+
+
+When you compile a C source file, the compiler needs to have certain information:&#x20;
+
+* prototype of each function
+
+
+
+```c
+#ifndef EXAMPLE_H
+#define EXAMPLE_H
+
+#define PI 3.14159
+
+typedef struct {
+    int x;
+    int y;
+} Point;
+
+void print_point(Point p);
+
+#endif 
+```
+
+```c
+// preprocessed main.c
+
+typedef struct {
+    int x;
+    int y;
+} Point;
+
+void print_point(Point p);
+
+void print_point(Point p) {
+    printf("Point: (%d, %d)\n", p.x, p.y);
+}
+
+int main() {
+    Point p;
+    p.x = 5;
+    p.y = 10;
+
+    print_point(p);
+    
+    double area = 3.14159 * p.x * p.x;
+    printf("The area of a circle with radius %d is %.2f\n", p.x, area);
+
+    return 0;
+}
+
+```
 
 
 
