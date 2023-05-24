@@ -6,13 +6,13 @@ Your workflow in COS217 will depend on several factors, such as whether the assi
 
 On individual assignments, your workflow might look like the following:
 
-1. When beginning an assignment, you import the assignment repository from the COS217 GitHub account to your personal GitHub. &#x20;
-2. You clone your GitHub repository to armlab.&#x20;
-3. When you are finished developing, you (in either order):
-   1. Submit your assignment on armlab,
-   2. Push the changes to GitHub.
+1. When beginning the assignment, you import the assignment repository from the COS217 GitHub account to your personal GitHub. &#x20;
+2. You clone your GitHub repository to Armlab.&#x20;
+3. When you are finished developing, you (in any order):
+   1. Submit your assignment to the COS217 Armlab account.
+   2. Synchronize your local repository with your remote copy on GitHub.
 
-This workflow is summarized in the following diagram:
+This workflow is illustrated in the following diagram:
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-01 at 2.35.35 PM.png" alt=""><figcaption></figcaption></figure>
 
@@ -20,7 +20,7 @@ This workflow is summarized in the following diagram:
 
 In COS217 you will work on several of the assignments with a partner. In such an environment, you and your partner will often need to sync up your personal repositories with one another, ensuring you both have the same version of code.&#x20;
 
-While it is theoretically possible for each of you to sync up your personal repositories directly with each other via push or pull operations, as shown in Figure X, this approach is not ideal for many reasons.&#x20;
+While it is theoretically possible for each of you to sync up your personal repositories directly with each other via push or pull operations, as shown in the figure below, this approach is not ideal for many reasons.&#x20;
 
 <figure><img src="../.gitbook/assets/image (10) (1).png" alt="" width="319"><figcaption></figcaption></figure>
 
@@ -30,13 +30,14 @@ Instead, the standard approach is to (1) sync up your repositories via an interm
 
 Using this approach, your workflow might look like the following:
 
-1. When beginning an assignment, either you or your partner copies the assignment repository from the COS217 GitHub account to their personal GitHub account and adds their partner as a collaborator. This repository will serve as the shared repository. &#x20;
-2. Each of you clones the repository to your development computer (e.g., armlab).&#x20;
-3. When either of you makes a material update to the code, you push (upload) it to the GitHub repository, thereby syncing up the two repositories.&#x20;
-4. Your partner pulls (downloads) the updates from the shared repository, syncing up their personal repository as well. &#x20;
-5. Repeat steps 4-5, until you complete the assignment.&#x20;
-6. Submit the assignment on armlab.&#x20;
+1. When beginning an assignment, you and your partner copy the assignment repository from the COS217 GitHub account to your personal GitHub account.
+2. One partner invites the other partner as a collaborator. This repository will serve as your shared repository. &#x20;
+3. Both partners clone the GitHub repository to Armlab.&#x20;
+4. When either partner makes a material update to the code, they push (upload) their changes to GitHub, thereby synchronizing their local copy with the shared repository.&#x20;
+5. The other partner pulls (downloads) the updates from the shared repository, synchronizing their local copy with the shared copy. All three repositories are now synchronized.  &#x20;
+6. Repeat steps 4-5 as necessary. until you complete the assignment.&#x20;
+7. When the assignment is complete, one partner submits it to the COS217 Armlab account.&#x20;
 
-This workflow is summarized in the following diagram:
+This workflow is illustrated in the following diagram:
 
 <figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
