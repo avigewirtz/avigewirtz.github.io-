@@ -25,18 +25,16 @@ int printf(const char *format, ...);
 
 Here's a breakdown of each component:
 
-* int: This signifies the return type of the printf function, which is an integer. It represents the number of characters printed (excluding the null terminator) or a negative value if an error occurs.
+* int: This is the return type printf function.&#x20;
 * printf: This is the function's name.
-* const char \*format: This is the printf function's first parameter, a pointer to a string (char \*) that contains the format specifier and optional format arguments. The 'const' keyword indicates that the function will not alter the string's content.
+* const char \*format: This is the printf function's first parameter, a pointer to a string (char \*) that contains the format specifier and optional format arguments.&#x20;
 * ...: This ellipsis signifies the "variable argument list" or "varargs," indicating that printf can accept a variable number of arguments based on the format specifier in the format string.
 
-The compiler uses the function prototype, including the function name, return type, and parameter types, for type checking, code generation, and ensuring correct function usage.
-
-The printf() prototype resides in a stdio.h file, a header file with declarations for standard input and output functions.
+The compiler uses the function prototype for type checking.
 
 ## Preprocessing and Header Files
 
-Before the compilation phase, the contents of the stdio.h file are imported into the hello.c program during the preprocessing phase using the #include preprocessor directive.
+The printf() prototype resides in a stdio.h file, a header file with declarations for standard input and output functions. Before the compilation phase, the contents of the stdio.h file are imported into the hello.c program during the preprocessing phase using the #include preprocessor directive.
 
 Header files in C are typically .h files containing C function declarations and macro definitions to be shared across several source files. The #include directive instructs the preprocessor to take all the contents of the specified header file and 'include' them at that specific location in the file being compiled.
 
