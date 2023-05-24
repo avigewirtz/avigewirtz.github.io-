@@ -6,7 +6,7 @@ The process of cloning a repository is extremely straightforward as well. You si
 https://github.com/GITHUB_USERNAME/REPOSITORY_NAME.git
 ```
 
-GITHUB\_USERNAME represents the username of the GitHub account you are cloning from, and REPOSITORY\_NAME represents the name of the source repository. For example, if you're cloning the assignment 0 Survey repository from the COS217 GitHub account, you'd replace GITHUB\_USERNAME with cos\_217\_ and REPOSITORY\_NAME with _survey_:
+GITHUB\_USERNAME represents the username of the GitHub account you are cloning from, and REPOSITORY\_NAME represents the name of the source repository. For example, if you're cloning the Survey repository from the COS217 GitHub account, you'd replace GITHUB\_USERNAME with cos217 and REPOSITORY\_NAME with _survey_:
 
 ```bash
 git clone https://github.com/cos217/survey.git 
