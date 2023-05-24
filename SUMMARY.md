@@ -90,7 +90,7 @@
 * [Pushing and Pulling](git-and-github/pushing-and-pulling.md)
 * [Obtaining COS217 Assignment Repositories](git-and-github/acquiring-cos217-assignment-repositories.md)
 * [COS217 Development Workflow](git-and-github/cos217-development-workflow.md)
-* [Revisiting the add, commit, and push commands](git-and-github/git-workflow-1/README.md)
+* [Revisiting add, commit, push, and pull](git-and-github/git-workflow-1/README.md)
   * [git add](git-and-github/git-workflow-1/staging-files.md)
   * [git commit](git-and-github/git-workflow-1/committing-staged-files.md)
   * [git push](git-and-github/git-workflow-1/pushing-commits.md)
