@@ -1,14 +1,6 @@
 # Code Reusability
 
-As programmers, we frequently encounter common and repetitive tasks in our different projects. Code reusability, a crucial principle in programming, saves us from rewriting the same code over and over, thereby saving time and minimizing errors. It involves creating code that can be repurposed in various applications.
-
-Programming languages come equipped with an extensive set of predefined functions within libraries. These libraries are collections of beneficial, well-tested, and often-used code that developers can utilize to perform specific tasks without having to build the code from the ground up.
-
-Let's delve into an example to illustrate this concept more clearly.
-
-## Example: The printf Function in C&#x20;
-
-Consider a straightforward C program, hello.c, that prints "Hello, World!" on the standard output (stdout):
+Programming languages usually come equipped with an extensive set of libraries. These libraries are collections of functions that developers can use to perform tasks without having to write the code themselves. For example, consider a simple _hello.c_ program that prints "Hello, World!":&#x20;
 
 ```c
 #include <stdio.h>
@@ -19,13 +11,9 @@ int main() {
 }
 ```
 
-Notice that this program employs the printf() function, even though it isn't explicitly defined within hello.c. Yet, the program operates flawlessly. How is this possible?
+The program uses the printf function, which isn't defined in hello.c. That is because printf is a predefined function provided by the C library.&#x20;
 
-Predefined Library Functions The printf() function is a predefined function provided by the C standard library. To make this function available to our program, we need to incorporate the relevant C library.
 
-During the program's linking phase—which follows the assembling phase—the code for the printf() function is imported from the C library into the hello.c program. This process of linking can either be static or dynamic, depending on a variety of factors.
-
-When compiling C programs, GCC necessitates function prototypes to be declared before they are invoked.
 
 ## Function Prototype&#x20;
 
