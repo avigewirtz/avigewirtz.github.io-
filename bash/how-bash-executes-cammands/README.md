@@ -6,7 +6,7 @@ The job of a shell is to find and run commands. Whenever a command is invoked, B
    1. Search for a function that matches the command name.
    2. Searches for a shell built-in matching command name.&#x20;
 
-If both these searches are unsuccessful, there are two cases to consider:
+If either of these searches is successful, the shell will execute the command. Otherwise, there are two cases to consider:
 
 1. The command name contains a forward slash (/) (e.g., `/bin/ls` or `../../bin/ls`).
 2. The command name does not contain a forward slash (e.g., `ls`).
