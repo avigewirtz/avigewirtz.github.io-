@@ -14,7 +14,7 @@ The term "Unix" was originally used to refer to a specific operating system deve
 
 As Unix grew in popularity, AT\&T began to license the Unix OS source code to academic institutions and commercial entities. This broadened the meaning of the term "Unix" as it was no longer confined to the original system developed at Bell Labs.&#x20;
 
-Later, a number of clones emerged. These were operating systems designed to mimic the functionality of the Unix system, without necessarily using its original source code. One notable example of such a clone is Linux.
+Later, a number of clones emerged. These were operating systems designed to mimic the functionality of the Unix system but without using its original source code. One notable example of such a clone is Linux.
 
 </details>
 
