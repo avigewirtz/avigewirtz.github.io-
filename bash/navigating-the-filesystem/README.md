@@ -6,7 +6,7 @@ To navigate to a directory, you must specify its [pathname](../../linux/filesyst
 
 When using an absolute pathname to navigate, your working directory's current location is irrelevant. This is because an absolute pathname always point to the same location, irrespective of your current working directory. As an analogy, imagine giving someone directions from Times Square to Princeton - you need not be aware of the person's current location, as it has no bearing on the directions.&#x20;
 
-Conversely, when using a relative pathname to navigate, your working directory's current location is significant - it's your starting point. In the previous analogy, imagine giving directions from the person's current location to Princeton. To do this, you would need to know where they are starting from. This is similar to using relative pathnames.
+Conversely, when using a relative pathname to navigate, your working directory's current location is significant - it's your starting point. In the previous analogy, imagine giving directions from the person's current location to Princeton. To do this, you would need to know where they are starting from.
 
 ### Example: Navigating to _/usr/bin_&#x20;
 
