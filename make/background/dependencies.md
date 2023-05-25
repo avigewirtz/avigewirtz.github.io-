@@ -4,6 +4,8 @@
 
 ## Direct Dependencies
 
+You'd be hard pressed to find a self contained C program
+
 These are the most straightforward kind of dependencies. If file A directly includes a header file B or directly uses a function from an object file or library C, then A has direct dependencies on B and C. Consider the following three files: `intmath.h`, `intmath.c`, and `testintmath.c`.&#x20;
 
 **File `intmath.h`:**
