@@ -10,7 +10,7 @@ The second part is dedicated to Linux. It gives a thorough explanation of the us
 
 ### Part 3: Bash
 
-In part 3, Bash is explored. It starts with the background and basic steps to get started with Bash, then moves on to useful command-line features. It covers a variety of tasks like navigating the filesystem, creating and deleting files and directories, understanding working directories, redirecting and piping, copying, moving, and renaming files. It also touches on concepts like users and groups, file and directory access permissions, Linux environment variables, Bash configuration files, and how Bash executes commands.
+Part 3 covered the Bash shell. It starts with the background and basic steps to get started with Bash, then moves on to useful command-line features. It covers a variety of tasks like navigating the filesystem, creating and deleting files and directories, understanding working directories, redirecting and piping, copying, moving, and renaming files. It also touches on concepts like users and groups, file and directory access permissions, Linux environment variables, Bash configuration files, and how Bash executes commands.
 
 ### Part 4: Emacs
 
