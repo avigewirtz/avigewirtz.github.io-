@@ -8,7 +8,7 @@ The job of a shell is to find and run commands. Whenever a command is invoked, B
 
 If either of these searches is successful, the shell will execute the command. Otherwise, there are two cases to consider:
 
-1. The command name contains a forward slash (/) (e.g., `/bin/ls` or `../../bin/ls`).
+1. The command name contains a forward slash (/) (e.g., `/bin/ls`, `../../bin/ls`, etc.).
 2. The command name does not contain a forward slash (e.g., `ls`).
 
 In case 1, the command name is interpreted as the (absolute or relative) pathname, and Bash will look for an executable file in the specified pathname. If such a file exists, Bash will execute it. If not, Bash will return an error.
@@ -19,7 +19,7 @@ In case 2, Bash searches the directories listed in the PATH environment variable
 
 To illustrate this idea concretely, here are some examples showing the steps Bash takes when commands are invoked. In the following examples, assume the working directory is _/u/yourNetID._
 
-**Case 1**: Suppose you invoke `/bin/ls`. Bash will perform the  following checks:
+**Case 1**: Suppose you invoke `/bin/ls`. Bash will perform the following checks:
 
 1. Are there any expansions, assignments, and redirections in _/bin/ls_? :heavy\_multiplication\_x:
 2. Is `/bin/ls` a shell function? :heavy\_multiplication\_x:
