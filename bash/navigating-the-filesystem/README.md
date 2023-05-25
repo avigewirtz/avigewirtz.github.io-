@@ -12,14 +12,14 @@ Conversely, when using a relative pathname to navigate, your working directory's
 
 As a practical example, say you're logged into Armlab and want to navigate to _/usr/bin._&#x20;
 
-#### Method 1: Navigating with absolute pathname
+#### Method 1: Navigating with an absolute pathname
 
-Using the absolute pathname, your working directory's "location" is inconsequential, since the "journey" always begins at the root directory. As such, regardless of your current working directory, you can specify the path as _/usr/bin_, as shown in Figure 1. &#x20;
+Using the absolute pathname, your working directory's "location" is inconsequential, since the "journey" always begins at the root directory. As such, you'd simply specify the path as _/usr/bin_, as shown in Figure 1. &#x20;
 
 <figure><img src="https://lh6.googleusercontent.com/fsuhMi2igXx5_uDBRqn13MQUrJi4ksQEh30Tdq7jU5n3nU3UeUPB1lQD2qJqX9DNqztHBgPh27yVLONYOe8Gxuub6Sc3diq8ix8xNczgqBvq_faelUp2N6ybmdcqWoWyEgqJc6YJXfFLkOpM7cabdr0" alt=""><figcaption><p>Figure 1: Navigating to <em>/usr/bin</em> with Absolute Pathname</p></figcaption></figure>
 
-#### Method 2: Navigating with relative pathname
+#### Method 2: Navigating with a relative pathname
 
-Conversely, when using a relative pathname to navigate to /usr/bin, you need to be aware of your current working directory. Figure 2 below demonstrates how to navigate to _/usr/bin_ when your working directory is your home directory.
+Conversely, when navigating to _/usr/bin_ with a relative pathname, you need to be aware of the "location" of your current working directory. Figure 2 demonstrates the pathname from the working directory to _/usr/bin_.
 
 <figure><img src="https://lh5.googleusercontent.com/FraWHki7SFmGbu8SBMKFuNxOKUKnujwUXhvGMeizYJB_CtG1Qcmh5lv-yeXghuSxeojlmpn1i-4pjrtnaBBQT20dXztNWHNvIreerEt0iZNMHNXtFhBifxYGM2G3Vn2NhKZK0yu8A_Gayw6J3SPAQ4Q" alt=""><figcaption></figcaption></figure>
