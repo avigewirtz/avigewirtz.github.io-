@@ -29,7 +29,7 @@ Here are two methods you can use to determine if a command is a Bash built-in or
 
 <figure><img src="https://lh4.googleusercontent.com/5k7q2Hl7hgogOQytiVUs5j1rgyHocnot1xIbIO-FFAaVkpOZy2e9Cm-APpoccvWTyjw1Yx6GCZCBydMULp9QvjzWFh1aB3tju7oNRUJktapPZwJzNMMycoWxH296Ez0BdCO_pjIz7TSszFff65CWH3g" alt="" width="563"><figcaption></figcaption></figure>
 
-2. You can use the `type` command. For example, to check if the `exit` command is a Bash built-in, run:
+2. You can invoke `type` with the command name. For example, to check if the `exit` command is a Bash built-in, run:
 
 <div align="left">
 
