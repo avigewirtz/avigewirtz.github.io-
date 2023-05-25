@@ -19,13 +19,16 @@ In case 2, Bash searches the directories listed in the PATH environment variable
 
 To illustrate this idea concretely, here are some examples showing the steps Bash takes when commands are invoked. In the following examples, assume the working directory is _/u/yourNetID._
 
-* **Case 1**: Sat you invoke `/bin/ls`. Bash will perform the  following checks:
+* **Case 1**: Suppose you invoke `/bin/ls`. Bash will perform the  following checks:
   1. Are there any expansions, assignments, and redirections in _/bin/ls_? :heavy\_multiplication\_x:
   2. Is `/bin/ls` a shell function? :heavy\_multiplication\_x:
   3. Is `/bin/ls` a shell built-in?  :heavy\_multiplication\_x:
   4. Does `/bin/ls` contain a forward slash? :heavy\_check\_mark:
   5. Is `/bin/ls` an executable file?  :heavy\_check\_mark:
   6. Execute it.
+
+/
+
 * **Case 2:** Invoking `../../bin/ls`:&#x20;
   1. Any expansions, assignments, and redirections? :heavy\_multiplication\_x:
   2. Is `../../bin/ls` a shell function? :heavy\_multiplication\_x:
