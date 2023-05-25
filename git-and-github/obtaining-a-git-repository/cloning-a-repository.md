@@ -14,6 +14,6 @@ git clone https://github.com/cos217/survey.git
 
 Upon success, you will get the following output:
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-05-04 at 8.00.49 PM (1) (1) (1) (1) (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-04 at 8.00.49 PM (1) (1) (1) (1) (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Note that the arguments for the GitHub account and repository names are case-insensitive--that is, COS217, cos217, and Cos217 all refer to the same GitHub account (and the same applies to variations of _survey_).
