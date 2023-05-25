@@ -28,4 +28,4 @@ COMMAND_NAME OPTION(S) OPERAND(S)
 
 The complete syntactical structure is illustrated in Figure 1.&#x20;
 
-<figure><img src="../../.gitbook/assets/tree.svg" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/tree.svg" alt=""><figcaption></figcaption></figure>
