@@ -4,7 +4,7 @@ To navigate the Linux filesystem, you need only be familiar with three commands:
 
 To navigate to a directory, you must specify its [pathname](../../linux/filesystem/pathnames.md)--either absolute or relative. The choice between the two is typically a matter of preference or convenience.&#x20;
 
-When using an absolute pathname to navigate, your working directory's current location is irrelevant. This is because absolute pathnames point to the same location, irrespective of your current working directory. As an analogy, imagine giving someone directions from Times Square to Princeton - you need not be aware of the person's current location, as it has no bearing on the directions.&#x20;
+When using an absolute pathname to navigate, your working directory's current location is irrelevant. This is because an absolute pathname always point to the same location, irrespective of your current working directory. As an analogy, imagine giving someone directions from Times Square to Princeton - you need not be aware of the person's current location, as it has no bearing on the directions.&#x20;
 
 Conversely, when using a relative pathname to navigate, your working directory's current location becomes significant - it's your starting point. In the previous analogy, imagine giving directions from the person's current location to Princeton. To do this, you would need to know where they are starting from. This is similar to using relative pathnames.
 
