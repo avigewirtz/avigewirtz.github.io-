@@ -22,7 +22,7 @@ The next portion delves into Git & GitHub, explaining how to set up your Git env
 
 ### Part 6: Gnu Compiler Collection (GCC)
 
-The GCC section breaks down the four-stage build process, with the intention of helping you understand each stage from machine code to assembly language, high-level language, and linking.&#x20;
+The GCC section breaks down the four-stage build process, with the intention of helping you understand each stage from machine code to high-level languages.&#x20;
 
 ### Part 7: Make
 
