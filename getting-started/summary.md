@@ -32,4 +32,4 @@ The Make section explains code reusability, dependencies, build automation, and 
 
 Finally, the book concludes with a chapter on Gprof, detailing how Gprof works, using Gprof, and interpreting Gprof output. It covers the flat profile and call graph.
 
-Each chapter offers further reading suggestions to deepen your understanding. This book is designed to equip you with a solid foundation in using Linux, Bash, Emacs, Git & GitHub, GCC, Make, and Gprof.
+Each chapter offers further reading suggestions to deepen your understanding. This book is designed to equip you with a working foundation for using Bash, Emacs, Git & GitHub, GCC, Make, and Gprof.
