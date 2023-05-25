@@ -14,7 +14,7 @@ Part 3 covers the Bash shell. It starts with the basic steps to get started with
 
 ### Part 4: Emacs
 
-Part 4 covers Emacs, a widely-used text editor. It covers the fundamentals, basic and more advanced commands, launching and exiting Emacs, moving the cursor, selecting a region, and managing windows and buffers. It also explores search and replace features, building with Emacs, Emacs configuration files, and provides an Emacs cheat sheet.
+Part 4 covers Emacs, a widely-used text editor. It covers the fundamentals for editing files as well as more advanced commands relating to topics like managing windows and buffers, search and replace, and building with Emacs. It also touches on Emacs configuration files and provides an Emacs cheat sheet.
 
 ### Part 5: Git & GitHub
 
