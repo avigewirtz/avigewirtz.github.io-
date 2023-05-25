@@ -6,14 +6,14 @@ The job of a shell is to find and run commands. Whenever a command is invoked, B
    1. Search for a function that matches the command name.
    2. Searches for a shell built-in matching command name.&#x20;
 
-If these searches are all unsuccessful, there are two cases to consider:
+If both these searches are unsuccessful, there are two cases to consider:
 
 * The command name contains a forward slash (/) (e.g., `/bin/ls` or `../../bin/ls`).
 * The command name does not contain a forward slash (e.g., `ls`).
 
-In case 1, the command name is interpreted as the (absolute or relative) pathname of a program. If no such file exists, an error will be returned.&#x20;
+In case 1, the command name is interpreted as the (absolute or relative) pathname, and Bash will look for an executable file in the specified pathname. If such a file exists, Bash will execute it. If not, Bash will return an error.
 
-In case 2, the shell searches the directories listed in the PATH environment variable for a filename that matches the command name.&#x20;
+In case 2, Bash searches the directories listed in the PATH environment variable for a filename that matches the command name. If it finds a file with the specified name, Bash will execute it. If not, Bash will return an error.
 
 ## Examples
 

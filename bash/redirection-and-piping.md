@@ -80,8 +80,6 @@ sort einstein_quote.txt > sorted_einstein_quote.txt
 cat einstein_quote.txt the_odyssey.txt | wc -l
 ```
 
-
-
 {% hint style="info" %}
 **Reference sheet**
 
@@ -89,7 +87,6 @@ cat einstein_quote.txt the_odyssey.txt | wc -l
 * `COMMAND >> FILE`: Redirect the output of a command to a file (append).
 * `COMMAND < FILE`: Redirect the contents of a file to a command as input.
 * `COMMAND 2> FILE`: Redirect the error output of a command to a file.
-* `COMMAND1 | COMMAND2`: Pipe the output of one command as input to another command
-{% endhint %}
+* `COMMAND1 | COMMAND2`: Pipe the output of one command as input to another command\
 
-\
+{% endhint %}
