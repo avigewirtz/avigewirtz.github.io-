@@ -62,4 +62,4 @@ Our request to access _/u/bwk_ was denied since it is another user's home direct
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-04-25 at 10.10.26 PM.png" alt=""><figcaption></figcaption></figure>
 
-Our request was denied here as well, since _/lost+found_ is an important directory that only the system administrator is authorized to access. \
+Our request was denied here as well, since _/lost+found_ is an important directory that only the system administrator has access to. \
