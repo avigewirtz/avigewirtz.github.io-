@@ -14,7 +14,7 @@ As a practical example, say you're logged into Armlab and want to navigate to _/
 
 #### Method 1: Navigating with absolute pathname
 
-Using the absolute pathname, your working directory's "location" is inconsequential, since the "journey" begins at the root directory. As such, regardless of your current working directory, you can specify the path as _/usr/bin_, as shown in Figure 1. &#x20;
+Using the absolute pathname, your working directory's "location" is inconsequential, since the "journey" always begins at the root directory. As such, regardless of your current working directory, you can specify the path as _/usr/bin_, as shown in Figure 1. &#x20;
 
 <figure><img src="https://lh6.googleusercontent.com/fsuhMi2igXx5_uDBRqn13MQUrJi4ksQEh30Tdq7jU5n3nU3UeUPB1lQD2qJqX9DNqztHBgPh27yVLONYOe8Gxuub6Sc3diq8ix8xNczgqBvq_faelUp2N6ybmdcqWoWyEgqJc6YJXfFLkOpM7cabdr0" alt=""><figcaption><p>Figure 1: Navigating to <em>/usr/bin</em> with Absolute Pathname</p></figcaption></figure>
 
