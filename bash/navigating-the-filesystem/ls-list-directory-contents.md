@@ -4,10 +4,14 @@ The `ls` command is used to list the contents (files and subdirectories) of a di
 
 If <mark style="color:blue;">**`DIRECTORY(IES)`**</mark>is not specified, `ls` defaults to the working directory. By default, `ls` does not display [hidden](../../linux/filesystem/notable-directories.md#hidden-files-directories) entries.&#x20;
 
-### Common options:
+<details>
+
+<summary>Common options</summary>
 
 * **`-a`**:  Include hidden entries in the listing.&#x20;
-* &#x20;**`-l`**: Display the long listing for each entry, in the following format: file type, permissions, number of hard links, owner, group, size, last modification date, and name. &#x20;
+* **`-l`**: Display the long listing for each entry, in the following format: file type, permissions, number of hard links, owner, group, size, last modification date, and name. &#x20;
+
+</details>
 
 ### Exercises:
 
