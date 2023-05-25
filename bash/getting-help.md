@@ -23,7 +23,7 @@ If you want documentation for a Bash built-in, you must use the `help` instead o
 
 ### How to determine if a command is a Bash built-in or a Utility&#x20;
 
-There are two ways you can determine if a command is a Bash built-in or a utility program.&#x20;
+Here are two ways you can determine if a command is a Bash built-in or a utility program.&#x20;
 
 1. You can simply try `man` command, and if `man` succeeds, great. If not, Bash will return the following page, telling you that the command is a built-in:&#x20;
 
