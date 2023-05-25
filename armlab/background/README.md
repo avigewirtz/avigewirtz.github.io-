@@ -14,6 +14,6 @@ You can think of Armlab as a computer just like your own, but with a few notable
 
 This idea is illustrated in Figure 1, which shows multiple users logged into Armlab concurrently.&#x20;
 
-<figure><img src="../../.gitbook/assets/Group 12 (1) (1).png" alt="" width="563"><figcaption><p>Figure 1: Concurrent SSH Sessions with Armlab </p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Group 12 (1) (1).png" alt=""><figcaption><p>Figure 1: Concurrent SSH Sessions with Armlab </p></figcaption></figure>
 
 Before you can log into Armlab, however, you must first [activate](activating-your-armlab-account.md) your account.

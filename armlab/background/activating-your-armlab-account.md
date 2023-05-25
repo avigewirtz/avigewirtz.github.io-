@@ -8,8 +8,9 @@ To complete this step, you need to be connected to the Princeton network. You ca
 
 <summary>Step 1: Activate your account</summary>
 
-* Browse to: [https://eisess200l.princeton.edu/cgi-bin/Shell/nview.pl](https://eisess200l.princeton.edu/cgi-bin/Shell/nview.pl).&#x20;
-* In the resulting **Update your Unix account** page, select **Enable my Unix account**, then click **Enable my Account**.
+1. Browse to: [https://eisess200l.princeton.edu/cgi-bin/Shell/nview.pl](https://eisess200l.princeton.edu/cgi-bin/Shell/nview.pl).&#x20;
+2. In the resulting **Update your Unix account** page, select **Enable my Unix account.**
+3. Click **Enable my Account**.
 
 </details>
 
@@ -17,6 +18,7 @@ To complete this step, you need to be connected to the Princeton network. You ca
 
 <summary>Step 2: Make Bash your login shell</summary>
 
-* Under **Advanced settings**, select **/bin/bash – GNU Bash (/bin/bash)**, then _c_lick **Submit Change**_._
+1. Under **Advanced settings**, select **/bin/bash – GNU Bash (/bin/bash)**
+2. Click **Submit Change**_._
 
 </details>
