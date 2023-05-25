@@ -2,7 +2,7 @@
 
 ### Part 1: Armlab
 
-The first part of the book covers the basics of setting up and managing your Armlab account. It introduces the Secure Shell (SSH) protocol, walks through logging in and out of Armlab, and provides an overview on configuring the Armlab environment.
+The first part of the book covers the basics of setting up and managing your Armlab account. It introduces the Secure Shell (SSH) protocol, walks through logging in and out of Armlab, and provides an overview on configuring your Armlab environment.
 
 ### Part 2: Linux
 
