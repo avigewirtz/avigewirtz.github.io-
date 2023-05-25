@@ -6,7 +6,7 @@ Logging into Armlab is accomplished via an _SSH client,_ which is a program that
 
 {% tabs %}
 {% tab title="Mac" %}
-On macOS, you can connect to Armlab via Terminal by invoking the _ssh_ command.
+On macOS, you can connect to Armlab via the Terminal application by invoking the _ssh_ command.
 
 1. Open Terminal and enter the following command:
 
