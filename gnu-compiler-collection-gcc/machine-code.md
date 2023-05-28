@@ -1,73 +1,16 @@
 # Machine Code
 
-We just discussed how computers interpret various data like integers and text. However, the power of a computer lies primarily not in its ability to interpret data but to execute programs.&#x20;
+We began by discussing how computers interpret data, like integers and text. But the power of a computer primarily lies in its ability to execute programs, which are sequences of instructions that direct specific operations. These instructions, represented in binary like all data in a computer, are active; they direct the computer to complete tasks. For instance, one instruction might tell the processor to add two numbers, while another directs it to move data from one place to another.
 
-A program is a sequence of instructions that directs the computer to perform specific operations. Like all other types of data in a computer, these instructions are represented in binary. Unlike data, which is passively stored and interpreted, instructions are active, instructing a computer to complete a task. For instance, one instruction may tell the processor to add two numbers, while another might tell it to move data from one place to another.
+Each machine code instruction consists of an opcode and operand(s). The opcode, or operation code, specifies the operation to be performed, such as addition, subtraction, or loading data from memory. The operand(s) are the data or parameters the operation should act upon. For example, a fictional machine code instruction like 1010 0110 1111 might have 1010 as the opcode (signifying "ADD") and 0110 1111 as the operands (representing memory addresses where numbers to be added are stored).
 
-### Machine Code Instruction
+The set of all possible instructions a processor can execute is defined by the Instruction Set Architecture (ISA). The ISA outlines how instructions are encoded in binary, executed, and their effects on the processor's state. It also specifies the size and format of instructions, main memory and registers, the supported data types, and the instruction set itself. However, it does not dictate how these instructions are implemented in a physical processor.
 
-Each machine code instruction consists of two main parts: an opcode and operand(s).
+Take the TOY Instruction Set Architecture (ISA) as an example. It serves as the interface between the TOY programming language and the hardware that executes the program, specifying details such as the size of main memory (256 words), number of registers (16), and bits per instruction (16). It also lists the 16 unique instruction types, each designated by an opcode from 0 through F.
 
-* The opcode, or operation code, is the portion of the instruction that specifies the operation to be performed. This could be any basic operation that the CPU is capable of performing, such as addition, subtraction, multiplication, loading data from memory, storing data into memory, and so on.
-* The operand(s) are the data or parameters the operation should act upon. These could represent specific values, or they could represent addresses in memory where values are stored.
+Each TOY instruction is encoded with 4 hex digits (16 bits): the leftmost hex digit encodes one of the 16 opcodes, the second encodes the destination register (denoted as d), and the interpretation of the two rightmost hex digits depends on the opcode. In Format 1 opcodes, these represent source registers (denoted as s and t). In Format 2 opcodes, they represent an 8-bit memory address.
 
-To provide an example, consider a fictional machine code instruction like `1010 0110 1111`. Here, `1010` is the opcode, signifying an operation like "ADD". The remaining part `0110 1111` could be the operand(s), which in this case might represent two memory addresses where the numbers to be added are stored. The exact interpretation of opcodes and operands will depend on the specific instruction set architecture (ISA) of the CPU.
-
-**Instruction Set Architecture (ISA):**
-
-The collection of all possible instructions a given processor can execute is defined by the Instruction Set Architecture (ISA). The ISA serves as a manual for the processor, outlining how instructions are encoded in binary, how they are executed, and what effects they have on the processor's state.
-
-An ISA includes specifications for:
-
-* The size and format of individual instructions
-* The size of main memory
-* The number of registers
-* The data types supported
-* The instruction set itself (the set of all operations that the processor can perform)
-
-While the ISA lays out what instructions should be available and how they should work, it does not dictate how these instructions are to be implemented in a physical processor. This separation allows different manufacturers to produce CPUs that are compatible with an ISA architecture, but which may have completely different internal designs
-
-### Example of ISA: TOY
-
-The _instruction set architecture_ (ISA) is the interface between the TOY programming language and the physical hardware that executes the program. The ISA specifies the size of main memory, number of registers, and number of bits per instruction. It also specifies exactly which instructions the machine is capable of performing and how each of the instruction bits is interpreted.
-
-
-
-The TOY ISA. The TOY machine has 256 words of main memory, 16 registers, and 16-bit instructions. There are 16 different instruction types; each one is designated by one of the _opcodes_ 0 through F. Each instruction manipulates the contents of memory, registers, or the program counter in a completely specified manner. The 16 TOY instructions are organized into three categories: arithmetic-logic, transfer between memory and registers, and flow control. The table below gives a brief summary. (Here is a text version of the [TOY cheatsheet](https://introcs.cs.princeton.edu/java/62toy/cheatsheet.txt).) We describe them in more detail later.
-
-
-
-Each TOY instruction consists of 4 hex digits (16 bits). The leading (left-most) hex digit encodes one of the 16 opcodes. The second (from the left) hex digit refers to one of the 16 registers, which we call the _destination register_ and denote by d. The interpretation of the two rightmost hex digits depends on the opcode. With _Format 1_ opcodes, the third and fourth hex digits are each interpreted as the index of a register, which we call the two _source registers_ and denote by s and t. For example, the instruction 1462 adds the contents of registers s = 6 and t = 2 and puts the result into register d = 4. With _Format 2_ opcodes, the third and fourth hex digits (the rightmost 8 bits) are interpreted as a memory address, which we denote by addr. For example, the instruction 9462 stores the contents of register d = 4 into memory location addr = 62. Note that there is no ambiguity between Format 1 and Format 2 instruction since each opcode has a unique format.
-
-
-
-1. TOY has 16 registers, each 16 bits. Registers. The TOY machine has 16 _registers_, indexed from 0 through F. Registers are much like main memory: each register stores one 16-bit word. However, registers provide a faster form of storage than main memory. Registers are used as scratch space during computation and play the role of variables in the TOY language. Register 0 is a special register whose output value is always 0.
-2. Main memory. The TOY machine has 256 words of _main memory_. Each memory location is labeled with a unique _memory address_. By convention, we use the 256 hexadecimal integers in the range 00 through FF. Think of a memory location as a mailbox, and a memory address as a postal address. Main memory is used to store instructions and data. TOY has 256 memory locations, each 16-bit
-3. TOY has 16 opcodes, each 4 bits
-4. TOY has two types of instruction formats&#x20;
-5.
-
-```
-Register 0 always reads 0.
-Loads from mem[FF] come from stdin.
-Stores to mem[FF] go to stdout.
-```
-
-In TOY, each instruction is 16 bits long, with the first four bits representing the opcode and the remaining 12 representing the operands.&#x20;
-
-
-
-
-
-Each instruction consists of 16 bits.&#x20;
-
-&#x20;Bits 12-15 encode one of 16 instruction types or opcodes.&#x20;
-
-&#x20;Bits 8-11 encode destination register d. &#x20;
-
-Bits 0-7 encode: \[Format 1] source registers s and t&#x20;
-
-\[Format 2] 8-bit memory address or constant
+The TOY machine uses registers as scratch space during computation. Register 0 is special, always outputting a value of 0. Main memory is used to store instructions and data, with each memory location labeled with a unique address. Certain special behaviors apply, like loads from memory address FF coming from stdin, and stores to this address going to stdout.
 
 
 
