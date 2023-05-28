@@ -1,34 +1,62 @@
 # How Information is Represented in Computers
 
-\
-\
+Before we delve into the fundamental principles of how computers represent and process information, it’s useful to begin by understanding how humans represent information.
 
+Humans use a multitude of systems and symbols to represent information. Take, for example, our representation of numbers. The decimal or base-10 system, which is the most commonly used numerical system, employs ten unique symbols, or digits: 0 through 9. These digits can be combined in a myriad of ways to represent an infinite array of numerical values.
 
-Before we examine the fundamental principles of how computers represent and process information, it’s helpful to first examine how humans represent information.
+The value of a specific digit within a number is dependent on its position. For instance, in the number 345, the '3' is situated in the hundreds place, the '4' is in the tens place, and the '5' is in the ones place. Consequently, its value is expressed as 3_100 + 4_10 + 5\*1. This system is based on powers of ten, where each digit's position represents a power of ten (the rightmost digit is 10^0, the next one is 10^1, and so on). A generalized formula for this representation can be:
 
-\
+$$\text{Value} = \sum_{n=0}^{N} \text{Digit}_n \times 10^n$$
 
+Here, Digit\_n refers to the digit at the nth position from the right and N is the total number of digits minus one.
 
-Humans represent information using a variety of systems and symbols. For instance, consider how we represent numbers. The common numerical system, often referred to as the decimal or base-10 system, employs 10 unique symbols: the digits 0, 1, 2, 3, 4, 5, 6, 7, 8, 9. These digits can be combined and arranged in countless ways to represent an infinite array of numerical values.
+Negative numbers are represented using a minus (-) symbol in front of the number. For example, -3 represents a value that is 3 less than 0.&#x20;
 
-\
+Fractions in decimal representation are written using a decimal point (.). Numbers to the left of the decimal point represent whole numbers, and numbers to the right of the decimal point represent fractions of a whole number. For example, the number 3.5 represents a value of 3 whole numbers and one half (or 0.5).
 
+Likewise, consider how humans represent characters. The English language, for instance, utilizes 26 unique symbols—the alphabets—which can be combined to form words, sentences, and paragraphs, thereby representing and communicating vast amounts of information.
 
-The value of a specific digit within a number is dependent on its position. For example, in the number 345, the '3' is situated in the hundreds place, the '4' is in the tens place, and the '5' is in the ones place. Hence, its value is expressed as 3\*100 + 4\*10 + 5\*1. Generalizing, the value can be represented as:
+Interestingly, computers employ a similar approach to store data. However, instead of the decimal system used by humans, computers use a binary or base-2 system. This system uses just two symbols, traditionally denoted as 0 and 1.
 
-\<Insert formula here>
+In the binary system, we can represent the same information as in the decimal system; we just need more bits to do so. For example, the number 2 in decimal can be represented as 10 in binary.
 
-\
-
-
-We represent negative numbers using the minus - symbol. We represent fractions using a decimal (.). &#x20;
-
-\
-
-
-Similarly, consider how humans represent characters. The English language, for example, utilizes 26 unique symbols— the alphabets, which can be combined to form words, sentences, and paragraphs to represent and communicate vast amounts of information.
+While the decimal number system and the English alphabet are convenient for human communication, they are not optimal for the design and operation of computers. The essence of information representation in computers revolves around differentiating between two states, which can easily be signified by '0' (off state) and '1' (on state). The physical manifestation of these values can differ significantly depending on the technology in use. It could be a high or low electrical charge or voltage, different levels of light intensity, magnetization directions, or other physical properties or
 
 \
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \
 \
 
@@ -39,6 +67,18 @@ Interestingly, computers employ a similar approach to store data. However, unlik
 
 
 In the binary system, we can represent the same information as in the decimal system, we just need more bits to do so. For example, the number 2 in decimal can be represented as 10 in binary.
+
+
+
+
+
+
+
+
+
+
+
+
 
 \
 
