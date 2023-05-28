@@ -1,8 +1,27 @@
 # Assembly
 
-Assembly language uses mnemonics, which are short, human-readable text representations of opcodes. They provide a more convenient way to program, making the code human-readable. Mnemonics are specific to a computer's Instruction Set Architecture (ISA) and correspond directly to processor operations like addition, subtraction, loading data, branching, and halting.
+To make programming easier, programmers long ago developed assembly, which is basically replaces&#x20;
 
-For example, the "ADD" mnemonic represents the opcode for addition, while "LOAD" represents the opcode for loading data from memory into a register.
+For example, let's consider the TOY Opcodes.&#x20;
+
+| Instruction        | Opcode | Mnemonic  |
+| ------------------ | ------ | --------- |
+| halt               | 0000   | hlt       |
+| add                | 0001   | add       |
+| subtract           | 0010   | sub       |
+| and                | 0011   | and       |
+| xor (exclusive OR) | 0100   | xor       |
+| left shift         | 0101   | lsh       |
+| right shift        | 0110   | rsh       |
+| load address       | 0111   | lad       |
+| load               | 1000   | lod       |
+| store              | 1001   | str       |
+| load indirect      | 1010   | ldi       |
+| store indirect     | 1011   | sti       |
+| branch zero        | 1100   | brz       |
+| branch positive    | 1101   | brp       |
+| jump register      | 1110   | jmpr      |
+| jump and link      | 1111   | jal       |
 
 Labels are another useful feature of assembly language, providing a more human-readable way of referring to memory addresses and simplifying the process of writing and maintaining assembly code. Labels are especially helpful for branching, looping, or other control structures that require jumps to different code parts.
 
