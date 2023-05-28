@@ -106,7 +106,7 @@
 
 ## Gnu Compiler Collection (GCC)
 
-* [The Four Stage Build Process](gnu-compiler-collection-gcc/the-four-stage-build-process.md)
+* [The Four Stage Build Process](gcc/the-four-stage-build-process.md)
 * [How Information is Represented in Computers](gnu-compiler-collection-gcc/how-information-is-represented-in-computers.md)
 * [Machine Code](gnu-compiler-collection-gcc/machine-code.md)
 * [Assembly](gnu-compiler-collection-gcc/assembly.md)
@@ -114,7 +114,7 @@
 * [Linking](gnu-compiler-collection-gcc/linking.md)
 * [OS layer](gnu-compiler-collection-gcc/os-layer.md)
 * [Executable files](gnu-compiler-collection-gcc/executable-files.md)
-* [Further Reading](gnu-compiler-collection-gcc/further-reading.md)
+* [Further Reading](gcc/further-reading.md)
 
 ## Make
 
