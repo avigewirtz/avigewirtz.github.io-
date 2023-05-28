@@ -11,4 +11,4 @@ This stems from how the shell locates programs. For system utilities, their loca
 
 In our example, the shell interprets './hello' as a relative pathname to the 'hello' program. It succeeds in Terminal 1, as the 'hello' program is indeed in its working directory. However, it fails in Terminal 2, as there is no 'hello' in its current working directory, resulting in the error 'No such file or directory'. If the correct pathname to 'hello' is provided in Terminal 2, the command will run successfully as shown in Figure 6.
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 3.14.12 PM (1).png" alt="" width="563"><figcaption><p>Figure 6</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 3.14.12 PM.png" alt="" width="563"><figcaption><p>Figure 6</p></figcaption></figure>

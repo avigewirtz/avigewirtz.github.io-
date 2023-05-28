@@ -10,5 +10,5 @@ Teletypes fell out of use in the 1970s with the widespread adoption of video dis
 
 Today, hardware terminals have become obsolete. Instead, the CLI is accessed via _terminal emulators_, which are programs integrated into GUIs that simulate the functionality of their hardware predecessors. An example of a terminal emulator is macOS's Terminal shown in Figure 3.&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-19 at 5.46.26 PM.png" alt="" width="375"><figcaption><p>Figure 3: macOS Terminal Application</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-05-19 at 5.46.26 PM.png" alt="" width="563"><figcaption><p>Figure 3: macOS Terminal Application</p></figcaption></figure>
 

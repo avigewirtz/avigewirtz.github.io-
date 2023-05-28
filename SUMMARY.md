@@ -104,15 +104,17 @@
 * [Git Cheat Sheet](git-and-github/git-cheat-sheet.md)
 * [Further Reading](git-and-github/further-reading.md)
 
-## GCC
+## Gnu Compiler Collection (GCC)
 
-* [The Four Stage Build Process](gcc/the-four-stage-build-process.md)
-* [Understanding each stage](gcc/understanding-each-stage/README.md)
-  * [Machine Code](gcc/understanding-each-stage/machine-code.md)
-  * [Assembly Language](gcc/understanding-each-stage/assembly.md)
-  * [High-level Language](gcc/understanding-each-stage/high-level-languages.md)
-  * [Linking](gcc/understanding-each-stage/linking.md)
-* [Further Reading](gcc/further-reading.md)
+* [The Four Stage Build Process](gnu-compiler-collection-gcc/the-four-stage-build-process.md)
+* [How Information is Represented in Computers](gnu-compiler-collection-gcc/how-information-is-represented-in-computers.md)
+* [Machine Code](gnu-compiler-collection-gcc/machine-code.md)
+* [Assembly](gnu-compiler-collection-gcc/assembly.md)
+* [High Level Programming Language](gnu-compiler-collection-gcc/high-level-programming-language.md)
+* [Linking](gnu-compiler-collection-gcc/linking.md)
+* [OS layer](gnu-compiler-collection-gcc/os-layer.md)
+* [Executable files](gnu-compiler-collection-gcc/executable-files.md)
+* [Further Reading](gnu-compiler-collection-gcc/further-reading.md)
 
 ## Make
 

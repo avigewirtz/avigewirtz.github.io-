@@ -1,10 +1,4 @@
-# Understanding each stage
-
-## How Information is Represented in Computers
-
-At its core, all information in computers is stored as a sequence of bits, which represent one of two states of the underlying electrical or magnetic states of the computer's memory components. For simplicity we represent these two states using 1s and 0s. For instance, a memory cell may consist of a tiny capacitor and transistor. A charged capacitor represents a 1, while a discharged capacitor signifies a 0. Alternatively, magnetic polarities of magnetic material may denote both states, with one polarity corresponding to a 1 and the opposite polarity to a 0.
-
-All information, such as numbers, images, audio, videos, and executable programs are stored as sequences of 1s and 0s. You might be wondering how a sequence of 1s and 0s can represent such complex information. The answer is we use encoding schemes. For example, we represent signed integers using twos complement, floating point numbers using a standard called the IEEE 754 floating-point standard, and we represent text using an encoding scheme such as ASCII or unicode.&#x20;
+# How Information is Represented in Computers
 
 
 

@@ -49,7 +49,7 @@ To illustrate this idea concretely, here are some examples showing the steps Bas
 4. Is `ls` a shell built-in?  :heavy\_check\_mark:
 5. Execute it.
 
-<figure><img src="../../.gitbook/assets/mermaid-diagram-2023-05-25-193618.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/mermaid-diagram-2023-05-25-193618 (1).png" alt=""><figcaption></figcaption></figure>
 
 **Case 4**: Invoking `hello`:
 
