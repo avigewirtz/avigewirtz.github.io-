@@ -1,14 +1,15 @@
 # Machine Code
 
-When it comes to programs, binary encoding takes on a new role. Unlike data, which is passively stored and interpreted, programs are active, providing a series of instructions that a computer follows to perform tasks.
+A program is a sequence of instructions that directs the computer to perform specific operations. Like all other types of data in a computer, these instructions are represented in binary. Unlike data, which is passively stored and interpreted, instructions are active, instructing a computer to complete a task. For instance, one instruction may tell the processor to add two numbers, while another might tell it to move data from one place to another.
 
-**What is a Program?**
+### Instructions
 
-A program is a sequence of instructions that directs the computer to perform specific operations. Like all other types of data in a computer, these instructions are represented in binary.
+Each machine code instruction consists of two main parts: an opcode and operand(s).
 
-**Instruction Format and Types:**
+* The opcode, or operation code, is the portion of the instruction that specifies the operation to be performed. This could be any basic operation that the CPU is capable of performing, such as addition, subtraction, multiplication, loading data from memory, storing data into memory, and so on.
+* The operand(s) are the data or parameters the operation should act upon. These could represent specific values, or they could represent addresses in memory where values are stored.
 
-Each instruction in a program has a specific format that is determined by the processor's design. For instance, one instruction may tell the processor to add two numbers, while another might tell it to move data from one place to another.
+To provide an example, consider a simplified machine code instruction like `1010 0110 1111`. Here, `1010` could be the opcode, signifying an operation like "ADD". The remaining part `0110 1111` could be the operand(s), which in this case might represent two memory addresses where the numbers to be added are stored. The exact interpretation of opcodes and operands will depend on the specific instruction set architecture (ISA) of the CPU.
 
 **Instruction Set Architecture (ISA):**
 
@@ -23,6 +24,8 @@ An ISA includes specifications for:
 * The data types supported
 * The instruction set itself (the set of all operations that the processor can perform)
 
+While the ISA lays out what instructions should be available and how they should work, it does not dictate how these instructions are to be implemented in a physical processor. This separation allows different manufacturers to produce CPUs that are compatible with an ISA architecture, but which may have completely different internal designs
+
 <details>
 
 <summary>Aside: RISC vs. CISC</summary>
@@ -35,37 +38,23 @@ On the other hand, CISC architectures, like x86, contain a large number of compl
 
 </details>
 
-
-
-
-
-
-
-**Family and Behavior:**
-
-ARM is indeed a family of architectures, with each member defining a set of behaviors but not their implementation. This means that the ARM architecture lays out what instructions should be available and how they should work, but it does not dictate how these instructions are to be implemented in a physical processor.
-
-This separation allows different manufacturers to produce CPUs that are compatible with the ARM architecture, but which may have completely different internal designs. For instance, two CPUs might both implement the ARMv8 architecture, but one might be designed for high performance while the other might be designed for low power consumption. This diversity is one of the strengths of the ARM architecture.
-
-
-
-
-
-
-
-
-
-Writing programs directly in machine code in today's world would be incredibly inefficient and time-consuming. However, to demonstrate why this is so, we will code a simple program using the TOY ISA, introduced in the COS126 course.
-
-
-
-
-
-###
-
 ### Programming in Machine Code: An Example
 
+As you can imagine, writing programs directly in machine code is incredibly difficult. To demonstrate why this is so, we will write a simple machine code program using the fictional TOY ISA, introduced in COS126.&#x20;
 
+Recall that TOY:
+
+1. TOY has 16 registers&#x20;
+2. TOY has 256 memory locations
+3. TOY has 16 opcodes
+
+```
+Register 0 always reads 0.
+Loads from mem[FF] come from stdin.
+Stores to mem[FF] go to stdout.
+```
+
+In TOY, each instruction is 16 bits long, with the first four bits representing the opcode and the remaining 12 representing the operands.&#x20;
 
 
 
@@ -81,47 +70,22 @@ Writing programs directly in machine code in today's world would be incredibly i
 
 
 
-| OPCODE (Binary) | DESCRIPTION     | FORMAT |
-| --------------- | --------------- | ------ |
-| 0000            | halt            | -      |
-| 0001            | add             | 1      |
-| 0010            | subtract        | 1      |
-| 0011            | and             | 1      |
-| 0100            | xor             | 1      |
-| 0101            | left shift      | 1      |
-| 0110            | right shift     | 1      |
-| 0111            | load address    | 2      |
-| 1000            | load            | 2      |
-| 1001            | store           | 2      |
-| 1010            | load indirect   | 1      |
-| 1011            | store indirect  | 1      |
-| 1100            | branch zero     | 2      |
-| 1101            | branch positive | 2      |
-| 1110            | jump register   | -      |
-| 1111            | jump and link   | 2      |
+<table><thead><tr><th>OPCODE (Binary)</th><th width="236">DESCRIPTION</th><th>FORMAT</th></tr></thead><tbody><tr><td>0000</td><td>halt</td><td>-</td></tr><tr><td>0001</td><td>add</td><td>1</td></tr><tr><td>0010</td><td>subtract</td><td>1</td></tr><tr><td>0011</td><td>and</td><td>1</td></tr><tr><td>0100</td><td>xor</td><td>1</td></tr><tr><td>0101</td><td>left shift</td><td>1</td></tr><tr><td>0110</td><td>right shift</td><td>1</td></tr><tr><td>0111</td><td>load address</td><td>2</td></tr><tr><td>1000</td><td>load</td><td>2</td></tr><tr><td>1001</td><td>store</td><td>2</td></tr><tr><td>1010</td><td>load indirect</td><td>1</td></tr><tr><td>1011</td><td>store indirect</td><td>1</td></tr><tr><td>1100</td><td>branch zero</td><td>2</td></tr><tr><td>1101</td><td>branch positive</td><td>2</td></tr><tr><td>1110</td><td>jump register</td><td>-</td></tr><tr><td>1111</td><td>jump and link</td><td>2</td></tr></tbody></table>
 
 
 
 
 
-To demonstrate what programming in machine code is like, we will write a simple machine code program using the fictional TOY ISA from COS126. Although TOY is not a real computer, it serves as a legitimate example for understanding machine code.
 
-1. TOY has 16 registers&#x20;
-2. TOY has 256 memory locations
-3. TOY has 16 opcodes
 
-```
-Register 0 always reads 0.
-Loads from mem[FF] come from stdin.
-Stores to mem[FF] go to stdout.
-```
+Let's consider a toy program that takes two integer inputs from stdin, calculates their sum, and writes the result on stdout.
 
-In TOY, each instruction is 16 bits long, with the first four bits representing the opcode and the remaining 12 representing the operands. A simple TOY program in binary looks like this:
-
-This program takes two integer inputs from stdin, calculates their sum, and writes the result to stdout.
-
+{% code overflow="wrap" %}
 ```java
-1000 1010 1111 1111 // Read a byte from memory address 255 (stdin) and store it in register 10
+
+
+
+1000 1010 1111 1111 // Read byte from memory address 255 (stdin) and store it in register 10
 1000 1011 1111 1111 // Read a byte from memory address 255 (stdin) and store it in register 11
 0111 1100 0000 0000 // Set register 12 to 0
 0111 0001 0000 0001 // Set register 1 to 1
@@ -132,19 +96,11 @@ This program takes two integer inputs from stdin, calculates their sum, and writ
 1001 1100 1111 1111 // Write the value in register 12 to memory address 255 (stdout)
 0000 0000 0000 0000 // Halt the program
 ```
+{% endcode %}
 
 
 
-## Drawbacks of Machine Code
-
-
-
-Coding directly in a machine language like TOY is difficult for several reasons, most importantly because it lacks the qualities that make code human-readable.
-
-\
-
-
-Machine language, including TOY, doesn't have any of these features. There are no named variables or functions; instead, you have to manually manage registers and memory locations.
+Typing 1s and 0s is undoubtedly cumbersome, so an improvement we can do is to instead code in hexadecimal:
 
 ```
 1000 1010 1111 1111 => 8AFF
@@ -159,43 +115,36 @@ Machine language, including TOY, doesn't have any of these features. There are n
 0000 0000 0000 0000 => 0000
 ```
 
-\
-\
-\
+and the hex will undoubtedly exist in binary.
+
+Even though machine code written in hexadecimal is slightly more digestible than binary, the underlying challenge remains: it's a flat sequence of numbers without any meaningful structure or descriptive identifiers. The instructions, addresses, and data are all represented as numbers, making it hard to understand what each part of the code is doing.
+
+Machine language, including TOY, doesn't have any of these features. There are no named variables or functions; instead, you have to manually manage registers and memory locations.
 
 
-Even though machine code could be written in other numeral systems such as hexadecimal to make it slightly more digestible than binary, the underlying challenge remains: it's a flat sequence of numbers without any meaningful structure or descriptive identifiers. The instructions, addresses, and data are all represented as numbers, making it hard to understand what each part of the code is doing.
 
-\
-\
-\
+## Drawbacks of Machine Code
 
 
-PORTABILITY
 
-\
+
+
+
+
+#### PORTABILITY
+
+
+
+
+
 
 
 Another significant issue with machine code is its lack of portability. Portability, in this context, refers to the ability of a program to be executed on different types of systems without requiring modification.
 
-\
 
 
-Machine code is designed for a specific processor architecture, and it directly uses the instructions defined by that architecture's Instruction Set Architecture (ISA). For example, machine code written for a TOY machine would be different from that written for an ARM processor or an x86 processor, even if they were intended to perform the same task. This is because each architecture has its unique set of instructions, and instructions can even vary within families of the same architecture, such as different generations of ARM or x86 processors.
+Machine code lacks portability. Machine code is designed for a specific processor architecture, and it directly uses the instructions defined by that processor's ISA. For example, machine code written for a TOY machine would be different from that written for an ARM processor or an x86 processor, even if they were intended to perform the same task.&#x20;
 
-\
-\
-
-
-This means that machine code lacks portability. If you write a program in machine code for one type of processor, it won't run on a different type of processor. You would have to rewrite the program using the different processor's machine language, which is a labor-intensive and error-prone process.
+If you write a program in machine code for one type of processor, it won't run on a different type of processor. You would have to rewrite the program using the different processor's machine language, which is a labor-intensive and error-prone process.
 
 \
-\
-
-
-* Not human readable:
-* Not portable:
-* Time-consuming development:
-* Lack of abstraction:
-
-Typing 1s and 0s is undoubtedly cumbersome, but the primary issue lies not in the binary representation but in the lack of structure and human readability. The 1s and 0s can be converted to hexadecimal, as shown below and as is done in COS126, which makes the code more accessible, but it still lacks the structure and readability offered by high-level programming&#x20;
