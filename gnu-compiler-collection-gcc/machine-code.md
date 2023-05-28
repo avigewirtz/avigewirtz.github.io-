@@ -1,16 +1,28 @@
 # Machine Code
 
-We began by discussing how computers interpret data, like integers and text. But the power of a computer primarily lies in its ability to execute programs, which are sequences of instructions that direct specific operations. These instructions, represented in binary like all data in a computer, are active; they direct the computer to complete tasks. For instance, one instruction might tell the processor to add two numbers, while another directs it to move data from one place to another.
+We began by discussing how computers interpret data, like integers and text. But the power of a computer primarily lies in its ability to execute programs, which are sequences of instructions that direct the computer to perform specific operations. For instance, one instruction might tell the processor to add two numbers, while another directs it to move data from one place to another. These instructions, like all other types of data in a computer, are represented in binary.
 
-Each machine code instruction consists of an opcode and operand(s). The opcode, or operation code, specifies the operation to be performed, such as addition, subtraction, or loading data from memory. The operand(s) are the data or parameters the operation should act upon. For example, a fictional machine code instruction like 1010 0110 1111 might have 1010 as the opcode (signifying "ADD") and 0110 1111 as the operands (representing memory addresses where numbers to be added are stored).
+#### Format of an instruction
 
-The set of all possible instructions a processor can execute is defined by the Instruction Set Architecture (ISA). The ISA outlines how instructions are encoded in binary, executed, and their effects on the processor's state. It also specifies the size and format of instructions, main memory and registers, the supported data types, and the instruction set itself. However, it does not dictate how these instructions are implemented in a physical processor.
+Each machine code instruction consists of an operation code (opcode) and operand(s). The opcode specifies the operation to be performed, such as addition, subtraction, or loading data from memory. The operand(s) are the data or parameters the operation should act upon.&#x20;
 
-Take the TOY Instruction Set Architecture (ISA) as an example. It serves as the interface between the TOY programming language and the hardware that executes the program, specifying details such as the size of main memory (256 words), number of registers (16), and bits per instruction (16). It also lists the 16 unique instruction types, each designated by an opcode from 0 through F.
+For example, a machine code instruction might look like this:
 
-Each TOY instruction is encoded with 4 hex digits (16 bits): the leftmost hex digit encodes one of the 16 opcodes, the second encodes the destination register (denoted as d), and the interpretation of the two rightmost hex digits depends on the opcode. In Format 1 opcodes, these represent source registers (denoted as s and t). In Format 2 opcodes, they represent an 8-bit memory address.
+1010 0110 1111&#x20;
 
-The TOY machine uses registers as scratch space during computation. Register 0 is special, always outputting a value of 0. Main memory is used to store instructions and data, with each memory location labeled with a unique address. Certain special behaviors apply, like loads from memory address FF coming from stdin, and stores to this address going to stdout.
+Where 1010 is the opcode (signifying "ADD") and 0110 1111 is the operands (representing memory addresses where numbers to be added are stored).
+
+## Instruction Set Architecture
+
+The set of all possible instructions a processor can execute is defined by the Instruction Set Architecture (ISA). It serves as the interface between the TOY programming language and the hardware that executes the program. The ISA outlines how instructions are encoded in binary, executed, and their effects on the processor's state. It also specifies the size and format of instructions, main memory and registers, the supported data types, and the instruction set itself. However, it does not dictate how these instructions are implemented in a physical processor.
+
+## Machine Code example:
+
+It's difficult to demonstrate what machine code is truly like without an example of a machine code program. However, modern machine code languages, such as ARM and X86, are so complex, that it would be unrealistic to write a self-contained program. As such, we will demonstrate machine code by using the TOY computer introduced in COS126. While TOY is a fictional computer, it is very similar to computers that existed when programmers programmed in machine code.&#x20;
+
+Let's review the TOY ISA. It specifies all the details a programmer would need to know to write programs in TOY machine code.&#x20;
+
+
 
 
 
@@ -18,18 +30,7 @@ The TOY machine uses registers as scratch space during computation. Register 0 i
 
 
 
-
-
-<table><thead><tr><th>OPCODE (Binary)</th><th width="236">DESCRIPTION</th><th>FORMAT</th></tr></thead><tbody><tr><td>0000</td><td>halt</td><td>-</td></tr><tr><td>0001</td><td>add</td><td>1</td></tr><tr><td>0010</td><td>subtract</td><td>1</td></tr><tr><td>0011</td><td>and</td><td>1</td></tr><tr><td>0100</td><td>xor</td><td>1</td></tr><tr><td>0101</td><td>left shift</td><td>1</td></tr><tr><td>0110</td><td>right shift</td><td>1</td></tr><tr><td>0111</td><td>load address</td><td>2</td></tr><tr><td>1000</td><td>load</td><td>2</td></tr><tr><td>1001</td><td>store</td><td>2</td></tr><tr><td>1010</td><td>load indirect</td><td>1</td></tr><tr><td>1011</td><td>store indirect</td><td>1</td></tr><tr><td>1100</td><td>branch zero</td><td>2</td></tr><tr><td>1101</td><td>branch positive</td><td>2</td></tr><tr><td>1110</td><td>jump register</td><td>-</td></tr><tr><td>1111</td><td>jump and link</td><td>2</td></tr></tbody></table>
-
-
-
-
-
-### Programming in Machine Code: An Example
-
-\
-As you can imagine, writing programs directly in machine code is incredibly difficult. To demonstrate why this is so, we will write a simple machine code program using the fictional TOY ISA, introduced in COS126.&#x20;
+suppose you have some way of feeding these intruction in one-by-one. we will not concern ourselves with how this is done.
 
 Let's consider a toy program that takes two integer inputs from stdin, calculates their sum, and writes the result on stdout.
 
@@ -51,9 +52,21 @@ Let's consider a toy program that takes two integer inputs from stdin, calculate
 ```
 {% endcode %}
 
+## Observations
+
+* It's not human readable, meaning that it's not descriptive
+* Many lines of code to perform a simple task
+* Code is tedious to write&#x20;
+* very few instrcutions
+* very simple instructions
+* no high level constructs such as loops
+* have to combine to do anything useful
+* have to be hardcode memory and register addresses, requiring us to be intimately familiar with hardware
+*
 
 
-Typing 1s and 0s is undoubtedly cumbersome, so an improvement we can do is to instead code in hexadecimal:
+
+It should be noted that we can improve machine code wiritng by for example using hex instead of binary. so, for example, instead of typing out 1000 1010 1111 1111, we type 8AFF. In fact, this is how programming in TOY was in COS126.&#x20;
 
 ```
 1000 1010 1111 1111 => 8AFF
@@ -68,15 +81,7 @@ Typing 1s and 0s is undoubtedly cumbersome, so an improvement we can do is to in
 0000 0000 0000 0000 => 0000
 ```
 
-Even though writing machine code in hexadecimal is slightly more digestible than binary, the underlying challenge remains: it's a flat sequence of numbers without any meaningful structure or descriptive identifiers, making it hard to understand what each part of the code is doing.
-
-
-
-
-
-## Drawbacks of Machine Code
-
-#### PORTABILITY
+Even though hexadecimal might be slightly more digestible and easier to code than binary, the underlying challenge remains: it's a flat sequence of numbers without any meaningful structure or descriptive identifiers, making it hard to understand what each part of the code is doing.
 
 Another significant issue with machine code is its lack of portability. Portability, in this context, refers to the ability of a program to be executed on different types of systems without requiring modification.
 
