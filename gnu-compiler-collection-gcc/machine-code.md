@@ -22,35 +22,45 @@ It's difficult to demonstrate what machine code is truly like without an example
 
 Let's review the TOY ISA. It specifies all the details a programmer would need to know to write programs in TOY machine code.&#x20;
 
+The TOY machine consists of:
 
+* TOY’s memory consists of 256 words, each 16 bits
+* 16 registers, each 16 bits
+* 16-bit instructions
 
-
+Each TOY instruction comprises 16 bits:
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-28 at 12.35.09 PM.png" alt=""><figcaption></figcaption></figure>
 
 
 
-suppose you have some way of feeding these intruction in one-by-one. we will not concern ourselves with how this is done.
 
-Let's consider a toy program that takes two integer inputs from stdin, calculates their sum, and writes the result on stdout.
 
-{% code overflow="wrap" %}
-```java
+Let's consider a toy program that takes two integer inputs from stdin, calculates their sum, and writes the result on stdout. For the following program, we will assume it is already loaded into memory, and the first instruction starts at address 14.  supposes you have some way of feeding these instruction in one-by-one. we will not concern ourselves with how this is done.
 
 
 
-1000 1010 1111 1111 // Read a byte from memory address 255 (stdin) and store it in register 10
-1000 1011 1111 1111 // Read a byte from memory address 255 (stdin) and store it in register 11
-0111 1100 0000 0000 // Set register 12 to 0
-0111 0001 0000 0001 // Set register 1 to 1
-1100 1010 0001 1000 // If the value in register 10 equals 0, jump to address 24
-0001 1100 1100 1011 // Add the values in registers 11 and 12 and store the result in register 12
-0010 1010 1010 0001 // Decrement register 10 by 1 (the value in register 1)
-1100 0000 0001 0100 // Jump back to address 14 
-1001 1100 1111 1111 // Write the value in register 12 to memory address 255 (stdout)
-0000 0000 0000 0000 // Halt the program
-```
-{% endcode %}
+<table><thead><tr><th width="183">Memory Address</th><th width="223">Instruction/Data (Binary)</th><th>Description</th></tr></thead><tbody><tr><td>10</td><td>1000101000010101</td><td>Load the value from memory address 15 into register A.</td></tr><tr><td>11</td><td>1000101100010110</td><td>Load the value from memory address 16 into register B.</td></tr><tr><td>12</td><td>0001110010101011</td><td>Add the contents of registers A and B, storing the result in register C.</td></tr><tr><td>13</td><td>1001110000010111</td><td>Store the result from register C into memory address 17.</td></tr><tr><td>14</td><td>0000000000000000</td><td>This is a halt instruction. It stops the execution of the program.</td></tr><tr><td>15</td><td>0000000000001000</td><td>Memory address 15 contains the value 0008.</td></tr><tr><td>16</td><td>0000000000000110</td><td>Memory address 16 contains the value 0005.</td></tr><tr><td>17</td><td>0000000000000000</td><td>Memory address 17 initially contains the value 0000.</td></tr></tbody></table>
+
+
+
+
+
+he TOY machine program provided appears to be written in hexadecimal format. Here's a breakdown of the instruction set:
+
+* `8A15` -> Load the value from memory address 15 into register A.
+* `8B16` -> Load the value from memory address 16 into register B.
+* `1CAB` -> Add the contents of registers A and B, storing the result in register C.
+* `9C17` -> Store the result from register C into memory address 17.
+* `0000` -> This is a halt instruction. It stops the execution of the program.
+
+The contents of the memory addresses 15, 16, 17, and the program counter starting from 10, are as follows:
+
+* Memory address `15` contains the value `0008`.
+* Memory address `16` contains the value `0005`.
+* Memory address `17` initially contains the value `0000`.
+
+So, this program loads the values from memory addresses 15 and 16 into registers A and B, adds these values together, stores the result in memory address 17, and then halts. Given the provided memory values, this program will effectively add 8 and 5, storing the result (13) in memory address 17.
 
 ## Observations
 
@@ -81,7 +91,7 @@ It should be noted that we can improve machine code wiritng by for example using
 0000 0000 0000 0000 => 0000
 ```
 
-Even though hexadecimal might be slightly more digestible and easier to code than binary, the underlying challenge remains: it's a flat sequence of numbers without any meaningful structure or descriptive identifiers, making it hard to understand what each part of the code is doing.
+However, while hexadecimal might be slightly more digestible and easier to code than binary, the underlying challenge remains: it's a flat sequence of numbers without any meaningful structure or descriptive identifiers, making it hard to understand what each part of the code is doing.
 
 Another significant issue with machine code is its lack of portability. Portability, in this context, refers to the ability of a program to be executed on different types of systems without requiring modification.
 
