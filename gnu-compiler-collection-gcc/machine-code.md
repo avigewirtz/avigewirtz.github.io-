@@ -42,16 +42,19 @@ For the following program, we will assume it is already loaded into memory, and 
 So, this program loads the values from memory addresses 15 and 16 into registers 10 and 11, adds these values together, stores the result in memory address 17, and then halts. Given the provided memory values, this program will effectively add 8 and 5, storing the result (13) in memory address 17.
 
 ```c
-10: 1000101011111111 // read 16 bits from stdin and store in register 10
-11: 1000101111111111 // read 16 bits from stdin and store in register 11
-12: 0111110000000000 // load value 0 into register 12
-13: 0111000100000001 // load value 1 intro register 1
-14: 1100101000011000 // if the value in register 10 is 0, jump to memory address 18
-15: 0001110011001011 // add the value in register 11 to register 12
-16: 0010101010000001 // decrement the value in register by the value in register 1 (1)
-17: 1100000001010011 // jump back to memory address 14
-18: 1001110011111111 // write the value in register 12 on stdout
-19: 0000000000000000 // halt the execution of the program
+Address | instruction 
+-----------------------------
+10:     |  1000101011111111 // read 16 bits from stdin and store in register 10       
+11:     |  1000101111111111 // read 16 bits from stdin and store in register 11        
+12:     |  0111110000000000 // load value 0 into register 12   
+13:     |  0111000100000001 // load value 1 intro register 1  
+14:     |  1100101000011000 // if the value in register 10 is 0, jump to memory address 18 
+15:     |  0001110011001011 // add the value in register 11 to register 12
+16:     |  0010101010000001 // decrement the value in register by the value in register 1 (1) 
+17:     |  1100000001010011 // jump back to memory address 14      
+18:     |  1001110011111111 // write the value in register 12 on stdout       
+19:     |  0000000000000000 // halt the execution of the program    
+-----------------------------
 ```
 
 ## Observations
