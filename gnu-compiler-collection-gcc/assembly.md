@@ -37,7 +37,22 @@ Memory:
 
 Here's how the earlier program would look using this notation:
 
+```
+Address | instruction 
+-----------------------------
+10:     |  rd r10        
+11:     |  rd r11        
+12:     |  lad r12, 0     
+13:     |  lad r1, 1   
+14:     |  brz r10, m18   
+15:     |  add r12, r12, r11
+16:     |  sub r10, r10, r1 
+17:     |  jmpr m14       
+18:     |  wrt r12       
+19:     |  hlt     
+-----------------------------
 
+```
 
 Labels are another useful feature of assembly language, providing a more human-readable way of referring to memory addresses and simplifying the process of writing and maintaining assembly code. Labels are especially helpful for branching, looping, or other control structures that require jumps to different code parts.
 
