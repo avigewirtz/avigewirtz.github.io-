@@ -24,50 +24,31 @@ Let's review the TOY ISA. It specifies all the details a programmer would need t
 
 The TOY machine consists of:
 
-* TOY’s memory consists of 256 words, each 16 bits
+* 256 addresses, each containing 16 bits
 * 16 registers, each 16 bits
-* 16-bit instructions
-
-Each TOY instruction comprises 16 bits:
+* 16 instructions, each 16 bits&#x20;
+* Instructions can be in 2 formats, as shown below. The leftmost 4 bits always represent the opcode.&#x20;
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-28 at 12.35.09 PM.png" alt=""><figcaption></figcaption></figure>
 
 
 
-
-
-Let's consider a toy program that takes two integer inputs from stdin, calculates their sum, and writes the result on stdout. For the following program, we will assume it is already loaded into memory, and the first instruction starts at address 14.  supposes you have some way of feeding these instruction in one-by-one. we will not concern ourselves with how this is done.
-
-
-
-<table><thead><tr><th width="183">Memory Address</th><th width="223">Instruction/Data (Binary)</th><th>Description</th></tr></thead><tbody><tr><td>10</td><td>1000101000010101</td><td>Load the value from memory address 15 into register A.</td></tr><tr><td>11</td><td>1000101100010110</td><td>Load the value from memory address 16 into register B.</td></tr><tr><td>12</td><td>0001110010101011</td><td>Add the contents of registers A and B, storing the result in register C.</td></tr><tr><td>13</td><td>1001110000010111</td><td>Store the result from register C into memory address 17.</td></tr><tr><td>14</td><td>0000000000000000</td><td>This is a halt instruction. It stops the execution of the program.</td></tr><tr><td>15</td><td>0000000000001000</td><td>Memory address 15 contains the value 0008.</td></tr><tr><td>16</td><td>0000000000000110</td><td>Memory address 16 contains the value 0005.</td></tr><tr><td>17</td><td>0000000000000000</td><td>Memory address 17 initially contains the value 0000.</td></tr></tbody></table>
+For the following program, we will assume it is already loaded into memory, and the first instruction starts at address 10. &#x20;
 
 
 
+<table><thead><tr><th width="183">Memory Address</th><th width="223">Instruction/Data (Binary)</th><th>Description</th></tr></thead><tbody><tr><td>10</td><td>1000101000010101</td><td>Load the value from memory address 15 into register 10.</td></tr><tr><td>11</td><td>1000101100010110</td><td>Load the value from memory address 16 into register 11.</td></tr><tr><td>12</td><td>0001110010101011</td><td>Add the contents of registers 10 and 11, storing the result in register 12.</td></tr><tr><td>13</td><td>1001110000010111</td><td>Store the result from register 12 into memory address 17.</td></tr><tr><td>14</td><td>0000000000000000</td><td>This is a halt instruction. It stops the execution of the program.</td></tr><tr><td>15</td><td>0000000000001000</td><td>Memory address 15 contains the value 0008.</td></tr><tr><td>16</td><td>0000000000000110</td><td>Memory address 16 contains the value 0005.</td></tr><tr><td>17</td><td>0000000000000000</td><td>Memory address 17 initially contains the value 0000 and will be used to store the result.</td></tr></tbody></table>
 
 
-he TOY machine program provided appears to be written in hexadecimal format. Here's a breakdown of the instruction set:
 
-* `8A15` -> Load the value from memory address 15 into register A.
-* `8B16` -> Load the value from memory address 16 into register B.
-* `1CAB` -> Add the contents of registers A and B, storing the result in register C.
-* `9C17` -> Store the result from register C into memory address 17.
-* `0000` -> This is a halt instruction. It stops the execution of the program.
-
-The contents of the memory addresses 15, 16, 17, and the program counter starting from 10, are as follows:
-
-* Memory address `15` contains the value `0008`.
-* Memory address `16` contains the value `0005`.
-* Memory address `17` initially contains the value `0000`.
-
-So, this program loads the values from memory addresses 15 and 16 into registers A and B, adds these values together, stores the result in memory address 17, and then halts. Given the provided memory values, this program will effectively add 8 and 5, storing the result (13) in memory address 17.
+So, this program loads the values from memory addresses 15 and 16 into registers 10 and 11, adds these values together, stores the result in memory address 17, and then halts. Given the provided memory values, this program will effectively add 8 and 5, storing the result (13) in memory address 17.
 
 ## Observations
 
 * It's not human readable, meaning that it's not descriptive
 * Many lines of code to perform a simple task
 * Code is tedious to write&#x20;
-* very few instrcutions
+* very few instructions
 * very simple instructions
 * no high level constructs such as loops
 * have to combine to do anything useful
