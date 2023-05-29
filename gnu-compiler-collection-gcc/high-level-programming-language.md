@@ -1,5 +1,27 @@
 # High Level Programming Language
 
+
+
+
+
+
+
+
+
+{% code lineNumbers="true" %}
+```c
+ int num1 = 8;
+ int num2 = 5;
+ int result = num1 + num2;
+```
+{% endcode %}
+
+
+
+
+
+
+
 Executable files, which contain the binary code for a program, have a specific format that distinguishes them from other types of files. The precise format can depend on the operating system and the architecture of the machine, but most executable file formats include a header section that provides metadata about the file.
 
 This header contains information such as:

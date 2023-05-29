@@ -4,43 +4,42 @@ To make programming easier, programmers long ago developed assembly, which is ba
 
 For example, let's consider the TOY Opcodes.&#x20;
 
-| Instruction        | Opcode | Mnemonic  |
-| ------------------ | ------ | --------- |
-| halt               | 0000   | hlt       |
-| add                | 0001   | add       |
-| subtract           | 0010   | sub       |
-| and                | 0011   | and       |
-| xor (exclusive OR) | 0100   | xor       |
-| left shift         | 0101   | lsh       |
-| right shift        | 0110   | rsh       |
-| load address       | 0111   | lad       |
-| load               | 1000   | lod       |
-| store              | 1001   | str       |
-| load indirect      | 1010   | ldi       |
-| store indirect     | 1011   | sti       |
-| branch zero        | 1100   | brz       |
-| branch positive    | 1101   | brp       |
-| jump register      | 1110   | jmpr      |
-| jump and link      | 1111   | jal       |
+| Instruction        | Opcode (Machine code) | Mnemonic (Assembly) |
+| ------------------ | --------------------- | ------------------- |
+| halt               | 0000                  | hlt                 |
+| add                | 0001                  | add                 |
+| subtract           | 0010                  | sub                 |
+| and                | 0011                  | and                 |
+| xor (exclusive OR) | 0100                  | xor                 |
+| left shift         | 0101                  | lsh                 |
+| right shift        | 0110                  | rsh                 |
+| load address       | 0111                  | lad                 |
+| load               | 1000                  | load                |
+| store              | 1001                  | str                 |
+| load indirect      | 1010                  | ldi                 |
+| store indirect     | 1011                  | sti                 |
+| branch zero        | 1100                  | brz                 |
+| branch positive    | 1101                  | brp                 |
+| jump register      | 1110                  | jmpr                |
+| jump and link      | 1111                  | jal                 |
+
+
+
+Registers:
+
+* Instead of referring to the binary representations of registers (0000 to 1111), we can use the notation r0 to r15.&#x20;
+
+Memory:
+
+* Similar to the registers, instead of referring to memory addresses with binary representations (00000000 to 11111111), we can use the notation m0 to m255.&#x20;
+* stdin: read
+* stdout: write
+
+Here's how the earlier program would look using this notation:
+
+
 
 Labels are another useful feature of assembly language, providing a more human-readable way of referring to memory addresses and simplifying the process of writing and maintaining assembly code. Labels are especially helpful for branching, looping, or other control structures that require jumps to different code parts.
-
-```armasm
-LOAD R10, [255]    ; Read from memory address 255 (stdin) and store it in register R10
-LOAD R11, [255]    ; Read a byte from memory address 255 (stdin) and store it in register R11
-MOV R12, #0        ; Set register R12 to 0
-MOV R1, #1         ; Set register R1 to 1
-
-LOOP_START:        ; Label for the start of the loop
-BZ R10, LOOP_END   ; If the value in register R10 equals 0, jump to address LOOP_END
-ADD R12, R11, R12  ; Add the values in registers R11 and R12 and store the result in register R12
-SUB R10, R10, R1   ; Decrement register R10 by 1 (the value in register R1)
-JMP LOOP_START     ; Jump back to the start of the loop
-
-LOOP_END:          ; Label for the end of the loop
-STORE R12, [255]   ; Write the value in register R12 to memory address 255 (stdout)
-HALT               ; Halt the program
-```
 
 
 

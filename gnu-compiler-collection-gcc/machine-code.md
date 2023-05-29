@@ -37,11 +37,22 @@ For the following program, we will assume it is already loaded into memory, and 
 
 
 
-<table><thead><tr><th width="183">Memory Address</th><th width="223">Instruction/Data (Binary)</th><th>Description</th></tr></thead><tbody><tr><td>10</td><td>1000101000010101</td><td>Load the value from memory address 15 into register 10.</td></tr><tr><td>11</td><td>1000101100010110</td><td>Load the value from memory address 16 into register 11.</td></tr><tr><td>12</td><td>0001110010101011</td><td>Add the contents of registers 10 and 11, storing the result in register 12.</td></tr><tr><td>13</td><td>1001110000010111</td><td>Store the result from register 12 into memory address 17.</td></tr><tr><td>14</td><td>0000000000000000</td><td>This is a halt instruction. It stops the execution of the program.</td></tr><tr><td>15</td><td>0000000000001000</td><td>Memory address 15 contains the value 0008.</td></tr><tr><td>16</td><td>0000000000000110</td><td>Memory address 16 contains the value 0005.</td></tr><tr><td>17</td><td>0000000000000000</td><td>Memory address 17 initially contains the value 0000 and will be used to store the result.</td></tr></tbody></table>
-
 
 
 So, this program loads the values from memory addresses 15 and 16 into registers 10 and 11, adds these values together, stores the result in memory address 17, and then halts. Given the provided memory values, this program will effectively add 8 and 5, storing the result (13) in memory address 17.
+
+```c
+10: 1000101011111111 // read 16 bits from stdin and store in register 10
+11: 1000101111111111 // read 16 bits from stdin and store in register 11
+12: 0111110000000000 // load value 0 into register 12
+13: 0111000100000001 // load value 1 intro register 1
+14: 1100101000011000 // if the value in register 10 is 0, jump to memory address 18
+15: 0001110011001011 // add the value in register 11 to register 12
+16: 0010101010000001 // decrement the value in register by the value in register 1 (1)
+17: 1100000001010011 // jump back to memory address 14
+18: 1001110011111111 // write the value in register 12 on stdout
+19: 0000000000000000 // halt the execution of the program
+```
 
 ## Observations
 
@@ -59,17 +70,19 @@ So, this program loads the values from memory addresses 15 and 16 into registers
 
 It should be noted that we can improve machine code wiritng by for example using hex instead of binary. so, for example, instead of typing out 1000 1010 1111 1111, we type 8AFF. In fact, this is how programming in TOY was in COS126.&#x20;
 
+
+
 ```
-1000 1010 1111 1111 => 8AFF
-1000 1011 1111 1111 => 8BFF
-0111 1100 0000 0000 => 7C00
-0111 0001 0000 0001 => 7101
-1100 1010 0001 1000 => CA18
-0001 1100 1100 1011 => 1CCB
-0010 1010 1010 0001 => 2AA1
-1100 0000 0001 0100 => C014
-1001 1100 1111 1111 => 9CFF
-0000 0000 0000 0000 => 0000
+10: 1000101011111111 => 8AFF
+11: 1000101111111111 => 8BFF
+12: 0111110000000000 => 7C00
+13: 0111000100000001 => 7101
+14: 1100101000011000 => CA18
+15: 0001110011001011 => 1CCB
+16: 0010101010100001 => 2AA1
+17: 1100000000010100 => C014
+18: 1001110011111111 => 9CFF
+19: 0000000000000000 => 0000
 ```
 
 However, while hexadecimal might be slightly more digestible and easier to code than binary, the underlying challenge remains: it's a flat sequence of numbers without any meaningful structure or descriptive identifiers, making it hard to understand what each part of the code is doing.
