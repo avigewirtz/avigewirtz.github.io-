@@ -2,52 +2,38 @@
 
 To make programming easier, programmers long ago developed assembly. \<explain how assembly makes coding easier by using mnemonics instead of numbers, etc. demonstrate this with a couple simple examples. Then explain how we might design an assembly language for TOY. For example, we could use the following mnemonics instead of the opcodes.&#x20;
 
-| Instruction        | Opcode (Machine code) | Mnemonic (Assembly) |
-| ------------------ | --------------------- | ------------------- |
-| halt               | 0000                  | hlt                 |
-| add                | 0001                  | add                 |
-| subtract           | 0010                  | sub                 |
-| and                | 0011                  | and                 |
-| xor (exclusive OR) | 0100                  | xor                 |
-| left shift         | 0101                  | lsh                 |
-| right shift        | 0110                  | rsh                 |
-| load address       | 0111                  | lad                 |
-| load               | 1000                  | load                |
-| store              | 1001                  | str                 |
-| load indirect      | 1010                  | ldi                 |
-| store indirect     | 1011                  | sti                 |
-| branch zero        | 1100                  | brz                 |
-| branch positive    | 1101                  | brp                 |
-| jump register      | 1110                  | jmpr                |
-| jump and link      | 1111                  | jal                 |
 
 
 
 
+**Designing an Assembly Language for TOY**
 
-Here's how the earlier program would look using this notation. in our assembly language, you replace the TOY binary opcodes with: 0000 -> hlt 0001 -> add 0010 -> sub 0011 -> and 0100 -> xor 0101 -> lsh 0110 -> rsh 0111 -> lad 1000 -> lod 1001 -> str 1010 -> ldi 1011 -> sti 1100 -> brz 1101 -> brp 1110 -> jmpr 1111 -> jal
+Let's discuss how we might design an assembly language for our TOY computer. In our last program, recall that we referred to registers using 8 bits and memory addresses using 16 bits. In our assembly language, we can replace these with more readable notations.
 
+For Registers: We can replace binary representations of registers (0000 to 1111) with the notation r0 to r15.
 
+For Memory: Instead of binary representations for memory addresses (00000000 to 11111111), we can use the notation m0 to m255.
 
+Assembly language allows us to design mnemonics specific to the TOY architecture, replacing the binary opcodes for improved readability. For instance, we could use the following mnemonics for TOY instructions:
 
-
-
-
-
-
-
-
-
-
-recall in our last program how we reffered to registers using 8 bits and memory addresseses using 16 bits. we could instead use the following:
-
-Registers:
-
-* Instead of referring to the binary representations of registers (0000 to 1111), we can use the notation r0 to r15.&#x20;
-
-Memory:
-
-* Similar to the registers, instead of referring to memory addresses with binary representations (00000000 to 11111111), we can use the notation m0 to m255.&#x20;
+```c
+0000 -> hlt
+0001 -> add
+0010 -> sub
+0011 -> and
+0100 -> xor
+0101 -> lsh
+0110 -> rsh
+0111 -> lad
+1000 -> lod
+1001 -> str
+1010 -> ldi
+1011 -> sti
+1100 -> brz
+1101 -> brp
+1110 -> jmpr
+1111 -> jal
+```
 
 Here's how the earlier program would look using this notation:
 
