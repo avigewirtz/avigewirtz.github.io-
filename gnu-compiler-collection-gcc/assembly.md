@@ -1,8 +1,6 @@
 # Assembly
 
-To make programming easier, programmers long ago developed assembly, which is basically replaces&#x20;
-
-For example, let's consider the TOY Opcodes.&#x20;
+To make programming easier, programmers long ago developed assembly. \<explain how assembly makes coding easier by using mnemonics instead of numbers, etc. demonstrate this with a couple simple examples. Then explain how we might design an assembly language for TOY. For example, we could use the following mnemonics instead of the opcodes.&#x20;
 
 | Instruction        | Opcode (Machine code) | Mnemonic (Assembly) |
 | ------------------ | --------------------- | ------------------- |
@@ -25,6 +23,24 @@ For example, let's consider the TOY Opcodes.&#x20;
 
 
 
+
+
+Here's how the earlier program would look using this notation. in our assembly language, you replace the TOY binary opcodes with: 0000 -> hlt 0001 -> add 0010 -> sub 0011 -> and 0100 -> xor 0101 -> lsh 0110 -> rsh 0111 -> lad 1000 -> lod 1001 -> str 1010 -> ldi 1011 -> sti 1100 -> brz 1101 -> brp 1110 -> jmpr 1111 -> jal
+
+
+
+
+
+
+
+
+
+
+
+
+
+recall in our last program how we reffered to registers using 8 bits and memory addresseses using 16 bits. we could instead use the following:
+
 Registers:
 
 * Instead of referring to the binary representations of registers (0000 to 1111), we can use the notation r0 to r15.&#x20;
@@ -32,27 +48,63 @@ Registers:
 Memory:
 
 * Similar to the registers, instead of referring to memory addresses with binary representations (00000000 to 11111111), we can use the notation m0 to m255.&#x20;
-* stdin: read
-* stdout: write
 
 Here's how the earlier program would look using this notation:
 
 ```
 Address | instruction 
 -----------------------------
-10:     |  rd r10        
-11:     |  rd r11        
+10:     |  lod r10 m255   
+11:     |  lod r11 m255        
 12:     |  lad r12, 0     
 13:     |  lad r1, 1   
 14:     |  brz r10, m18   
 15:     |  add r12, r12, r11
 16:     |  sub r10, r10, r1 
 17:     |  jmpr m14       
-18:     |  wrt r12       
+18:     |  str r12 m255   
 19:     |  hlt     
 -----------------------------
+```
+
+
+
+This program is clearly much easier to read and write. \<ELABORATE>. Of course, it must ultimately be translated into machine code. That is done via a program known as an assembler. So called because it takes assembly and translates it into machine code.&#x20;
+
+
+
+
+
+In fact, we can do even better. We can use&#x20;
+
+* rd for all stdin&#x20;
+* wrt for stdout
+
+Additionally, we can add labels instead of hardcoding memory addresses. \<EXPLAIN LABELS>
+
+Now, we don't have to worry about memory addresses
+
+of course, the program will ultimately have to be in binary to be executed. For that, we design a program known as an assembler.&#x20;
+
+
 
 ```
+START: rd r10        
+rd r11        
+lad r12, 0     
+lad r1, 1   
+LOOP: brz r10, END  
+add r12, r12, r11
+sub r10, r10, r1 
+jmpr LOOP       
+END: wrt r12       
+hlt     
+
+```
+
+
+
+
 
 Labels are another useful feature of assembly language, providing a more human-readable way of referring to memory addresses and simplifying the process of writing and maintaining assembly code. Labels are especially helpful for branching, looping, or other control structures that require jumps to different code parts.
 
