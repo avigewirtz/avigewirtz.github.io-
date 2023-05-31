@@ -1,36 +1,28 @@
 # Machine Code
 
-We began by exploring how computers interpret data, including integers and text. However, the true power of a computer lies in its ability to execute programs. These are sequences of instructions that direct the computer to perform specific operations. For instance, one instruction might command the processor to add two numbers, while another might direct it to move data from one location to another. All these instructions, like any other type of data within a computer, are represented in binary.
+We began by exploring how computers interpret data, including integers and text. However, the true power of a computer lies in its ability to execute programs, which are sequences of instructions that direct the computer to perform specific tasks. For instance, one instruction might instruct the processor to add two numbers, while another might instruct it to move data from one memory location to another. All these instructions, like any other type of data within a computer, are represented in binary.
 
 **Format of an Instruction**
 
 Each machine code instruction is composed of an operation code (opcode) and one or more operands. The opcode specifies the operation to be performed, such as addition, subtraction, or loading data from memory. The operands are the data or parameters the operation should act upon.
 
-Consider a machine code instruction like this: 1010 0110 1111 Here, 1010 is the opcode (indicating "ADD") and 0110 1111 are the operands (representing the memory addresses where the numbers to be added are stored).
-
 **Instruction Set Architecture**
 
-The set of all possible instructions a processor can execute is defined by the Instruction Set Architecture (ISA). It serves as the interface between the programming language (like the TOY language you've learned in COS126) and the hardware executing the program. The ISA outlines how instructions are encoded in binary, executed, and the impact they have on the processor's state. It also specifies the size and format of instructions, main memory and registers, the supported data types, and the instruction set itself. However, it doesn't dictate how these instructions are implemented within a physical processor.
+The set of all possible instructions a processor can execute is defined by the Instruction Set Architecture (ISA), which is the interface to the computer. The ISA outlines how instructions are encoded in binary and the impact they have on the processor's state. It also specifies the size and format of instructions, main memory and registers, the supported data types, and the instruction set itself. However, it doesn't dictate how these instructions are implemented within a physical processor.
 
 **Machine Code Example:**
 
-Demonstrating what machine code is truly like necessitates an example of a machine code program. However, modern machine code languages, such as ARM and X86, are so complex, that it's unrealistic to write a self-contained program. Therefore, we will demonstrate machine code by using the TOY computer introduced in COS126. Though TOY is a fictional computer, it closely resembles the computers from the era when programmers coded in machine code.
+Demonstrating what machine code is truly like necessitates an example of a machine code program. However, modern machine code languages, such as ARM and X86, are so complex, that it's unrealistic to write a self-contained machine code program. Therefore, we will demonstrate machine code by using the TOY computer introduced in COS126, which has a much simpler instruction set. Though TOY is a fictional computer, it closely resembles the computers from the era when programmers coded in machine code.
 
-Let's revisit the TOY ISA. It provides all the information a programmer needs to write programs in TOY machine code.
-
-The TOY machine comprises:
+Let's revisit the TOY ISA, which provides all the information a programmer needs to write programs in TOY machine code. The TOY machine comprises:
 
 * 256 addresses, each containing 16 bits
 * 16 registers, each 16 bits
 * An instruction set comprising of 16 distinct types of 16-bit instructions
 
-Instructions can be formatted in two ways, as shown below. In each case, the leftmost 4 bits always represent the opcode.
-
-For the following program, we'll assume it's already loaded into memory, with the first instruction starting at address 10:
+TOY instructions can be formatted in two ways, as shown below. In each case, the leftmost 4 bits always represent the opcode.
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-28 at 12.35.09 PM.png" alt=""><figcaption></figcaption></figure>
-
-
 
 For the following program, we will assume it is already loaded into memory, and the first instruction starts at address 10. &#x20;
 

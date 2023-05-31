@@ -1,6 +1,6 @@
 # How Information is Represented in Computers
 
-Before we delve into the fundamental principles of how computers represent and process information, it’s useful to begin by understanding how humans represent information.
+Before we delve into the fundamental principles of how computers represent and process information, such as numbers and text, it’s useful to begin by revisiting how humans represent information.
 
 Humans use a multitude of systems and symbols to represent information. Take, for example, our representation of numbers. The decimal or base-10 system, which is the most commonly used numerical system, employs ten unique symbols, or digits: 0 through 9. These digits can be combined in a myriad of ways to represent an infinite array of numerical values.
 
