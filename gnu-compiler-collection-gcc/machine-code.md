@@ -1,5 +1,21 @@
 # Machine Code
 
+Consider how we might write a C intruction, directing a computer to&#x20;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 We began by exploring how computers interpret data, including integers and text. However, the true power of a computer lies in its ability to execute programs, which are sequences of instructions that direct the computer to perform specific tasks. For instance, one instruction might instruct the processor to add two numbers, while another might instruct it to move data from one memory location to another. All these instructions, like any other type of data within a computer, are represented in binary.
 
 **Format of an Instruction**
@@ -54,11 +70,10 @@ Address | instruction
 * no high level constructs such as loops
 * have to combine to do anything useful
 * have to be hardcode memory and register addresses, requiring us to be intimately familiar with hardware
-*
 
 
 
-It should be noted that we can improve machine code wiritng by for example using hex instead of binary. so, for example, instead of typing out 1000 1010 1111 1111, we type 8AFF. In fact, this is how programming in TOY was in COS126.&#x20;
+It should be noted that we can improve machine code writing by for example using hex instead of binary. so, for example, instead of typing out 1000 1010 1111 1111, we type 8AFF. In fact, this is how programming in TOY was in COS126.&#x20;
 
 
 
@@ -82,6 +97,14 @@ Another significant issue with machine code is its lack of portability. Portabil
 Machine code lacks portability. Machine code is designed for a specific processor architecture, and it directly uses the instructions defined by that processor's ISA. For example, machine code written for a TOY machine would be different from that written for an ARM processor or an x86 processor, even if they were intended to perform the same task.&#x20;
 
 If you write a program in machine code for one type of processor, it won't run on a different type of processor. You would have to rewrite the program using the different processor's machine language, which is a labor-intensive and error-prone process.
+
+
+
+
+
+The key idea of a programming languege is as follows:&#x20;
+
+what if we enable programs&#x20;
 
 <details>
 

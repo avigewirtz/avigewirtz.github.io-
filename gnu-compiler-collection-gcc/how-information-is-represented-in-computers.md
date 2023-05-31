@@ -1,5 +1,53 @@
 # How Information is Represented in Computers
 
+Consider a simple instruction, directing the computer to add the integers 5 and 10 and store the result in a variable named 'num'.&#x20;
+
+```c
+int num = 5 + 10;    
+```
+
+How can we write this in binary, so it can be stored in computer memory?&#x20;
+
+| ASCII Character | Binary Equivalent |
+| --------------- | ----------------- |
+| i               | 01101001          |
+| n               | 01101110          |
+| t               | 01110100          |
+| space           | 00100000          |
+| n               | 01101110          |
+| u               | 01110101          |
+| m               | 01101101          |
+| space           | 00100000          |
+| =               | 01111101          |
+| space           | 00100000          |
+| 5               | 00110101          |
+| space           | 00100000          |
+| +               | 00101011          |
+| space           | 00100000          |
+| 1               | 00110001          |
+| 0               | 00110000          |
+| ;               | 00111011          |
+
+
+
+So, putting it all together, "int num = 5 + 10;" in binary is
+
+{% code overflow="wrap" %}
+```
+1101001 1101110 1110100 100000 1101110 1110101 1101101 100000 111101 100000 110101 100000 101011 100000 110001 111000 111011
+```
+{% endcode %}
+
+
+
+
+
+
+
+
+
+
+
 Before we delve into the fundamental principles of how computers represent and process information, such as numbers and text, it’s useful to begin by revisiting how humans represent information.
 
 Humans use a multitude of systems and symbols to represent information. Take, for example, our representation of numbers. The decimal or base-10 system, which is the most commonly used numerical system, employs ten unique symbols, or digits: 0 through 9. These digits can be combined in a myriad of ways to represent an infinite array of numerical values.
