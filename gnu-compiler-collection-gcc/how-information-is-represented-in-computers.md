@@ -52,6 +52,14 @@ So while you can convert any data, including ASCII text, into binary, not all bi
 
 
 
+However, these ASCII values are not instructions for the computer's CPU. They don't tell the computer to do anything like perform calculations, move data, or make decisions. That's the role of machine code, which consists of binary-encoded instructions that the CPU can directly execute.
+
+High-level programming languages let humans write instructions in a more readable and abstract way, but these instructions have to be translated into machine code (via a process called compiling or interpreting) before the CPU can execute them. The ASCII representation of a string of high-level code is not the same as the machine code that the CPU needs to execute that code.
+
+
+
+
+
 
 
 
