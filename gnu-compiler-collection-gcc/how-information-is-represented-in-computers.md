@@ -40,7 +40,15 @@ So, putting it all together, "int num = 5 + 10;" in binary is
 
 
 
+Is this a valid instruction?&#x20;
 
+No. An instruction refers to a specific kind of binary code that can be understood by the Central Processing Unit (CPU).&#x20;
+
+A binary representation of an ASCII string, like "int num = 5 + 10;", doesn't form valid machine instructions. It's merely a binary representation of text. The binary code for the ASCII character 'i', for example, doesn't correspond to any kind of CPU operation. It's just the way that character is represented in memory.
+
+High-level programming languages like C++, Python, or JavaScript are designed to be easily readable and writeable by humans, but CPUs can't execute them directly. Before a high-level program can be executed, it must be converted into machine code by a compiler or interpreter.
+
+So while you can convert any data, including ASCII text, into binary, not all binary is executable as machine code. Only binary code that corresponds to valid CPU instructions (and is correctly structured into a valid program) can be executed.
 
 
 
