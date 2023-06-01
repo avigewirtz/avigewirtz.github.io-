@@ -58,7 +58,15 @@ High-level programming languages let humans write instructions in a more readabl
 
 
 
+n theory, it is possible to design a computer or system that interprets high-level programming languages like C directly, but in practice, it would be incredibly complex and inefficient for several reasons.&#x20;
 
+
+
+Instead, most systems use a layered approach, where high-level languages are translated into a more low-level representation (like assembly language), which is then compiled into machine code that the CPU can execute directly. This approach gives a good balance between readability and expressiveness for programmers, and efficiency and performance for execution.
+
+
+
+To directly understand and execute C code, the hardware would have to include logic to handle all constructs of the C language, like loops, function calls, pointer arithmetic, and more. This would make the hardware far more complex than current CPUs, which only need to handle a small set of simple instructions.
 
 
 
