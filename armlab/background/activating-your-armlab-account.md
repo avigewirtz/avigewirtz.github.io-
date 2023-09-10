@@ -8,7 +8,7 @@ To complete these steps, you must be connected to the Princeton network. You can
 
 <summary>Step 1: Activate your account</summary>
 
-1. Browse to: [https://eisess200l.princeton.edu/cgi-bin/Shell/nview.pl](https://eisess200l.princeton.edu/cgi-bin/Shell/nview.pl).&#x20;
+1. Browse to [https://eisess200l.princeton.edu/cgi-bin/Shell/nview.pl](https://eisess200l.princeton.edu/cgi-bin/Shell/nview.pl).&#x20;
 2. In the resulting **Update your Unix account** page, select **Enable my Unix account.**
 3. Click **Enable my Account**.
 
