@@ -10,7 +10,7 @@ Before we delve into the fundamental principles of how computers represent and p
 
 Humans use a multitude of systems and symbols to represent information. Take, for example, our representation of numbers. The decimal or base-10 system, which is the most commonly used numerical system, employs ten unique symbols, or digits: 0 through 9. These digits can be combined in a myriad of ways to represent an infinite array of numerical values.
 
-The value of a specific digit within a number is dependent on its position. For instance, in the number 345, the '3' is situated in the hundreds place, the '4' is in the tens place, and the '5' is in the ones place. Consequently, its value is expressed as 3_100 + 4_10 + 5\*1. This system is based on powers of ten, where each digit's position represents a power of ten (the rightmost digit is 10^0, the next one is 10^1, and so on). A generalized formula for this representation can be:
+The value of a specific digit within a number is dependent on its position. For instance, in the number 345, the '3' is situated in the hundreds place, the '4' is in the tens place, and the '5' is in the ones place. Consequently, its value is expressed as 3\*100 _+ 4\*10_ + 5\*1. This system is based on powers of ten, where each digit's position represents a power of ten (the rightmost digit is 10^0, the next one is 10^1, and so on). A generalized formula for this representation can be:
 
 $$\text{Value} = \sum_{n=0}^{N} \text{Digit}_n \times 10^n$$
 
