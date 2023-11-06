@@ -1,8 +1,6 @@
 # Background
 
-### Compiling a C program
-
-Consider the following program that prompts the user for two integers and calculates the greatest common divisor and the least common multiple.&#x20;
+Suppose we have the following C program that prompts the user for two integers and calculates the greatest common divisor (gcd) and the least common multiple (lcm):
 
 ```c
 /*--------------------------------------------------------------------*/
@@ -35,9 +33,10 @@ int main(void) {
     printf("Least common multiple: %d.\n", lcm(i, j));
     return 0;
 }
+
 ```
 
-We will assume that the source code is stored in a file called ‘intmath.c’. To compile the file ‘intmath.c’ with gcc217, use the following command:
+To compile the file ‘intmath.c’ with gcc217, use the following command:
 
 ```
 gcc217 intmath.c -o intmath
@@ -45,18 +44,16 @@ gcc217 intmath.c -o intmath
 
 This compiles the source code in ‘intmath.c’ to machine code and stores it in an executable file ‘intmath’. To run intmath, you can type the path name of the executable like this: `./intmath`
 
-### Compiling multiple source files
+### Splitting up the program into multiple files
 
-A program can be split up into multiple files. This makes it easier to understand and maintain, especially in the case of large programs. More importantly, it allows the individual parts to be compiled independently.
+A program can be split up into multiple files. This makes it easier to understand and maintain, especially in the case of large programs.&#x20;
 
-In the following example we will split up intmath.c into three files: ‘intmath.c’, ‘testintmath.c’ and the header file ‘intmath.h’. Here are the three files:
+In the following example, we will split up intmath.c into two files: ‘intmath.c’ and testintmath.c’. Explain the seperation.&#x20;
 
 ```c
 /*--------------------------------------------------------------------*/
 /* intmath.c                                                          */
 /*--------------------------------------------------------------------*/
-
-#include "intmath.h"
 
 int gcd(int i, int j)
 {
@@ -72,6 +69,7 @@ int lcm(int i, int j)
 {
    return (i / gcd(i, j)) * j;
 }
+
 ```
 
 ```c
@@ -79,7 +77,6 @@ int lcm(int i, int j)
 /* testintmath.c                                                      */
 /*--------------------------------------------------------------------*/
 
-#include "intmath.h"
 #include <stdio.h>
 
 int main(void)
@@ -88,26 +85,67 @@ int i, j;
 printf("Enter the first integer:\n"); scanf("%d", &i);
 printf("Enter the second integer:\n"); scanf("%d", &j);
 printf("Greatest common divisor: %d.\n", gcd(i, j));
-printf("Least common multiple: %d.\n", lcm(i, j);
+printf("Least common multiple: %d.\n", lcm(i, j));
 return 0; 
 }
+
 ```
+
+
+
+The program we care about is testintmath.c. If we try to compile testintmath.c, we'll get two errors:&#x20;
+
+```bash
+~> gcc217 testintmath.c -o intmath
+testintmath.c:9:42: error: implicit declaration of function 'gcd' [-Werror,-Wimplicit-function-declaration]
+printf("Greatest common divisor: %d.\n", gcd(i, j));
+                                         ^
+testintmath.c:10:40: error: implicit declaration of function 'lcm' [-Werror,-Wimplicit-function-declaration]
+printf("Least common multiple: %d.\n", lcm(i, j));
+                                       ^
+2 errors generated.
+~> 
+```
+
+
+
+expain the problem.&#x20;
+
+## Solution 1
+
+As a solution, we can use the #include preproccesor directive:
 
 ```c
 /*--------------------------------------------------------------------*/
-/* intmath.h                                                          */
+/* testintmath.c                                                      */
 /*--------------------------------------------------------------------*/
 
-#ifndef INTMATH_INCLUDED 
-#define INTMATH_INCLUDED 
-int gcd(int i, int j); 
-int lcm(int i, int j); 
-#endif
+#include <stdio.h>
+#include "intmath.c"
+
+int main(void)
+{
+int i, j;
+printf("Enter the first integer:\n"); scanf("%d", &i);
+printf("Enter the second integer:\n"); scanf("%d", &j);
+printf("Greatest common divisor: %d.\n", gcd(i, j));
+printf("Least common multiple: %d.\n", lcm(i, j));
+return 0; 
+}
+
 ```
 
+Now when we compile the program, everything will work.
+
+This solution essentially does the following: testintmath.c gets sent to the preprocessor. The preproccesor adds the contents of intmath.c to testintmath.c, right where the #include "intmath.c" statement is. The preproccessed file is then compiled into a n object file, linked, and an executable is generated.&#x20;
+
+### Solution 2
+
+While solution 1 works, it has one major drawback: the contents of both intmath.c and testintmath.c are compiled together. However, it is preferable for them to be compiled seperately. Why? Because if they're compiled seperately and then we edit intmath.c, only intmath.c needs to be recompiled.&#x20;
 
 
-The main program also includes the header file ‘hello.h’ which will contain the declaration of the function hello. The declaration is used to ensure that the types of the arguments and return value match up correctly between the function call and the function definition.
+
+The main program also includes the header file ‘intmath.h’ which will contain the declaration of the function hello. The declaration is used to ensure that the types of the arguments and return value match up correctly between the function call and the function definition.
 
 We no longer need to include the system header file ‘stdio.h’ in ‘main.c’ to declare the function printf, since the file ‘main.c’ does not call printf directly.
 
@@ -120,6 +158,24 @@ gcc intmath.c testintmath.c -o intmath
 Note that the header file ‘intmath.h’ is not specified in the list of files on the command line. The directive #include "intmath.h" in the source files instructs the compiler to include it automatically at the appropriate points.
 
 All the parts of the program have been combined into a single executable file, intmath, which produces the same result as the executable created from the single source file used earlier.
+
+###
+
+###
+
+```
+/*--------------------------------------------------------------------*/
+/* intmath.h                                                          */
+/*--------------------------------------------------------------------*/
+
+#ifndef INTMATH_INCLUDED 
+#define INTMATH_INCLUDED 
+int gcd(int i, int j); 
+int lcm(int i, int j); 
+#endif
+```
+
+###
 
 ### Compiling files independently
 
