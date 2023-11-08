@@ -5,7 +5,7 @@
 3. The steps we will focus on are the preprocessing step and the linking step. What is the point of them? Why not just go from source code directly to an executable? What is the point of the preproccessing
 4. What if you want to reu'se&#x20;
 
-<figure><img src="../../.gitbook/assets/Group 60.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Group 60-2.png" alt=""><figcaption></figcaption></figure>
 
 1.
 2.
