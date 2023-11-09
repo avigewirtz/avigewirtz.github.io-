@@ -76,7 +76,7 @@ As you're aware from the beginning of COS217, the process of converting source c
 
 
 
-
+<figure><img src="../../.gitbook/assets/Group 65-2.png" alt="" width="563"><figcaption></figcaption></figure>
 
 
 
@@ -103,6 +103,8 @@ As you're aware from the beginning of COS217, the process of converting source c
 ###
 
 ### Compiling files independently
+
+As you saw in the previous example, the source code files of a multi-file project are compiled independantly. this is made possible by. But why not just compile as a single unit?
 
 If a program is stored in a single file then any change to an individual function requires the whole program to be recompiled to produce a new executable. The recompilation of large source files can be very time- consuming.
 
