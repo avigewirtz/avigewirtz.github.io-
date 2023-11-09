@@ -64,9 +64,9 @@ To compile the program with gcc217, we can use the following command:&#x20;
 gcc217 intmath.c testintmath.c -o intmath
 ```
 
-The gcc compiler will then generate an executable named intmath. (Note that there is no need to put the header file ‘intmath.h’ on the command line, since it is automatically included by the #include statements in ‘intmath.c’ and ‘testintmath.c’. ) We can run intmath with by invoking ./intmath.&#x20;
+The gcc compiler will then generate an executable named intmath. (Note that the header file ‘intmath.h’ is not specified in the list of files on the command line., since it is automatically included in appropriate points by the #include directives in ‘intmath.c’ and ‘testintmath.c’. ) We can run intmath with by invoking ./intmath.&#x20;
 
-As you're familiar from the beginning of COS217, the process of converting source code to an executable with GCC involves four stages: preprocessing, compiling, assembling, and linking.&#x20;
+As you're aware from the beginning of COS217, the process of converting source code to an executable with GCC involves four stages: preprocessing, compiling, assembling, and linking.&#x20;
 
 ,,preproccess, compile, assemble, and link intmath.c and testintmath.c seperately, generating the object files intmath.o and testintmath.o. An object file contains machine code where any references to the memory addresses of functions (or variables) in other files are left undefined. This allows source files to be compiled without direct reference to each other. The linker fills in these missing addresses when it produces the executable. These object files contain the machine code of each of the files, but they are not executable, since intmath.c contains references to external functions--gcd(), lcm(), printf(), and scanf(). To make the program executable, the linker will link the two object files, along with the object code of printf() and scanf() from the C Standard Library, and generate an executable named intmath. This proccess is shown in Figure 1.
 
