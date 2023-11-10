@@ -1,11 +1,16 @@
 # Background
 
-* The purpose of Make is to make compiling multi-file programs easier. Understanding the challenges of compiling multi-file programs
-* To understand this, we need to back up and review some of the fundamentals of how compiling works in C. Specificaly, it's important that you understand the concept of "seperate compilation" and how it works in C
+The beauty of `make` lies in its ability to combine the efficiency benefits of compiling only what is necessary with the convenience of not having to manually track which parts of the codebase have changed.
+
+## Motivation
+
+As C programs grow larger and evolve into multi-file projects, the compilation process becomes more complex. The traditional method of compiling all source files together in a single step can become impractical due to increased build times and resource consumption. This is where taking advantage of GCC's separate compilation feature comes into play.
+
+Separate compilation refers to the process of compiling each source file (`.c` files) into an object file (`.o` files) independently of others. These object files contain machine code, but they are not yet executable. The final step in building a program is linking these object files together to create an executable.
+
+To make the idea of separate compilation concrete, let's demonstrate with a muti-file program from precept.&#x20;
 
 Suppose we have a program made up of three files: `intmath.c`, `testintmath.c`, and `intmath.h`. `intmath.c` contains the implementation of two functions, `gcd` (greatest common divisor) and `lcm` (least common multiple).`testintmath.c` contains the `main` function, which tests these two functions by prompting the user for two integers, passing them to the gcd and lcm functions in intmath.c, and displaying the results. The `intmath.h` file contains declarations of the `gcd` and `lcm` functions, ensuring that the types of the arguments and return value match up correctly between the function call and the function definition.
-
-
 
 ```c
 /*--------------------------------------------------------------------*/
@@ -25,8 +30,6 @@ printf("Least common multiple: %d.\n", lcm(i, j));
 return 0; 
 }
 ```
-
-2
 
 ```c
 /*--------------------------------------------------------------------*/
@@ -58,61 +61,41 @@ int lcm(int i, int j);
 #endif
 ```
 
-To compile the program with gcc217, we can use the following command:&#x20;
+To compile the program, we invoke gcc217 with both intmath.c and testintmath.c as arguments:&#x20;
+
+<pre class="language-bash"><code class="lang-bash"><a data-footnote-ref href="#user-content-fn-1">gcc217 intmath.c testintmath.c -o intmath</a>
+</code></pre>
+
+GCC generates an executable named intmath, which we can run by invoking ./intmath. Here is an example:
 
 ```bash
-gcc217 intmath.c testintmath.c -o intmath
+~> ./intmath
+Enter the first integer:
+3
+Enter the second integer:
+4
+Greatest common divisor: 1.
+Least common multiple: 12.
+~> 
 ```
 
-The gcc compiler will then generate an executable named intmath. (Note that the header file ‘intmath.h’ is not specified in the list of files on the command line., since it is automatically included in appropriate points by the #include directives in ‘intmath.c’ and ‘testintmath.c’. ) We can run intmath with by invoking ./intmath.&#x20;
-
-As you're aware from the beginning of COS217, the process of converting source code to an executable with GCC involves four stages: preprocessing, compiling, assembling, and linking.&#x20;
-
-,,preproccess, compile, assemble, and link intmath.c and testintmath.c seperately, generating the object files intmath.o and testintmath.o. An object file contains machine code where any references to the memory addresses of functions (or variables) in other files are left undefined. This allows source files to be compiled without direct reference to each other. The linker fills in these missing addresses when it produces the executable. These object files contain the machine code of each of the files, but they are not executable, since intmath.c contains references to external functions--gcd(), lcm(), printf(), and scanf(). To make the program executable, the linker will link the two object files, along with the object code of printf() and scanf() from the C Standard Library, and generate an executable named intmath. This proccess is shown in Figure 1.
 
 
-
-
+Let's walk through what happened during the compilation proccess.&#x20;
 
 
 
 <figure><img src="../../.gitbook/assets/Group 65-2.png" alt="" width="563"><figcaption></figcaption></figure>
 
+* Although we passed two source code files to GCC, it did not compile them as a single unit--that is, it did not combine the source code into one unit and then compile that unit.&#x20;
+* instead, it compiled each source file independantly into an object file. expand.
+* These object files contain the machine code of each of the files, but they are not executable, since intmath.c contains references to external functions--gcd(), lcm(), printf(), and scanf(). An object file contains machine code where any references to the memory addresses of functions (or variables) in other files are left undefined. This allows source files to be compiled without direct reference to each other. The linker fills in these missing addresses when it produces the executable. To make the program executable, the linker will link the two object files, along with the object code of printf() and scanf() from the C Standard Library, and generate an executable named intmath. This proccess is shown in Figure 1.
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-###
-
-### Compiling files independently
-
-As you saw in the previous example, the source code files of a multi-file project are compiled independantly. this is made possible by. But why not just compile as a single unit?
-
-If a program is stored in a single file then any change to an individual function requires the whole program to be recompiled to produce a new executable. The recompilation of large source files can be very time- consuming.
-
-When programs are stored in independent source files, only the files which have changed need to be recompiled after the source code has been modified. In this approach, the source files are compiled separately and then linked together—a two stage process. In the first stage, a file is compiled without creating an executable. The result is referred to as an object file, and has the extension ‘.o’ when using GCC.
-
-In the second stage, the object files are merged together by a separate program called the linker. The linker combines all the object files together to create a single executable.
-
-An object file contains machine code where any references to the memory addresses of functions (or variables) in other files are left undefined. This allows source files to be compiled without direct reference to each other. The linker fills in these missing addresses when it produces the executable.
 
 ### Creating object files from source files
 
@@ -213,128 +196,4 @@ files in a project can be automated using GNU Make&#x20;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Suppose we want to write a program that calculates the greatest common divisor and least common multiple of two integers. We create a file named intmath.c and write two functions in it--one for gcd, and one for lcd.&#x20;
-
-```c
-/*--------------------------------------------------------------------*/
-/* intmath.c                                                          */
-/*--------------------------------------------------------------------*/
-
-int gcd(int i, int j)
-{
-   int temp;
-   while (j != 0) {
-     temp = i % j;
-     i = j;
-     j = temp;
-}
-return i; }
-
-int lcm(int i, int j)
-{
-   return (i / gcd(i, j)) * j;
-}
-
-```
-
-To test our implementation, we create another file named testintmath.c that prompts the user for two integerts, calls the gcd and lcm functions, and outputs the answers to the user.
-
-```c
-/*--------------------------------------------------------------------*/
-/* testintmath.c                                                      */
-/*--------------------------------------------------------------------*/
-
-#include <stdio.h>
-
-int main(void)
-{
-int i, j;
-printf("Enter the first integer:\n"); scanf("%d", &i);
-printf("Enter the second integer:\n"); scanf("%d", &j);
-printf("Greatest common divisor: %d.\n", gcd(i, j));
-printf("Least common multiple: %d.\n", lcm(i, j));
-return 0; 
-}
-
-```
-
-You then try to compile testintmath.c using gcc217, but to your dismay, you get the following errors:
-
-```bash
-~> gcc217 testintmath.c -o testintmath
-testintmath.c:8:42: error: implicit declaration of function 'gcd' [-Werror,-Wimplicit-function-declaration]
-printf("Greatest common divisor: %d.\n", gcd(i, j));
-                                         ^
-testintmath.c:9:40: error: implicit declaration of function 'lcm' [-Werror,-Wimplicit-function-declaration]
-printf("Least common multiple: %d.\n", lcm(i, j));
-                                       ^
-2 errors generated.
-~> 
-```
-
-The exact meaning of these error messages is not clear to you, but you know it has something to do with the parts that call the gcd and lcm functions. You then realize, of course the program won't work--gcd and lcm are not defined anywhere in testinmath.c! So when you try to compile it, the compiler doesnt have a clue what gcd and lcm are!
-
-solution 1: bad
-
-Simple add the code for gcd and lcm into the testintmath.c program, above the main function. This is obviouslyt n ot a great solution, as it defeatsa the purpose of creating two seperate files--to make your program more modular!&#x20;
-
-
-
-Solution two: better
-
-You include the intmath.c code via a preproccesor directive--namely, by adding #include "intmath.c" at the top of your file. This way, you don;'t have to manulally copy and paste all the code. Instead, whenmeverrt you want to use it, you let the preproccessor do the work.
-
-<pre class="language-c"><code class="lang-c">/*--------------------------------------------------------------------*/
-/* testintmath.c                                                      */
-/*--------------------------------------------------------------------*/
-
-#include &#x3C;stdio.h>
-<strong>#include "intmath.c" /* you add the following line*/
-</strong>
-
-int main(void)
-{
-int i, j;
-printf("Enter the first integer:\n"); scanf("%d", &#x26;i);
-printf("Enter the second integer:\n"); scanf("%d", &#x26;j);
-printf("Greatest common divisor: %d.\n", gcd(i, j));
-printf("Least common multiple: %d.\n", lcm(i, j));
-return 0; 
-}
-</code></pre>
-
-Solution 3: You&#x20;
+[^1]: Note that the header file ‘intmath.h’ is not specified in the list of files on the command line, since it is automatically included in appropriate points by the #include directives in ‘intmath.c’ and ‘testintmath.c’.&#x20;
