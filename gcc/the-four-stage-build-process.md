@@ -1,6 +1,10 @@
 # The Four Stage Build Process
 
-##
+<figure><img src="../.gitbook/assets/Group 80.png" alt=""><figcaption></figcaption></figure>
+
+
+
+
 
 As you can imagine, writing programs directly in machine code is incredibly difficult. To demonstrate why this is so, we will write a simple machine code program using the fictional TOY ISA, introduced in COS126.&#x20;
 
