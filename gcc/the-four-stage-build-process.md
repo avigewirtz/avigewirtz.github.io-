@@ -1,7 +1,5 @@
 # The Four Stage Build Process
 
-<figure><img src="../.gitbook/assets/Group 80.png" alt=""><figcaption></figcaption></figure>
-
 
 
 
@@ -85,6 +83,10 @@ To compile out program, In order to understand why we had to add the function pr
 
 ### Seperate Compilation
 
-When multiple source files are passed to GCC to be compiled, GCC does not compile the source files as a single unit. That is, it does not combine the source code of all files into one file containing all the source code of the program and then compile that single source file into an executable. Instead, it compiles each source file seperately and stores each files corresponding machine code in an file called an object file. It then merges, or links, all the object files together to create an executable.&#x20;
+When multiple source files are passed to GCC to be compiled, GCC does not compile the source files as a single unit. That is, it does not combine the source code of all files into one file and then compile that file into an executable. Instead, it compiles each source file _seperately_ into machine code and stores each files corresponding machine code in a file called an object file. It then merges, or links, all the object files together to create an executable. This idea is demonstrating in Figure X using intmath.c and testintmath.c.&#x20;
 
-Let's examine how this works with intmath.c and testintmath.c. Only after each source file has been compiled does it merge, or link, each files' corresponding machine code into one file, which can then be executed. This idea is shown in Figure X, which uses \
+Let's examine how this works with intmath.c and testintmath.c. Only after each source file has been compiled does it merge, or link, each files' corresponding machine code into one file, which can then be executed. This idea is shown in Figure X, which uses&#x20;
+
+
+
+<figure><img src="../.gitbook/assets/Group 81.png" alt=""><figcaption></figcaption></figure>
