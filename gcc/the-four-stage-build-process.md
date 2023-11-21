@@ -96,9 +96,9 @@ It's important to note that preprocessing is essentially just a prelude to the m
 \
 
 
-**2. Compilation**
+**2. Compilation Proper**
 
-The next stage is the compilation of the preprocessed code. Here, the source code of `intmath.c` is translated from C into assembly language. This transformation is significant as it turns high-level constructs like loops and function calls into a set of instructions understandable at a lower level, bridging the gap between abstract programming concepts and the more concrete instructions needed by the machine.
+The next stage is the compilation of the preprocessed code into assembly language. This part of the compilation process is the most resource intensive. Here, the source code of `intmath.c` is translated from C into assembly language. This transformation is significant as it turns high-level constructs like loops and function calls into a set of instructions understandable at a lower level, bridging the gap between abstract programming concepts and the more concrete instructions needed by the machine.
 
 **3. Assembly**
 
