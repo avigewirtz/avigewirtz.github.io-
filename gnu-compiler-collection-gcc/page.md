@@ -8,36 +8,64 @@
 
 Suppose in the interest of modularity, we want to split our intmath.c program into two files: intmath.c and testintmath.c. We'll keep the gcd and lcm functions in intmath.c, but we'll move the main method to testintmath.c. The idea is for testintmath.c to serve as a client of intmath.c.&#x20;
 
-
-
-&#x20;However, splitting the program requires us to add prototypes for the gcd and lcm functions to testintmath.c. Now, our program looks like the following:&#x20;
+Unfortunately for us, splitting the program in this manner cannot be acheived by simply deleting the main method from intmath.c and pasting it into testintmath.c.  We'll need to also add prototypes for gcd and lcm in testintmath.c. The reason for this will becomne clear once we examine the compilation proccess of multiple files. &#x20;
 
 intmath.c:
 
+{% code lineNumbers="true" %}
 ```c
+/*--------------------------------------------------------------------*/
+/* intmath.c                                                          */
+/* Author: Bob Dondero                                                */
+/*--------------------------------------------------------------------*/
+
+/* Returns the greatest common divisor of integers i and j */
 int gcd(int i, int j) {
     int temp;
     while (j != 0) {
         temp = i % j;
         i = j;
         j = temp;
-    } 
+    }
     return i;
-} 
+}
 
+/* Returns the least common multiple of integers i and j*/
 int lcm(int i, int j) {
     return (i / gcd(i, j)) * j;
 }
+
 ```
+{% endcode %}
 
 testintmath.c:
 
+{% code lineNumbers="true" %}
 ```c
-int gcd(int i, int j);
-int lcm(int i, int j);
+/*--------------------------------------------------------------------*/
+/* testintmath.c                                                      */
+/* Author: Bob Dondero                                                */
+/*--------------------------------------------------------------------*/
 
+#include <stdio.h>
+
+int main(void) {
+    int i, j;
+
+    printf("Enter the first integer:\n");
+    scanf("%d", &i);
+
+    printf("Enter the second integer:\n");
+    scanf("%d", &j);
+
+    printf("Greatest common divisor: %d.\n", gcd(i, j));
+    printf("Least common multiple: %d.\n", lcm(i, j));
+
+    return 0;
+}
 
 ```
+{% endcode %}
 
 
 
