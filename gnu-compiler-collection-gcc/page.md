@@ -6,9 +6,11 @@
 
 ### Compiling multiple source files&#x20;
 
-Suppose in the interest of modularity, we want to split our program into two files. This makes it easier to understand and maintain, especially as our program grows larger.&#x20;
+Suppose in the interest of modularity, we want to split our intmath.c program into two files: intmath.c and testintmath.c. We'll keep the gcd and lcm functions in intmath.c, but we'll move the main method to testintmath.c. The idea is for testintmath.c to serve as a client of intmath.c.&#x20;
 
-Suppose we try to split it up as follows: we keep the gcd and lcm functions in intmath.c, but we move the main method into a new file named testintmath.c. The idea is for intmath.c to contain the implementation of the gcd and lcm functions, while testintmain.c serves as a client of intmath.c. However, splitting the program requires us to add prototypes for the gcd and lcm functions to testintmath.c. Now, our program looks like the following:&#x20;
+
+
+&#x20;However, splitting the program requires us to add prototypes for the gcd and lcm functions to testintmath.c. Now, our program looks like the following:&#x20;
 
 intmath.c:
 
@@ -34,11 +36,7 @@ testintmath.c:
 int gcd(int i, int j);
 int lcm(int i, int j);
 
-int main(void) {
-    int greatest_common_divisor = gcd(2, 3);
-    int least_common_multiple = lcm(2, 3);
-    return 0; 
-}
+
 ```
 
 
