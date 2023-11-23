@@ -1,5 +1,53 @@
 # The Four Stage Build Process
 
+### Review
+
+As you know, in order to make a C program executable, it has to be converted from its textual source code into machine code--the sequence of 1’s and 0’s that control the CPU of the computer. This conversion is performed by a program known as a compiler driver. GCC is a popular compiler driver for the C programming language and is the one used in COS217.&#x20;
+
+### Compiling a single source file
+
+To compile a single file, such as `hello.c`, we use the following command on armlab:
+
+```
+gcc217 hello.c
+```
+
+This command converts `hello.c` into an executable file. By default, this file is named `a.out`. However, you can specify a different name for the executable by using the `-o` option. For example, to name the executable hello (instead of a.out):
+
+```
+gcc217 hello.c -o hello
+```
+
+To run the executable, simply type its [pathname](../linux/filesystem/pathnames.md) on the command line:&#x20;
+
+```
+~> ./hello
+Hello, world!
+~> 
+```
+
+{% hint style="warning" %}
+`gcc217`is an alias for gcc -Wall -Wextra -Wno-unused-parameter -ansi -pedantic
+
+,meaning it's a shortcut created within the armlab environment to execute a more complex command. This alias is set up in armlab and won't be recognized on systems outside of this environment. On a different system, you would need to manually enter the full command that `gcc217` represents.
+{% endhint %}
+
+### Compiling multiple source files
+
+If a program consists of multiple source files, you need to specify all filenames on the command line. For example, the compile the program consisting of file1.c, file2.c, and file3.c, you would enter the following command:
+
+```
+gcc217 file1.c file2.c file3.c -o executable_name
+```
+
+This will convert all three source files into machine code, generating the executable executable\_name. This approach differs from languages like Java, where you only need to list the file containing the `main` method.&#x20;
+
+
+
+### Four Stage Build Process
+
+
+
 Suppose we have the following C program stored in intmath.c:
 
 {% code lineNumbers="true" %}
@@ -54,15 +102,13 @@ To compile intmath.c with gcc217, we can use the following command:
 gcc217 intmath.c
 ```
 
-This command compiles the source code from `intmath.c` into machine code, creating an executable file. By default, this file is named `a.out`. However, if you want to specify a different name for the executable, you can use the `-o` option in your command. For example, to name your executable `intmath`:
+This command compiles the source code from `intmath.c` into machine code, creating an executable file. By default, this file is named `a.out`. However, if you want to specify a different name for the executable, you can use the `-o` option in your command. We'll do that and name our executable `intmath`:
 
 ```
 gcc217 intmath.c -o intmath 
 ```
 
-And the executable will be saved in a file named intmath instead of a.out.&#x20;
-
-To run intmath, we simply invoke its pathname on the command line, like so:&#x20;
+To run intmath, we invoke its pathname on the command line, like so:&#x20;
 
 ```
 ~> ./intmath
@@ -74,6 +120,8 @@ Greatest common divisor: 1.
 Least common multiple: 6.
 ~> 
 ```
+
+As you can see, it prompt us for two integers and prints their greatest common divisor and least common multiple.&#x20;
 
 **Build process**
 
