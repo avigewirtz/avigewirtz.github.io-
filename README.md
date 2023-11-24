@@ -99,7 +99,7 @@
 
 ## GCC
 
-* [The Four Stage Build Process](gcc/the-four-stage-build-process.md)
+* [The Four Stage Build Process](gnu-compiler-collection-gcc/the-four-stage-build-process/)
 * [Understanding each stage](broken-reference)
   * [Machine Code](broken-reference)
   * [Assembly Language](broken-reference)

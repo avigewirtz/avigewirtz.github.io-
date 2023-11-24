@@ -1,8 +1,4 @@
-# Page
-
-### Outline:
-
-* In early stages of learning C, programs are typically lmited to a single source file. However, as programs grow larger, it's a good idea to split up the program into multiple source files. Making your program modular makes it easier to understand and maintain. Besides for making your program easier to understand&#x20;
+# Review&#x20;
 
 ### Compiling multiple source files&#x20;
 
