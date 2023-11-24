@@ -107,9 +107,9 @@
 ## Gnu Compiler Collection (GCC)
 
 * [Review of Compilation](gnu-compiler-collection-gcc/review-of-compilation.md)
-* [The Four Stage Build Process](gnu-compiler-collection-gcc/the-four-stage-build-process/README.md)
-  * [Single File Compilaton](gnu-compiler-collection-gcc/the-four-stage-build-process/single-file-compilaton.md)
-  * [Review ](gnu-compiler-collection-gcc/the-four-stage-build-process/review.md)
+* [The Four Stage Build Process](gcc/the-four-stage-build-process.md)
+  * [Single File Compilaton](gnu-compiler-collection-gcc/single-file-compilaton.md)
+  * [Review ](gnu-compiler-collection-gcc/review.md)
 * [How Information is Represented in Computers](gnu-compiler-collection-gcc/how-information-is-represented-in-computers.md)
 * [Machine Code](gnu-compiler-collection-gcc/machine-code.md)
 * [Assembly](gnu-compiler-collection-gcc/assembly.md)

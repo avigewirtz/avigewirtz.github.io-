@@ -10,4 +10,4 @@ The compilation of a C program actually involves four distinct stages: preproces
 
 Compiling refers to the translating a language from one form into another. In&#x20;
 
-<figure><img src="../../.gitbook/assets/Group 81.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 81.png" alt=""><figcaption></figcaption></figure>
