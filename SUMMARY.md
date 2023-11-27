@@ -104,21 +104,24 @@
 * [Git Cheat Sheet](git-and-github/git-cheat-sheet.md)
 * [Further Reading](git-and-github/further-reading.md)
 
-## Gnu Compiler Collection (GCC)
+## Machine, assembly, and high-level languages
 
-* [The Four Stage Build Process](gcc/the-four-stage-build-process.md)
-  * [Single File Compilaton](gnu-compiler-collection-gcc/single-file-compilaton.md)
-  * [Review ](gnu-compiler-collection-gcc/review.md)
-* [Preprocessor](gnu-compiler-collection-gcc/preprocessor.md)
-* [Compiler](gnu-compiler-collection-gcc/compiler.md)
-* [Assembler](gnu-compiler-collection-gcc/assembler.md)
-* [Linker](gnu-compiler-collection-gcc/linker.md)
-* [How Information is Represented in Computers](gnu-compiler-collection-gcc/how-information-is-represented-in-computers.md)
-* [Machine Code](gnu-compiler-collection-gcc/machine-code.md)
-* [Assembly](gnu-compiler-collection-gcc/assembly.md)
-* [High Level Programming Language](gnu-compiler-collection-gcc/high-level-programming-language.md)
-* [Executable files](gnu-compiler-collection-gcc/executable-files.md)
-* [Further Reading](gcc/further-reading.md)
+* [How Information is Represented in Computers](machine-assembly-and-high-level-languages/how-information-is-represented-in-computers.md)
+* [Machine Code](machine-assembly-and-high-level-languages/machine-code.md)
+* [Assembly](machine-assembly-and-high-level-languages/assembly.md)
+* [High Level Programming Language](machine-assembly-and-high-level-languages/high-level-programming-language.md)
+* [Executable files](machine-assembly-and-high-level-languages/executable-files.md)
+* [Further Reading](machine-assembly-and-high-level-languages/further-reading.md)
+
+## Copy of Gnu Compiler Collection (GCC)
+
+* [The Four Stage Build Process](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/README.md)
+  * [Preprocessor](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/preprocessor.md)
+  * [Compiler](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/compiler.md)
+  * [Linker](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/linker.md)
+  * [Assembler](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/assembler.md)
+* [Compiling multiple source files](copy-of-gnu-compiler-collection-gcc/compiling-multiple-source-files.md)
+* [Further Reading](copy-of-gnu-compiler-collection-gcc/further-reading.md)
 
 ## Make
 

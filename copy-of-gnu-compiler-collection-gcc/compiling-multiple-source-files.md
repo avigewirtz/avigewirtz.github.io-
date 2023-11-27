@@ -1,6 +1,6 @@
-# Review&#x20;
+# Compiling multiple source files
 
-### Compiling multiple source files&#x20;
+###
 
 Suppose in the interest of modularity, we want to split our intmath.c program into two files: intmath.c and testintmath.c. We'll keep the gcd and lcm functions in intmath.c, but we'll move the main method to testintmath.c. The idea is for testintmath.c to serve as a client of intmath.c.&#x20;
 

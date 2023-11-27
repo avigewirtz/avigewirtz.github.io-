@@ -99,13 +99,13 @@
 
 ## GCC
 
-* [The Four Stage Build Process](gcc/the-four-stage-build-process.md)
+* [The Four Stage Build Process](broken-reference)
 * [Understanding each stage](broken-reference)
   * [Machine Code](broken-reference)
   * [Assembly Language](broken-reference)
   * [High-level Language](broken-reference)
   * [Linking](broken-reference)
-* [Further Reading](gcc/further-reading.md)
+* [Further Reading](machine-assembly-and-high-level-languages/further-reading.md)
 
 ## Make
 
