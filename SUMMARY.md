@@ -106,16 +106,17 @@
 
 ## Gnu Compiler Collection (GCC)
 
-* [Review of Compilation](gnu-compiler-collection-gcc/review-of-compilation.md)
 * [The Four Stage Build Process](gcc/the-four-stage-build-process.md)
   * [Single File Compilaton](gnu-compiler-collection-gcc/single-file-compilaton.md)
   * [Review ](gnu-compiler-collection-gcc/review.md)
+* [Preprocessor](gnu-compiler-collection-gcc/preprocessor.md)
+* [Compiler](gnu-compiler-collection-gcc/compiler.md)
+* [Assembler](gnu-compiler-collection-gcc/assembler.md)
+* [Linker](gnu-compiler-collection-gcc/linker.md)
 * [How Information is Represented in Computers](gnu-compiler-collection-gcc/how-information-is-represented-in-computers.md)
 * [Machine Code](gnu-compiler-collection-gcc/machine-code.md)
 * [Assembly](gnu-compiler-collection-gcc/assembly.md)
 * [High Level Programming Language](gnu-compiler-collection-gcc/high-level-programming-language.md)
-* [Linking](gnu-compiler-collection-gcc/linking.md)
-* [OS layer](gnu-compiler-collection-gcc/os-layer.md)
 * [Executable files](gnu-compiler-collection-gcc/executable-files.md)
 * [Further Reading](gcc/further-reading.md)
 
