@@ -1,6 +1,6 @@
 # The Four Stage Build Process
 
-The aim of this chapter is to describe in detail how GCC transforms source files to an executable file. While this transformation typically occurs through a single invocation of gcc, it is actually multi-stage process involving four distinct tools: the preprocessor, compiler, assembler, and linker. Roughly speaking, the role of each tool can be described as follows:&#x20;
+The aim of this chapter is to describe in detail how GCC transforms source files to an executable file. While this transformation typically occurs through a single invocation of gcc, it is actually multi-stage process involving four distinct tools: the preprocessor, compiler, assembler, and linker. Roughly speaking, the role of each of these tools can be described as follows:&#x20;
 
 1. Preprocessor: prepares the source code for compilation.&#x20;
 2. Compiler: converts the preprocessed source code to assembly language.

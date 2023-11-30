@@ -10,3 +10,5 @@
 1. Hennessy, J.L., & Patterson, D.A. (2020). _Computer Architecture: A Quantitative Approach (6th ed.)_. Morgan Kaufmann.
    * This comprehensive book covers advanced computer architecture concepts, providing a solid foundation for understanding compiler optimization techniques.&#x20;
 
+
+
