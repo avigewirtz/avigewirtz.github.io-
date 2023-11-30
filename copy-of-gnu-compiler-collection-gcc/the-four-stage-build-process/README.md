@@ -10,9 +10,9 @@ The aim of this chapter is to describe in detail how GCC transforms source files
 While GCC performs each of these stages automatically whenever compiling a C source file (i.e., a file with a .c extension), by default it discards the intermediate outputs, leaving only the executable. It is possible to isolate and preserve the output of each stage by using the following options:
 
 ```bash
-gcc217 -E # preprocess but do not compile 
-gcc217 -S # compile but do not assemble
-gcc217 -C # assemble but do not link
+gcc217 -E filename.c # stop after preprocessing  
+gcc217 -S filename.c or filename.i # stop after compiling
+gcc217 -C filename.c filename.i filename.s # stop after assembly
 ```
 
 To illustrate the four stage build process in practice, we will examine each of the stages using ‘intmath.c’, a simple program for calculating the greatest common divisor (gcd) and least common multiple (lcm) of two integers.
