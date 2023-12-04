@@ -1,58 +1,32 @@
 # The Four Stage Build Process
 
-The aim of this chapter is to describe in detail how GCC transforms source files to an executable file. While this transformation typically occurs through a single invocation of gcc, it is actually multi-stage process involving four distinct tools: the preprocessor, compiler, assembler, and linker. Roughly speaking, the role of each of these tools can be described as follows:&#x20;
+The aim of this chapter is to describe in detail how GCC transforms source files to an executable file. While this transformation typically occurs through a single invocation of gcc, it is actually multi-stage process involving four tools: the preprocessor, compiler, assembler, and linker. Roughly speaking, the role of each tool can be summarized as follows:&#x20;
 
 1. Preprocessor: prepares the source code for compilation.&#x20;
 2. Compiler: converts the preprocessed source code to assembly language.
 3. Assembly: converts the assembly language to machine language.
 4. Linking: resolves external dependencies, producing an executable.
 
-While GCC performs each of these stages automatically whenever compiling a C source file (i.e., a file with a .c extension), by default it discards the intermediate outputs, leaving only the executable. It is possible to isolate and preserve the output of each stage by using the following options:
-
-```bash
-gcc217 -E filename.c # stop after preprocessing  
-gcc217 -S filename.c or filename.i # stop after compiling
-gcc217 -C filename.c filename.i filename.s # stop after assembly
-```
-
-To illustrate the four stage build process in practice, we will examine each of the stages using ‘intmath.c’, a simple program for calculating the greatest common divisor (gcd) and least common multiple (lcm) of two integers.
+To illustrate the four-stage build process in practice, we will examine each of the stages using `charcount.c`, a simple program that counts the number of characters input in stdin by the user.
 
 {% code lineNumbers="true" %}
 ```c
 /*--------------------------------------------------------------------*/
-/* intmath.c                                                          */
-/* Author: Bob Dondero                                                */
+/* charcount.c                                                        */
 /*--------------------------------------------------------------------*/
 
 #include <stdio.h>
 
-/* Returns the greatest common divisor of integers i and j */
-int gcd(int i, int j) {
-    int temp;
-    while (j != 0) {
-        temp = i % j;
-        i = j;
-        j = temp;
-    }
-    return i;
-}
-
-/* Returns the least common multiple of integers i and j*/
-int lcm(int i, int j) {
-    return (i / gcd(i, j)) * j;
-}
-
+/* Write to stdout the number of characters in stdin. Return 0. */
 int main(void) {
-    int i, j;
+    int c;
+    int characterCount = 0;
 
-    printf("Enter the first integer:\n");
-    scanf("%d", &i);
+    while ((c = getchar()) != EOF) {
+        characterCount++;
+    }   
 
-    printf("Enter the second integer:\n");
-    scanf("%d", &j);
-
-    printf("Greatest common divisor: %d.\n", gcd(i, j));
-    printf("Least common multiple: %d.\n", lcm(i, j));
+    printf("%d\n", characterCount);
 
     return 0;
 }
@@ -60,4 +34,6 @@ int main(void) {
 ```
 {% endcode %}
 
-<figure><img src="../../.gitbook/assets/Group 81.png" alt=""><figcaption></figcaption></figure>
+When we compile `charcount.c` with the command `gcc217 charcount.c -o charcount`, GCC automatically performs all four stages--preprocessing, compiling, assembly, and linking--producing the charcount executable.   However, the intermediate outputs of these stages (i.e., the preprocessed, compiled, and assembled versions of the code) are by default discarded. You can preserve these intermediate outputs by using specific GCC command-line options. The relevant options which we will explore in this chapter are -E, -S, and -c, which instruct GCC to stop after the preprocessing, compilation, and assembly stages respectively.&#x20;
+
+Preserving intermediate output can be beneficial for several reasons. For example, you might want to save the compiled version so you can make low-level assembly optimizations, or you might want to save the assembled version to avoid having to later recompile it , as will be explained in the chapter on Make.&#x20;
