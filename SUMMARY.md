@@ -2,8 +2,7 @@
 
 ## Getting Started
 
-* [Contents](README.md)
-* [Preface](getting-started/readme-1.md)
+* [Preface](README.md)
 * [Summary](getting-started/summary.md)
 
 ## armlab
