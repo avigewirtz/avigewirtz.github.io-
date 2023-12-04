@@ -117,8 +117,8 @@
 * [The Four Stage Build Process](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/README.md)
   * [Preprocessor](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/preprocessor.md)
   * [Compiler](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/compiler.md)
-  * [Linker](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/linker.md)
   * [Assembler](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/assembler.md)
+  * [Linker](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/linker.md)
 * [Compiling multiple source files](copy-of-gnu-compiler-collection-gcc/compiling-multiple-source-files.md)
 * [Further Reading](copy-of-gnu-compiler-collection-gcc/further-reading.md)
 
