@@ -7,7 +7,7 @@ The aim of this chapter is to describe in detail how GCC transforms source files
 3. Assembly: converts the assembly language to machine language.
 4. Linking: resolves external dependencies, producing an executable.
 
-To illustrate the four-stage build process in practice, we will examine each of the stages using `charcount.c`, a simple program that counts the number of characters input in stdin by the user.
+To illustrate four-stage build process in practice, we will examine each of the stages using `charcount.c`, a simple program that prints the number of characters input by the user in stdin. &#x20;
 
 {% code lineNumbers="true" %}
 ```c
@@ -34,6 +34,12 @@ int main(void) {
 ```
 {% endcode %}
 
-When we compile `charcount.c` with the command `gcc217 charcount.c -o charcount`, GCC automatically performs all four stages--preprocessing, compiling, assembly, and linking--producing the charcount executable.   However, the intermediate outputs of these stages (i.e., the preprocessed, compiled, and assembled versions of the code) are by default discarded. You can preserve these intermediate outputs by using specific GCC command-line options. The relevant options which we will explore in this chapter are -E, -S, and -c, which instruct GCC to stop after the preprocessing, compilation, and assembly stages respectively.&#x20;
+Generating intermediate&#x20;
+
+When we compile `charcount.c` with the command `gcc217 charcount.c -o charcount`, GCC automatically performs all four stages--preprocessing, compiling, assembly, and linking. However, the intermediate outputs of these stages (i.e., the preprocessed, compiled, and assembled versions of the code) are by default discarded, leaving only the executable.&#x20;
+
+
+
+You can preserve these intermediate outputs by using specific GCC command-line options. The relevant options which we will explore in this chapter are -E, -S, and -c, which instruct GCC to stop after the preprocessing, compilation, and assembly stages respectively.&#x20;
 
 Preserving intermediate output can be beneficial for several reasons. For example, you might want to save the compiled version so you can make low-level assembly optimizations, or you might want to save the assembled version to avoid having to later recompile it , as will be explained in the chapter on Make.&#x20;
