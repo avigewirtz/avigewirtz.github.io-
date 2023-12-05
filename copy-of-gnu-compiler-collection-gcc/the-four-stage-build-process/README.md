@@ -1,13 +1,6 @@
 # The Four Stage Build Process
 
-The aim of this chapter is to describe in detail how GCC transforms source files to an executable file. While this transformation typically occurs through a single invocation of gcc, it is actually multi-stage process involving four tools: the preprocessor, compiler, assembler, and linker. Roughly speaking, the role of each tool can be summarized as follows:&#x20;
-
-1. Preprocessor: prepares the source code for compilation.&#x20;
-2. Compiler: converts the preprocessed source code to assembly language.
-3. Assembly: converts the assembly language to machine language.
-4. Linking: resolves external dependencies, producing an executable.
-
-To illustrate four-stage build process in practice, we will examine each of the stages using `charcount.c`, a simple program that prints the number of characters input by the user in stdin. &#x20;
+The aim of this chapter is to describe in detail how GCC transforms source files to an executable file. To illustrate the build process in practice, we will examine each stage using `charcount.c`, a simple program that prints the number of characters input by the user in stdin. &#x20;
 
 {% code lineNumbers="true" %}
 ```c
@@ -34,7 +27,24 @@ int main(void) {
 ```
 {% endcode %}
 
-Generating intermediate&#x20;
+### Traditional compilation method&#x20;
+
+The traditional method to is to build While this transformation typically occurs through a single invocation of gcc. For example, to transform charcount.c to an executable, we enter the following command on armlab:
+
+```
+gcc217 charcount.c -o charcount
+```
+
+
+
+&#x20;it is actually multi-stage process involving four tools: the preprocessor, compiler, assembler, and linker. The source file begins by being processed by the preproccessor. then the preprocessed output is proccessed but the compiler. then the compiled Roughly speaking, the role of each tool can be summarized as follows:&#x20;
+
+1. Preprocessor: prepares the source code for compilation.&#x20;
+2. Compiler: converts the preprocessed source code to assembly language.
+3. Assembly: converts the assembly language to machine language.
+4. Linking: resolves external dependencies, producing an executable.
+
+
 
 When we compile `charcount.c` with the command `gcc217 charcount.c -o charcount`, GCC automatically performs all four stages--preprocessing, compiling, assembly, and linking. However, the intermediate outputs of these stages (i.e., the preprocessed, compiled, and assembled versions of the code) are by default discarded, leaving only the executable.&#x20;
 
