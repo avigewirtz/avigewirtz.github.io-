@@ -1,6 +1,6 @@
 # The Four Stage Build Process
 
-The aim of this chapter is to describe in detail how GCC transforms source files to an executable file. While this can be accomplished via an single invocation of gcc, it is actually a multi-stage process involving several tools. To illustrate the build process in practice, we will examine each stage using`charcount.c`, a simple program that prints the number of characters input by the user in stdin. &#x20;
+The aim of this chapter is to describe in detail how GCC transforms source files to an executable file. While this is often accomplished via an single invocation of gcc, it is actually a multi-stage process involving several tools. To illustrate the build process in practice, we will examine each stage using`charcount.c`, a simple program that prints the number of characters input by the user in stdin. &#x20;
 
 {% code lineNumbers="true" %}
 ```c
