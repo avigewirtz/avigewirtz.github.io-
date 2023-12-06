@@ -2,6 +2,35 @@
 
 ###
 
+Including a Header File Only Once
+
+Because header files will include other header files, it is very easy to have a program that includes the same header file more than once. This can lead to error messages because items that have already been defined are being defined again. To prevent this from happening, a header file can be written to detect whether it has already been included. The following is an example of how this can be done:
+
+```
+   /* myheader.h */
+   #ifndef MYHEADER_H
+   #define MYHEADER_H
+```
+
+```
+      /* The body of the header file */
+   #endif   /* MYHEADER_H */
+```
+
+In this example, the header file is named myheader.h. The first line tests whether MYHEADER\_H has been defined. If it has, the entire header file is skipped. If MYHEADER\_H has not been defined, it is immediately defined and the header file is processed.
+
+The system header files all use this technique. The names defined in them all begin with an underscore character to prevent them from interfering with any names you define. The convention is for the defined name to be in all uppercase and to contain the name of the file.
+
+The GNU preprocessor recognizes this construction and keeps track of the header files that use it. This way, it can optimize processing the headers by recognizing the file name and not even reading header files that have already been included.
+
+
+
+
+
+
+
+
+
 Suppose in the interest of modularity, we want to split our intmath.c program into two files: intmath.c and testintmath.c. We'll keep the gcd and lcm functions in intmath.c, but we'll move the main method to testintmath.c. The idea is for testintmath.c to serve as a client of intmath.c.&#x20;
 
 Unfortunately for us, splitting the program in this manner cannot be acheived by simply deleting the main method from intmath.c and pasting it into testintmath.c.  We'll need to also add prototypes for gcd and lcm in testintmath.c. The reason for this will becomne clear once we examine the compilation proccess of multiple files. &#x20;
