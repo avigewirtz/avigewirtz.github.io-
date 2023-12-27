@@ -1,17 +1,16 @@
 # The Four Stage Build Process
 
+GCC's internal process of transforming C source code into executable machine code consists of four sequential stages: (four programs involved. footnote: technically, three, since preprocessor is currently integrated into compiler). preprocessing, compilation proper, assembly, and linking.  From a bird’s-eye view, the stages can be summarized as follows:&#x20;
 
+1. Preprocessing: GCC prepares the code for compilation by scanning through the code and making a bunch of substitutions. For example, it substitutes comments with whitespace and macros with their actual value.
+2. Compilation proper: GCC translates the preprocessed source code into assembly language, specific to the target processor. This is where the high-level constructs (like loops, conditionals, etc.) are translated into a series of low-level (but human-readable) instructions.&#x20;
+3. Assembly: GCC then translates the assembly language instructions into their corresponding machine language instructions. Machine language is the set of binary (0s and 1s) instructions the processor understands.&#x20;
+4. Linking: If your program consists of multiple source files or uses external libraries, GCC combines all the relevant code into a single file. This file is known as an executable.&#x20;
 
-In reality, as you're aware, the process involves multiple stages, each handled by different programs or components within the GCC toolchain. The stages — preprocessing, compiling, assembling, and linking — are distinct, each performing a specific task in transforming source code into an executable.
+You've probably compiled many source files with GCC but have not realized that it's a four-stage process, and for good reason. Having to manually do each step would be cumbersome. GCC abstracts these stages in such a way that a user only needs to execute a single command to perform all these steps. Although you don't see them happening, they're happening behind the scenes.&#x20;
 
-1. It works kind of like a production line, where the program begins as source code and then gets transformed from one version to another by each tool—preprocessor, compiler, assembler, and linker, in that order—to create a final product--the executable.&#x20;
-2. From a bird’s-eye view, these steps can be summarized as follows:&#x20;
-   * Preprocessing: This is the first stage, where GCC processes the source code before actual compilation. It involves handling directives such as #include (which includes other files), #define (which defines macros), and conditional compilation directives like #if. This stage essentially prepares the source code by expanding macros, processing includes, and applying conditional compilation.
-   * Compilation proper: During this stage, the preprocessed source code is converted into assembly language specific to the target processor. The compiler analyzes the code (syntax and semantics) and translates it into a lower-level, more detailed representation. This is where the high-level constructs (like loops, conditionals, etc.) are translated into a series of instructions that the processor can understand.
-   * Assembly: The assembly language code generated in the previous step is then converted into machine code by an assembler. The machine code is essentially a set of binary instructions understandable by the processor. Each line of assembly language corresponds to a machine language instruction.
-   * Linking: The final stage involves the linker. If your program consists of multiple source files or uses external libraries, these need to be combined into a single executable. The linker resolves references to undefined symbols, like functions or global variables defined in other files or libraries, and combines the object files (the compiled files) into a single executable program.
-3. Thankfully, GCC abstracts these stages in such a way that a user typically only needs to execute a single command to perform all these steps. For instance, running gcc -o output source.c will preprocess, compile, assemble, and link the source code, producing an executable named ‘output’.
-4. By default, GCC discards the intermediate outputs, leaving only the resulting executable.  You can instruct GCC to save the intermediate outputs using the --savetemps command. For example, to save the intermediate outputs of hello.c:&#x20;
+1. &#x20;For instance, running gcc -o output source.c will preprocess, compile, assemble, and link the source code, producing an executable named ‘output’.
+2. By default, GCC discards the intermediate outputs, leaving only the resulting executable.  You can instruct GCC to save the intermediate outputs using the --savetemps command. For example, to save the intermediate outputs of hello.c:&#x20;
 
 ```
 gcc --savetemps hello.c -o hello
