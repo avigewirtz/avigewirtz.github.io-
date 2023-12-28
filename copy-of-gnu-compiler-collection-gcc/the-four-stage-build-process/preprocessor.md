@@ -19,6 +19,12 @@ There are two types of include directives:&#x20;
        #include "filename"
 ```
 
+difference has to do with how they're found. not relevant. only need to know to use 1 with library and 2 with...
+
+
+
+
+
 The include directive searches for the named file and inserts its contents into the text just as if it had been inserted there by a text editor. A file that is included this way is generally referred to as a header file and carries a .h suffix, but it can be any text file with any name.
 
 The include directive has two forms. The one most used for system header files surrounds the name with a pair of angle brackets, with the form for user header files being surrounded by quotes, as follows:
