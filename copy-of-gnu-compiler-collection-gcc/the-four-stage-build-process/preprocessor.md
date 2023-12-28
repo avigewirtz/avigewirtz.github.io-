@@ -6,18 +6,22 @@ The preprocessor is a program that reads the source code and responds to directi
 
 ### Preprocessor Directives
 
-Preprocessor directives are instructions in the source code The instructions to the preprocessor appear in the source as directives and can be easily spotted in the source code because they all begin with a hash (#) character, appearing as the first nonblank character on a line. The hash character usually appears on column 1 and is immediately followed by the directive keyword. All the directives are listed in Table 3-1 and described in the paragraphs that follow the table. It is possible for the preprocessor to modify source lines other than the ones with directives, but only if there is a directive instructing it to do so.
+Preprocessor directives are instructions in the source code to the preprocessor. They can be easily spotted because they all begin with a hash (#) character, appearing as the first nonblank character on a line.  There are numerous preprocessor directives. For cos217, you will encounter three types: #include, #define, and #ifdef. For now we will describe only #include and #define, leaving the discussion of to chapter.&#x20;
 
 \#include
+
+
+
+There are two types of include directives:&#x20;
+
+```
+       #include <filename>
+       #include "filename"
+```
 
 The include directive searches for the named file and inserts its contents into the text just as if it had been inserted there by a text editor. A file that is included this way is generally referred to as a header file and carries a .h suffix, but it can be any text file with any name.
 
 The include directive has two forms. The one most used for system header files surrounds the name with a pair of angle brackets, with the form for user header files being surrounded by quotes, as follows:
-
-```
-       #include <syshead.h>
-       #include "userhead.h"
-```
 
 The following is a list of characteristics and rules that apply to the #include directive:
 
