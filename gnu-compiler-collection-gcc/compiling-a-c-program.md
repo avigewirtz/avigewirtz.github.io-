@@ -1,2 +1,0 @@
-# Compiling a C program
-

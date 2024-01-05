@@ -1,6 +1,14 @@
 # The Four Stage Build Process
 
-The aim of this chapter is to discuss in detail how GCC. There are four distinct programs involved in transforming C source code into executable machine code with GCC: the preprocessor, compiler, assembler, and linker. From a bird's eye view, the process looks like the following:&#x20;
+From the user's point of view, compilation is an extremelty simple process. For example, to compile hello.c, you simply invoke gcc with hello.c as an argument, and an executable with be produced.&#x20;
+
+
+
+
+
+
+
+There are four distinct programs involved in transforming C source code into executable machine code with GCC: the preprocessor, compiler, assembler, and linker. From a bird's eye view, the process looks like the following:&#x20;
 
 1. GCC sends the source file to the preprocessor. The preprocessor scans through the source code and makes a bunch of substitutions. For example, it substitutes comments with whitespace and macros with their actual value. You can think of this step as essentially preparing the source code for compilation.&#x20;
 2. Next, GCC takes the preprocessed source code and sends it to the compiler, which translates the C source code into assembly language. Assembly language consists of low-level (but human-readable) instructions, specific to the target processor

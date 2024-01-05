@@ -1,14 +1,14 @@
 # Introduction
 
-The aim of this chapter is to describe in detail how GCC transforms source files to an executable file.&#x20;
+The aim of this chapter is to provide a high-level overview of how GCC transforms C source files into an executable file.  After reading this chapter you should understand how to compile a C program, and how to use basic compiler options for optimization and debugging.
 
 
 
-##
+<details>
 
-## What is gcc217?
+<summary>Aside: What is gcc217?</summary>
 
-In COS217, we use `gcc217` instead of `gcc`. It's important to understand that `gcc217` isn't a different compiler; it's simply a shortcut, or an 'alias', set up on armlab to make your life easier. When you type `gcc217`, it's the same as typing gcc with the following options: `gcc -Wall -Wextra -Wno-unused-parameter -ansi -pedantic`. Let's break down what each of these options does:
+In COS217, `gcc217` is used instead of `gcc`. It's important to understand that `gcc217` isn't a different compiler; it's simply a shortcut, or an 'alias', set up on armlab to make your life easier. When you type `gcc217`, it's the same as typing gcc with the following options: `gcc -Wall -Wextra -Wno-unused-parameter -ansi -pedantic`. Let's break down what each of these options does:
 
 1. **`-Wall`**: This option tells `gcc` to show you all ("all") warning messages. Warnings are like helpful hints that something might be wrong with your code, even though it might still work.
 2. **`-Wextra`**: This goes beyond `-Wall`, showing you even more warnings. It's like having an extra careful check of your code.
@@ -17,4 +17,6 @@ In COS217, we use `gcc217` instead of `gcc`. It's important to understand that `
 5. **`-pedantic`**: This makes `gcc` even stricter, ensuring that every part of your code follows the official standards to the letter. It's like having a very strict teacher checking your work.
 
 So, whenever you use `gcc217` on ArmLab, you're automatically including all these helpful settings. It's a way to make sure you're writing good, clean code and learning the best practices in programming!
+
+</details>
 
