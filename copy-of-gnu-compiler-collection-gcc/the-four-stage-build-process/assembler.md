@@ -1,10 +1,22 @@
 # Assembler
 
-**3. Assembly**
-
-Following compilation, the assembly process commences. The assembly language code, derived from `intmath.c`, is converted into machine code, also known as object code. This code is a binary representation tailored to the processor type that will execute the program, comprising the instructions that the computer will directly execute.
+The third stage in the compilation process is assembly. In this stage, the assembler translates the assembly language instructions into machine language instructions. Machine language is the native language of the processor–that is, the \
 
 
+Main.c and circle.c will be stored in main.o and circle.o. \
 
-* The assembler is invoked to translate the assembly language into an object file. This file is not in an executable format—it contains executable object code, but not in a form that it can actually be run. Besides, it more than likely contains unresolved references to routines and data in other modules.
-* The linker combines object files from the assembler (some of which may be stored in libraries filled with object files) into an executable program.
+
+At this point, the code is no longer human-readable. If you try to view the contents of the object files with a text editor, you’ll see plain gibberish, since the files are no longer text files. If you want to view the raw data, you can view it in binary with the following commands:
+
+\
+
+
+xxd -b main.o&#x20;
+
+xxd -b circle.o
+
+\
+\
+
+
+Explain why the object files aren’t executable.&#x20;

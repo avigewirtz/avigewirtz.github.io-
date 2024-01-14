@@ -1,9 +1,5 @@
 # Introduction
 
-The aim of this chapter is to provide a high-level overview of how GCC transforms C source files into an executable file.  After reading this chapter you should understand how to compile a C program, and how to use basic compiler options for optimization and debugging.
-
-
-
 <details>
 
 <summary>Aside: What is gcc217?</summary>
@@ -19,4 +15,3 @@ In COS217, `gcc217` is used instead of `gcc`. It's important to understand that 
 So, whenever you use `gcc217` on ArmLab, you're automatically including all these helpful settings. It's a way to make sure you're writing good, clean code and learning the best practices in programming!
 
 </details>
-

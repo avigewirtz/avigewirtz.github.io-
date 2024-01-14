@@ -1,68 +1,68 @@
 # The Four Stage Build Process
 
-From the user's point of view, compilation is an extremelty simple process. For example, to compile hello.c, you simply invoke gcc with hello.c as an argument, and an executable with be produced.&#x20;
+The aim of this chapter is to provide a high-level overview of the GCC compilation process. While from the user's point of view compiling a C program is as simple as executing a single gcc command, behind the scenes. From GCC’s point of view, however, compilation is a multi-stage process, involving a suite of programs. By the end of this chapter, you should have a clearer understanding and appreciation of each stage involved in the GCC compilation process.&#x20;
+
+## Motivation
+
+You might be wondering why we are concerning ourselves with the internals of how GCC performs compilation. After all, we regularly use programs without having any knowledge of their inner workings, focusing only on their output. Take the 'ls' command, for instance; we use it to list directory contents, but we don’t concern ourselves with its internals. So, why do we care when it comes to GCC?
+
+Broadly speaking, there are two reasons. First, understanding these stages aids in debugging. Let’s face it, compilation isn’t always a smooth process. Quite often, something goes wrong along the way, and what you end up with is not an executable but a cryptic error message. Without a basic understanding of how compilation works, the cause of the error is likely to be elusive, making it incredibly difficult to debug your program.
+
+Second, GCC is designed to enable separate compilation. This will be discussed in depth in the chapter on Make. In order to take advantage of separate compilation, however, you have to understand the process, particularly the linking phase.&#x20;
+
+3\. Helps you understand what global variables are. This is mentioned in book when discussing linker\
+
+
+{% hint style="info" %}
+Note on terminology
+
+* terminology caan be confusing
+*
+{% endhint %}
+
+## Bird’s eye view of the GCC compilation process
+
+The GCC compilation process can be likened to an assembly line in a factory. The product is a C program, which begins its life as a source file. As it progresses through the production line, it is worked upon by different programs, each of which transforms the program one step closer to a finished product. By the end, the program emerges as an executable file.&#x20;
+
+This ‘assembly line’ comprises four programs:
+
+* Preprocessor (cpp)
+* Compiler (cc1)
+* Assembler (as)
+* Linker (ld)
+
+The source code is worked on by the preprocessor, whose output is fed to the compiler, whose output is fed to the assembler,&#x20;
+
+The role of each of these programs can be summarized as follows:
+
+1. The C preprocessor is a program that processes your source code before actual compilation. main compilation step in programming. Think of it as a preparatory stage where the code is pre-processed (processed beforehand). This involves handling specific instructions, known as preprocessor directives, which are not traditional C code but commands for the preprocessor. These directives can modify the code by including other files, defining constants, or even conditioning which parts of the code to compile. The preprocessor essentially sets up your code, making it ready for the compiler to take over and convert it into an executable program.
+2. The program is first given to a preprocessor, which obeys commands that begin with # (known as directives). A preprocessor is a bit like an editor; it can add things to the program and make modifications.
+3. The modified program now goes to a compiler, which translates it into assembly language instructions.&#x20;
+4. Assembly to machine language. Object code.\
+
+5. In the final step, a linker combines the object code produced by the compiler with any additional code needed to yield a complete executable program. This additional code includes library functions (like printf) that are used in the program.
+
+\
+
+
+Thankfully, the process is automated by the gcc compiler driver.&#x20;
+
+\
+\
+
+
+### Saving preprocessed, compiled, and assembled versions
+
+gcc -o hello hello.c --save-temps
+
+This command will generate the following files in addition to the executable hello:
+
+* hello.i: The result of the preprocessing stage.
+* hello.s: The assembly code generated from the C source.
+* hello.o: The object file generated from the assembly code.
+
+### Isolating Each Stage of Compilation
 
 
 
-
-
-
-
-There are four distinct programs involved in transforming C source code into executable machine code with GCC: the preprocessor, compiler, assembler, and linker. From a bird's eye view, the process looks like the following:&#x20;
-
-1. GCC sends the source file to the preprocessor. The preprocessor scans through the source code and makes a bunch of substitutions. For example, it substitutes comments with whitespace and macros with their actual value. You can think of this step as essentially preparing the source code for compilation.&#x20;
-2. Next, GCC takes the preprocessed source code and sends it to the compiler, which translates the C source code into assembly language. Assembly language consists of low-level (but human-readable) instructions, specific to the target processor
-3. GCC then feeds the assembly language version of the program into the assembler, which translates each assembly language instruction into its corresponding machine language instructions. Machine language is the binary language (1s and 0s) that the processor understands. At this point, the code is no longer human-readable.&#x20;
-4. It might seem like GCC's job should have been finished after assembly. After all, the code is currently in machine language, which the processor understands. The problem, however, is that the assembled version almost certainly contains external references--that is, references to things like variables or functions defined in external files or libraries. To make the program executable, all the relevant code must be combined into a single file. This task is handled by the linker, which resolves all external dependencies, generating an executable.&#x20;
-
-You can think of the process as a production line. The program begins as C source code and goes through a series of tools each progressively transforming it until it becomes an executable.&#x20;
-
-
-
-You're probably wondering why you've never noticed that it's a four-stage process. That's because GCC abstracts it all away, enabling you the build a program via only a single command. probably compiled many source files with GCC but have not realized that it's a four-stage process, and for good reason. Having to manually do each step would be cumbersome. GCC abstracts these stages in such a way that a user only needs to execute a single command to perform all these steps. Although you don't see them happening, they're happening behind the scenes.&#x20;
-
-1. By default, GCC discards the intermediate outputs, leaving only the resulting executable.  You can instruct GCC to save the intermediate outputs using the --savetemps command. For example, to save the intermediate outputs of hello.c:&#x20;
-
-```
-gcc --savetemps hello.c -o hello
-```
-
-the preprocessed, compiled, and assembled outputs will be saved in hello.i, hello.s, and hello.o respectively. You can confirm this by invoking ls.
-
-To illustrate the build process in practice, we will examine each stage using`charcount.c`, a simple program that prints the number of characters input by the user in stdin. &#x20;
-
-{% code lineNumbers="true" %}
-```c
-/*--------------------------------------------------------------------*/
-/* charcount.c                                                        */
-/*--------------------------------------------------------------------*/
-
-#include <stdio.h>
-
-/* Write to stdout the number of characters in stdin. Return 0. */
-int main(void) {
-    int c;
-    int characterCount = 0;
-
-    while ((c = getchar()) != EOF) {
-        characterCount++;
-    }   
-
-    printf("%d\n", characterCount);
-
-    return 0;
-}
-
-```
-{% endcode %}
-
-
-
-
-
-
-
-
-
-
-
+\
