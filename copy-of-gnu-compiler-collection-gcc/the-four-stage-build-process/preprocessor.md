@@ -1,6 +1,12 @@
 # Preprocessing Stage
 
-Our program is first fed to the preprocessor, which modifies the source code before it is compiled. Some of the modifications are done automatically, while others are triggered by user supplied instructions embedded in the source code. These instructions are known as preprocessor directives.&#x20;
+Our program is first fed to the preprocessor, which modifies the source code before it is compiled.&#x20;
+
+* files we give to preprocessor are main.c and circle.c. Don't need to list circle.h, since it's included with preprocessor directive.&#x20;
+
+
+
+Some of the modifications are done automatically, while others are triggered by user supplied instructions embedded in the source code. These instructions are known as preprocessor directives.&#x20;
 
 ### Preprocessor Directives
 

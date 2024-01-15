@@ -1,8 +1,8 @@
-# Git Cheat Sheet
+# Git Cheatsheet
 
 ### Basic Git Commands
 
-* `git init`: Initialize a new Git repository.
+* `git init` Initialize a new Git repository.
 * `git clone <repository>`: Clone an existing repository.
 * `git status`: Check the status of your working directory.
 * `git add <file>`: Add a file or changes to the staging area.

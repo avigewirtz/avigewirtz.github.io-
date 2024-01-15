@@ -100,7 +100,7 @@
   * [Ignoring Files](git-and-github/important-git-commands/ignoring-files.md)
 * [Resolving Merge Conflicts](git-and-github/resolving-merge-conflicts.md)
 * [Configurations](git-and-github/configurations.md)
-* [Git Cheat Sheet](git-and-github/git-cheat-sheet.md)
+* [Git Cheatsheet](git-and-github/git-cheat-sheet.md)
 * [Further Reading](git-and-github/further-reading.md)
 
 ## Machine, assembly, and high-level languages
@@ -116,10 +116,11 @@
 
 * [Introduction](gnu-compiler-collection-gcc/introduction.md)
 * [The Four Stage Build Process](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/README.md)
-  * [Preprocessing Stage](gnu-compiler-collection-gcc/the-four-stage-build-process/preprocessing-stage.md)
+  * [Preprocessing Stage](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/preprocessor.md)
   * [Compiler](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/compiler.md)
   * [Assembler](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/assembler.md)
   * [Linker](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/linker.md)
+* [GCC Cheatsheet](gnu-compiler-collection-gcc/gcc-cheatsheet.md)
 * [Further Reading](copy-of-gnu-compiler-collection-gcc/further-reading.md)
 
 ## Make

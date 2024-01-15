@@ -2,7 +2,7 @@
 
 <details>
 
-<summary>Aside: What is gcc217?</summary>
+<summary>Aside: gcc217</summary>
 
 In COS217, `gcc217` is used instead of `gcc`. It's important to understand that `gcc217` isn't a different compiler; it's simply a shortcut, or an 'alias', set up on armlab to make your life easier. When you type `gcc217`, it's the same as typing gcc with the following options: `gcc -Wall -Wextra -Wno-unused-parameter -ansi -pedantic`. Let's break down what each of these options does:
 
