@@ -1,10 +1,8 @@
 # Preprocessing Stage
 
-Our program is first fed to the preprocessor, which modifies the source code before it is compiled.&#x20;
+In the first stage of the compilation process, GCC sends main.c and circle.c to the preprocessor. The preprocessor is a program that modifes the source code of each file before compilation.  main.c and circle.c will be modified separately, and, if you invoke gcc with the --save-temps option, their outputs will be stored in main.i and circle.i.&#x20;
 
-* files we give to preprocessor are main.c and circle.c. Don't need to list circle.h, since it's included with preprocessor directive.&#x20;
-
-
+main.c and circle.c are not quite ready to be compiled.&#x20;
 
 Some of the modifications are done automatically, while others are triggered by user supplied instructions embedded in the source code. These instructions are known as preprocessor directives.&#x20;
 

@@ -1,5 +1,11 @@
 # The Four Stage Build Process
 
+The purpose of compilation is to transform C source code—a language resembling English and suitable for human understanding—into executable machine code—a numerical language designed for computer processing.
+
+GCC performs compilation in four sequential stages: preprocessing, compilation proper, assembly, and linking. The goal of this chapter is to explain in detail why the process is broken up into four stages.&#x20;
+
+
+
 The aim of this chapter is to provide a high-level overview of the GCC compilation process. From the user's point of view, compiling a C program is as simple as executing a single GCC command, such as `gcc myprog.c`. From GCC’s point of view, however, compilation is a complex process involving four distinct stages: preprocessing, compilation proper, assembly, and linking.&#x20;
 
 We will illustrate the compilation process by following the journey of a C program from source code to executable. The program we will use is a simple program that calculates the area of a circle given its circumference. It consists of three files: main.c, circle.c, and circle.h. Their source code is written below.&#x20;
@@ -51,6 +57,14 @@ double calculateArea(double circumference);
 #endif
 ```
 {% endcode %}
+
+###
+
+<figure><img src="../../.gitbook/assets/Group 9 (1).png" alt=""><figcaption></figcaption></figure>
+
+###
+
+###
 
 ### Motivation
 
