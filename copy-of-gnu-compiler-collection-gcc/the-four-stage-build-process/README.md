@@ -1,14 +1,8 @@
 # The Four Stage Build Process
 
-The purpose of compilation is to transform C source code—a language resembling English and suitable for human understanding—into executable machine code—a numerical language designed for computer processing.
+The purpose of compilation is to transform C source code—an English-resembling language suitable for human understanding—into executable machine code—a numerical language designed for computer processing.
 
-GCC performs compilation in four sequential stages: preprocessing, compilation proper, assembly, and linking. The goal of this chapter is to explain in detail why the process is broken up into four stages.&#x20;
-
-
-
-The aim of this chapter is to provide a high-level overview of the GCC compilation process. From the user's point of view, compiling a C program is as simple as executing a single GCC command, such as `gcc myprog.c`. From GCC’s point of view, however, compilation is a complex process involving four distinct stages: preprocessing, compilation proper, assembly, and linking.&#x20;
-
-We will illustrate the compilation process by following the journey of a C program from source code to executable. The program we will use is a simple program that calculates the area of a circle given its circumference. It consists of three files: main.c, circle.c, and circle.h. Their source code is written below.&#x20;
+GCC performs compilation in four sequential stages: preprocessing, compilation proper, assembly, and linking. We will illustrate the compilation process by following the journey of a C program from source code to executable. The program we will use is a simple program that calculates the area of a circle given its circumference. It consists of three files: main.c, circle.c, and circle.h. Their source code is written below.&#x20;
 
 {% code title="main.c" lineNumbers="true" %}
 ```c
@@ -58,31 +52,40 @@ double calculateArea(double circumference);
 ```
 {% endcode %}
 
-###
-
-<figure><img src="../../.gitbook/assets/Group 9 (1).png" alt=""><figcaption></figcaption></figure>
-
-###
-
-###
-
-### Motivation
-
-Why are we concerning ourselves with the internals of how GCC performs compilation? After all, we regularly use programs without having any knowledge of their inner workings, focusing only on their output. Take the 'ls' command, for instance; we use it to list directory contents, but we don’t concern ourselves with its internals. So, why do we care when it comes to GCC?
-
-Broadly speaking, there are two reasons. First, understanding these stages aids in debugging. Let’s face it, compilation isn’t always a smooth process. Quite often, something goes wrong along the way, and what you end up with is not an executable but a cryptic error message. Without a basic understanding of how compilation works, the cause of the error is likely to be elusive, making it incredibly difficult to debug your program.
-
-Second, GCC is designed to enable separate compilation. This will be discussed in depth in the chapter on Make. In order to take advantage of separate compilation, however, you have to understand the process, particularly the linking phase.&#x20;
-
-3\. Helps you understand what global variables are. This is mentioned in book when discussing linker
-
-##
-
-##
-
-##
-
 ## Bird’s eye view of the GCC compilation process
+
+Before diving into the complexities of each stage, we'll first give a bird's eye view of the process. Having an overarching view will allow you to grasp the big picture, making it easier to contextualize the more detailed aspects that follow.
+
+
+
+
+
+**Preprocessing Stage**: In the first stage, main.c and circle.c are sent to the preprocessor, which is a program that essentially prepares the source files for compilation. It does this by removing comments and responding to preprocessor directives--lines in the code that begin with the # (hash) character. For example, the #include "circle.h" in line 1 of circle.c instructs the preprocessor to insert the contents of the circle.h into... The result of preprocessing is two files: main.i and circle.i. The preprocessor sends main.i and circle.i to the compiler.&#x20;
+
+**Compilation Stage**: The compiler translates the preprocesses source code in main.i and circle.i to assembly language, which are stored in main.s and circle.s. Assembly language is essentially a human-readable form of the processors machine language.
+
+**Assembly Stage**: The assembler then converts assembly code in main.s and circle.s to object code, storing the result in main.o and circle.o. Object files are comprised of machine code, but they are not executable, since they may contain external references (such as the call to the calculateArea() function in main.o, which is defined in circle.o) and need not contain a main method (such as circle.o).&#x20;
+
+**Linking Stage**: The final stage in the compilation process is the linking stage. Here, the linker combines main.o and circle.o, resolving the external reference to calulateArea() in main.o. It also combines the object code for the library code for printf(), scanf(), and exit().  The resulting file is called an executable.&#x20;
+
+
+
+in line 14 of main.c, which is defined in it is not executable, since it may contain compiler translates the preprocesses source code in main.i and circle.i to assembly language, which are stored in main.s and circle.s. Assembly language is essentially a human-readable form of the processors machine language.
+
+&#x20;, main.c and circle.c are sent to the preprocessor, which is a program that essentially prepares the source files for compilation. It does this by removing comments and responding to preprocessor directives--lines in the code that begin with the # (hash) character. For example, the #include "circle.h" in line 1 of circle.c instructs the preprocessor to insert the contents of the circle.h into... The result of preprocessing is two files: main.i and circle.i. The preprocessor sends main.i and circle.i to the compiler.&#x20;
+
+
+
+
+
+\
+
+
+<figure><img src="../../.gitbook/assets/Group 17.png" alt=""><figcaption></figcaption></figure>
+
+
+
+
 
 The process of transforming our program into an executable resembles an assembly line. The product is our C program, which begins its life as three a source file. As it progresses through the production line, it is worked upon by different programs, each of which transforms the program one step closer to a finished product. By the end, the program emerges as an executable file.&#x20;
 
@@ -93,7 +96,7 @@ This ‘assembly line’ comprises four programs:
 * Assembler
 * Linker
 
-<figure><img src="../../.gitbook/assets/Group 102 (1).png" alt="" width="188"><figcaption></figcaption></figure>
+
 
 Thankfully, the process is automated by the gcc compiler driver.&#x20;
 
@@ -110,5 +113,17 @@ This command will generate the following files in addition to the executable hel
 ### Isolating Each Stage of Compilation
 
 
+
+
+
+### Motivation
+
+Why are we concerning ourselves with the internals of how GCC performs compilation? After all, we regularly use programs without having any knowledge of their inner workings, focusing only on their output. Take the 'ls' command, for instance; we use it to list directory contents, but we don’t concern ourselves with its internals. So, why do we care when it comes to GCC?
+
+Broadly speaking, there are two reasons. First, understanding these stages aids in debugging. Let’s face it, compilation isn’t always a smooth process. Quite often, something goes wrong along the way, and what you end up with is not an executable but a cryptic error message. Without a basic understanding of how compilation works, the cause of the error is likely to be elusive, making it incredibly difficult to debug your program.
+
+Second, GCC is designed to enable separate compilation. This will be discussed in depth in the chapter on Make. In order to take advantage of separate compilation, however, you have to understand the process, particularly the linking phase.&#x20;
+
+3\. Helps you understand what global variables are. This is mentioned in book when discussing linker
 
 \
