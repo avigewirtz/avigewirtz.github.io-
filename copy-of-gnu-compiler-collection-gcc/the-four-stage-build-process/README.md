@@ -1,6 +1,6 @@
 # The Four Stage Build Process
 
-The purpose of compilation is to transform C source code—an English-resembling language suitable for human understanding—into executable machine code—a numerical language designed for computer processing.
+The purpose of compilation is to transform C source code—an English-resembling language suitable for human understanding—into executable machine code—a binary language suitable for computer processing.
 
 GCC performs compilation in four sequential stages: preprocessing, compilation proper, assembly, and linking. We will illustrate the compilation process by following the journey of a C program from source code to executable. The program we will use is a simple program that calculates the area of a circle given its circumference. It consists of three files: main.c, circle.c, and circle.h. Their source code is written below.&#x20;
 
@@ -56,49 +56,16 @@ double calculateArea(double circumference);
 
 Before diving into the complexities of each stage, we'll first give a bird's eye view of the process. Having an overarching view will allow you to grasp the big picture, making it easier to contextualize the more detailed aspects that follow.
 
+* **Preprocessing**: In the first stage, main.c and circle.c are sent to the preprocessor, which is a program that essentially prepares the source files for compilation. It does this by removing comments and responding to preprocessor directives--lines in the code that begin with the # (hash) character. For example, the #include "circle.h" in line 1 of circle.c instructs the preprocessor to insert the contents of the circle.h into... The result of preprocessing is two files: main.i and circle.i. The preprocessor sends main.i and circle.i to the compiler.&#x20;
+* **Compilation**: The compiler translates the preprocesses source code in main.i and circle.i to assembly language, which are stored in main.s and circle.s. Assembly language is essentially a human-readable form of the processors machine language.
+* **Assembly**: The assembler then converts assembly code in main.s and circle.s to object code, storing the result in main.o and circle.o. Object files are comprised of machine code, but they are not executable, since they may contain external references (such as the call to the calculateArea() function in main.o, which is defined in circle.o) and need not contain a main method (such as circle.o).&#x20;
+* **Linking**: The final stage in the compilation process is the linking stage. Here, the linker combines main.o and circle.o, resolving the external reference to calulateArea() in main.o. It also combines the object code for the library code for printf(), scanf(), and exit().  The resulting file is called an executable.&#x20;
 
-
-
-
-**Preprocessing Stage**: In the first stage, main.c and circle.c are sent to the preprocessor, which is a program that essentially prepares the source files for compilation. It does this by removing comments and responding to preprocessor directives--lines in the code that begin with the # (hash) character. For example, the #include "circle.h" in line 1 of circle.c instructs the preprocessor to insert the contents of the circle.h into... The result of preprocessing is two files: main.i and circle.i. The preprocessor sends main.i and circle.i to the compiler.&#x20;
-
-**Compilation Stage**: The compiler translates the preprocesses source code in main.i and circle.i to assembly language, which are stored in main.s and circle.s. Assembly language is essentially a human-readable form of the processors machine language.
-
-**Assembly Stage**: The assembler then converts assembly code in main.s and circle.s to object code, storing the result in main.o and circle.o. Object files are comprised of machine code, but they are not executable, since they may contain external references (such as the call to the calculateArea() function in main.o, which is defined in circle.o) and need not contain a main method (such as circle.o).&#x20;
-
-**Linking Stage**: The final stage in the compilation process is the linking stage. Here, the linker combines main.o and circle.o, resolving the external reference to calulateArea() in main.o. It also combines the object code for the library code for printf(), scanf(), and exit().  The resulting file is called an executable.&#x20;
-
-
-
-in line 14 of main.c, which is defined in it is not executable, since it may contain compiler translates the preprocesses source code in main.i and circle.i to assembly language, which are stored in main.s and circle.s. Assembly language is essentially a human-readable form of the processors machine language.
-
-&#x20;, main.c and circle.c are sent to the preprocessor, which is a program that essentially prepares the source files for compilation. It does this by removing comments and responding to preprocessor directives--lines in the code that begin with the # (hash) character. For example, the #include "circle.h" in line 1 of circle.c instructs the preprocessor to insert the contents of the circle.h into... The result of preprocessing is two files: main.i and circle.i. The preprocessor sends main.i and circle.i to the compiler.&#x20;
-
-
-
-
-
-\
-
+This process is summarized in Figure 1.
 
 <figure><img src="../../.gitbook/assets/Group 17.png" alt=""><figcaption></figcaption></figure>
 
-
-
-
-
-The process of transforming our program into an executable resembles an assembly line. The product is our C program, which begins its life as three a source file. As it progresses through the production line, it is worked upon by different programs, each of which transforms the program one step closer to a finished product. By the end, the program emerges as an executable file.&#x20;
-
-This ‘assembly line’ comprises four programs:
-
-* Preprocessor&#x20;
-* Compiler&#x20;
-* Assembler
-* Linker
-
-
-
-Thankfully, the process is automated by the gcc compiler driver.&#x20;
+As you can see, the process of transforming our program into an executable resembles an assembly line. The product is our C program, which begins its life as three a source file. As it progresses through the production line, it is worked upon by four programs--the preprocessor, compiler, assembler, and linker--each of which transforms the program one step closer to a finished product. By the end, the program emerges as an executable file.&#x20;
 
 ### Saving preprocessed, compiled, and assembled versions
 
