@@ -2,7 +2,7 @@
 
 The purpose of compilation is to transform C source code—an English-resembling language suitable for human understanding—into executable machine code—a binary language suitable for computer processing.
 
-GCC performs compilation in four sequential stages: preprocessing, compilation proper, assembly, and linking. We will illustrate these four stages by following the journey of a C program from source code to executable. The program we will use is a simple program that calculates the area of a circle given its circumference. It consists of three files: main.c, circle.c, and circle.h. Their source code is written below.&#x20;
+GCC performs compilation in four sequential stages: preprocessing, compilation proper, assembly, and linking. The purpose of this chapter is to provide a detailed overview of each of these stages. We will illustrate these four stages by following the journey of a C program from source code to executable. The program we will use is a simple program that calculates the area of a circle given its circumference. It consists of three files: main.c, circle.c, and circle.h. Their source code is written below.&#x20;
 
 {% code title="main.c" lineNumbers="true" %}
 ```c
@@ -62,6 +62,8 @@ Suppose we compile our program with the following command:
 gcc main.c circle.c -o circle
 ```
 
+GCC will compile the program in the following manner:
+
 * **Preprocessing**: The compilation journey begins with main.c and circle.c being sent to the preprocessor, which is a program that essentially prepares the source files for compilation. It does this by removing comments and responding to preprocessor directives--lines in the code that begin with the # (hash) character. For example, \<fill in>. The result of preprocessing is two files: main.i and circle.i. The preprocessor sends main.i and circle.i to the compiler.&#x20;
 * **Compilation**: Next, the compiler translates `main.i` and `circle.i` into assembly language, which are stored in main.s and circle.s. Assembly language is essentially a human-readable form of machine language.
 * **Assembly**: The assembler converts assembly code in main.s and circle.s to object code, storing the result in main.o and circle.o. These files contain machine code but aren't yet executable due to external references and/or absence of a main function. For example, circle.o lacks a main function, and main.o contains references to calculateArea and library functions (such as printf and scanf), al of which are external to main.o.
@@ -73,13 +75,15 @@ This process, summarized in Figure 1, resembles an assembly line. Our C program,
 
 ### Saving preprocessed, compiled, and assembled versions
 
-gcc -o hello hello.c --save-temps
+By default, GCC stores the preprocessed, compiled, and assembled versions of the program in temporary files, which are discarded. As such, all you'll see is the executable. However, you can instruct GCC to save the preprocessed output by using the -save--temps option. To save the the intermediate outputs for main.c and circle.c, invoke gcc like so:
 
-This command will generate the following files in addition to the executable hello:
+```bash
+gcc main.c circle.c --save-temps -o circle
+```
 
-* hello.i: The result of the preprocessing stage.
-* hello.s: The assembly code generated from the C source.
-* hello.o: The object file generated from the assembly code.
+If you examine your directory contents with ls, you'll see the following
+
+
 
 ### Isolating Each Stage of Compilation
 
