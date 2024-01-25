@@ -16,47 +16,47 @@ If you get the message: `error: bash is not your login shell`, you must revisit 
 
 ```bash
 {
-    # If the login shell is not /bin/bash, print an error message
+    # If the login shell is not bash, prints an error message
     if [ "$SHELL" != "/bin/bash" ]; then
         echo "Error: bash is not your login shell"
     else
-        # Copy the .bash_profile file from the /u/cos217/ directory 
+        # Copies the .bash_profile file from the /u/cos217/ directory 
         # to the user's home directory (~)
         \cp /u/cos217/.bash_profile ~/
 
-        # Copy the .bashrc file from the /u/cos217/ directory to the 
+        # Copies the .bashrc file from the /u/cos217/ directory to the 
         # user's home directory (~)
         \cp /u/cos217/.bashrc ~/
 
-        # Copy the .emacs file from the /u/cos217/ directory to the 
+        # Copies the .emacs file from the /u/cos217/ directory to the 
         # user's home directory (~)
         \cp /u/cos217/.emacs ~/
 
-        # Copy the .splintrc file from the /u/cos217/ directory to the 
+        # Copies the .splintrc file from the /u/cos217/ directory to the 
         # user's home directory (~)
         \cp /u/cos217/.splintrc ~/
 
-        # Prompt the user to enter their name and store it in the 
+        # Prompts the user to enter their name and store it in the 
         # "name" variable
         read -p "Enter your name: " name
 
-        # Prompt the user to enter their email address and store it in 
+        # Prompts the user to enter their email address and store it in 
         # the "email" variable
         read -p "Enter your email address: " email
         
-        # Configure Git with the user's name
+        # Configures Git with the user's name
         git config --global user.name "$name"
 
-        # Configure Git with the user's email address
+        # Configures Git with the user's email address
         git config --global user.email "$email"
 
-        # Configure Git to use Emacs as the default text editor
+        # Configures Git to use Emacs as the default text editor
         git config --global core.editor emacs
 
-        # Configure Git to enable colored output
+        # Configures Git to enable colored output
         git config --global color.ui auto
 
-        # Start a new instance of the Bash shell
+        # Starts a new instance of the Bash shell
         exec bash
     fi
 }
