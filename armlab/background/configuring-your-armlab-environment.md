@@ -1,6 +1,6 @@
 # Configuring your armlab Environment
 
-The first time you log into armlab, you will need to configure your environment. To do so, copy the following block and paste it into armlab. At this early stage of the semester you are not expected to understand the specifics of what this does. However, a commented version of the code block is provided below to give you a high-level overview of what it does.
+The first time you log into armlab, you will need to configure your environment. To do so, copy the following code block and paste it into armlab. At this early stage of the semester you are not expected to understand the specifics of how this code block works. However, if you're interested in having a high-level understanding, a commented version of the code block is provided below. &#x20;
 
 {% code overflow="wrap" %}
 ```bash
@@ -8,7 +8,7 @@ The first time you log into armlab, you will need to configure your environment.
 ```
 {% endcode %}
 
-If you get the message: `error: bash is not your login shell`, you must revisit [Activating Your armlab Account](activating-your-armlab-account.md) and complete step 2. If your shell is configured correctly, you will be prompted to enter your name and email address. This information will be used for Git configurations.
+If you get the message: `error: bash is not your login shell`, you must revisit [Activating Your armlab Account](activating-your-armlab-account.md) and complete step 2. Otherwise, you will be prompted to enter your name and email address. This information will be used to configure Git.
 
 <details>
 
