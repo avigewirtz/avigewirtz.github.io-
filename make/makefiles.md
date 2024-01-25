@@ -27,8 +27,7 @@ intmath.o: intmath.c intmath.h
 
     * **Target**: The file that the rule produces.
     * **Dependencies**: The files needed to build the target.
-    * **Command**: The command that `make` will execute to generate the target.\
-
+    * **Command**: The command that `make` will execute to generate the target.
 
 {% hint style="danger" %}
 The first character of the line with the command must be an actual tab character (ASCII character 9). Cryptic error for failing to do so:
@@ -40,7 +39,7 @@ The first character of the line with the command must be an actual tab character
 
 
 
-Let's go over the first rule in detail. &#x20;
+Let's go over the first rule in our makefile detail. &#x20;
 
 {% code title="Rule 1" %}
 ```make
@@ -52,6 +51,7 @@ testintmath: testintmath.o intmath.o
 * **Target**: `testintmath`
 * **Dependencies**: `testintmath.o`, `intmath.o`
 * **Command**: `gcc217 testintmath.o intmath.o -o testintmath`
-* **Explanation**: This rule states that the executable `testintmath` depends on two object files: `testintmath.o` and `intmath.o`. The command to create `testintmath` is a call to the compiler `gcc217` to link these two object files. The `-o testintmath` part of the command specifies the output file name for the linked executable. This rule is triggered when either `testintmath.o` or `intmath.o` is newer than the `testintmath` executable, or when the executable does not exist.
+
+This rule states that the executable `testintmath` depends on two object files: `testintmath.o` and `intmath.o`. The command on will be triggered if either `testintmath.o` or `intmath.o` is newer than `testintmath`, or if `testintmath` does not exist.
 
 \
