@@ -1,6 +1,6 @@
 # User Interface
 
-A user interface defines the mechanism through which users interact with computers, enabling them to issue commands and perform various tasks. There are two primary types of user interfaces: the _graphical user interface (GUI),_ and the _command-line interface (CLI)_. Each type has distinct characteristics and benefits.
+A user interface defines the mechanism through which a user interacts with a computer, enabling them to issue commands and perform various tasks. There are two primary types of user interfaces: the _graphical user interface (GUI),_ and the _command-line interface (CLI)_. Each type has distinct characteristics and benefits.
 
 ### Graphical User Interface
 
