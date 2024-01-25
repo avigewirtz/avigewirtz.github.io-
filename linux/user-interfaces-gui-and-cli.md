@@ -1,4 +1,4 @@
-# User Interface
+# User Interface: GUI & CLI
 
 A _user interface_ defines the mechanism through which a user interacts with a computer, enabling them to issue commands and perform various tasks. There are two primary types of user interfaces: the _graphical user interface (GUI),_ and the _command-line interface (CLI)_. Each type has distinct characteristics and benefits.
 
@@ -8,7 +8,7 @@ The GUI is the default interface on macOS and Windows. In a GUI, users issue com
 
 ### Command Line Interface
 
-The CLI is a text-based interface where users issue commands by typing sequences of text. To picture a CLI, think of it as interacting with a computer via a text messaging interface. Despite its more primitive nature, CLIs can perform every action a GUI can--even more, in fact. The difference lies in only how the commands are issued by the user.
+The CLI is a text-based interface where users issue commands by typing sequences of text in a [terminal](terminal.md). To picture what's it like to use the CLI, you can think of it as interacting with a computer via a text messaging interface. Despite the CLI's more primitive nature than the GUI, the CLI can perform every action a GUI can--even more, in fact. The difference lies in only how the commands are issued by the user.
 
 Let's consider a couple of examples to highlight the distinction:
 
