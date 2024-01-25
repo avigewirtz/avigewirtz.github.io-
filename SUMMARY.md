@@ -16,7 +16,7 @@
 ## Linux
 
 * [Background](linux/background.md)
-* [User Interface](linux/user-interfaces-gui-and-cli.md)
+* [User Interface: GUI & CLI](linux/user-interfaces-gui-and-cli.md)
 * [Terminal](linux/terminal.md)
 * [Shell](linux/shell.md)
   * [Syntax of Shell Commands](linux/shell/syntax-of-shell-commands.md)
