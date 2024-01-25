@@ -125,9 +125,7 @@
 
 ## Make
 
-* [Background](make/background/README.md)
-  * [Dependencies](make/background/dependencies.md)
-  * [Build Automation](make/background/build-automation.md)
+* [Background](make/background.md)
 * [Makefiles](make/makefiles.md)
 
 ## Gprof
