@@ -1,6 +1,28 @@
 # Makefiles
 
-makefile is essentially a textual representation of a dependency graph. &#x20;
+A makefile is essentially a textual representation of a dependency graph.  It consists of rules. A rule typically has the following syntax:
+
+```
+target: dependencies
+<tab> command
+```
+
+In most cases, target is the file that the rule builds, dependencies are the files needed to build the target, and command is the command that make will execute to build the target.  For example, in the following rule:
+
+```
+intmath.o: intmath.c intmath.h
+  gcc217 -c intmath.c
+```
+
+the target is intmath.o, the command is gcc217 -c intmath.c, and the dependencies...
+
+{% hint style="danger" %}
+One of the most common errors in writing Makefiles is prefixing the command with spaces (ASCII character 32) instead of a tab (ASCII character 9). This can happen when editing a Makefile in a text editor that automatically converts tabs to spaces. This will lead to the following error:
+
+```
+   *** missing separator.  Stop.
+```
+{% endhint %}
 
 Here’s a simple makefile for our testintmath program:
 
@@ -17,25 +39,9 @@ intmath.o: intmath.c intmath.h
 ```
 {% endcode %}
 
-* contains 3 groups of lines
-*   each group is known as a rule. Each rule consists of a target, its dependencies, and a command to create the target from those dependencies. The format is as follows:
 
-    ```
-    target: dependencies
-    <tab> command
-    ```
 
-    * **Target**: The file that the rule produces.
-    * **Dependencies**: The files needed to build the target.
-    * **Command**: The command that `make` will execute to generate the target.
 
-{% hint style="danger" %}
-The first character of the line with the command must be an actual tab character (ASCII character 9). Cryptic error for failing to do so:
-
-```
-   *** missing separator.  Stop.
-```
-{% endhint %}
 
 
 
