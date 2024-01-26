@@ -34,4 +34,10 @@ make will check if the file "sayHello" exists, and since it won’t find it, it 
 make sayHello
 ```
 
-as many times as we like, and the effect will be that every time we invoke it, `echo "hello world"` will be executed.&#x20;
+as many times as we like, and the effect will be that every time we invoke it, `echo "hello world"` will be executed. Targets that do not represent files are called _phony_ targets.&#x20;
+
+## Common phony targets
+
+There are three phony targets that are common in makefiles: all, clean, and clobber.&#x20;
+
+all
