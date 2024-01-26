@@ -126,7 +126,8 @@
 ## Make
 
 * [Background](make/background.md)
-* [Makefiles](make/makefiles.md)
+* [Makefiles](make/makefiles/README.md)
+  * [Phony targets](make/makefiles/phony-targets.md)
 
 ## Gprof
 
