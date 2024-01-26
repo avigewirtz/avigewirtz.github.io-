@@ -22,7 +22,7 @@ sayHello:
     echo "Hello there!"
 ```
 
-Where sayHello does not represent an existing file, nor would it be created via the rule's command, `echo "Hello there!"`. make will treat this like any other rule. Thus, if we invoke:
+even though sayHello does not represent a file that will be built via the rule's command, `echo "Hello there!"`. Thus, if we invoke:
 
 ```
 make sayHello
