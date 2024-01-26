@@ -6,7 +6,7 @@ This guide is specifically designed for students currently enrolled in _COS217: 
 
 ### Computing Environment
 
-All code examples in this guide have been executed on Princeton's Armlab computer, which runs on the Red Hat Linux distribution. While these examples are anticipated to function on other Unix-like operating systems, including macOS, minor variations may occur.
+All code examples in this guide have been executed on Princeton's Armlab computer, which runs on the Red Hat Linux distribution. While these examples are anticipated to function on other Unix-like operating systems, such as macOS, minor variations may occur.
 
 ## Conventions used
 
