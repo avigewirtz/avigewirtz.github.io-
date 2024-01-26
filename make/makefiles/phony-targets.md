@@ -7,11 +7,13 @@ intmath.o: intmath.c intmath.h
   gcc217 -c intmath.c
 ```
 
-intmath.o represents a file, which is created (or updated) when the command `gcc217 -c intmath.c` is executed. We can trigger this rule by invoking:
+intmath.o represents a file, which is built when the command `gcc217 -c intmath.c` is executed. We can trigger this rule by invoking:
 
 ```
 make intmath.o
 ```
+
+which will build intmath.o if it does not exist or if it's not up to date with its dependencies.&#x20;
 
 An interesting feature of make is that the target does not have to represent a file. For example, we can create the following rule:
 
