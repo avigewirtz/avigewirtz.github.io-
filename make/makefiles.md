@@ -54,4 +54,8 @@ testintmath: testintmath.o intmath.o
 
 This rule states that the executable `testintmath` depends on two object files: `testintmath.o` and `intmath.o`. The command on will be triggered if either `testintmath.o` or `intmath.o` is newer than `testintmath`, or if `testintmath` does not exist.
 
+
+
+<figure><img src="../.gitbook/assets/Screenshot 2024-01-25 at 7.23.18 PM (2).png" alt=""><figcaption></figcaption></figure>
+
 \
