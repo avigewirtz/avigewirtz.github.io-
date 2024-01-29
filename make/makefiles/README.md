@@ -1,6 +1,6 @@
 # Makefiles
 
-To use Make, you need to create a file in your project directory called a makefile, which tells make how to build your program. You can think of it like a textual representation of a dependency graph. You can name it _makefile_ or _Makefile_ (or even _GNUMakefile_, if you're using GNU Make). GNU recommends naming it Makefile.&#x20;
+To use Make to build a program, you need to create a file in your project directory called a makefile, which is essentially a textual representation of your program's dependency graph that tells make how to compile and link your program. You can name your makefile _makefile_ or _Makefile_ (or even _GNUMakefile_, if you're using GNU Make). GNU recommends Makefile.&#x20;
 
 A makefile primarily consists of _rules_, which typically have the following syntax:&#x20;
 
@@ -11,38 +11,19 @@ target: dependencies
 
 Let's break this down:
 
-* **target**: the name of the file you want to build.&#x20;
-* **dependencies**: the files that are needed to build the target.&#x20;
-* **command**: the command to build the executable. Note that the command must be preceded by a tab character.&#x20;
-
-The point of a rule is to tell make whether or not a file has to be built, and if so, how. Let's demonstrate how it works with a simple example:&#x20;
-
-```
-intmath.o: intmath.c intmath.h
-  gcc -c intmath.c
-```
-
-In this rule, the target file is intmath.o, the dependencies are intmath.c and intmath.h, and the command is `gcc -c intmath.c`. First, make has to determine whether intmath.o has to be built. If one of the following two conditions is true, then the answer is yes:
-
-1. intmath.o does not exist
-2. intmath.o does exist, but intmath.c or intmath.h are "newer" than intmath.o (i.e., have a newer modification timestamp than intmath.o).&#x20;
-
-If intmath.o needs to be built, make executes the gcc -c intmath.c, which builds intmath.o.
+* **target**: the name of a file you want to build. Typically an object file (.o) or an executable.&#x20;
+* **dependencies**: the files that are needed to build the target. Typically object files or source files (.c or .h).&#x20;
+* **command**: the command make executes to build the target file. Note that the command must be preceded by a tab character.&#x20;
 
 {% hint style="danger" %}
-One of the most common errors in writing Makefiles is using spaces (ASCII character 32) before the command instead of a tab (ASCII character 9). This can also happen when editing a Makefile in a text editor that automatically converts tabs to spaces. This will lead to the following error:
+One of the most common errors in writing Makefiles is using spaces (ASCII character 32) before the command instead of a tab (ASCII character 9). This will lead to the following error:
 
-```
-   *** missing separator.  Stop.
-```
+&#x20;  \*\*\* missing separator.  Stop.
 {% endhint %}
 
-#### Makefile for testintmath
+The purpose of a rule is to tell make whether or not a file has to be built, and if so, how to build it. A makefile typically has a rule for each object file and a rule for the final executable file. Let's demonstrate how makefiles work by jumping right in and creating a simple but complete makefile for our testintmath program:&#x20;
 
-Let's jump right in and create a simple but complete makefile for our testintmath program:
-
-{% code title="makefile " lineNumbers="true" %}
-```makefile
+```
 testintmath: testintmath.o intmath.o
   gcc testintmath.o intmath.o –o testintmath
   
@@ -52,15 +33,30 @@ testintmath.o: testintmath.c intmath.h
 intmath.o: intmath.c intmath.h
   gcc -c intmath.c
 ```
-{% endcode %}
 
-* make starts by processing the first rule. In the example, this rule is for building testintmath.&#x20;
+Our makefile consists of three rules: one for building the executable testintmath, one for building the object file testintmath.o, and one for building the object file intmath.o. testintmath depends on two object files, each of which in turn depends on two source files.
 
-We can run this makefile&#x20;
+#### Running our makefile
 
-In this makefile, intmath.o and testintmath.o are both targets and dependencies.&#x20;
+To run our makefile, we use the `make` command in the terminal, followed by the name of the target we want to build. To build `testintmath`, we invoke:
 
-Before it can build `testintmath`, `make` must first process the object files it depends on - `testintmath.o` and `intmath.o`. Each object file has its own rule that instructs `make` to compile it from its respective source file, but only if the source or header files have been updated or if the object file doesn't already exist.
+```
+make testintmath
+```
+
+Alternatively, we can just invoke `make` without specifying a target:
+
+```
+make
+```
+
+Since if no target is specified, make will default to the first target in the makefile, which in our case is testintmath.&#x20;
+
+
+
+
+
+
 
 
 
@@ -72,18 +68,16 @@ Before it can build `testintmath`, `make` must first process the object files it
 
 ### Our makefile in Action
 
-Let's examines what happens the first time we invoke the makefilefirst time
+<figure><img src="../../.gitbook/assets/Group 19 (1).png" alt=""><figcaption></figcaption></figure>
 
+<figure><img src="../../.gitbook/assets/Group 20.png" alt=""><figcaption></figcaption></figure>
 
-
-Invoking make again:
-
-modifying intmath.c and invoking make:
-
-
+<figure><img src="../../.gitbook/assets/Group 22.png" alt=""><figcaption></figcaption></figure>
 
 ## other points i want to make:
 
 * comments&#x20;
 * rule can have multiple commands and can have more than one target. won't cover that here
+* order isn't important, besides for first
+* doesn't process all rules. only ones&#x20;
 
