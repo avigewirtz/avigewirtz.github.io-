@@ -12,7 +12,7 @@ target: dependencies
 Let's break this down:
 
 * **target**: the name of the file you want to build.&#x20;
-* **dependencies**: the files that are needed to build the executable.
+* **dependencies**: the files that are needed to build the target.&#x20;
 * **command**: the command to build the executable. Note that the command must be preceded by a tab character.&#x20;
 
 The point of a rule is to tell make whether or not a file has to be built, and if so, how. Let's demonstrate how it works with a simple example:&#x20;
@@ -39,7 +39,7 @@ One of the most common errors in writing Makefiles is using spaces (ASCII charac
 
 #### Makefile for testintmath
 
-Let's jump right in and create a simple but complete makefile for our program testintmath:
+Let's jump right in and create a simple but complete makefile for our testintmath program:
 
 {% code title="makefile " lineNumbers="true" %}
 ```makefile
@@ -54,9 +54,15 @@ intmath.o: intmath.c intmath.h
 ```
 {% endcode %}
 
-* our makefile has three rules
+* make starts by processing the first rule. In the example, this rule is for building testintmath.&#x20;
 
-## Running a makefile
+We can run this makefile&#x20;
+
+In this makefile, intmath.o and testintmath.o are both targets and dependencies.&#x20;
+
+Before it can build `testintmath`, `make` must first process the object files it depends on - `testintmath.o` and `intmath.o`. Each object file has its own rule that instructs `make` to compile it from its respective source file, but only if the source or header files have been updated or if the object file doesn't already exist.
+
+
 
 
 
