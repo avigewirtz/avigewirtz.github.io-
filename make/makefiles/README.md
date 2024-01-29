@@ -1,6 +1,6 @@
 # Makefiles
 
-To use Make, you create a file in your project directory called a makefile, which tells make how to build your program. You can name this file _makefile_ or _Makefile_ (or even _GNUMakefile_, if you're using GNU Make). GNU recommends naming it Makefile.&#x20;
+To use Make, you need to create a file in your project directory called a makefile, which tells make how to build your program. You can think of it like a textual representation of a dependency graph. You can name it _makefile_ or _Makefile_ (or even _GNUMakefile_, if you're using GNU Make). GNU recommends naming it Makefile.&#x20;
 
 A makefile primarily consists of _rules_, which typically have the following syntax:&#x20;
 
@@ -9,18 +9,25 @@ target: dependencies
 <tab> command
 ```
 
-where target
+Let's break this down:
 
-Let's demonstrate how this works in practice by means of a simple example:
+* **target**: the name of the file you want to build.&#x20;
+* **dependencies**: the files that are needed to build the executable.
+* **command**: the command to build the executable. Note that the command must be preceded by a tab character.&#x20;
+
+The point of a rule is to tell make whether or not a file has to be built, and if so, how. Let's demonstrate how it works with a simple example:&#x20;
 
 ```
-hello: hello.c
-    gcc hello.c -o hello
+intmath.o: intmath.c intmath.h
+  gcc -c intmath.c
 ```
 
-hello is the target, which needs to be built if either it does not exist, or if it does exist but is older than hello.c.&#x20;
+In this rule, the target file is intmath.o, the dependencies are intmath.c and intmath.h, and the command is `gcc -c intmath.c`. First, make has to determine whether intmath.o has to be built. If one of the following two conditions is true, then the answer is yes:
 
+1. intmath.o does not exist
+2. intmath.o does exist, but intmath.c or intmath.h are "newer" than intmath.o (i.e., have a newer modification timestamp than intmath.o).&#x20;
 
+If intmath.o needs to be built, make executes the gcc -c intmath.c, which builds intmath.o.
 
 {% hint style="danger" %}
 One of the most common errors in writing Makefiles is using spaces (ASCII character 32) before the command instead of a tab (ASCII character 9). This can also happen when editing a Makefile in a text editor that automatically converts tabs to spaces. This will lead to the following error:
@@ -30,33 +37,9 @@ One of the most common errors in writing Makefiles is using spaces (ASCII charac
 ```
 {% endhint %}
 
+#### Makefile for testintmath
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Here’s a simple makefile for our testintmath program:
+Let's jump right in and create a simple but complete makefile for our program testintmath:
 
 {% code title="makefile " lineNumbers="true" %}
 ```makefile
@@ -71,16 +54,17 @@ intmath.o: intmath.c intmath.h
 ```
 {% endcode %}
 
-## Running makefile
+* our makefile has three rules
 
-* invoke make by typing make TARGET
-* if target is ommited, will defualt to first target
-
+## Running a makefile
 
 
 
 
-### makefile in Action
+
+
+
+### Our makefile in Action
 
 Let's examines what happens the first time we invoke the makefilefirst time
 
@@ -96,5 +80,4 @@ modifying intmath.c and invoking make:
 
 * comments&#x20;
 * rule can have multiple commands and can have more than one target. won't cover that here
-* makefile names&#x20;
 
