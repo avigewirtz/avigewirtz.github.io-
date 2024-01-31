@@ -16,7 +16,7 @@ sayHello:
     echo "Hello there!" 
 ```
 
-The target is 'sayHello', it contains no dependencies (which is perfectly valid), and the command is `echo "Hello there!"`. Note that we have no file in our directory named 'sayHello', and the command `echo "hello there"` does not create such a file. What would happen if were to add this rule to our makefile and invoke `make sayHello` on the command line? Let's try it out:
+The target is 'sayHello', it contains no dependencies (which is perfectly valid), and the command is `echo "Hello there!"`. However, we have no file in our directory named 'sayHello', and the command `echo "hello there"` does not create such a file. What would happen if were to add this rule to our makefile and invoke `make sayHello` on the command line? Let's try it out:
 
 ```bash
 $ make sayHello
