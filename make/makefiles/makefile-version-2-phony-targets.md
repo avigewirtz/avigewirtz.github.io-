@@ -16,7 +16,7 @@ sayHello:
     echo "Hello there!" 
 ```
 
-The target is 'sayHello' and the command is `echo "Hello there!"`. We have no file in our directory named sayHello, and the command `echo "hello there"` does not create such a file. What would happen if we add this rule to our makefile and invoke `make sayHello` on the command line? Let's try it out:
+The target is 'sayHello', it contains no dependencies (which is perfectly valid), and the command is `echo "Hello there!"`. Note that we have no file in our directory named 'sayHello', and the command `echo "hello there"` does not create such a file. What would happen if were to add this rule to our makefile and invoke `make sayHello` on the command line? Let's try it out:
 
 ```bash
 $ make sayHello
@@ -26,7 +26,7 @@ Hello there!
 
 As you can see, this causes the command `echo "Hello there!"` to be executed, printing 'Hello there!' on stdout.&#x20;
 
-How it works is, make checks if a file named 'sayHello' exists. Because it does not, make executes the command echo "Hello there!". But because a file name sayHello will never be created, every time you invoke make sayHello, the command will be executed. For example, here we invoke make sayHello three times:&#x20;
+How it works is, make checks if a file named 'sayHello' exists. Because it does not, make executes the command echo "Hello there!". But because a file named 'sayHello' was not created, we can invoke make sayHello as many times as we'd like on the command line, and `echo "Hello there!"` will be executed every time. For example, let's invoke `make sayHello` three times:
 
 ```bash
 $ make sayHello
@@ -39,6 +39,10 @@ $ make sayHello
 echo "Hello there!"
 Hello there!
 ```
+
+
+
+In other words, sayHello serves as a label for a command we want make to execute. Such a target is called a phony target.&#x20;
 
 As this example hopefully demonstrates, the purpose of a phony target is to serve as a label for a command you want make to execute. Of course, enabling make to execute echo "Hello there!" is not particulurly useful. Let's not update our makefile with a few standard phony targets, which we'll explain in detail:&#x20;
 
