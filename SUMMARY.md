@@ -127,7 +127,7 @@
 
 * [Background](make/background.md)
 * [Makefiles](make/makefiles/README.md)
-  * [Makefile version 1](make/makefiles/makefile-version-1.md)
+  * [Makefile Version 1: Basic](make/makefiles/makefile-version-1-basic.md)
   * [Makefile Version 2: Phony targets](make/makefiles/makefile-version-2-phony-targets.md)
   * [Makefile Version 3: Macros](make/makefiles/makefile-version-3-macros.md)
 

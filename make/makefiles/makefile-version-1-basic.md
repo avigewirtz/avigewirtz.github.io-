@@ -1,4 +1,4 @@
-# Makefile version 1
+# Makefile Version 1: Basic
 
 Let's now construct a simple but complete makefile that leverages the benefits of partial builds. To effectively draft this makefile, it's helpful to visualize the dependency graph. As a point of reference, the dependency graph for "testintmath" is illustrated in Figure 1.
 
@@ -48,6 +48,22 @@ testintmath.o: testintmath.c intmath.h
 intmath.o: intmath.c intmath.h
      gcc -c intmath.c
 ```
+
+## Running a makefile
+
+To run a makefile, we use the `make` command in the terminal, followed by the name of the target we want to build. To build `testintmath`, we invoke:
+
+```
+make testintmath
+```
+
+Alternatively, to build testintmath we can invoke `make` without specifying a target:
+
+```
+make
+```
+
+Since if no target is specified, make will default to the first target in the makefile, which in our case is testintmath.&#x20;
 
 ### Our makefile in Action
 
