@@ -15,7 +15,7 @@ intmath.o: intmath.c intmath.h
 
 In this rule, `$(CC)` will be replaced by `gcc217` when the Makefile is processed. This means the command executed will be `gcc217 -c intmath.c`.
 
-Let's now update our makefile by taking advantage of macros:&#x20;
+The addition of macros leads to version 3 of our makefile:&#x20;
 
 {% code title="makefile version 3" lineNumbers="true" %}
 ```makefile
