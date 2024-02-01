@@ -9,14 +9,14 @@ intmath.o: intmath.c intmath.h
 
 The target is intmath.o, which is built when `gcc217 -c intmath.c` is executed.&#x20;
 
-A useful feature of make is that a rule's target need not actually represent a file. For example, consider the following rule:
+Make offers a flexible feature where the target doesn't actually have to represent a file. Instead, it can represent a label for a command you want make to execute. For example, consider the following rule:
 
 ```
 sayHello:
     echo "Hello there!" 
 ```
 
-The target is 'sayHello', it contains no dependencies (which is perfectly valid), and the command is `echo "Hello there!"`. However, we have no file in our directory named 'sayHello', and the command `echo "hello there"` does not create such a file. What would happen if were to add this rule to our makefile and invoke `make sayHello` on the command line? Let's try it out:
+where the target, sayHello, does not represent a file in our directory, and the command `echo "hello there"` does not create such a file. If we were to invoke this rule on the command line, the effect would be that echo "Hello there!" would be executed, printing Hello there! on stdout:&#x20;
 
 ```bash
 $ make sayHello
@@ -24,7 +24,7 @@ echo "Hello there!"
 Hello there!
 ```
 
-As you can see, this causes the command `echo "Hello there!"` to be executed, printing 'Hello there!' on stdout.&#x20;
+
 
 How it works is, make checks if a file named 'sayHello' exists. Because it does not, make executes the command echo "Hello there!". But because a file named 'sayHello' was not created, we can invoke make sayHello as many times as we'd like on the command line, and `echo "Hello there!"` will be executed every time. For example, let's invoke `make sayHello` three times:
 
