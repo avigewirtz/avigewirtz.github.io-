@@ -14,7 +14,7 @@ sayHello:
     echo "Hello there!" 
 ```
 
-The target, sayHello, does not represent a file in our directory, and the command `echo "hello there"` does not create such a file. If we were to invoke this rule on the command line, the effect would be that `echo "Hello there!"` would be executed, printing 'Hello there!' on stdout:&#x20;
+The target, sayHello, does not represent a file in our directory, and the command `echo "hello there"` does not create such a file. If we were to invoke this rule on the command line, the effect would be that `echo "Hello there!"` would be executed:&#x20;
 
 ```bash
 $ make sayHello
@@ -22,7 +22,9 @@ echo "Hello there!"
 Hello there!
 ```
 
-Here's how it works: Make checks for a file named 'sayHello'. Since it doesn't find one, it runs the command `echo "Hello there!"`. Because this command doesn't create a file named 'sayHello', we can run `make sayHello` as many times as we like, and each time, Make will execute `echo "Hello there!"`, displaying the message again. For instance, if we execute `make sayHello` three times in a row, we'll get 'Hello there!' printed three times:
+Here's how it works: Make checks for a file named 'sayHello' in the current directory. Since it doesn't find one, it runs the command `echo "Hello there!"`.&#x20;
+
+Because this command doesn't create a file named 'sayHello', we can run `make sayHello` as many times as we like, and each time, Make will execute `echo "Hello there!"`, displaying the message again. For instance, if we execute `make sayHello` three times in a row, we'll get 'Hello there!' printed three times:
 
 ```bash
 $ make sayHello
@@ -57,7 +59,7 @@ intmath.o: intmath.c intmath.h
 
 #### Clean
 
-clean is used to delete the files that were generated during the build process, "cleaning up" your project directory. Its command, `rm -f testintmath *.o`, removes the executable _testintmath_ as well as all files in the current directory with the _.o_ extension (i.e., object files). To trigger this rule, simply invoke:&#x20;
+This rule "cleans" the project directory by deleting all the files that were generated during the build process. Its command, `rm -f testintmath *.o`, removes the executable _testintmath_ as well as all files in the current directory with the _.o_ extension (i.e., object files). To trigger this rule, simply invoke:&#x20;
 
 ```
 make clean
@@ -65,16 +67,16 @@ make clean
 
 #### Clobber
 
-clobber extends the functionality `clean` by also deleting Emacs backup and autosave files. In `rm -f *~ \#*\#`,  `*~` specifies all files in the current directory that end with a \~ (tilde), and `\#*\#` specifies all files in the current directory that start and end with a # (hash).
+clobber extends the functionality `clean` by also deleting Emacs backup and autosave files. `*~` specifies all files in the current directory that end with a \~ (tilde), and `\#*\#` specifies all files in the current directory that start and end with a # (hash).
 
 #### All
 
-The `all` target is often the default goal in many Makefiles, used to build the complete project. When you invoke `make` or `make all`, it triggers the build of `testintmath`, along with any other dependencies specified under this target. It's a common practice to list all primary build targets under `all`.
+The `all` target is often the default goal in many Makefiles, used to build the complete project. When you invoke `make` or `make all`, it triggers the build of `testintmath`, along with any other dependencies specified under this target. It's common practice to list all primary build targets under `all`.
 
 {% hint style="info" %}
-You might be wondering, "Why not just use `testintmath` directly like we did before? What's the point of `all`?" Truthfully, in our specific example, there isn't a difference. `all` doesn't add much here, except maybe for the fact that many users are used to typing `make all` out of habit, as it's a pretty standard practice.
+You might be wondering, "Why not just use `testintmath` directly like we did before? What's the point of `all`?" Truthfully, in our specific example, there isn't much of a benefit by adding `all`, except perhaps that it accommodates users who are used to typing `make all` out of habit, as it's a pretty standard practice.
 
-But the real purpose of `all` shows up when you have multiple independent targets that you want to build with just one invocation of make. Imagine you're working on a project with two separate programs, say `hello1` and `hello2`. You can set up your Makefile like this:
+But the real purpose of `all` shows up when you have multiple independent targets that you want to build via a single invocation of make. Imagine you're working on a project with two separate programs, say`hello1` and `hello2`. You can set up your Makefile like this:
 
 ```
 all: hello1 hello2
@@ -92,5 +94,5 @@ hello2.o: hello2.c
 	gcc -c hello2.c
 ```
 
-In this scenario, both `hello1` and `hello2` are linked to the `all` target. So, when you run `make`, it automatically compiles both `hello1` and `hello2`. This is way more convenient than having to run `make hello1` and then `make hello2` separately.
+In this scenario, since both `hello1` and `hello2` are linked to the `all` target, running make will build both executables. This is more convenient than having to run `make hello1` and `make hello2` separately.
 {% endhint %}
