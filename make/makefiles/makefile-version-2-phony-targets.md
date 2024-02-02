@@ -14,7 +14,7 @@ sayHello:
     echo "Hello there!" 
 ```
 
-The target, sayHello, does not represent a file in our directory, and the command `echo "hello there"` does not create such a file. If we were to invoke this rule on the command line, the effect would be that `echo "Hello there!"` would be executed:&#x20;
+The target, sayHello, does not represent a file in our directory, and the command `echo "hello there"` does not create such a file. If we were to invoke this rule on the command line, make would look for a file in the current directory named 'sayHello,' and because it will not find one, it runs the command `echo "Hello there!"`.&#x20;
 
 ```bash
 $ make sayHello
@@ -22,9 +22,7 @@ echo "Hello there!"
 Hello there!
 ```
 
-Here's how it works: Make checks for a file named 'sayHello' in the current directory. Since it doesn't find one, it runs the command `echo "Hello there!"`.&#x20;
-
-Because this command doesn't create a file named 'sayHello', we can run `make sayHello` as many times as we like, and each time, Make will execute `echo "Hello there!"`, displaying the message again. For instance, if we execute `make sayHello` three times in a row, we'll get 'Hello there!' printed three times:
+Because this command will never create a file named 'sayHello', we can run `make sayHello` as many times as we like, and each time, Make will execute `echo "Hello there!"`, displaying the message again. For instance, if we execute `make sayHello` three times in a row, we'll get 'Hello there!' printed three times:
 
 ```bash
 $ make sayHello
