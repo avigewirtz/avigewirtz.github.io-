@@ -74,7 +74,7 @@ clobber extends the functionality `clean` by also deleting Emacs backup and auto
 The `all` target is often the default goal in many Makefiles, used to build the complete project. When you invoke `make` or `make all`, it triggers the build of `testintmath`, along with any other dependencies specified under this target. It's common practice to list all primary build targets under `all`.
 
 {% hint style="info" %}
-You might be wondering, "Why not just use `testintmath` directly like we did before? What's the point of `all`?" Truthfully, in our specific example, there isn't much of a benefit by adding `all`, except perhaps that it accommodates users who are used to typing `make all` out of habit, as it's a pretty standard practice.
+You might be wondering, "Why not just use `testintmath` directly like we did before? What's the point of `all`?" Truthfully, in our specific example, it doesn't add much benefit, except perhaps for accommodating users who are used to typing `make all` out of habit, as it's a pretty standard practice.
 
 But the real purpose of `all` shows up when you have multiple independent targets that you want to build via a single invocation of make. Imagine you're working on a project with two separate programs, say`hello1` and `hello2`. You can set up your Makefile like this:
 
