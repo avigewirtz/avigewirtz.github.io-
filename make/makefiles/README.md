@@ -20,3 +20,11 @@ One of the most common errors in writing Makefiles is preceding the command with
 
 &#x20;  \*\*\* missing separator.  Stop.
 {% endhint %}
+
+Dependency rule semantics
+
+•Build target if it doesn’t exist\
+• Rebuild target iff it is older than at least one of its dependencies&#x20;
+
+•Use command to do the build\
+•Work recursively; examples illustrate...

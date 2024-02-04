@@ -1,42 +1,26 @@
 # Makefile Version 1: Basic
 
-Let's now construct a simple but complete makefile that leverages the benefits of partial builds. To effectively draft this makefile, it's helpful to visualize the dependency graph. As a point of reference, the dependency graph for "testintmath" is illustrated in Figure 1.
-
-<figure><img src="../../.gitbook/assets/dependency_graph (1).png" alt=""><figcaption></figcaption></figure>
 
 
-
-To craft a proper makefile, we adhere to a few key principles. First, we must create a rule for each object file and the executable. Let's start off by creating three rules and filling in the targets:&#x20;
-
-```
-testintmath: dependencies
-    command
-
-testintmath.o: dependencies
-    command
-
-intmath.o: dependencies
-    command
-```
-
-For the dependencies, if you follow the following principles, filling them in will be quite easy. Each object file is dependent on its corresponding .c file and any .h files that are included, whether directly or indirectly, in the .c file. It is not dependent on any other .c or .o file. The executable is dependent on only the object files that form it. It is not dependent on any .c or .h file.&#x20;
-
-Looking at the dependency graph, we can easily see that intmath.o depends on intmath.c and intmath.h, and testintmath.o depends on testintmath.c and intmath.h. For the executable testintmath, its dependencies are intmath.o and testintmath.o. Filling in the dependencies, we get:
-
-```makefile
-testintmath: testintmath.o intmath.o
-     command
-
-testintmath.o: testintmath.c intmath.h
-     command
-
-intmath.o: intmath.c intmath.h
-     command
-```
-
-For the object file commands, recall the -c option, which instructs gcc to stop the build process before the linking stage. For the executabe, the command is the standard gcc comman with the -o option, which enables us to choose the executable filename. Because gcc is being invoked on .o files, it will perform only the linking stage. This leads to the following makefile:
+<figure><img src="../../.gitbook/assets/Group 28 (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 
+
+A makefile is essentially a textual representation of a dependency graph. Converting dependency graph to makefile:&#x20;
+
+1. **Executable Rule**:
+   * Target: `testintmath`
+   * Dependencies: `testintmath.o` and `intmath.o`
+   * Command: Link the object files to create the executable. Use `gcc testintmath.o intmath.o -o testintmath` to compile.
+2. **Object File Rules**:
+   * For `testintmath.o`:
+     * Target: `testintmath.o`
+     * Dependencies: `testintmath.c` and `intmath.h`
+     * Command: Compile the source file into an object file with `gcc -c testintmath.c`.
+   * For `intmath.o`:
+     * Target: `intmath.o`
+     * Dependencies: `intmath.c` and `intmath.h`
+     * Command: Compile the source file into an object file with `gcc -c intmath.c`.
 
 ```makefile
 testintmath: testintmath.o intmath.o
