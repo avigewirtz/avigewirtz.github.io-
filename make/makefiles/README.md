@@ -1,6 +1,6 @@
 # Makefiles
 
-To use Make to build a program, you need to create a file in your project directory called a makefile, which is essentially a textual representation of your program's dependency graph that tells make how and when to compile and link your program. A makefile can be named 'makefile' or 'Makefile' (or even 'GNUMakefile', if you're using GNU Make). GNU recommends 'Makefile'.&#x20;
+To use Make to build a program, you need to create a file in your project directory called a makefile, which is essentially a textual representation of your program's dependency graph that tells make how and when to compile and link your program. A makefile can be named 'makefile' or 'Makefile' (or even 'GNUmakefile', if you're using GNU Make). GNU recommends 'Makefile'.&#x20;
 
 A makefile primarily consists of _rules_, each of which tells make whether or not a file has to be built, and if so, how to build it. A rule typically has the following syntax:&#x20;
 
@@ -11,7 +11,7 @@ target: dependencies
 
 Let's break this down:
 
-* **target**: This is usually the file that the rule will build--typically an object file (`.o`) or an executable.
+* **target**: This is usually a file that the rule will build--typically an object file (`.o`) or an executable.
 * **dependencies**: These are the files needed to build the target. If the target is an executable, then the dependencies are typically object files. If the target is an object file, then the dependencies are typically C source (.c) and header (.h) files. &#x20;
 * **command**: the command that builds the target file. Note that the command must be preceded by a tab.&#x20;
 
