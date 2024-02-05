@@ -6,13 +6,14 @@
 
 
 
-A makefile is essentially a textual representation of a dependency graph. Converting dependency graph to makefile:&#x20;
+The transition from a dependency graph to a Makefile is intuitive and straightforward.
 
-1. **Executable Rule**:
+1. Create a rule for each object file and for the executable. In our dependency graph, they're circled in red.&#x20;
+2. **Executable Rule**:
    * Target: `testintmath`
    * Dependencies: `testintmath.o` and `intmath.o`
    * Command: Link the object files to create the executable. Use `gcc testintmath.o intmath.o -o testintmath` to compile.
-2. **Object File Rules**:
+3. **Object File Rules**:
    * For `testintmath.o`:
      * Target: `testintmath.o`
      * Dependencies: `testintmath.c` and `intmath.h`

@@ -1,30 +1,26 @@
 # Makefiles
 
-To use Make to build a program, you need to create a file in your project directory called a _makefile_, which is essentially a textual representation of your program's dependency graph that tells make how and when to compile and link your program. A makefile can be named 'makefile' or 'Makefile' (or even 'GNUmakefile', if you're using GNU Make). GNU recommends 'Makefile'.&#x20;
+To use Make to build a program, you need to create a file in your project directory called a _makefile_, which is essentially a textual representation of your program's dependency graph that tells make how and when to compile and link your program. You can name it 'makefile' or 'Makefile' (or even 'GNUmakefile', if you're using GNU Make). GNU recommends 'Makefile'.&#x20;
 
-A makefile primarily consists of _rules_, each of which tells make whether or not a file has to be built, and if so, how to build it. A rule typically has the following syntax:&#x20;
+A makefile primarily consists of _dependency_ _rules_, each of which tells make whether or not a file has to be built, and if so, how to build it. Dependency rules have the following syntax:&#x20;
 
 ```
 target: dependencies
 <tab> command
 ```
 
-Let's break this down:
+* **Target**: The file that the rule will build--typically an object (.o) or executable file.
+* **Dependencies**: The files that need to be up to date before the target can be correctly built. If the target is an executable, then the dependencies are typically object files. If the target is an object file, then the dependencies are typically source (.c) and header (.h) files.&#x20;
+*   **Command**: The command make executes to build the target. Note that the command must be preceded by a tab. One of the most common errors in writing Makefiles is preceding the command with spaces (ASCII character 32) instead of a tab (ASCII character 9). This will lead to the following error:
 
-* **Target**: This is usually a file that the rule will build--typically an object file (`.o`) or an executable.
-* **Dependencies**: These are the files needed to build the target. If the target is an executable, then the dependencies are typically object files. If the target is an object file, then the dependencies are typically C source (.c) and header (.h) files. &#x20;
-* **Command**: the command that builds the target file. Note that the command must be preceded by a tab.&#x20;
+    &#x20;  `*** missing separator.  Stop.`
 
-{% hint style="danger" %}
-One of the most common errors in writing Makefiles is preceding the command with spaces (ASCII character 32) instead of a tab (ASCII character 9). This can also happen if your text editor represents a tab as spaces. This will lead to the following error:
+Make builds the target file if it's older than any of its dependencies or if it does not exist. A makefile should contain a rule for the executable and for each object file.&#x20;
 
-&#x20;  \*\*\* missing separator.  Stop.
-{% endhint %}
+## Makefile for testintmath
 
-Dependency rule semantics
+The transition from a dependency graph to a Makefile is intuitive and straightforward. The dependency graph for testintmath is shown in figure 1.&#x20;
 
-•Build target if it doesn’t exist\
-• Rebuild target iff it is older than at least one of its dependencies&#x20;
 
-•Use command to do the build\
-•Work recursively; examples illustrate...
+
+<figure><img src="../../.gitbook/assets/Group 28 (1).png" alt="" width="563"><figcaption></figcaption></figure>

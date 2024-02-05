@@ -1,8 +1,6 @@
 # Background
 
-Simply put, `make` is a program that enables programmers to combine the efficiency of compiling only what is necessary with the convenience of not having to manually track which parts of the codebase have changed.
-
-Make is a dependency-tracking tool.&#x20;
+In this chapter, we will discuss the make tool. We'll start out by explaining the motivation for make, using the program testintmath as an example. We'll then explain how to build testintmath with make.&#x20;
 
 ## Motivation for Make
 
