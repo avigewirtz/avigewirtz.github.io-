@@ -125,7 +125,8 @@
 
 ## Make
 
-* [Background](make/background.md)
+* [Page](make/page.md)
+* [Motivation for Make](make/background.md)
 * [Makefiles](make/makefiles/README.md)
   * [Makefile Version 1: Basic](make/makefiles/makefile-version-1-basic.md)
   * [Makefile Version 2: Phony targets](make/makefiles/makefile-version-2-phony-targets.md)
