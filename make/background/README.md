@@ -54,27 +54,21 @@ gcc intmath.o testintmath.o -o testintmath
 
 Becuase both files have .o extensions, GCC deduces that no compilation is needed, and thus begins goes immediately to linking. Note that GCC will also link necessary files from the C standard library, such as the the files which contain the printf() and scanf() functions.&#x20;
 
+<figure><img src="../../.gitbook/assets/Group 28 (1).png" alt=""><figcaption></figcaption></figure>
+
 ### Rebuilding testintmath
 
+If we are to make changes to our program, our objective is to generate a new executable by recompiling the minimum necessary files. To do this accurately, we need to have a thorough understanding of the program's dependencies, which can be visualized using a dependency graph.
 
+In such a graph, each node represents a file, and directed edges (arrows) between these nodes indicate a dependency, where an edge from file A to file B signifies that B is dependent on A. In other words, a change in file A requires file B to be updated. A dependency graph for testintmath is shown in Figure 2.&#x20;
 
-Perhaps do dependency graph here
+&#x20;
 
-Suppose we make a change to intmath.c. To rebuild testintmath to incorporate the change, we only need to recompile intmath.c, and then we can link the updated intmath.o with the "old" testintmath.o to generate an updated executable. The process is identical if we were to make a change to only testintmath.c.&#x20;
-
-If we were to change intmath.h, however, the effect would be much more dramatic. Since both intmath.c and testintmath.c "include" intmath.h,&#x20;
-
-
-
-**Dependency Graph for `testintmath`**
-
-The dependencies of a program can be visually represented through a dependency graph. In such a graph, each node in the graph represents a file, and directed edges between these nodes indicate a dependency, where an edge from file A to file B signifies that B is dependent on A. This means that a change in file A requires file B to be updated.&#x20;
-
-For our testintmath program
+<figure><img src="../../.gitbook/assets/Group 41.png" alt=""><figcaption></figcaption></figure>
 
 
 
-
+<figure><img src="../../.gitbook/assets/Group 39.png" alt=""><figcaption></figcaption></figure>
 
 ## Separate compilation: Make approach
 
