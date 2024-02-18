@@ -126,7 +126,9 @@
 ## Make
 
 * [Page](make/page.md)
-* [Motivation for Make](make/background.md)
+* [Motivation for Make](make/background/README.md)
+  * [Separate compilation: Manual Approach](make/background/separate-compilation-manual-approach.md)
+  * [Separate compilation: Make approach](make/background/separate-compilation-make-approach.md)
 * [Makefiles](make/makefiles/README.md)
   * [Makefile Version 1: Basic](make/makefiles/makefile-version-1-basic.md)
   * [Makefile Version 2: Phony targets](make/makefiles/makefile-version-2-phony-targets.md)
