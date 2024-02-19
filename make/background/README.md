@@ -26,9 +26,36 @@ As a running example throughout this chapter, we'll use the testintmath program 
 
 <figure><img src="../../.gitbook/assets/Screenshot 2024-02-05 at 6.58.16 PM.png" alt=""><figcaption><p>Figure 1: testintmath program</p></figcaption></figure>
 
-To build testintmath, rather than using the familiar command, `gcc intmath.c testintmath.c -o testintmath`--which would generate the executable testintmath but would not retain the intermediate object files--we'll use appraoch shown in Figure 2. In this approach, we we first invoke gcc on each .c file with the -c option, which compiles intmath.c and testintmath.c into object files--intmath.o and testintmath.o respectively--but does not link them. Then we invoke gcc on the object files intmath.o and testintmath.o, which links them--along with necessary library code--tigether to form the executable testintmath.  Note that we do not include header files on command line, since they're included via #include directives.&#x20;
+To build testintmath, we'll use a two-step approach. First, we invoke gcc with the -c flag on each .c file:
+
+```
+gcc -c intmath.c 
+gcc -c testintmath.c
+```
+
+This preprocesses, compiles, and assembles intmath.c and testintmath.c, generating the object files intmath.o and testintmath.o. Note that in the preprocessing stage of both intmath.c and testintmath.c, the contents of intmath.h are included into them. &#x20;
+
+rather than using the familiar command, `gcc intmath.c testintmath.c -o testintmath`--which would generate the testintmath executable but would not retain the intermediate object files--we'll use the approach shown in Figure 2. In this approach, we first invoke gcc on each .c file with the -c option:
+
+```bash
+gcc -c intmath.c testintmath.c
+```
+
+This preprocesses, compiles, and assembles intmath.c and testintmath.c, producing the object files intmath.o and testintmath.o. Note that in the preprocessing stage of both intmath.c and testintmath.c, the contents are intmath.h were inserted into each.  Thus, `intmath.o` is derived from both `intmath.c` and `intmath.h`. Similarly, testintmath.o is derived from both `intmath.c` and `intmath.h`.
+
+
+
+We then link intmath.o and testintmath.o, generating the testintmath executable:&#x20;
+
+```
+gcc intmath.c testintmath.c -o testintmath
+```
+
+
 
 <figure><img src="../../.gitbook/assets/Group 28 (1).png" alt=""><figcaption></figcaption></figure>
+
+
 
 ### Rebuilding testintmath
 
