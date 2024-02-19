@@ -26,10 +26,6 @@ As a running example throughout this chapter, we'll use the testintmath program 
 
 <figure><img src="../../.gitbook/assets/Screenshot 2024-02-05 at 6.58.16 PM.png" alt=""><figcaption></figcaption></figure>
 
-
-
-### Building testintmath
-
 To build testintmath, rather than using the familiar command, `gcc intmath.c testintmath.c -o testintmath`--which does not retain the intermediate object files--we will build our program using the following commands:&#x20;
 
 ```bash
