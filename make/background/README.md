@@ -30,26 +30,18 @@ As a running example throughout this chapter, we'll use the testintmath program 
 
 ### Building testintmath
 
-To build testintmath, rather than using the familiar command, `gcc intmath.c testintmath.c -o testintmath`, which does not retain the intermediate object files, we will build our program in two steps. First, we invoke gcc on each .c file with the -c option, which tells GCC to generate object files, but not link them:&#x20;
+To build testintmath, rather than using the familiar command, `gcc intmath.c testintmath.c -o testintmath`--which does not retain the intermediate object files--we will build our program using the following commands:&#x20;
 
 ```bash
-gcc -c intmath.c       # Compiles intmath.c into intmath.o
-gcc -c testintmath.c   # Compiles testintmath.c into testintmath.o
-```
-
-Then we invoke GCC to link the object files to generate testintmath:&#x20;
-
-```
+gcc -c intmath.c testintmath.c  
 gcc intmath.o testintmath.o -o testintmath
 ```
 
-Note that GCC will also link standard library functions like `printf` and `scanf`.&#x20;
-
-<figure><img src="../../.gitbook/assets/Group 28 (1).png" alt=""><figcaption></figcaption></figure>
-
-
+The first command compiles intmath.c and testintmath.c into object files--intmath.o and testintmath.o respectievly. The second command links intmath.o and testintmath.o--along with standard library functions like `printf` and `scanf`--to generate the executable testintmath.
 
 ### Rebuilding testintmath
+
+<figure><img src="../../.gitbook/assets/Group 28 (1).png" alt=""><figcaption></figcaption></figure>
 
 If we are to make changes to our program, our objective is to generate a new executable by recompiling the minimum necessary files. To do this accurately, we need to have a thorough understanding of the program's dependencies, which can be visualized using a dependency graph.
 
