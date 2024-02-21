@@ -126,7 +126,7 @@
 ## Make
 
 * [Page](make/page.md)
-* [Motivation for Make](make/background/README.md)
+* [Introduction](make/background/README.md)
   * [Separate compilation: Manual Approach](make/background/separate-compilation-manual-approach.md)
   * [Separate compilation: Make approach](make/background/separate-compilation-make-approach.md)
 * [Makefiles](make/makefiles/README.md)
