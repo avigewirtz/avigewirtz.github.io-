@@ -15,24 +15,74 @@ We know from lecture 3 that when you invoke gcc on a .c file, it undergoes four 
 
 ## Machine code
 
+* First go over simple instruction or two. show equivelant in assembly. Then go over full program.&#x20;
+
+
+
+
+
 * Perhaps the best way to explain the nature of machine code is to use a machine code program.&#x20;
 * we'll go over a machine code program written in TOY. fictional computer, but very similar to real computers in that day
 * a full overview is provided in chapter 6 of computer science: an interdisciplinary approach. highly recommend you read it, but you don't have to to understand the program we'll go over.&#x20;
-*   review of toy components:&#x20;
-
-    * 16 types of instructions, each 16 bits long
-    * 256 memory location, each holds 16 bits
-    * 16 general-purpose registers, each holds 16 bits
-    * a program counter, which contains the memory address of the current instruction being executed
-    * an instruction register, which contains the intruction currently being executed
-
-    this is summarized in Figure 1.&#x20;
+* review of toy components:&#x20;
+  * 16 types of instructions, each 16 bits long
+  * 256 memory location, each holds 16 bits
+  * 16 general-purpose registers, each holds 16 bits
+  * a program counter, which contains the memory address of the current instruction being executed
+  * an instruction register, which contains the intsruction currently being executed
+  * TOY components summarized in Figure 1.&#x20;
 
 <figure><img src="../../.gitbook/assets/Group 29 (2).png" alt=""><figcaption><p>Toy components</p></figcaption></figure>
 
 
 
-Suppose we load the following 6 instructions into memory, say starting at address 20:
+Suppose we load the following 6 instructions into memory, say at memory addresses 20-25:
+
+```
+0111100000000000
+1000110011111111
+1100110001010101
+0001100010001100
+1100000001010001
+1001100011111111
+0000000000000000
+
+
+LOAD R8 #0
+LOAD R0 A255
+BRZ R0 A55
+ADD R8 R8 R12
+BRZ R0 A51
+STORE R8 A255
+HALT
+
+
+            LOAD R8 #0
+LOOP_START: LOAD R0 STDIO
+            BRZ R0 LOOP_END
+            ADD R8 R8 R12
+            BRZ R0 LOOP_START
+LOOP_END:   STORE R8 STDIO
+            HALT
+```
+
+And we set the program counter to 20.&#x20;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 have some way of storing groups of binary digits and feeding them into the computer. On reading a particular pattern of bits, the computer will react in some way. This is absolutely deterministic; that is, every time the computer sees that pattern its response will be the same. Let's say we have a mythical computer which reads in groups of 16 eight at a time, and according to the pattern of 1s and 0s in the group, performs some task. On reading this pattern, for example
 
@@ -64,22 +114,6 @@ it might switch off that voltage. The two patterns may then be regarded as instr
 
 
 
-```
-program Powers of 2
-// Input:    None
-// Output:   Prints out the positive powers of 2
-// -----------------------------------------------------------------------------
-
-00: 0001   1
-
-10: 8A00   RA <- mem[00]                1
-                                        while (a != 0) {
-11: 9AFF   write RA                        System.out.println(a)
-12: 1AAA   RA <- RA + RA                   a = a + a
-13: DA11   if (RA > 0) goto 11         }
-14: 0000   halt
-```
-
 
 
 
@@ -95,8 +129,6 @@ ON means 10100111 OFF means 10100110
 So whenever we write ON in a program, we really mean 10100111, but ON is easier to remember. A program written using these textual names for instructions is called an assembly language program, and the set of mnemonics that is used to represent a computer's machine code is called the assembly language of that computer. Assembly language is the lowest level used by humans to program a computer; only an incurable masochist would program using pure machine code.
 
 It is usual for machine codes to come in groups which perform similar functions. For 2 of 20
-
-ARM Assembly Language Programming - Chapter 1 - First Concepts
 
 example, whereas 10100111 might mean switch on the voltage at the signal called 'output 0', the very similar pattern 10101111 could mean switch on the signal called 'output 1'. Both instructions are 'ON' ones, but they affect different signals. Now we could define two mnemonics, say ON0 and ON1, but it is much more usual in assembly language to use the simple mnemonic ON and follow this with extra information saying which signal we want to switch on. For example, the assembly language instruction
 
