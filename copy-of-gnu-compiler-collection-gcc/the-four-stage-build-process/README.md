@@ -4,26 +4,16 @@ We know from lecture 3 that when you invoke gcc on a .c file, it undergoes four 
 
 ## The Big Picture
 
-* Imagine trying to send a message to someone who speaks a completely different language than you do. You could invest the time and effort to learn their language, but this is&#x20;
-* Computers operate using a primitive language known as machine language, which consists entirely of binary code—strings of 1s and 0s. This language is perfectly suited to the binary nature of computer processing, as it directly represents the on and off states of a computer's electronic components. However, for humans, trying to write complex programs or algorithms in machine language is exceedingly difficult and error-prone. It requires a deep understanding of the computer's architecture and leaves a lot of room for mistakes.
-* On the flip side, we have languages like Java, C, and Python, which are designed to be more intuitive for humans. These high-level programming languages incorporate elements that resemble English, such as descriptive variable names, and familiar structures like loops and conditional statements, making them far more accessible for programmers. The challenge, however, is that computers cannot directly understand these high-level languages as they are fundamentally different from the computer's native machine language.
-* These tools take the high-level programming language code written by developers and translate it into the machine language that the computer can understand and execute.
+A programming language serves as a medium to provide instructions to a computer. Computers only understand one type of language—machine language, which consists of only 1s and 0s. This binary system is used because computers operate using electrical signals that can only be in one of two states: on (1) or off (0). The challenge is that such a language is inconvenient for humans. For instance, "hello" might be expressed in ASCII (a character encoding standard), "5" as 00000101 (correct binary representation of 5), "5.1" in IEEE floating-point representation (a standard for representing real numbers), and an operation like "a = 2 + 3" would be translated into a sequence of binary codes that perform the addition.
 
+The question then arises: How do we bridge the gap between the type of language convenient for humans and the type of language convenient for computers?
 
-
-
+The solution involves designing a new set of instructions that are more convenient for people to use than the built-in machine instructions. One method of executing a program written in our language is to first translate each instruction into an equivalent sequence of instructions in machine language. The resulting program consists entirely of machine language instructions. The computer then executes this machine language version instead of our original version. This technique is known as translation.
 
 ## Machine code
 
-* First go over simple instruction or two. show equivelant in assembly. Then go over full program.&#x20;
-
-
-
-
-
-* Perhaps the best way to explain the nature of machine code is to use a machine code program.&#x20;
-* we'll go over a machine code program written in TOY. fictional computer, but very similar to real computers in that day
-* a full overview is provided in chapter 6 of computer science: an interdisciplinary approach. highly recommend you read it, but you don't have to to understand the program we'll go over.&#x20;
+* Explain where the machine code instructions are defined (ISA) and by whom. Give brief practical modern day example.&#x20;
+* Programmer's used to program in machine code, but quickly replaced by assembly. Perhaps the best way to explain the nature of machine code is to use a machine code program. we'll go over a machine code program written in TOY. fictional computer, but very similar to real computers in that day. a full overview is provided in chapter 6 of computer science: an interdisciplinary approach. highly recommend you read it, but you don't have to to understand the program we'll go over. In order to program with TOY, you would consult it's ISA.&#x20;
 * review of toy components:&#x20;
   * 16 types of instructions, each 16 bits long
   * 256 memory location, each holds 16 bits
@@ -31,6 +21,18 @@ We know from lecture 3 that when you invoke gcc on a .c file, it undergoes four 
   * a program counter, which contains the memory address of the current instruction being executed
   * an instruction register, which contains the intsruction currently being executed
   * TOY components summarized in Figure 1.&#x20;
+
+
+
+
+
+
+
+
+
+
+
+
 
 <figure><img src="../../.gitbook/assets/Group 29 (2).png" alt=""><figcaption><p>Toy components</p></figcaption></figure>
 
