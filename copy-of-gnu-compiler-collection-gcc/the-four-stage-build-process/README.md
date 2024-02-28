@@ -2,9 +2,7 @@
 
 We know from lecture 3 that when you invoke gcc on a .c file, it undergoes four stages of transformation--preprocessing, compilation proper, assembly, and linking--culminating in an executable file--that is, a file that can be run on the computer. In lecture, a thorough overview of the four stage process was shown four the charcount program, tracing its journey from source code to executable. In this chapter, we aim to supplement the explanation in lecture by going over in from the opposite appraoch. Starting at machine code and buiding up to C. more depth the design decisions behind this process. We will use a different appraoch. We will first explore the journey from the opposite direction--from machine code to C source code. This follows the historical progression. Our goal is that by explaining from this appraoch, it'll offer a better understanding of how each stage builds off the oprevious stage, and why it was offered to begin with.&#x20;
 
-
-
-## Machine code
+## The Big Picture
 
 * Imagine trying to send a message to someone who speaks a completely different language than you do. You could invest the time and effort to learn their language, but this is&#x20;
 * Computers operate using a primitive language known as machine language, which consists entirely of binary code—strings of 1s and 0s. This language is perfectly suited to the binary nature of computer processing, as it directly represents the on and off states of a computer's electronic components. However, for humans, trying to write complex programs or algorithms in machine language is exceedingly difficult and error-prone. It requires a deep understanding of the computer's architecture and leaves a lot of room for mistakes.
@@ -17,7 +15,26 @@ We know from lecture 3 that when you invoke gcc on a .c file, it undergoes four 
 
 ## Machine code
 
-Suppose we have some way of storing groups of binary digits and feeding them into the computer. On reading a particular pattern of bits, the computer will react in some way. This is absolutely deterministic; that is, every time the computer sees that pattern its response will be the same. Let's say we have a mythical computer which reads in groups of bits eight at a time, and according to the pattern of 1s and 0s in the group, performs some task. On reading this pattern, for example
+* Perhaps the best way to explain the nature of machine code is to use a machine code program.&#x20;
+* we'll go over a machine code program written in TOY. fictional computer, but very similar to real computers in that day
+* a full overview is provided in chapter 6 of computer science: an interdisciplinary approach. highly recommend you read it, but you don't have to to understand the program we'll go over.&#x20;
+*   review of toy components:&#x20;
+
+    * 16 types of instructions, each 16 bits long
+    * 256 memory location, each holds 16 bits
+    * 16 general-purpose registers, each holds 16 bits
+    * a program counter, which contains the memory address of the current instruction being executed
+    * an instruction register, which contains the intruction currently being executed
+
+    this is summarized in Figure 1.&#x20;
+
+<figure><img src="../../.gitbook/assets/Group 29 (2).png" alt=""><figcaption><p>Toy components</p></figcaption></figure>
+
+
+
+Suppose we load the following 6 instructions into memory, say starting at address 20:
+
+have some way of storing groups of binary digits and feeding them into the computer. On reading a particular pattern of bits, the computer will react in some way. This is absolutely deterministic; that is, every time the computer sees that pattern its response will be the same. Let's say we have a mythical computer which reads in groups of 16 eight at a time, and according to the pattern of 1s and 0s in the group, performs some task. On reading this pattern, for example
 
 
 
@@ -32,7 +49,7 @@ For example, upon reading the pattern:
 The CPU will react by setting the value of register 2 to 300. Or upon reading the pattern:
 
 ```
-1001001010101111
+1001 0010 10101111
 ```
 
 stores the contents of register 2 into memory location addr = 175
@@ -47,7 +64,21 @@ it might switch off that voltage. The two patterns may then be regarded as instr
 
 
 
+```
+program Powers of 2
+// Input:    None
+// Output:   Prints out the positive powers of 2
+// -----------------------------------------------------------------------------
 
+00: 0001   1
+
+10: 8A00   RA <- mem[00]                1
+                                        while (a != 0) {
+11: 9AFF   write RA                        System.out.println(a)
+12: 1AAA   RA <- RA + RA                   a = a + a
+13: DA11   if (RA > 0) goto 11         }
+14: 0000   halt
+```
 
 
 

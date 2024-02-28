@@ -14,7 +14,7 @@ The set of all possible instructions a processor can execute is defined by the I
 
 Demonstrating what machine code is truly like necessitates an example of a machine code program. However, modern machine code languages, such as ARM and X86, are so complex, that it's unrealistic to write a self-contained machine code program. Therefore, we will demonstrate machine code by using the TOY computer introduced in COS126, which has a much simpler instruction set. Though TOY is a fictional computer, it closely resembles the computers from the era when programmers coded in machine code.
 
-Let's revisit the TOY ISA, which provides all the information a programmer needs to write programs in TOY machine code. The TOY machine comprises:
+"?
 
 * 256 addresses, each containing 16 bits
 * 16 registers, each 16 bits
