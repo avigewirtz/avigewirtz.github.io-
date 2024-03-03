@@ -115,7 +115,7 @@
 ## Gnu Compiler Collection (GCC)
 
 * [Introduction](gnu-compiler-collection-gcc/introduction.md)
-* [The Four Stage Build Process](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/README.md)
+* [GCC Build Process](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/README.md)
   * [Preprocessing Stage](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/preprocessor.md)
   * [Compiler](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/compiler.md)
   * [Assembler](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/assembler.md)
