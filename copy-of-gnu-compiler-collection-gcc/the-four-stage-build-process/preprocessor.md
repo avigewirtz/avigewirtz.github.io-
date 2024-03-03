@@ -1,5 +1,15 @@
 # Preprocessing Stage
 
+preprocessor adds the following capabilities:&#x20;
+
+* Inclusion of header files. These are files of declarations that can be substituted into your program.&#x20;
+* Macro expansion. You can define macros, which are abbreviations for arbitrary fragments of C code. The preprocessor will replace the macros with their definitions throughout the program. Some macros are automatically defined for you.&#x20;
+* Conditional compilation. You can include or exclude parts of the program according to various conditions
+
+
+
+
+
 In the first stage of the compilation process, GCC sends main.c and circle.c to the preprocessor. The preprocessor is a program that modifes the source code of each file before compilation.  main.c and circle.c will be modified separately, and, if you invoke gcc with the --save-temps option, their outputs will be stored in main.i and circle.i.&#x20;
 
 main.c and circle.c are not quite ready to be compiled.&#x20;
