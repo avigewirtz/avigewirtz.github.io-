@@ -9,32 +9,31 @@ Consider the program in Figure 2. It will serve as a running example throughout 
 {% tabs %}
 {% tab title="testcircle.c" %}
 ```c
-/*-------------------------------------------------------------------*/
-/* testcircle.c                                                      */
-/*                                                                   */
-/* This program calculates the area of a circle given its            */
-/* circumference.                                                    */ 
-/*-------------------------------------------------------------------*/
+/*-----------------------------------------------------*/
+/* testcircle.c                                        */
+/*                                                     */
+/* Calculates the area of a circle given its radius.   */                                   */ 
+/*-----------------------------------------------------*/
  
 #include <stdio.h>
 #include <stdlib.h> 
 #include "circle.h" 
 
-/* Prompts user for the circumference of a circle. Returns EXIT_FAILURE 
-   if input is invalid. Otherwise, prints circle's area to stdout and 
-   returns 0. */  
+/* Prompts user for radius of circle. Returns 
+   EXIT_FAILURE if input is invalid. Otherwise, prints 
+   circle's area to stdout and returns 0. */  
    
 int main() {
 
-  double circumference, area; 
+  double radius, area; 
 
-  printf("Enter circumference of circle (positive number): ");
-  if (scanf("%lf", &circumference) != 1 || circumference <= 0) {
-    printf("Invalid input. Circumference must be a positive number.\n");
+  printf("Enter radius of circle (positive number): ");
+  if (scanf("%lf", &radius) != 1 || radius <= 0) {
+    printf("Invalid input. Must be a positive number.\n");
     exit(EXIT_FAILURE);
   }
 
-  area = calculateArea(circumference);
+  area = calculateArea(radius);
 
   printf("The area of the circle is: %.2f\n", area);
 
@@ -46,17 +45,15 @@ int main() {
 
 {% tab title="circle.c" %}
 ```c
-/*----------------------------------------------------------------------------*/
-/* circle.c                                                                   */
-/*                                                                            */ 
-/*----------------------------------------------------------------------------*/
+/*-----------------------------------------------------*/
+/* circle.c                                            */                                                               */ 
+/*-----------------------------------------------------*/
 
 #include "circle.h"
 #define PI 3.14159
 
-/* calculates the area of a circle given its circumference */
-double calculateArea(double circumference) {
-    double radius = circumference / (2 * PI);
+/* calculates the area of a circle given its radius */
+double calculateArea(double radius) {
     return PI * radius * radius;
 }
 
@@ -68,7 +65,7 @@ double calculateArea(double circumference) {
 #ifndef CIRCLE_H
 #define CIRCLE_H
 
-double calculateArea(double circumference);
+double calculateArea(double radius);
 
 #endif
 ```

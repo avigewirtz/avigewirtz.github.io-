@@ -2,9 +2,9 @@
 
 
 
-/Analyze actual fi
+<figure><img src="../../.gitbook/assets/Screenshot 2024-03-04 at 12.33.28 AM.png" alt=""><figcaption></figcaption></figure>
 
-
+<figure><img src="../../.gitbook/assets/Group 1-2.png" alt=""><figcaption></figcaption></figure>
 
 preprocessor adds the following capabilities:&#x20;
 
