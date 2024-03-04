@@ -1,10 +1,10 @@
 # Preprocessing Stage
 
-Analyze actual files
 
 
+/Analyze actual fi
 
-<figure><img src="../../.gitbook/assets/Group 110.png" alt=""><figcaption></figcaption></figure>
+
 
 preprocessor adds the following capabilities:&#x20;
 

@@ -9,24 +9,26 @@ Consider the program in Figure 2. It will serve as a running example throughout 
 {% tabs %}
 {% tab title="testcircle.c" %}
 ```c
-/*------------------------------------------------------------------------*/
-/* testcircle.c                                                           */
-/*                                                                        */
-/* This program calculates the area of a circle given its circumference.  */ 
-/*------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+/* testcircle.c                                                      */
+/*                                                                   */
+/* This program calculates the area of a circle given its            */
+/* circumference.                                                    */ 
+/*-------------------------------------------------------------------*/
  
 #include <stdio.h>
 #include <stdlib.h> 
 #include "circle.h" 
 
-/* Prompts user for the circumference of a circle. Returns EXIT_FAILURE if 
-   input is invalid. Otherwise, prints circle's area to stdout and returns 0. */  
+/* Prompts user for the circumference of a circle. Returns EXIT_FAILURE 
+   if input is invalid. Otherwise, prints circle's area to stdout and 
+   returns 0. */  
    
 int main() {
 
   double circumference, area; 
 
-  printf("Enter the circumference of the circle (positive number): ");
+  printf("Enter circumference of circle (positive number): ");
   if (scanf("%lf", &circumference) != 1 || circumference <= 0) {
     printf("Invalid input. Circumference must be a positive number.\n");
     exit(EXIT_FAILURE);
@@ -44,10 +46,10 @@ int main() {
 
 {% tab title="circle.c" %}
 ```c
-/*------------------------------------------------------------------------*/
-/* testcircle.c                                                           */
-/*                                                                        */ 
-/*------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/
+/* circle.c                                                                   */
+/*                                                                            */ 
+/*----------------------------------------------------------------------------*/
 
 #include "circle.h"
 #define PI 3.14159
@@ -57,6 +59,7 @@ double calculateArea(double circumference) {
     double radius = circumference / (2 * PI);
     return PI * radius * radius;
 }
+
 ```
 {% endtab %}
 
@@ -111,3 +114,67 @@ circle.h      circle.o      testcircle    testcircle.c  testcircle.o
 circle.c      circle.i      circle.s      testcircle.i  testcircle.s 
 ```
 
+
+
+
+
+&#x20;
+
+{% tabs %}
+{% tab title="testcircle.c" %}
+```c
+...
+int printf(char *format, …);
+int scanf(const char *format, ...);
+...
+
+...
+void exit (int status
+...
+
+double calculateArea(double circumference);
+
+int main() {
+
+  double circumference, area;
+
+  printf("Enter the circumference of the circle (positive number): ");
+  if (scanf("%lf", &circumference) != 1 || circumference <= 0) { 
+    printf("Invalid input. Circumference must be a positive number.\n");
+    exit(1);
+  }
+
+  area = calculateArea(circumference);
+
+  printf("The area of the circle is: %.2f\n", area);
+
+  return 0;
+}
+
+```
+{% endtab %}
+
+{% tab title="circle.c" %}
+```c
+
+double calculateArea(double circumference);
+
+double calculateArea(double circumference) {
+    double radius = circumference / (2 * 3.14159);
+    return 3.14159 * radius * radius;
+}
+
+```
+{% endtab %}
+
+{% tab title="circle.h" %}
+```c
+#ifndef CIRCLE_H
+#define CIRCLE_H
+
+double calculateArea(double circumference);
+
+#endif
+```
+{% endtab %}
+{% endtabs %}
