@@ -1,12 +1,20 @@
 # Preprocessing Stage
 
+Analyze actual files
+
+
+
+
+
 preprocessor adds the following capabilities:&#x20;
 
 * Inclusion of header files. These are files of declarations that can be substituted into your program.&#x20;
 * Macro expansion. You can define macros, which are abbreviations for arbitrary fragments of C code. The preprocessor will replace the macros with their definitions throughout the program. Some macros are automatically defined for you.&#x20;
 * Conditional compilation. You can include or exclude parts of the program according to various conditions
 
-
+{% hint style="info" %}
+* The preprocessor was not originally part of C language. Added in 1973&#x20;
+{% endhint %}
 
 
 
@@ -20,7 +28,7 @@ Some of the modifications are done automatically, while others are triggered by 
 
 Preprocessor directives are lines in our program that start with the hash symbol #. Unlike traditional C code, they’re meant to be interpreted by the preprocessor, not the compiler. Our program makes use of preprocessor directives for three types of tasks: file inclusion, macro definition, and conditional compilation. While there are more types of preprocessor directives in C, these three are the most common, and the only ones you will encounter in cos217.
 
-#### Macro definition
+#### Macro&#x20;
 
 The #define directive defines a macro, which is a fragment of code that has been given a name. In circle.c, #define PI 3.14159 defines the macro PI to represent the constant 3.14159.&#x20;
 

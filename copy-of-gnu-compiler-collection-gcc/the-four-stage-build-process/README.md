@@ -70,10 +70,10 @@ gcc217 testcircle.c circle.c -o testcircle
 
 gcc will run the preprocessor, compiler, assembler, and linker on our program, generating the executable file _testcircle_. An overview of this process is shown in Figure 2. Here's a breakdown of what happens at each stage:
 
-1. **Preprocessor:** Modifies testcircle.c and circle.c by including header files (stdio.h, stdlib.h, and circle.h), expanding macros, and removing comments. Output is preprocessed source files testcircle.i and circle.i. &#x20;
-2. **Compiler:** Translates testcircle.i and circle.i into assembly language files testcircle.s and circle.s.&#x20;
-3. **Assembler:** Translates testcircle.s and circle.s into relocatable object files testcircle.o and circle.o. These files contain machine code, but are not executable.&#x20;
-4. **Linker:** Combines testcircle.o and circle.o, along with relevant C library files, into a single executable file (testcircle).&#x20;
+1. **Preprocessing stage:** The preprocessor modifies testcircle.c and circle.c by including header files (stdio.h, stdlib.h, and circle.h), expanding macros, and removing comments. Output is preprocessed source files testcircle.i and circle.i. &#x20;
+2. **Compilation stage:** The compiler translates testcircle.i and circle.i into assembly language files testcircle.s and circle.s.&#x20;
+3. **Assembly stage:** The assembler translates testcircle.s and circle.s into relocatable object files testcircle.o and circle.o. These files contain machine code, but are not executable.&#x20;
+4. **Linking stake:** The Linker combines testcircle.o and circle.o, along with relevant C library files, into a single executable file (testcircle).&#x20;
 
 <figure><img src="../../.gitbook/assets/Group 63.png" alt=""><figcaption></figcaption></figure>
 
@@ -85,9 +85,9 @@ To run the testcircle, simply type its pathname on the command line:
 ./testcircle
 ```
 
-## Saving intermediate files
+## Saving Intermediate Files
 
-By default, the intermediate files generating during the build process will not be retained. This is why when you run gcc, you're not used to seeing all the aforementioned files in your directory. You can instruct gcc to save the intermediate files by using the --save-temps option:
+By default, the intermediate files generating during the build process will not be retained. This is why when you run gcc, you won't see the intermediate files in your directory. You can instruct gcc to save the intermediate files by using the --save-temps option:
 
 ```
 gcc217 --save-temps testcircle.c circle.c -o testcircle
@@ -98,3 +98,4 @@ Invoking ls, you will now see the intermediate files in your project directory:
 ```
 ls
 ```
+

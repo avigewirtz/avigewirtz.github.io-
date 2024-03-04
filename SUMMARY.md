@@ -120,6 +120,7 @@
   * [Compiler](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/compiler.md)
   * [Assembler](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/assembler.md)
   * [Linker](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/linker.md)
+* [Identifying errors](gnu-compiler-collection-gcc/identifying-errors.md)
 * [GCC Cheatsheet](gnu-compiler-collection-gcc/gcc-cheatsheet.md)
 * [Further Reading](copy-of-gnu-compiler-collection-gcc/further-reading.md)
 
