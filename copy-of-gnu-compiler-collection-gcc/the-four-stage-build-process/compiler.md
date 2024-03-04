@@ -1,23 +1,8 @@
 # Compilation Stage
 
-The second stage in the GCC compilation process involves the C compiler itself, which translates the preprocessed source code into assembly language. The assembly versions of main.c and circle.c are stored in main.s and circle.s respectively.&#x20;
+Assembly language is essentially a human-readable version of the target processor’s machine language.&#x20;
 
-\
-
-
-Assembly language is essentially a human-readable version of the target processor’s machine language. Unlike C which abstracts away hardware details like registers and memory addresses, assembly deals directly with registers and memory addresses.
-
-Additionally, assembly language doesn't have constructs like if-else statements, for or while loops, or functions in the traditional sense. Instead, it has basic instructions for moving data, arithmetic operations, and explicit jump and branch instructions for control flow. &#x20;
-
-\
-
-
-Main.s and circle.s are text files, so you can view their contents with a text editor like Emacs. Below is a&#x20;
-
-\
-
-
-To illustrate the difference in abstraction and syntax between a high-level language like C and assembly, let's consider&#x20;
+A detailed explanation of of assembly language is beyond the scope of this chapter. Can find a high level-overview here, and will be covered in depth later in course.&#x20;
 
 
 
@@ -235,18 +220,10 @@ L_.str.3:                               ## @.str.3
 {% endtab %}
 {% endtabs %}
 
-
-
-\
 \
 
 
-In this assembly code, the function takes a floating-point value (circumference) as input, saves it on the stack, retrieves a constant value (2 \* PI), performs a floating-point division to calculate the radius, and then returns the result. This process involves direct manipulation of CPU registers and memory addresses, showcasing the low-level nature of assembly programming.
-
-\
-
-
-#### Characteristics of C vs. Assembly&#x20;
+#### Comparison of C vs Assembly&#x20;
 
 * Abstraction Level
 *
@@ -271,9 +248,5 @@ In this assembly code, the function takes a floating-point value (circumference)
 
 ASIDE: WHY Can’t assembly be converted from one form to another?&#x20;
 
-\
-\
 
-
-Below are the assembly versions of main.c and circle.c for the armv8-a architecture, stored in main.s and circle.s respectively.&#x20;
 

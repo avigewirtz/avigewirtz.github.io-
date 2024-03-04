@@ -4,7 +4,7 @@ The preprocessor is a program that processes the source files before the bulk of
 
 It does two main things:
 
-1. Removes comments from source code.&#x20;
+1. Removes comments from source code. Comments are useful for humans, but not compiler.
 2. Handles _preprocessor directives_
 
 ### Preprocessor Directives
@@ -24,18 +24,6 @@ In circle.c, for example, #define PI 3.14159 creates the macro PI, which equals 
 Whenever PI is used in circle.c, the preprocessor will replace it with 3.14159.&#x20;
 
 You can think of it like a variable, but with a few notable differences:&#x20;
-
-
-
-Macros offer several advantages:
-
-* &#x20;It makes programs easier to read.&#x20;
-* It makes programs easier to modify.
-* &#x20;It helps avoid inconsistencies and typographical errors.&#x20;
-
-#### Predefined macros
-
-Some macros are automatically defined for us by the C preprocessor. These are called predefined macros. In _testcircle.c_, we use the predefined macro EXIT\_FAILURE, which represents 1.&#x20;
 
 
 
