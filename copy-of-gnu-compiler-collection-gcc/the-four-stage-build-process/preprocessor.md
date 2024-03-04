@@ -1,6 +1,10 @@
 # Preprocessing Stage
 
-In the first stage of the build process, GCC sends testcircle.c and circle.c to the preprocessor, which modifies the source code of each file before actual compilation begins. Some of the modifications are performed by the preprocessor automatically, while others are triggered by user-supplied preprocessor directives. &#x20;
+The preprocessor is a program that processes the source files before the bulk of processing (i.e., compilation) takes place--hence the name preprocessor. Input is .c files, and output is .i files.&#x20;
+
+* removing comments&#x20;
+* Handling preprocessor directives
+* Can think of preprocessor as a "search and replace" tool. &#x20;
 
 <figure><img src="../../.gitbook/assets/Screenshot 2024-03-04 at 11.43.20 AM.png" alt=""><figcaption></figcaption></figure>
 
