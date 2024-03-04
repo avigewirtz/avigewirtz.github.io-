@@ -1,10 +1,8 @@
 # Preprocessing Stage
 
+In the first stage of the build process, GCC sends testcircle.c and circle.c to the preprocessor, which modifies the source code of each file before actual compilation begins. Some of the modifications are performed by the preprocessor automatically, while others are triggered by user-supplied preprocessor directives. &#x20;
 
-
-<figure><img src="../../.gitbook/assets/Screenshot 2024-03-04 at 12.33.28 AM.png" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../../.gitbook/assets/Group 1-2.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2024-03-04 at 11.43.20 AM.png" alt=""><figcaption></figcaption></figure>
 
 preprocessor adds the following capabilities:&#x20;
 
@@ -17,12 +15,6 @@ preprocessor adds the following capabilities:&#x20;
 {% endhint %}
 
 
-
-In the first stage of the compilation process, GCC sends main.c and circle.c to the preprocessor. The preprocessor is a program that modifes the source code of each file before compilation.  main.c and circle.c will be modified separately, and, if you invoke gcc with the --save-temps option, their outputs will be stored in main.i and circle.i.&#x20;
-
-main.c and circle.c are not quite ready to be compiled.&#x20;
-
-Some of the modifications are done automatically, while others are triggered by user supplied instructions embedded in the source code. These instructions are known as preprocessor directives.&#x20;
 
 ### Preprocessor Directives
 
@@ -135,6 +127,6 @@ In the specific case of `intmath.c`, the preprocessor handles the `#include <std
 
 
 
-
+Difference between include syntax
 
 ###

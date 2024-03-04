@@ -12,7 +12,7 @@ Consider the program in Figure 2. It will serve as a running example throughout 
 /*-----------------------------------------------------*/
 /* testcircle.c                                        */
 /*                                                     */
-/* Calculates the area of a circle given its radius.   */                                   */ 
+/* Calculates the area of a circle given its radius.   */
 /*-----------------------------------------------------*/
  
 #include <stdio.h>
@@ -27,7 +27,7 @@ int main() {
 
   double radius, area; 
 
-  printf("Enter radius of circle (positive number): ");
+  printf("Enter radius of circle: ");
   if (scanf("%lf", &radius) != 1 || radius <= 0) {
     printf("Invalid input. Must be a positive number.\n");
     exit(EXIT_FAILURE);
@@ -46,7 +46,7 @@ int main() {
 {% tab title="circle.c" %}
 ```c
 /*-----------------------------------------------------*/
-/* circle.c                                            */                                                               */ 
+/* circle.c                                            */
 /*-----------------------------------------------------*/
 
 #include "circle.h"
@@ -56,7 +56,6 @@ int main() {
 double calculateArea(double radius) {
     return PI * radius * radius;
 }
-
 ```
 {% endtab %}
 
@@ -126,52 +125,37 @@ int scanf(const char *format, ...);
 ...
 
 ...
-void exit (int status
+void exit (int status)
 ...
 
-double calculateArea(double circumference);
+double calculateArea(double radius);
 
 int main() {
 
-  double circumference, area;
+  double radius, area;
 
-  printf("Enter the circumference of the circle (positive number): ");
-  if (scanf("%lf", &circumference) != 1 || circumference <= 0) { 
-    printf("Invalid input. Circumference must be a positive number.\n");
+  printf("Enter the radius of the circle: ");
+  if (scanf("%lf", &radius) != 1 || circumference <= 0) { 
+    printf("Invalid input. Must be a positive number.\n");
     exit(1);
   }
 
-  area = calculateArea(circumference);
+  area = calculateArea(radius);
 
   printf("The area of the circle is: %.2f\n", area);
 
   return 0;
 }
-
 ```
 {% endtab %}
 
 {% tab title="circle.c" %}
 ```c
+double calculateArea(double radius);
 
-double calculateArea(double circumference);
-
-double calculateArea(double circumference) {
-    double radius = circumference / (2 * 3.14159);
+double calculateArea(double radius) {
     return 3.14159 * radius * radius;
 }
-
-```
-{% endtab %}
-
-{% tab title="circle.h" %}
-```c
-#ifndef CIRCLE_H
-#define CIRCLE_H
-
-double calculateArea(double circumference);
-
-#endif
 ```
 {% endtab %}
 {% endtabs %}
