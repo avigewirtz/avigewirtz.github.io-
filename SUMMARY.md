@@ -115,12 +115,12 @@
 ## Gnu Compiler Collection (GCC)
 
 * [Introduction](gnu-compiler-collection-gcc/introduction.md)
-* [GCC Build Process](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/README.md)
+* [4-Stage Build Process](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/README.md)
   * [Preprocessing Stage](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/preprocessor.md)
-  * [Compiler](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/compiler.md)
-  * [Assembler](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/assembler.md)
-  * [Linker](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/linker.md)
-* [Identifying errors](gnu-compiler-collection-gcc/identifying-errors.md)
+  * [Compilation Stage](gnu-compiler-collection-gcc/the-four-stage-build-process/compilation-stage.md)
+  * [Assembly Stage](gnu-compiler-collection-gcc/the-four-stage-build-process/assembly-stage.md)
+  * [Linking Stage](gnu-compiler-collection-gcc/the-four-stage-build-process/linking-stage.md)
+* [Identifying Build Errors](gnu-compiler-collection-gcc/identifying-build-errors.md)
 * [GCC Cheatsheet](gnu-compiler-collection-gcc/gcc-cheatsheet.md)
 * [Further Reading](copy-of-gnu-compiler-collection-gcc/further-reading.md)
 
