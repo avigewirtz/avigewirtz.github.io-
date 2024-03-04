@@ -1,5 +1,11 @@
 # Identifying Build Errors
 
+
+
+* preprocessor maro (like PI) used in testcircle.c, where it isn't defined
+
+
+
 Preprocessor errors
 
 

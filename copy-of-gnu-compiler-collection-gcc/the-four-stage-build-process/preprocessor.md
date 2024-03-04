@@ -17,11 +17,11 @@ The `#include` directive instructs the preprocessor to include the contents of t
 
 ### #define directive
 
-The #define directive is used to create a macro.&#x20;
+The #define directive is used to create a preprocessor macro.&#x20;
 
-In circle.c, #define PI 3.14159 defines the PI to represent 3.14159.
+In circle.c, for example, #define PI 3.14159 creates the macro PI, which equals 3.14159.&#x20;
 
-The preprocessor will replace the macros with their definitions throughout the program. Whenever PI is used in circle.c, the preprocessor will replace it with 3.14159. This means that `return circumference / (2 *`` `<mark style="color:red;">`PI`</mark>`);` will be replaced by the preprocessor with `return circumference / (2 *`` `<mark style="color:red;">`3.14159`</mark>`);`
+Whenever PI is used in circle.c, the preprocessor will replace it with 3.14159.&#x20;
 
 You can think of it like a variable, but with a few notable differences:&#x20;
 
