@@ -4,7 +4,7 @@
 
 ## The Big Picture
 
-Consider the program in Figure 2. It will serve as a running example throughout this chapter, allowing us to provide an overview how how the build process works. Consists of three source files. circle.c, testcircle.c, and circle.h.&#x20;
+Consider the program shown below. It will serve as a running example throughout this chapter, allowing us to provide an overview how how the build process works.&#x20;
 
 {% tabs %}
 {% tab title="testcircle.c" %}
@@ -77,7 +77,7 @@ To build our program, we can invoke the following command:
 gcc217 testcircle.c circle.c -o testcircle
 ```
 
-gcc will run the preprocessor, compiler, assembler, and linker on our program, generating the executable file _testcircle_. An overview of this process is shown in Figure 2. Here's a breakdown of what happens at each stage:
+gcc will run the preprocessor, compiler, assembler, and linker on our program, generating the executable file _testcircle_. Conceptually, they happen in a rigid order, and the entire file is run through each transformation before the next one begins. An overview of this process is shown in Figure 2. Here's a breakdown of what happens at each stage:
 
 1. **Preprocessing stage:** The preprocessor modifies _testcircle.c_ and _circle.c_ by including header files (stdio.h, stdlib.h, and circle.h), expanding macros, and removing comments. Output is preprocessed source files _testcircle.i_ and _circle.i_. &#x20;
 2. **Compilation stage:** The compiler translates _testcircle.i_ and _circle.i_ into assembly language files _testcircle.s_ and _circle.s._&#x20;
@@ -109,53 +109,3 @@ Invoking ls, you will now see that all intermediate files are in your project di
 circle.h      circle.o      testcircle    testcircle.c  testcircle.o
 circle.c      circle.i      circle.s      testcircle.i  testcircle.s 
 ```
-
-
-
-
-
-&#x20;
-
-{% tabs %}
-{% tab title="testcircle.c" %}
-```c
-...
-int printf(char *format, …);
-int scanf(const char *format, ...);
-...
-
-...
-void exit (int status)
-...
-
-double calculateArea(double radius);
-
-int main() {
-
-  double radius, area;
-
-  printf("Enter the radius of the circle: ");
-  if (scanf("%lf", &radius) != 1 || circumference <= 0) { 
-    printf("Invalid input. Must be a positive number.\n");
-    exit(1);
-  }
-
-  area = calculateArea(radius);
-
-  printf("The area of the circle is: %.2f\n", area);
-
-  return 0;
-}
-```
-{% endtab %}
-
-{% tab title="circle.c" %}
-```c
-double calculateArea(double radius);
-
-double calculateArea(double radius) {
-    return 3.14159 * radius * radius;
-}
-```
-{% endtab %}
-{% endtabs %}

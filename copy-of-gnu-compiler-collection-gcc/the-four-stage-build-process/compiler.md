@@ -1,5 +1,9 @@
 # Compilation Stage
 
+In the second stage of the build process, gcc second testcircle.i and circle.i to the compiler, which translates testcircle.i and circle.i into assembly language. It's output is stored in testcircle.s and circle.s.&#x20;
+
+A detailed explanation of of assembly language is beyond the scope of this chapter. Can find a high level-overview here, and will be covered in depth later in course.
+
 Assembly language is essentially a human-readable version of the target processor’s machine language.&#x20;
 
 A detailed explanation of of assembly language is beyond the scope of this chapter. Can find a high level-overview here, and will be covered in depth later in course.&#x20;
@@ -37,14 +41,12 @@ calculateArea:
 
 {% tab title="circle.s x86" %}
 ```python
-        .section        __TEXT,__text,regular,pure_instructions
+      .section        __TEXT,__text,regular,pure_instructions
         .build_version macos, 14, 0     sdk_version 14, 2
         .section        __TEXT,__literal8,8byte_literals
         .p2align        3, 0x0                          ## -- Begin function calculateArea
 LCPI0_0:
         .quad   0x400921f9f01b866e              ## double 3.1415899999999999
-LCPI0_1:
-        .quad   0x401921f9f01b866e              ## double 6.2831799999999998
         .section        __TEXT,__text,regular,pure_instructions
         .globl  _calculateArea
         .p2align        4, 0x90
@@ -57,18 +59,15 @@ _calculateArea:                         ## @calculateArea
         movq    %rsp, %rbp
         .cfi_def_cfa_register %rbp
         movsd   %xmm0, -8(%rbp)
-        movsd   -8(%rbp), %xmm0                 ## xmm0 = mem[0],zero
-        movsd   LCPI0_1(%rip), %xmm1            ## xmm1 = mem[0],zero
-        divsd   %xmm1, %xmm0
-        movsd   %xmm0, -16(%rbp)
         movsd   LCPI0_0(%rip), %xmm0            ## xmm0 = mem[0],zero
-        mulsd   -16(%rbp), %xmm0
-        mulsd   -16(%rbp), %xmm0
+        mulsd   -8(%rbp), %xmm0
+        mulsd   -8(%rbp), %xmm0
         popq    %rbp
         retq
         .cfi_endproc
                                         ## -- End function
 .subsections_via_symbols
+
 ```
 {% endtab %}
 
@@ -145,7 +144,7 @@ main:
 
 {% tab title="testcircle.s x86" %}
 ```armasm
- .section        __TEXT,__text,regular,pure_instructions
+        .section        __TEXT,__text,regular,pure_instructions
         .build_version macos, 14, 0     sdk_version 14, 2
         .globl  _main                           ## -- Begin function main
         .p2align        4, 0x90
@@ -154,17 +153,17 @@ _main:                                  ## @main
 ## %bb.0:
         pushq   %rbp
         .cfi_def_cfa_offset 16
-        .cfi_offset %rbp, -16
+        .cfi_offset %rbp, -16 
         movq    %rsp, %rbp
         .cfi_def_cfa_register %rbp
         subq    $32, %rsp
         movl    $0, -4(%rbp)
         leaq    L_.str(%rip), %rdi
-        movb    $0, %al
+        movb    $0, %al 
         callq   _printf
         leaq    L_.str.1(%rip), %rdi
         leaq    -16(%rbp), %rsi
-        movb    $0, %al
+        movb    $0, %al 
         callq   _scanf
         cmpl    $1, %eax
         jne     LBB0_2
@@ -185,7 +184,7 @@ LBB0_3:
         movsd   %xmm0, -24(%rbp)
         movsd   -24(%rbp), %xmm0                ## xmm0 = mem[0],zero
         leaq    L_.str.3(%rip), %rdi
-        movb    $1, %al
+        movb    $1, %al 
         callq   _printf
         xorl    %eax, %eax
         addq    $32, %rsp
@@ -195,20 +194,16 @@ LBB0_3:
                                         ## -- End function
         .section        __TEXT,__cstring,cstring_literals
 L_.str:                                 ## @.str
-        .asciz  "Enter the circumference of the circle (positive number): "
-
+        .asciz  "Enter radius of circle: "
 
 L_.str.1:                               ## @.str.1
         .asciz  "%lf"
 
-
 L_.str.2:                               ## @.str.2
-        .asciz  "Invalid input. Circumference must be a positive number."
-
+        .asciz  "Invalid input. Must be a positive number.\n"
 
 L_.str.3:                               ## @.str.3
-        .asciz  "The area of the circle is: %.2f"
-
+        .asciz  "The area of the circle is: %.2f\n"
 
 .subsections_via_symbols
 ```
