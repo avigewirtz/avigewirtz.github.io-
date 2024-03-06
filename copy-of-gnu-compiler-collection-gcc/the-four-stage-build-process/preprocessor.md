@@ -7,10 +7,10 @@ The C preprocessor is a program which modifies their source code in testcircle.c
 
 ### #include directive
 
-The `#include` directive instructs the preprocessor to "include" the contents of the specified file in the location where the directive appears. In _testcircle.c_, for example, `#include <stdio.h>` instructs the preprocessor to insert contents of _stdio.h_ in the place where the directive appears. _stdio.h_ is a system header file containing declarations for functions like `printf()` and `scanf()`.
+The `#include` directive instructs the preprocessor to "include" the contents of the specified file in the location where the directive appears. For example, `#include <stdio.h>` in testcircle.c instructs the preprocessor to insert the contents of _stdio.h_ in the place where the directive appears. _stdio.h_ is a system header file which contains declarations of functions like `printf()` and `scanf()`.
 
 {% hint style="info" %}
-There are two variants of the `#include` directive: with angle brackets (e.g., `#include <stdio.h>`), and with double quotes (e.g., `#include "circle.h"`). The difference between these two has to do with how the preprocessor searches for the referenced file, with the precise details being implementation-defined. All you need to know is to use angle brackets for system header files and double quotes for your own header files.&#x20;
+There are two variants of the `#include` directive: with angle brackets (e.g., `#include <stdio.h>`), and with double quotes (e.g., `#include "circle.h"`). The difference between these two has to do with how the preprocessor searches for the specified file, with the precise details being implementation-defined. All you need to know is to use angle brackets for system header files and double quotes for your own header files.&#x20;
 {% endhint %}
 
 ### #define directive
