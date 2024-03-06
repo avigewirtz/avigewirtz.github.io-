@@ -17,7 +17,7 @@ There are two variants of the `#include` directive: with angle brackets (e.g., `
 
 The #define directive creates a preprocessor macro, which is essentially an alias for a specific value or code snippet. Whenever the macro name is used in the code, the preprocessor replaces it with the macro's value. In circle.c, for example, `#define PI 3.14159` creates the macro `PI` and assigns it the value `3.14159`.  Whenever `PI` is subsequently encountered by the preprocessor in circle.c, it will be replaced with `3.14159`.&#x20;
 
-## Examining preprocessed files
+## Examining testcircle.i and circle.i
 
 Let's now examine the precise modifications the preprocessor made to our program by inspecting testcircle.i and circle.i and comparing them to testcircl.c and circle.c.&#x20;
 
