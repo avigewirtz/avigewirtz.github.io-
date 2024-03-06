@@ -10,7 +10,7 @@
 
 
 
-
+* circle.c lacks a main function
 
 
 

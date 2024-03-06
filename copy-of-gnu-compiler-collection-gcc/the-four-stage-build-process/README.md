@@ -77,20 +77,14 @@ To build our program, we can invoke the following command:
 gcc217 testcircle.c circle.c -o testcircle
 ```
 
-gcc will run the preprocessor, compiler, assembler, and linker on our program, generating the executable file _testcircle_. Conceptually, they happen in a rigid order, and the entire file is run through each transformation before the next one begins. An overview of this process is shown in Figure 2. Here's a breakdown of what happens at each stage:
+gcc will run the preprocessor, compiler, assembler, and linker on our program, generating the executable file _testcircle_. An overview of this process is shown in Figure 2. Here's a breakdown of what happens at each stage:
 
-1. **Preprocessing stage:** The preprocessor modifies _testcircle.c_ and _circle.c_ by including header files (stdio.h, stdlib.h, and circle.h), expanding macros, and removing comments. Output is preprocessed source files _testcircle.i_ and _circle.i_. &#x20;
+1. **Preprocessing stage:** The preprocessor modifies _testcircle.c_ and _circle.c_ by including header files (stdio.h, stdlib.h, and circle.h), expanding macros (such as PI), and removing comments. The output of the preprocessor is str _testcircle.i_ and _circle.i_. &#x20;
 2. **Compilation stage:** The compiler translates _testcircle.i_ and _circle.i_ into assembly language files _testcircle.s_ and _circle.s._&#x20;
 3. **Assembly stage:** The assembler translates _testcircle.s_ and _circle.s_ into relocatable object files _testcircle.o_ and _circle.o_. These files contain machine code but are not executable.&#x20;
-4. **Linking stage:** The linker combines _testcircle.o_ and _circle.o_, along with relevant C library files, producing executable file _testcircle_.&#x20;
+4. **Linking stage:** The linker combines _testcircle.o_ and _circle.o_, along with relevant C library files, producing the executable file _testcircle_, which can be run by invoking its pathname on the command line (i.e., `./testcircle`).
 
 <figure><img src="../../.gitbook/assets/Group 63.png" alt=""><figcaption><p>Figure 2: GCC Build Process of testcircle.c and circle.c</p></figcaption></figure>
-
-To run the _testcircle_, simply type its pathname on the command line:
-
-```
-./testcircle
-```
 
 It's important to recognize that the first three stages (preprocessing, compilation, and assembly) are performed on each file separately. This technique is known as _separate compilation_.&#x20;
 
