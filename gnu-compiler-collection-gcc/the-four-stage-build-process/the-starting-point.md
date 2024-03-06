@@ -1,2 +1,3 @@
-# The starting point
+# The Starting Point
 
+Our program begins as a text
