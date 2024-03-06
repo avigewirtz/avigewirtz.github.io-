@@ -4,7 +4,7 @@ In the second stage of the build process, gcc sends testcircle.i and circle.i to
 
 Shown in Figure 1.
 
-<figure><img src="../../.gitbook/assets/Group 20 (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Group 20 (5).png" alt=""><figcaption></figcaption></figure>
 
 
 

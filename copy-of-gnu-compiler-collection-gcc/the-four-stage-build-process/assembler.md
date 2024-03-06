@@ -2,7 +2,7 @@
 
 The third stage in the compilation process is assembly. In this stage, the assembler translates the assembly language instructions into machine language instructions. Machine language is the native language of the processor–that is, the&#x20;
 
-<figure><img src="../../.gitbook/assets/Group 26.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Group 26 (1).png" alt=""><figcaption></figcaption></figure>
 
 Main.c and circle.c will be stored in main.o and circle.o. \
 
