@@ -116,7 +116,6 @@
 
 * [Introduction](gnu-compiler-collection-gcc/introduction.md)
 * [4-Stage Build Process](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/README.md)
-  * [The Starting Point](gnu-compiler-collection-gcc/the-four-stage-build-process/the-starting-point.md)
   * [Preprocessing Stage](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/preprocessor.md)
   * [Compilation Stage](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/compiler.md)
   * [Assembly Stage](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/assembler.md)
