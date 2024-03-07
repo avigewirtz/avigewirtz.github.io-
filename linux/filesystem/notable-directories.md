@@ -1,6 +1,6 @@
 # Notable Directories
 
-The filesystem has many notable directories you need to be familiar with to effectively utilize the command line. We've already covered the root directory. We will now focus on other notable directories, most of which are circled in the figure below.
+The filesystem has many notable directories you need to be familiar with to effectively utilize the command line.&#x20;
 
 <figure><img src="https://lh4.googleusercontent.com/BheXyNU0t154mGoTPcX5POBMs60EjSzSdkn4LJezjzPwmA2I4ABbsnOBp3Errnc2t11JstAjl_JbDticzMOhV42yBJ5OMRF5ZyogG0grk_UKCEIFQ_M3rw1P0LazjLliGXaC6lr9QKD2yRIkupm5j50" alt=""><figcaption></figcaption></figure>
 
