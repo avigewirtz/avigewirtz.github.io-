@@ -4,7 +4,7 @@ A _user interface_ defines the mechanism through which a user issues commands to
 
 ### Graphical User Interface
 
-The GUI is the default interface on macOS and Windows. In a GUI, users issue commands by clicking on graphical elements such as windows, icons, and menus. The GUI provides a visually intuitive and user-friendly interface, making it especially beneficial for less technical computer users.
+The GUI is the default interface on macOS and Windows. In a GUI, users issue commands by clicking on graphical elements like windows, icons, and menus. The GUI provides a visually intuitive and user-friendly interface, making it ideal for less technical computer users.
 
 ### Command Line Interface
 
