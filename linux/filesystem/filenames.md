@@ -1,12 +1,12 @@
 # Filenames
 
-Every file has a _filename_. (In this context, the term _file_ is used broadly to include directories—which are a special type of file.) On Linux, filenames are case-sensitive; that is, _hello.c_, _Hello.c_ and _HELLO.C_ refer to three distinct files.
+Every file has a _filename_. On Linux, filenames are case-sensitive; that is, _hello.c_, _Hello.c_ and _HELLO.C_ refer to three distinct files.
 
 Very few restrictions are placed on filenames. On armlab, which uses the popular Ext4 filesystem, only the following restrictions are imposed:
 
 * No two filenames in the same directory may be the same.
 * Filenames may not exceed 255 bytes. (This normally corresponds to 255 characters.)
-* Filenames may not contain the _/_ (forward slash) or _ASCII NUL_ character. (In practice you need not be concerned about NUL. It is included here only for completeness.)
+* Filenames may not contain a _/_ (forward slash), which is reserved for seperating directory paths, or the _ASCII NUL_ character.&#x20;
 
 While any filename adhering to these rules is considered valid, some filenames are not ideal for use in a shell environment and are best avoided, as will be discussed [later](../../bash/creating-files-and-directories.md#directory-and-file-creation).
 
