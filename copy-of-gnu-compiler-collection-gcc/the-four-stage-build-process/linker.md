@@ -1,42 +1,8 @@
----
-description: "\x1A1"
----
-
 # Linking Stage
 
-}/
+Our program is currently distributed across two files: testcircle.o and circle.o. While both of these files contain machine code, neither of them is executable on its own. `circle.o` lacks a `main` function, and `testcircle.o` contains references to four external functions: `calculateArea`  (defined in circle.o), and `printf`, `scanf`, and `exit` (defined in C Standard Library object files, which for simplicity we'll assume are named printf.o, scanf.o, and exit.o).&#x20;
 
-Although each of these files contains machine code, theyre they are not executable. testcircle.o is still missing the definitions of calculateArea(), printf(), scanf(), and exit(), and circle.o does not contain a main() function. &#x20;
-
-
-
-
+To produce an executable file, the linker combines all these files--testcircle.o, circle.o, printf.o, scanf.o, and exit.o--together, resolving all external references. The output is the executable file testcircle. This process is shown in Figure 6.&#x20;
 
 <figure><img src="../../.gitbook/assets/Group 28 (3).png" alt=""><figcaption></figcaption></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-The final stage is linking. The object code from `intmath.c` is not yet a complete executable program. It requires linking with other object files and libraries. For example, the standard I/O functions utilized in `intmath.c` are part of external libraries that need to be connected with our program. The linking stage amalgamates the object code with these necessary libraries to create the final executable.
-
-We will assume that the source code is stored in a file called ‘intmath.c’.&#x20;
-
-In order to make intmath.c executabe, we need to convert it to machine code, which is the only language the computer understands. To do this, we can invoke gcc217 like so:&#x20;
-
-```bash
-gcc217 intmath.c -o intmath
-```
-
-This compiles the source code in ‘intmath.c’ to machine code and stores it in an executable file ‘intmath’. The output file for the machine code is specified using the ‘-o’ option. This option is usually given as the last argument on the command line. If it is omitted, the output is written to a default file called ‘a.out’.&#x20;
-
-Note that if a file with the same name as the executable file already exists in the current directory it will be overwritten.&#x20;
 
