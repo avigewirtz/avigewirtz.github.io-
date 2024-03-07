@@ -1,4 +1,14 @@
+---
+description: "\x1A1"
+---
+
 # Linking Stage
+
+}/
+
+Although each of these files contains machine code, theyre they are not executable. testcircle.o is still missing the definitions of calculateArea(), printf(), scanf(), and exit(), and circle.o does not contain a main() function. &#x20;
+
+
 
 
 
@@ -9,8 +19,6 @@
 
 
 
-
-* circle.c lacks a main function
 
 
 

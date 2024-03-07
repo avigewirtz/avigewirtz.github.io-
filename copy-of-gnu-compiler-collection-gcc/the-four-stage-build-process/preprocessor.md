@@ -1,6 +1,6 @@
 # Preprocessing Stage
 
-The C preprocessor is a program which modifies their source code in testcircle.c and circle.c before actual compilation begins. Its output is stored in testcircle.i and circle.i, which are fed to the compiler. The preprocessor does two main things:
+The C preprocessor is a program which modifies their source code in testcircle.c and circle.c before actual compilation begins. Its output is testcircle.i and circle.i, which are fed to the compiler. The preprocessor does two main things:
 
 1. Removes comments from the source code, replacing each one with a single space. Comments are useful for humans, but serve no purpose for the compiler; hence they can be discarded.
 2. Handles _preprocessor directives._ Preprocessor directives are lines in the C source code whose first (nonblank) character is a `#` (hash). They serve as instructions to the preprocessor to perform various tasks. testcircle.c and circle.c contain two types of preprocessor directives: `#include`, and `#define`.&#x20;
