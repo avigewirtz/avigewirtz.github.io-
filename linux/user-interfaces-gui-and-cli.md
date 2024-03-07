@@ -8,7 +8,7 @@ The GUI is the default interface on macOS and Windows. In a GUI, users issue com
 
 ### Command Line Interface
 
-The CLI is a text-based interface where users issue commands by typing sequences of text in a [terminal](terminal.md). To picture what's it like to use the CLI, you can think of it as interacting with a computer via a text messaging interface. Despite the CLI's more primitive nature than the GUI, the CLI can perform every action a GUI can--even more, in fact. The difference lies in only how the commands are issued by the user.
+The CLI is a text-based interface where users issue commands by typing sequences of text in a [terminal](terminal.md). To picture what's it like to use the CLI, you can think of it as interacting with a computer via a text messaging interface.&#x20;
 
 Let's consider a couple of examples to highlight the distinction:
 
@@ -19,5 +19,5 @@ Let's consider a couple of examples to highlight the distinction:
    * **GUI**: Users can move a file using the _drag-and-drop_ paradigm.
    * **CLI**: Users must issue a textual command like `mv source_file destination_directory`.
 
-Both GUIs and CLIs have their advantages and limitations. GUIs are more intuitive and user-friendly, making them suitable for less technical users or for tasks that involve a lot of visual elements. On the other hand, CLIs offer more flexibility and control, making them the preferred choice for advanced users or for tasks that involve automation or repetitive actions. Ultimately, the choice between a GUI or CLI depends on the user's level of expertise, personal preferences, and the specific task at hand.
+Both GUIs and CLIs have their advantages and limitations. GUIs are more intuitive and user-friendly, making them ideal for less technical users or for tasks that involve a lot of visual elements. On the other hand, CLIs offer more flexibility and control, making them the preferred choice for advanced users or for tasks that involve automation or repetitive actions. Ultimately, the choice between a GUI or CLI depends on the user's level of expertise, personal preferences, and the specific task at hand.
 
