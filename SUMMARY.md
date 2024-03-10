@@ -114,15 +114,16 @@
 
 ## GCC
 
-* [Introduction](gcc/introduction.md)
-* [4-Stage Build Process](gcc/the-four-stage-build-process/README.md)
-  * [Preprocessing Stage](gcc/the-four-stage-build-process/preprocessing-stage.md)
-  * [Compilation Stage](gcc/the-four-stage-build-process/compilation-stage.md)
-  * [Assembly Stage](gcc/the-four-stage-build-process/assembly-stage.md)
-  * [Linking Stage](gcc/the-four-stage-build-process/linking-stage.md)
+* [Introduction](gnu-compiler-collection-gcc/introduction.md)
+* [4-Stage Build Process](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/README.md)
+  * [Preprocessing Stage](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/preprocessor.md)
+  * [Compilation Stage](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/compiler.md)
+  * [Assembly Stage](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/assembler.md)
+  * [Linking Stage](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/linker.md)
+* [Page 1](gcc/page-1.md)
 * [Identifying Build Errors](gcc/identifying-build-errors.md)
-* [GCC Cheatsheet](gcc/gcc-cheatsheet.md)
-* [Further Reading](gcc/further-reading.md)
+* [GCC Cheatsheet](gnu-compiler-collection-gcc/gcc-cheatsheet.md)
+* [Further Reading](copy-of-gnu-compiler-collection-gcc/further-reading.md)
 
 ## Make
 
@@ -147,6 +148,8 @@
 ## Appendices
 
 * [Appendix B: Detailed Explanation of I/O and Redirection & Piping](appendices/detailed-explanation-of-i-o-and-redirection-and-piping.md)
+* [C Preprocessor](appendices/c-preprocessor.md)
+* [gcc extra](appendices/gcc-extra.md)
 
 ## Group 1
 

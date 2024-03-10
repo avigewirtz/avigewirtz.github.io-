@@ -1,7 +1,7 @@
 # GCC Cheatsheet
 
 {% hint style="info" %}
-`gcc217` is an alias for `gcc -Wall -Wextra -Wno-unused-parameter -ansi -pedantic`
+Note: `gcc217` is a shell alias for `gcc -Wall -Wextra -Wno-unused-parameter -ansi -pedantic`
 {% endhint %}
 
 | Command                                    | Explanation                                         |
