@@ -94,7 +94,7 @@ _testcircle_ can be run by invoking it's pathname on the command line_:_
 ./testcircle
 ```
 
-It's important to recognize that the first three stages (preprocessing, compilation, and assembly) are performed on each file separately.&#x20;
+It's important to recognize that the first three stages (preprocessing, compilation, and assembly) are performed on each file separately. Thus, when, for example, the preprocessor, compiler, and assembler are processing testcircle.c, they have no knowledge of circle.c, and vice versa. It is only during the linking phase that external references are resolved.&#x20;
 
 ### Saving Intermediate Files
 
@@ -123,13 +123,13 @@ circle.c      circle.i      circle.s      testcircle.i  testcircle.s
 
 When you invoke gcc, by default it performs all stages necessary to generate an executable. For example, if you invoke gcc on a `.c` file, it will perform preprocessing, compilation, assembly, and linking. If you invoke gcc on a `.s` file, it will perform assembly and linking. You can stop the build process at any stage using the following options:&#x20;
 
-* `-E`:    stop after preprocessing
-* `-S`:    stop after compilation
-* `-c`:    stop after assembly
+* `-E`:    stop after preprocessing. By default, prints output on stdout
+* `-S`:    stop after compilation. By default, saves output in .s file(s)
+* `-c`:    stop after assembly. By default, saves output in .o file(s)
 
 Here's an example of their usage for our testcircle program:
 
-1. Preprocess circle.c and testcircle.c but do not compile:
+1. Preprocess circle.c and testcircle.c but do not compile. Store the results in circle.i and testcircle.i:
 
 ```
 gcc217 -E circle.c -o circle.i
@@ -148,7 +148,7 @@ gcc217 -S circle.i testcircle.i
 gcc217 -c circle.s testcircle.s
 ```
 
-4. Link circle.s and testcircle.s:
+4. Link circle.o and testcircle.o and store the result in testcircle:
 
 ```
 gcc217 circle.o testcircle.o -o testcircle
