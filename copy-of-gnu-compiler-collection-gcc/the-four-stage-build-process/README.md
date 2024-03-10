@@ -73,8 +73,6 @@ double calculateArea(double radius);
 {% endtab %}
 {% endtabs %}
 
-## **The Big Picture: From Source Code to Executable**
-
 We can build our program by invoking the following command:
 
 ```bash
@@ -96,11 +94,18 @@ _testcircle_ can be run by invoking it's pathname on the command line_:_
 ./testcircle
 ```
 
-It's important to recognize that the first three stages (preprocessing, compilation, and assembly) are performed on each file separately. This technique is known as _separate compilation_.&#x20;
+It's important to recognize that the first three stages (preprocessing, compilation, and assembly) are performed on each file separately.&#x20;
 
-## Saving Intermediate Files
+### Saving Intermediate Files
 
-By default, gcc does not retain the intermediate files generated during the build process. You can instruct gcc to retain the intermediate files by using the `--save-temps` option:
+By default, gcc does not retain the intermediate files (`.i`, `.s`, and `.o)`generated during the build process. They are stored in temporary files, which are discarded. Hence, if you invoke `ls`, you will only see the source files and the executable:
+
+```bash
+> ls
+circle.h    testcircle    testcircle.c    circle.c
+```
+
+We can instruct gcc to save the intermediate files by using the `--save-temps` option:
 
 ```
 gcc217 --save-temps testcircle.c circle.c -o testcircle
@@ -114,11 +119,38 @@ circle.h      circle.o      testcircle    testcircle.c  testcircle.o
 circle.c      circle.i      circle.s      testcircle.i  testcircle.s 
 ```
 
-## Isolating Each Stage of the Build Process
+### Performing each stage individually
 
-When you invoke gcc a .c file, by default it performs all four build stages. You can use gcc options to stop the process at any stage. Here's how you can control the build process to stop at each stage:
+When you invoke gcc, by default it performs all stages necessary to generate an executable. For example, if you invoke gcc on a `.c` file, it will perform preprocessing, compilation, assembly, and linking. If you invoke gcc on a `.s` file, it will perform assembly and linking. You can stop the build process at any stage using the following options:&#x20;
 
-* **-E - stop after preprocessing**
-* \-S - stop after compilation
-* \-c - stop after assembly
-*
+* `-E`:    stop after preprocessing
+* `-S`:    stop after compilation
+* `-c`:    stop after assembly
+
+Here's an example of their usage for our testcircle program:
+
+1. Preprocess circle.c and testcircle.c but do not compile:
+
+```
+gcc217 -E circle.c -o circle.i
+gcc217 -E testcircle.c -o testcircle.i
+```
+
+2. Compile circle.i and testcircle.i but do not assemble:
+
+```
+gcc217 -S circle.i testcircle.i
+```
+
+3. Assemble circle.s and testcircle.s but do not link:
+
+```
+gcc217 -c circle.s testcircle.s
+```
+
+4. Link circle.s and testcircle.s:
+
+```
+gcc217 circle.o testcircle.o -o testcircle
+```
+
