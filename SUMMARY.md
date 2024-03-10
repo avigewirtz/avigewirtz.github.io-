@@ -112,17 +112,17 @@
 * [Executable files](machine-assembly-and-high-level-languages/executable-files.md)
 * [Further Reading](machine-assembly-and-high-level-languages/further-reading.md)
 
-## Gnu Compiler Collection (GCC)
+## GCC
 
-* [Introduction](gnu-compiler-collection-gcc/introduction.md)
-* [4-Stage Build Process](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/README.md)
-  * [Preprocessing Stage](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/preprocessor.md)
-  * [Compilation Stage](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/compiler.md)
-  * [Assembly Stage](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/assembler.md)
-  * [Linking Stage](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/linker.md)
-* [Identifying Build Errors](gnu-compiler-collection-gcc/identifying-errors.md)
-* [GCC Cheatsheet](gnu-compiler-collection-gcc/gcc-cheatsheet.md)
-* [Further Reading](copy-of-gnu-compiler-collection-gcc/further-reading.md)
+* [Introduction](gcc/introduction.md)
+* [4-Stage Build Process](gcc/the-four-stage-build-process/README.md)
+  * [Preprocessing Stage](gcc/the-four-stage-build-process/preprocessing-stage.md)
+  * [Compilation Stage](gcc/the-four-stage-build-process/compilation-stage.md)
+  * [Assembly Stage](gcc/the-four-stage-build-process/assembly-stage.md)
+  * [Linking Stage](gcc/the-four-stage-build-process/linking-stage.md)
+* [Identifying Build Errors](gcc/identifying-build-errors.md)
+* [GCC Cheatsheet](gcc/gcc-cheatsheet.md)
+* [Further Reading](gcc/further-reading.md)
 
 ## Make
 
