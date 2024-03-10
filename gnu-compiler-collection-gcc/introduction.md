@@ -1,6 +1,6 @@
 # Introduction
 
-The purpose of this chapter is to explain all parts of GCC you will relevant to COS217, with with a particular emphasis on the four-stage build process. This chapter does not attempt to provide a remotely comprehensive coverage on GCC. For further resources on GCC, refer to the [further reading](further-reading.md) section at the end of this chapter.&#x20;
+The purpose of this chapter is to explain all parts of GCC you will relevant to COS217, with with a particular emphasis on the four-stage build process. This chapter does not attempt to provide a remotely comprehensive coverage on GCC. For further resources on GCC, refer to the [further reading](../copy-of-gnu-compiler-collection-gcc/further-reading.md) section at the end of this chapter.&#x20;
 
 
 
