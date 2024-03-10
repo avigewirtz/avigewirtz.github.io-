@@ -1,6 +1,6 @@
 # The Big Picture: From Source Code to Executable
 
-Consider the C program shown below, comprised of three source files: circle.c, testcircle.c, and circle.h. It will serve as a running example throughout this chapter, allowing us to demonstrate how the GCC build process works.&#x20;
+Consider the C program shown below. It will serve as a running example throughout this chapter, allowing us to demonstrate how the GCC build process works.&#x20;
 
 {% tabs %}
 {% tab title="testcircle.c" %}
