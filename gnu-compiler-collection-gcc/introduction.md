@@ -6,6 +6,12 @@ This tutorial assumes you have basic knowledge of C programming language and und
 
 In this chapter, we will explore the four-stage build process using a multi-file C program as an example. The reason is that in my opinion, this makes the role separate compilation more obvious. &#x20;
 
+
+
+### Why it matters
+
+\<Why you should know how build works>
+
 **Clarification of terminology**
 
 Before we begin, it's important to clarify some terminology. In this chapter, we use the term build (as in "building a C program") to refer to the entire process (i.e., all four stages) of transforming C source code into executable machine code. We use the term "compilation" to refer to step 2 of the build process specifically.&#x20;
