@@ -1,5 +1,7 @@
 # Deep Dive into Each Stage
 
+Now that we've given a high-level overview of the build process, let's take a deeper five into precisely what happens at each stage.&#x20;
+
 ## Preprocessing Stage
 
 In the first stage of the build process, testcircle.c and circle.c are sent to the preprocessor, which outputs testcircle.i and circle.i. The modifications are shown in Figure 2.&#x20;
