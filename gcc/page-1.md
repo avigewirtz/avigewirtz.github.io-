@@ -23,7 +23,7 @@ Observations:
 
 In the first stage of the build process, testcircle.c and circle.c are sent to the preprocessor, which modifies their source code before actual compilation begins. First, it removes all comments, which are useful for humans but serve no purpose for the compiler. Second, it handles preprocessor directives, which are lines in the code that begin with a # (hash). testcircle.c and circle.c contain two types of preprocessor directives: #include, and #define. The modifications are shown in Figure 2.&#x20;
 
-<figure><img src="../.gitbook/assets/Frame 4.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Frame 5 (3).png" alt="" width="563"><figcaption></figcaption></figure>
 
 Let's now examine the precise modifications the preprocessor makes by comparing testcircle.i and circle.i with testcircle.c and circle.c.&#x20;
 
@@ -40,7 +40,7 @@ At this point, our files contain raw C code (i.e., no preprocessing language or 
 
 The second stage involves compilation itself. Here, the compiler translates testcircle.i and circle.i into assembly-language, stored in testcircle.s and circle.s. Compilation is the most complex stage of the build process. It involves translating C source code into a completely different language. This is where the code is checked for errors. Figure 4.3 shows what the arm64 assembly looks like.&#x20;
 
-<figure><img src="../.gitbook/assets/Group 20 (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 30 (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 * Assembly language&#x20;
 * testcircle.s missing definitions of printf, scanf, exit, and area
@@ -60,7 +60,7 @@ A detailed explanation of assembly language is beyond the scope of this chapter.
 
 The assembler translates the assembly-language in testcircle.s and circle.s into machine language, storing the results in testcircle.o and circle.o. This process is shown in Figure 4.3. Machine language is a binary language, consisting of only two symbols--0 and 1.
 
-<figure><img src="../.gitbook/assets/Group 26 (1).png" alt=""><figcaption><p>Figure 4.3: Assembly Stage</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 31.png" alt="" width="563"><figcaption></figcaption></figure>
 
 * machine language&#x20;
 * testcircle.o missing definitions of printf, scanf, exit, and area
@@ -69,5 +69,5 @@ The assembler translates the assembly-language in testcircle.s and circle.s into
 
 To produce an executable file, the linker combines all these files--testcircle.o, circle.o, and C library--together, resolving all external references in our program. The output is a single file--the executable testcircle. This process is shown in Figure 6.&#x20;
 
-<figure><img src="../.gitbook/assets/Group 28 (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 49 (2).png" alt="" width="563"><figcaption></figcaption></figure>
 
