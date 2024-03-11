@@ -2,15 +2,28 @@
 
 Now that we've given a high-level overview of the build process, let's take a deeper five into precisely what happens at each stage.&#x20;
 
+
+
+## The Starting Point
+
+Our program begins as two .c files: testcircle.c and circle.c.&#x20;
+
+<figure><img src="../.gitbook/assets/Group 29 (3).png" alt="" width="563"><figcaption></figcaption></figure>
+
+Observations:
+
+* Both testcircle.c and circle.c consist of C source code. Can divide the source code into three groups:
+  * comments. Intended for humans
+  * Preprocessing language: intended for preprocessor
+  * Everything else: intended for compiler
+* testcircle.c is missing the definitions of printf, scanf, exit, and area. testcircle.c calls all four of these functions, but neither of them is defined in testcircle.c. At some point, the code that implements these functions has to be inserted.&#x20;
+* Missing declarations of printf, scanf, exit, and area. Not only does testcircle.c not contain the definitions of these functions, it does not even contain the declarations of these functions. They are needed by the compiler to type check.&#x20;
+
 ## Preprocessing Stage
 
-In the first stage of the build process, testcircle.c and circle.c are sent to the preprocessor, which outputs testcircle.i and circle.i. The modifications are shown in Figure 2.&#x20;
+In the first stage of the build process, testcircle.c and circle.c are sent to the preprocessor, which modifies their source code before actual compilation begins. First, it removes all comments, which are useful for humans but serve no purpose for the compiler. Second, it handles preprocessor directives, which are lines in the code that begin with a # (hash). testcircle.c and circle.c contain two types of preprocessor directives: #include, and #define. The modifications are shown in Figure 2.&#x20;
 
-<div data-full-width="true">
-
-<figure><img src="../.gitbook/assets/Group 19 (4).png" alt=""><figcaption></figcaption></figure>
-
-</div>
+<figure><img src="../.gitbook/assets/Frame 4.png" alt=""><figcaption></figcaption></figure>
 
 Let's now examine the precise modifications the preprocessor makes by comparing testcircle.i and circle.i with testcircle.c and circle.c.&#x20;
 
@@ -18,13 +31,21 @@ Let's now examine the precise modifications the preprocessor makes by comparing 
 * **File Inclusion**. Second, we see that the preprocessor fetched the header files specified via #include directives in testcircle.c and circle.c and added their contents in the place where their their include directives appeared. In testcircle.i, we see the contents of the stdio.h, stdlib.h, and circle.h in the place where their directives appeared. Note that stdio and stdlib.h are large files, so we only show the relevant parts. For circle.c, the preprocessor inserted the contents of circle.h.&#x20;
 * **Macro expansion**. Finally, we see that all macros have been expanded. PI in circle.c was replaced with 3.14159, and EXIT\_FAILURE in testcircle.c was replaced with 1. EXIT\_FAILURE is a macro defined in stdlib.h.
 
+At this point, our files contain raw C code (i.e., no preprocessing language or comments), contain the declarations of all externally defined functions, but&#x20;
+
+* Raw C code
+* testcircle.i missing definitions of printf, scanf, exit, and area.
+
 ## Compilation Stage
 
 The second stage involves compilation itself. Here, the compiler translates testcircle.i and circle.i into assembly-language, stored in testcircle.s and circle.s. Compilation is the most complex stage of the build process. It involves translating C source code into a completely different language. This is where the code is checked for errors. Figure 4.3 shows what the arm64 assembly looks like.&#x20;
 
 <figure><img src="../.gitbook/assets/Group 20 (5).png" alt=""><figcaption></figcaption></figure>
 
-## Characteristics of Assembly Language
+* Assembly language&#x20;
+* testcircle.s missing definitions of printf, scanf, exit, and area
+
+#### Characteristics of Assembly Language
 
 A detailed explanation of assembly language is beyond the scope of this chapter. You can find a high level-overview in appendix 8. Arm64 assemvly will be covered in detail in the second hald of the course. For now, we will simply provide a few general points about assembly: &#x20;
 
@@ -41,11 +62,10 @@ The assembler translates the assembly-language in testcircle.s and circle.s into
 
 <figure><img src="../.gitbook/assets/Group 26 (1).png" alt=""><figcaption><p>Figure 4.3: Assembly Stage</p></figcaption></figure>
 
-
+* machine language&#x20;
+* testcircle.o missing definitions of printf, scanf, exit, and area
 
 ## Linking Stage
-
-Our program is currently distributed across two files: testcircle.o and circle.o. While both of these files contain machine code, neither of them is executable on its own. For one, `circle.o` lacks a `main` function, which serves as the entry point for the program, and `testcircle.o` contains references to four external functions: `calculateArea`  (defined in circle.o), and `printf`, `scanf`, and `exit` (defined in C Standard Library).
 
 To produce an executable file, the linker combines all these files--testcircle.o, circle.o, and C library--together, resolving all external references in our program. The output is a single file--the executable testcircle. This process is shown in Figure 6.&#x20;
 
