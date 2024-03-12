@@ -79,7 +79,7 @@ We can build our program by invoking the following command:
 gcc217 testcircle.c circle.c -o testcircle
 ```
 
-Note that the -o option specifies that the executable be named testcircle, rather than the default name a.out. We can run testcircle by invoking its pathname on the command line:
+Note that the `-o` option specifies that the executable be named _testcircle_, rather than the default name a.out. We can run testcircle by invoking its pathname on the command line:
 
 ```
 ./testcircle
@@ -89,10 +89,10 @@ Note that the -o option specifies that the executable be named testcircle, rathe
 
 Behind the scenes, quite a lot of work is involved in producing the executable. The sequence of operations is shown in Figure 4.2. Here's a breakdown of what happens at each stage:
 
-1. **Preprocessing stage:** The preprocessor modifies _testcircle.c_ and _circle.c_ by including header files (stdio.h, stdlib.h, and circle.h), expanding macros (such as PI), and removing comments. The output is of the preprocessor is _testcircle.i_ and _circle.i_. &#x20;
+1. **Preprocessing stage:** The preprocessor modifies the source code in _testcircle.c_ and _circle.c_ by including header files (stdio.h, stdlib.h, and circle.h), expanding macros (such as PI), and removing comments. The output is of the preprocessor is stored in _testcircle.i_ and _circle.i_. &#x20;
 2. **Compilation stage:** The compiler translates _testcircle.i_ and _circle.i_ into assembly language files _testcircle.s_ and _circle.s._&#x20;
 3. **Assembly stage:** The assembler translates _testcircle.s_ and _circle.s_ into relocatable object files _testcircle.o_ and _circle.o_. These files contain machine code but are not executable.&#x20;
-4. **Linking stage:** The linker combines _testcircle.o_ and _circle.o_, along with relevant C library files, producing the executable file _testcircle_.
+4. **Linking stage:** The linker combines _testcircle.o_ and _circle.o_, along with necessary .o files from the C Standard Library, producing the executable file _testcircle_.
 
 <figure><img src="../../.gitbook/assets/Group 63.png" alt=""><figcaption><p>Figure 4.2: GCC Four-Stage Build Process </p></figcaption></figure>
 
