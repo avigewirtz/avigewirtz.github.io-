@@ -73,13 +73,12 @@ double calculateArea(double radius);
 {% endtab %}
 {% endtabs %}
 
-We can build our program by invoking the following command:
-
+To build our program, we invoke the following command:
 ```bash
 gcc217 testcircle.c circle.c -o testcircle
 ```
 
-Note that the `-o` option specifies that the executable be named _testcircle_, rather than the default name a.out. We can run testcircle by invoking its pathname on the command line:
+Note that the `-o` option specifies that the executable be named _testcircle_, rather than the default name a.out. To run testcircle, we simply invoke its pathname on the command line:
 
 ```
 ./testcircle
