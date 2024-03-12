@@ -1,5 +1,23 @@
 # The Big Picture: From Source Code to Executable
 
+The transformation of a C program from source code to executable involves four dist
+
+* this section should be a bit more in depth. give specific examples. Next section will apply it
+
+
+
+The processes of transforming C source code into executable machine code resembles an assembly line in a factory. The product is a C program, which begins it's journey as one or more source files. As it progresses down the assembly line, it gets worked on by four distinct tools--the preprocessor, compiler, assembler, and linker. At the end, the program emerges as an executable file.&#x20;
+
+Thankfully, we don't have to invoke all four of these programs ourselves in order to build a program. gcc handles all the work for us.&#x20;
+
+
+
+stages: preprocessing, compilation, assembly, and linking. Thankfully, we typically don't have to worry about any of this when building a program.  We simply&#x20;
+
+
+
+
+
 Consider the multi-file C program shown below. It will serve as a running example throughout this chapter, allowing us to demonstrate how the GCC build process works.
 
 {% tabs %}
