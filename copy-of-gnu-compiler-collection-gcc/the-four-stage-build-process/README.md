@@ -79,11 +79,13 @@ We can build our program by invoking the following command:
 gcc217 testcircle.c circle.c -o testcircle
 ```
 
-gcc will build our program, producing the executable _testcircle_, which can be run by invoking its pathname on the command line:
+Note that the -o option specifies that the executable be named testcircle, rather than the default name a.out. We can run testcircle by invoking its pathname on the command line:
 
 ```
 ./testcircle
 ```
+
+#### Under the hood
 
 Behind the scenes, quite a lot of work is involved in producing the executable. The sequence of operations is shown in Figure 4.2. Here's a breakdown of what happens at each stage:
 
