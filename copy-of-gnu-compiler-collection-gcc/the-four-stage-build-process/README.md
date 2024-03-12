@@ -1,6 +1,6 @@
 # The Big Picture: From Source Code to Executable
 
-Consider the C program shown below. It will serve as a running example throughout this chapter, allowing us to demonstrate how the GCC build process works.&#x20;
+Consider the multi-file C program shown below. It will serve as a running example throughout this chapter, allowing us to demonstrate how the GCC build process works.&#x20;
 
 {% tabs %}
 {% tab title="testcircle.c" %}
@@ -79,7 +79,13 @@ We can build our program by invoking the following command:
 gcc217 testcircle.c circle.c -o testcircle
 ```
 
-gcc will run the preprocessor, compiler, assembler, and linker on our program, generating the executable file _testcircle_. This sequence of operations is shown in Figure 4.2. Here's a breakdown of what happens at each stage:
+gcc will build our program, producing the executable _testcircle_, which can be run by invoking its pathname on the command line:
+
+```
+./testcircle
+```
+
+Behind the scenes, quite a lot of work is involved in producing the executable. The sequence of operations is shown in Figure 4.2. Here's a breakdown of what happens at each stage:
 
 1. **Preprocessing stage:** The preprocessor modifies _testcircle.c_ and _circle.c_ by including header files (stdio.h, stdlib.h, and circle.h), expanding macros (such as PI), and removing comments. The output is of the preprocessor is _testcircle.i_ and _circle.i_. &#x20;
 2. **Compilation stage:** The compiler translates _testcircle.i_ and _circle.i_ into assembly language files _testcircle.s_ and _circle.s._&#x20;
@@ -88,17 +94,11 @@ gcc will run the preprocessor, compiler, assembler, and linker on our program, g
 
 <figure><img src="../../.gitbook/assets/Group 63.png" alt=""><figcaption><p>Figure 4.2: GCC Four-Stage Build Process </p></figcaption></figure>
 
-_testcircle_ can be run by invoking it's pathname on the command line_:_
-
-```
-./testcircle
-```
-
-It's important to recognize that the first three stages (preprocessing, compilation, and assembly) are performed on each file separately. Thus, when, for example, the preprocessor, compiler, and assembler are processing testcircle.c, they have no knowledge of circle.c, and vice versa. It is only during the linking phase that external references are resolved.&#x20;
+It's important to recognize that the first three stages (preprocessing, compilation, and assembly) are performed on each file separately. It is only during the linking phase that their contents are combined.&#x20;
 
 ### Saving Intermediate Files
 
-By default, gcc does not retain the intermediate files (`.i`, `.s`, and `.o)`generated during the build process. They are stored in temporary files, which are discarded. Hence, if you invoke `ls`, you will only see the source files and the executable:
+By default, gcc does not retain the intermediate files (`.i`, `.s`, and `.o)`generated during the build process. Hence, if we invoke `ls` after building testcircle, we will not see any intermediate files:&#x20;
 
 ```bash
 > ls
@@ -111,7 +111,7 @@ We can instruct gcc to save the intermediate files by using the `--save-temps` o
 gcc217 --save-temps testcircle.c circle.c -o testcircle
 ```
 
-Invoking `ls`, you will now see the intermediate files in your project directory:
+Invoking `ls`, we now see the intermediate files in our project directory:
 
 ```bash
 > ls
