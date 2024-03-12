@@ -1,6 +1,6 @@
-# The Big Picture: From Source Code to Executable
+# The Four Stages
 
-The transformation of a C program from source code to executable involves four dist
+When you invoke GCC on a C program, it builds your program in The transformation of a C program from source code to executable involves four dist
 
 * this section should be a bit more in depth. give specific examples. Next section will apply it
 

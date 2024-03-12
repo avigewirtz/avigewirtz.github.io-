@@ -115,7 +115,7 @@
 ## GCC Build Process
 
 * [Introduction](gnu-compiler-collection-gcc/introduction.md)
-* [The Big Picture: From Source Code to Executable](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/README.md)
+* [The Four Stages](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/README.md)
 * [Important GCC Commands](gcc-build-process/important-gcc-commands.md)
 * [Example](gcc/page-1.md)
 * [Identifying Build Errors](gcc/identifying-build-errors.md)
