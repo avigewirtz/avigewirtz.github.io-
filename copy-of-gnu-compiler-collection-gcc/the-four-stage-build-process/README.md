@@ -97,7 +97,7 @@ It's important to recognize that the first three stages (preprocessing, compilat
 
 ### Saving Intermediate Files
 
-By default, gcc does not retain the intermediate files (`.i`, `.s`, and `.o)`generated during the build process. Hence, if we invoke `ls` after building testcircle, we will not see any intermediate files:&#x20;
+By default, gcc does not retain the intermediate files (i.e., `.i`, `.s`, and `.o)`generated during the build process. Hence, if we invoke `ls` after building testcircle, we will not see any intermediate files:&#x20;
 
 ```bash
 > ls
