@@ -84,8 +84,6 @@ Note that the `-o` option specifies that the executable be named _testcircle_, r
 ./testcircle
 ```
 
-#### Under the hood
-
 Behind the scenes, quite a lot of work is involved in producing the executable. The sequence of operations is shown in Figure 4.2. Here's a breakdown of what happens at each stage:
 
 1. **Preprocessing stage:** The preprocessor modifies the source code in _testcircle.c_ and _circle.c_ by including header files (stdio.h, stdlib.h, and circle.h), expanding macros (such as PI), and removing comments. The output is of the preprocessor is stored in _testcircle.i_ and _circle.i_. &#x20;
