@@ -2,45 +2,42 @@
 
 Now that we've given a high-level overview of the build process, let's take a deeper five into precisely what happens at each stage.&#x20;
 
-
-
-## The Starting Point
-
-Our program begins as two .c files: testcircle.c and circle.c.&#x20;
-
-<figure><img src="../.gitbook/assets/Group 29 (3).png" alt="" width="563"><figcaption></figcaption></figure>
-
-Observations:
-
-* Both testcircle.c and circle.c consist of C source code. Can divide the source code into three groups:
-  * comments. Intended for humans
-  * Preprocessing language: intended for preprocessor
-  * Everything else: intended for compiler
-* testcircle.c is missing the definitions of printf, scanf, exit, and area. testcircle.c calls all four of these functions, but neither of them is defined in testcircle.c. At some point, the code that implements these functions has to be inserted.&#x20;
-* Missing declarations of printf, scanf, exit, and area. Not only does testcircle.c not contain the definitions of these functions, it does not even contain the declarations of these functions. They are needed by the compiler to type check.&#x20;
-
 ## Preprocessing Stage
 
-In the first stage of the build process, testcircle.c and circle.c are sent to the preprocessor, which modifies their source code before actual compilation begins. First, it removes all comments, which are useful for humans but serve no purpose for the compiler. Second, it handles preprocessor directives, which are lines in the code that begin with a # (hash). testcircle.c and circle.c contain two types of preprocessor directives: #include, and #define. The modifications are shown in Figure 2.&#x20;
+We know that in the first stage of the build process, the testcircle.c and circle.c are sent to the preprocessor, which performs some modifications and outputs testcircle.i and circle.i. Let's figure out what modifications it performs by examining testcircle.i and circle.i: The modifications are summed up in Figure 4.2. Let's go through each one-by-one:&#x20;
 
-<figure><img src="../.gitbook/assets/Frame 5 (3).png" alt="" width="563"><figcaption></figcaption></figure>
+The output is testcircle.i and circle.i. This process is illustrated in&#x20;
 
-Let's now examine the precise modifications the preprocessor makes by comparing testcircle.i and circle.i with testcircle.c and circle.c.&#x20;
+Let's now examine testcircle.i and circle.i The build process begins with the preprocessor. In this stage, testcircle.c and circle.c are sent to the p, which takes testcircle.c and circle.c as input, and outputs preprocessed files testcircle.i and circle.i. This process is illustrated in Figure 4.2.  &#x20;
 
-* **Comments Removal.** First, we see that testcircle.i and circle.i do not contain comments. All comments in circle.c and testcircle.c were removed.
+1. **Removes comments**. Comments are intended for humans, but are of no use to the compiler. Hence, they can be discarded.&#x20;
+2. **Handles **_**preprocessor directives**._ These are lines in the source code that start with a `#` (hash) symbol. Preprocessor macros control things like file inclusion and macro expansion.&#x20;
+
+Let's now examine the the specific modification the preprocessor performs on our program. preprocessing n the first stage of the build process, `testcircle.c` and `circle.c` are sent to the preprocessor, which modifies their source code before actual compilation begins. It does two main things: The preprocessed output is stored in testcircle.i and circle.i. This process is illustrated in Figure 4.2. Let's now examine how these modifications work with our program. Let's now go over each one: &#x20;
+
+<figure><img src="../.gitbook/assets/Frame 5 (3).png" alt="" width="563"><figcaption><p>Figure 4.3: Preprocessing Stage</p></figcaption></figure>
+
+In testcircle.c, for example, the preprocessor inserts the contents of stdio.h in the place where `#include <stdio.h>` appears. _stdio.h_ is a system header file which contains the prototypes of functions like `printf()` and `scanf()`.
+
+The `#define` directive creates a preprocessor macro, which is essentially an alias for a specific value or code snippet. Whenever the macro name is used in the code, the preprocessor replaces it with the macro's value. In circle.c, for example, `#define PI 3.14159` creates the macro `PI` and assigns it the value `3.14159`.  Whenever `PI` is subsequently used in circle.c, the preprocessor replaces it with `3.14159`.&#x20;
+
+* **Comments Removal.** First, we see that testcircle.i and circle.i do not contain comments.&#x20;
 * **File Inclusion**. Second, we see that the preprocessor fetched the header files specified via #include directives in testcircle.c and circle.c and added their contents in the place where their their include directives appeared. In testcircle.i, we see the contents of the stdio.h, stdlib.h, and circle.h in the place where their directives appeared. Note that stdio and stdlib.h are large files, so we only show the relevant parts. For circle.c, the preprocessor inserted the contents of circle.h.&#x20;
 * **Macro expansion**. Finally, we see that all macros have been expanded. PI in circle.c was replaced with 3.14159, and EXIT\_FAILURE in testcircle.c was replaced with 1. EXIT\_FAILURE is a macro defined in stdlib.h.
 
-At this point, our files contain raw C code (i.e., no preprocessing language or comments), contain the declarations of all externally defined functions, but&#x20;
 
-* Raw C code
-* testcircle.i missing definitions of printf, scanf, exit, and area.
+
+After preprocessing, the source code, now free of comments and with all macros expanded and header file contents included, is ready for the next stage: compilation.
 
 ## Compilation Stage
 
-The second stage involves compilation itself. Here, the compiler translates testcircle.i and circle.i into assembly-language, stored in testcircle.s and circle.s. Compilation is the most complex stage of the build process. It involves translating C source code into a completely different language. This is where the code is checked for errors. Figure 4.3 shows what the arm64 assembly looks like.&#x20;
+The second stage involves compilation itself. Here, testcircle.i and circle.i are sent to the compiler, which translate their C code into assembly-language, stored in testcircle.s and circle.s. Compilation is the most complex stage of the build process. It involves translating C source code into a completely different language. This is where the code is checked for errors. Figure 4.3 shows what the arm64 assembly looks like.&#x20;
+
+<div align="center">
 
 <figure><img src="../.gitbook/assets/Group 30 (1).png" alt="" width="563"><figcaption></figcaption></figure>
+
+</div>
 
 * Assembly language&#x20;
 * testcircle.s missing definitions of printf, scanf, exit, and area
