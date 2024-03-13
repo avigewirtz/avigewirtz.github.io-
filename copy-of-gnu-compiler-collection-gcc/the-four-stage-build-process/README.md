@@ -34,19 +34,14 @@ Consider the multi-file C program shown below. It will serve as a running exampl
    
 int main(void) {
 
-  double radius, area; 
+  double radius, area;
+ 
+  radius = 12.7;
+  area = circleArea(radius);
+  
+  printf("Area of circle with radius %.2f is %.2f\n", radius, area);
 
-  printf("Enter radius of circle: ");
-  if (scanf("%lf", &radius) != 1 || radius <= 0) {
-     fprintf(stderr, "Error: Input must be a positive number.\n");
-      exit(EXIT_FAILURE);
-  }
-
-  area = area(radius);
-
-  printf("The area of the circle is: %.2f\n", area);
-
-  return 0;
+  return EXIT_SUCCESS;
 }
 ```
 {% endcode %}
@@ -62,7 +57,7 @@ int main(void) {
 #include "circle.h"
 #define PI 3.14159
 
-double area(double radius) {
+double circleArea(double radius) {
     return PI * radius * radius;
 }
 ```
@@ -75,7 +70,7 @@ double area(double radius) {
 #ifndef CIRCLE_H
 #define CIRCLE_H
 
-double area(double radius);
+double circleArea(double radius);
 
 #endif
 ```
