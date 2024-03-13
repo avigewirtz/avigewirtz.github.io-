@@ -1,18 +1,18 @@
-# The Four Stages
+# An Overview of the Build Process
 
-When you invoke GCC on a C program, it builds your program in The transformation of a C program from source code to executable involves four dist
-
-* this section should be a bit more in depth. give specific examples. Next section will apply it
+*
 
 
 
-The processes of transforming C source code into executable machine code resembles an assembly line in a factory. The product is a C program, which begins it's journey as one or more source files. As it progresses down the assembly line, it gets worked on by four distinct tools--the preprocessor, compiler, assembler, and linker. At the end, the program emerges as an executable file.&#x20;
-
-Thankfully, we don't have to invoke all four of these programs ourselves in order to build a program. gcc handles all the work for us.&#x20;
 
 
 
-stages: preprocessing, compilation, assembly, and linking. Thankfully, we typically don't have to worry about any of this when building a program.  We simply&#x20;
+
+
+
+
+
+
 
 
 
@@ -24,19 +24,13 @@ Consider the multi-file C program shown below. It will serve as a running exampl
 {% tab title="testcircle.c" %}
 {% code lineNumbers="true" %}
 ```c
-/*-----------------------------------------------------*/
-/* testcircle.c                                        */
-/*                                                     */
-/* Calculates the area of a circle given its radius.   */
-/*-----------------------------------------------------*/
+/*---------------------------------------------------------------*/
+/* testcircle.c - calculates area of a circle given its radius.  */
+/*---------------------------------------------------------------*/
  
 #include <stdio.h>
 #include <stdlib.h> 
 #include "circle.h" 
-
-/* Prompts user for radius of circle. Returns 
-   EXIT_FAILURE if input is invalid. Otherwise, prints 
-   circle's area to stdout and returns 0. */  
    
 int main(void) {
 
@@ -44,17 +38,16 @@ int main(void) {
 
   printf("Enter radius of circle: ");
   if (scanf("%lf", &radius) != 1 || radius <= 0) {
-    printf("Invalid input. Must be a positive number.\n");
-    exit(EXIT_FAILURE);
+     fprintf(stderr, "Error: Input must be a positive number.\n");
+      exit(EXIT_FAILURE);
   }
 
-  area = calculateArea(radius);
+  area = area(radius);
 
   printf("The area of the circle is: %.2f\n", area);
 
   return 0;
 }
-
 ```
 {% endcode %}
 {% endtab %}
@@ -62,15 +55,14 @@ int main(void) {
 {% tab title="circle.c" %}
 {% code lineNumbers="true" %}
 ```c
-/*-----------------------------------------------------*/
-/* circle.c                                            */
-/*-----------------------------------------------------*/
+/*---------------------------------------------------------------*/
+/* circle.c                                                      */
+/*---------------------------------------------------------------*/
 
 #include "circle.h"
 #define PI 3.14159
 
-/* calculates the area of a circle given its radius */
-double calculateArea(double radius) {
+double area(double radius) {
     return PI * radius * radius;
 }
 ```
@@ -90,8 +82,6 @@ double area(double radius);
 {% endcode %}
 {% endtab %}
 {% endtabs %}
-
-Building our program involves a lot of work. Must go through assembly line of programs.&#x20;
 
 To build our program, we invoke the following command:
 

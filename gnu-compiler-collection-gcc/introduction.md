@@ -1,6 +1,6 @@
 # Introduction
 
-The purpose of this chapter is to provide an overview of the GCC four-stage build process--namely, preprocessing, compilation, assembly, and linking. It is not intended to be a general-purpose GCC tutorial. For further resources on GCC, refer to the [further reading](../copy-of-gnu-compiler-collection-gcc/further-reading.md) section at the end of this chapter.&#x20;
+The purpose of this chapter is to provide an overview of the GCC build process--namely, preprocessing, compilation, assembly, and linking. It is not intended to be a general-purpose GCC tutorial. For further resources on GCC, refer to the [further reading](../copy-of-gnu-compiler-collection-gcc/further-reading.md) section at the end of this chapter.&#x20;
 
 This tutorial assumes you have basic knowledge of the C programming language and understand the role of header files.
 
