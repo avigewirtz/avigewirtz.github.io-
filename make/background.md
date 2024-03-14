@@ -1,6 +1,6 @@
 # Motivation For Make
 
-Recall the testintmath program from precept 4, whose source code is shown below.&#x20;
+Recall the testintmath program from precept 4, whose source code is shown below. We will use it as a running example throughout this chapter.&#x20;
 
 {% tabs %}
 {% tab title="testintmath.c" %}
@@ -82,31 +82,13 @@ The strategy for employing incremental builds is in theory quite simple. We take
 
 In a C program, each .c file, along with the files included via header directives, comprises a translation unit. Each of these translation units can be translation to machine code, have the machine code version saved, and then linked together to form an executable. Then, if one translation unit changes, only that unit has to be recompiled, not the other ones.&#x20;
 
-Let's show this in action for our testintmath program. This time we build it by first invoking gcc with the -c option:
+Let's show this in action for our testintmath program. This time we build in the manner shown in Figure 5. That is, we first invoke gcc217 with the -c option:
 
 ```
 gcc217 -c testintmath.c intmath.c 
 ```
 
-This preprocesses, compiled, and assembled each file, and stops there, saving the output in testintmath.o and intmath.o. We then link these two object files together to generate the executable testintmath:
-
-```
-gcc217 testintmath.o intmath.o -o testintmath
-```
-
-
-
-
-
-```bash
-gcc -c intmath.c testintmath.c
-```
-
-This preprocesses, compiles, and assembles intmath.c and testintmath.c, producing the object files intmath.o and testintmath.o. Note that in the preprocessing stage of both intmath.c and testintmath.c, the contents are intmath.h were inserted into each.  Thus, `intmath.o` is derived from both `intmath.c` and `intmath.h`. Similarly, testintmath.o is derived from both `intmath.c` and `intmath.h`.
-
-
-
-We then link intmath.o and testintmath.o, generating the testintmath executable:&#x20;
+This preprocesses, compiles, and assembles intmath.c and testintmath.c, producing the object files intmath.o and testintmath.o. Note that intmath.o is derived from intmath.c and intmath.h, since in the preprocessing phase the contents of intmath.h are inserted via the #include directive. Similarly, testintmath.o is derived from both `intmath.c` and `intmath.h`. We then link intmath.o and testintmath.o, generating the testintmath executable:&#x20;
 
 ```
 gcc intmath.c testintmath.c -o testintmath
@@ -114,50 +96,9 @@ gcc intmath.c testintmath.c -o testintmath
 
 
 
-<figure><img src="../.gitbook/assets/Group 28 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 28 (1).png" alt=""><figcaption><p>Figure 5.1: Deoendency Graph for testintmath</p></figcaption></figure>
 
+Why Manual Incremental Builds
 
+As you can imagine, implementing incremental builds is tedious and error prone. Let's think of a general-purpose algorithm for doing so. Not only do .o files depend on their corresponding .c file, they also depend on any files included files. But it doesn't end there. Say a header file includes another header file.&#x20;
 
-### Rebuilding testintmath
-
-Now imagine we make a change to one of our source files. Our goal is to rebuild testintmath by recompiling the minimum necessary source files. An easy way to figure our what changes require which files to be rebuilt is via a dependency graph.&#x20;
-
-
-
-
-
-
-
-
-
-
-
-&#x20; recompile the mininum  To rebuild testintmath, we need only recompile intmath.c
-
-\<over here i want to explain how if we make changes we can use partial builds to rebuild testintmath. i want to explain using a dependency graph of testintmath, where each node represents a file, and directed edges (arrows) between these nodes indicate a dependency, where an edge from file A to file B signifies that B is dependent on A. In other words, a change in file A requires file B to be updated.>
-
-
-
-
-
-
-
-
-
-<figure><img src="../.gitbook/assets/Group 28 (1).png" alt=""><figcaption></figcaption></figure>
-
-
-
-
-
-our objective is to generate a new executable by recompiling the minimum necessary files. To do this accurately, we need to have a thorough understanding of the program's dependencies, which can be visualized using a dependency graph.
-
-In such a graph, each node represents a file, and directed edges (arrows) between these nodes indicate a dependency, where an edge from file A to file B signifies that B is dependent on A. In other words, a change in file A requires file B to be updated. A dependency graph for testintmath is shown in Figure 2.&#x20;
-
-&#x20;
-
-<figure><img src="../.gitbook/assets/Group 41.png" alt=""><figcaption></figcaption></figure>
-
-
-
-<figure><img src="../.gitbook/assets/Group 39.png" alt=""><figcaption></figcaption></figure>
