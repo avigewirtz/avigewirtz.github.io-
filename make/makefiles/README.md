@@ -1,6 +1,10 @@
 # Makefiles
 
-To use Make to build a program, you need to create a file in your project directory called a _makefile_, which is essentially a textual representation of your program's dependency graph that tells make how and when to compile and link your program. You can name it 'makefile' or 'Makefile' (or even 'GNUmakefile', if you're using GNU Make). GNU recommends 'Makefile'.&#x20;
+To use Make to build a program, you need to create a file called a _makefile_, which is essentially a textual representation of your program's dependency graph. It provides make with all the information it needs to build your program in the most efficient way.&#x20;
+
+When you invoke make on the command line, Make searches for a file named makefileYou can name it 'makefile' or 'Makefile' (or even 'GNUmakefile', if you're using GNU Make). GNU recommends calling it 'Makefile'.&#x20;
+
+### Dependency Rules
 
 A makefile primarily consists of _dependency_ _rules_, each of which tells make whether or not a file has to be built, and if so, how to build it. Dependency rules have the following syntax:&#x20;
 

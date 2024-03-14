@@ -72,7 +72,7 @@ Now suppose after building our testintmath, we decide to make a change one of th
 gcc217 testintmath.c intmath.c -o testintmath
 ```
 
-For a small program like testintmath, rebuilding the entire thing every time a change is introduced is not a terrible approach, as it's a small program that doesn't take much time to build. But what if our program were composed of, say, 1000 source files? First, having to type out all 1000 filenames whenever building our program would be exhausting. But that's not the real issue. After all, you could easily write a shell script to automate this process. The real issue is that rebuilding all 1000 source files would be extremely time-consuming and a drain on system resources. Surely there's a more efficient approach. And of course there is. It's called incremental or partial builds.&#x20;
+For a small program like testintmath, rebuilding the entire thing every time a change is introduced is not a terrible approach, as it's a small program that doesn't take much time to build. But what if our program were much larger, say composed of 1000 .c files? First, having to type out all 1000 filenames whenever building our program would be exhausting. But that's not the real issue. After all, you could easily write a shell script to automate this process. The real issue is that rebuilding all 1000 source files would be extremely time-consuming and a drain on system resources. Surely there's a more efficient approach. And of course there is. It's called incremental or partial builds.&#x20;
 
 ## Incremental builds
 
@@ -88,17 +88,20 @@ Let's show this in action for our testintmath program. This time we build in the
 gcc217 -c testintmath.c intmath.c 
 ```
 
-This preprocesses, compiles, and assembles intmath.c and testintmath.c, producing the object files intmath.o and testintmath.o. Note that intmath.o is derived from intmath.c and intmath.h, since in the preprocessing phase the contents of intmath.h are inserted via the #include directive. Similarly, testintmath.o is derived from both `intmath.c` and `intmath.h`. We then link intmath.o and testintmath.o, generating the testintmath executable:&#x20;
+This preprocesses, compiles, and assembles intmath.c and testintmath.c, producing the object files intmath.o and testintmath.o. We then link intmath.o and testintmath.o, generating the testintmath executable:&#x20;
 
 ```
 gcc intmath.c testintmath.c -o testintmath
 ```
 
+Going forward, if we make a change to a file, we rebuild the .o files that are affected by the change, and then link all the .o files together to create the updated executable.&#x20;
 
+<figure><img src="../.gitbook/assets/Group 28 (1).png" alt=""><figcaption><p>Figure 5.1: Dependency Graph for testintmath</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/Group 28 (1).png" alt=""><figcaption><p>Figure 5.1: Deoendency Graph for testintmath</p></figcaption></figure>
+In our case, the dependency graph in Figure 2 makes it quite obvious what files have to be rebuilt after a change. We see that a change to testintmath.c affects testintmat.o and testintmath, but it does not affect intmath.o. Similarly, a change to intmath.c affects intmat.o and testintmath, but it does not affect testintmath.o. However, a change to intmath.o affects testintmath.o, intmath.o, and testintmath.&#x20;
 
-Why Manual Incremental Builds
+<figure><img src="../.gitbook/assets/Group 64 (2).png" alt="" width="563"><figcaption></figcaption></figure>
 
-As you can imagine, implementing incremental builds is tedious and error prone. Let's think of a general-purpose algorithm for doing so. Not only do .o files depend on their corresponding .c file, they also depend on any files included files. But it doesn't end there. Say a header file includes another header file.&#x20;
+#### Why Manual Incremental Builds are Difficult
 
+As you can imagine, implementing incremental builds is tedious and error prone. Not only do you have top keep track of which files were changed since the last, you also have to keep track of which other files are affected by the changes. In our program, doing this is not fun, but it's also not incredibly dificult. But large-scale, real-world projects are far more complex, and have complex dependency chains. Doing all this work manualy is not only tedious, it's incredibly error-prone.&#x20;
