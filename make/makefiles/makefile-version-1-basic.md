@@ -1,4 +1,4 @@
-# Makefile Version 1: Basic
+# Makefile 1: Basic Version
 
 
 
@@ -52,7 +52,7 @@ Since if no target is specified, make will default to the first target in the ma
 
 ### Our makefile in Action
 
-Let's now examine how make processes our makefile at various points of development. We'll consider three cases.
+Let's now examine how make processes our makefile at various points of development. We'll consider three cases. Show depth first search tree.&#x20;
 
 <figure><img src="../../.gitbook/assets/Group 19 (1).png" alt=""><figcaption></figcaption></figure>
 

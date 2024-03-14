@@ -124,12 +124,10 @@
 
 ## Make
 
-* [Page](make/page.md)
-* [Introduction](make/background/README.md)
-  * [Separate compilation: Manual Approach](make/background/separate-compilation-manual-approach.md)
-  * [Separate compilation: Make approach](make/background/separate-compilation-make-approach.md)
+* [Introduction](make/introduction.md)
+* [Motivation For Make](make/background.md)
 * [Makefiles](make/makefiles/README.md)
-  * [Makefile Version 1: Basic](make/makefiles/makefile-version-1-basic.md)
+  * [Makefile 1: Basic Version](make/makefiles/makefile-version-1-basic.md)
   * [Makefile Version 2: Phony targets](make/makefiles/makefile-version-2-phony-targets.md)
   * [Makefile Version 3: Macros](make/makefiles/makefile-version-3-macros.md)
 

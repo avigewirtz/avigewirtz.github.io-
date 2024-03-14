@@ -1,2 +1,0 @@
-# Separate compilation: Make approach
-
