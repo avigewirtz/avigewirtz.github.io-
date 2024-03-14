@@ -76,9 +76,9 @@ For a small program like testintmath, rebuilding the entire thing every time a c
 
 ## Incremental builds
 
-Incremental builds is an appraoch where each build builds off the previous one. In other words, the first time you build a program you build the entire thing, but in subseqent build you only rebuild parts that have changed.
+Incremental builds is an approach where each build builds off the previous one. In other words, the first time you build a program you build the entire thing, but in subseqent build you only rebuild parts that have changed.
 
-The strategy for employing incremental builds is in theory quite simple. We take advantage of the fact that a C program can be compiled as a bunch of independent units, and then linked together. You can think of this like a puzzle, where each piece can be constrcuted seperately, and then linked togethetr to create a final prodyct.&#x20;
+The strategy for employing incremental builds is in theory quite simple. We take advantage of the fact that a C program can be compiled as a bunch of independent units, and then linked together. You can think of this like a puzzle, where each piece can be constrcuted seperately, and then linked together to create a final product.&#x20;
 
 In a C program, each .c file, along with the files included via header directives, comprises a translation unit. Each of these translation units can be translation to machine code, have the machine code version saved, and then linked together to form an executable. Then, if one translation unit changes, only that unit has to be recompiled, not the other ones.&#x20;
 
