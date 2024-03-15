@@ -59,10 +59,11 @@
 
 ## Emacs
 
-* [Background](emacs/background.md)
-* [Fundamentals](emacs/fundamentals/README.md)
-* [Basic Commands](emacs/basic-commands/README.md)
-  * [Launching and Existing Emacs](emacs/basic-commands/launching-and-existing-emacs.md)
+* [Introduction](emacs/background.md)
+* [Page](emacs/page.md)
+* [Emacs Interface](emacs/fundamentals/README.md)
+* [Getting Started](emacs/basic-commands/README.md)
+  * [Launching and Exiting Emacs](emacs/basic-commands/launching-and-existing-emacs.md)
   * [Moving the cursor](emacs/basic-commands/moving-the-cursor.md)
   * [Selecting a Region](emacs/basic-commands/selecting-a-region.md)
   * [Basic Editing Commands](emacs/basic-commands/basic-editing-commands.md)

@@ -1,6 +1,10 @@
-# Fundamentals
+# Emacs Interface
 
-## Emacs Interface
+
+
+
+
+
 
 The Emacs interface consists of several key components:&#x20;
 
@@ -15,7 +19,7 @@ The Emacs interface consists of several key components:&#x20;
 
 The image below provides a visual illustration of these components.
 
-<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption><p>Emacs Interface: Visualization of Components</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption><p>Components of Emacs Interface</p></figcaption></figure>
 
 ## Emacs Modes
 
