@@ -13,22 +13,23 @@
     * [Secure Shell (SSH) Protocol](armlab/background/logging-into-armlab/ssh-protocol.md)
   * [Configuring your armlab Environment](armlab/background/configuring-your-armlab-environment.md)
 
-## Linux
+## Linux Operating System
 
-* [Background](linux/background.md)
-* [User Interface: GUI & CLI](linux/user-interfaces-gui-and-cli.md)
-* [Terminal](linux/terminal.md)
-* [Shell](linux/shell.md)
-  * [Syntax of Shell Commands](linux/shell/syntax-of-shell-commands.md)
-* [Operating System](linux/operating-system.md)
-* [Putting it All Together](linux/putting-it-all-together.md)
-* [Filesystem](linux/filesystem/README.md)
-  * [Files and Directories](linux/filesystem/files-and-directories.md)
-  * [Filenames](linux/filesystem/filenames.md)
-  * [Filesystem Layout](linux/filesystem/filesystem-layout.md)
-  * [Notable Directories](linux/filesystem/notable-directories.md)
-  * [Pathnames](linux/filesystem/pathnames.md)
-* [Further Reading](linux/further-reading.md)
+* [Background](linux-operating-system/background.md)
+* [What is an Operating System?](linux-operating-system/what-is-an-operating-system.md)
+* [User Interface: GUI & CLI](linux-operating-system/user-interfaces-gui-and-cli.md)
+* [Terminal](linux-operating-system/terminal.md)
+* [Shell](linux-operating-system/shell/README.md)
+  * [Syntax of Shell Commands](linux-operating-system/shell/syntax-of-shell-commands.md)
+* [Operating System](linux-operating-system/operating-system.md)
+* [Putting it All Together](linux-operating-system/putting-it-all-together.md)
+* [Filesystem](linux-operating-system/filesystem/README.md)
+  * [Files and Directories](linux-operating-system/filesystem/files-and-directories.md)
+  * [Filenames](linux-operating-system/filesystem/filenames.md)
+  * [Filesystem Layout](linux-operating-system/filesystem/filesystem-layout.md)
+  * [Notable Directories](linux-operating-system/filesystem/notable-directories.md)
+  * [Pathnames](linux-operating-system/filesystem/pathnames.md)
+* [Further Reading](linux-operating-system/further-reading.md)
 
 ## Bash
 

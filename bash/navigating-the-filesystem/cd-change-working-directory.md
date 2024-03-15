@@ -26,7 +26,7 @@ However, another simple method is to invoke `cd` with _\~_ as the argument:
 
 3. Make _/usr/bin_ your working directory again, this time using the relative pathname:&#x20;
 
-To navigate to /usr/bin using the relative pathname, you need to travel "up" the hierarchy. To do this, recall that [**`..`**](../../linux/filesystem/notable-directories.md#the-.-dot-and-..-dot-dot-directories) (dot dot) refers to the parent directory.&#x20;
+To navigate to /usr/bin using the relative pathname, you need to travel "up" the hierarchy. To do this, recall that [**`..`**](../../linux-operating-system/filesystem/notable-directories.md#the-.-dot-and-..-dot-dot-directories) (dot dot) refers to the parent directory.&#x20;
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-04-25 at 10.09.32 PM.png" alt=""><figcaption></figcaption></figure>
 

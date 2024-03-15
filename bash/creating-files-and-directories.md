@@ -4,7 +4,7 @@ Directories can be created using the _mkdir_ command, whose syntax is as follows
 
 <mark style="color:blue;">**`DIRECTORY(IES)`**</mark> represents the name(s) of the directory(ies) you want to create.
 
-Before creating directories, let's revisit filenames. As stated [earlier](../linux/filesystem/filenames.md), Linux filesystems impose very few restrictions on file and directory names. That said, not all valid filenames are equal. Some are poorly suited for the shell environment and are best avoided. The following naming suggestions will make your life on the command line easier:&#x20;
+Before creating directories, let's revisit filenames. As stated [earlier](../linux-operating-system/filesystem/filenames.md), Linux filesystems impose very few restrictions on file and directory names. That said, not all valid filenames are equal. Some are poorly suited for the shell environment and are best avoided. The following naming suggestions will make your life on the command line easier:&#x20;
 
 1. Avoid using whitespace or special characters in filenames, since such files are harder to reference on the command line. The following characters are special:&#x20;
 
@@ -37,4 +37,3 @@ As you can see, instead of creating one directory named "_bad name_", Bash creat
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-09 at 5.46.36 PM.png" alt=""><figcaption></figcaption></figure>
 
 Now _bad name_ appears as a single directory. Quoting is elaborated on in a [later section](quoting.md).&#x20;
-

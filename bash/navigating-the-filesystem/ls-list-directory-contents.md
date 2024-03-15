@@ -2,7 +2,7 @@
 
 The `ls` command is used to list the contents (files and subdirectories) of a directory. Its syntax is as follows: <mark style="color:red;">**`ls`**</mark><mark style="color:green;">**`OPTION(S)`**</mark><mark style="color:blue;">**`DIRECTORY(IES)`**</mark>
 
-If <mark style="color:blue;">**`DIRECTORY(IES)`**</mark>is not specified, `ls` defaults to the working directory. By default, `ls` does not display [hidden](../../linux/filesystem/notable-directories.md#hidden-files-directories) entries.&#x20;
+If <mark style="color:blue;">**`DIRECTORY(IES)`**</mark>is not specified, `ls` defaults to the working directory. By default, `ls` does not display [hidden](../../linux-operating-system/filesystem/notable-directories.md#hidden-files-directories) entries.&#x20;
 
 <details>
 
