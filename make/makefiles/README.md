@@ -1,8 +1,8 @@
 # Makefiles
 
-To use Make to build a program, you need to create a file called a _makefile_, which is essentially a textual representation of your program's dependency graph. It provides make with all the information it needs to build your program in the most efficient way.&#x20;
+To use Make to build a program, you need to create a file called a _makefile_, which is essentially a textual representation of your program's dependency graph. It provides make with all the information it needs to build your program. You can name your makefile 'makefile' or 'Makefile' (or even 'GNUmakefile', if you're using GNU Make). GNU recommends 'Makefile'.&#x20;
 
-When you invoke make on the command line, Make searches for a file named makefileYou can name it 'makefile' or 'Makefile' (or even 'GNUmakefile', if you're using GNU Make). GNU recommends calling it 'Makefile'.&#x20;
+When you invoke `make` on the command line, Make searches for a file named makefile. You can name it 'makefile' or 'Makefile' (or even 'GNUmakefile', if you're using GNU Make). GNU recommends calling it 'Makefile'.&#x20;
 
 ### Dependency Rules
 
@@ -13,18 +13,81 @@ target: dependencies
 <tab> command
 ```
 
-* **Target**: The file that the rule will build--typically an object (.o) or executable file.
-* **Dependencies**: The files that need to be up to date before the target can be correctly built. If the target is an executable, then the dependencies are typically object files. If the target is an object file, then the dependencies are typically source (.c) and header (.h) files.&#x20;
-*   **Command**: The command make executes to build the target. Note that the command must be preceded by a tab. One of the most common errors in writing Makefiles is preceding the command with spaces (ASCII character 32) instead of a tab (ASCII character 9). This will lead to the following error:
+* **Target**: The file you want to build (e.g., `intmath.o`).&#x20;
+* **Command**: The command to build the target (e.g., `gcc217 -c intmath.c`). The command must be preceded by a tab character.
+* **Dependencies**: The files that need to be up to date before the target can be correctly built. Make builds the target if it's older than any of its dependencies or if the target does not exist.
 
-    &#x20;  `*** missing separator.  Stop.`
+{% hint style="danger" %}
+Note that the command must be preceded by a tab (ASCII character 9) _not_ spaces (ASCII character 32).  Using spaces will cause the following error:
 
-Make builds the target file if it's older than any of its dependencies or if it does not exist. A makefile should contain a rule for the executable and for each object file.&#x20;
+&#x20;  `*** missing separator.  Stop.`
+{% endhint %}
 
 ## Makefile for testintmath
 
-The transition from a dependency graph to a Makefile is intuitive and straightforward. The dependency graph for testintmath is shown in figure 1.&#x20;
+The transition from a dependency graph to a Makefile is quite straightforward. Recall testintmath's dependency graph, shown in figure 6.&#x20;
 
 
 
 <figure><img src="../../.gitbook/assets/Group 28 (1).png" alt="" width="563"><figcaption></figcaption></figure>
+
+1. First, create a file in your project's directory called Makefile or makefile.
+2. In the Makefile, create one rule for the executable and one a rule for each object file:
+
+```
+testintmath:
+
+
+testintmath.o:
+
+
+intmath.o:
+
+```
+
+3: Fill in the commands used to build that file. (Recall to precede the command with a tab)
+
+```
+testintmath: 
+    gcc217 -o testintmath.o intmath.o -o testintmath
+
+testintmath.o:
+    gcc217 -c testintmath.c
+
+intmath.o:
+    gcc217 -c intmath.c
+```
+
+4: Fill in each target's dependencies.&#x20;
+
+```
+testintmath: testintmath.o intmath.o
+    gcc217 -o testintmath.o intmath.o -o testintmath
+
+testintmath.o: testintmath.c intmath.h
+    gcc217 -c testintmath.c
+
+intmath.o: intmath.c intmath.h
+    gcc217 -c intmath.c
+```
+
+## Invoking Make
+
+To invoke make, simple type `make` on the command line. Make will print out all the commands that it executes:
+
+```
+make
+```
+
+
+
+
+
+
+
+
+
+
+
+## How make works
+
