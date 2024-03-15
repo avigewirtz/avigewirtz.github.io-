@@ -60,7 +60,6 @@
 ## Emacs
 
 * [Introduction](emacs/background.md)
-* [Page](emacs/page.md)
 * [Emacs Interface](emacs/fundamentals/README.md)
 * [Getting Started](emacs/basic-commands/README.md)
   * [Launching and Exiting Emacs](emacs/basic-commands/launching-and-existing-emacs.md)
@@ -71,7 +70,6 @@
   * [Managing Windows and Buffers](emacs/more-advanced-commands/managing-windows-and-buffers.md)
   * [Search and Replace](emacs/more-advanced-commands/search-and-replace.md)
   * [Building](emacs/more-advanced-commands/building.md)
-* [Emacs Configuration Files](emacs/emacs-configuration-files.md)
 * [Emacs Cheat Sheet](emacs/emacs-cheat-sheet.md)
 * [Further Reading](emacs/further-reading.md)
 
