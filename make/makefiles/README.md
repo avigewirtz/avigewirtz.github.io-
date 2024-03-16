@@ -25,7 +25,7 @@ make executes the command if one of the dependencies is 'newer' than the target,
 
 ### Comments
 
-In Makefiles, you use the `#` symbol for comments. Everything following the `#` on a line is treated as a comment:
+In a Makefile, everything following the `#` symbol on a line is treated as a comment:
 
 ```makefile
 # This is a comment
