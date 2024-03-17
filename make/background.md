@@ -66,13 +66,13 @@ We can build our program by invoking the following command:
 gcc217 testintmath.c intmath.c -o testintmath
 ```
 
-Now suppose after building our testintmath, we decide to make a change one of the source files, say intmath.c. To incorporate the change, we of course of have to rebuild testintmath. We can do so by invoking the same command we previously invoked:
+Now suppose after building our testintmath, we make a change to one of the source files, say intmath.c. To incorporate the change, we of course need to rebuild testintmath. We can do so by invoking the same command we previously invoked:
 
 ```
 gcc217 testintmath.c intmath.c -o testintmath
 ```
 
-For a small program like testintmath, rebuilding the entire thing every time a change is introduced is not a terrible approach, as it's a small program that doesn't take much time to build. But what if our program were much larger, say composed of 1000 .c files? First, having to type out all 1000 filenames whenever building our program would be exhausting. But that's not the real issue. After all, you could easily write a shell script to automate this process. The real issue is that rebuilding all 1000 source files would be extremely time-consuming and a drain on system resources. Surely there's a more efficient approach. And of course there is. It's called incremental or partial builds.&#x20;
+For a small program like testintmath, rebuilding all source files whenever a change is introduced is not a terrible approach, since it's a small program and building it doesn't take much time. But what if our program were much larger, say composed of 1000 .c files? First, having to type out all 1000 filenames whenever building our program would be exhausting. But that's only a trivial issue. After all, we could easily write a shell script to automate this process. The real issue is that rebuilding all 1000 source files would be extremely time-consuming and a drain on system resources. Surely there's a more efficient approach. And of course there is. It's called incremental or partial builds.&#x20;
 
 ## Incremental builds
 
