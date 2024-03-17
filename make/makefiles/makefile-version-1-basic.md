@@ -1,19 +1,19 @@
 # Writing a Makefile
 
-As we mentioned earlier, a makefile is essentially a textual representation of a program's dependency graph. The transition from a dependency graph to a Makefile is quite straightforward. Let's demonstrate how to write a makefile for testintmath, whose dependency graph is shown below.&#x20;
+As mentioned earlier, a makefile is essentially a textual representation of a dependency graph. The transition from a dependency graph to a Makefile is quite straightforward. Let's demonstrate how to write a makefile for testintmath, whose dependency graph is shown below.&#x20;
 
 
 
 <figure><img src="../../.gitbook/assets/Group 28 (1).png" alt="" width="563"><figcaption><p>Figure 6: testintmath dependency graph</p></figcaption></figure>
 
-**Step 1**: Create a makefile in the testintmath directory (e.g., invoke `emacs Makefile`).
+**Step 1**: Create a makefile in the testintmath directory (e.g., `emacs Makefile`).
 
 **Step 2**: Create a rule for:
 
 * The executable (i.e., testintmath)
 * Each object file (i.e., testintmath.o and intmath.o)
 
-```
+```makefile
 testintmath:
 
 
@@ -30,7 +30,7 @@ intmath.o:
 * testintmath.o depends on testintmath.c and intmath.h&#x20;
 * intmath.o depends on intmath.c and intmath.h&#x20;
 
-```
+```makefile
 testintmath: testintmath.o intmath.o
  
  
@@ -54,19 +54,25 @@ intmath.o: intmath.c intmath.h
     gcc217 -c intmath.c
 ```
 
-## Running makefile
+### Our makefile in Action
 
-To invoke make, simple type `make` on the command line. Make will print out all the commands that it executes:
+Let's now examine how make processes our makefile. Let's assume we're building testintmath for the first time. Thus, testintmath.o, intmath.o, and testintmath don't exist.&#x20;
+
+To run make, we simply invoke make on the command line:
 
 ```
 make
 ```
 
-### makefile in Action
+<figure><img src="../../.gitbook/assets/Group 66 (5).png" alt=""><figcaption></figcaption></figure>
 
-Let's now examine how make processes our makefile. We'll examine this at various points of development. We'll consider three cases. Show depth first search tree.&#x20;
+When all files are up to date:
 
-<figure><img src="../../.gitbook/assets/Group 66 (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Group 67 (1).png" alt=""><figcaption></figcaption></figure>
+
+after modifying intmath.c:
+
+<figure><img src="../../.gitbook/assets/Group 68 (2).png" alt=""><figcaption></figcaption></figure>
 
 ## other points i want to make
 
