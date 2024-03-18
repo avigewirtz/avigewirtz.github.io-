@@ -78,20 +78,20 @@ For a small program like testintmath, rebuilding all source files whenever a cha
 
 Incremental builds is an approach where each build builds off the previous one. In other words, the first time you build a program you build the entire thing, but in subsequent build you only rebuild parts that have changed.
 
-The strategy for employing incremental builds is in theory quite simple. We take advantage of the fact that a C program can be compiled as a bunch of independent units, and then linked together. You can think of this like a puzzle, where each piece can be constrcuted seperately, and then linked together to create a final product.&#x20;
+The strategy for employing incremental builds is in theory straightforward. Recall that gcc build's C programs in four sequential stages: preprocessing, compilation, assembly, and linking. This process is shown in Figure 5.2. By default, the intermediate files are not retained.&#x20;
 
-In a C program, each .c file, along with the files included via header directives, comprises a translation unit. Each of these translation units can be translation to machine code, have the machine code version saved, and then linked together to form an executable. Then, if one translation unit changes, only that unit has to be recompiled, not the other ones.&#x20;
+<figure><img src="../.gitbook/assets/Group 118.png" alt="" width="375"><figcaption></figcaption></figure>
 
-Let's show this in action for our testintmath program. This time we build in the manner shown in Figure 5. That is, we first invoke gcc217 with the -c option:
-
-```
-gcc217 -c testintmath.c intmath.c 
-```
-
-This preprocesses, compiles, and assembles intmath.c and testintmath.c, producing the object files intmath.o and testintmath.o. We then link intmath.o and testintmath.o, generating the testintmath executable:&#x20;
+We don't care about .i or .s files, but the key to implementing incremental builds is saving the .o files. The object files are a machine code version of the program, but stored in two independent units. testintmath.o is derived from testintmath.c and intmath.h, but is completely independent of intmath.c. Similarly, intmath.c is completely independent of testintmath.c. Thus a change to testintmath.c has no bearing on intmath.o, and a change to intmath.c has no bearing on testintmath.o. However, a change to will not affect either .c file will not affect the other .c file's corresponding  testintmath.o is a machine code version of testintmath.c and intmath.h, and intmath.o is a machine code version of This way, if a subsequent change to the source code does not affect a .o file, it can be reused.  Let's now build testintmath again, but this time ensuring to save to object files. To do so, we invoke gcc twice. First we invoke it with the -c option, which tells gcc to stop the build process after assembly, and save the output in object files.&#x20;
 
 ```
-gcc intmath.c testintmath.c -o testintmath
+gcc217 -c intmath.c testintmath.c 
+```
+
+Then we invoke gcc on the .o files, which links them together, generating the executable testintmath:
+
+```
+gcc217 intmath.o testintmath.o -o testintmath
 ```
 
 Going forward, if we make a change to a file, we rebuild the .o files that are affected by the change, and then link all the .o files together to create the updated executable.&#x20;
@@ -105,3 +105,15 @@ In our case, the dependency graph in Figure 2 makes it quite obvious what files 
 #### Why Manual Incremental Builds are Difficult
 
 As you can imagine, implementing incremental builds is tedious and error prone. Not only do you have top keep track of which files were changed since the last, you also have to keep track of which other files are affected by the changes. In our program, doing this is not fun, but it's also not incredibly dificult. But large-scale, real-world projects are far more complex, and have complex dependency chains. Doing all this work manualy is not only tedious, it's incredibly error-prone.&#x20;
+
+
+
+
+
+
+
+
+
+
+
+Incremental builds relies on understanding dependencies between files to determine which need recompilation after a change.
