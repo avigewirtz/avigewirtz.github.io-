@@ -60,23 +60,23 @@ int lcm(int i, int j); 
 {% endtab %}
 {% endtabs %}
 
-We can build our program by invoking the following command:
+We can build our program by invoking:
 
 ```
 gcc217 testintmath.c intmath.c -o testintmath
 ```
 
-Now suppose after building our testintmath, we make a change to one of the source files, say intmath.c. To incorporate the change, we of course need to rebuild testintmath. We can do so by invoking the same command we previously invoked:
+Now suppose after building testintmath, we make a change to one of the source files, say intmath.c. To incorporate the change, we of course need to rebuild testintmath. We can do so by invoking the same command we previously invoked:
 
 ```
 gcc217 testintmath.c intmath.c -o testintmath
 ```
 
-For a small program like testintmath, rebuilding all source files whenever a change is introduced is not a terrible approach, since it's a small program and building it doesn't take much time. But what if our program were much larger, say composed of 1000 .c files? First, having to type out all 1000 filenames whenever building our program would be exhausting. But that's only a trivial issue. After all, we could easily write a shell script to automate this process. The real issue is that rebuilding all 1000 source files would be extremely time-consuming and a drain on system resources. Surely there's a more efficient approach. And of course there is. It's called incremental or partial builds.&#x20;
+For a small program like testintmath, rebuilding all source files whenever a change is introduced is not a terrible approach, since it's a small program and building it doesn't take much time. But what if our program were much larger, say composed of 1000 .c files? Rebuilding all 1000 source files would be extremely time-consuming and a drain on system resources. Surely there's a more efficient approach. And of course there is. It's called incremental or partial builds.&#x20;
 
 ## Incremental builds
 
-Incremental builds is an approach where each build builds off the previous one. In other words, the first time you build a program you build the entire thing, but in subseqent build you only rebuild parts that have changed.
+Incremental builds is an approach where each build builds off the previous one. In other words, the first time you build a program you build the entire thing, but in subsequent build you only rebuild parts that have changed.
 
 The strategy for employing incremental builds is in theory quite simple. We take advantage of the fact that a C program can be compiled as a bunch of independent units, and then linked together. You can think of this like a puzzle, where each piece can be constrcuted seperately, and then linked together to create a final product.&#x20;
 
