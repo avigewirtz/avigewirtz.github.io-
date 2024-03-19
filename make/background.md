@@ -3,9 +3,15 @@
 Recall the testintmath program from precept 4, whose source code is shown below. We will use it as a running example throughout this chapter.&#x20;
 
 {% tabs %}
-{% tab title="testintmath.c" %}
+{% tab title="testintmath.c (client)" %}
 {% code lineNumbers="true" %}
 ```c
+/********************************************************************/
+/* tesintmath.c                                                     */
+/* This program calculates the greatest common divisor (GCD) and    */
+/* least common multiple (LCM) of two user-entered integers.        */
+/********************************************************************/
+
 #include "intmath.h"
 #include <stdio.h>
 
@@ -23,7 +29,7 @@ int main() {
 {% endcode %}
 {% endtab %}
 
-{% tab title="intmath.c" %}
+{% tab title="intmath.c (implementation)" %}
 {% code lineNumbers="true" %}
 ```c
 #include "intmath.h"
@@ -45,7 +51,7 @@ int lcm(int i, int j) { 
 {% endcode %}
 {% endtab %}
 
-{% tab title="intmath.h" %}
+{% tab title="intmath.h (interface)" %}
 {% code lineNumbers="true" %}
 ```c
 #ifndef INTMATH_INCLUDED 
@@ -66,13 +72,13 @@ We can build our program by invoking:
 gcc217 testintmath.c intmath.c -o testintmath
 ```
 
-Now suppose after building testintmath, we make a change to one of the source files, say intmath.c. To incorporate the change, we of course need to rebuild testintmath. We can do so by invoking the same command we previously invoked:
+Now suppose after building testintmath, we make a change to one of the source files, say intmath.c. To incorporate the change, we need to rebuild testintmath. We can do so by invoking the same command we previously invoked:
 
 ```
 gcc217 testintmath.c intmath.c -o testintmath
 ```
 
-For a small program like testintmath, rebuilding all source files whenever a change is introduced is not a terrible approach, since it's a small program and building it doesn't take much time. But what if our program were much larger, say composed of 1000 .c files? Rebuilding all 1000 source files would be extremely time-consuming and a drain on system resources. Surely there's a more efficient approach. And of course there is. It's called incremental or partial builds.&#x20;
+For a small program like testintmath, rebuilding all source files whenever there's a change to the source  is not a terrible approach, since build times are quite low. But what if our program were much larger, say composed of 1000 .c files? Rebuilding all 1000 source files would be extremely time-consuming and a drain on system resources. This is where the concept of incremental builds comes into play.
 
 ## Incremental builds
 
@@ -94,9 +100,15 @@ Then we invoke gcc on the .o files, which links them together, generating the ex
 gcc217 intmath.o testintmath.o -o testintmath
 ```
 
-Going forward, if we make a change to a file, we rebuild the .o files that are affected by the change, and then link all the .o files together to create the updated executable.&#x20;
+Going forward, if we make a change to a file, we only need to rebuild the .o files that are affected by the change, and then link the updated .o files with the "old" .o files to create the updated executable.&#x20;
 
-<figure><img src="../.gitbook/assets/Group 28 (1).png" alt=""><figcaption><p>Figure 5.1: Dependency Graph for testintmath</p></figcaption></figure>
+For example, suppose we change intmath.c. To rebuild tesintmath, we invoke gcc with the -c option on intmath.c alone:
+
+```
+gcc217 -c intmath.c 
+```
+
+## Dependency Graphs
 
 In our case, the dependency graph in Figure 2 makes it quite obvious what files have to be rebuilt after a change. We see that a change to testintmath.c affects testintmat.o and testintmath, but it does not affect intmath.o. Similarly, a change to intmath.c affects intmat.o and testintmath, but it does not affect testintmath.o. However, a change to intmath.o affects testintmath.o, intmath.o, and testintmath.&#x20;
 
