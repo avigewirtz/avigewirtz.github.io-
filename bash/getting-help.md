@@ -1,16 +1,36 @@
 # Getting Help
 
-Each Bash command typically has associated documentation that can be accessed from the command line. Such documentation is helpful when you need a refresher on how to use a command or want more information about the command’s specifics, such as it's available options. &#x20;
+Each Bash command has associated documentation that can be accessed from the command line. Such documentation is helpful when you need a refresher on how to use a command or want more information about the command’s specifics, such as it's options. &#x20;
 
-The command you use to retrieve the documentation differs depending on whether the command represents a bash builtin, such as _exit_, or an external program, such as _cal_. For external programs such as _cal_, use the `man` command, like so:&#x20;
+The command you use to retrieve the documentation differs depending on whether the command represents a shell builtin, such as _exit_, or an external program, such as _cal_. You can tell whether a command is a shell built-in or an external program by using the `type` command.  For example, if we invoke:
 
+```bash
+~> type exit
+exit is a shell builtin
+~> 
 ```
+
+It tells us that exit is a shell builtin. If the argument is an external program, type will print it's absolute pathname on stdout:
+
+```bash
+~> type cal
+cal is /usr/bin/cal
+~> 
+```
+
+### man
+
+For an external program such as _cal_, you can get its _manpage_ (manual page) via the  `man` command:
+
+```bash
 man cal
 ```
 
-_cal_'s _manpage_ (manual page) will be displayed via the _less_ pages:
+The manpage will be displayed via the _less_ pager:
 
-<figure><img src="../.gitbook/assets/Screenshot 2024-03-19 at 3.54.12 PM.png" alt="" width="375"><figcaption><p>Figure 1. cal manpage.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2024-03-19 at 3.54.12 PM.png" alt="" width="375"><figcaption><p>Figure 1: <em>cal</em> manpage</p></figcaption></figure>
+
+### help
 
 For bash builtins such as _exit_, use the `help` command:&#x20;
 
