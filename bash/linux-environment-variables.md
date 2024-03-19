@@ -2,7 +2,7 @@
 
 In Linux, environment variables are a type of variable used to store information about the system environment, such as the current user's name, the current system's directory path, or settings for software applications. Standard environment variables on Linux include:
 
-* `PATH`: Stores a list of directories where the shell looks for executable programs when a command is entered. Directories in the `PATH` variable are separated by colons (:) on Linux and semicolons (;) on Windows.
+* `PATH`: Stores a list of directories where the shell looks for executable programs when a command is entered. Directories in the `PATH` variable are separated by colons (:).
 * `HOME`: Specifies the home directory of the current user. &#x20;
 * `USER`: Contains the username of the currently logged-in user.
 * `PWD`: Represents the current working directory of the shell.
