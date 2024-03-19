@@ -5,7 +5,7 @@ In Linux, environment variables are a type of variable used to store information
 * `PATH`: Stores a list of directories where the shell looks for executable programs when a command is entered. Directories in the `PATH` variable are separated by colons (:).
 * `HOME`: Specifies the home directory of the current user. &#x20;
 * `USER`: Contains the username of the currently logged-in user.
-* `PWD`: Represents the current working directory of the shell.
+* `PWD`: Represents the current working directory.
 * `LANG`: Specifies the default language and character encoding used by the system.
 * `EDITOR`: Defines the default text editor to be used by certain command-line programs.
 * `SHELL`: Indicates the user's preferred shell program, such as Bash or Zsh.
