@@ -8,7 +8,7 @@ The command you use to retrieve the documentation differs depending on whether t
 man cal
 ```
 
-and _cal_'s `manpage` (manual page) will be displayed via the _less_ pages:
+_cal_'s _manpage_ (manual page) will be displayed via the _less_ pages:
 
 <figure><img src="../.gitbook/assets/Screenshot 2024-03-19 at 3.54.12 PM.png" alt="" width="375"><figcaption><p>Figure 1. cal manpage.</p></figcaption></figure>
 
