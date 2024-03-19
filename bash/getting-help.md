@@ -2,7 +2,7 @@
 
 Each Bash command typically has associated documentation that can be accessed from the command line. Such documentation is helpful when you need a refresher on how to use a command or want more information about the command’s specifics, such as it's available options. &#x20;
 
-The command you use to retrieve the documentation differs depending on whether the command represents a bash builtin, such as _exit_, or an external program, such as _cal_. For external programs such as _cal_, use the `man` command like so:&#x20;
+The command you use to retrieve the documentation differs depending on whether the command represents a bash builtin, such as _exit_, or an external program, such as _cal_. For external programs such as _cal_, use the `man` command, like so:&#x20;
 
 ```
 man cal
