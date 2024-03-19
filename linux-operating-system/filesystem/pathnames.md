@@ -2,7 +2,7 @@
 
 Every file and directory has a _pathname_, which is a string that uniquely identifies its location in the directory hierarchy. Pathnames can be categorized as either _absolute_ or _relative_.
 
-Absolute pathnames pinpoint the location of a file or directory by specifying its path from the _root_ _directory_, whereas relative pathnames pinpoint the location of a file or directory by specifying its path from the _working_ _directory_.
+Absolute pathnames pinpoint the location of a file or directory by specifying its path from the _root_ _directory_, whereas relative pathnames pinpoint the location of a file or directory by specifying its path from the _working_ _directory_.&#x20;
 
 ### Absolute pathnames
 
@@ -14,7 +14,7 @@ The absolute pathname of a directory or file has the following format:
 
 The first _/_ represents the root directory; the intermediate directories, each delimited by _/_, represent the directories on the trail from the root directory to _dirN\_or\_file_. Figure 3 illustrates four absolute pathnames.
 
-<figure><img src="https://lh6.googleusercontent.com/L5AY4VGHdsVYWSKkicK4tU758bIXimYQphD7_ojQwtjKISL6dhGrPlLbFVKurw_vqRGYRbmp4ZTV22RP9QmeL9oNkaf83SRzdP0Ou6oJ7Akomg2DbQrtY7iJa-lKHdbh39qvpm0cceJBFW54y499qbQ" alt=""><figcaption><p>Figure 3: Absolute Pathname Examples</p></figcaption></figure>
+<figure><img src="https://lh6.googleusercontent.com/L5AY4VGHdsVYWSKkicK4tU758bIXimYQphD7_ojQwtjKISL6dhGrPlLbFVKurw_vqRGYRbmp4ZTV22RP9QmeL9oNkaf83SRzdP0Ou6oJ7Akomg2DbQrtY7iJa-lKHdbh39qvpm0cceJBFW54y499qbQ" alt="" width="563"><figcaption><p>Figure 3: Absolute Pathname Examples</p></figcaption></figure>
 
 ### Relative pathnames
 
@@ -29,7 +29,3 @@ _dir1_ normally represents the parent (denoted `..`) or child of the working dir
 <figure><img src="https://lh3.googleusercontent.com/G6fYIoWumsNAoXkf7lnMwc5TEdyJ1zDcFSyqwmyFm-J8xG0YwJB2-zCmzuwDkOFFEv-Tzo3l8e7e7h9KkrJbfBO7qe7Khj5caDlE8P8R_kN2H8RAA_LF2gD-uk5dSEQK23Yv1DxJM0F4chlgWH3tnYE" alt=""><figcaption><p>Figure 4: Relative Pathname Examples</p></figcaption></figure>
 
 It's important to note that the working directory can change during a session, so the meaning of a relative pathname is context specific.&#x20;
-
-{% hint style="success" %}
-You can determine whether a pathname is absolute or relative by inspecting the first few characters. Absolute pathnames begin with one or more than two forward slashes; relative pathnames do not.
-{% endhint %}

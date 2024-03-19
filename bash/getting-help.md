@@ -10,7 +10,7 @@ exit is a shell builtin
 ~> 
 ```
 
-It tells us that exit is a shell builtin. If the argument is an external program, type will print it's absolute pathname on stdout:
+It tells us that _exit_ is a shell builtin. If the argument is an external program, type will print it's absolute pathname on stdout:
 
 ```bash
 ~> type cal
