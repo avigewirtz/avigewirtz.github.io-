@@ -9,5 +9,5 @@ Upon logging into Linux, your [home directory](../../linux-operating-system/file
 Your output should be _/u/yourNetID_, which is the absolute pathname of your home directory.
 
 {% hint style="success" %}
-A useful feature of the shell is that the working directory can be displayed in the shell prompt. On Armlab, the working directory is displayed in the [shell prompt](../warm-up-commands.md#shell-prompt) between the colon and dollar sign. In the above example, the working directory is \~ (tilde). (Recall that \~ represents your home directory.) Using that knowledge, you can determine the working directory by simply inspecting the shell prompt.
+On Armlab, the working directory is displayed in the [shell prompt](../warm-up-commands.md#shell-prompt), between the colon (:) and dollar ($) sign. In the above example, the prompt shows that the working directory is \~ (tilde), which represents the home directory.
 {% endhint %}
