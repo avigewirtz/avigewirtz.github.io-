@@ -4,15 +4,21 @@ Bash offers many useful command-line shortcuts that minimize the need to type ou
 
 ### **Tilde Expansion**
 
-Expands tilde (\~) character into a user's home directory. For example, if your username is `your_NetID`, and your home directory is `/u/your_NetID`,  `~` will expand to `/u/your_NetID`.
+The tilde (\~) character expands into your user's home directory. For example, if your username is `your_NetID`, and your home directory is `/u/your_NetID`,  `~` will expand to `/u/your_NetID`.
 
 ### **TAB Completion**
 
-When you type a partial command or file path and press the TAB key, Bash will attempt to autocomplete the text based on the available options. If there is more than one possibility, pressing TAB twice will list all the available options.&#x20;
+When you type a partial command or pathname and press the TAB key, Bash will attempt to autocomplete the text. For example, if you type `pw TAB`, you might get something like this:
+
+```bash
+> pw
+pwd  pwd_mkdb  pwpolicy  
+> pw
+```
 
 ### **Command History**
 
-Bash keeps a record of the commands you've entered in a file named `.bash_history`, located in your home directory.  This allows you to perform a few extremely useful operations:&#x20;
+Bash keeps a record of the commands you've entered in a file named `.bash_history`, typically stored in your home directory. You can view This allows you to perform a few extremely useful operations:&#x20;
 
 * **Display your command history:**  Invoke `history`.&#x20;
 * **Search your command history**: Press`Ctrl-r` and type a few characters of the command you're looking for. Press `Ctrl-r` again to cycle through matching commands.
@@ -22,7 +28,29 @@ Bash keeps a record of the commands you've entered in a file named `.bash_histor
 
 ### **Aliases**
 
-An alias is a user-defined string that serves as a shortcut for a longer command or a sequence of commands. Aliases must be the first word in a command.&#x20;
+Say you get tired of typing a long command, such as
+
+* couple of uses cases
+  * long command
+  * changing default behavior
+
+An alias is a user-defined string that serves as a shortcut for a longer command or a sequence of commands. Aliases must be the first word in a command. You can view the aliases you have set by invoking alias. Here's an example:
+
+```bash
+~> alias
+alias cp='cp -i'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias gcc217='gcc -Wall -Wextra -Wno-unused-parameter -ansi -pedantic'
+alias grep='grep --color=auto'
+alias less='less --quit-at-eof --no-init --tabs=4 --RAW-CONTROL-CHARS'
+alias ln='ln -i'
+alias ls='ls -a --color=always'
+alias mv='mv -i'
+alias mysql='mysql -u root -p'
+alias rm='rm -i'
+~> 
+```
 
 ### **Wildcards**
 

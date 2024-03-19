@@ -36,6 +36,7 @@
 * [Background](bash/background.md)
 * [Getting Started](bash/warm-up-commands.md)
 * [Useful Command-line Features](bash/useful-command-line-features.md)
+* [External Program vs bash builtin](bash/external-program-vs-bash-builtin.md)
 * [Getting Help](bash/getting-help.md)
 * [Navigating the filesystem](bash/navigating-the-filesystem/README.md)
   * [pwd (Print Working Directory)](bash/navigating-the-filesystem/pwd-print-working-directory.md)
