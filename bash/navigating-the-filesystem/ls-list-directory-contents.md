@@ -2,6 +2,11 @@
 
 The `ls` command is used to list the contents (files and directories) of a directory. Here we'll cover it's basic usage and and some commonly used options.
 
+* [ ] A
+* [ ] B&#x20;
+* [ ] C
+*
+
 #### Basic usage
 
 The most basic use case is to list the names of the files and directories in the working directory. To do so, simply invoke:
@@ -38,13 +43,23 @@ To list the contents of a directory other than your working directory, simple pr
 ls /var
 ```
 
+
+
 ### Exercises
 
-1. List the contents of the working directory:
+<details>
+
+<summary>1. List the contents of the working directory</summary>
+
+
+
+</details>
+
+List the contents of the working directory:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-04-25 at 10.10.51 PM.png" alt=""><figcaption></figcaption></figure>
 
-If you examine the output of this listing, you'll notice that the hidden files/directories (_**.**_, _**..**_, and _.git_) _are_ displayed, even though the `-a` option was not used. This is because the command was executed on Armlab, where `ls` is [aliased](../useful-command-line-features.md#aliases) to `ls -a`.
+If you examine the output of this listing, you'll notice that the hidden files/directories (_**.**_, _**..**_, and _.git_) _are_ displayed, even though the `-a` option was not used. This is because on Armlab, `ls` is [aliased](../useful-command-line-features.md#aliases) to `ls -a`.
 
 If you want to avoid alias expansion, you can prefix the command with a \ (backward slash):&#x20;
 
