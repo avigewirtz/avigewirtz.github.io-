@@ -1,8 +1,8 @@
 # ls (List Directory Contents)
 
-The `ls` command is used to list the contents (files and directories) of a directory. Here we'll cover it's basic usage and and some commonly used options.
+The `ls` command is used to list the contents (files and directories) of a directory.&#x20;
 
-{% embed url="https://docs.google.com/forms/d/e/1FAIpQLSdyt_ebECND9fbpnCh3vt3J2RxsRMZPe4lIqdTv-XHNimiVng/viewform?usp=sf_link" %}
+{% embed url="https://main--cos217.netlify.app/" %}
 
 #### Basic usage
 
