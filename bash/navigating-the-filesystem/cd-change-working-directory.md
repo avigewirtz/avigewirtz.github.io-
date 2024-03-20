@@ -1,11 +1,33 @@
 # cd (Change Working Directory)
 
-The `cd` command is used to change the working directory. Its syntax is as follows:  <mark style="color:red;">**`cd`**</mark><mark style="color:blue;">**`DIRECTORY_PATHNAME`**</mark>.
+The `cd` command is used to change the working directory. Its syntax is as follows: &#x20;
 
-<mark style="color:blue;">**`DIRECTORY_PATHNAME`**</mark> represents the absolute or relative pathname of the directory you want to navigate to. If <mark style="color:blue;">**`DIRECTORY_PATHNAME`**</mark> isn't specified, `cd` defaults to your home directory.
+```bash
+cd DIRECTORY_PATHNAME
+```
+
+`DIRECTORY_PATHNAME` represents the absolute or relative pathname of the directory you want to make your working directory. For example, if your current working directory is \~ (i.e., _/u/yourNetID_) and you want to change your working directory to _/usr/bin_, you can invoke it's absolute pathname:
+
+```bash
+cd /usr/bin
+```
+
+Or you can specify it's relative pathname:
+
+```bash
+cd ../../usr/bin
+```
+
+Recall that `..` represents the parent directory.&#x20;
+
+If you invoke `cd` without arguments, it'll default to your home directory:&#x20;
+
+```
+cd
+```
 
 {% hint style="info" %}
-In the following examples, the absolute pathname of the working directory is highlighted in the shell prompt, enabling you to compare the value of the working directory before and after each command is executed.
+In the following examples, the absolute pathname of the working directory is highlighted in the shell prompt, enabling you to contrast the value of the working directory before and after each command is executed.
 {% endhint %}
 
 ### Exercises
@@ -19,10 +41,6 @@ In the following examples, the absolute pathname of the working directory is hig
 The simplest method is to invoke `cd` without arguments:&#x20;
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-04-25 at 10.09.21 PM.png" alt=""><figcaption></figcaption></figure>
-
-However, another simple method is to invoke `cd` with _\~_ as the argument:
-
-<figure><img src="../../.gitbook/assets/Screenshot 2023-04-25 at 11.26.15 PM.png" alt=""><figcaption></figcaption></figure>
 
 3. Make _/usr/bin_ your working directory again, this time using the relative pathname:&#x20;
 

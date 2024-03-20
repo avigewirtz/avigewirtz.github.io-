@@ -1,23 +1,44 @@
 # ls (List Directory Contents)
 
-The `ls` command is used to list the contents (files and subdirectories) of a directory. Its syntax is as follows: <mark style="color:red;">**`ls`**</mark><mark style="color:green;">**`OPTION(S)`**</mark><mark style="color:blue;">**`DIRECTORY(IES)`**</mark>
+The `ls` command is used to list the contents (files and directories) of a directory. Here we'll cover it's basic usage and and some commonly used options.
 
-If <mark style="color:blue;">**`DIRECTORY(IES)`**</mark>is not specified, `ls` defaults to the working directory. By default, `ls` does not display [hidden](../../linux-operating-system/filesystem/notable-directories.md#hidden-files-directories) entries.&#x20;
+#### Basic usage
 
-<details>
+The most basic use case is to list the names of the files and directories in the working directory. To do so, simply invoke:
 
-<summary>Common options</summary>
+```
+ls
+```
 
-* **`-a`**:  Include hidden entries in the listing.&#x20;
-* **`-l`**: Display the long listing for each entry, in the following format: file type, permissions, number of hard links, owner, group, size, last modification date, and name. &#x20;
+#### Displaying Hidden Files
 
-</details>
+By default `ls` does not display [hidden](../../linux-operating-system/filesystem/notable-directories.md#hidden-files-directories) files (i.e., files that begin with a `.`). To include hidden entries in the directory listing, use the -a option:
 
-### Exercises:
+```
+ls -a
+```
 
-{% hint style="warning" %}
-These exercises assume that the working directory is _\~/bash\_practice_.
-{% endhint %}
+#### Long Listing Format
+
+You can also use ls to display the metadata about the file, such as the file type, owner, and last modification time. To do so, use the -l option:
+
+```bash
+ls -l
+```
+
+Let's go over the output one by one:
+
+file type, permissions, number of hard links, owner, group, size, last modification date, and name. &#x20;
+
+#### Displaying the Contents of Another Directory
+
+To list the contents of a directory other than your working directory, simple provide its pathname as an argument to ls. For example, to list the contents of /var, invoke:
+
+```
+ls /var
+```
+
+### Exercises
 
 1. List the contents of the working directory:
 
