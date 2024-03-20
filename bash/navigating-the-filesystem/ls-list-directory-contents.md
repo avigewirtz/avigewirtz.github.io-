@@ -2,10 +2,7 @@
 
 The `ls` command is used to list the contents (files and directories) of a directory. Here we'll cover it's basic usage and and some commonly used options.
 
-* [ ] A
-* [ ] B&#x20;
-* [ ] C
-*
+{% embed url="https://docs.google.com/forms/d/e/1FAIpQLSdyt_ebECND9fbpnCh3vt3J2RxsRMZPe4lIqdTv-XHNimiVng/viewform?usp=sf_link" %}
 
 #### Basic usage
 
@@ -42,8 +39,6 @@ To list the contents of a directory other than your working directory, simple pr
 ```
 ls /var
 ```
-
-
 
 ### Exercises
 
