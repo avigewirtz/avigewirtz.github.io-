@@ -42,6 +42,7 @@
   * [pwd (Print Working Directory)](bash/navigating-the-filesystem/pwd-print-working-directory.md)
   * [cd (Change Working Directory)](bash/navigating-the-filesystem/cd-change-working-directory.md)
   * [ls (List Directory Contents)](bash/navigating-the-filesystem/ls-list-directory-contents.md)
+  * [Page 2](bash/navigating-the-filesystem/page-2.md)
 * [Creating Directories](bash/creating-files-and-directories.md)
 * [Creating Files](bash/creating-files.md)
 * [Deleting Files and Directories](bash/deleting-files-and-directories.md)

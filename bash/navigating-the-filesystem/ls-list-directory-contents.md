@@ -2,8 +2,6 @@
 
 The `ls` command is used to list the contents (files and directories) of a directory.&#x20;
 
-{% embed url="https://main--cos217.netlify.app/" %}
-
 #### Basic usage
 
 The most basic use case is to list the names of the files and directories in the working directory. To do so, simply invoke:
@@ -80,4 +78,33 @@ Notice that the _/u_ directory contains the home directories of all regular Arml
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-04-25 at 10.11.54 PM.png" alt=""><figcaption></figcaption></figure>
 
-These are important directories that are rarely accessed by anyone other than the system administrator.\
+These are important directories that are rarely accessed by anyone other than the system administrator.
+
+
+
+
+
+
+
+
+
+\
+For the following questions, assume your working directory is `/u/yourNetID`.
+
+18. **How do you list the contents of your current working directory in a detailed format, including hidden files?**
+    * A) `ls -a`
+    * B) `ls -l`
+    * C) `ls -la`
+    * D) `ls -lh`
+
+
+
+questions:
+
+1. how do you list contents of root directory?&#x20;
+2. list contents of working directory
+3. list content of /var
+4. which of the following lists the contents of the working directory in long format?&#x20;
+5. which of the following will not be displayed by default?&#x20;
+6. What happens if you try to "cd into" another user's home directory?&#x20;
+7. \
