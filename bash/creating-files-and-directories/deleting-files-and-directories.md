@@ -30,33 +30,31 @@ Deleting files and directories is a dangerous operation. If you’re not careful
 
 1. Delete _dir1_ using `rmdir`:
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 4.22.41 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.22.41 PM.png" alt=""><figcaption></figcaption></figure>
 
 The operation succeeds since _dir1_ is empty.
 
 2. Delete _dir2_ using `rmdir`:
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 4.23.00 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.23.00 PM.png" alt=""><figcaption></figcaption></figure>
 
 The operation fails since _dir2_ is not empty.&#x20;
 
 3. Let's clean things up a bit. Delete _dir3_, _dir4_, _bad_, _name_, and '_bad name_':
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 4.23.11 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.23.11 PM.png" alt=""><figcaption></figcaption></figure>
 
 4. Delete _file1_:
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 4.29.21 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.29.21 PM.png" alt=""><figcaption></figcaption></figure>
 
 The prompt `rm: remove regular empty file 'file1'?`  is displayed because on Armlab, `rm` is aliased to `rm -i`.&#x20;
 
 2. Delete _dir2_:
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 4.29.29 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.29.29 PM.png" alt=""><figcaption></figcaption></figure>
 
 3. Delete _file3_ and _file4_ using the `-f` option, which removes the confirmation prompt:
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 4.29.39 PM.png" alt=""><figcaption></figcaption></figure>
-
-
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.29.39 PM.png" alt=""><figcaption></figcaption></figure>
 
