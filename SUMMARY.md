@@ -42,7 +42,7 @@
   * [Printing Working Directory](bash/navigating-the-filesystem/pwd-print-working-directory.md)
   * [cd (Change Working Directory)](bash/navigating-the-filesystem/cd-change-working-directory.md)
   * [ls (List Directory Contents)](bash/navigating-the-filesystem/ls-list-directory-contents.md)
-  * [Page 2](bash/navigating-the-filesystem/page-2.md)
+  * [Exercises](bash/navigating-the-filesystem/exercises.md)
 * [Creating and Deleting Files and Directories](bash/creating-files-and-directories/README.md)
   * [Creating Files](bash/creating-files-and-directories/creating-files.md)
   * [Deleting Files and Directories](bash/creating-files-and-directories/deleting-files-and-directories.md)
@@ -57,6 +57,7 @@
 * [Quoting](bash/quoting.md)
 * [How Bash Executes Cammands](bash/how-bash-executes-cammands/README.md)
   * [Path Environment Variable](bash/how-bash-executes-cammands/path-environment-variable.md)
+* [Exercise answers](bash/exercise-answers.md)
 * [Bash Cheat Sheet](bash/bash-cheat-sheet.md)
 * [Further Reading](bash/further-reading.md)
 

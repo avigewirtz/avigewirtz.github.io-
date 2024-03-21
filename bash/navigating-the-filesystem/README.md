@@ -1,50 +1,39 @@
 # Navigating the filesystem
 
-To effectively navigate the Linux filesystem, you need to be familiar with three commands: `pwd`, `ls`, and `cd`. All of these commands are covered in this section. These three commands are perhaps the most commonly used Bash commands, so it is worth your while to make the extra effort to master them.
+Whenever you're interacting with bash on the command line, bash is always positioned somewhere in the filesystem. This location is known as your "working directory." Think of the shell as a cursor that can navigate through the folders on your computer, and at any moment, it's inside a specific folder (the working directory).
 
-Before studying this section, ensure you are comfortable with the idea of [pathnames](../../linux-operating-system/filesystem/pathnames.md), which is covered in section (fill in later).&#x20;
+By default, when you open a terminal or command line session, the shell starts in your home directory. This is a personal space in the filesystem where your files and directories are stored, such as documents, pictures, and configurations.
+
+To move the shell to a different location within the filesystem, you use the `cd` (change directory) command followed by the path to the target directory. For example, `cd Documents` would move you into the Documents directory within your current location.
+
+However, to navigate efficiently using `cd`, you need two pieces of information:
+
+1. **Where you currently are**: The `pwd` (print working directory) command tells you the shell's current location in the filesystem by displaying the full path to the working directory. It answers the question, "Where am I?"
+2. **What's around you**: The `ls` (list) command shows the contents of the current directory, including files and subdirectories. It helps you see which destinations (directories) you can move to next and what files are present in your current location.
+
+hence, before covering cd, we'll first go over pwd and ls.&#x20;
+
+Using `cd` to change directories, `pwd` to know your current directory, and `ls` to see the contents of directories are fundamental skills for navigating the filesystem from the command line. Mastering these commands allows you to move around the filesystem confidently, locate files, organize your data, and execute commands in the context of different directories.
+
+Thus, to effectively navigate the Linux filesystem, you need to be familiar with three commands: `pwd`, `ls`, and `cd`. These commands are perhaps the most commonly used Bash commands, so it is worth your while to make the extra effort to master them.
+
+Before studying this section, ensure you are comfortable with the idea of [pathnames](../../linux-operating-system/filesystem/pathnames.md), the linux filesystem structure, home directory, and working directory.&#x20;
 
 ## <mark style="color:red;">pwd</mark> (<mark style="color:red;">p</mark>rint <mark style="color:red;">w</mark>orking <mark style="color:red;">d</mark>irectory)
 
-The `pwd` command is a simple yet powerful command, used to determine the [absolute pathname](../../linux-operating-system/filesystem/pathnames.md#absolute-pathnames) of your [working directory](../../linux-operating-system/filesystem/notable-directories.md#working-directory). When you open a terminal session, you start in your home directory. As you navigate through the filesystem, you can use `pwd` to check your current location. &#x20;
+The first step to navigating the filesystem is knowing where you currently Changing directories is easy as long as you know where you are (your current directory) and how that relates to where you want to go.
 
-Upon logging into Linux, your [home directory](../../linux-operating-system/filesystem/notable-directories.md#home-directory) will by default be set as your working directory. For example, if you log into armlab and invoke pwd, the output should be /u/yourNetID:&#x20;
+`pwd` displays the absolute pathname of the working directory on stdout. In simple terms, it tells you which directory you're currently "in." When you open a terminal session, you start in your home directory. As you navigate through the filesystem, you can use `pwd` to check your current location. &#x20;
+
+Suppose you log into armlab and invoke `pwd`. It should display /u/yourNetID on stdout:
 
 {% hint style="success" %}
 On Armlab, the working directory is displayed in the [shell prompt](../warm-up-commands.md#shell-prompt), between the colon (:) and dollar ($) sign. Hence, you can determine your working directory without invoking `pwd`.&#x20;
 {% endhint %}
 
-## <mark style="color:red;">cd</mark> (<mark style="color:red;">c</mark>hange working <mark style="color:red;">d</mark>irectory)
-
-You can change your working directory via the `cd` command.
-
-#### Basic usage
-
-For example, if your current working directory is \~ (i.e., _/u/yourNetID_) and you want to change your working directory to _/usr/bin_, you can invoke it's absolute pathname:
-
-```bash
-cd /usr/bin
-```
-
-Or you can specify it's relative pathname:
-
-```bash
-cd ../../usr/bin
-```
-
-Recall that `..` represents the parent directory.&#x20;
-
-#### Going home
-
-If you invoke `cd` without arguments, it'll take you to your home directory:&#x20;
-
-```
-cd
-```
-
 ## <mark style="color:red;">ls</mark> (<mark style="color:red;">l</mark>i<mark style="color:red;">s</mark>t directory contents)
 
-The `ls` command is used to list the contents (files and directories) of a directory.&#x20;
+TKnowing where you are is important, but to navigate, you also need to know what's around you. The `ls` command lists the contents of directories, showing you the files and other directories within your current location.
 
 #### Basic usage
 
@@ -82,67 +71,37 @@ To list the contents of a directory other than your working directory, simple pr
 ls /var
 ```
 
-## Exercises
+## <mark style="color:red;">cd</mark> (<mark style="color:red;">c</mark>hange working <mark style="color:red;">d</mark>irectory)
 
-For the following questions, unless otherwise stated, assume the working directory is /u/yourNetID.
+You can change your working directory via the `cd` command. You must have execute (search) permission in the specified directory. It's syntax
 
-1. Which of the following commands will list the contents of your current working directory in a detailed format, including hidden files?
-   * A) `ls -a`
-   * B) `ls -l`
-   * C) `ls -la`
-   * D) `ls -lh`
-2. What does `cd ..` achieve?
-   * A) It moves you up one directory from your current location
-   * B) It takess you to your home directory
-   * C) It takes you to the root directory
-   * D) It does nothing
-3. What happens if you attempt to change your working directory to another user's home directory, such as `/u/bwk`?
-   * A) The command succeeds without any issue
-   * B) You are prompted for the other user's password
-   * C) The command fails due to permissions, unless you have explicit permissions
-   * D) Your current directory is unchanged, and an error message is displayed
-4. Which of the following lists the contents of the root (/) directory?
-   * A) `ls /`
-   * B) `cd /` then `ls`
-   * C) `pwd /`
-   * D) `ls -root`
-5. How do you return to the last directory you were in?
-   * A) `cd ..`
-   * B) `cd -`
-   * C) `cd ~`
-   * D) `cd /`
-6. If you are in `/u/yourNetID`, what command takes you directly to your home directory?
-   * A) `cd`
-   * B) `cd ~`
-   * C) `cd /u/yourNetID`
-   * D) Both A and B
-7. How do you change your working directory to `/usr/bin` from anywhere in the filesystem?
-   * A) `ls /usr/bin`
-   * B) `pwd /usr/bin`
-   * C) `cd /usr/bin`
-   * D) `dir /usr/bin`
-8. What does the `pwd` command output?
-   * A) List of files in the current directory
-   * B) The current working directory's absolute path
-   * C) The user's home directory path
-   * D) The contents of a specified directory
-9. **Which of the following commands lists the contents of the working directory in long format?**
-   * A) `ls -l`
-   * B) `pwd -l`
-   * C) `cd -l`
-   * D) `ls --long`
-10. **You're in `/home/username` and attempt to `cd` into a file named `notes.txt` in your current directory. What happens?**
-    * A) The file `notes.txt` opens in the default text editor
-    * B) The terminal displays an error message
-    * C) The command is successful, and `notes.txt` becomes the current directory
-    * D) The command deletes `notes.txt`
-11. **From `/home/username/documents`, how do you navigate to `/home/username` using `cd`?**
-    * A) `cd /home/username` using absolute path
-    * B) `cd ..` using relative path
-    * C) Both A and B are correct
-    * D) `cd ~/documents`
-12. **If your current working directory is `/home/username`, how can you change it to `/usr/bin`?**
-    * A) `cd /usr/bin`
-    * B) `cd ../../usr/bin` assuming `/home/username` is your starting point
-    * C) `ls /usr/bin`
-    * D) Both A and B are correct
+#### Basic usage
+
+For example, if your current working directory is _/u/yourNetID_ and you want to change your working directory to _/usr/bin_, you can invoke it's absolute pathname:
+
+```bash
+cd /usr/bin
+```
+
+Or you can specify it's relative pathname:
+
+```bash
+cd ../../usr/bin
+```
+
+Recall that `..` represents the parent directory.&#x20;
+
+#### Going home
+
+If you invoke `cd` without arguments, it'll take you to your home directory:&#x20;
+
+```
+cd
+```
+
+#### Tips for Using `cd`
+
+* **Tab Completion**: Start typing the directory name and press Tab; the system auto-completes the directory name, saving time and reducing typos.
+* **Using Quotes**: If a directory name contains spaces, enclose the name in quotes (e.g., `cd "My Documents"`).
+
+##
