@@ -82,7 +82,7 @@ To list the contents of a directory other than your working directory, simple pr
 ls /var
 ```
 
-### Exercises
+## Exercises
 
 For the following questions, unless otherwise stated, assume the working directory is /u/yourNetID.
 
