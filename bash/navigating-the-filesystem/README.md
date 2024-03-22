@@ -17,7 +17,7 @@ Using `cd` to change directories, `pwd` to know your current directory, and `ls`
 
 Thus, to effectively navigate the Linux filesystem, you need to be familiar with three commands: `pwd`, `ls`, and `cd`. These commands are perhaps the most commonly used Bash commands, so it is worth your while to make the extra effort to master them.
 
-Before studying this section, ensure you are comfortable with the idea of [pathnames](../../linux-filesystem/filesystem/pathnames.md), the linux filesystem structure, home directory, and working directory.&#x20;
+Before studying this section, ensure you are comfortable with the idea of [pathnames](../../linux-operating-system/filesystem/pathnames.md), the linux filesystem structure, home directory, and working directory.&#x20;
 
 ## <mark style="color:red;">pwd</mark> (<mark style="color:red;">p</mark>rint <mark style="color:red;">w</mark>orking <mark style="color:red;">d</mark>irectory)
 
@@ -45,7 +45,7 @@ ls
 
 #### Displaying Hidden Files
 
-By default `ls` does not display [hidden](../../linux-filesystem/filesystem/notable-directories.md#hidden-files-directories) files (i.e., files that begin with a `.`). To include hidden entries in the directory listing, use the -a option:
+By default `ls` does not display [hidden](../../linux-operating-system/filesystem/notable-directories.md#hidden-files-directories) files (i.e., files that begin with a `.`). To include hidden entries in the directory listing, use the -a option:
 
 ```
 ls -a

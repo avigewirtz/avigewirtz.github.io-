@@ -7,11 +7,11 @@
 
 ## armlab
 
-* [What is Armlab?](armlab/background.md)
-* [Activating your Armlab Account](armlab/activating-your-armlab-account.md)
-* [Logging into & out of Armlab](armlab/logging-into-armlab/README.md)
-  * [Secure Shell (SSH) Protocol](armlab/logging-into-armlab/ssh-protocol.md)
-* [Configuring your armlab Environment](armlab/configuring-your-armlab-environment.md)
+* [What is Armlab?](armlab/background/README.md)
+* [Activating your Armlab Account](armlab/background/activating-your-armlab-account.md)
+* [Logging into & out of Armlab](armlab/background/logging-into-armlab/README.md)
+  * [Secure Shell (SSH) Protocol](armlab/background/logging-into-armlab/ssh-protocol.md)
+* [Configuring your armlab Environment](armlab/background/configuring-your-armlab-environment.md)
 
 ## Fundamental Concepts
 
@@ -21,18 +21,18 @@
 * [The shell](fundamental-concepts/the-shell.md)
 * [Core Utilities](fundamental-concepts/core-utilities.md)
 * [Operating System](fundamental-concepts/operating-system.md)
-* [Putting it All Together](fundamental-concepts/putting-it-all-together.md)
+* [Putting it All Together](linux-operating-system/putting-it-all-together.md)
 
 ## Linux Filesystem
 
-* [Background](linux-filesystem/background.md)
-* [Linux Filesystem](linux-filesystem/filesystem/README.md)
-  * [Files and Directories](linux-filesystem/filesystem/files-and-directories.md)
-  * [Filenames](linux-filesystem/filesystem/filenames.md)
-  * [Filesystem Layout](linux-filesystem/filesystem/filesystem-layout.md)
-  * [Notable Directories](linux-filesystem/filesystem/notable-directories.md)
-  * [Pathnames](linux-filesystem/filesystem/pathnames.md)
-* [Further Reading](linux-filesystem/further-reading.md)
+* [Background](linux-operating-system/background.md)
+* [Linux Filesystem](linux-operating-system/filesystem/README.md)
+  * [Files and Directories](linux-operating-system/filesystem/files-and-directories.md)
+  * [Filenames](linux-operating-system/filesystem/filenames.md)
+  * [Filesystem Layout](linux-operating-system/filesystem/filesystem-layout.md)
+  * [Notable Directories](linux-operating-system/filesystem/notable-directories.md)
+  * [Pathnames](linux-operating-system/filesystem/pathnames.md)
+* [Further Reading](linux-operating-system/further-reading.md)
 
 ## Bash
 
@@ -63,7 +63,7 @@
 * [Exercise answers](bash/exercise-answers.md)
 * [Bash Cheat Sheet](bash/bash-cheat-sheet.md)
 * [Further Reading](bash/further-reading.md)
-* [Syntax of Shell Commands](bash/syntax-of-shell-commands.md)
+* [Syntax of Shell Commands](linux-operating-system/shell/syntax-of-shell-commands.md)
 
 ## Emacs
 
