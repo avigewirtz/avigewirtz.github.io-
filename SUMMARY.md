@@ -4,38 +4,27 @@
 
 * [Preface](README.md)
 * [What this site covers](getting-started/summary.md)
+* [COS217 Computing Environment](getting-started/cos217-computing-environment/README.md)
+  * [What is Armlab?](getting-started/cos217-computing-environment/background.md)
+  * [Activating your Armlab Account](getting-started/cos217-computing-environment/activating-your-armlab-account.md)
+  * [Logging into & out of Armlab](getting-started/cos217-computing-environment/logging-into-armlab/README.md)
+    * [Secure Shell (SSH) Protocol](getting-started/cos217-computing-environment/logging-into-armlab/ssh-protocol.md)
+  * [Configuring your armlab Environment](getting-started/cos217-computing-environment/configuring-your-armlab-environment.md)
 
-## armlab
+## Introduction to GNU/Linux&#x20;
 
-* [What is Armlab?](armlab/background/README.md)
-* [Activating your Armlab Account](armlab/background/activating-your-armlab-account.md)
-* [Logging into & out of Armlab](armlab/background/logging-into-armlab/README.md)
-  * [Secure Shell (SSH) Protocol](armlab/background/logging-into-armlab/ssh-protocol.md)
-* [Configuring your armlab Environment](armlab/background/configuring-your-armlab-environment.md)
-
-## Fundamental Concepts
-
-* [Page](fundamental-concepts/page.md)
-* [Command Line Interface](fundamental-concepts/command-line-interface.md)
-* [Terminal](fundamental-concepts/terminal.md)
-* [The shell](fundamental-concepts/the-shell.md)
-* [Core Utilities](fundamental-concepts/core-utilities.md)
-* [Operating System](fundamental-concepts/operating-system.md)
-* [Putting it All Together](linux-operating-system/putting-it-all-together.md)
-
-## Linux Filesystem
-
-* [Background](linux-operating-system/background.md)
-* [Linux Filesystem](linux-operating-system/filesystem/README.md)
-  * [Files and Directories](linux-operating-system/filesystem/files-and-directories.md)
-  * [Filenames](linux-operating-system/filesystem/filenames.md)
-  * [Filesystem Layout](linux-operating-system/filesystem/filesystem-layout.md)
-  * [Notable Directories](linux-operating-system/filesystem/notable-directories.md)
-  * [Pathnames](linux-operating-system/filesystem/pathnames.md)
-* [Further Reading](linux-operating-system/further-reading.md)
+* [Page](introduction-to-gnu-linux/page.md)
+* [Command Line Interface](introduction-to-gnu-linux/command-line-interface.md)
+* [Terminal](introduction-to-gnu-linux/terminal.md)
+* [The shell](introduction-to-gnu-linux/the-shell.md)
+* [Core Utilities](introduction-to-gnu-linux/core-utilities.md)
+* [Operating System](introduction-to-gnu-linux/operating-system.md)
+* [Putting it All Together](introduction-to-gnu-linux/putting-it-all-together.md)
+* [Background](introduction-to-gnu-linux/background.md)
 
 ## Bash
 
+* [Introduction](bash/introduction.md)
 * [Background](bash/background.md)
 * [Getting Started](bash/warm-up-commands.md)
 * [Useful Command-line Features](bash/useful-command-line-features.md)
@@ -64,6 +53,12 @@
 * [Bash Cheat Sheet](bash/bash-cheat-sheet.md)
 * [Further Reading](bash/further-reading.md)
 * [Syntax of Shell Commands](linux-operating-system/shell/syntax-of-shell-commands.md)
+* [Linux Filesystem](bash/filesystem/README.md)
+  * [Files and Directories](bash/filesystem/files-and-directories.md)
+  * [Filenames](bash/filesystem/filenames.md)
+  * [Filesystem Layout](bash/filesystem/filesystem-layout.md)
+  * [Notable Directories](bash/filesystem/notable-directories.md)
+  * [Pathnames](bash/filesystem/pathnames.md)
 
 ## Emacs
 
@@ -81,42 +76,33 @@
 * [Emacs Cheat Sheet](emacs/emacs-cheat-sheet.md)
 * [Further Reading](emacs/further-reading.md)
 
-## Git & GitHub
+## Git
 
-* [Background](git-and-github/background/README.md)
-  * [Setting Up Your Git Environment](appendices/git-installation.md)
-  * [Getting Help](git-and-github/background/getting-help.md)
-* [Git Fundamentals](git-and-github/git-fundamentals/README.md)
-* [Obtaining a Git Repository](git-and-github/obtaining-a-git-repository/README.md)
-  * [Creating a Repository](git-and-github/obtaining-a-git-repository/creating-a-repository.md)
-  * [Cloning a Repository](git-and-github/obtaining-a-git-repository/cloning-a-repository.md)
-  * [Authentication](git-and-github/obtaining-a-git-repository/authentication.md)
-* [Git Workflow](git-and-github/acquiring-a-git-repository/README.md)
-* [Pushing and Pulling](git-and-github/pushing-and-pulling.md)
-* [Obtaining COS217 Assignment Repositories](git-and-github/acquiring-cos217-assignment-repositories.md)
-* [COS217 Development Workflow](git-and-github/cos217-development-workflow.md)
-* [Revisiting add, commit, push, and pull](git-and-github/git-workflow-1/README.md)
-  * [git add](git-and-github/git-workflow-1/staging-files.md)
-  * [git commit](git-and-github/git-workflow-1/committing-staged-files.md)
-  * [git push](git-and-github/git-workflow-1/pushing-commits.md)
-  * [git pull](git-and-github/git-workflow-1/git-pull.md)
-* [Important Git commands](git-and-github/important-git-commands/README.md)
-  * [Checking the Status of Your Repository](git-and-github/important-git-commands/checking-the-status-of-your-repository.md)
-  * [Viewing Commit History](git-and-github/important-git-commands/viewing-commit-history.md)
-  * [Ignoring Files](git-and-github/important-git-commands/ignoring-files.md)
-* [Resolving Merge Conflicts](git-and-github/resolving-merge-conflicts.md)
-* [Configurations](git-and-github/configurations.md)
-* [Git Cheatsheet](git-and-github/git-cheat-sheet.md)
-* [Further Reading](git-and-github/further-reading.md)
-
-## Machine, assembly, and high-level languages
-
-* [How Information is Represented in Computers](machine-assembly-and-high-level-languages/how-information-is-represented-in-computers.md)
-* [Machine Code](machine-assembly-and-high-level-languages/machine-code.md)
-* [Assembly](machine-assembly-and-high-level-languages/assembly.md)
-* [High Level Programming Language](machine-assembly-and-high-level-languages/high-level-programming-language.md)
-* [Executable files](machine-assembly-and-high-level-languages/executable-files.md)
-* [Further Reading](machine-assembly-and-high-level-languages/further-reading.md)
+* [Background](git/background/README.md)
+  * [Setting Up Your Git Environment](git/background/git-installation.md)
+  * [Getting Help](git/background/getting-help.md)
+* [Git Fundamentals](git/git-fundamentals.md)
+* [Obtaining a Git Repository](git/obtaining-a-git-repository/README.md)
+  * [Creating a Repository](git/obtaining-a-git-repository/creating-a-repository.md)
+  * [Cloning a Repository](git/obtaining-a-git-repository/cloning-a-repository.md)
+  * [Authentication](git/obtaining-a-git-repository/authentication.md)
+* [Git Workflow](git/acquiring-a-git-repository.md)
+* [Pushing and Pulling](git/pushing-and-pulling.md)
+* [Obtaining COS217 Assignment Repositories](git/acquiring-cos217-assignment-repositories.md)
+* [COS217 Development Workflow](git/cos217-development-workflow.md)
+* [Revisiting add, commit, push, and pull](git/git-workflow-1/README.md)
+  * [git add](git/git-workflow-1/staging-files.md)
+  * [git commit](git/git-workflow-1/committing-staged-files.md)
+  * [git push](git/git-workflow-1/pushing-commits.md)
+  * [git pull](git/git-workflow-1/git-pull.md)
+* [Important Git commands](git/important-git-commands/README.md)
+  * [Checking the Status of Your Repository](git/important-git-commands/checking-the-status-of-your-repository.md)
+  * [Viewing Commit History](git/important-git-commands/viewing-commit-history.md)
+  * [Ignoring Files](git/important-git-commands/ignoring-files.md)
+* [Resolving Merge Conflicts](git/resolving-merge-conflicts.md)
+* [Configurations](git/configurations.md)
+* [Git Cheatsheet](git/git-cheat-sheet.md)
+* [Further Reading](git/further-reading.md)
 
 ## GCC Build Process
 
@@ -149,6 +135,12 @@
 ## Appendices
 
 * [Appendix B: Detailed Explanation of I/O and Redirection & Piping](appendices/detailed-explanation-of-i-o-and-redirection-and-piping.md)
+* [Assembly](appendices/assembly.md)
+* [High Level Programming Language](appendices/high-level-programming-language.md)
+* [Executable files](appendices/executable-files.md)
+* [Further Reading](appendices/further-reading.md)
+* [Machine Code](appendices/machine-code.md)
+* [How Information is Represented in Computers](appendices/how-information-is-represented-in-computers.md)
 * [C Preprocessor](appendices/c-preprocessor.md)
 * [gcc extra](appendices/gcc-extra.md)
 

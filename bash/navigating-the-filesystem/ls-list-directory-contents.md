@@ -18,7 +18,7 @@ ls
 
 #### Displaying Hidden Files
 
-By default `ls` does not display [hidden](../../linux-operating-system/filesystem/notable-directories.md#hidden-files-directories) files (i.e., files that begin with a `.`). To include hidden entries in the directory listing, use the -a option:
+By default `ls` does not display [hidden](../filesystem/notable-directories.md#hidden-files-directories) files (i.e., files that begin with a `.`). To include hidden entries in the directory listing, use the -a option:
 
 ```
 ls -a

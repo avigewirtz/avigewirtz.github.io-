@@ -1,8 +1,8 @@
 # Command Line Interface
 
-The command-line interface (CLI) is a text-based method of interacting with your computer. Unlike the graphical user interfaces (GUIs) that allow you to issue commands by clicking buttons and icons, a CLI requires you to issue commands by typing typing sequences of text in a [terminal](broken-reference). This approach might seem daunting at first, but it offers a powerful and direct way to communicate with your computer.
+The command-line interface (CLI) is a text-based method of interacting with your computer. Unlike the graphical user interfaces (GUIs) that allow you to issue commands by clicking buttons and icons, a CLI requires you to issue commands by typing typing sequences of text in a [terminal](broken-reference).&#x20;
 
-Imagine using a CLI as if you're texting with your computer: you type in your request, and it responds directly with text output.Let's consider a couple of examples of computer interaction to highlight the distinction between a GUI and CLI:
+Imagine using a CLI as if you're texting with your computer: you type in your request, and it responds directly with text output. Let's consider a couple of examples of computer interaction to highlight the distinction between a GUI and CLI:
 
 1. **Opening an application:**
    * **GUI**: You might simply double-click on the application's icon.

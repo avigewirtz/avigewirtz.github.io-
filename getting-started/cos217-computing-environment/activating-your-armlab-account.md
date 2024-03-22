@@ -1,5 +1,7 @@
 # Activating your Armlab Account
 
+In order to use armlab, you must first activate your account. This section provides the steps for doing so.&#x20;
+
 {% hint style="warning" %}
 To complete these steps, you must be connected to the Princeton network. You can do so by either connecting to Eduroam or by using [GlobalProtect VPN](https://princeton.service-now.com/service?id=kb\_article\&sys\_id=KB0012373).
 {% endhint %}
