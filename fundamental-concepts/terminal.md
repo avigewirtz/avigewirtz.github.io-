@@ -4,7 +4,7 @@ CLI commands are issued via a _terminal_. In the nascent days of interactive com
 
 <figure><img src="https://lh4.googleusercontent.com/Sui_O3OmVfRuG7TS5Ro-pkF7IOJAAbL3Wxb5wHU2xvDIbpFmwGSHkM35HSD2Eic31K5unT9XBYsh63ta-eK33dyWUfQrfJKI48zSJjDUxw2m3LaRKU73PD2WRTUNqETK1FU1RoFPWQSqlph9K8Zoqc4" alt="" width="375"><figcaption><p>Figure 1: Teletype Model 33 ASR</p></figcaption></figure>
 
-Teletypes fell out of use in the 1970s with the advent of video display terminals, such as the DEC VT100 shown in Figure 2, which allowed for instant feedback and editing, making the CLI far more convenient and user-friendly.&#x20;
+Teletypes fell out of use in the 1970s with the advent of video display terminals, such as the DEC VT100 shown in Figure 2. These terminals enabled instant user-feedback and editing, making the CLI far more convenient and user-friendly.&#x20;
 
 <figure><img src="../.gitbook/assets/1200px-DEC_VT100_terminal_transparent.png" alt="" width="375"><figcaption></figcaption></figure>
 
