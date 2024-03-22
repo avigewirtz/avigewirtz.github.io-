@@ -16,11 +16,10 @@
 * [Page](introduction-to-gnu-linux/page.md)
 * [Command Line Interface](introduction-to-gnu-linux/command-line-interface.md)
 * [Terminal](introduction-to-gnu-linux/terminal.md)
-* [The shell](introduction-to-gnu-linux/the-shell.md)
-* [Core Utilities](introduction-to-gnu-linux/core-utilities.md)
+* [Shell](introduction-to-gnu-linux/shell.md)
+* [GNU Core Utilities](introduction-to-gnu-linux/gnu-core-utilities.md)
 * [Operating System](introduction-to-gnu-linux/operating-system.md)
 * [Putting it All Together](introduction-to-gnu-linux/putting-it-all-together.md)
-* [Background](introduction-to-gnu-linux/background.md)
 
 ## Bash
 
