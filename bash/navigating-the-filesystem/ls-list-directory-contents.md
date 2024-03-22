@@ -1,5 +1,11 @@
 # ls (List Directory Contents)
 
+*   \-F Show the type of file with one of several trailing type designators.
+
+    A slash (/) indicates that the file is a directory, an asterisk (\*) means the file is executable, an at sign (@) indicates a symbolic link, an equals sign (=) is a socket, and a pipe or vertical bar (|) is a FIFO (first in, first out) buffer.
+
+
+
 The `ls` command is used to list the contents (files and directories) of a directory.&#x20;
 
 #### Basic usage
@@ -12,7 +18,7 @@ ls
 
 #### Displaying Hidden Files
 
-By default `ls` does not display [hidden](../../linux-operating-system/filesystem/notable-directories.md#hidden-files-directories) files (i.e., files that begin with a `.`). To include hidden entries in the directory listing, use the -a option:
+By default `ls` does not display [hidden](../../linux-filesystem/filesystem/notable-directories.md#hidden-files-directories) files (i.e., files that begin with a `.`). To include hidden entries in the directory listing, use the -a option:
 
 ```
 ls -a

@@ -6,15 +6,7 @@ You can think of the operating system as the bridge between the computer's hardw
 
 To better understand the role the OS plays in the computer system, it's helpful to take a step back and briefly discuss the layers below the OS. For our purposes, we will cover the hardware and ISA layers, beginning our exploration from the ground up and building up to the OS. Note that this coverage is highly simplified.
 
-## **Hardware**
 
-At the lowest level, there is the hardware, which provides the raw computing resources, including the central processing unit (CPU), memory (RAM), storage devices (like SSDs or HDDs), and input/output devices (such as the keyboard, mouse, and display unit). The CPU carries out the actual computations, RAM holds data that needs to be quickly accessed by the CPU, and the storage devices hold larger amounts of data for long-term storage. At this level, operations are performed in binary, directly manipulating the electrical or magnetic signals within the hardware. Working with computers at this level falls out of the realm of computer programming and into the realm of electrical engineering.
-
-## **Instruction Set Architecture (ISA)**
-
-Sitting above the hardware is the Instruction Set Architecture (ISA). The ISA abstracts the hardware implementation details by providing programmers with a set of software instructions that the CPU supports. In essence, it defines the machine language that the CPU can understand and process. From the programmer's perspective, the ISA is the lowest-level software interface to the computer. ISAs can be complex (CISC - Complex Instruction Set Computer) like x86, or simplified (RISC - Reduced Instruction Set Computer) like ARM.&#x20;
-
-## **Operating System**
 
 Above the ISA layer sits the OS layer. The motivation for introducing the OS layer is that while the ISA simplifies programming by hiding the low-level details of the hardware, it has limitations that can make certain tasks challenging to perform. For instance, the ISA does not include a standardized I/O interface. As I/O devices are often external and frequently manufactured by different companies, each comes with its unique low-level ISA interface, separate from the CPU’s ISA. The CPU’s ISA doesn't provide a standardized method for interacting with these I/O devices, thus requiring programmers to familiarize themselves with the specific low-level interface of each device.
 
@@ -37,17 +29,3 @@ While a programmer could write a program using just system calls, libraries offe
 Core utilities, often referred to as "coreutils," are standalone programs that use these library functions to provide a standard set of features to programmers. The core utilities essentially act as a toolbox, providing programmers with ready-to-use tools for most of the basic tasks they might need to perform, such as file management and text processing.&#x20;
 
 Utilities are usually packaged with the operating system and installed by default. However, they are generally not considered part of the operating system itself. The operating system's core is the kernel, which interacts directly with the hardware. Core utilities, on the other hand, operate at a higher level.
-
-## Kernel Mode and User Mode
-
-The computer system operates in two modes--_kernel mode_ and _user mode_. These modes represent different states of the processor and govern the execution privileges of the code that's running. The OS kernel runs in kernel mode, while other programs, such as utilities and applications, run in user mode. The division between the two modes is crucial.&#x20;
-
-#### **Kernel Mode**
-
-In kernel mode (also known as supervisor mode, system mode, or privileged mode), the executing code has full access to all hardware resources and all areas of memory. Kernel mode is typically reserved for low-level operations, such as managing I/O devices or manipulating the file system.
-
-#### **User Mode**
-
-In user mode, the executing code has restricted access to hardware resources and memory. Code running in user mode must request access to hardware or memory through a system call, which may be granted or denied by the kernel. Most application software runs in user mode to prevent a faulty or malicious program from interfering with the operation of the system as a whole. When a user mode program makes a system call, the system switches to kernel mode while the kernel code executes, and then switches back to user mode once the system call is complete.
-
-It should be noted that all user-level programs, whether they're part of the OS distribution or written by users, operate under the same rules and limitations. For example, the system doesn't distinguish between a shell, an editor, a network service, or a user's own program when it comes to enforcing access controls and resource limits.

@@ -8,7 +8,7 @@ Teletypes fell out of use in the 1970s with the widespread adoption of video dis
 
 <figure><img src="../.gitbook/assets/1200px-DEC_VT100_terminal_transparent.png" alt="" width="375"><figcaption></figcaption></figure>
 
-Today, hardware terminals have become obsolete. Instead, the CLI is accessed via a _terminal emulator_, which is a GUI program that simulates the functionality of a hardware terminal. An example of a terminal emulator is macOS's Terminal, shown in Figure 3.&#x20;
+Today, hardware terminals are essentially obsolete. The most common method to access the CLI is via a _terminal emulator_, which is a GUI program that simulates the functionality of a hardware terminal, such as the VT-100. An example of a terminal emulator is macOS's Terminal, shown in Figure 3.&#x20;
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-19 at 5.46.26 PM.png" alt="" width="563"><figcaption><p>Figure 3: macOS Terminal Application</p></figcaption></figure>
 

@@ -1,5 +1,7 @@
 # Redirection and Piping
 
+1. Connecting Two Programs by Using Output as Input
+
 When a program is started up, it by default has three data streams attached to it: one for reading input, one for writing normal output, and one for writing diagnostic or error messages. These streams are referred to as standard input (stdin), standard output (stdout), and standard error (stderr) respectively. By default, standard input is connected to the keyboard, while standard output and standard error are connected to the screen. You can manipulate this default behavior using _redirection and piping_.&#x20;
 
 ## Redirection
