@@ -13,7 +13,7 @@
 
 ## Introduction to GNU/Linux&#x20;
 
-* [Page](introduction-to-gnu-linux/page.md)
+* [What is GNU/Linux](introduction-to-gnu-linux/what-is-gnu-linux.md)
 * [Command Line Interface](introduction-to-gnu-linux/command-line-interface.md)
 * [Terminal](introduction-to-gnu-linux/terminal.md)
 * [Shell](introduction-to-gnu-linux/shell.md)
