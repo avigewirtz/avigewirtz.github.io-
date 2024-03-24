@@ -1,25 +1,35 @@
 # Table of contents
 
+## Preface
+
+* [About This Tutorial](README.md)
+* [Organization of this tutorial](preface/organization-of-this-tutorial.md)
+* [Conventions used](preface/conventions-used.md)
+* [Acknowledgments](preface/acknowledgments.md)
+
 ## Getting Started
 
-* [Preface](README.md)
-* [What this site covers](getting-started/summary.md)
-* [COS217 Computing Environment](getting-started/cos217-computing-environment/README.md)
-  * [What is Armlab?](getting-started/cos217-computing-environment/background.md)
-  * [Activating your Armlab Account](getting-started/cos217-computing-environment/activating-your-armlab-account.md)
-  * [Logging into & out of Armlab](getting-started/cos217-computing-environment/logging-into-armlab/README.md)
-    * [Secure Shell (SSH) Protocol](getting-started/cos217-computing-environment/logging-into-armlab/ssh-protocol.md)
-  * [Configuring your armlab Environment](getting-started/cos217-computing-environment/configuring-your-armlab-environment.md)
+* [Preface](<README (1).md>)
+* [Armlab](getting-started/armlab/README.md)
+  * [What is Armlab?](getting-started/armlab/background.md)
+  * [Activating your Armlab Account](getting-started/armlab/activating-your-armlab-account.md)
+  * [Logging into & out of Armlab](getting-started/armlab/logging-into-armlab/README.md)
+    * [Secure Shell (SSH) Protocol](getting-started/armlab/logging-into-armlab/ssh-protocol.md)
+  * [Configuring your armlab Environment](getting-started/armlab/configuring-your-armlab-environment.md)
 
-## Introduction to GNU/Linux&#x20;
+## Introduction to Linux and Gnu
 
-* [What is GNU/Linux](introduction-to-gnu-linux/what-is-gnu-linux.md)
-* [Command Line Interface](introduction-to-gnu-linux/command-line-interface.md)
-* [Terminal](introduction-to-gnu-linux/terminal.md)
-* [Shell](introduction-to-gnu-linux/shell.md)
-* [GNU Core Utilities](introduction-to-gnu-linux/gnu-core-utilities.md)
-* [Operating System](introduction-to-gnu-linux/operating-system.md)
-* [Putting it All Together](introduction-to-gnu-linux/putting-it-all-together.md)
+* [Linux and GNU](introduction-to-linux-and-gnu/linux-and-gnu.md)
+* [Command Line Interface](introduction-to-linux-and-gnu/command-line-interface.md)
+* [Terminal](introduction-to-linux-and-gnu/terminal.md)
+* [Shell](introduction-to-linux-and-gnu/shell.md)
+* [GNU Core Utilities](introduction-to-linux-and-gnu/gnu-core-utilities.md)
+* [Operating System](introduction-to-linux-and-gnu/operating-system.md)
+* [Putting it All Together](introduction-to-linux-and-gnu/putting-it-all-together.md)
+
+***
+
+* [Page](page.md)
 
 ## Bash
 

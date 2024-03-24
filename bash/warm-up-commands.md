@@ -4,7 +4,7 @@ description: This page introduces Bash commands.
 
 # Getting Started
 
-We'll begin our command line journey by executing a few simple Bash commands on Armlab. If you want to follow along with these exercises, it is best if you are [logged into](../getting-started/cos217-computing-environment/logging-into-armlab/) Armlab.&#x20;
+We'll begin our command line journey by executing a few simple Bash commands on Armlab. If you want to follow along with these exercises, it is best if you are [logged into](../getting-started/armlab/logging-into-armlab/) Armlab.&#x20;
 
 ### Shell prompt
 

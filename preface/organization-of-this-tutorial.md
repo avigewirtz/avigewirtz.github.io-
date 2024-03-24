@@ -1,4 +1,6 @@
-# Summary
+# Organization of this tutorial
+
+We've arranged the chapters to give you a gentle and enjoyable entry into UNIX and the tools on the disk. We start with basic utilities you'll use right away, like the Emacs text editor and the C compiler, and continue to more advanced tools that you'll be glad are there, such as make and RCS. The first two chapters are general and do not directly concern the software on the disk; later chapters are about par- ticular tools on the disk.
 
 ### Part 1: Armlab
 
@@ -22,7 +24,7 @@ The next portion delves into Git & GitHub, explaining how to set up your Git env
 
 ### Part 6: Gnu Compiler Collection (GCC)
 
-The GCC section breaks down the four-stage build process, with the intention of helping you understand each stage from machine code to high-level languages.&#x20;
+The GCC section breaks down the four-stage build process, with the intention of helping you understand each stage from machine code to high-level languages.
 
 ### Part 7: Make
 
