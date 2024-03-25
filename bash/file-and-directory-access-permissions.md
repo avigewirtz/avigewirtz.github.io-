@@ -6,31 +6,39 @@ description: >-
 
 # File and Directory Access Permissions
 
-Earlier we covered the ls -l option, which lists the metadata of each file in the working directory. We mentioned that the first column conveys access permissions, but didn't go into detail. Let's not dig deeper. We'll use the following listing as an example:
+Associated with each file and directory are three categories of users to whom access permissions may be granted: &#x20;
+
+* **Owner**: Typically the user who created the file, but ownership can be changed by the superuser.
+* **Group**: A predefined group of users.&#x20;
+* **Other**:  All other users.
+
+Each of these user categories may be granted three types of permissions: read, write, and execute.&#x20;
+
+### Viewing access permissions
+
+You can view the permissions of each of user category by invoking `ls -l` on the command line, which lists directory entries in long format:&#x20;
 
 <figure><img src="../.gitbook/assets/Group 2 (2).png" alt=""><figcaption></figcaption></figure>
 
-Let's zoom in on the columns relevant to our discussion, shown in Figure 1:&#x20;
+Let's zoom in on the parts relevant to our discussion, shown in Figure 1:&#x20;
 
-<figure><img src="../.gitbook/assets/Group 1 (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 1 (4).png" alt=""><figcaption></figcaption></figure>
 
-Let's break down the first column. The first character indicates the file type--'d' for directory, and '-' for an ordinary file. There are other types of files, but we won't get into that here.&#x20;
+The first character of column 1 indicates the file type--'d' for a directory, and '-' for an ordinary file. There are other types of files, but we won't cover them here. The final character 'of column 1, '.', specifies the file's extended attribute, which is beyond the scope of our discussion.
 
-The subsequent nine characters, divided into three groups of three characters each, indicate the access permissions for three types of users: Owner (johndoe1), group (utemper), and others (everyone else). The first character of each group indicates read permission ('r'), the second write permission ('w'), and the third execute permission ('x'). A dash ('-') in any of these positions means the corresponding permission is not granted.
+Of most interest are the 9 middle characters of column 1, which indicate read, write, and execute permissions for each of the three categories of users: owner, group, and other. An  A '-' in any of these positions means the corresponding permission is not granted.&#x20;
 
 ### **Interpreting access permissions**
 
-For files, the meanings of read, write, and execute are pretty intuitive:&#x20;
+The exact meaning of read, write, and execute permissions differs for files and directories. For files, the meanings are pretty intuitive:&#x20;
 
-* **Read**: The contents of the file may be read. For example, you can use the cat command to print it's contents on stdout.&#x20;
-* **Write**: The contents of the file may be modified. For example, you can edit the file with a text editor like Emacs.&#x20;
-* **Execute**: The file may be executed (i.e., you can run it by invoking it's pathname, such as `./executableName`, on the command line). &#x20;
-
-In Figure 1, index.html represents a non-executable file. Each of the three groups may read it's contents, but only the owner may edit it.&#x20;
+* **Read**: The contents of the file may be read. For example, you can use the `cat` command to print the file's contents on stdout.&#x20;
+* **Write**: The contents of the file may be modified. For example, you can use an editor like Emacs to edit the file's contents.&#x20;
+* **Execute**: The file may be executed.&#x20;
 
 For directories, the meanings are very confusing. The gist is as follows:
 
-* **Read**: The names of the directory’s entries (i.e., files and subdirectories) may be listed (e.g., by invoking the `ls` command). Note that read permission on a directory only lets you view the file and directory names, but not their attributes (i.e., metadata). For that, you must have execute permissions.
+* **Read**: The names of the directory’s entries (i.e., files and subdirectories) may be listed (e.g., by invoking the `ls` command). Note that `ls -l` will not work unless you also have execute permissions.&#x20;
 * **Write**: Directory entries may be modified (i.e, created, deleted, and renamed and have their attributes modified.). Note that this only applies if the execute permission is also enabled. If execute is not enabled, write permission is totally meaningless.&#x20;
 * **Execute**: Directory entries may be accessed, and you may make the directory your working directory. Note that if a directory cannot be accessed, neither can its children, regardless of your permissions for the children themselves. &#x20;
 
@@ -44,7 +52,7 @@ Tips:
 Here is a chart summarizing the properties of directory access permissions:\
 
 
-<table data-header-hidden><thead><tr><th width="88"></th><th></th><th></th><th></th></tr></thead><tbody><tr><td><br>Directory name = directory</td><td><strong><code>ls directory</code></strong></td><td><strong>Permission to create, delete, rename directory’s files and empty directories or modify their metadata?</strong> </td><td><strong>Permission to access directory entries? Make the directory your working directory? Display directory entries’ metadata?</strong></td></tr><tr><td><strong><code>rwx</code></strong></td><td>✔️</td><td>✔️</td><td>✔️</td></tr><tr><td><strong><code>rw-</code></strong></td><td>✔️</td><td>❌</td><td>❌</td></tr><tr><td><strong><code>r-x</code></strong></td><td>✔️</td><td>❌</td><td>✔️</td></tr><tr><td><strong><code>-wx</code></strong></td><td>❌</td><td>✔️</td><td>✔️</td></tr><tr><td><strong><code>r--</code></strong></td><td>✔️</td><td>❌</td><td>❌</td></tr><tr><td><strong><code>-w-</code></strong></td><td>❌</td><td>❌</td><td>❌</td></tr><tr><td><strong><code>--x</code></strong></td><td>❌</td><td>❌</td><td>✔️</td></tr><tr><td><strong><code>---</code></strong></td><td>❌</td><td>❌</td><td>❌</td></tr></tbody></table>
+<table data-header-hidden><thead><tr><th width="88"></th><th></th><th></th><th></th></tr></thead><tbody><tr><td><br>Directory name = directory</td><td>Permission to list directory entries?</td><td><strong>Permission to create, delete, rename directory’s files and empty directories or modify their metadata?</strong> </td><td><strong>Permission to access directory entries? Make the directory your working directory? Display directory entries’ metadata?</strong></td></tr><tr><td><strong><code>rwx</code></strong></td><td>✔️</td><td>✔️</td><td>✔️</td></tr><tr><td><strong><code>rw-</code></strong></td><td>✔️</td><td>❌</td><td>❌</td></tr><tr><td><strong><code>r-x</code></strong></td><td>✔️</td><td>❌</td><td>✔️</td></tr><tr><td><strong><code>-wx</code></strong></td><td>❌</td><td>✔️</td><td>✔️</td></tr><tr><td><strong><code>r--</code></strong></td><td>✔️</td><td>❌</td><td>❌</td></tr><tr><td><strong><code>-w-</code></strong></td><td>❌</td><td>❌</td><td>❌</td></tr><tr><td><strong><code>--x</code></strong></td><td>❌</td><td>❌</td><td>✔️</td></tr><tr><td><strong><code>---</code></strong></td><td>❌</td><td>❌</td><td>❌</td></tr></tbody></table>
 
 ## Exercises
 
