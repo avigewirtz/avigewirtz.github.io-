@@ -17,15 +17,15 @@
     * [Secure Shell (SSH) Protocol](getting-started/armlab/logging-into-armlab/ssh-protocol.md)
   * [Configuring your armlab Environment](getting-started/armlab/configuring-your-armlab-environment.md)
 
-## Introduction to Linux and Gnu
+## Fundamental Concepts
 
-* [Linux and GNU](introduction-to-linux-and-gnu/linux-and-gnu.md)
-* [Command Line Interface](introduction-to-linux-and-gnu/command-line-interface.md)
-* [Terminal](introduction-to-linux-and-gnu/terminal.md)
-* [Shell](introduction-to-linux-and-gnu/shell.md)
-* [GNU Core Utilities](introduction-to-linux-and-gnu/gnu-core-utilities.md)
-* [Operating System](introduction-to-linux-and-gnu/operating-system.md)
-* [Putting it All Together](introduction-to-linux-and-gnu/putting-it-all-together.md)
+* [Linux and GNU](fundamental-concepts/linux-and-gnu.md)
+* [Command Line Interface](fundamental-concepts/command-line-interface.md)
+* [Terminal](fundamental-concepts/terminal.md)
+* [Shell](fundamental-concepts/shell.md)
+* [GNU Core Utilities](fundamental-concepts/gnu-core-utilities.md)
+* [Operating System](fundamental-concepts/operating-system.md)
+* [Putting it All Together](fundamental-concepts/putting-it-all-together.md)
 
 ***
 
@@ -33,7 +33,6 @@
 
 ## Bash
 
-* [Introduction](bash/introduction.md)
 * [Background](bash/background.md)
 * [Getting Started](bash/warm-up-commands.md)
 * [Command-line shortcuts](bash/useful-command-line-features.md)
@@ -56,18 +55,14 @@
 * [Linux Environment Variables](bash/linux-environment-variables.md)
 * [Bash Configuration Files](bash/bash-configuration-files.md)
 * [Quoting](bash/quoting.md)
-* [How Bash Executes Cammands](bash/how-bash-executes-cammands/README.md)
-  * [Path Environment Variable](bash/how-bash-executes-cammands/path-environment-variable.md)
-* [Exercise answers](bash/exercise-answers.md)
-* [Bash Cheat Sheet](bash/bash-cheat-sheet.md)
-* [Further Reading](bash/further-reading.md)
-* [Syntax of Shell Commands](linux-operating-system/shell/syntax-of-shell-commands.md)
 * [Linux Filesystem](bash/filesystem/README.md)
   * [Files and Directories](bash/filesystem/files-and-directories.md)
   * [Filenames](bash/filesystem/filenames.md)
   * [Filesystem Layout](bash/filesystem/filesystem-layout.md)
   * [Notable Directories](bash/filesystem/notable-directories.md)
   * [Pathnames](bash/filesystem/pathnames.md)
+* [Bash Cheat Sheet](bash/bash-cheat-sheet.md)
+* [Further Reading](bash/further-reading.md)
 
 ## Emacs
 
@@ -151,6 +146,8 @@
 * [Machine Code](appendices/machine-code.md)
 * [How Information is Represented in Computers](appendices/how-information-is-represented-in-computers.md)
 * [C Preprocessor](appendices/c-preprocessor.md)
+* [How Bash Executes Cammands](appendices/how-bash-executes-cammands/README.md)
+  * [Path Environment Variable](appendices/how-bash-executes-cammands/path-environment-variable.md)
 * [gcc extra](appendices/gcc-extra.md)
 
 ## Group 1
