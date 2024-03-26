@@ -1,4 +1,4 @@
-# Useful Command-line Features
+# Command-line shortcuts
 
 Bash offers many useful command-line shortcuts that minimize the need to type out long commands, filenames, or pathnames. Some common shortcuts include:
 
@@ -24,7 +24,6 @@ Bash keeps a record of the commands you've entered in a file named `.bash_histor
 * **Search your command history**: Press`Ctrl-r` and type a few characters of the command you're looking for. Press `Ctrl-r` again to cycle through matching commands.
 * **Navigate your command history**: Use the up and down arrow keys.
 * **Reuse commands**: Use the `!` (bang) operator followed by a number (e.g., `!125`), to execute the command with that number in the history.&#x20;
-* **Clearing terminal window**: Invoke `clear` command or press `Ctrl-l`. This clears your terminal screen of all visible content. &#x20;
 
 ### **Aliases**
 

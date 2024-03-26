@@ -27,7 +27,9 @@ Generalizing, the prompt on Armlab has the following format:&#x20;
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-24 at 9.53.35 PM.png" alt=""><figcaption></figcaption></figure>
 
-## Warm up commands
+## What's in a command?
+
+A commands typically consists of a program name followed by options and operands. The program name is essentially the name of an executable file, located somewhere in your filesystem.&#x20;
 
 The simplest commands consist of just a command name. As we mentioned earlier, a command name can represent a shell-builtin or an external program. For now, it doesn't make a difference which are which.&#x20;
 

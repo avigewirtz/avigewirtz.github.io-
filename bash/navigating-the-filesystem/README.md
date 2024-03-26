@@ -1,28 +1,25 @@
 # Navigating the filesystem
 
-Whenever you're using the command line, bash is always positioned somewhere in the filesystem. This location is known as your (or, more accurately, Bash's) working directory.
+To effectively navigate the Linux filesystem, you need to be familiar with three commands: `pwd`, `ls`, and `cd`. These commands are perhaps the most commonly used Bash commands, so it is worth your while to make the extra effort to master them.
 
-When you begin a Bash session, you start in your home directory.&#x20;
+## **`pwd` - A sense of Location**
 
+Whenever you're using the command line, bash is always positioned somewhere in the filesystem. This location is known as your (or, more accurately, Bash's) working directory.&#x20;
 
+Before you start moving around, you might want to know your current location. You can find this out your by invoking `pwd`, which displays the absolute pathname of your working directory on stdout. By default, your working directory will be your home directory, which on armlab is /u/yourNetID:
 
-Thus, to effectively navigate the Linux filesystem, you need to be familiar with three commands: `pwd`, `ls`, and `cd`. These commands are perhaps the most commonly used Bash commands, so it is worth your while to make the extra effort to master them.
-
-## <mark style="color:red;">pwd</mark> (<mark style="color:red;">p</mark>rint <mark style="color:red;">w</mark>orking <mark style="color:red;">d</mark>irectory)
-
-The first step to navigating the filesystem is knowing where you currently Changing directories is easy as long as you know where you are (your current directory) and how that relates to where you want to go.
-
-`pwd` displays the absolute pathname of the working directory on stdout. In simple terms, it tells you which directory you're currently "in." When you open a terminal session, you start in your home directory. As you navigate through the filesystem, you can use `pwd` to check your current location. &#x20;
-
-Suppose you log into armlab and invoke `pwd`. It should display /u/yourNetID on stdout:
+```
+~$ pwd
+/u/yourNetID
+```
 
 {% hint style="success" %}
-On Armlab, the working directory is displayed in the [shell prompt](../warm-up-commands.md#shell-prompt), between the colon (:) and dollar ($) sign. Hence, you can determine your working directory without invoking `pwd`.&#x20;
+On Armlab, the working directory is displayed in the [shell prompt](../warm-up-commands.md#shell-prompt), between the colon (:) and dollar ($) sign.
 {% endhint %}
 
-## <mark style="color:red;">ls</mark> (<mark style="color:red;">l</mark>i<mark style="color:red;">s</mark>t directory contents)
+## **`ls` - A sense of surroundings**
 
-TKnowing where you are is important, but to navigate, you also need to know what's around you. The `ls` command lists the contents of directories, showing you the files and other directories within your current location.
+Knowing where you are is important, but to navigate, you also need to know what's around you. The `ls` command lists the contents of directories, showing you the files and other directories within your current location.
 
 #### Basic usage
 
@@ -62,7 +59,11 @@ ls /var
 
 ## <mark style="color:red;">cd</mark> (<mark style="color:red;">c</mark>hange working <mark style="color:red;">d</mark>irectory)
 
-You can change your working directory via the `cd` command. You must have execute (search) permission in the specified directory. It's syntax
+
+
+**`cd` - Moving to a Different Location**
+
+You can change your working directory via the `cd` command.&#x20;
 
 #### Basic usage
 
