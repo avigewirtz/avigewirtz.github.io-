@@ -1,23 +1,12 @@
 # Navigating the filesystem
 
-Whenever you're interacting with bash on the command line, bash is always positioned somewhere in the filesystem. This location is known as your "working directory." Think of the shell as a cursor that can navigate through the folders on your computer, and at any moment, it's inside a specific folder (the working directory).
+Whenever you're using the command line, bash is always positioned somewhere in the filesystem. This location is known as your (or, more accurately, Bash's) working directory.
 
-By default, when you open a terminal or command line session, the shell starts in your home directory. This is a personal space in the filesystem where your files and directories are stored, such as documents, pictures, and configurations.
+When you begin a Bash session, you start in your home directory.&#x20;
 
-To move the shell to a different location within the filesystem, you use the `cd` (change directory) command followed by the path to the target directory. For example, `cd Documents` would move you into the Documents directory within your current location.
 
-However, to navigate efficiently using `cd`, you need two pieces of information:
-
-1. **Where you currently are**: The `pwd` (print working directory) command tells you the shell's current location in the filesystem by displaying the full path to the working directory. It answers the question, "Where am I?"
-2. **What's around you**: The `ls` (list) command shows the contents of the current directory, including files and subdirectories. It helps you see which destinations (directories) you can move to next and what files are present in your current location.
-
-hence, before covering cd, we'll first go over pwd and ls.&#x20;
-
-Using `cd` to change directories, `pwd` to know your current directory, and `ls` to see the contents of directories are fundamental skills for navigating the filesystem from the command line. Mastering these commands allows you to move around the filesystem confidently, locate files, organize your data, and execute commands in the context of different directories.
 
 Thus, to effectively navigate the Linux filesystem, you need to be familiar with three commands: `pwd`, `ls`, and `cd`. These commands are perhaps the most commonly used Bash commands, so it is worth your while to make the extra effort to master them.
-
-Before studying this section, ensure you are comfortable with the idea of [pathnames](../filesystem/pathnames.md), the linux filesystem structure, home directory, and working directory.&#x20;
 
 ## <mark style="color:red;">pwd</mark> (<mark style="color:red;">p</mark>rint <mark style="color:red;">w</mark>orking <mark style="color:red;">d</mark>irectory)
 

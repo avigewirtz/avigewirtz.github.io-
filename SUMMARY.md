@@ -33,7 +33,7 @@
 
 ## Bash
 
-* [Background](bash/background.md)
+* [What is Bash?](bash/background.md)
 * [Getting Started](bash/warm-up-commands.md)
 * [What commands represent](bash/what-commands-represent.md)
 * [Command-line shortcuts](bash/useful-command-line-features.md)
