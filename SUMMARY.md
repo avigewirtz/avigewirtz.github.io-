@@ -35,6 +35,7 @@
 
 * [Background](bash/background.md)
 * [Getting Started](bash/warm-up-commands.md)
+* [What commands represent](bash/what-commands-represent.md)
 * [Command-line shortcuts](bash/useful-command-line-features.md)
 * [External Program vs bash builtin](bash/external-program-vs-bash-builtin.md)
 * [Getting Help](bash/getting-help.md)
