@@ -45,7 +45,7 @@
   * [ls (List Directory Contents)](bash/navigating-the-filesystem/ls-list-directory-contents.md)
   * [Exercises](bash/navigating-the-filesystem/exercises.md)
 * [Creating and Deleting Files and Directories](bash/creating-files-and-directories/README.md)
-  * [Creating Files](bash/creating-files-and-directories/creating-files.md)
+  * [Creating Files and Directories](bash/creating-files-and-directories/creating-files.md)
   * [Deleting Files and Directories](bash/creating-files-and-directories/deleting-files-and-directories.md)
 * [Viewing Files](bash/viewing-files.md)
 * [Redirection and Piping](bash/redirection-and-piping.md)
