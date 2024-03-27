@@ -29,17 +29,11 @@ Generalizing, the prompt on Armlab has the following format:&#x20;
 
 ## What's in a command?
 
-A commands typically consists of a program name followed by options and operands. The program name is essentially the name of an executable file, located somewhere in your filesystem.&#x20;
-
-The simplest commands consist of just a command name. As we mentioned earlier, a command name can represent a shell-builtin or an external program. For now, it doesn't make a difference which are which.&#x20;
-
-Here are a few examples:&#x20;
-
-1. `uname`, which displays the name of your OS:
+The simplest type of command consists of just a command name. As we mentioned earlier, a command name can represent a shell-builtin or a standalone program. For now, it doesn't make a difference which are which. One such command us `uname`, which prints the name of your OS on stdout. To invoke it, simply type `uname` and press ENTER:
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-09 at 2.59.46 PM.png" alt=""><figcaption></figcaption></figure>
 
-4. `date`, which displays the current date and time:
+Another example is the date `command`, which prints the current date and time on stdout:
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-09 at 2.59.54 PM.png" alt=""><figcaption></figcaption></figure>
 
@@ -53,9 +47,9 @@ Note that Linux is case-specific.&#x20;
 
 ### Options
 
-Many commands accept arguments known as options, which modify the default behavior of the command. An option normally consists of a single character prefixed by a hyphen (e.g., `-a`), but it can also consist of a full word prefixed by two hyphens (i.e., `--list`). The complete list of a command's available options can typically be found in its [_manpage_](getting-help.md).
+Many commands accept arguments known as options, which modify the default behavior of the command. An option normally consists of a single character prefixed by a hyphen (e.g., `-a`), but it can also consist of a full word prefixed by two hyphens (i.e., `--list`). The complete list of a command's available options can be found in its [_manpage_](getting-help.md).
 
-An example of an option is the `-w` option for the `cal` command, which modifies its output by prefixing each week with its... to the first column of the calendar. To use this option, simply invoke `cal` like so:
+An example of an option is the `-w` option for the `cal` command, which modifies its output by prefixing each week with its...  To use this option, simply invoke `cal -w`:
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-09 at 3.11.55 PM.png" alt=""><figcaption></figcaption></figure>
 
@@ -71,7 +65,7 @@ You can typically combine multiple options together, using both in a single comm
 
 ### Operands
 
-Many commands also take operandsAn argument is a token that a command acts on, such as a filename, a string of characters, or a number. An argument usually tells a command to act upon a certain object:
+Many commands take operands, which might represent a filename, string, or number that the command acts upon.
 
 We will illustrate arguments using the `sort` command, which sorts lines of text files. For example, say you have the file numbers.txt, with the numbers `5 7 3 4 8 3`, each on a separate line.&#x20;
 
@@ -81,53 +75,10 @@ Many programs can take multiple arguments. For example, you can provide `sort` t
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-04-25 at 7.00.46 PM.png" alt=""><figcaption></figcaption></figure>
 
-#### Commands with options and operands
+### Commands with options and operands
 
 Finally, many commands take both options and operands. &#x20;
 
 For example, `sort numbers1.txt` with the `-r` option tells `sort` to reverse the order of the output:&#x20;
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-04-25 at 7.19.34 PM.png" alt=""><figcaption></figcaption></figure>
-
-\
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Shell commands typically consist of _fields_, which represent a _command name_ followed by one or more _arguments_.&#x20;
-
-## **Command name**
-
-A command name typically represents an executable file or a shell _built-in_, but it can also represent a _function_.&#x20;
-
-* **Executable file**: An executable file represent any programs on the filesystem, though it typically represents a utility. There is no fundamental distinction between a utility and a regular program, except that a utility can be called by name alone (rather than _pathname_).
-* **Shell built-In**: A shell built-in is a utility implemented within the shell. The difference between a shell built-in and another program is that a shell built-in represents a service provided by the shell itself, while other programs represent services provided by external programs. The practical implications of this distinction are typically not of concern to programmers, so we will not cover them here. However, whenever the distinction is pertinent, we will point it out.&#x20;
-* **Function**: A function is essentially a group of commands that are defined for reuse.&#x20;
-
-## **Argument**
-
-An argument is a parameter passed to the executable file, shell built-in, or function. It typically represents an _option_ or an _operand_, but it can also represent an _option-argument_.&#x20;
-
-*   **Option**: An option is an argument that changes the command's default behavior. An option normally consists of a single character prefixed by a hyphen (e.g., `-a`), but it can also consist of a full word prefixed by two hyphens (i.e., `--list`). The former is called a _short option_, and the latter is called a _long option_. &#x20;
-
-    Options are defined and interpreted by the program they are supplied to. Thus, the precise syntax and behavior of an option are dependent on the program, not the shell. Many commands allow several short options to be combined.&#x20;
-* **Option-Argument**: An option-argument is a parameter that follows certain options. For example, the `-o` option in the `gcc` command uses an argument—an output filename such as `hello`.
-* **Operand**: An operand specifies the data that the command manipulates or operates on, usually representing a literal, variable, or filename. (Note that in this context we use the term _file_ broadly to include directories.) Commands often allow multiple operands to be supplied together. The order of options and operands can be significant, depending on the command.&#x20;
-
-The syntax of a shell command can generally be summarized as follows:

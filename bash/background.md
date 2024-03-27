@@ -1,10 +1,12 @@
-# Background
+# What is Bash?
 
 BASH, short for "Bourne-Again SHell," is a popular Unix-shell developed by the [GNU Project](https://en.wikipedia.org/wiki/GNU\_Project). It is the default shell on many Linux distributions.&#x20;
 
 The purpose of Bash, like all shells, is to implement the command line interface. It provides you with a language with which top interact with the operating system kernel.&#x20;
 
 
+
+Bash is a [command processor](https://en.wikipedia.org/wiki/Command-line\_interpreter) that typically runs in a [text window](https://en.wikipedia.org/wiki/Terminal\_emulator) where the user types commands that cause actions. Bash can also read and execute commands from a file, called a [shell script](https://en.wikipedia.org/wiki/Shell\_script).
 
 
 
