@@ -29,7 +29,11 @@ Generalizing, the prompt on Armlab has the following format:&#x20;
 
 ## What's in a command?
 
-The simplest type of command consists of just a command name. As we mentioned earlier, a command name can represent a shell-builtin or a standalone program. For now, it doesn't make a difference which are which. One such command us `uname`, which prints the name of your OS on stdout. To invoke it, simply type `uname` and press ENTER:
+The simplest type of command consists of just a command name. As we mentioned earlier, a command name can represent a shell-builtin or a standalone program. For now, it doesn't make a difference which are which.&#x20;
+
+Let's try a few commands:&#x20;
+
+One such command us `uname`, which prints the name of your OS on stdout. To invoke it, simply type `uname` and press ENTER:
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-09 at 2.59.46 PM.png" alt=""><figcaption></figcaption></figure>
 
