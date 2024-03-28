@@ -1,8 +1,18 @@
-# Bash Configuration Files
+# Bash Execution Environment
 
-## Enviro
+## Environment variables
 
 
+
+
+
+
+
+
+
+
+
+## Execution environment
 
 When a user logs in or out of a Bash terminal session, various Bash configuration files are automatically executed.&#x20;
 

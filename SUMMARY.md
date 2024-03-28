@@ -53,6 +53,7 @@
 * [File and Directory Access Permissions](bash/file-and-directory-access-permissions.md)
 * [Linux Environment Variables](bash/linux-environment-variables.md)
 * [Bash Configuration Files](bash/bash-configuration-files.md)
+* [Bash Execution Environment](bash/bash-execution-environment.md)
 * [Quoting](bash/quoting.md)
 * [Linux Filesystem](bash/filesystem/README.md)
   * [Files and Directories](bash/filesystem/files-and-directories.md)

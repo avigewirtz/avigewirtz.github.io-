@@ -12,7 +12,7 @@ Associated with each file and directory are three categories of users to whom ac
 * **Group**: A predefined group of users.&#x20;
 * **Other**:  All other users.
 
-Each of these user categories may be granted three types of permissions: read, write, and execute.&#x20;
+Each of these user categories may be granted three types of permissions: read, write, and execute. We will discuss the meaning of these permissions shortly.&#x20;
 
 ### Viewing access permissions
 

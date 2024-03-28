@@ -1,6 +1,6 @@
 # Users and Groups
 
-Linux is a multiuser operating system. In simple terms, that means that a single Linux computer can be shared by many users, all of whom may be logged in simultaneously.&#x20;
+Linux is a multiuser operating system. In simple terms, this means that a single Linux computer can be shared by many users, all of whom may be logged in simultaneously. It goes without saying that Linux must have some scheme to uniquely identify each user.&#x20;
 
 {% hint style="info" %}
 If the idea of a multiuser computer seems foreign or reminiscent of the Stone Age when computers were as large and expensive as cars and had to be shared by entire organizations, recall that Armlab is shared by hundreds of students and faculty (some of whom might be logged in the same time that you are).
@@ -18,7 +18,9 @@ username:password:UID:GID:comment:home_directory:shell
 
 ### Groups
 
-In certain situations, it is convenient to treat a set of users as a single entity. For example, we might want to treat all students in a course as a single entity for the purpose of granting access to a common set of files. We do this by associating a list of usernames with a single group. Each group has a unique group name and a corresponding numeric _Group ID_ (GID). A user can belong to multiple groups, and group membership is defined by the system administrator.
+In certain situations, it is convenient to treat a set of users as a single entity. For example, a teacher might want to treat all students in a class as a single entity for the purpose of granting access to a common set of files.&#x20;
+
+This can be done by associating a list of usernames with a single group. Each group has a unique group name and a corresponding numeric _Group ID_ (GID). A user can belong to multiple groups, and group membership is defined by the system administrator.
 
 Group information is stored in the _/etc/group_ file. Each line in this file represents a group and contains the following fields separated by colons:
 
@@ -32,7 +34,7 @@ You can display your login name, group name, UID, and GID by issuing the `id` co
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-04-27 at 11.56.24 PM.png" alt=""><figcaption></figcaption></figure>
 
-Let's break that down:
+Let's break this down:
 
 * `uid=127000(sgewirtz)`: This part of the output shows my User ID (_127000_) and my username (_sgewirtz_).&#x20;
 * `gid=35(utempter)`: This part of the output shows my primary Group ID (_35_) and the associated group name (_utemper_).&#x20;
