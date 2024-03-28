@@ -27,10 +27,6 @@
 * [Operating System](fundamental-concepts/operating-system.md)
 * [Putting it All Together](fundamental-concepts/putting-it-all-together.md)
 
-***
-
-* [Page](page.md)
-
 ## Bash
 
 * [What is Bash?](bash/background.md)
