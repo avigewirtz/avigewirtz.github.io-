@@ -1,5 +1,11 @@
 # Introduction
 
+#### Working with buffers
+
+When you edit a file in emacs, you're not really editing the file itself, as it sits out on a disk somewhere. Instead, emacs makes a copy of the file, and stores the copy in a part of RAM memory called a _buffer_. All the changes you make to the file are applied to the buffer. When you save the file, emacs writes the contents of the buffer to the disk.
+
+Because the buffer exists in RAM memory, it disappears if the power is turned off, or if the system crashes. Thus, you should use the save command often, flushing your current buffer to disk. Once the file is on disk, a power outage or system crash shouldn't harm it.
+
 * what is emacs
 * uses keystrokes rather than mouse&#x20;
 

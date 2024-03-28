@@ -12,7 +12,7 @@ Associated with each file and directory are three categories of users to whom ac
 * **Group**: A predefined group of users.&#x20;
 * **Other**:  All other users.
 
-Each of these user categories may be granted three types of permissions: read, write, and execute. We will discuss the meaning of these permissions shortly.&#x20;
+Each of these user categories may be granted three types of permissions: read, write, and execute. In this section, we will go over how to view and interpret file and directory access permissions, as well as commands for changing the access permissions.&#x20;
 
 ### Viewing access permissions
 
@@ -53,6 +53,10 @@ Here is a chart summarizing the properties of directory access permissions:\
 
 
 <table data-header-hidden><thead><tr><th width="88"></th><th></th><th></th><th></th></tr></thead><tbody><tr><td><br>Directory name = directory</td><td>Permission to list directory entries?</td><td><strong>Permission to create, delete, rename directory’s files and empty directories or modify their metadata?</strong> </td><td><strong>Permission to access directory entries? Make the directory your working directory? Display directory entries’ metadata?</strong></td></tr><tr><td><strong><code>rwx</code></strong></td><td>✔️</td><td>✔️</td><td>✔️</td></tr><tr><td><strong><code>rw-</code></strong></td><td>✔️</td><td>❌</td><td>❌</td></tr><tr><td><strong><code>r-x</code></strong></td><td>✔️</td><td>❌</td><td>✔️</td></tr><tr><td><strong><code>-wx</code></strong></td><td>❌</td><td>✔️</td><td>✔️</td></tr><tr><td><strong><code>r--</code></strong></td><td>✔️</td><td>❌</td><td>❌</td></tr><tr><td><strong><code>-w-</code></strong></td><td>❌</td><td>❌</td><td>❌</td></tr><tr><td><strong><code>--x</code></strong></td><td>❌</td><td>❌</td><td>✔️</td></tr><tr><td><strong><code>---</code></strong></td><td>❌</td><td>❌</td><td>❌</td></tr></tbody></table>
+
+## Default file access permissions
+
+Whenever you create a file or directory in a Unix filesystem, the newly created file or directory is stamped with a default set of permissions. That default set of permissions is stored in a variable called the _umask_. You can change the value of umask to suit your preferences. To see the current value of the umask variable, enter the shell command:
 
 ## Exercises
 

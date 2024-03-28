@@ -2,17 +2,15 @@
 
 BASH, short for "Bourne-Again SHell," is a popular Unix-shell developed by the [GNU Project](https://en.wikipedia.org/wiki/GNU\_Project). It is the default shell on many Linux distributions.&#x20;
 
-Bash is a user-program, and hence can be awapped for any other shell.&#x20;
+A shell is a command language interpreter. It reads commands entered by the user in the terminal and executes them. An example of a command is:
+
+```
+// Some code
+```
 
 
 
-Bash typically runs in a terminal and executes commands interactively.&#x20;
-
-The purpose of Bash, like all shells, is to implement the command line interface. It is also possible to create a file known as a shell script which bash executes. We will not do that here.&#x20;
-
-
-
-
+Bash typically runs in a terminal and executes commands interactively, but it can also read commands from a file, typically called a shell script. In this tutorial, we will only focus on commands entered in the terminal, but the idea is the same.
 
 
 
@@ -39,19 +37,19 @@ Generalizing, the prompt on Armlab has the following format:&#x20;
 
 ## What's in a command?
 
-The basic form of a Unix command is:&#x20;
+One of the most fundamental functions of the shell is simply to launch other programs. In fact, in early unix shells, this is basically all they did.&#x20;
+
+A command typically has the following form:
 
 ```
-commandname options operands
+program_name arguments
 ```
 
-The easiest way to explain is by example.&#x20;
+The program represents some standalone program located somewhere in the filesystem. It's important to recognize that although we refer to this as a "shell command", the program is completely independent of the shell. The job of the shell, then, is simply to launch that program, and pass the arguments to that program.&#x20;
 
-```
-gcc -c hello.c
-```
+The program it launches can be any program on your computer. It might be a program like hello that you wrote yourself, or a program like ls that is standard on all Unix systems, or it might be a program like gcc.&#x20;
 
-In this case, the command name is gcc, which represents the gcc compiler. The -c option alters the default behavior of gcc
+The point to understand is that in many&#x20;
 
 
 
