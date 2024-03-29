@@ -45,7 +45,7 @@
 * [Pipelines and Filters](the-unix-command-line/pipelines-and-filters.md)
 * [Copying Files and Directories](the-unix-command-line/copying-files-and-directories/README.md)
   * [Moving and Renaming Files and Directories](the-unix-command-line/copying-files-and-directories/moving-and-renaming-files-and-directories.md)
-* [Users and Groups](the-unix-command-line/users-and-groups.md)
+* [Users Accounts](the-unix-command-line/users-and-groups.md)
 * [File and Directory Access Permissions](the-unix-command-line/file-and-directory-access-permissions.md)
 * [Bash Execution Environment](the-unix-command-line/bash-execution-environment.md)
 * [Linux Filesystem](the-unix-command-line/filesystem/README.md)

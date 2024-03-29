@@ -1,8 +1,66 @@
-# Redirection and Piping
+# Redirecting Input and Output
 
-1. Connecting Two Programs by Using Output as Input
+Consider a simple C program that reads a number from stdin and prints the result on stdout.&#x20;
 
-When a program is started up, it by default has three data streams attached to it: one for reading input, one for writing normal output, and one for writing diagnostic or error messages. These streams are known as standard input (stdin), standard output (stdout), and standard error (stderr) respectively. By default, stdin is connected to the terminal keyboard, while stdout and stderr are connected to the terminal screen. You can manipulate this default behavior using _redirection and piping_.&#x20;
+{% code title="number.c" %}
+```c
+#include <stdio.h>
+
+int main() {
+    int number;
+
+    printf("Enter a number:\n");
+    scanf("%d", &number);
+    printf("You entered: %d\n", number);
+
+    return 0;
+}
+```
+{% endcode %}
+
+When we run the program, it reads a number from stdin. By default, stdin is entered by the user in the terminal.&#x20;
+
+```
+~> ./number
+Enter a number:
+2
+You entered: 2
+~> 
+```
+
+When it writes the number, it writed it to stdout. By default, stdout is also connected to the terminal.&#x20;
+
+
+
+The shell offers a mechanism to redirect the source of stdin and stdout.&#x20;
+
+You can redirect where the input
+
+When a program is started up, it by default has three data streams attached to it: one for reading input, one for writing normal output, and one for writing diagnostic or error messages. These streams are known as standard input (stdin), standard output (stdout), and standard error (stderr) respectively.&#x20;
+
+When we write C programs, we typically interact with these streams by using library functions such as printf and scanf. printf prints to stdout, which is connected to the terminal screen, and scanf reads from stdin, which is connected to the terminal keyboard.&#x20;
+
+A useful feature of the shell is that it can change the default behavior of these three streams. For example, it can start a program such as hello.c, but it can decide beforehand that instead of hello world being printed on the terminal screen, it should be sent to a file, such as hello.txt.&#x20;
+
+
+
+
+
+```c
+#include <stdio.h>
+
+int main() {
+    int number;
+
+    printf("Enter a number:\n");
+    scanf("%d", &number);
+    printf("You entered: %d\n", number);
+
+    return 0;
+}
+```
+
+
 
 ## Redirection
 

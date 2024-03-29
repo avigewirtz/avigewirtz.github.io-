@@ -1,10 +1,31 @@
-# Users and Groups
+# Users Accounts
 
-Linux is a multiuser operating system. In simple terms, this means that a single Linux computer can be shared by many users, all of whom may be logged in simultaneously. It goes without saying that Linux must have some scheme to uniquely identify each user.&#x20;
+User accounts enable Linux to tailor the computing environment based on who is logged in. This is for securtiy, such as ensuring one user doesn't access another user's files, and convinience.&#x20;
 
-{% hint style="info" %}
-If the idea of a multiuser computer seems foreign or reminiscent of the Stone Age when computers were as large and expensive as cars and had to be shared by entire organizations, recall that Armlab is shared by hundreds of students and faculty (some of whom might be logged in the same time that you are).
-{% endhint %}
+A typical user account consists of the following information:
+
+* [Username and user ID (UID)](https://www.microfocus.com/documentation/open-enterprise-server/2023/acc\_linux\_svcs\_lx/bx3sbhf.html#bx3tloq)
+* [Password](https://www.microfocus.com/documentation/open-enterprise-server/2023/acc\_linux\_svcs\_lx/bx3sbhf.html#bx3tlyx)
+* [Primary group name and group ID (GID)](https://www.microfocus.com/documentation/open-enterprise-server/2023/acc\_linux\_svcs\_lx/bx3sbhf.html#bx3tmat)
+* [Secondary group names and group IDs](https://www.microfocus.com/documentation/open-enterprise-server/2023/acc\_linux\_svcs\_lx/bx3sbhf.html#bx3tmql)
+* [Location of the home directory](https://www.microfocus.com/documentation/open-enterprise-server/2023/acc\_linux\_svcs\_lx/bx3sbhf.html#bx3tn3f)
+* [Preferred shell](https://www.microfocus.com/documentation/open-enterprise-server/2023/acc\_linux\_svcs\_lx/bx3sbhf.html#bx3tnbh)
+
+## Viewing account information
+
+You can find out the information of your user account via the id command. When I invoke it on armlab, I get the following output:
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-04-27 at 11.56.24 PM.png" alt=""><figcaption></figcaption></figure>
+
+Here's what each part of the highlighted part means:
+
+* `uid=127000(sgewirtz)`: MY UID is _127000_ and my username is _sgewirtz_.&#x20;
+* `gid=35(utempter)`: My primary group is utemper, with GID 35.&#x20;
+* `groups=35(utempter)`: This part of the output lists all the groups that I belong to, which is only one group (_utemper_).&#x20;
+
+You can safely ignore the rest of the output, which has to do with sellinux.&#x20;
+
+It goes without saying that Linux must have some scheme to uniquely identify each user.&#x20;
 
 ### Users
 
