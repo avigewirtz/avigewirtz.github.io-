@@ -29,7 +29,7 @@ Staging is accomplished with the `git add` command, where you specify each of th
 git add FILE(S)
 ```
 
-If you want to stage all relevant files, you can save time by using the `*` [wildcard](../the-unix-command-line/useful-command-line-features.md#wildcards):
+If you want to stage all relevant files, you can save time by using the `*` [wildcard](../the-linux-command-line/useful-command-line-features.md#wildcards):
 
 ```bash
 git add * 

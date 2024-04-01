@@ -1,8 +1,10 @@
 # Redirecting Input and Output
 
-Consider a simple C program that reads a number from stdin and prints the result on stdout.&#x20;
+When a program is started up, it by default has three data streams attached to it: one for reading input, one for writing normal output, and one for writing diagnostic or error messages. These streams are known as standard input (stdin), standard output (stdout), and standard error (stderr) respectively.&#x20;
 
-{% code title="number.c" %}
+Consider the following C program, for example, that...
+
+{% code title="number.c" lineNumbers="true" %}
 ```c
 #include <stdio.h>
 
@@ -10,7 +12,11 @@ int main() {
     int number;
 
     printf("Enter a number:\n");
-    scanf("%d", &number);
+    if (scanf("%d", &number) != 1) {
+        fprintf(stderr, "Error: Invalid input.\n");
+        return 1; 
+    }
+
     printf("You entered: %d\n", number);
 
     return 0;
@@ -18,7 +24,7 @@ int main() {
 ```
 {% endcode %}
 
-When we run the program, it reads a number from stdin. By default, stdin is entered by the user in the terminal.&#x20;
+scanf reads from stdin, which by default is the text entered into the terminal. printf prints to stdout, which by default is also the terminal. When we run the program, it reads a number from stdin. By default, stdin is entered by the user in the terminal.&#x20;
 
 ```
 ~> ./number
