@@ -75,15 +75,19 @@
 
 ## Git
 
-* [Background](git/background/README.md)
-  * [Setting Up Your Git Environment](git/background/git-installation.md)
-  * [Getting Help](git/background/getting-help.md)
+* [Introduction](git/background/README.md)
+  * [Local Git workflow](git/background/local-git-workflow.md)
+  * [Collaboration with Git](git/background/collaboration-with-git.md)
+  * [Distributed and Centralized Version Control](git/background/distributed-and-centralized-version-control.md)
+  * [GitHub](git/background/github.md)
+* [Git Workflow](git/acquiring-a-git-repository.md)
 * [Git Fundamentals](git/git-fundamentals.md)
+* [Setting Up Your Git/GitHub Environment](git/git-installation.md)
+* [Getting Help](git/getting-help.md)
 * [Obtaining a Git Repository](git/obtaining-a-git-repository/README.md)
   * [Creating a Repository](git/obtaining-a-git-repository/creating-a-repository.md)
   * [Cloning a Repository](git/obtaining-a-git-repository/cloning-a-repository.md)
   * [Authentication](git/obtaining-a-git-repository/authentication.md)
-* [Git Workflow](git/acquiring-a-git-repository.md)
 * [Pushing and Pulling](git/pushing-and-pulling.md)
 * [Obtaining COS217 Assignment Repositories](git/acquiring-cos217-assignment-repositories.md)
 * [COS217 Development Workflow](git/cos217-development-workflow.md)
