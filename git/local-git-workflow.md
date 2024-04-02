@@ -1,5 +1,22 @@
 # Local Git workflow
 
+There are&#x20;
+
+
+
+We'll explain the basics of git using entirely one repository.&#x20;
+
+First, let's create a project directory, which we'll call git\_practice:
+
+```
+mkdir git_practice
+cd git_practice
+```
+
+
+
+
+
 Assume local environment personal project you want to track.
 
 
@@ -36,7 +53,7 @@ To stage, invoke git add followed by the names of the files you want to stage. I
 git add intmath.c testintmath.c
 ```
 
-If you want to stage all relevant files, you can save time by using the `*` [wildcard](../../the-linux-command-line/useful-command-line-features.md#wildcards):
+If you want to stage all relevant files, you can save time by using the `*` [wildcard](../the-linux-command-line/useful-command-line-features.md#wildcards):
 
 ```bash
 git add * 

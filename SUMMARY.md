@@ -76,10 +76,9 @@
 ## Git
 
 * [Introduction](git/background/README.md)
-  * [Local Git workflow](git/background/local-git-workflow.md)
-  * [Collaboration with Git](git/background/collaboration-with-git.md)
-  * [Distributed and Centralized Version Control](git/background/distributed-and-centralized-version-control.md)
   * [GitHub](git/background/github.md)
+* [The big picture](git/the-big-picture.md)
+* [Local Git workflow](git/local-git-workflow.md)
 * [Git Workflow](git/acquiring-a-git-repository.md)
 * [Git Fundamentals](git/git-fundamentals.md)
 * [Setting Up Your Git/GitHub Environment](git/git-installation.md)
