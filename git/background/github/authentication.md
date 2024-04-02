@@ -10,4 +10,4 @@ When _uploading_ data to a repository, you need to authenticate yourself irrespe
 
 The following diagram illustrates the permissible directions for file transfers between the relevant COS217 computers and accounts:
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-05-01 at 2.35.17 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Screenshot 2023-05-01 at 2.35.17 PM.png" alt=""><figcaption></figcaption></figure>
