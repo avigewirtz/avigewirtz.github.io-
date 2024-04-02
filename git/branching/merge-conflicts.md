@@ -1,4 +1,4 @@
-# Resolving Merge Conflicts
+# Merge conflicts
 
 Hopefully it is rare, which it should be if you use good Git discipline with yourself and if when working with a partner you each use good Git discipline and you communicate clearly. As a concrete piece of advice, try to avoid conflicts by (1) pulling from your GitHub repository before starting each programming task, and (2) pushing to your GitHub repository as soon as the programming task is finished to your satisfaction.
 
