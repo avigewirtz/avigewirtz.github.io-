@@ -1,4 +1,4 @@
-# The big picture
+# Git in a nutshell
 
 ## How version control works with git
 
@@ -7,6 +7,10 @@
 Workspace with an associated repository
 
 The basic idea of how version control is done in git is that the project under version control has a .git directory in the root of the project's workspace. Inside the .git directory is a repository, which is essentially a fancy word for a database that keeps track of all your project's changes.&#x20;
+
+### Obtaining a git repository
+
+prob better to mention both nethods here but not go over commands. or idk because later i go over commands
 
 ### Initializing a Git repository
 
@@ -73,6 +77,16 @@ The purpose of the staging area is to allow you to choose which files go in the 
 
 
 
+
+
+summing it all up, a project under git version control contains three components:
+
+* The **working tree** provides a view of one version of the project (the files that you work on and see).
+* The **index** intermediates between the repository and the working tree, helping you prepare changes for your next commit.
+* The repository itself
+
+
+
 <figure><img src="../.gitbook/assets/image (7) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Collaboration in git
@@ -104,5 +118,12 @@ Central repositories are typically hosted on sites like GitHub, which is easily 
 \
 
 
+Putting it all together, we can add a fourth box to our previous diagram, representing a remote repository.
+
+<figure><img src="../.gitbook/assets/Group 120.png" alt=""><figcaption></figcaption></figure>
+
+going to have to explain how evrything goes through local repo
 
 
+
+Notice that the remote repository does not have a working tree or an index, since it's a bare repository.
