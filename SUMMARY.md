@@ -94,6 +94,7 @@
   * [Checking the Status of Your Repository](git/important-git-commands/checking-the-status-of-your-repository.md)
   * [Viewing Commit History](git/important-git-commands/viewing-commit-history.md)
   * [Ignoring Files](git/important-git-commands/ignoring-files.md)
+* [Commits](git/commits.md)
 * [Viewing the Commit History](git/viewing-the-commit-history.md)
 * [Going back in time](git/going-back-in-time.md)
 * [Branching](git/branching/README.md)
