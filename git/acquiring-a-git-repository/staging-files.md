@@ -1,4 +1,4 @@
-# git add
+# Staging files
 
 `git add` is a command that allows you to stage changes in your working directory, preparing them to be committed to the repository. Staging changes means that you're telling Git you want to include those specific changes in the next commit. This is useful for organizing your work into logical units or separating unrelated changes.
 

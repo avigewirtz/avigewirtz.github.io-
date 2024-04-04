@@ -3,7 +3,7 @@
 ### Basic Git Commands
 
 * `git init` Initialize a new Git repository.
-* `git clone <repository>`: Clone an existing repository.
+* `git clone <repository_url>`: Clone an existing repository.
 * `git status`: Check the status of your working directory.
 * `git add <file>`: Add a file or changes to the staging area.
 * `git add .`: Add all changes in the working directory to the staging area.

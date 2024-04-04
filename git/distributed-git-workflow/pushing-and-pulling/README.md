@@ -35,7 +35,7 @@ and Git will use automatically add origin as the argument.&#x20;
 
 The addition of remotes adds another layer to the Git workflow--the "remote repository," as shown in the figure below.&#x20;
 
-<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="warning" %}
 When exchanging data with another repository, the repository you are working in is called the local repository, while the repository you are exchanging data with is called the remote repository. However, it is important to note that there is no fundamental difference between a "local" and "remote" repository.

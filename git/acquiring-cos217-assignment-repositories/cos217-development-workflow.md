@@ -14,7 +14,7 @@ On individual assignments, your workflow might look like the following:
 
 This workflow is illustrated in the following diagram:
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-01 at 2.35.35 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-01 at 2.35.35 PM.png" alt=""><figcaption></figcaption></figure>
 
 ### Workflow on Partnered Assignments
 
@@ -22,11 +22,11 @@ In COS217 you will work on several of the assignments with a partner. In such an
 
 While it is theoretically possible for each of you to sync up your personal repositories directly with each other via push or pull operations, as shown in the figure below, this approach is not ideal for many reasons.&#x20;
 
-<figure><img src="../.gitbook/assets/image (10) (1).png" alt="" width="319"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (10) (1).png" alt="" width="319"><figcaption></figcaption></figure>
 
 Instead, the standard approach is to (1) sync up your repositories via an intermediate repository that neither of you directly develop in; and (2) to host the intermediate repository on a server like GitHub. This workflow is called the _centralized workflow_.&#x20;
 
-<figure><img src="../.gitbook/assets/image (8) (1).png" alt="" width="319"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (8) (1).png" alt="" width="319"><figcaption></figcaption></figure>
 
 Using this approach, your workflow might look like the following:
 
@@ -40,4 +40,4 @@ Using this approach, your workflow might look like the following:
 
 This workflow is illustrated in the following diagram:
 
-<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>

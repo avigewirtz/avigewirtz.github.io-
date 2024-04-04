@@ -1,4 +1,4 @@
-# git commit
+# Committing
 
 Committing files in Git means creating a snapshot of the changes you've staged and recording them in the repository's history. This allows you to revert to previous versions if needed.
 

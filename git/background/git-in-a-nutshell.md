@@ -45,7 +45,7 @@ git clone https://github.com/cos217/survey.git
 
 Upon success, you will get the following output:
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-04 at 8.00.49 PM (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-04 at 8.00.49 PM (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Note that the arguments for the GitHub account and repository names are case-insensitive--that is, COS217, cos217, and Cos217 all refer to the same GitHub account (and the same applies to variations of _survey_).
 
@@ -87,7 +87,7 @@ summing it all up, a project under git version control contains three components
 
 
 
-<figure><img src="../.gitbook/assets/image (7) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (7) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Collaboration in git
 
@@ -120,7 +120,7 @@ Central repositories are typically hosted on sites like GitHub, which is easily 
 
 Putting it all together, we can add a fourth box to our previous diagram, representing a remote repository.
 
-<figure><img src="../.gitbook/assets/Group 120.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Group 120.png" alt=""><figcaption></figcaption></figure>
 
 going to have to explain how evrything goes through local repo
 
