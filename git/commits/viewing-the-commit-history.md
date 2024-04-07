@@ -1,2 +1,0 @@
-# Viewing the Commit History
-
