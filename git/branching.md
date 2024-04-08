@@ -1,0 +1,99 @@
+# Branching
+
+Up until now, we've being thinking of a repository as a linear sequence of commits, like the one shown in Figure 3.
+
+<figure><img src="../.gitbook/assets/Group 36 (5).png" alt="" width="375"><figcaption></figcaption></figure>
+
+Each commit points to the previous one, and main points to the last commit. Main is simply a pointer. Just a friendly name. Nothing special about main. Can be anything.&#x20;
+
+We can create a new pointer to our commits, by invoking. don't worry about the commands for now.&#x20;
+
+<figure><img src="../.gitbook/assets/Group 37 (1).png" alt="" width="375"><figcaption></figcaption></figure>
+
+What's the point of that, you might nbe wondring. Well, we can switch to the test pointer, do a new commit. In that case, test will move forward one position, pointing to the new commit, a22bc, but main will stay where it is, pointing at commit 53a3c.&#x20;
+
+<figure><img src="../.gitbook/assets/Group 38.png" alt="" width="375"><figcaption></figcaption></figure>
+
+
+
+Now say we go back to main and do a commit:
+
+<figure><img src="../.gitbook/assets/Group 42.png" alt="" width="375"><figcaption></figcaption></figure>
+
+Now our project has two separate lines of development: main and test. In Git terminology, main and test are _branches. A_ branch is simply a moveable pointer to a commit. Nothing more. Whenever you commit while on a branch, git automatically moves the branch pointer forward one commit.&#x20;
+
+They are useful, since they allow&#x20;
+
+## HEAD
+
+We've glossed over one important question: how does Git know which branch you're currently on? It keeps track via a special pointer called HEAD, which points to the branch we're currently on.&#x20;
+
+
+
+<figure><img src="../.gitbook/assets/Group 44.png" alt="" width="375"><figcaption></figcaption></figure>
+
+When we're on main HEAD points to main, and if we when we're on test HEAD points to test. Swithing from one branch to another is done by changing where HEAD points to.&#x20;
+
+
+
+Note that the HEAD pointer exists even if there's only one branch. Thus, a more accurate depiction of, for example, figure 1, would look like this:
+
+<figure><img src="../.gitbook/assets/Group 45.png" alt="" width="375"><figcaption></figcaption></figure>
+
+## Reasons for using branches
+
+Perhaps the easiest way to explain branches is via examples of common use use cases. Here are a few example:
+
+**Creating a branch**
+
+Let's say you want to start working on a new feature. To keep those changes separate, you'd create a branch like this:
+
+```
+git branch new-feature 
+```
+
+This gives you a safe space to experiment without affecting your main codebase.
+
+**Switching to a branch**
+
+To work on a specific branch, you'll need to switch to it. It's like changing lanes on a highway:
+
+```
+git checkout new-feature 
+```
+
+Now you're in the 'new-feature' lane, and any changes you make will only happen there.
+
+**Listing all branches**
+
+Curious about what branches exist in your project? Use this command:
+
+```
+git branch
+```
+
+This will give you a list of your local branches. The one you're currently on will have a \* before it. &#x20;
+
+**Listing branch tree**
+
+Want to get a visual understanding of how your branches connect? Try this:
+
+```
+git log --oneline --graph --decorate --all
+```
+
+This gives you a nice diagram of your branching structure, which can be super helpful for understanding your project's history.
+
+**Deleting branches**
+
+Once you've finished with a branch (and you're sure it's merged into where it needs to be), you can delete it:
+
+```
+git branch -d old-branch
+```
+
+Just remember, you can't delete the branch you're currently standing on – you'll have to switch to a different one first.
+
+\
+
+
