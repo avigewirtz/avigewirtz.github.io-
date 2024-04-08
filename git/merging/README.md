@@ -5,17 +5,3 @@
 * inherently flawed process
 * aborting a merge
 * fast forward merge
-
-
-
-
-
-david
-
-mike
-
-alex
-
-
-
-mike alex
