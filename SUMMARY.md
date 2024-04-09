@@ -84,7 +84,7 @@
 * [Commits](git/commits.md)
 * [Branching](git/branching.md)
 * [Merging](git/merging/README.md)
-  * [Merging two branches](git/merging/merging-two-branches.md)
+  * [How merging works](git/merging/how-merging-works.md)
   * [Merge conflicts](git/merging/merge-conflicts.md)
   * [Rebasing](git/merging/rebasing.md)
 * [Working with remotes](git/working-with-remotes/README.md)
