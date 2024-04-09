@@ -36,3 +36,34 @@ BEFORE MERGE
 AFTER MERGE
 
 <figure><img src="../../.gitbook/assets/Group 153.png" alt=""><figcaption></figcaption></figure>
+
+CASE 3:
+
+
+
+<figure><img src="../../.gitbook/assets/Group 163 (1).png" alt=""><figcaption></figcaption></figure>
+
+marge fails
+
+
+
+{% code title="names.txt" lineNumbers="true" %}
+```
+Alex
+Alice
+<<<<<<< HEAD
+Ben
+Colin
+=======
+Claire
+>>>>>>> test
+Derek
+Evan
+Fred
+```
+{% endcode %}
+
+Two options:
+
+* abort the merge
+* Fix conflicts
