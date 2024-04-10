@@ -1,4 +1,8 @@
-# Obtaining COS217 Assignment Repositories
+# COS217 Specific
+
+The starter code and files for each COS217 assignment is uploaded as a Git repository on the COS 217 GitHub account.
+
+
 
 Now that we’ve discussed the basics of how Git works, let’s delve into the specifics of obtaining COS217 assignment repositories. All COS217 assignment repositories are hosted on the [COS217 GitHub account](https://github.com/orgs/COS217/repositories). You will want to maintain two copies of each such repository--one "remote" copy on GitHub, and one "local" copy on your development computer. You also want the local copy to be linked to the remote one, ensuring you can seamlessly sync up the two.&#x20;
 
