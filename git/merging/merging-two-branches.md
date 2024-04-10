@@ -27,7 +27,9 @@ CASE 2:
 
 BEFORE MERGE
 
-<figure><img src="../../.gitbook/assets/Group 152 (1).png" alt="" width="563"><figcaption></figcaption></figure>
+
+
+<figure><img src="../../.gitbook/assets/Group 154 (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 
 
@@ -35,7 +37,7 @@ BEFORE MERGE
 
 AFTER MERGE
 
-<figure><img src="../../.gitbook/assets/Group 153.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Group 160.png" alt=""><figcaption></figcaption></figure>
 
 CASE 3:
 
@@ -45,7 +47,41 @@ CASE 3:
 
 marge fails
 
+```bash
+~/gitnames2> git status
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
 
+Changes to be committed:
+	new file:   hi.txt
+
+Unmerged paths:
+  (use "git add/rm <file>..." as appropriate to mark resolution)
+	deleted by us:   hello.txt
+	both modified:   names.txt
+
+~/gitnames2> 
+```
+
+This tells us that two of the files could not be merged by git: hello.txt and names.txt. For hello.txt, the issue is that it was "deleted by us" (us meaning our branch--masster), but it was modified on the other branch. Git has no way of knowing whether we want to keep the the modified version or keep it deleted.&#x20;
+
+For names.txt, the issue is that both branches modified the same unit of it.&#x20;
+
+We have two options:
+
+1. Abort the merge by invoking `git merge --abort`, and git will take us back to the state of the repository before the merge was attempted.&#x20;
+2. Complete the merge by fixing conflicts and committing.&#x20;
+
+
+
+To fix the conflicts,&#x20;
+
+To resolve&#x20;
+
+1. Decide whether hello.txt should be kept or deleted
+2.
 
 {% code title="names.txt" lineNumbers="true" %}
 ```
@@ -63,7 +99,3 @@ Fred
 ```
 {% endcode %}
 
-Two options:
-
-* abort the merge
-* Fix conflicts
