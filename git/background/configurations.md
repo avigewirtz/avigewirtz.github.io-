@@ -1,8 +1,8 @@
-# Configurations
+# Git configuration files
 
 * git config --global user.name “yourName” / git config --global user.email “yourEmailAddress”:
 
-When you commit changes to a Git repository, Git associates with your commit records your username and email. By default, Git uses the username and email address associated with your user account on your local machine. However, you can change the default email and username using the above configurations.&#x20;
+When you commit changes to a Git repository, Git associates with your commit records your username and email. By default, Git us-es the username and email address associated with your user account on your local machine. However, you can change the default email and username using the above configurations.&#x20;
 
 * git config --global core.editor “yourPreferredEditor''
 
