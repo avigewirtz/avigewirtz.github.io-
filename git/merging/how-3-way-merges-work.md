@@ -1,43 +1,20 @@
-# How merging works
+# How 3-Way Merges Work
 
-We will demonstrate how merging works via examples.&#x20;
+3 way merges can be successful or result in a conflict. we will demonstrate how merging works and when conflicts arise via an example.&#x20;
 
-## Fast-forward merge
+## Starting point
 
-we have a repository with one commit that contains one file: names.txt.&#x20;
-
-<figure><img src="../../.gitbook/assets/Group 125.png" alt="" width="188"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Group 124 (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 
 
-We create a new branch named test, switch to test, and make a couple of commits. Over the course of the two commits, we make the following changes:
-
-1. change Bob on line 2 of names.txt to Ben
-2. Add a new file named hello.txt and write the word "hello" in it
-
-The updated state is shown in Figure 21.
-
-<figure><img src="../../.gitbook/assets/Group 127 (1).png" alt="" width="375"><figcaption></figcaption></figure>
-
-then we change back to main and invoke 'git merge test':
-
-<figure><img src="../../.gitbook/assets/Group 124 (1).png" alt="" width="375"><figcaption></figcaption></figure>
-
-
-
-
-
-## 3-Way Merge
-
-
+## Diverging history
 
 <figure><img src="../../.gitbook/assets/Group 154 (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 
 
-
-
-AFTER MERGE
+## Merging
 
 <figure><img src="../../.gitbook/assets/Group 160.png" alt=""><figcaption></figcaption></figure>
 
@@ -75,29 +52,4 @@ We have two options:
 
 1. Abort the merge by invoking `git merge --abort`, and git will take us back to the state of the repository before the merge was attempted.&#x20;
 2. Complete the merge by fixing conflicts and committing.&#x20;
-
-
-
-To fix the conflicts,&#x20;
-
-To resolve&#x20;
-
-1. Decide whether hello.txt should be kept or deleted
-2.
-
-{% code title="names.txt" lineNumbers="true" %}
-```
-Alex
-Alice
-<<<<<<< HEAD
-Ben
-Colin
-=======
-Claire
->>>>>>> test
-Derek
-Evan
-Fred
-```
-{% endcode %}
 
