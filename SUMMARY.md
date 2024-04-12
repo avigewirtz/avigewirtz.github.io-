@@ -9,7 +9,6 @@
 
 ## Getting Started
 
-* [Preface](<README (1).md>)
 * [Armlab](getting-started/armlab/README.md)
   * [What is Armlab?](getting-started/armlab/background.md)
   * [Activating your Armlab Account](getting-started/armlab/activating-your-armlab-account.md)
