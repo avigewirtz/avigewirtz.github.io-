@@ -1,2 +1,0 @@
-# Cloning a Git Repository
-

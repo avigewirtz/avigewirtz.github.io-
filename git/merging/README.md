@@ -1,5 +1,36 @@
 # Merging
 
+## Types of merges
+
+* Fast forward merge
+* 3-way merge. 3-way merge is inherently flawed procedure.&#x20;
+
+
+
+## Merging in a nutshell
+
+## Fast forward merge
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 merges one branch into another. Merges commits. For example, say we have two branches: main and test. We're currently on main, which points to C8, and we went to merge test, which points to C9, with main.
 
 <figure><img src="../../.gitbook/assets/Group 108.png" alt="" width="375"><figcaption></figcaption></figure>

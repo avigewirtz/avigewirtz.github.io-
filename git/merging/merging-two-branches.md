@@ -1,10 +1,14 @@
 # How merging works
 
+We will demonstrate how merging works via examples.&#x20;
+
 ## Fast-forward merge
 
 we have a repository with one commit that contains one file: names.txt.&#x20;
 
 <figure><img src="../../.gitbook/assets/Group 125.png" alt="" width="188"><figcaption></figcaption></figure>
+
+
 
 We create a new branch named test, switch to test, and make a couple of commits. Over the course of the two commits, we make the following changes:
 
@@ -23,9 +27,7 @@ then we change back to main and invoke 'git merge test':
 
 
 
-CASE 2:
-
-BEFORE MERGE
+## 3-Way Merge
 
 
 

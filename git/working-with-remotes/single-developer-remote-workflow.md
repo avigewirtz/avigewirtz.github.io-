@@ -4,6 +4,13 @@ Current repository:
 
 <figure><img src="../../.gitbook/assets/Group 192 (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
+steps:
+
+* create repository on github
+* create a "connection" via remote&#x20;
+* change master branch name on local repo to main so it mathes github
+* now push. we can all branches or just one or more. we'll start off by pushing just main and then show how to push all branches at once.&#x20;
+
 ## Create Github repo:
 
 <figure><img src="../../.gitbook/assets/Group 208.png" alt="" width="563"><figcaption></figcaption></figure>
@@ -28,56 +35,55 @@ Establishes one way relationship
 
 ## First time push:
 
-<figure><img src="../../.gitbook/assets/Group 211.png" alt="" width="563"><figcaption></figcaption></figure>
-
-Typical practice is to push only branch you're working on.&#x20;
-
-The first time you push a a single branch, the general form is as follows:
+The first time you push a branch, the general form is as follows:
 
 ```
 git push -u REMOTE_NAME LOCAL_BRANCH_NAME
 ```
 
-Remote name is the name of the remote you want to push to. In our case that's origin. local branch name is the branch we want to push. In our case that's main.&#x20;
-
-In our case, thats:
+In our case, the remote name is origin, and the branch we want to push is main. So we invoke:
 
 ```
-git push origin main
+git push -u origin main
 ```
 
-Git would transfer your commits to the origin repository and add them to the history at B. Git would then perform a fast-forward merge operation on the
+Git transfers the commits on main to the origin repository. Git would then perform a fast-forward merge operation on the
 
 * couple of interesting things happen.
 
+<figure><img src="../../.gitbook/assets/Group 211.png" alt="" width="563"><figcaption></figcaption></figure>
 
-
-If you wanted to push your X and Y commits upstream at this point, you could do so easily. Git would transfer your commits to the origin repository and add them to the history at B. Git would then perform a fast-forward merge operation on the main branch, putting in your edits and updating the ref to point to Y.&#x20;
-
-
+Explain what the -u option does and expain the remote tracking branch that's now a part of our repository.&#x20;
 
 
 
-* remote tracking branch: does not move. can't change to it. remote a bit of a misnohmer.&#x20;
+* do git log
 
 
 
 ## Making commit and pushing again
 
+suppose we not make a couple of local commits. invoke git status. show how it's ahead two commits.&#x20;
+
 <figure><img src="../../.gitbook/assets/Group 216.png" alt="" width="563"><figcaption></figcaption></figure>
 
-* invoke git status. show how it's ahead two commits.&#x20;
+we can push the main branch again, but this time we don't need to supply a remote name or branch name:
+
+```
+git push
+```
 
 <figure><img src="../../.gitbook/assets/Group 221.png" alt="" width="563"><figcaption></figcaption></figure>
 
 ## Pushing all branches
 
+Suppose we want to push all branches.&#x20;
+
 ```
-git push -all
+git push -u -all
 ```
 
-
-
-* benefit or upstream branch is no need to state branch
+The effect is that out local and remote repositories are currently in full sync. And now a remote trackoing branch will be created for test, named origin/test.&#x20;
 
 <figure><img src="../../.gitbook/assets/Group 217.png" alt="" width="563"><figcaption></figcaption></figure>
+
