@@ -149,7 +149,3 @@
 ## Group 1
 
 * [Glossary](appendices/glossary.md)
-
-## GCC version 2
-
-* [Page 1](gcc-version-2/page-1.md)
