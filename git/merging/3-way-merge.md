@@ -49,6 +49,20 @@ Master will point to C6, since since test was merged into it, while test will re
 
 <figure><img src="../../.gitbook/assets/Group 278.png" alt=""><figcaption></figcaption></figure>
 
+Case 1: agreement
+
+<figure><img src="../../.gitbook/assets/Group 363.png" alt="" width="563"><figcaption></figcaption></figure>
+
+## Case 2: disagreement between C4 and C5 but no conflict
+
+&#x20;
+
+<figure><img src="../../.gitbook/assets/Group 364 (1).png" alt="" width="563"><figcaption></figcaption></figure>
+
+## Case 3: conflicts
+
+<figure><img src="../../.gitbook/assets/Group 365 (1).png" alt="" width="563"><figcaption></figcaption></figure>
+
 ## How 3-way merge works
 
 When we ask Git to merge, we're asking git it to figure out which parts of the commits each branch points to include or delete. At first glance, it may seem that asking Git to merge these two branches is too much to ask. How is it supposed to know what to include and not include? For example, Git sees that C4 has the file bye.txt, which is not contained in C5. Conversely, C5 contains hello.txt and hit.txt, which are not in C4. How is Git supposed to know which if any of these three files should be in the merge? Thankfully, Git has more information that just the two branches alone. It uses the most recent common ancestor to glean a signifigant amount of information. In our case, that's C4.&#x20;
@@ -72,7 +86,7 @@ Consider file A. Version in C3 will be denoted A\_C3&#x20;
 Easy case: there is agreement between C3 and C4.&#x20;
 
 * A file in c3 was deleted in both.&#x20;
-* Contents of $$A_{C4} = A_{C5}$$. They could be new, modified,&#x20;
+* Contents of $$A_{C4} = A_{C5}$$. They could be new, modified, or unmodified. In this case, it actually doesn't matter if$$A_{C3}$$equals $$A_{C4}$$or $$A_{C5}$$or if it even exists.&#x20;
 
 $$A_{C4}$$= $$A_{C5}$$
 
