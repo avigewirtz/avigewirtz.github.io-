@@ -53,49 +53,87 @@ Master will point to C6, since since test was merged into it, while test will re
 
 When we ask Git to merge, we're asking git it to figure out which parts of the commits each branch points to include or delete. At first glance, it may seem that asking Git to merge these two branches is too much to ask. How is it supposed to know what to include and not include? For example, Git sees that C4 has the file bye.txt, which is not contained in C5. Conversely, C5 contains hello.txt and hit.txt, which are not in C4. How is Git supposed to know which if any of these three files should be in the merge? Thankfully, Git has more information that just the two branches alone. It uses the most recent common ancestor to glean a signifigant amount of information. In our case, that's C4.&#x20;
 
-<figure><img src="../../.gitbook/assets/Group 277 (2).png" alt=""><figcaption></figcaption></figure>
-
 The precise algorithm Git uses by default is complex and full cobvergae is beyond the scope of this tutorial. As a general rule, we can break it down into two parts.&#x20;
 
-1. determining out which files should be included
+1. determining which files should be included
 2. determining which parts of each file should be included
+
+$$A_1$$= $$A_2$$
+
+
 
 #### Determining which files to in include
 
-\<fill in>
+Consider file A. Version in C3 will be denoted A\_C3&#x20;
 
-* **Case 1: Agreement on file in C4 and C5. For example, File A appears in C4 and C5**. Include in C6. Does not even need to look at C3 to determine this. Similarly, if file A appears in C3 but not in C4 and C5, obvious not to include it.&#x20;
-* Case 2: C4 and C5 do not agree. Two cases where this can happen:
-  * File A in C4 but not C5. Looks at C3. If C3 contains A, A is not included in commit.&#x20;
-  *
+* case 1: Agreement between C3 and C4 for file A:\
 
-Harder cases:
 
-* **Identical versions of File A appears in C3 and one other commit (C4 or C5), but it is either modified or deleted in the other.** In this case, the modified or deleted state is reflected in C6. Here are some examples:
-  * C3 and C4 contain file _A_, but C5 contains _A'_ (modified version of A). _A'_ will be included in C6.&#x20;
-  * C3 and C4 contain file _A_, but C5 does not (i.e., _A_ was deleted). _A_ will not be included in C6.&#x20;
-*
-* For example, identical versions of hello.txt appears in C3 and C5, but hello.txt is not in C4 (i.e., it was deleted). In this case, Git assumes you want the A deleted. Hence, it does not include A in C6.&#x20;
-*
+Easy case: there is agreement between C3 and C4.&#x20;
 
-| C3 | C4  | C5  | C6                                                             |
-| -- | --- | --- | -------------------------------------------------------------- |
-| A  | A   | A   | A                                                              |
-|    | A   | A   | A                                                              |
-| A  |     |     |                                                                |
-| A  | A   |     |                                                                |
-| A  |     | A   |                                                                |
-| A  | A'  | A'  | A'                                                             |
-| A  | A'  | A   | A'                                                             |
-| A  | A   | A'  | A'                                                             |
-| A  | A'  |     | CONFLICT                                                       |
-| A  |     | A'  | CONFLICT                                                       |
-| A  | A'  | A'' | Attempts to merge A' and A''. Can succeed or produce conflict. |
-| A  | A'' | A'  | Attempts to merge A' and A''. Can succeed or produce conflict. |
+* A file in c3 was deleted in both.&#x20;
+* Contents of $$A_{C4} = A_{C5}$$. They could be new, modified,&#x20;
+
+$$A_{C4}$$= $$A_{C5}$$
+
+This would be the case if
+
+This would be the case if both are unmodified or if both are modified identically or if both were created.
+
+* File A unmodified in both.&#x20;
+* File A modified identically in both.&#x20;
+* File A deleted in both.&#x20;
+* Case 2: disagreement between C3 and C4 for file A:
+
+$$A_1 \neq A_2$$
+
+Case 1 one modofied, the other unmodified:
+
+$$A = A_1 \neq A_2 \Rightarrow A_2$$
+
+$$A = A_2 \neq A_1 \Rightarrow A_1$$
+
+$$A \neq A_1 \neq A_2 \Rightarrow merge(A_1 + A_2)$$
+
+$$B \neq A_1 \neq A_2 \Rightarrow conflict$$
+
+$$A \neq B \neq A_2 \Rightarrow conflict$$
+
+$$B \neq A_1 \neq B \Rightarrow A_1$$
+
+$$B \neq B \neq A_2 \Rightarrow A_2$$
+
+
+
+$$nonexistent \neq A_1 \neq A_2 \Rightarrow conflict$$
+
+Case 3:&#x20;
+
+$$A_1$$deleted, $$A_2$$unmodified -> $$A_1$$
+
+$$A_2$$deleted, $$A_1$$unmodified -> $$A_2$$
+
+$$A_1$$deleted, $$A_2$$modified -> $$conflict$$
+
+$$A_2$$deleted, $$A_1$$modified -> $$conflict$$
+
+* $$A_1 \neq A_2$$. $$A = A_1 \neq A_2$$then $$A_2$$is used. $$A = A_2 \neq A_1$$then $$A = A_1 \neq A_2$$
+* File A modified in both. we'll call the them A' and A''. A' does not equal A''. attempts to merge A' and A''. Will discusss how this is done soon.&#x20;
+* &#x20;can succeed or fail. Will cover this soon. File modified in one and unmodified in other other: modified version included. File unmodified in one and deleted in other: delete included. File modified in one and deleted in other. Conflict.&#x20;
+
+
 
 #### Determining which parts of each file to include&#x20;
 
 
+
+
+
+| C3  | C4 - C5          | C6 |
+| --- | ---------------- | -- |
+| N/A | $$A_1 = A_2$$    |    |
+| A   | $$A_1 \neq A_2$$ |    |
+|     |                  |    |
 
 
 
