@@ -1,0 +1,2 @@
+# Example: fast forward merge
+

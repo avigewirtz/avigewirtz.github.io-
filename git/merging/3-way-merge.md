@@ -49,23 +49,9 @@ Master will point to C6, since since test was merged into it, while test will re
 
 <figure><img src="../../.gitbook/assets/Group 278.png" alt=""><figcaption></figcaption></figure>
 
-Case 1: agreement
-
-<figure><img src="../../.gitbook/assets/Group 363.png" alt="" width="563"><figcaption></figcaption></figure>
-
-## Case 2: disagreement between C4 and C5 but no conflict
-
-&#x20;
-
-<figure><img src="../../.gitbook/assets/Group 364 (1).png" alt="" width="563"><figcaption></figcaption></figure>
-
-## Case 3: conflicts
-
-<figure><img src="../../.gitbook/assets/Group 365 (1).png" alt="" width="563"><figcaption></figcaption></figure>
-
 ## How 3-way merge works
 
-When we ask Git to merge, we're asking git it to figure out which parts of the commits each branch points to include or delete. At first glance, it may seem that asking Git to merge these two branches is too much to ask. How is it supposed to know what to include and not include? For example, Git sees that C4 has the file bye.txt, which is not contained in C5. Conversely, C5 contains hello.txt and hit.txt, which are not in C4. How is Git supposed to know which if any of these three files should be in the merge? Thankfully, Git has more information that just the two branches alone. It uses the most recent common ancestor to glean a signifigant amount of information. In our case, that's C4.&#x20;
+When we ask Git to merge, we're asking git it to figure out which parts of the commits each branch points to include or delete. At first glance, it may seem that asking Git to merge these two branches is too much to ask.&#x20;
 
 The precise algorithm Git uses by default is complex and full cobvergae is beyond the scope of this tutorial. As a general rule, we can break it down into two parts.&#x20;
 
@@ -76,96 +62,7 @@ $$A_1$$= $$A_2$$
 
 
 
-#### Determining which files to in include
-
-Consider file A. Version in C3 will be denoted A\_C3&#x20;
-
-* case 1: Agreement between C3 and C4 for file A:\
-
-
-Easy case: there is agreement between C3 and C4.&#x20;
-
-* A file in c3 was deleted in both.&#x20;
-* Contents of $$A_{C4} = A_{C5}$$. They could be new, modified, or unmodified. In this case, it actually doesn't matter if$$A_{C3}$$equals $$A_{C4}$$or $$A_{C5}$$or if it even exists.&#x20;
-
-$$A_{C4}$$= $$A_{C5}$$
-
-This would be the case if
-
-This would be the case if both are unmodified or if both are modified identically or if both were created.
-
-* File A unmodified in both.&#x20;
-* File A modified identically in both.&#x20;
-* File A deleted in both.&#x20;
-* Case 2: disagreement between C3 and C4 for file A:
-
-$$A_1 \neq A_2$$
-
-Case 1 one modofied, the other unmodified:
-
-$$A = A_1 \neq A_2 \Rightarrow A_2$$
-
-$$A = A_2 \neq A_1 \Rightarrow A_1$$
-
-$$A \neq A_1 \neq A_2 \Rightarrow merge(A_1 + A_2)$$
-
-$$B \neq A_1 \neq A_2 \Rightarrow conflict$$
-
-$$A \neq B \neq A_2 \Rightarrow conflict$$
-
-$$B \neq A_1 \neq B \Rightarrow A_1$$
-
-$$B \neq B \neq A_2 \Rightarrow A_2$$
-
-
-
-$$nonexistent \neq A_1 \neq A_2 \Rightarrow conflict$$
-
-Case 3:&#x20;
-
-$$A_1$$deleted, $$A_2$$unmodified -> $$A_1$$
-
-$$A_2$$deleted, $$A_1$$unmodified -> $$A_2$$
-
-$$A_1$$deleted, $$A_2$$modified -> $$conflict$$
-
-$$A_2$$deleted, $$A_1$$modified -> $$conflict$$
-
-* $$A_1 \neq A_2$$. $$A = A_1 \neq A_2$$then $$A_2$$is used. $$A = A_2 \neq A_1$$then $$A = A_1 \neq A_2$$
-* File A modified in both. we'll call the them A' and A''. A' does not equal A''. attempts to merge A' and A''. Will discusss how this is done soon.&#x20;
-* &#x20;can succeed or fail. Will cover this soon. File modified in one and unmodified in other other: modified version included. File unmodified in one and deleted in other: delete included. File modified in one and deleted in other. Conflict.&#x20;
-
-
-
-#### Determining which parts of each file to include&#x20;
-
-
-
-
-
-| C3  | C4 - C5          | C6 |
-| --- | ---------------- | -- |
-| N/A | $$A_1 = A_2$$    |    |
-| A   | $$A_1 \neq A_2$$ |    |
-|     |                  |    |
-
-
-
-* easy case: contents of both files are identical.&#x20;
-
-
-
-
-
-<figure><img src="../../.gitbook/assets/Group 274.png" alt="" width="563"><figcaption></figcaption></figure>
-
-
-
-
-
 ## Merge conflict
-
-
 
 
 

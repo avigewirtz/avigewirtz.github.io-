@@ -1,4 +1,4 @@
-# Fast-Forward Merge Example
+# Fast-Forward Merge
 
 We have a repository with a single commit that includes one file: `names.txt`.&#x20;
 
@@ -8,12 +8,12 @@ First, we create a new branch called `test` and switch to it:
 
 ```bash
 git branch test
-git checkout test
+git checkout test 
 ```
 
 <figure><img src="../../.gitbook/assets/Group 249.png" alt="" width="188"><figcaption></figcaption></figure>
 
-On the `test` branch, we make a couple of commits. In the first commit, we modify `names.txt` by changing "Bob" on line 2 to "Ben":
+On the `test` branch, we make a couple of commits. First, we modify `names.txt` by changing "Bob" on line 2 to "Ben":
 
 ```bash
 sed -i 's/Bob/Ben/' names.txt
