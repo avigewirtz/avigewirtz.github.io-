@@ -52,3 +52,24 @@ Let's now consider case 2, where file A exists in both C5 and C6, but content is
 
 <figure><img src="../../.gitbook/assets/Group 387 (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
+
+
+## Determining conflict within file
+
+
+
+<figure><img src="../../.gitbook/assets/Group 398.png" alt=""><figcaption></figcaption></figure>
+
+
+
+* takes the three version of file. find LCS.&#x20;
+* All&#x20;
+
+
+
+
+
+
+
+
+
