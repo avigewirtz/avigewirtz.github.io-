@@ -7,14 +7,14 @@
 * [Conventions used](preface/conventions-used.md)
 * [Acknowledgments](preface/acknowledgments.md)
 
-## Getting Started
+## COS217 Computing Environment
 
-* [Armlab](getting-started/armlab/README.md)
-  * [What is Armlab?](getting-started/armlab/background.md)
-  * [Activating your Armlab Account](getting-started/armlab/activating-your-armlab-account.md)
-  * [Logging into & out of Armlab](getting-started/armlab/logging-into-armlab/README.md)
-    * [Secure Shell (SSH) Protocol](getting-started/armlab/logging-into-armlab/ssh-protocol.md)
-  * [Configuring your armlab Environment](getting-started/armlab/configuring-your-armlab-environment.md)
+* [Armlab](cos217-computing-environment/armlab/README.md)
+  * [What is Armlab?](cos217-computing-environment/armlab/background.md)
+  * [Activating your Armlab Account](cos217-computing-environment/armlab/activating-your-armlab-account.md)
+  * [Logging into & out of Armlab](cos217-computing-environment/armlab/logging-into-armlab/README.md)
+    * [Secure Shell (SSH) Protocol](cos217-computing-environment/armlab/logging-into-armlab/ssh-protocol.md)
+  * [Configuring your armlab Environment](cos217-computing-environment/armlab/configuring-your-armlab-environment.md)
 
 ## Fundamental Concepts
 
@@ -55,22 +55,6 @@
   * [Pathnames](the-linux-command-line/filesystem/pathnames.md)
 * [Bash Cheat Sheet](the-linux-command-line/bash-cheat-sheet.md)
 * [Further Reading](the-linux-command-line/further-reading.md)
-
-## Emacs
-
-* [Introduction](emacs/background.md)
-* [Emacs Interface](emacs/fundamentals/README.md)
-* [Getting Started](emacs/basic-commands/README.md)
-  * [Launching and Exiting Emacs](emacs/basic-commands/launching-and-existing-emacs.md)
-  * [Moving the cursor](emacs/basic-commands/moving-the-cursor.md)
-  * [Selecting a Region](emacs/basic-commands/selecting-a-region.md)
-  * [Basic Editing Commands](emacs/basic-commands/basic-editing-commands.md)
-* [More Advanced Commands](emacs/more-advanced-commands/README.md)
-  * [Managing Windows and Buffers](emacs/more-advanced-commands/managing-windows-and-buffers.md)
-  * [Search and Replace](emacs/more-advanced-commands/search-and-replace.md)
-  * [Building](emacs/more-advanced-commands/building.md)
-* [Emacs Cheat Sheet](emacs/emacs-cheat-sheet.md)
-* [Further Reading](emacs/further-reading.md)
 
 ## Git
 
@@ -122,6 +106,22 @@
   * [Writing a Makefile](make/makefiles/makefile-version-1-basic.md)
   * [Phony targets](make/makefiles/makefile-version-2-phony-targets.md)
   * [Macros](make/makefiles/makefile-version-3-macros.md)
+
+## Emacs
+
+* [Introduction](emacs/background.md)
+* [Emacs Interface](emacs/fundamentals/README.md)
+* [Getting Started](emacs/basic-commands/README.md)
+  * [Launching and Exiting Emacs](emacs/basic-commands/launching-and-existing-emacs.md)
+  * [Moving the cursor](emacs/basic-commands/moving-the-cursor.md)
+  * [Selecting a Region](emacs/basic-commands/selecting-a-region.md)
+  * [Basic Editing Commands](emacs/basic-commands/basic-editing-commands.md)
+* [More Advanced Commands](emacs/more-advanced-commands/README.md)
+  * [Managing Windows and Buffers](emacs/more-advanced-commands/managing-windows-and-buffers.md)
+  * [Search and Replace](emacs/more-advanced-commands/search-and-replace.md)
+  * [Building](emacs/more-advanced-commands/building.md)
+* [Emacs Cheat Sheet](emacs/emacs-cheat-sheet.md)
+* [Further Reading](emacs/further-reading.md)
 
 ## Gprof
 

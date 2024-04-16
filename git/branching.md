@@ -44,7 +44,7 @@ Note that the HEAD pointer exists even if there's only one branch. Thus, a more 
 
 Perhaps the easiest way to explain branches is via examples of common use use cases. Here are a few example:
 
-**Creating a branch**
+## **Creating a branch**
 
 Let's say you want to start working on a new feature. To keep those changes separate, you'd create a branch like this:
 
@@ -54,7 +54,7 @@ git branch new-feature
 
 This gives you a safe space to experiment without affecting your main codebase.
 
-**Switching to a branch**
+## **Switching to a branch**
 
 To work on a specific branch, you'll need to switch to it. It's like changing lanes on a highway:
 
@@ -64,7 +64,7 @@ git checkout new-feature
 
 Now you're in the 'new-feature' lane, and any changes you make will only happen there.
 
-**Listing all branches**
+## **Listing all branches**
 
 Curious about what branches exist in your project? Use this command:
 
@@ -74,7 +74,7 @@ git branch
 
 This will give you a list of your local branches. The one you're currently on will have a \* before it. &#x20;
 
-**Listing branch tree**
+## **Listing branch tree**
 
 Want to get a visual understanding of how your branches connect? Try this:
 
@@ -84,7 +84,7 @@ git log --oneline --graph --decorate --all
 
 This gives you a nice diagram of your branching structure, which can be super helpful for understanding your project's history.
 
-**Deleting branches**
+## **Deleting branches**
 
 Once you've finished with a branch (and you're sure it's merged into where it needs to be), you can delete it:
 

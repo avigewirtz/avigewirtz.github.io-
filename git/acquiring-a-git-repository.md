@@ -211,7 +211,11 @@ The repository essentially consists of commits, or saved snapshots of your proje
 
 
 
+{% hint style="success" %}
+### **When to Commit**
 
+The timing for creating commits is up to you, but it's a good practice to commit whenever you've completed a logical chunk of work. For example, if you've implemented a new feature, tested it, and everything works, that's an ideal time to commit. Remember, it's usually better to have smaller, focused commits rather than massive ones that try to cram in many unrelated changes.
+{% endhint %}
 
 
 
