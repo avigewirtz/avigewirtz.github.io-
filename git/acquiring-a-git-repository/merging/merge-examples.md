@@ -6,7 +6,7 @@ Examples using&#x20;
 
 We have a repository with a single commit that includes one file: `names.txt`.&#x20;
 
-<figure><img src="../../.gitbook/assets/Group 246.png" alt="" width="162"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Group 246.png" alt="" width="162"><figcaption></figcaption></figure>
 
 First, we create a new branch called `test` and switch to it:
 
@@ -15,7 +15,7 @@ git branch test
 git checkout test 
 ```
 
-<figure><img src="../../.gitbook/assets/Group 249.png" alt="" width="188"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Group 249.png" alt="" width="188"><figcaption></figcaption></figure>
 
 On the `test` branch, we make a couple of commits. First, we modify `names.txt` by changing "Bob" on line 2 to "Ben":
 
@@ -35,7 +35,7 @@ git commit -m "Added hello.txt"
 
 The repository now reflects these changes, as shown in Figure 21.
 
-<figure><img src="../../.gitbook/assets/Group 127 (2).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Group 127 (2).png" alt="" width="375"><figcaption></figcaption></figure>
 
 We now switch back to the `master` branch:
 
@@ -43,7 +43,7 @@ We now switch back to the `master` branch:
 git checkout master
 ```
 
-<figure><img src="../../.gitbook/assets/Group 243 (1).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Group 243 (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
 To incorporate the changes from the `test` branch into `main`, we use the `git merge` command:
 
@@ -53,7 +53,7 @@ git merge test
 
 Since main and test haven't diverged, all Git has to do to merge them is move the main branch forward two commits to C3:
 
-<figure><img src="../../.gitbook/assets/Group 250.png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Group 250.png" alt="" width="375"><figcaption></figcaption></figure>
 
 This sort of merge is known as a fast forward merge. Is it a case of a degenerate merge, since no real sense of merging occurs.&#x20;
 
@@ -67,7 +67,7 @@ This sort of merge is known as a fast forward merge. Is it a case of a degenerat
 
 We'll start off by continuing from the state of our repository in the fast forward merge example.&#x20;
 
-<figure><img src="../../.gitbook/assets/Group 250.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Group 250.png" alt="" width="563"><figcaption></figcaption></figure>
 
 
 
@@ -78,7 +78,7 @@ On the master branch we make the following two changes followed by a commit:
 1. we add the name "fred" to the end of names.txt
 2. we create a new file named bye.txt and write bye in it
 
-<figure><img src="../../.gitbook/assets/Group 253.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Group 253.png" alt="" width="563"><figcaption></figcaption></figure>
 
 Then we switch to the test branch and make a few changes followed by a commit.&#x20;
 
@@ -86,7 +86,7 @@ Then we switch to the test branch and make a few changes followed by a commit.&#
 2. Delete "ben"&#x20;
 3. create a new file hi.txt and write hi in it
 
-<figure><img src="../../.gitbook/assets/Group 255.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Group 255.png" alt="" width="563"><figcaption></figcaption></figure>
 
 
 
@@ -108,11 +108,11 @@ The merged version will be stored as a new commit. Hence, git prompt us for a co
 
 Master will point to C6, since since test was merged into it, while test will remain pointing where it is, at C5. &#x20;
 
-<figure><img src="../../.gitbook/assets/Group 403 (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Group 403 (2).png" alt=""><figcaption></figcaption></figure>
 
 ## Merge conflict
 
-<figure><img src="../../.gitbook/assets/Group 405.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Group 405.png" alt=""><figcaption></figcaption></figure>
 
 marge fails
 

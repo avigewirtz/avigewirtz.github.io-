@@ -1,38 +1,41 @@
-# Setting Up Your Git/GitHub Environment
+# First time Git setup
 
-## Installing Git
+1.  **Set your name**: This command configures Git with your username, which is used to identify the author of commits.
 
-In COS217, there is no need to install Git, since Git is already installed on Armlab. However, if you'd like to obtain Git on your PC as well, you can install it by following the instructions below.&#x20;
+    ```bash
+    git config --global user.name "YOUR_NAME"
+    ```
 
-{% tabs %}
-{% tab title="macOS" %}
-There are many ways to install Git on macOS. The easiest method is by installing the _Xcode Command Line Tools_, which includes a version of Git
+    Replace `YOUR_NAME` with your actual name. This name will appear in your commits and in the history of your projects. Example:
 
-* Run the following command in Terminal: `git -v`. If Git is already installed, the command will output `git version X.Y.Z`. Otherwise, it will prompt you to install Xcode Command Line Tools.
+    ```bash
+    git config --global user.name "John Smith"
+    ```
+2.  **Set your email address**: This command sets the email address that will be associated with your Git commits.
 
-{% hint style="info" %}
-Note that the version of Git included with Xcode is not necessarily the latest version. If you specifically want the latest version, download Git using the official Git [installer](https://git-scm.com/download/mac).&#x20;
-{% endhint %}
-{% endtab %}
+    ```bash
+    it config --global user.email YOUR_EMAIL_ADDRESS
+    ```
 
-{% tab title="Windows" %}
-You may already have Git installed thanks to the introcs infrastructure from COS 126, which installs Git Bash. If this is not the case, navigate to http://git- scm.com/download/win, and the installation will start automatically.
-{% endtab %}
-{% endtabs %}
+    Replace `YOUR_EMAIL_ADDRESS` with your email. This should be the same email associated with your GitHub account if you plan to push to GitHub repositories. Example:
 
-## Setting Git configurations
+    ```bash
+    bashCopy codegit config --global user.email johnsmith@gmail.com
+    ```
+3.  **Set your preferred text editor**: This command specifies which text editor Git will open for things like commit messages:&#x20;
 
-```bash
-git config --global user.name YOUR_NAME
-git config --global user.email YOUR_EMAIL_ADDRESS 
-git config --global core.editor NAME_OF_PREFFERED_EDITOR
-```
+    ```bash
+    bashCopy codegit config --global core.editor NAME_OF_PREFERRED_EDITOR
+    ```
 
-For example:
+    Replace `NAME_OF_PREFERRED_EDITOR` with the command that launches your preferred editor. This setting depends on the editor you like to use (e.g., vim, emacs, nano). Example:
 
-```bash
-git config --global user.name John Smith
-git config --global user.email johnsmith@gmail.com
-git config --global core.editor emacs
-```
+    ```bash
+    git config --global core.editor emacs
+    ```
+4.  **Change the default branch name to "main"**: This command sets "main" as the default branch name for all new repositories you initialize on your system. This is useful as many projects have moved away from using "master" as the default branch name.
+
+    ```bash
+    git config --global init.defaultBranch main
+    ```
 

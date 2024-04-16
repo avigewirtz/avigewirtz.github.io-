@@ -58,23 +58,24 @@
 
 ## Git
 
-* [Setting Up Your Git/GitHub Environment](git/setting-up-your-git-github-environment.md)
 * [Introduction](git/background/README.md)
-  * [Setting Up Your Git/GitHub Environment](git/background/git-installation.md)
+  * [Organization of this chapter](git/background/organization-of-this-chapter.md)
+  * [Installing Git](git/background/installing-git.md)
+  * [First time Git setup](git/background/git-installation.md)
   * [Getting Documentation for Git Commands](git/background/getting-help.md)
-  * [Git configuration files](git/background/configurations.md)
 * [Git in a nutshell](git/git-in-a-nutshell.md)
-* [Local Git Workflow](git/acquiring-a-git-repository.md)
-* [Commits](git/commits.md)
-* [Branching](git/branching.md)
-* [Merging](git/merging/README.md)
-  * [How 3-way merges work](git/merging/how-3-way-merges-work.md)
-  * [Merge examples](git/merging/merge-examples.md)
-  * [Resolving merge conflicts](git/merging/merge-conflicts.md)
-* [Rebasing](git/rebasing.md)
+* [Local Git Workflow](git/acquiring-a-git-repository/README.md)
+  * [Commits](git/acquiring-a-git-repository/commits.md)
+  * [Branching](git/acquiring-a-git-repository/branching.md)
+  * [Merging](git/acquiring-a-git-repository/merging/README.md)
+    * [How 3-way merges work](git/acquiring-a-git-repository/merging/how-3-way-merges-work.md)
+    * [Merge examples](git/acquiring-a-git-repository/merging/merge-examples.md)
+    * [Resolving merge conflicts](git/acquiring-a-git-repository/merging/resolving-merge-conflicts.md)
+  * [Rebasing](git/acquiring-a-git-repository/rebasing.md)
 * [Working with remotes](git/working-with-remotes-1/README.md)
   * [Single-developer remote workflow](git/working-with-remotes-1/single-developer-remote-workflow.md)
   * [Multi-developer remote workflow](git/working-with-remotes-1/working-with-collaborator.md)
+  * [cloning](git/working-with-remotes/cloning.md)
   * [Pushing and Fetching/Pulling](git/working-with-remotes-1/pushing-and-pulling.md)
 * [Undoing things](git/undoing-things.md)
 * [GitHub](git/github/README.md)
@@ -88,6 +89,10 @@
   * [COS217 Development Workflow](git/acquiring-cos217-assignment-repositories/cos217-development-workflow.md)
 * [Git Cheatsheet](git/git-cheat-sheet.md)
 * [Further Reading](git/further-reading.md)
+
+## Part I. Local Git Workflow
+
+* [Page 1](part-i.-local-git-workflow/page-1.md)
 
 ## GCC Build Process
 

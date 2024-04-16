@@ -1,5 +1,7 @@
 # Working with remotes
 
+<figure><img src="../../.gitbook/assets/Group 120.png" alt=""><figcaption></figcaption></figure>
+
 * could be a personal copy
 * could be shared repository
 

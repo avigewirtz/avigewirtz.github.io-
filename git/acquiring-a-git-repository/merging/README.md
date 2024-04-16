@@ -21,7 +21,7 @@ Over here, will only go over merging two branches
 
 on main branch, and test brach is two commits ahead, but branches have no diverged.&#x20;
 
-<figure><img src="../../.gitbook/assets/Group 234 (1).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Group 234 (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
 
 
@@ -31,7 +31,7 @@ on main branch, and test brach is two commits ahead, but branches have no diverg
 
 result after merge:
 
-<figure><img src="../../.gitbook/assets/Group 235.png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Group 235.png" alt="" width="375"><figcaption></figcaption></figure>
 
 
 
@@ -39,11 +39,11 @@ h
 
 ## 3-way merge
 
-<figure><img src="../../.gitbook/assets/Group 236.png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Group 236.png" alt="" width="375"><figcaption></figcaption></figure>
 
 
 
-<figure><img src="../../.gitbook/assets/Group 242 (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Group 242 (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 merges one branch into another. Merges commits. For example, say we have two branches: main and test. We're currently on main, which points to C8, and we went to merge test, which points to C9, with main.
 
