@@ -58,11 +58,12 @@
 
 ## Git
 
+* [Setting Up Your Git/GitHub Environment](git/setting-up-your-git-github-environment.md)
 * [Introduction](git/background/README.md)
-  * [Git in a nutshell](git/background/git-in-a-nutshell.md)
   * [Setting Up Your Git/GitHub Environment](git/background/git-installation.md)
-  * [Getting Help](git/background/getting-help.md)
+  * [Getting Documentation for Git Commands](git/background/getting-help.md)
   * [Git configuration files](git/background/configurations.md)
+* [Git in a nutshell](git/git-in-a-nutshell.md)
 * [Local Git Workflow](git/acquiring-a-git-repository.md)
 * [Commits](git/commits.md)
 * [Branching](git/branching.md)
@@ -78,9 +79,9 @@
 * [Undoing things](git/undoing-things.md)
 * [GitHub](git/github/README.md)
   * [Creating a GitHub Account](git/github/creating-github-account.md)
-  * [Creating Repository on GitHub](git/github/creating-repository-on-github.md)
-  * [Authenticating with GitHub on the Command Line](git/github/authenticating-with-github-on-the-command-line.md)
-  * [Adding Collaborator To Repository](git/github/adding-collaborator-to-repository.md)
+  * [Creating a Git Repository on GitHub](git/github/creating-a-git-repository-on-github.md)
+  * [Generating a Personal Access Token](git/github/generating-a-personal-access-token.md)
+  * [Adding a Collaborator To Your GitHub Repository](git/github/adding-a-collaborator-to-your-github-repository.md)
 * [Miscellaneous Git commands](git/important-git-commands/README.md)
   * [Ignoring Files](git/important-git-commands/ignoring-files.md)
 * [COS217 Specific](git/acquiring-cos217-assignment-repositories/README.md)

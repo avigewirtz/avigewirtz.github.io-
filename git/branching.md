@@ -24,7 +24,7 @@ Now our project has two separate lines of development: main and test. In Git ter
 
 They are useful, since they allow&#x20;
 
-## HEAD
+## How Git keeps track of current branch
 
 We've glossed over one important question: how does Git know which branch you're currently on? It keeps track via a special pointer called HEAD, which points to the branch we're currently on.&#x20;
 
