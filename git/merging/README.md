@@ -1,5 +1,11 @@
 # Merging
 
+important to understand that merging inherently flawed process.
+
+
+
+* merging one branch into another.&#x20;
+
 Over here, will only go over merging two branches
 
 ## Types of merges

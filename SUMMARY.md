@@ -74,7 +74,7 @@
 
 ## Git
 
-* [Getting Started](git/background/README.md)
+* [Introduction](git/background/README.md)
   * [Git in a nutshell](git/background/git-in-a-nutshell.md)
   * [Setting Up Your Git/GitHub Environment](git/background/git-installation.md)
   * [Getting Help](git/background/getting-help.md)

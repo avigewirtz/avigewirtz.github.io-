@@ -63,7 +63,7 @@ This sort of merge is known as a fast forward merge. Is it a case of a degenerat
 
 3 way merges can be successful or result in a conflict. we will demonstrate via an example how 3-way merges merging works and when conflicts arise.&#x20;
 
-## Starting point
+### Starting point
 
 We'll start off by continuing from the state of our repository in the fast forward merge example.&#x20;
 
@@ -71,7 +71,7 @@ We'll start off by continuing from the state of our repository in the fast forwa
 
 
 
-## Diverging history
+### Diverging history
 
 On the master branch we make the following two changes followed by a commit:
 
@@ -90,7 +90,7 @@ Then we switch to the test branch and make a few changes followed by a commit.&#
 
 
 
-## Merging&#x20;
+### Merging&#x20;
 
 To merge test into master, we switch back into master:
 
@@ -108,38 +108,11 @@ The merged version will be stored as a new commit. Hence, git prompt us for a co
 
 Master will point to C6, since since test was merged into it, while test will remain pointing where it is, at C5. &#x20;
 
-<figure><img src="../../.gitbook/assets/Group 278.png" alt=""><figcaption></figcaption></figure>
-
-## How 3-way merge works
-
-When we ask Git to merge, we're asking git it to figure out which parts of the commits each branch points to include or delete. At first glance, it may seem that asking Git to merge these two branches is too much to ask.&#x20;
-
-The precise algorithm Git uses by default is complex and full cobvergae is beyond the scope of this tutorial. As a general rule, we can break it down into two parts.&#x20;
-
-1. determining which files should be included
-2. determining which parts of each file should be included
-
-$$A_1$$= $$A_2$$
-
-
+<figure><img src="../../.gitbook/assets/Group 403 (2).png" alt=""><figcaption></figcaption></figure>
 
 ## Merge conflict
 
-
-
-
-
-
-
-
-
-
-
-CASE 3:
-
-
-
-<figure><img src="../../.gitbook/assets/Group 163 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Group 405.png" alt=""><figcaption></figcaption></figure>
 
 marge fails
 
