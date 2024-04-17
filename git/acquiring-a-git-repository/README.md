@@ -1,64 +1,86 @@
 # Local Git Workflow
 
-Suppose we have a project we want to version control with git. The basic workflow look like the following:&#x20;
+There are two contexts in which version control is useful: private and public. In the first part of this tutorial, we'll go over using version control for a private project. All work contained within a single repository.&#x20;
 
-1. cd to the directory of the project you want to version control.&#x20;
-2. Initialize a repository.
-3. Save a snapshot of your project's files to the repository.&#x20;
-4. Edit your project by modifying, deleting, or adding files.&#x20;
-5. Save a new snapshot to your repository.&#x20;
-6. Repeat steps 3-4 as necessary.&#x20;
 
-## Starting point
 
-Let's go over each of these steps one by one. As an example, we'll use the greetings directory shown in Figure 1.&#x20;
+* we'll start off by going over the most basic workflow, with no branching, merging.  Then we'll introduce each of the topics one by one. &#x20;
+
+## The big picture
+
+We'll go over a basic workflow that covers the basics core of local workflow:
+
+1. Set up a project by creating a new directory and poulating it with files.&#x20;
+2. Initialize a git repository in our new directory.&#x20;
+3. Save a snapshot of the files in our directory.&#x20;
+4. modify project by and making new commits.&#x20;
+   1. Adding new files
+   2. Modifying files
+   3. deleteing files
+
+Shoud teach you the basics of using the index and commiting.&#x20;
+
+
+
+An important command we'll be using the throughout this section is the git status command, which tells you the state of your working tree and index.
+
+
+
+## Creating the project
+
+Let's go over each of these steps one by one.&#x20;
+
+```
+mkdir playground
+cd playground
+```
+
+add a few files:
+
+```
+echo "hello" > hello.txt 
+echo "hi" > hi.txt     
+mkdir bye        
+echo "bye" > bye/bye.txt
+```
+
+
 
 <figure><img src="../../.gitbook/assets/Group 118 (1).png" alt="" width="188"><figcaption></figcaption></figure>
 
-This project is stupidly straightforward. It contains two files: hello.txt and hi.txt. If you want to follow along, you can create a local copy by invoking the following commands:
-
-```bash
-mkdir greetings   # Creates a directory named 'greetings'
-cd greetings      # Changes the working directory to 'greetings'
-echo -n "hello" > hello.txt  # Creates'hello.txt' and writes "hello" into it
-echo "hi" > hi.txt        # Creates 'hi.txt' and writes "hi" into it
-mkdir bye         # Creates a directory named 'bye'
-echo "bye" > bye/bye.txt # Creates 'bye.txt' in bye & writes "bye" into it
-```
-
 ## Initializing a repository
 
-Initializing a repository is perhaps the simplest task in git. Assuming greetings is the working directory, simply imply invoke `git init` (short for initialize):
+Simply invoke `git init` (short for initialize):&#x20;
 
-<figure><img src="../../.gitbook/assets/Screenshot 2024-04-04 at 4.16.24 PM.png" alt=""><figcaption></figcaption></figure>
+```bash
+~/playground> git init
+Initialized empty Git repository in /Users/avigewirtz/playground/.git/
+~/playground> 
+```
 
-If we inspect the directory listing (such as via `ls -a`), we'll now see that is has a .git directory:&#x20;
+If we invoke ls -l , we'll see that playground has a .git subdirectory:&#x20;
+
+```bash
+~/playground> \ls -A
+.git    bye    hello.txt    hi.txt
+~/playground>
+```
 
 <figure><img src="../../.gitbook/assets/Group 133.png" alt="" width="375"><figcaption></figcaption></figure>
 
-## Components of a Git Project
-
-Our git project can be divided into roughly three components:
-
-1. The working tree. In our case, it's hello.txt and hi.txt.
-2. The staging area (i.e. index). Located in .git. List of files that will be included in next commit.&#x20;
-3. The Repository itself. Located in .git. This is the part where the snapshots (i.e., commits) of your projects history are stored.
-
-
+The .git subdirectory is a skeleton repository. Essentially empty. We won't get into internals. As we mentioned earlier, .git directory contains two main parts: staging area and commit history. At this point, both are empty.&#x20;
 
 <figure><img src="../../.gitbook/assets/Group 124.png" alt="" width="375"><figcaption></figcaption></figure>
 
-## Saving a snapshot
+invoke git status.
 
-Recall that Git is not an autosave tool. Just because we created a git repository does not mean that hello.txt and hi.txt are a part of the repository. Hence, since our repository is was just created, the staging area and repository will be empty. Saving files must be done manually. In Git terminology, each snapshot is called a commit.&#x20;
+## Staging our files
 
-### Staging files
+First step is adding files we want to be in commit in the staging area. Basic form of stage command is git add:
 
-Staging area lists the files that will be included in the next snapshot.
+The filename can be a directory, in which case Git adds all new files and changes to tracked files under that directory.  Whenever you list a directory, all it's descendant are included in the stage as well.
 
-This is done by invoking git add followed by the names of the files we want to add:
-
-```bash
+```
 git add hello.txt hi.txt bye
 ```
 
@@ -66,13 +88,17 @@ And now the files will be listed in the staging area:
 
 <figure><img src="../../.gitbook/assets/Group 129 (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
-Notice that in order to stage bye.txt, we didn't have to explicitly list it's name on the command line. We only listed bye--its parent directory. Whenever you list a directory, all it's descendant are included in the stage as well. It naturally follows that if you want to stage all files in the working tree, all you have to do is supply the working tree's root directory (i.e., greetings) as an argument. Recall that "." represents the working directory. Hence, since our working directory is greetings, a shortcut to stage all files is to invoke:
+#### Staging shortcuts
+
+Whenever you list a directory, all it's descendant are included in the stage as well. It naturally follows that if you want to stage all files in the working tree, all you have to do is supply the working tree's root directory (i.e., greetings) as an argument. Recall that "." represents the working directory. Hence, since our working directory is greetings, a shortcut to stage all files is to invoke:
 
 ```
 git add .
 ```
 
-### Committing staged files
+In more detail: git add . adds the current directory to the (ini‐ tially empty) index; this includes files as well as directories and their contents, and so on, recursively.&#x20;
+
+### Committing
 
 Committing takes the files in the staging area and creates a snapshot of them. The general form of a Git commit command is as follows:
 
@@ -90,8 +116,6 @@ This creates a commit in the repository--for simplicity written as "commit 1"--w
 
 ## Modifying the working tree <a href="#checking_status" id="checking_status"></a>
 
-
-
 Should be noted that all unmodified files are in index
 
 At this point, we have a "clean" working tree. In other words, no changes have been made to our working tree since the last commit. Such files are called "unmodified." We can check the status of the working tree by invoking `git status`:
@@ -107,7 +131,7 @@ If we modify our working tree in any way and we want to record the modified vers
 Let's now make two changes to our project. First, let's modify hello.txt by appending " world" to it:
 
 ```
-echo " world" >> hello.txt
+echo "world" >> hello.txt
 ```
 
 Next, let's create a new file named hey.txt, and write "hey" in it:
