@@ -16,7 +16,7 @@ Before we can discuss how to go back to previous commit, we need to have a basic
 
 In order to explain this, we first have the represented internally.
 
-<figure><img src="../../.gitbook/assets/Group 20 (6) (1).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 20 (6) (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
 
 
