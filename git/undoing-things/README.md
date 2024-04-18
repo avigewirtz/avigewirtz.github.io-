@@ -1,4 +1,4 @@
-# Going back in time
+# Undoing things
 
 At any stage, you may want to view a previous commit, or you might want to reset to that stage.&#x20;
 
@@ -16,7 +16,7 @@ Before we can discuss how to go back to previous commit, we need to have a basic
 
 In order to explain this, we first have the represented internally.
 
-<figure><img src="../.gitbook/assets/Group 20 (6) (1).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Group 20 (6) (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
 
 

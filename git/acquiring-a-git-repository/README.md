@@ -1,34 +1,27 @@
-# Local Git Workflow
+# Beginner Local Workflow
 
-There are two contexts in which version control is useful: private and public. In the first part of this tutorial, we'll go over using version control for a private project. All work contained within a single repository.&#x20;
+There are two contexts in which version control is useful: personal use and collaborative use. Nowadays, almost all projects make use of some of Git's collaborative features. Even if your not actually working with someone else on the project, chances are you obtained your project by cloning somoene else's repository.&#x20;
 
-
-
-* we'll start off by going over the most basic workflow, with no branching, merging.  Then we'll introduce each of the topics one by one. &#x20;
+In the first part of this tutorial, we'll go over using version control for personal use. All work contained within a single, local repository. We're doing it this way since it's simpler to explain.&#x20;
 
 ## The big picture
 
-We'll go over a basic workflow that covers the basics core of local workflow:
+A simple local git workflow might look something like the following:
 
-1. Set up a project by creating a new directory and poulating it with files.&#x20;
-2. Initialize a git repository in our new directory.&#x20;
-3. Save a snapshot of the files in our directory.&#x20;
-4. modify project by and making new commits.&#x20;
+1. Set up a project by creating a new directory and populating it with files.&#x20;
+2. Initialize a git repository in the root directory of the project
+3. Save a first snapshot of the project to the git repository.&#x20;
+4. Modify project by:
    1. Adding new files
-   2. Modifying files
-   3. deleteing files
+   2. Modifying existing files
+   3. Deleting files
+5. Repeat steps 4-5.&#x20;
 
-Shoud teach you the basics of using the index and commiting.&#x20;
-
-
-
-An important command we'll be using the throughout this section is the git status command, which tells you the state of your working tree and index.
-
-
+We'll go over each of these steps one by one. This should give you a good understanding of the basics of git. An important command we'll be using the throughout this section is the `git status`, which tells you the current state of your working tree and index.
 
 ## Creating the project
 
-Let's go over each of these steps one by one.&#x20;
+To create&#x20;
 
 ```
 mkdir playground
@@ -68,35 +61,51 @@ If we invoke ls -l , we'll see that playground has a .git subdirectory:&#x20;
 
 <figure><img src="../../.gitbook/assets/Group 133.png" alt="" width="375"><figcaption></figcaption></figure>
 
-The .git subdirectory is a skeleton repository. Essentially empty. We won't get into internals. As we mentioned earlier, .git directory contains two main parts: staging area and commit history. At this point, both are empty.&#x20;
+The .git subdirectory is a skeleton repository. Essentially empty. As we mentioned in git in a nutshell, the repository contains tow main parts: the staging area and commit history. Since we just initialized the repository and haven't stages any files or made commits, both will be empty.&#x20;
 
 <figure><img src="../../.gitbook/assets/Group 124.png" alt="" width="375"><figcaption></figcaption></figure>
 
-invoke git status.
+## Saving a snapshot
 
-## Staging our files
+The "index" holds a snapshot of the content of the working tree, and it
 
-First step is adding files we want to be in commit in the staging area. Basic form of stage command is git add:
+&#x20;      is this snapshot that is taken as the contents of the next commit. Thus
 
-The filename can be a directory, in which case Git adds all new files and changes to tracked files under that directory.  Whenever you list a directory, all it's descendant are included in the stage as well.
+&#x20;      after making any changes to the working tree, and before running the
+
+&#x20;      commit command, you must use the add command to add any new or modified
+
+&#x20;      files to the index.
+
+Recall that saving a snapshot is a two-step process. First we add the files we want to be in commit in the staging area, and then we commit, which captures all the files in the staging area. Basic form of stage command is as follows:
 
 ```
+git add filenames
+```
+
+The filename can be a directory, in which case Git adds all the files descending from it as well. To stage all files in our project, we invoke:
+
+```bash
 git add hello.txt hi.txt bye
 ```
 
-And now the files will be listed in the staging area:
+And now hello.txt, hi.txt, and bye.txt will be listed in the staging area (Figure 1-1). We can confirm this by invoking git status:
 
 <figure><img src="../../.gitbook/assets/Group 129 (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
 #### Staging shortcuts
 
-Whenever you list a directory, all it's descendant are included in the stage as well. It naturally follows that if you want to stage all files in the working tree, all you have to do is supply the working tree's root directory (i.e., greetings) as an argument. Recall that "." represents the working directory. Hence, since our working directory is greetings, a shortcut to stage all files is to invoke:
+Recall that "." represents the working directory. Thus, to stage all changes in the working directory, simply invoke:&#x20;
 
 ```
 git add .
 ```
 
-In more detail: git add . adds the current directory to the (ini‐ tially empty) index; this includes files as well as directories and their contents, and so on, recursively.&#x20;
+```
+git add -A
+```
+
+If you're in the root directory of your project, then these two commands are functionasly equivalent. &#x20;
 
 ### Committing
 
@@ -177,7 +186,13 @@ The practical distinction between an untracked and modified file is subtle: Untr
 
 
 
+{% hint style="info" %}
+## When to commit
 
+
+
+When working on your own, it’s useful to commit “early and often,” so that you can explore different ideas and make changes freely without worrying about recovering earlier work. Such commits are likely to be somewhat disorganized and have cryptic commit messages, which is fine because they need to be intelligible only to you, and for a short period of time. Once a portion of your work is finished and you’re ready to share it with others, though, you may want to reorganize those commits, to make them well-factored with regard to reusability of the changes being made (especially with software), and to give them mean‐ ingful, well-written commit messages.
+{% endhint %}
 
 
 
