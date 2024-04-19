@@ -1,6 +1,6 @@
 # Commits
 
-## What's in a commit
+We know that eachh commit represents a snapshot of project at certain point in time.&#x20;
 
 At its core, a commit represents a snapshot of the entire project at a specific point in time. Additionally, a commit also contains along metadata that provides context about the snapshot. Specifically, it contains:
 
