@@ -9,17 +9,17 @@ In the first part of this tutorial, we'll go over using version control for pers
 A simple local git workflow might look something like the following:
 
 1. Set up a project by creating a new directory and populating it with files.&#x20;
-2. Initialize a git repository in the root directory of the project
-3. Save a first snapshot of the project to the git repository.&#x20;
+2. Initialize a git repository in the root directory of the project.
+3. Save a snapshot of the contents of your project to the git repository.&#x20;
 4. Modify project by:
    1. Adding new files
    2. Modifying existing files
    3. Deleting files
-5. Repeat steps 4-5.&#x20;
+5. Repeat steps 3-4.&#x20;
 
 We'll go over each of these steps one by one. This should give you a good understanding of the basics of git. An important command we'll be using the throughout this section is the `git status`, which tells you the current state of your working tree and index.
 
-## Creating the project
+## Setting up a gir project
 
 To create&#x20;
 
@@ -101,11 +101,13 @@ Recall that "." represents the working directory. Thus, to stage all changes in 
 git add .
 ```
 
+To stage all changes in the working tree, invoke:
+
 ```
 git add -A
 ```
 
-If you're in the root directory of your project, then these two commands are functionasly equivalent. &#x20;
+If you're in the root directory of your project, then these two commands are functionally equivalent.&#x20;
 
 ### Committing
 
