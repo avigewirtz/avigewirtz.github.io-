@@ -104,9 +104,9 @@
 ## GCC Build Process
 
 * [Introduction](gnu-compiler-collection-gcc/introduction.md)
-* [An Overview of the Build Process](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/README.md)
-* [Important GCC Commands](gcc-build-process/important-gcc-commands.md)
+* [The Big Picture](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/README.md)
 * [Example](gcc/page-1.md)
+* [Role of each stage](gcc-build-process/role-of-each-stage.md)
 * [Identifying Build Errors](gcc/identifying-build-errors.md)
 * [GCC Cheatsheet](gnu-compiler-collection-gcc/gcc-cheatsheet.md)
 * [Further Reading](copy-of-gnu-compiler-collection-gcc/further-reading.md)
