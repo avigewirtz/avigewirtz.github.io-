@@ -60,15 +60,23 @@ gcc -E bar.c -o bar.i
 **`-S`: stop after compilation**. The input can be either .c or .i files.GCC will automatically save the assembly code in .s files. Examples:
 
 ```bash
-gcc -S foo.c bar.c # preprocesses and compiles foo.c andf bar.c
+gcc -S foo.c bar.c # preprocesses and compiles foo.c and bar.c
 ```
 
 ```bash
 gcc -S foo.i bar.i # compiles foo.i andf bar.i
 ```
 
-**`-c`: stop after assembly**. The input can be either .c, .i, or .s files. Gcc will stop after assembly and automatically save the output in .o files.&#x20;
+**`-S`: stop after assembly**. The input can be either .c, .i, or .o files. GCC will automatically save the object code in .o files. Examples:
 
-* `gcc -c foo.c bar.c`
-* `gcc -c foo.i bar.i`
-* `Output is foo.o and bar.o`
+```bash
+gcc -c foo.c bar.c # preprocesses,compiles, and assembles foo.c and bar.c
+```
+
+```bash
+gcc -c foo.i bar.i # compiles and assembles foo.i and bar.i
+```
+
+```
+gcc -c foo.s bar.s # assembles foo.s and bar.s
+```
