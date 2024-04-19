@@ -6,7 +6,7 @@ To effectively navigate the Linux filesystem, you need to be familiar with three
 
 Whenever you're using the command line, bash is always positioned somewhere in the filesystem. This location is known as your (or, more accurately, Bash's) working directory. (See Working Directory.)
 
-You can find out your current location by invoking `pwd`, which displays the absolute pathname of your working directory on stdout. By default, your working directory will be your home directory, which on armlab is /u/yourNetID:
+You can find out your current working directory by invoking `pwd` (**p**rint **w**orking **d**irectory), which displays the absolute pathname of your working directory on stdout. By default, your working directory will be your home directory, which on armlab is _/u/yourNetID_:
 
 ```
 ~$ pwd
@@ -16,12 +16,12 @@ You can find out your current location by invoking `pwd`, which displays the abs
 As we'll see soon, you can change your working directory with the `cd` command.
 
 {% hint style="success" %}
-On Armlab, the working directory is displayed in the [shell prompt](../warm-up-commands.md#shell-prompt), between the colon (:) and dollar ($) sign.
+On Armlab, the working directory is displayed in the [shell prompt](../warm-up-commands.md#shell-prompt), between the colon (:) and dollar ($) sign.&#x20;
 {% endhint %}
 
 ## **`ls` - A sense of surroundings**
 
-Knowing where you are is important, but in order to navigate, you also need to know what's around you. The `ls` (list) command can be used to list the contents of any directory in the filesystem. &#x20;
+Knowing where you are is important, but in order to navigate, you also need to know what's around you. The `ls` (**l**i**s**t) command can be used to list the contents of any directory in the filesystem. &#x20;
 
 #### Basic usage
 
@@ -33,128 +33,76 @@ ls
 
 #### Displaying Hidden Files
 
-By default, `ls` does not display [hidden](../filesystem/notable-directories.md#hidden-files-directories) entries (i.e., files and directories that begin with a `.`). To include hidden entries in the directory listing, use the `-a` option:
+By default, `ls` does not display [hidden](../filesystem/notable-directories.md#hidden-files-directories) entries (i.e., files and directories whose names begin with a `.`). To include hidden entries in the directory listing, use the `-a` option:
 
 ```
 ls -a
 ```
 
-#### Long Listing Format
+#### Displaying file metadata
 
-You can also use `ls` to display the metadata about the file, such as the file type, owner, and last modification time. To do so, use the `-l` option:
+Each file and directory has associated metadata, such as the file's access permissions, owner, last modification time. You can display the metadata using the `-l` option:
 
 ```bash
 ls -l
 ```
 
-For now, you can safely ignore most of the information output by `ls -l`, but note that the long form lists a date and time indicating the last time the file was modified. The number before the date is the _size_ of the file, in bytes.[3](https://www.learnenough.com/command-line-tutorial/manipulating\_files#cha-2\_footnote-3)
-
-
+For now, you can safely ignore most of the information output by `ls -l`,. The first column will be covered in [file and directory access permissions](../file-and-directory-access-permissions.md).&#x20;
 
 #### Displaying the Contents of Another Directory
 
-You can use ls to list the contents of a directory other than your working directory by providing the directory's pathname as as argument to ls. For example, to list the contents of `/var,`:
+To list the contents of a directory other than the working directory, simply supply it's (absolute or relative) pathname as an argument to ls. For example, to list the contents of `/var`:
 
-```
+```bash
 ls /var
 ```
 
-LS \*.TXT
+## **`cd` - Relocating**
 
-Here `*.txt` (read “star dot tee-ex-tee”) automatically expands to all the filenames that match the pattern “any string followed by .txt”.
-
-## **`cd` - Moving to a Different Location**
-
-You can change your working directory via the `cd` (change directory) command. The basic syntax is&#x20;
+You can change your working directory using the `cd` (**c**hange working **d**irectory) command. Its basic syntax is:
 
 ```
 cd DIRECTORY_PATHNAME
 ```
 
-where DIRECTORY\_PATHNAME is the absolute or relative pathname of the target directory. For example, suppose you're in your home directory, and you want to navigate to the decomment directory, which contains the files for assignment 1. To do so,&#x20;
+Here, `DIRECTORY_PATHNAME` refers to either the absolute or relative pathname of the target directory. (See [pathnames](../filesystem/pathnames.md)).&#x20;
 
-For example, if your current working directory is _/u/yourNetID_ and you want to change your working directory to _/usr/bin_, you can invoke it's absolute pathname:
+### Example&#x20;
+
+Absolute pathname:
 
 ```bash
 cd /usr/bin
 ```
 
-Or you can specify it's relative pathname:
+Relative pathname:
 
 ```bash
 cd ../../usr/bin
 ```
 
-Recall that `..` represents the parent directory.&#x20;
+Recall that `..` represents the parent directory. Figure 3 shows a visualization of both.
 
-#### Going home
+{% hint style="warning" %}
+**Note:** To navigate to a directory that includes whitespace in its name, you have to ensure that Bash treats the entire directory name as a single argument. This can be done by enclosing the directory name in quotes. For example:
 
-If you invoke `cd` without arguments, it'll take you to your home directory:&#x20;
-
+```bash
+cd "final draft"
 ```
-cd
-```
-
-#### Question with filename that has spaces
-
-{% hint style="info" %}
-**Tab completion**
-
-Bash support _tab completion_, which involves automatically completing a word if there’s only one valid match on the system. For example, if the only file starting with the letters “tes” is `test_file`, we could create the command to remove it as follows:
-
-```
- $ rm tes⇥
-```
-
-where ⇥ is the tab key ([Table 1.1](https://www.learnenough.com/command-line-tutorial#table-keyboard\_symbols)). The shell would then complete the filename, yielding `rm test_file`. Especially with longer filenames (or directories), tab completion can save a huge amount of typing. It also lowers the [_cognitive load_](https://en.wikipedia.org/wiki/Cognitive\_load), since it means you don’t have to remember the full name of the file—only its first few letters.
-
-If the match is ambiguous, as would happen if we had files called `foobarquux` and `foobazquux`, the word will be completed only as far as possible, so
-
-```
- $ ls foo⇥
-```
-
-would be completed to
-
-```
- $ ls fooba
-```
-
-If we then hit tab _again_, we would see a list of matches:
-
-```
- $ ls fooba⇥
- foobarquux foobazquux
-```
-
-We could then type more letters to resolve the ambiguity, so typing the `r` after `fooba` and hitting `⇥` would yield
-
-```
- $ ls foobar⇥
-```
-
-which would be completed to `foobarquux`. This situation is common enough that experienced command-line users will often just hit something like `f⇥⇥` to get the shell to show all the possibilities:
-
-```
- $ ls f⇥⇥
- figure_1.png foobarquux  foobazquux
-```
-
-Additional letters would then be typed as usual to resolve the ambiguity.
 {% endhint %}
 
-####
+### **Useful Shortcuts**
 
-#### Tips for Using `cd`
-
-* **Tab Completion**: Start typing the directory name and press Tab; the system auto-completes the directory name, saving time and reducing typos.
-* **Using Quotes**: If a directory name contains spaces, enclose the name in quotes (e.g., `cd "My Documents"`).
+* **Going home**: If you invoke `cd` without arguments, it'll take you to your home directory.&#x20;
+* **Returning to the last working directory**. `cd -` (hyphen) returns you to your previous working directory.&#x20;
+* **Tilde (`~`):** Tilde is a shortcut for your home directory. Thus, to navigate to _/u/yourNetID/A1_, for example, you can invoke`cd ~/A1` instead of `cd /u/yourNetID/A1`.
+* **Tab Completion**: If you start typing an directory name and press Tab, Bash will attempt to auto-completes the directory name. This will save you time and reduce typos.
 
 ## Exercises
 
-For the following questions, unless otherwise stated, assume the working directory is /u/yourNetID.
-
-For the following questions, assume no aliases are being used.&#x20;
+{% hint style="info" %}
+Note: For the following questions, assume the working directory is /u/yourNetID, unless otherwise stated,&#x20;
+{% endhint %}
 
 1. Which of the following commands lists the metadata of all files in the working directory, including hidden files?
    * A) `ls -a`
