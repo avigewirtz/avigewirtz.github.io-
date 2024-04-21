@@ -105,7 +105,11 @@
 
 * [Introduction](gnu-compiler-collection-gcc/introduction.md)
 * [The Big Picture](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/README.md)
-* [Example](gcc/page-1.md)
+* [Example Program](gcc-build-process/page-1/README.md)
+  * [Preprocessing stage](gcc-build-process/page-1/preprocessing-stage.md)
+  * [Compilation stage](gcc-build-process/page-1/compilation-stage.md)
+  * [Assembly stage](gcc-build-process/page-1/assembly-stage.md)
+  * [Linking stage](gcc-build-process/page-1/linking-stage.md)
 * [Role of each stage](gcc-build-process/role-of-each-stage.md)
 * [Identifying Build Errors](gcc/identifying-build-errors.md)
 * [GCC Cheatsheet](gnu-compiler-collection-gcc/gcc-cheatsheet.md)

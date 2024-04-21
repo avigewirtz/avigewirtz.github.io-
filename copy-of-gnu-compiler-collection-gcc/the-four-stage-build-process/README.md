@@ -1,25 +1,30 @@
 # The Big Picture
 
-Suppose we have a program comprised of two .c file--foo.c and bar.c--and one header file, header.h, which is #included in both foo.c and bar.c. To build our program, we invoke the following command:&#x20;
+Suppose we have a C program comprised of two .c files: foo.c, bar.c. To build our program, we invoke the following command:&#x20;
 
 ```bash
 gcc217 foo.c bar.c -o foobar
 ```
 
-Assuming the build is succesful, that the `-o` option specifies that the executable be named _foobar,_ rather than the default name a.out. To run _foobar_, we simply invoke its pathname on the command line:
+Note that the `-o` option specifies that the executable be named _foobar,_ rather than the default name a.out. To run _foobar_, we simply invoke its pathname on the command line:
 
 ```
 ./foobar
 ```
 
-Behind the scenes, quite a lot of work is involved in producing the executable. The sequence of operations is shown in Figure 4.2. Here's a breakdown of what happens at each stage:
+Behind the scenes, quite a lot of work is involved in producing the executable _foobar_. An overview of the sequence of operations is shown in Figure 4.2. Here's a breakdown of what happens at each stage:
 
-1. **Preprocessing stage:** The preprocessor modifies the source code in _foo.c_ and _bar.c_ by including header files (stdio.h and header.h for foo.c, and header.h for bar.c), expanding macros, and removing comments. The output is of the preprocessor is stored in _foo.i_ and _bar.i_.
-2. **Compilation stage:** The compiler translates _foo.i_ and _bar.i_ into assembly language files _testcircle.s_ and _circle.s._
-3. **Assembly stage:** The assembler translates _foo.s_ and _bar.s_ into relocatable object files _foo.o_ and _bar.o_. These files contain machine code but are not executable.
+1.  **Preprocessing stage:** The preprocessor modifies the source code in foo.c and bar.c by performing two main tasks:
+
+    1. **Removing comments.** Comments serve to help human readers understand the code, but are of no use to the compiler. Hence, they can be discarded before compilation begins.&#x20;
+    2. **Handling preprocessor directives.** These are lines in the code that begin with a # (hash). Unlike tradsitional C code, they are meant to be interpreted by the preprocessor, not the compiler. Examples of preprocessor directives are #include (e.g., `#include <stdio.h>`) and #define (e.g., `#define PI 3.14159`). &#x20;
+
+    The output is of the preprocessor is stored in _foo.i_ and _bar.i_.&#x20;
+2. **Compilation stage:** The compiler translates _foo.i_ and _bar.i_ into assembly language files _testcircle.s_ and _circle.s._&#x20;
+3. **Assembly stage:** The assembler translates _foo.s_ and _bar.s_ into relocatable object files _foo.o_ and _bar.o_. These files contain machine code but are not executable, since they contain external references. For example, foo.o might contain references to functions defined in bar.o or the C Standard Library.&#x20;
 4. **Linking stage:** The linker combines _foo.o_ and _bar.o_, along with necessary .o files from the C Standard Library, producing the executable file _foobar_.
 
-<figure><img src="../../.gitbook/assets/Group 70.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Group 70 (1).png" alt=""><figcaption></figcaption></figure>
 
 Notice that the first three stages (preprocessing, compilation, and assembly) are performed on each file separately. Recognizing this is critical to understanding how the build process works.
 
@@ -34,7 +39,7 @@ bar.c    foo.c    foobar    header.h
 
 We can instruct gcc to save the intermediate files by using the `--save-temps` option:
 
-```
+```bash
 gcc217 --save-temps foo.c bar.c -o foobar
 ```
 
@@ -48,35 +53,24 @@ foo.i    foo.s    foo.o    foobar   header.h
 
 ### Stopping the build process at any stage
 
-GCC provides command line options to halt the build process after after any of the first three stages. Here's a breakdown of the options:
+GCC provides command line options to halt the build process at any stage of the build process. Here's a breakdown of the available options:
 
-**`-E`: stop after preprocessing.** Example:`gcc -E foo.c bar.c`. By default, the preprocessed output will be printed on stdout, but you can save it to `.i` files instead using the `-o` option:
-
-```
-gcc -E foo.c -o foo.i
-gcc -E bar.c -o bar.i
-```
-
-**`-S`: stop after compilation**. The input can be either .c or .i files.GCC will automatically save the assembly code in .s files. Examples:
+**`-E`:**  This instructs GCC to stop the build process after the preprocessing stage. For example, if we were to invoke:
 
 ```bash
-gcc -S foo.c bar.c # preprocesses and compiles foo.c and bar.c
+gcc217 -E foo.c bar.c
 ```
+
+GCC would preprocess foo.c and bar.c and halt. By default, the preprocessed output will be printed on stdout, not in .i files. To save it to .i files, you can use the `.o` option or the `>` redirection operator:&#x20;
 
 ```bash
-gcc -S foo.i bar.i # compiles foo.i andf bar.i
+gcc217 -E foo.c -o foo.i
+gcc217 -E bar.c -o bar.i
+# or
+gcc217 -E foo.c > foo.i
+gcc217 -E bar.c > bar.i
 ```
 
-**`-S`: stop after assembly**. The input can be either .c, .i, or .o files. GCC will automatically save the object code in .o files. Examples:
+**`-S`:** This instructs GCC to stop the build process after compilation. The input can be either .c (e.g., `gcc217 -S foo.c bar.c`) or .i files (e.g., `gcc217 -S foo.i bar.i`). In this case, GCC will automatically save the assembly code in .s files.
 
-```bash
-gcc -c foo.c bar.c # preprocesses,compiles, and assembles foo.c and bar.c
-```
-
-```bash
-gcc -c foo.i bar.i # compiles and assembles foo.i and bar.i
-```
-
-```
-gcc -c foo.s bar.s # assembles foo.s and bar.s
-```
+**`-c`:** This instructs GCC to stop the build process after assembly. The input can be either `.c`, `.i`, or `.o` files. GCC will automatically save the object code in `.o` files.&#x20;
