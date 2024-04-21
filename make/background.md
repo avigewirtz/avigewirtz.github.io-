@@ -1,30 +1,48 @@
 # Introduction
 
-make is a software tool that automates incremental builds. The key to understanding make is understanding what incremental builds are and how to implement them manually. Once you understand this, the mechanics and role of make is obvious.&#x20;
+make is a software tool that automates incremental builds. The key to understanding make is understanding what incremental builds are. Once you understand this, the mechanics and role of make become obvious.&#x20;
+
+{% hint style="warning" %}
+Note: Before reviewing this chapter, ensure you're familiar with the GCC build process. An in depth overview is provided in [GCC Build Process](broken-reference).
+{% endhint %}
 
 ## Incremental builds
 
-Incremental builds is a strategy...
-
-## How to implement incremental builds
+Incremental builds is an approach where each build builds off the previous one. The first time you build a program you build the entire thing, but in subsequent build you only rebuild parts that have been affected by changes.
 
 They key to implementing incremental builds we always treat building as a two step process. In the first step, each of the files is translated into object code. In the second step, each of the .o files is linked to produce the executable.&#x20;
 
-
-
 ## Understanding dependencies in a C program
 
-Easiest way to understand dependencies is via a dependency graph. Constructing a dependency graph is quite straightforward:
+Implementing incremental builds requires a good understanding of the project's dependencies. Easiest way to understand dependencies is via a dependency graph. Constructing a dependency graph is quite straightforward:
 
-1. Create a note for each .c and .h file:&#x20;
+1. Create a node for each .c and .h file:&#x20;
 
+<figure><img src="../.gitbook/assets/Group 92.png" alt=""><figcaption></figcaption></figure>
 
+2. Create a corresponding .o node for each .c file, and draw an arrow from each .c file to its corresponding .o file:&#x20;
 
+<figure><img src="../.gitbook/assets/Group 102 (2).png" alt=""><figcaption></figcaption></figure>
 
+2. For each .h file, if it's included in a .c file, drar an arrow from the .h file to the same .o file that the .c file points to. For example, if x.h is #included in a.c and b.c, draw an arrow from x.h to a.o and b.o:
 
+<figure><img src="../.gitbook/assets/Group 99.png" alt=""><figcaption></figcaption></figure>
 
+4. Create a node for the executable, and draw an arrow from each .o node to the executable:&#x20;
 
+<figure><img src="../.gitbook/assets/Group 100.png" alt=""><figcaption></figcaption></figure>
 
+5. For extra clarity, it's helpful to also include the commands to generate each file:
+
+<figure><img src="../.gitbook/assets/Group 111 (1).png" alt=""><figcaption></figcaption></figure>
+
+In this graph, an arrow from file A to file B indicates that file B depends on A. Meaning, if A is modified, B has to be rebuilt.&#x20;
+
+* Two levels of dependencies
+* direct dependencies
+* Indirect dependencies
+
+## Example
 
 Recall the testintmath program from precept 4, whose source code is shown below. We will use it as a running example throughout this chapter.&#x20;
 
@@ -92,29 +110,11 @@ int lcm(int i, int j); 
 {% endtab %}
 {% endtabs %}
 
-We can build our program by invoking:
 
-```
-gcc217 testintmath.c intmath.c -o testintmath
-```
-
-Now suppose after building testintmath, we make a change to one of the source files, say intmath.c. To incorporate the change, we need to rebuild testintmath. We can do so by invoking the same command we previously invoked:
-
-```
-gcc217 testintmath.c intmath.c -o testintmath
-```
-
-For a small program like testintmath, rebuilding all source files whenever there's a change to the source  is not a terrible approach, since build times are quite low. But what if our program were much larger, say composed of 1000 .c files? Rebuilding all 1000 source files would be extremely time-consuming and a drain on system resources. This is where the concept of incremental builds comes into play.
 
 ## Incremental builds
 
-Incremental builds is an approach where each build builds off the previous one. In other words, the first time you build a program you build the entire thing, but in subsequent build you only rebuild parts that have changed.
 
-The strategy for employing incremental builds is in theory straightforward. Recall that gcc build's C programs in four sequential stages: preprocessing, compilation, assembly, and linking. This process is shown in Figure 5.2. By default, the intermediate files are not retained.&#x20;
-
-<figure><img src="../.gitbook/assets/Group 118.png" alt="" width="375"><figcaption></figcaption></figure>
-
-We don't care about .i or .s files, but the key to implementing incremental builds is saving the .o files. The object files are a machine code version of the program, but stored in two independent units. testintmath.o is derived from testintmath.c and intmath.h, but is completely independent of intmath.c. Similarly, intmath.c is completely independent of testintmath.c. Thus a change to testintmath.c has no bearing on intmath.o, and a change to intmath.c has no bearing on testintmath.o. However, a change to will not affect either .c file will not affect the other .c file's corresponding  testintmath.o is a machine code version of testintmath.c and intmath.h, and intmath.o is a machine code version of This way, if a subsequent change to the source code does not affect a .o file, it can be reused.  Let's now build testintmath again, but this time ensuring to save to object files. To do so, we invoke gcc twice. First we invoke it with the -c option, which tells gcc to stop the build process after assembly, and save the output in object files.&#x20;
 
 ```
 gcc217 -c intmath.c testintmath.c 
@@ -134,9 +134,9 @@ For example, suppose we change intmath.c. To rebuild tesintmath, we invoke gcc w
 gcc217 -c intmath.c 
 ```
 
-## Dependency Graphs
 
-In our case, the dependency graph in Figure 2 makes it quite obvious what files have to be rebuilt after a change. We see that a change to testintmath.c affects testintmat.o and testintmath, but it does not affect intmath.o. Similarly, a change to intmath.c affects intmat.o and testintmath, but it does not affect testintmath.o. However, a change to intmath.o affects testintmath.o, intmath.o, and testintmath.&#x20;
+
+
 
 <figure><img src="../.gitbook/assets/Group 64 (2).png" alt="" width="563"><figcaption></figcaption></figure>
 
