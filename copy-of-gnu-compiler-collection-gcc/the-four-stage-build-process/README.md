@@ -6,7 +6,7 @@ Suppose we have a C program comprised of two .c files: foo.c, bar.c. To build ou
 gcc217 foo.c bar.c -o foobar
 ```
 
-Note that the `-o` option specifies that the executable be named _foobar,_ rather than the default name a.out. To run _foobar_, we simply invoke its pathname on the command line:
+Note that the `-o` option specifies that the executable be named _foobar,_ rather than the default name _a.out_. To run _foobar_, we simply invoke its pathname on the command line:
 
 ```
 ./foobar
@@ -24,7 +24,7 @@ Behind the scenes, quite a lot of work is involved in producing the executable _
 3. **Assembly stage:** The assembler translates _foo.s_ and _bar.s_ into relocatable object files _foo.o_ and _bar.o_. These files contain machine code but are not executable, since they contain external references. For example, foo.o might contain references to functions defined in bar.o or the C Standard Library.&#x20;
 4. **Linking stage:** The linker combines _foo.o_ and _bar.o_, along with necessary .o files from the C Standard Library, producing the executable file _foobar_.
 
-<figure><img src="../../.gitbook/assets/Group 70 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Group 70 (2).png" alt=""><figcaption></figcaption></figure>
 
 Notice that the first three stages (preprocessing, compilation, and assembly) are performed on each file separately. Recognizing this is critical to understanding how the build process works.
 
@@ -34,7 +34,7 @@ By default, gcc does not retain the intermediate files (i.e., `.i`, `.s`, and `.
 
 ```bash
 > ls
-bar.c    foo.c    foobar    header.h
+bar.c    foo.c    foobar
 ```
 
 We can instruct gcc to save the intermediate files by using the `--save-temps` option:
@@ -48,7 +48,7 @@ Invoking `ls`, we now see the intermediate files in our project directory:
 ```bash
 > ls
 bar.c    bar.i    bar.s    bar.o    foo.c    
-foo.i    foo.s    foo.o    foobar   header.h
+foo.i    foo.s    foo.o    foobar   
 ```
 
 ### Stopping the build process at any stage

@@ -1,4 +1,30 @@
-# Motivation For Make
+# Introduction
+
+make is a software tool that automates incremental builds. The key to understanding make is understanding what incremental builds are and how to implement them manually. Once you understand this, the mechanics and role of make is obvious.&#x20;
+
+## Incremental builds
+
+Incremental builds is a strategy...
+
+## How to implement incremental builds
+
+They key to implementing incremental builds we always treat building as a two step process. In the first step, each of the files is translated into object code. In the second step, each of the .o files is linked to produce the executable.&#x20;
+
+
+
+## Understanding dependencies in a C program
+
+Easiest way to understand dependencies is via a dependency graph. Constructing a dependency graph is quite straightforward:
+
+1. Create a note for each .c and .h file:&#x20;
+
+
+
+
+
+
+
+
 
 Recall the testintmath program from precept 4, whose source code is shown below. We will use it as a running example throughout this chapter.&#x20;
 

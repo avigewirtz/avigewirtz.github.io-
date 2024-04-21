@@ -110,15 +110,14 @@
   * [Compilation stage](gcc-build-process/page-1/compilation-stage.md)
   * [Assembly stage](gcc-build-process/page-1/assembly-stage.md)
   * [Linking stage](gcc-build-process/page-1/linking-stage.md)
-* [Role of each stage](gcc-build-process/role-of-each-stage.md)
+* [Key takeaways](gcc-build-process/key-takeaways.md)
 * [Identifying Build Errors](gcc/identifying-build-errors.md)
 * [GCC Cheatsheet](gnu-compiler-collection-gcc/gcc-cheatsheet.md)
 * [Further Reading](copy-of-gnu-compiler-collection-gcc/further-reading.md)
 
 ## Make
 
-* [Introduction](make/introduction.md)
-* [Motivation For Make](make/background.md)
+* [Introduction](make/background.md)
 * [Makefile](make/makefiles/README.md)
   * [Writing a Makefile](make/makefiles/makefile-version-1-basic.md)
   * [Phony targets](make/makefiles/makefile-version-2-phony-targets.md)
