@@ -118,8 +118,9 @@
 ## Make
 
 * [Introduction](make/background.md)
-* [Makefile](make/makefiles/README.md)
+* [makefiles](make/makefiles/README.md)
   * [Writing a Makefile](make/makefiles/makefile-version-1-basic.md)
+  * [How make processes a makefile](make/makefiles/how-make-processes-a-makefile.md)
   * [Phony targets](make/makefiles/makefile-version-2-phony-targets.md)
   * [Macros](make/makefiles/makefile-version-3-macros.md)
 

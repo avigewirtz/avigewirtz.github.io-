@@ -6,42 +6,24 @@ As mentioned earlier, a makefile is essentially a textual representation of a de
 
 <figure><img src="../../.gitbook/assets/Group 28 (1).png" alt="" width="563"><figcaption><p>Figure 6: testintmath dependency graph</p></figcaption></figure>
 
-**Step 1**: Create a makefile in the testintmath directory (e.g., `emacs Makefile`).
-
-**Step 2**: Create a rule for:
-
-* The executable (i.e., testintmath)
-* Each object file (i.e., testintmath.o and intmath.o)
-
-```makefile
-testintmath:
-
-
-testintmath.o:
-
-
-intmath.o:
+Create what is known as a "dependency rule" for each object file (intmath.o and testintmath.o) and for the executable (testintmath). A dependency rule has the following syntax:
 
 ```
-
-**Step 3**: Fill in the dependencies for each rule. In the dependency graph, an arrow (i.e., directed edge) from file A to file B indicates that B depends on A.  In our case:
-
-* testintmath depends on testintmath.o and intmath.o
-* testintmath.o depends on testintmath.c and intmath.h&#x20;
-* intmath.o depends on intmath.c and intmath.h&#x20;
-
-```makefile
-testintmath: testintmath.o intmath.o
- 
- 
-testintmath.o: testintmath.c intmath.h
-  
-
-intmath.o: intmath.c intmath.h
-  
+target: dependencies
+<tab> command
 ```
 
-**Step 4**: Fill in the command for each rule. The commands for our program are specified in the dependency graph.&#x20;
+* **Target**: the file you want to build.
+* **Dependencies**: the files that the target directly depends on.
+* **Command**: the command to build the target
+
+In our case, we have that results in a makefile with the following three rules: one for testintmath, one for intmath.o, and one for testintmath.o. With the dependency graph, it's very easy to see which files these targets directly depend on:
+
+* testintmath directly depends on intmath.o and testintmath.o
+* intmath.o dircetly depends on intmath.c and intmath.h
+* testintmath.o directly depends on testintmath.c and intmath.h
+
+This leads to the following makefile:
 
 ```makefile
 testintmath: testintmath.o intmath.o
@@ -54,29 +36,20 @@ intmath.o: intmath.c intmath.h
     gcc217 -c intmath.c
 ```
 
-### Our makefile in Action
+{% hint style="success" %}
+### Comments
 
-Let's now examine how make processes our makefile. Let's assume we're building testintmath for the first time. Thus, testintmath.o, intmath.o, and testintmath don't exist.&#x20;
+In a Makefile, everything following the `#` symbol on a line is treated as a comment:
 
-To run make, we simply invoke make on the command line:
-
+```makefile
+# This is a comment
 ```
-make
-```
+{% endhint %}
 
-<figure><img src="../../.gitbook/assets/Group 66 (5).png" alt=""><figcaption></figcaption></figure>
+## Running our makefile
 
-When all files are up to date:
+type make&#x20;
 
-<figure><img src="../../.gitbook/assets/Group 67 (1).png" alt=""><figcaption></figcaption></figure>
+make will look for file named xyz and begin at first target
 
-after modifying intmath.c:
-
-<figure><img src="../../.gitbook/assets/Group 68 (2).png" alt=""><figcaption></figcaption></figure>
-
-## other points i want to make
-
-* A rule can have multiple commands and targets. We won't cover such rules here.&#x20;
-* The order in which rules appear in the makefile isn't signifigant, except for the first rule, which&#x20;
-* doesn't process all rules. only ones&#x20;
-
+if we want make to begin a specific target, invoke make followed by target name
