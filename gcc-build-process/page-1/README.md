@@ -1,6 +1,6 @@
-# Example Program
+# Deeper dive
 
-Now that we understand the four stages involved in building a C program, let's see them in action with a practical example. Consider the multi-file C program shown below. It will serve as a running example throughout this chapter, allowing us to demonstrate how the GCC build process works. To build our program, we invoke the following command:
+Now that we understand the four stages involved in building a C program, let's analyze them in detail. To do so, we'll analyze each of the four stages in more detail using the multi-file C program shown below as an example.&#x20;
 
 {% tabs %}
 {% tab title="testcircle.c" %}
@@ -59,3 +59,18 @@ double circleArea(double radius);
 {% endcode %}
 {% endtab %}
 {% endtabs %}
+
+
+
+We'll build our program using the `--save-temps` option:
+
+```
+gcc217 --save-temps intmath.c testintmath.c -o testintmath
+```
+
+
+
+```
+ls
+
+```

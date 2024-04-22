@@ -1,12 +1,16 @@
 # makefiles
 
-As we saw in the previous section, it's possible to use manually implement incremental builds. However, doing so is tedious an error prone. It requires you to:
+As we saw in the previous section, manually implementing incremental builds is possible but tends to be tedious and error-prone. This approach requires you to:
 
-1. Keep track of which files have been modified
-2. Understand the dependencies between all the program's files
+* Keep track of which files have been modified.
+* Understand the dependencies between all the program's files.
 
-Make automates the incremental build process. make gets the information to build your program by reading a user-created file known as a makefile, which is essentially a textual representation of your program's dependency graph. It describes the relationships among files in your program and provides make with the commands to build them.
+Instead of managing incremental builds manually, we can automate the process with `make`. To do this, we create a file in our program's directory known as a Makefile, which we populate with a textual representation of our program's dependency graph. This dependency graph describes the relationships among the files in our program and provides `make` with the commands needed to build each object file and the executable.
 
-## Naming your makefile
+Once we have a suitable Makefile set up, we can run our program by simply invoking `make`:
 
-You can name your makefile 'makefile' or 'Makefile' (or even 'GNUmakefile', if you're using GNU Make). GNU recommends 'Makefile'.&#x20;
+```bash
+make
+```
+
+`Make` will read the Makefile and rebuild the minimum necessary files required to produce an updated executable.

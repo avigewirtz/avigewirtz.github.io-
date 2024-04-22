@@ -1,4 +1,4 @@
-# Makefile Version 2: Phony targets
+# Phony targets
 
 In a makefile, a rule's target typically represents the name of a file that is built when the rule's command is executed. For example, in the following rule:
 
@@ -54,6 +54,16 @@ testintmath.o: testintmath.c intmath.h
 intmath.o: intmath.c intmath.h
   gcc217 -c intmath.c
 ```
+
+{% hint style="success" %}
+### Comments
+
+In a Makefile, everything following the `#` symbol on a line is treated as a comment:
+
+```makefile
+# This is a comment
+```
+{% endhint %}
 
 #### Clean
 

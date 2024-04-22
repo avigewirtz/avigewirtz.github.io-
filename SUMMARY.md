@@ -105,7 +105,7 @@
 
 * [Introduction](gnu-compiler-collection-gcc/introduction.md)
 * [The Big Picture](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/README.md)
-* [Example Program](gcc-build-process/page-1/README.md)
+* [Deeper dive](gcc-build-process/page-1/README.md)
   * [Preprocessing stage](gcc-build-process/page-1/preprocessing-stage.md)
   * [Compilation stage](gcc-build-process/page-1/compilation-stage.md)
   * [Assembly stage](gcc-build-process/page-1/assembly-stage.md)
@@ -117,7 +117,10 @@
 
 ## Make
 
-* [Introduction](make/background.md)
+* [Introduction](make/background/README.md)
+  * [Incremental builds](make/background/incremental-builds.md)
+  * [Dependency graph](make/background/dependency-graph.md)
+  * [Example](make/background/example.md)
 * [makefiles](make/makefiles/README.md)
   * [Writing a Makefile](make/makefiles/makefile-version-1-basic.md)
   * [How make processes a makefile](make/makefiles/how-make-processes-a-makefile.md)

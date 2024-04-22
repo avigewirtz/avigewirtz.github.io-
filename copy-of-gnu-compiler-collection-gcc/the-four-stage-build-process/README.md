@@ -17,7 +17,7 @@ Behind the scenes, quite a lot of work is involved in producing the executable `
 1.  **Preprocessing stage:** The preprocessor modifies the source code in `foo.c` and `bar.c` by performing two main tasks:
 
     1. **Removing comments.** Comments serve to help human readers understand the code, but are of no use to the compiler. Hence, they can be discarded before compilation begins.&#x20;
-    2. **Handling preprocessor directives.** These are lines in the code that begin with a `#` (hash). Unlike traditional C code, they are meant to be interpreted by the preprocessor, not the compiler. Examples of preprocessor directives are `#include` (e.g., `#include <stdio.h>`) and `#define` (e.g., `#define PI 3.14159`). &#x20;
+    2. **Handling preprocessor directives.** These are lines in the code that begin with a `#` (hash). Unlike traditional C code, they are meant to be interpreted by the preprocessor, not the compiler. An example of a preprocessor directive is `#include` (e.g., `#include <stdio.h>`), which instructs the preprocessor to include the contents of the specified file in the location where the `#include` directive appears.&#x20;
 
     The output is of the preprocessor is stored in `foo.i` and `bar.i.`&#x20;
 2. **Compilation stage:** The compiler translates _foo.i_ and _bar.i_ into assembly language files `testcircle.s` and `circle.s`.&#x20;
@@ -26,11 +26,18 @@ Behind the scenes, quite a lot of work is involved in producing the executable `
 
 <figure><img src="../../.gitbook/assets/Group 70 (2).png" alt=""><figcaption></figcaption></figure>
 
-Notice that the first three stages (preprocessing, compilation, and assembly) are performed on each file separately. Recognizing this is critical to understanding how the build process works.
+Notice that the first three stages of the build process (preprocessing, compilation, and assembly) are performed on each file separately. Recognizing this is critical to understanding how the build process works.
+
+{% hint style="info" %}
+A couple of points are worth noting:
+
+* gcc (that is, lowercase gcc, the program we invoke on the command line) is a compiler driver. The actual programs are cpp, cc1, as, and ld. You can see the full sequence of command gcc invokes by invoking gcc with the -v (verbose) option.&#x20;
+* In current GCC implementations, the preprocessor (cpp) is integrated into the compiler (cc1). Logically the sequence is the same, just that the preprocessor and compiler aren't distinct programs.&#x20;
+{% endhint %}
 
 ### Saving Intermediate Files
 
-By default, gcc does not retain the intermediate files (i.e., `.i`, `.s`, and `.o)`generated during the build process. Hence, if we invoke `ls` after building `foobar`, the only new file we'll see is `foobar`:&#x20;
+By default, gcc does not retain the intermediate files (i.e., `.i`, `.s`, and `.o)`generated during the build process. Thus, if we invoke `ls` after building `foobar`, we won't see any of the intermediate files:&#x20;
 
 ```bash
 > ls
@@ -43,7 +50,7 @@ We can instruct gcc to save the intermediate files by using the `--save-temps` o
 gcc217 --save-temps foo.c bar.c -o foobar
 ```
 
-If we invoke `ls` again, we see all the intermediate files in our project directory:
+If we invoke `ls` again, we'll see all the intermediate files:&#x20;
 
 ```bash
 > ls
@@ -71,6 +78,18 @@ gcc217 -E foo.c > foo.i
 gcc217 -E bar.c > bar.i
 ```
 
-**`-S`:** This instructs GCC to stop the build process after compilation. The input can be either `.c` (e.g., `gcc217 -S foo.c bar.c`) or `.i` files (e.g., `gcc217 -S foo.i bar.i`). In this case, GCC will automatically save the assembly code in `.s` files.
+**`-S`:** This instructs GCC to stop the build process after compilation. The input can be either `.c` files:&#x20;
 
-**`-c`:** This instructs GCC to stop the build process after assembly. The input can be either `.c`, `.i`, or `.o` files. GCC will automatically save the object code in `.o` files.&#x20;
+```
+gcc217 -S foo.c bar.c 
+```
+
+or `.i` files:
+
+```
+gcc217 -S foo.i bar.i
+```
+
+In the former case, GCC will preprocess and compile the files and halt. in the latter case, GCC will begin will begin with compilation and halt. GCC automatically saves the resulting assembly code in `.s` files.
+
+**`-c`:** This instructs GCC to stop the build process after assembly. The input can be either `.c`, `.i`, or `.o` files. gcc will determine which stages to perform based on which type of file it is. For example, if the file is a .c file, gcc will begin with assembly and halt. GCC automatically saves the resulting object code in `.o` files.&#x20;

@@ -2,6 +2,8 @@
 
 The second stage involves compilation itself. Here, testcircle.i and circle.i are sent to the compiler, which translate their C code into assembly-language.&#x20;
 
+* the specific assembly language it translates into depends on the target processor.&#x20;
+
 Compilation is the most complex stage of the build process. It involves translating C source code into a completely different language. This is where the code is checked for errors. Figure 4.3 shows what the arm64 assembly looks like.&#x20;
 
 <div align="center">
