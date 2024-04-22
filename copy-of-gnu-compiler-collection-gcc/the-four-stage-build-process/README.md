@@ -6,7 +6,7 @@ Suppose we have a C program comprised of two .c files: foo.c, bar.c. To build ou
 gcc217 foo.c bar.c -o foobar
 ```
 
-Note that the `-o` option specifies that the executable be named _foobar,_ rather than the default name _a.out_. To run _foobar_, we simply invoke its pathname on the command line:
+Note that `-o foobar` specifies that the executable be named _foobar,_ rather than the default name _a.out_. To run _foobar_, we simply invoke its pathname on the command line:
 
 ```
 ./foobar
