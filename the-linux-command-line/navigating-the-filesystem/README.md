@@ -6,11 +6,12 @@ To effectively navigate the Linux filesystem, you need to be familiar with three
 
 Whenever you're using the command line, bash is always positioned somewhere in the filesystem. This location is known as your (or, more accurately, Bash's) working directory. (See Working Directory.)
 
-You can find out your current working directory by invoking `pwd` (**p**rint **w**orking **d**irectory), which displays the absolute pathname of your working directory on stdout. By default, your working directory will be your home directory, which on armlab is _/u/yourNetID_:
+You can find out your current working directory by invoking `pwd` (**p**rint **w**orking **d**irectory), which displays the absolute pathname of your working dir<mark style="color:red;">ectory o</mark>n stdout. By default, your working directory will be your home directory, which on armlab is _/u/yourNetID_:
 
-```
-~$ pwd
+```bash
+armlab02:~$ pwd
 /u/yourNetID
+armlab02:~$
 ```
 
 As we'll see soon, you can change your working directory with the `cd` command.
@@ -27,9 +28,7 @@ Knowing where you are in the filesystem is important, but in order to navigate, 
 
 The most basic usage of `ls` is to list the names of the files and directories in the working directory. To do so, simply invoke:
 
-```
-ls
-```
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-25 at 10.10.51 PM.png" alt=""><figcaption></figcaption></figure>
 
 #### Displaying Hidden Files
 
@@ -47,7 +46,9 @@ Each file and directory has associated metadata, such as access permissions, own
 ls -l
 ```
 
-Let's break down the output using the final row as an example:&#x20;
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-25 at 10.11.18 PM.png" alt=""><figcaption></figcaption></figure>
+
+Let's break down the output using the entry for the\_oddysey.txt as an example:&#x20;
 
 *   **-rw-------.**&#x20;
 
@@ -75,6 +76,8 @@ Let's break down the output using the final row as an example:&#x20;
 
 To list the contents of a directory other than the working directory, simply supply it's (absolute or relative) pathname as an argument to `ls`. For example, to list the contents of `/var`:
 
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-25 at 10.11.29 PM.png" alt=""><figcaption></figcaption></figure>
+
 ```bash
 ls /var
 ```
@@ -83,7 +86,7 @@ ls /var
 
 You can change your working directory using the `cd` (**c**hange working **d**irectory) command. Its basic syntax is:
 
-```
+```bash
 cd DIRECTORY_PATHNAME
 ```
 
@@ -97,21 +100,11 @@ Suppose we want to make /usr/bin our working directory. Using its absolute patha
 cd /usr/bin
 ```
 
-Relative pathname:
+Using it's relative pathname, we need to first be aware of the "location" of our working directory, since that's where the "journey" begins from. In our case, since the working directory is /u/yourNetID, we know that the relative path to /usr/bin requires us to navigate up two levels to the root directory and then descend into usr/bin. Recall that `..` represents the parent directory. Thus, the command is:
 
 ```bash
 cd ../../usr/bin
 ```
-
-Recall that `..` represents the parent directory. Figure 3 shows a visualization of both.
-
-{% hint style="warning" %}
-**Note:** To navigate to a directory that includes whitespace in its name, you have to ensure that Bash treats the entire directory name as a single argument. This can be done by enclosing the directory name in quotes. For example:
-
-```bash
-cd "final draft"
-```
-{% endhint %}
 
 ### **Useful Shortcuts**
 
@@ -120,10 +113,18 @@ cd "final draft"
 * **Tilde (`~`):** Tilde is a shortcut for your home directory. Thus, to navigate to _/u/yourNetID/A1_, for example, you can invoke`cd ~/A1` instead of `cd /u/yourNetID/A1`.
 * **Tab Completion**: If you start typing an directory name and press Tab, Bash will attempt to auto-completes the directory name. This will save you time and reduce typos.
 
+{% hint style="info" %}
+**Note:** To navigate to a directory that includes whitespace in its name, you have to ensure that Bash treats the entire directory name as a single argument. This can be done by enclosing the directory name in quotes. For example:
+
+```bash
+cd "final draft"
+```
+{% endhint %}
+
 ## Exercises
 
 {% hint style="info" %}
-Note: For the following questions, assume the working directory is /u/yourNetID, unless otherwise stated,&#x20;
+**Note**: For the following questions, assume the working directory is /u/yourNetID, unless otherwise stated,&#x20;
 {% endhint %}
 
 1. Which of the following commands lists the metadata of all files in the working directory, including hidden files?
