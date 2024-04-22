@@ -12,7 +12,7 @@ Note that `-o foobar` specifies that the executable be named _foobar,_ rather th
 ./foobar
 ```
 
-Behind the scenes, quite a lot of work is involved in producing the executable _foobar_. An overview of the sequence of operations is shown in Figure 4.2. Here's a breakdown of what happens at each stage:
+Behind the scenes, quite a lot of work is involved in producing the executable _foobar_. It involves four sequential stages: preprocessing, compilation, assembly, and linking. An overview of the process is shown in Figure 4.2. Here's a breakdown of what happens at each stage:
 
 1.  **Preprocessing stage:** The preprocessor modifies the source code in foo.c and bar.c by performing two main tasks:
 
@@ -30,20 +30,20 @@ Notice that the first three stages (preprocessing, compilation, and assembly) ar
 
 ### Saving Intermediate Files
 
-By default, gcc does not retain the intermediate files (i.e., `.i`, `.s`, and `.o)`generated during the build process. Hence, if we invoke `ls` after building testcircle, we will not see any intermediate files:
+By default, gcc does not retain the intermediate files (i.e., `.i`, `.s`, and `.o)`generated during the build process. Hence, if we invoke `ls` after building foobar, we'll only see one newly generated file--_foobar_:&#x20;
 
 ```bash
 > ls
 bar.c    foo.c    foobar
 ```
 
-We can instruct gcc to save the intermediate files by using the `--save-temps` option:
+We can instruct gcc to save the intermediate files by using the `--save-temps` option, like so:
 
 ```bash
 gcc217 --save-temps foo.c bar.c -o foobar
 ```
 
-Invoking `ls`, we now see the intermediate files in our project directory:
+If we invoke `ls` now, we see all the intermediate files in our project directory:
 
 ```bash
 > ls
@@ -61,7 +61,7 @@ GCC provides command line options to halt the build process at any stage of the 
 gcc217 -E foo.c bar.c
 ```
 
-GCC would preprocess foo.c and bar.c and halt. By default, the preprocessed output will be printed on stdout, not in .i files. To save it to .i files, you can use the `.o` option or the `>` redirection operator:&#x20;
+GCC would preprocess foo.c and bar.c and halt. By default, the preprocessed output will be printed on stdout. To save it to .i files, we can use the `.o` option or the `>` redirection operator:&#x20;
 
 ```bash
 gcc217 -E foo.c -o foo.i
