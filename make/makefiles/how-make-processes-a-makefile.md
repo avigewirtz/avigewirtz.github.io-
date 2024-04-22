@@ -1,18 +1,22 @@
 # How make processes a makefile
 
-### Our makefile in Action
+make processes our makefile using depth first search. It starts from the default rule and recursively examines all other rules. We'll examine at three different points in development.&#x20;
 
-Let's now examine how make processes our makefile. Let's assume we're building testintmath for the first time. Thus, testintmath.o, intmath.o, and testintmath do not currently exist.&#x20;
+## Case 1: Building testintmath for the first time
 
-To run our makefile, we simply invoke make on the command line:
+Here's how it works:
 
-```
-make
-```
+* Examines first target, which is testintmath. make notes that it does not exist. It might seem that make should invoke the command to build testintmath now, but that is not the case. Make must first ensure that testintmath's dependencies (intmath.o and testintmath.o) are up to date. In our case, they don't even exist yet.&#x20;
+  * Examines testintmath.o. Notes that it does not exist.&#x20;
+    *
 
-make will search our directory for a file named makefile and begin from the first rule--in our case, the rule for testintmath.&#x20;
+
 
 <figure><img src="../../.gitbook/assets/Group 66 (5).png" alt=""><figcaption></figcaption></figure>
+
+{% hint style="info" %}
+Note that the graph shown here is essentially identical to the one we've shown all along, except that the direction of the arrows is flipped. Here, an arrow from A to B indicates that A depends on B. Functionally the dependency graphs are identical; the only difference is notation. This notation is more convinient&#x20;
+{% endhint %}
 
 When all files are up to date:
 
