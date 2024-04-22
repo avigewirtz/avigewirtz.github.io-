@@ -117,7 +117,7 @@
 
 ## Make
 
-* [Introduction](make/background/README.md)
+* [Introduction](make/background.md)
   * [Incremental builds](make/background/incremental-builds.md)
   * [Dependency graph](make/background/dependency-graph.md)
   * [Example](make/background/example.md)
