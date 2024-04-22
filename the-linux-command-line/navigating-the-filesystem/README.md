@@ -21,7 +21,7 @@ On Armlab, the working directory is displayed in the [shell prompt](../warm-up-c
 
 ## **`ls` - A sense of surroundings**
 
-Knowing where you are is important, but in order to navigate, you also need to know what's around you. The `ls` (**l**i**s**t) command can be used to list the contents of any directory in the filesystem. &#x20;
+Knowing where you are in the filesystem is important, but in order to navigate, you also need to be familiar with what's around you. The `ls` (**l**i**s**t) command can be used to list the contents of any directory in the filesystem. &#x20;
 
 #### Basic usage
 
@@ -33,7 +33,7 @@ ls
 
 #### Displaying Hidden Files
 
-By default, `ls` does not display [hidden](../filesystem/notable-directories.md#hidden-files-directories) entries (i.e., files and directories whose names begin with a `.`). To include hidden entries in the directory listing, use the `-a` option:
+By default, `ls` does not display [hidden](../filesystem/notable-directories.md#hidden-files-directories) entries (i.e., files and directories whose names begin with a `.`, such as .bashrc). To include hidden entries in the directory listing, use the `-a` option:
 
 ```
 ls -a
@@ -41,13 +41,35 @@ ls -a
 
 #### Displaying file metadata
 
-Each file and directory has associated metadata, such as the file's access permissions, owner, last modification time. You can display the metadata using the `-l` option:
+Each file and directory has associated metadata, such as access permissions, owner username, and last modification time. You can display the metadata using the `-l` option, which lists the directory's contents in long format:
 
 ```bash
 ls -l
 ```
 
-For now, you can safely ignore most of the information output by `ls -l`,. The first column will be covered in [file and directory access permissions](../file-and-directory-access-permissions.md).&#x20;
+Let's break down the output using the final row as an example:&#x20;
+
+*   **-rw-------.**&#x20;
+
+    The file's access permissions. This will be covered in [file and directory access permissions](../file-and-directory-access-permissions.md).&#x20;
+*   **1**
+
+    Number of hard links. You can safely ignore this column.&#x20;
+*   **sgewirtz**&#x20;
+
+    Name of the user who owns the file.&#x20;
+*   **utemper**&#x20;
+
+    Name of the group that owns the file.&#x20;
+*   **686539**
+
+    Size of the file in bytes.&#x20;
+*   **Oct 20 22:54**
+
+    Date and time the file was last modified.&#x20;
+*   **the\_oddysey.txt**
+
+    &#x20;   name of the file
 
 #### Displaying the Contents of Another Directory
 
