@@ -7,14 +7,14 @@ intmath.o: intmath.c intmath.h
   gcc217 -c intmath.c
 ```
 
-The target is intmath.o, which is built when `gcc217 -c intmath.c` is executed. However, Make offers a flexible feature where the target doesn't actually have to represent a file. Instead, it can represent a label for a command you want make to execute. For example, consider the following rule:
+The target is intmath.o, which is built when `gcc217 -c intmath.c` is executed. However, Make offers a flexible feature where the target doesn't actually have to represent a file and the command does not have to create a file. Instead, the target can represent a label for a command you want make to execute. For example, consider the following rule:
 
 ```
 sayHello:
     echo "Hello there!" 
 ```
 
-The target, sayHello, does not represent a file in our directory, and the command `echo "hello there"` does not create such a file. If we were to invoke this rule on the command line, make would look for a file in the current directory named 'sayHello,' and because it will not find one, it runs the command `echo "Hello there!"`.&#x20;
+The target, sayHello, does not represent a file in our directory, and the command, `echo "hello there"` , does not create such a file. If we were to invoke this rule on the command line, make would look for a file in the current directory named 'sayHello,' and because it will not find one, it runs the command `echo "Hello there!"`:
 
 ```bash
 $ make sayHello
