@@ -54,12 +54,16 @@ make target
 make
 ```
 
+make will process all theee rules, since...
+
+If we were fo invoke:
+
 Notice that make prints each of the commands it executes.&#x20;
 
-If we wanted to only build intmath.o, for example, we'd invoke:
+If we were ro invoke:
 
 ```
 make intmath.o
 ```
 
-and the third rule alone will be processed. Thus, you should recogniuze that make does not read the makefile from top to bottom, processing all rules. It starts from the default rule, and only processes other rules that are reacheable from it.&#x20;
+make would process the rule for intmath.o alone. It would not process the rules for testintmath or testintmath.o, since they aren't reachable from intmath.o. This highlights an important point: make does not read a makefile from top to bottom. it starts from the default rule or the rule specified on the commanf line, and processes rules reachable from it it. and the third rule alone will be processed. Thus, you should recogniuze that make does not read the makefile from top to bottom, processing all rules. It starts from the default rule, and only processes other rules that are reacheable from it.&#x20;
