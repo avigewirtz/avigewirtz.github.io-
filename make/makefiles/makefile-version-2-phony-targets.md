@@ -14,7 +14,7 @@ sayHello:
     echo "Hello there!" 
 ```
 
-The target, `sayHello`, does not represent a file (i.e, there is no file in our directory named `sayHello`, and the command `echo "hello there"` does not create such a file). When we invoke `make sayHello`, make looks for a file in the current directory named `sayHello`, and because no such file exists, make executes `echo "Hello there!"`:
+The target, `sayHello`, does not represent a file (i.e, there is no file in our directory named `sayHello`, and the command `echo "hello there"` does not create such a file). If we were to invoke `make sayHello`, make would look for a file in the current directory named `sayHello`, and because it will not find one, make will run `echo "Hello there!"`:
 
 ```bash
 $ make sayHello
@@ -22,7 +22,7 @@ echo "Hello there!"
 Hello there!
 ```
 
-But because this command will never create a file named `sayHello`, we can run `make sayHello` as many times as we like, and each time, make will execute `echo "Hello there!"`. For example, if we execute `make sayHello` three times in a row:
+But because this command will never create a file named `sayHello`, we can run `make sayHello` as many times as we'd like, and each time, make will execute `echo "Hello there!"`. For example, if we execute `make sayHello` three times in a row:
 
 ```bash
 $ make sayHello
@@ -76,9 +76,9 @@ In a Makefile, everything following a `#` on a line is a comment:
 {% hint style="info" %}
 **Purpose of the 'all' target**
 
-In our program, the `all` phony target doesn't serve any real purpose, except perhaps for accommodating users who invoke `make all` our of habit.&#x20;
+In our program, the `all` phony target doesn't serve any real purpose, except perhaps for accommodating users who invoke `make all` out of habit.&#x20;
 
-The real purpose of `all` is when you have multiple independent targets and want to build both via a single invocation of make. For example, suppose we have a project with two executables:`hello1` and `hello2`. We can set up our makefile as shown below and build both executables by invoking `make`, rather than having to invoke `make hello1` and `make hello2.`
+The real purpose of `all` is when you have multiple independent targets and want to build all of them via a single invocation of make. For example, suppose we have a project with two executables:`hello1` and `hello2`. We can set up our makefile as shown below and build both executables by invoking `make`, rather than having to invoke `make hello1` and `make hello2.`
 
 ```
 all: hello1 hello2
