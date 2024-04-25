@@ -126,6 +126,7 @@
   * [How make processes a makefile](make/makefiles/how-make-processes-a-makefile.md)
   * [Phony targets](make/makefiles/makefile-version-2-phony-targets.md)
   * [Macros](make/makefiles/makefile-version-3-macros.md)
+* [Further Reading](make/further-reading.md)
 
 ## Emacs
 
