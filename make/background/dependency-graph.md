@@ -1,6 +1,6 @@
 # Dependency graph
 
-To know which files have to be rebuilt after a change, you need to have a good understanding of the dependencies in a C program. Easiest way to understand dependencies is by visualizing it with a dependency graph. Constructing a dependency graph is quite straightforward. An algorithm is provided below.&#x20;
+As we mentioned earlier, we only rebuild an object file if it will produce a version different than the one generated in the previous build. To know when this is the case, you need to have a good understanding of the program's dependencies. Easiest way to understand dependencies is by visualizing it with a dependency graph. Constructing a dependency graph is quite straightforward. An algorithm is provided below.&#x20;
 
 <figure><img src="../../.gitbook/assets/Group 137.png" alt=""><figcaption></figcaption></figure>
 
