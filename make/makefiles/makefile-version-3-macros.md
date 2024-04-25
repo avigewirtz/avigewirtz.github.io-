@@ -1,4 +1,4 @@
-# Makefile Version 3: Macros
+# Macros
 
 Make has a macro facility that performs textual substitution, which is similar to the `#define` directive in C. To define a macro, you simply assign a value to a name. For example:
 
@@ -13,9 +13,11 @@ intmath.o: intmath.c intmath.h
     $(CC) -c intmath.c
 ```
 
-In this rule, `$(CC)` will be replaced by `gcc217` when the Makefile is processed. This means the command executed will be `gcc217 -c intmath.c`.
+In this rule, `$(CC)` will be replaced by `gcc217` when the Makefile is processed. In other words, the command executed will be `gcc217 -c intmath.c`.
 
-The addition of macros leads us to version 3 of our makefile:&#x20;
+## Common macros
+
+Common macros include CC (C compiler), which we just covered, and CFLAGS, which specifies options to provide to the C compiler. The benefit of these macros is we can change the compiler or compiler flags by modifying a single line in the Makefile, rather than having to edit each command individually. Let's enhance our makefile by adding macros:
 
 {% code title="makefile version 3" lineNumbers="true" %}
 ```makefile
@@ -43,5 +45,3 @@ intmath.o: intmath.c intmath.h
     $(CC) $(CFLAGS) -c intmath.c
 ```
 {% endcode %}
-
-This updated Makefile uses two macros for build commands: `CC` and `CFLAGS`, which specify the compiler and compiler flags respectively. `CC` is defined as `gcc217`, and `CFLAGS` is initially left blank, with various commented-out options provided, allowing for easy swapping. The benefit of these flags is we can change the compiler or compiler flags by modifying a single line in the Makefile, rather than having to edit each compilation command individually.
