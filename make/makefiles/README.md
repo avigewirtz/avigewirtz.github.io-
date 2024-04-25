@@ -13,4 +13,4 @@ Once we have a suitable Makefile set up, we can run our program by simply invoki
 make
 ```
 
-`Make` will read the Makefile and build the minimum necessary files required to produce an updated executable.
+`make` will read the Makefile and build the minimum necessary files required to produce an updated executable.
