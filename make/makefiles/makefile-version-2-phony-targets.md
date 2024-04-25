@@ -7,7 +7,7 @@ intmath.o: intmath.c intmath.h
   gcc217 -c intmath.c
 ```
 
-The target is intmath.o, which is built when `gcc217 -c intmath.c` is executed. However, Make offers a flexible feature where the target doesn't actually have to represent a file and the command does not have to create a file. Instead, the target can represent a label for a command you want make to execute. For example, consider the following rule:
+The target is intmath.o, which is built when `gcc217 -c intmath.c` is executed. However, Make offers a flexible feature where the target doesn't actually have to represent a file. Instead, it can represent a label for a command you want make to execute. For example, consider the following rule:
 
 ```
 sayHello:
@@ -22,7 +22,7 @@ echo "Hello there!"
 Hello there!
 ```
 
-Because this command will never create a file named 'sayHello', we can run `make sayHello` as many times as we like, and each time, Make will execute `echo "Hello there!"`, displaying the message again. For instance, if we execute `make sayHello` three times in a row, we'll get 'Hello there!' printed three times:
+Because this command will never create a file named 'sayHello', we can run `make sayHello` as many times as we like, and each time, Make will execute `echo "Hello there!"` each time. For example, if we execute `make sayHello` three times in a row:
 
 ```bash
 $ make sayHello
@@ -36,13 +36,22 @@ echo "Hello there!"
 Hello there!
 ```
 
-In other words, the sole purpose of a phony target in a Makefile is to enable the repeated execution of any arbitrary command. While using Make to execute a simple command like `echo "Hello there!"` might not seem very useful, there are numerous other commands that can significantly streamline workflow management. To illustrate this, let's enhance our Makefile with three standard phony targets: `all`, `clobber`, and `clean`:
+Such a target is called a _phony target_. The purpose of a phony target in to enable us to use make to execute any arbitrary command.&#x20;
 
+## Common phony targets
+
+The following three phony targets are commonly used in makefiles: `all`, `clean`, and `clobber`. `all` to build the entire program and it should be the default target; `clean` to delete the files typically created when the program is built; and `clobber` to extend `clean` by also deleting files like Emacs backup and autosave files. The commands for each of these targets are executed each time we invoke `make` (or `make all)`, `make clean`, and `make clobber` respectively. Let's enhance our Makefile by adding these three targets:&#x20;
+
+{% code title="makefile version 2" %}
 ```makefile
 # Dependency rules for non-file targets
+# Default target. Builds entire program. 
 all: testintmath
+# Delete Emacs backup and autosave files (*~ specifie all files that end with a '~',
+# \#*\# specifies all files that start and end with a '#')
 clobber: clean
   rm -f *~ \#*\#
+# Delete all files generated when program is built (i.e., testintmath and .o files)
 clean:
   rm -f testintmath *.o
   
@@ -54,37 +63,24 @@ testintmath.o: testintmath.c intmath.h
 intmath.o: intmath.c intmath.h
   gcc217 -c intmath.c
 ```
+{% endcode %}
 
 {% hint style="success" %}
 ### Comments
 
-In a Makefile, everything following the `#` symbol on a line is treated as a comment:
+In a Makefile, everything following a `#` on a line is a comment:
 
 ```makefile
 # This is a comment
 ```
 {% endhint %}
 
-#### Clean
-
-This rule "cleans" the project directory by deleting all the files that were generated during the build process. Its command, `rm -f testintmath *.o`, removes the executable _testintmath_ as well as all files in the current directory with the _.o_ extension (i.e., object files). To trigger this rule, simply invoke:&#x20;
-
-```
-make clean
-```
-
-#### Clobber
-
-clobber extends the functionality `clean` by also deleting Emacs backup and autosave files. `*~` specifies all files in the current directory that end with a \~ (tilde), and `\#*\#` specifies all files in the current directory that start and end with a # (hash).
-
-#### All
-
-The `all` target is often the default goal in many Makefiles, used to build the complete project. When you invoke `make` or `make all`, it triggers the build of `testintmath`, along with any other dependencies specified under this target. It's common practice to list all primary build targets under `all`.
-
 {% hint style="info" %}
-You might be wondering, "Why not just use `testintmath` directly like we did before? What's the point of `all`?" Truthfully, in our specific example, it doesn't add much benefit, except perhaps for accommodating users who are used to typing `make all` out of habit, as it's a pretty standard practice.
+**Purpose of the 'all' target**
 
-But the real purpose of `all` shows up when you have multiple independent targets that you want to build via a single invocation of make. Imagine you're working on a project with two separate programs, say`hello1` and `hello2`. You can set up your Makefile like this:
+In our program, the `all` phony target doesn't serve any real purpose, except perhaps for accommodating users who invoke `make all` our of habit.&#x20;
+
+The real purpose of `all` is when you have multiple independent targets and want to build both via a single invocation of make. For example, suppose we have a project with two executables:`hello1` and `hello2`. We can set up our makefile as shown below and build both executables by invoking `make`, rather than having to invoke `make hello1` and `make hello2.`
 
 ```
 all: hello1 hello2
@@ -101,6 +97,4 @@ hello1.o: hello1.c
 hello2.o: hello2.c
 	gcc -c hello2.c
 ```
-
-In this scenario, since both `hello1` and `hello2` are linked to the `all` target, running make will build both executables. This is more convenient than having to run `make hello1` and `make hello2` separately.
 {% endhint %}
