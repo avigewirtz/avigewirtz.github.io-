@@ -7,14 +7,14 @@ intmath.o: intmath.c intmath.h
   gcc217 -c intmath.c
 ```
 
-The target is intmath.o, which is built when `gcc217 -c intmath.c` is executed. However, Make offers a flexible feature where the target doesn't actually have to represent a file. Instead, it can represent a label for a command you want make to execute. For example, consider the following rule:
+The target is `intmath.o`, which is built when `gcc217 -c intmath.c` is executed. However, make does not require that the target actually represent a file. Instead, it can represent a label for a command you want make to execute. Such a target is called a _phony target_. Its purpose is to enable us to use make to execute any arbitrary command. For example, consider the following rule:
 
 ```
 sayHello:
     echo "Hello there!" 
 ```
 
-The target, sayHello, does not represent a file in our directory, and the command, `echo "hello there"` , does not create such a file. If we were to invoke this rule on the command line, make would look for a file in the current directory named 'sayHello,' and because it will not find one, it runs the command `echo "Hello there!"`:
+The target, `sayHello`, does not represent a file (i.e, there is no file in our directory named `sayHello`, and the command `echo "hello there"` does not create such a file). When we invoke `make sayHello`, make looks for a file in the current directory named `sayHello`, and because no such file exists, make executes `echo "Hello there!"`:
 
 ```bash
 $ make sayHello
@@ -22,7 +22,7 @@ echo "Hello there!"
 Hello there!
 ```
 
-Because this command will never create a file named 'sayHello', we can run `make sayHello` as many times as we like, and each time, Make will execute `echo "Hello there!"` each time. For example, if we execute `make sayHello` three times in a row:
+But because this command will never create a file named `sayHello`, we can run `make sayHello` as many times as we like, and each time, make will execute `echo "Hello there!"`. For example, if we execute `make sayHello` three times in a row:
 
 ```bash
 $ make sayHello
@@ -35,8 +35,6 @@ $ make sayHello
 echo "Hello there!"
 Hello there!
 ```
-
-Such a target is called a _phony target_. The purpose of a phony target in to enable us to use make to execute any arbitrary command.&#x20;
 
 ## Common phony targets
 
