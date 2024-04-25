@@ -7,7 +7,7 @@ As we saw in the previous section, managing incremental builds manually is tedio
 
 A much better approach is to automate the process with `make`. To do this, we create a file in our program's directory known as a Makefile, which we populate with a textual representation of our program's dependency graph. This dependency graph describes the relationships among the files in our program and provides `make` with the commands to build our program.&#x20;
 
-Once we have a suitable Makefile set up, we can run our program by simply invoking `make`:
+Once we have a suitable Makefile set up, we can run our program by simply invoking:
 
 ```bash
 make
