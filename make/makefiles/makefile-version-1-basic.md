@@ -19,9 +19,9 @@ target: dependencies
 
 For our program, we have three targets: `testintmath`, `testintmath.o`, and `intmath.o`, resulting in three dependency rules. Our dependency graph makes it abundantly obvious which files each of these targets directly depend on: If file A points to file B, then A directly depends on B. In our case:
 
-* testintmath directly depends on intmath.o and testintmath.o
-* intmath.o dircetly depends on intmath.c and intmath.h
-* testintmath.o directly depends on testintmath.c and intmath.h
+* `testintmath` directly depends on `intmath.o` and `testintmath.o`
+* `intmath.o` directly depends on `intmath.c` and `intmath.h`
+* `testintmath.o` directly depends on `testintmath.c` and `intmath.h`
 
 This results in the following makefile:
 
@@ -40,13 +40,13 @@ An important thing to notice is that a dependency can have its own rule. In othe
 
 ## Running our makefile
 
-The general syntax to run a makefile is:
+The general syntax of the `make` command is:
 
 ```bash
 make target
 ```
 
-where `target` is the name of the file you want `make` to build. If you omit a target, make defaults to the first target listed in the makefile.&#x20;
+where `target` is the name of the file you want `make` to build. If you omit a target, `make` defaults to the first target listed in the makefile.&#x20;
 
 To build `testintmath`, we can invoke `make` without arguments and it'll default to `testintmath`:
 
@@ -54,12 +54,12 @@ To build `testintmath`, we can invoke `make` without arguments and it'll default
 make
 ```
 
-To build intmath.o alone, we'd invoke:
+To build `intmath.o` alone, we'd invoke:
 
 ```bash
 make intmath.o
 ```
 
 {% hint style="info" %}
-**Note**: make does not read a makefile from top to bottom, processing all rules in it. It starts by processing the default rule or the rule specified on the command line, and then processes only the rules that are reachable from it.&#x20;
+**Note**: `make` does not read a makefile from top to bottom, processing all rules in it. It starts by processing the default rule or the rule specified on the command line, and then processes only the rules that are reachable from it.&#x20;
 {% endhint %}
