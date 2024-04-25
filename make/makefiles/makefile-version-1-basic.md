@@ -2,7 +2,7 @@
 
 The transition from a dependency graph to a Makefile is quite straightforward. Let's demonstrate how to write a makefile for testintmath, whose dependency graph is shown below.
 
-<figure><img src="../../.gitbook/assets/Group 28 (1).png" alt="" width="563"><figcaption><p>Figure 6: testintmath dependency graph</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Group 125 (1).png" alt=""><figcaption></figcaption></figure>
 
 The first step is to create a makefile in our program's directory. We can name it `Makefile`, `makefile`, or even `GNUmakefile` (assuming we're using GNU Make). GNU recommends `Makefile`.
 
@@ -61,5 +61,5 @@ make intmath.o
 ```
 
 {% hint style="info" %}
-**Note**: `make` does not read a makefile from top to bottom, processing all rules in it. It starts by processing the default rule or the rule specified on the command line, and then processes only the rules that are reachable from it.&#x20;
+**Note**: `make` does not read a makefile from top to bottom, processing all rules in it. It processes the default rule or the rule specified on the command line, and then processes only the rules that are reachable from it.&#x20;
 {% endhint %}

@@ -1,6 +1,6 @@
 # Example
 
-Recall the testintmath program from precept 4, whose source code is shown below. We will use it as a running example throughout this chapter.&#x20;
+To demonstrate incremental builds, we'll use the `testintmath` program from precept 4, whose source code is shown below.&#x20;
 
 {% tabs %}
 {% tab title="testintmath.c (client)" %}
@@ -70,7 +70,7 @@ int lcm(int i, int j); 
 
 First, we build a dependency graph.&#x20;
 
-<figure><img src="../../.gitbook/assets/Group 117.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Group 124 (2).png" alt=""><figcaption></figcaption></figure>
 
 The first time we build testintmath, we invoke gcc with the -c option on both intmath.c and testintmath.c:
 
