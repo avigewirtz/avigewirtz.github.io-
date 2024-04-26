@@ -14,7 +14,7 @@ target: dependencies
 ```
 
 * **Target**: The file you want to build (e.g., `testintmath`).
-* **Dependencies**: The files that the target directly depends on (e.g., `intmath.o`, `testintmath.o`).
+* **Dependencies**: The files that the target _directly_ depends on (e.g., `intmath.o`, `testintmath.o`).
 * **Command**: The command to build the target (e.g., `gcc217 intmath.o testintmath.o -o testintmath`). **Note:** The command must be preceded by a tab.
 
 This results in the following makefile:
