@@ -10,11 +10,10 @@
 ## COS217 Computing Environment
 
 * [Armlab](cos217-computing-environment/armlab/README.md)
-  * [What is Armlab?](cos217-computing-environment/armlab/background.md)
-  * [Activating your Armlab Account](cos217-computing-environment/armlab/activating-your-armlab-account.md)
-  * [Logging into & out of Armlab](cos217-computing-environment/armlab/logging-into-armlab/README.md)
-    * [Secure Shell (SSH) Protocol](cos217-computing-environment/armlab/logging-into-armlab/ssh-protocol.md)
-  * [Configuring your armlab Environment](cos217-computing-environment/armlab/configuring-your-armlab-environment.md)
+  * [Activating Your Armlab Account](cos217-computing-environment/armlab/activating-your-armlab-account.md)
+  * [Logging Into & Out Of Armlab](cos217-computing-environment/armlab/logging-into-armlab.md)
+  * [Secure Shell (SSH) Protocol](cos217-computing-environment/armlab/ssh-protocol.md)
+  * [Configuring Your Armlab Environment](cos217-computing-environment/armlab/configuring-your-armlab-environment.md)
 
 ## Fundamental Concepts
 
@@ -118,9 +117,9 @@
 ## Make
 
 * [Introduction](make/background.md)
-* [makefiles](make/makefiles/README.md)
+* [Makefiles](make/makefiles/README.md)
   * [Writing a Makefile](make/makefiles/makefile-version-1-basic.md)
-  * [How make processes a makefile](make/makefiles/how-make-processes-a-makefile.md)
+  * [How make processes a Makefile](make/makefiles/how-make-processes-a-makefile.md)
   * [Phony targets](make/makefiles/makefile-version-2-phony-targets.md)
   * [Macros](make/makefiles/makefile-version-3-macros.md)
 * [Further Reading](make/further-reading.md)

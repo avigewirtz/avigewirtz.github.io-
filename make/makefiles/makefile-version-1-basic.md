@@ -46,7 +46,7 @@ To build `testintmath`, we can invoke `make` without arguments and it'll default
 make
 ```
 
-To build `intmath.o` alone, we'd invoke:
+If we wanted to build `intmath.o` alone, we'd invoke:
 
 ```bash
 make intmath.o

@@ -1,6 +1,6 @@
-# How make processes a makefile
+# How make processes a Makefile
 
-`make` processes a makefile by doing a depth first search traversal of its dependency graph, starting from the default target. Let's examine three cases for `testintmath`.&#x20;
+`make` processes a Makefile via a depth first search (DFS) traversal of its dependency graph, starting from the default target. Let's examine three cases for `testintmath`.&#x20;
 
 ## Case 1: Building testintmath for the first time
 
@@ -13,10 +13,6 @@ Here's how it works:
 
 
 <figure><img src="../../.gitbook/assets/Group 66 (5).png" alt=""><figcaption></figcaption></figure>
-
-{% hint style="info" %}
-Note that the graph shown here is essentially identical to the one we've shown all along, except that the direction of the arrows is flipped. Here, an arrow from A to B indicates that A depends on B. Functionally the dependency graphs are identical; the only difference is notation. This notation is more convinient&#x20;
-{% endhint %}
 
 When all files are up to date:
 
