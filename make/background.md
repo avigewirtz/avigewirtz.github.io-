@@ -1,6 +1,6 @@
 # Introduction
 
-In a nutshell, make is a software tool that automates the process of incremental builds. The key to understanding make is understanding what incremental builds are and how to implement it manually. Once you understand this, the mechanics and role of make become obvious.
+In a nutshell, make is a software tool that automates the process of incremental builds. The key to understanding make is understanding what incremental builds are and how to implement it manually. Once you understand this, the mechanics and role of make become apparent.
 
 {% hint style="warning" %}
 Before reading this chapter, ensure you're familiar with the GCC build process. An overview is provided in [GCC Build Process](broken-reference).
@@ -8,33 +8,41 @@ Before reading this chapter, ensure you're familiar with the GCC build process. 
 
 ## Incremental builds
 
-Incremental builds is an approach where each build builds off the previous one. The first time you build a program, you compile all of its source files. In subsequent builds, however, you compile only the source files that have changed since the last build or were affected by changes.
+Incremental builds are an approach where each build builds off the previous one. The first time you build a program, you compile all of its source files, but in subsequent builds, you only compile the source files that have changed or are affected by changes.
 
-They key to implementing incremental builds is to always build a program in two steps. In the first step, you compile the source files into object files. This is done by invoking `gcc217` with the `-c` option. The key is that you only compile those source files that would produce object files different from those generated in the previous build. In the second step, you link all the object files (i.e., the "new" and "old" object files) together to produce the executable.
+They key to implementing incremental builds is to always build a program in two steps. First, you compile the source files into object files. This is done by invoking `gcc217` with the `-c` option. Importantly, you compile only the source files that would produce different object files from the previous build. Second, you link all object files ("new "and "old") together to produce the executable.&#x20;
+
+For example, suppose we have a C program comprised of two `.c` files: `foo.c` and `bar.c`. To build our program, we first invoke `gcc217` with the `-c` option:
+
+```
+gcc217 -c foo.c bar.c
+```
+
+Then, we link `foo.o` and `bar.o`:
+
+```bash
+gcc217 foo.o bar.o -o foobar
+```
+
+Note that `-o foobar` instructs GCC to name the executable `foobar`, rather than `a.out`.&#x20;
 
 {% hint style="info" %}
-**Note**: As we saw in [GCC Build Process](broken-reference), GCC builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. This is the case even if we invoke GCC without any options to control the build process. For example, if we invoke:
+As we saw in [GCC Build Process](broken-reference), GCC builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. This is the case even if we invoke GCC without any options to control the build process. For example, if we invoke:
 
 `gcc217 foo.c bar.c -o foobar`
 
-GCC will preprocess, compile, assemble, and link our program, producing the executable `foobar`. By default, however, GCC does not retain the intermediate (i.e., `.i`, `.s`, and `.o`) files generated during the build process. To implement incremental builds, however, we need to retain the `.o` files. To do so, we instead build `foobar` in two steps. First, we preprocess, compile, and assemble `foo.c` and `bar.c`, producing `foo.o` and `bar.o`:
-
-`gcc217 -c foo.c bar.c`
-
-Then, we link `foo.o` and `bar.o`, producing the executable `foobar`:
-
-`gcc217 foo.o bar.o -o foobar`
-
-Fundamentally, the only difference between these two build approaches is that the latter retains the intermediate object files while the former does not. &#x20;
+GCC will preprocess, compile, assemble, and link our program, producing the executable `foobar`. By default, however, GCC does not retain the intermediate (i.e., `.i`, `.s`, and `.o`) files generated during the build process. To implement incremental builds, however, we need to retain the `.o` files. To do so, we instead build `foobar` in two steps, as we did above. The first command preprocesses, compiles, and assembles `foo.c` and `bar.c`, producing `foo.o` and `bar.o`. The second command links `foo.o` and `bar.o`, producing the executable `foobar`. Fundamentally, the only difference between these two build approaches is that the two-command approach retains the intermediate object files while the single-command approach does not. &#x20;
 {% endhint %}
 
 ## Dependency graphs
 
-To know which files need to be rebuilt after changes to the source code, you need to have a good grasp of the program's dependencies. An efficient method of doing so is by constructing a dependency graph for your program, as example of which is shown Figure 2.3.&#x20;
+To know which files need to be rebuilt after changes to the source code, you need to have a good grasp of the dependencies among the program's files. An efficient method of doing so is by constructing a dependency graph, as example of which is shown Figure 2.3.&#x20;
 
 <figure><img src="../.gitbook/assets/Group 132.png" alt=""><figcaption></figcaption></figure>
 
-In this graph, the nodes represent files, which (when applicable) are annotated with the commands to build them. The arrows represent dependencies. If file A points to file B, then A directly depends on B. In other words, a change to B requires A to be rebuilt. If A points to B, which in turn points to C, then A is indirectly (or transitively) dependent on C. The distinction will become clear when we discuss makefiles.
+In this graph, the nodes represent files, which (when applicable) are annotated with the commands to build them. The arrows represent dependencies. If file A points to file B, then A directly depends on B, meaning changes to B require A to be rebuilt. If A points to B, and B points to C, then A is indirectly (or transitively) dependent on C. The distinction will become clear when we discuss makefiles.
+
+Notice the relationship between object files and header files. Multiple object files can depend on a single header file (e.g., `a.o` and `b.o` both depend on `x.h`), and an object file can depend on multiple header files (e.g., `b.o` depends on `x.h` and `y.h`). While such relationships are possible for C files, in practice it's rare. Typically, there is a one-to-one relationship between object files and C files, as there is in our graph.&#x20;
 
 ## Example
 
