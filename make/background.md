@@ -127,7 +127,7 @@ This translates `intmath.c` and `testintmath.c` into object files `intmath.o` an
 gcc217 intmath.o testintmath.o -o testintmath
 ```
 
-Going forward, if we modify a source file, we need to only rebuild the affected `.o` files. To see how changes affect the .o files, let's construct a dependency graph.  This can be done by following these simple steps:
+Going forward, if we modify one of the source files, we rebuild only the files affected by the change (i.e., the files dependent—directly or indirectly—on the modified file). Let's construct a dependency graph for our program. This can be done by following a few simple steps:
 
 1. Create a node for each of the program files (i.e., the `.c`, `.h`, `.o` files and the executable).&#x20;
 2. Draw an arrow from:
