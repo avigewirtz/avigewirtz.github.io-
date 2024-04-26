@@ -1,6 +1,6 @@
 # How make processes a makefile
 
-make processes our makefile using depth first search. It starts from the default rule and recursively examines all other rules. We'll examine at three different points in development.&#x20;
+`make` processes a makefile by doing a depth first search traversal of its dependency graph, starting from the default target. Let's examine three cases for `testintmath`.&#x20;
 
 ## Case 1: Building testintmath for the first time
 
