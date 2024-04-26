@@ -12,7 +12,7 @@ Incremental builds is an approach where each build builds off the previous one. 
 
 They key to implementing incremental builds is to always build a program in two steps. First, you compile the source files into object files. This is done by invoking `gcc217` with the `-c` option, which instructs GCC to halt the build process after assembly. Importantly, you compile only the source files that would produce object files different from the ones you already have from the previous build. Second, you link all the object files (the "new "and "old") together to produce the executable.&#x20;
 
-For example, suppose we have a C program comprised of two `.c` files: `foo.c` and `bar.c`. We build our program in two steps. First, we invoke `gcc217``-c` on `foo.c` and `bar.c`:
+For example, suppose we have a C program comprised of two `.c` files: `foo.c` and `bar.c`. We build our program in two steps. First, we invoke `gcc217-c` on `foo.c` and `bar.c`:
 
 ```
 gcc217 -c foo.c bar.c
@@ -31,12 +31,12 @@ As we saw in [GCC Build Process](broken-reference), GCC builds C programs in fou
 
 `gcc217 foo.c bar.c -o foobar`
 
-GCC will preprocess, compile, assemble, and link our program, producing the executable `foobar`. By default, however, GCC does not retain the intermediate (i.e., `.i`, `.s`, and `.o`) files generated during the build process. To implement incremental builds, however, we need to retain the `.o` files. To do so, we instead build `foobar` in two steps, as we did above.  Fundamentally, the only difference between these two build approaches is that the two-command approach retains the intermediate object files while the single-command approach does not.
+GCC will preprocess, compile, assemble, and link our program, producing the executable `foobar`. By default, however, GCC does not retain the intermediate (i.e., `.i`, `.s`, and `.o`) files generated during the build process. To implement incremental builds, however, we need to retain the `.o` files. To do so, we instead build `foobar` in two steps, as we did above. The first command translates `foo.c` and `bar.c` into object files `foo.o` and `bar.o`. The second command links foo.o and bar.o, producing the executable `foobar`. Fundamentally, the only difference between these two build approaches is that the two-command approach retains the intermediate object files while the single-command approach does not.
 {% endhint %}
 
 ## Dependency graphs
 
-To know which files need to be rebuilt after changes to the source code, you need to have a good grasp of the dependencies among the program's files. An efficient method of doing so is by constructing a dependency graph, as example of which is shown Figure 2.3.&#x20;
+To know which files need to be rebuilt after changes are made to the source code, you need to have a good grasp of the dependencies among the program's files. An efficient method of doing so is by constructing a dependency graph, as example of which is shown Figure 2.3.&#x20;
 
 <figure><img src="../.gitbook/assets/Group 132.png" alt=""><figcaption></figcaption></figure>
 
