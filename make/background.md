@@ -45,7 +45,7 @@ Fundamentally, the only difference between these two approaches is that the two-
 
 ## Dependency graphs
 
-To know which files need to be rebuilt after changes are made to one or more source files, you need to have a good grasp of the dependencies among the program's files. An efficient method of doing so is by constructing a dependency graph, as example of which is shown Figure 2.3.&#x20;
+To know which files need to be rebuilt after changes are made to one or more of the source files, you need to have a good grasp of the dependencies among the program's files. A program's dependencies are best visualized with a dependency graph, an example of which is shown Figure 2.3.&#x20;
 
 <figure><img src="../.gitbook/assets/Group 132.png" alt=""><figcaption></figcaption></figure>
 
