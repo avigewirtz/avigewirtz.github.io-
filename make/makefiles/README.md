@@ -1,9 +1,9 @@
-# makefiles
+# Makefiles
 
 As we saw in the previous section, managing incremental builds manually is possible but tends to be tedious and error-prone. It requires you to:
 
 * Keep track of which files have been modified.
-* Understand the dependencies among all the program's files.
+* Understand the dependencies among the files in the program. As programs grow in size, the web of dependencies can become quite complex.&#x20;
 
 A much better approach is to automate the process with `make`. To do this, we create a file in our program's directory known as a Makefile, which we populate with a textual representation of our program's dependency graph. The dependency graph describes the relationships among the files in our program and provides `make` with the commands to build them.&#x20;
 
