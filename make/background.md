@@ -10,9 +10,9 @@ Before reading this chapter, ensure you're familiar with the GCC build process. 
 
 Incremental builds is an approach where each build builds off the previous one. The first time you build a program, you compile all of its source files, but in subsequent builds, you compile only the source files that have changed or were affected by changes.
 
-They key to implementing incremental builds is to always build a program in two steps. First, you compile the source files into object files. This is done by invoking `gcc217` with the `-c` option, which instructs GCC to halt the build process after assembly. Importantly, you compile only the source files that would produce object files different from the ones you already have from the previous build. Second, you link all the object files (the "new "and "old") together to produce the executable.&#x20;
+They key to implementing incremental builds is to always build a program in two steps. In the first step, you compile the source files into object files. This is done by invoking `gcc217` with the `-c` option, which instructs GCC to halt the build process after assembly. Importantly, you compile only the source files that would produce object files different from the ones you already have from the previous build. In the second step, you link all the object files (the "new "and "old") together to produce the executable.&#x20;
 
-For example, suppose we have a C program comprised of two `.c` files: `foo.c` and `bar.c`. We build our program in two steps. First, we invoke `gcc217-c` on `foo.c` and `bar.c`:
+For example, suppose we have a C program comprised of two `.c` files: `foo.c` and `bar.c`. We build our program in two steps. First, we invoke `gcc217 -c` on `foo.c` and `bar.c`:
 
 ```
 gcc217 -c foo.c bar.c
@@ -45,7 +45,7 @@ Fundamentally, the only difference between these two approaches is that the two-
 
 ## Dependency graphs
 
-To know which files need to be rebuilt after changes are made to the source code, you need to have a good grasp of the dependencies among the program's files. An efficient method of doing so is by constructing a dependency graph, as example of which is shown Figure 2.3.&#x20;
+To know which files need to be rebuilt after changes are made to one or more source files, you need to have a good grasp of the dependencies among the program's files. An efficient method of doing so is by constructing a dependency graph, as example of which is shown Figure 2.3.&#x20;
 
 <figure><img src="../.gitbook/assets/Group 132.png" alt=""><figcaption></figcaption></figure>
 
