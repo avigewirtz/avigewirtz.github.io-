@@ -17,7 +17,7 @@ In this rule, `$(CC)` will be replaced by `gcc217` when the Makefile is processe
 
 ## Common macros
 
-Common macros include CC (C compiler), which we just covered, and CFLAGS, which specifies options to provide to the C compiler. The benefit of these macros is we can change the compiler or compiler flags by modifying a single line in the Makefile, rather than having to edit each command individually. Let's enhance our makefile by adding macros:
+Common macros include CC (C compiler), which we just covered, and CFLAGS, which specifies options to provide to the C compiler. The benefit of these macros is we can change the compiler or compiler flags by modifying a single line in the Makefile, rather than having to modify each command individually. Let's enhance our makefile by adding these two macros:
 
 {% code title="makefile version 3" lineNumbers="true" %}
 ```makefile

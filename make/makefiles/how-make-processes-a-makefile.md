@@ -25,9 +25,3 @@ When all files are up to date:
 after modifying intmath.c:
 
 <figure><img src="../../.gitbook/assets/Group 68 (2).png" alt=""><figcaption></figcaption></figure>
-
-## other points i want to make
-
-* A rule can have multiple commands and targets. We won't cover such rules here.&#x20;
-* The order in which rules appear in the makefile isn't signifigant, except for the first rule, which&#x20;
-* doesn't process all rules. only ones&#x20;

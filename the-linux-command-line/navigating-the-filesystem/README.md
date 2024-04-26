@@ -4,9 +4,9 @@ To effectively navigate the Linux filesystem, you need to be familiar with three
 
 ## **`pwd` - A sense of Location**
 
-Whenever you're using the command line, bash is always positioned somewhere in the filesystem. This location is known as your (or, more accurately, Bash's) working directory. (See Working Directory.)
+Whenever you're using the command line, bash is always positioned somewhere in the filesystem. This location is known as your (or, more accurately, Bash's) working directory (see [Working Directory](../filesystem/notable-directories.md#working-directory)).
 
-You can find out your current working directory by invoking `pwd` (**p**rint **w**orking **d**irectory), which displays the absolute pathname of your working dir<mark style="color:red;">ectory o</mark>n stdout. By default, your working directory will be your home directory, which on armlab is _/u/yourNetID_:
+You can find out your current working directory by invoking `pwd` (**p**rint **w**orking **d**irectory), which displays the absolute pathname of your working directory on stdout. By default, your working directory will be your home directory, which on Armlab is `/u/yourNetID`:
 
 ```bash
 armlab02:~$ pwd
@@ -14,7 +14,7 @@ armlab02:~$ pwd
 armlab02:~$
 ```
 
-As we'll see soon, you can change your working directory with the `cd` command.
+As we'll soon see, you can change your working directory with the `cd` command.
 
 {% hint style="success" %}
 On Armlab, the working directory is displayed in the [shell prompt](../warm-up-commands.md#shell-prompt), between the colon (:) and dollar ($) sign.&#x20;
@@ -94,13 +94,13 @@ cd DIRECTORY_PATHNAME
 
 ### Example&#x20;
 
-Suppose we want to make /usr/bin our working directory. Using its absolute pathanme, we invoke:
+Suppose we want to make `/usr/bin` our working directory. Using its absolute pathname, we'd invoke:
 
 ```bash
 cd /usr/bin
 ```
 
-Using it's relative pathname, we need to first be aware of the "location" of our working directory, since that's where the "journey" begins from. In our case, since the working directory is /u/yourNetID, we know that the relative path to /usr/bin requires us to navigate up two levels to the root directory and then descend into usr/bin. Recall that `..` represents the parent directory. Thus, the command is:
+Using it's relative pathname, we need to first be aware of the "location" of our working directory, since that's where the "journey" begins. In our case, since the working directory is /u/yourNetID, we know that the relative path to /usr/bin requires us to navigate up two levels to the root directory and then descend into usr/bin. Recall that `..` represents the parent directory. Thus, the command is:
 
 ```bash
 cd ../../usr/bin
@@ -110,7 +110,7 @@ cd ../../usr/bin
 
 * **Going home**: If you invoke `cd` without arguments, it'll take you to your home directory.&#x20;
 * **Returning to the last working directory**. `cd -` (hyphen) returns you to your previous working directory.&#x20;
-* **Tilde (`~`):** Tilde is a shortcut for your home directory. Thus, to navigate to _/u/yourNetID/A1_, for example, you can invoke`cd ~/A1` instead of `cd /u/yourNetID/A1`.
+* **Tilde (`~`):** Tilde is a shortcut for your home directory. Thus, to navigate to _/u/yourNetID/A1_, for example, you can invoke `cd ~/A1` instead of `cd /u/yourNetID/A1`.
 * **Tab Completion**: If you start typing an directory name and press Tab, Bash will attempt to auto-completes the directory name. This will save you time and reduce typos.
 
 {% hint style="info" %}

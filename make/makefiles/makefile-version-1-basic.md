@@ -6,7 +6,7 @@ The transition from a dependency graph to a Makefile is quite straightforward. L
 
 The first step is to create a makefile in our program's directory. We can name it `Makefile`, `makefile`, or even `GNUmakefile` (assuming we're using GNU Make). GNU recommends `Makefile`.
 
-Next, we populate the makefile with a textual representation of `testintmath`'s dependency graph. This consists of a _dependency rule_ for the executable (`testintmath`) and for each object file (`intmath.o`, `testintmath.o`). A dependency rule has the following syntax:
+Next, we populate the makefile with a textual representation of `testintmath`'s dependency graph. This consists of a _dependency rule_ each object file (`intmath.o`, `testintmath.o`) and for the executable (`testintmath`). A dependency rule has the following syntax:
 
 ```
 target: dependencies
