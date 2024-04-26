@@ -4,9 +4,9 @@ The transition from a dependency graph to a Makefile is quite straightforward. W
 
 <figure><img src="../../.gitbook/assets/Group 125 (1).png" alt=""><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
 
-The first step is to create a makefile in our program's directory. We can name it `Makefile`, `makefile`, or even `GNUmakefile` (assuming we're using GNU Make). GNU recommends `Makefile`.
+The first step is to create a Makefile in our program's directory. We can name it `Makefile`, `makefile`, or even `GNUmakefile` (assuming we're using GNU Make). GNU recommends `Makefile`.
 
-Next, we populate the makefile with a textual representation of `testintmath`'s dependency graph. This consists of a _dependency rule_ for each object file (`intmath.o`, `testintmath.o`) and for the executable (`testintmath`). A dependency rule has the following syntax:
+Next, we populate the Makefile with a textual representation of `testintmath`'s dependency graph. This consists of a _dependency rule_ for each object file (`intmath.o`, `testintmath.o`) and for the executable (`testintmath`). A dependency rule has the following syntax:
 
 ```
 target: dependencies
@@ -16,6 +16,12 @@ target: dependencies
 * **Target**: The file you want to build (e.g., `testintmath`).
 * **Dependencies**: The files that the target _directly_ depends on (e.g., `intmath.o`, `testintmath.o`).
 * **Command**: The command to build the target (e.g., `gcc217 intmath.o testintmath.o -o testintmath`). **Note:** The command must be preceded by a tab.
+
+In our case, this results in a makefile with three dependency rules: one for `testintmath`, one for `testintmath.o`, and one for `intmath.o`. Figuring our which files each of these targets directly depends on can sometimes be challenging, but with our dependency graph, the dependencies are obvious:
+
+* `testintmath` directly depends on `testintmath.o` and `intmath.o`
+* `testintmath.o` directly depends on `tetsintmath.c` and `intmath.h`
+* `intmath.o` directly depends on `intmath.c` and `intmath.h`
 
 This results in the following makefile:
 
