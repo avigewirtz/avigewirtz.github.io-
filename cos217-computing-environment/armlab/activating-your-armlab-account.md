@@ -3,7 +3,7 @@
 Each student in COS217 is assigned a personal account on Armlab. To use Armlab, you must first activate your account. The instructions for doing so are provided below. &#x20;
 
 {% hint style="warning" %}
-To complete these steps, you must be connected to the Princeton network. You can do so by either connecting to Eduroam or by using [GlobalProtect VPN](https://princeton.service-now.com/service?id=kb\_article\&sys\_id=KB0012373).
+To complete these steps, you must be connected to the Princeton network. You can do so by either connecting to Eduroam (recommended) or by using [GlobalProtect VPN](https://princeton.service-now.com/service?id=kb\_article\&sys\_id=KB0012373).
 {% endhint %}
 
 <details>
