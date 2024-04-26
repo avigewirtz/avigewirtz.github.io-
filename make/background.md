@@ -74,18 +74,18 @@ int main() {
 ```c
 #include "intmath.h"
 
-int gcd(int i, int j) {   
-  int temp;    
+int gcd(int i, int j) {
+  int temp;
   while (j != 0) {
-      temp = i % j;     
-      i = j;     
-      j = temp;   
-  }  
-  return i; 
+      temp = i % j;
+      i = j;
+      j = temp;
+  }
+  return i;
 }
 
-int lcm(int i, int j) {   
-  return (i / gcd(i, j)) * j; 
+int lcm(int i, int j) {
+  return (i / gcd(i, j)) * j;
 }
 ```
 {% endcode %}
@@ -94,11 +94,11 @@ int lcm(int i, int j) { 
 {% tab title="intmath.h (interface)" %}
 {% code lineNumbers="true" %}
 ```c
-#ifndef INTMATH_INCLUDED 
-#define INTMATH_INCLUDED 
+#ifndef INTMATH_INCLUDED
+#define INTMATH_INCLUDED
 
-int gcd(int i, int j); 
-int lcm(int i, int j); 
+int gcd(int i, int j);
+int lcm(int i, int j);
 
 #endif
 ```
