@@ -4,7 +4,17 @@ Incremental builds is an approach where each build builds off the previous one. 
 
 They key to implementing incremental builds is to always build a program in two steps. In the first step, you compile the source files into object files. This is done by invoking `gcc217` with the `-c` option. The key is that you only compile those source files that would produce object files different from those generated in the previous build. In the second step, you link all the object files (i.e., the "new" and "old" object files) together to produce the executable.
 
-As an example, we'll use the `testintmath` program from precept 4, whose source code is shown below.&#x20;
+## Dependency graphs
+
+To know which files need to be rebuilt after changes to the source code, you need to have a good grasp of the program's dependencies. An efficient method of doing so is via a dependency graph, like the one shown in Figure 2.3.&#x20;
+
+<figure><img src="../../.gitbook/assets/Group 132.png" alt=""><figcaption></figcaption></figure>
+
+In this graph, each node represents a file.
+
+## Example
+
+To demonstrate incremental builds, we'll use the `testintmath` program from precept 4, whose source code is shown below.&#x20;
 
 {% tabs %}
 {% tab title="testintmath.c (client)" %}
@@ -64,13 +74,13 @@ int lcm(int i, int j); 
 {% endtab %}
 {% endtabs %}
 
-The first time we build `testintmath`, we invoke gcc on with the `-c` option on `intmath.c` and `testintmath.c`:
+The first time we build `testintmath`, we invoke gcc with the `-c` option on `intmath.c` and `testintmath.c`:
 
 ```
 gcc217 -c intmath.c testintmath.c 
 ```
 
-This compiles the `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`. We then we invoke gcc on `intmath.o` and `testintmath.o`:
+This compiles `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`. We then we invoke gcc on `intmath.o` and `testintmath.o`:
 
 ```
 gcc217 intmath.o testintmath.o -o testintmath
@@ -80,16 +90,16 @@ This links the object files together, generating the executable `testintmath`. T
 
 <figure><img src="../../.gitbook/assets/Group 147 (2).png" alt="" width="563"><figcaption></figcaption></figure>
 
-Going forward, if we make a modify a source file, we only need to rebuild the `.o` files that are affected by the change, and then link the `.o` files together to produce the updated executable. For example, suppose we modify `intmath.c`. To rebuild our program, we invoke `gcc217 -c` on `intmath.c` alone:
+Going forward, if we modify a source file, we only need to rebuild the affected `.o` files, and then link the all the `.o` files together to produce the updated executable. For example, suppose we modify `intmath.c`. To rebuild our program, we invoke `gcc217 -c` on `intmath.c` alone:
 
 ```
 gcc217 -c intmath.c
 ```
 
-And then link `intmath.o` (the "new" object file) with `testintmath.o` (the "old" object file) to produce the updated executable:
+We then link `intmath.o` (the "new" object file) with `testintmath.o` (the "old" object file) to produce the updated executable:
 
 ```
 gcc217 tesintmath.o intmath.o -o testintmath
 ```
 
-If we were to modify `intmath.h`, the results would be more dramatic. Because `testintmath.c` and `intmath.c` both #include `intmath.h`, `testintmath.o` and `intmath.o` would both be affected by a change. Thus, a change to `intmath.h` would require us to recompile and link the entire program.&#x20;
+If we were to modify `intmath.h`, the results would be more dramatic. Because `testintmath.c` and `intmath.c` both #include `intmath.h`, `testintmath.o` and `intmath.o` would both be affected by a change in `intmath.h`. Thus, we'd have to recompile and link the entire program.&#x20;

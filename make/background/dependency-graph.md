@@ -1,6 +1,6 @@
 # Dependency graphs
 
-To know which files need to be rebuilt after a change to the source code, you need to have a good grasp of the program's dependencies. TA dependency graph clearly shows which object files need to be rebuilt after changes to the source code. , making it easy to see which files depend on which. To know which object files have to be rebuilt, you need to have a good grasp of the project's dependencies. The easiest way to understand dependencies is by visualizing it with a dependency graph. Constructing a dependency graph is quite straightforward. An algorithm is provided below.
+To know which files need to be rebuilt after a change to the source code, you need to have a good grasp of the program's dependencies. For our testintmath program, which consisted of only 3 source files, keeping track of the dependencies was quite straightforward. figuring our the dependencies TA dependency graph clearly shows which object files need to be rebuilt after changes to the source code. , making it easy to see which files depend on which. To know which object files have to be rebuilt, you need to have a good grasp of the project's dependencies. The easiest way to understand dependencies is by visualizing it with a dependency graph. Constructing a dependency graph is quite straightforward. An algorithm is provided below.
 
 <figure><img src="../../.gitbook/assets/Group 132.png" alt=""><figcaption></figcaption></figure>
 
