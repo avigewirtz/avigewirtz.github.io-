@@ -122,15 +122,15 @@ This links the object files together, generating the executable `testintmath`.&#
 
 Going forward, if we modify a source file, we only need to rebuild the affected `.o` files, and then link all the `.o` files together to produce the updated executable. Let's visualize the dependencies for testintmath with a dependency graph. We can construct one by following these simple steps:
 
-1. Create a node for each of the program files (i.e., the .c, .h, .o files and the executable).&#x20;
+1. Create a node for each of the program files (i.e., the `.c`, `.h`, `.o` files and the executable).&#x20;
 2. Draw an arrow from:
-   * The executable to each of the .o files
-   * Each .o file to its corresponding .c file
-   * Each .o file to each .h file that is #included in the .o file's corresponding .c file
+   * The executable to each of the `.o` files
+   * Each `.o` file to its corresponding `.c` file
+   * Each `.o` file to each `.h` file that is `#included` in the `.o` file's corresponding `.c` file
 3. Annotate the executable and each object file with the command to build it
 
 This results in the following dependency graph:
 
 <figure><img src="../.gitbook/assets/Group 125 (1).png" alt=""><figcaption></figcaption></figure>
 
-As we can see from the dependency graph, a modification to `testintmath.c` requires `testintmath.o` and `testintmath` to be rebuilt, but it does not require `intmath.o` to be rebuilt. Similarly, a modification to `intmath.c` requires `intmath.o` and `testintmath` to be rebuilt, but it does not require `testintmath.o` to be rebuilt. A modification to `intmath.h` is more drastic, however. It requires `intmath.o`, `testintmath.o`, and `testintmath` to be rebuilt.&#x20;
+As we can see, a modification to `testintmath.c` requires `testintmath.o` and `testintmath` to be rebuilt, but it does not require `intmath.o` to be rebuilt. Similarly, a modification to `intmath.c` requires `intmath.o` and `testintmath` to be rebuilt, but it does not require `testintmath.o` to be rebuilt. A modification to `intmath.h` is more drastic, however. It requires `intmath.o`, `testintmath.o`, and `testintmath` to be rebuilt.&#x20;
