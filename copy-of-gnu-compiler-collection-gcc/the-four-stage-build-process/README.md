@@ -20,7 +20,7 @@ Behind the scenes, quite a lot of work is involved in producing the executable `
     2. **Handling preprocessor directives.** These are lines in the code that begin with a `#` (hash). Unlike traditional C code, they are meant to be interpreted by the preprocessor, not the compiler. An example of a preprocessor directive is `#include` (e.g., `#include <stdio.h>`), which instructs the preprocessor to include the contents of the specified file in the location where the `#include` directive appears.&#x20;
 
     The output is of the preprocessor is stored in `foo.i` and `bar.i.`&#x20;
-2. **Compilation stage:** The compiler translates _foo.i_ and _bar.i_ into assembly language files `testcircle.s` and `circle.s`.&#x20;
+2. **Compilation stage:** The compiler translates `foo.i` and `bar.i` into assembly language files foo`.s` and `bar.s`.&#x20;
 3. **Assembly stage:** The assembler translates `foo.s` and `bar.s` into relocatable object files `foo.o` and `bar.o`. These files contain machine code but are not executable, since they contain external references.&#x20;
 4. **Linking stage:** The linker combines `foo.o` and `bar.o`, along with necessary `.o` files from the C Standard Library, producing the executable file `foobar`.
 
@@ -31,7 +31,7 @@ Notice that the first three stages of the build process (preprocessing, compilat
 {% hint style="info" %}
 A couple of points are worth noting:
 
-* gcc (that is, lowercase gcc, the program we invoke on the command line) is a compiler driver. The actual programs are cpp, cc1, as, and ld. You can see the full sequence of command gcc invokes by invoking gcc with the -v (verbose) option.&#x20;
+* gcc (that is, lowercase gcc, the program we invoke on the command line) is a driver program. The actual programs that actually perform the preprocessing, compilation, assembly, and linking are cpp, cc1, as, and ld. You can see the full sequence of command gcc invokes by invoking gcc with the -v (verbose) option.&#x20;
 * In current GCC implementations, the preprocessor (cpp) is integrated into the compiler (cc1). Logically the sequence is the same, just that the preprocessor and compiler aren't distinct programs.&#x20;
 {% endhint %}
 
