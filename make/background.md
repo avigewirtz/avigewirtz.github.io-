@@ -121,13 +121,11 @@ To build `testintmath`, we invoke `gcc217` with the `-c` option on `intmath.c` a
 gcc217 -c intmath.c testintmath.c 
 ```
 
-This translates `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`. We then we invoke `gcc217` on `intmath.o` and `testintmath.o`:
+This translates `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`. We then link `intmath.o` and `testintmath.o` together, producing the executable `testintmath`:
 
 ```
 gcc217 intmath.o testintmath.o -o testintmath
 ```
-
-This links the object files together, generating the executable `testintmath`.&#x20;
 
 Going forward, if we modify a source file, we need to only rebuild the affected `.o` files. To see how changes affect the .o files, let's construct a dependency graph.  This can be done by following these simple steps:
 
