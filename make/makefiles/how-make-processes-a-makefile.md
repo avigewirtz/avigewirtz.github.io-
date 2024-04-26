@@ -13,11 +13,11 @@ make
 Here's how make processes the makefile:
 
 * It starts off by examines the first target, `testintmath`. make notes that it does not exist. It might seem that make should immediately invoke the command to build `testintmath` (i.e., `gcc217 testintmath.o intmath.o -o testintmath`) , but make must first ensure that `testintmath`'s dependencies (i.e., `intmath.o`, `testintmath.o`) are up to date. In our case, they don't even exist yet.&#x20;
-  * Make moves on to the rule for `testintmath.o`. It notes that `testintmath.o` too does not exist. Here too it might seem that make should immediately invoke the command to build `testintmath.o`, but make must first examine `testintmath.o`'s dependencies--`testinmath.c` and `intmath.h` are up to date. While this might be obvious to us, make has no way of knowing that `testintmath.c` and `intmath.h` exist and are up to date--meaning that they have no dependencies of their own that would require them to be rebuilt.
-    * Make examines testintmath.c. It notes that it exists and is a leaf--meaning, it has no dependencies. Thus, it has no work to do for testintmath.c. It goes back to testintmath.o.
-    * Make then examines intmath.h. It notes that it exists and is a leaf. It goes back to testintmath.o
-  * At this point, make builds `testintmath.o` by invoking: `gcc217 -c testintmath.c`. It then goes back up to `testintmath`.&#x20;
-  * Make now examines intmath.o. It notes that it does not exist.&#x20;
+  * Make moves on to `testintmath.o`. It notes that `testintmath.o` does not exist.&#x20;
+    * Make examines `testintmath.c`. It notes that it exists and is a leaf--meaning, it has no dependencies. Thus, it has no work to do for `testintmath.c`. Make then backtracks to `testintmath.o`.
+    * Make examines `intmath.h`. It notes that it exists and is a leaf. Make then backtracks again to `testintmath.o`.
+  * Having determined that `testintmath.o`'s dependencies exist and are up to date, make now builds `testintmath.o` by invoking: `gcc217 -c testintmath.c`. It then backtracks to `testintmath`.&#x20;
+  * Make now examines testintmath's other dependency--intmath.o. It notes that it does not exist.&#x20;
     * Make then examines intmath.c. It notes that it exists and is a leaf.&#x20;
     * Make sees that intmath.o's other dependency is intmath.h. It avoids a redundant check and instead goes back up to intmath.o
   * make now builds `intmath.o` by invoking: `gcc217 -c intmath.c`. It then goes back up to `testintmath`.&#x20;

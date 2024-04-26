@@ -17,7 +17,7 @@ target: dependencies
 * **Dependencies**: The files that the target _directly_ depends on (e.g., `intmath.o`, `testintmath.o`).
 * **Command**: The command to build the target (e.g., `gcc217 intmath.o testintmath.o -o testintmath`). **Note:** The command must be preceded by a tab.
 
-In our case, this results in a makefile with three dependency rules: one for `testintmath`, one for `testintmath.o`, and one for `intmath.o`. Figuring our which files each of these targets directly depends on can sometimes be challenging, but with our dependency graph, the dependencies are obvious:
+In our case, we create three dependency rules: one for `testintmath`, one for `testintmath.o`, and one for `intmath.o`. Figuring our which files each of these targets directly depends on can sometimes be challenging, but with our dependency graph, the dependencies are obvious:
 
 * `testintmath` directly depends on `testintmath.o` and `intmath.o`
 * `testintmath.o` directly depends on `tetsintmath.c` and `intmath.h`
