@@ -1,12 +1,12 @@
 # Writing a Makefile
 
-The transition from a dependency graph to a Makefile is quite straightforward. Let's demonstrate how to write a makefile for testintmath, whose dependency graph is shown below.
+The transition from a dependency graph to a Makefile is quite straightforward. We'll demonstrate how to write a makefile for `testintmath`, whose dependency graph is shown below.
 
 <figure><img src="../../.gitbook/assets/Group 125 (1).png" alt=""><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
 
 The first step is to create a makefile in our program's directory. We can name it `Makefile`, `makefile`, or even `GNUmakefile` (assuming we're using GNU Make). GNU recommends `Makefile`.
 
-Next, we populate the makefile with a textual representation of `testintmath`'s dependency graph. This consists of a _dependency rule_ each object file (`intmath.o`, `testintmath.o`) and for the executable (`testintmath`). A dependency rule has the following syntax:
+Next, we populate the makefile with a textual representation of `testintmath`'s dependency graph. This consists of a _dependency rule_ for each object file (`intmath.o`, `testintmath.o`) and for the executable (`testintmath`). A dependency rule has the following syntax:
 
 ```
 target: dependencies
@@ -32,15 +32,15 @@ intmath.o: intmath.c intmath.h
 
 ## Running our makefile
 
-The general syntax of the `make` command is:
+The general syntax to run a makefile is:
 
 ```bash
 make target
 ```
 
-where `target` is the name of the file you want `make` to build. If you omit a target, `make` defaults to the first target listed in the makefile.&#x20;
+If you omit a target, `make` defaults to the first target in the makefile.&#x20;
 
-To build `testintmath`, we can invoke `make` without arguments and it'll default to `testintmath`:
+To build `testintmath`, we can invoke `make` without arguments and it'll default to `testintmath`, since `testintmath` is the first target in our makefile:
 
 ```bash
 make
