@@ -7,7 +7,7 @@ intmath.o: intmath.c intmath.h
   gcc217 -c intmath.c
 ```
 
-The target is `intmath.o`, which is built when `gcc217 -c intmath.c` is executed. However, a flexible feature of make is that it does not require that the target actually represent a file. Instead, it can represent a label for a command you want make to execute. Such a target is called a _phony target_. Its purpose is to enable us to use make to execute any arbitrary command. For example, consider the following rule:
+The target is `intmath.o`, which is built when `gcc217 -c intmath.c` is executed. However, a flexible feature of make is that it does not require that the target actually represent a file. Instead, it can represent a label for a command you want make to execute. Such a target is called a _phony target_. For example, consider the following rule:
 
 ```
 sayHello:
