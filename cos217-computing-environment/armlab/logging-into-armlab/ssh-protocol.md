@@ -1,6 +1,6 @@
 # Secure Shell (SSH) Protocol
 
-SSH is a protocol that provides an encrypted communication channel between two computers over a network. Its primary function is to enable logging into a remote computer and executing commands.
+SSH is a protocol that provides an encrypted communication channel between two computers communicating over a network. Its primary function is to enable a user on one computer to log into a remote computer and execute commands.&#x20;
 
 ## SSH Architecture
 
