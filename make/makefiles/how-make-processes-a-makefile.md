@@ -6,8 +6,12 @@
 
 Suppose we're building `testintmath` for the first time. In this case, neither `testintmath` nor `testintmath.o` and `intmath.o` exist yet. To build `testintmath`, we invoke:&#x20;
 
-```
-make
+```bash
+$ make
+gcc -c testintmath.c
+gcc -c intmath.c
+gcc testintmath.o intmath.o -o testintmath
+$
 ```
 
 Here's how make processes the makefile:
@@ -23,18 +27,35 @@ Here's how make processes the makefile:
   * make now builds `intmath.o` by invoking: `gcc217 -c intmath.c`. It then goes back up to `testintmath`.&#x20;
 * Finally, make builds `testintmath` by invoking: `gcc217 testintmath.o intmath.o -o testintmath`.
 
-This sequence of operations is summarized in Figure 2.4.
+The DFS traversal is summarized in Figure 2.4.
 
 <figure><img src="../../.gitbook/assets/Group 66 (5).png" alt=""><figcaption></figcaption></figure>
 
 ## Case 2: Running our makefile when all targets are up to date
 
-Suppose we invoke `make` immediately after building `testintmath`. In this case, all files are up to date. The sequence of operations performed by make is summarized in Figure 2.5.
+Suppose we invoke `make` immediately after building `testintmath`. make will respond by notifying us that `testintmath` is up to date, and hence it will not execute any commands:&#x20;
+
+```bash
+$ make
+make: `testintmath' is up to date.
+$
+```
+
+The DFS traversal is summarized in Figure 2.5.
 
 <figure><img src="../../.gitbook/assets/Group 67 (1).png" alt=""><figcaption></figcaption></figure>
 
 ## Case 3: Running our makefile after a source file is modified
 
-Suppose we invoke `make` after `intmath.c` is modified, but all the other files remain untouched. The sequence of operations performed by make is summarized in Figure 2.6.
+Suppose we invoke `make` after `intmath.c` is modified, but all the other files remain untouched. Make will execute the commands to build `intmath.o` and `testintmath`, but it will not execute the command to build `testintmath.o`:
+
+```bash
+$ make
+gcc -c intmath.c
+gcc testintmath.o intmath.o -o testintmath
+$
+```
+
+The DFS traversal is summarized in Figure 2.6.
 
 <figure><img src="../../.gitbook/assets/Group 68 (2).png" alt=""><figcaption></figcaption></figure>
