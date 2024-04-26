@@ -118,8 +118,6 @@
 ## Make
 
 * [Introduction](make/background.md)
-  * [Incremental Builds](make/background/incremental-builds.md)
-  * [Dependency graphs](make/background/dependency-graph.md)
 * [makefiles](make/makefiles/README.md)
   * [Writing a Makefile](make/makefiles/makefile-version-1-basic.md)
   * [How make processes a makefile](make/makefiles/how-make-processes-a-makefile.md)
