@@ -76,8 +76,20 @@ This compiles the `intmath.c` and `testintmath.c` into object files `intmath.o` 
 gcc217 intmath.o testintmath.o -o testintmath
 ```
 
-This links the object files together, generating the executable `testintmath`.&#x20;
+This links the object files together, generating the executable `testintmath`. This process is summarized in Figure 7.2.&#x20;
 
 <figure><img src="../../.gitbook/assets/Group 147 (2).png" alt="" width="563"><figcaption></figcaption></figure>
 
-Going forward, if we make a change to a file, we only need to rebuild the .o files that are affected by the change, and then link the updated .o files with the "old" .o files to create the updated executable.&#x20;
+Going forward, if we make a modify a source file, we only need to rebuild the `.o` files that are affected by the change, and then link the `.o` files together to produce the updated executable. For example, suppose we modify `intmath.c`. To rebuild our program, we invoke `gcc217 -c` on `intmath.c` alone:
+
+```
+gcc217 -c intmath.c
+```
+
+And then link `intmath.o` (the "new" object file) with `testintmath.o` (the "old" object file) to produce the updated executable:
+
+```
+gcc217 tesintmath.o intmath.o -o testintmath
+```
+
+If we were to modify `intmath.h`, the results would be more dramatic. Because `testintmath.c` and `intmath.c` both #include `intmath.h`, `testintmath.o` and `intmath.o` would both be affected by a change. Thus, a change to `intmath.h` would require us to recompile and link the entire program.&#x20;
