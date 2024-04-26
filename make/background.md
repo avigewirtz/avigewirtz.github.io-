@@ -27,11 +27,20 @@ gcc217 foo.o bar.o -o foobar
 Note that `-o foobar` instructs GCC to name the executable `foobar`, rather than `a.out`.&#x20;
 
 {% hint style="info" %}
-As we saw in [GCC Build Process](broken-reference), GCC builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. This is the case even if we invoke GCC without any options to control the build process. For example, if we invoke:
+As we saw in [GCC Build Process](broken-reference), GCC builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. This is the case whether we build our program via a single command:
 
-`gcc217 foo.c bar.c -o foobar`
+```bash
+gcc217 foo.c bar.c -o foobar
+```
 
-GCC will preprocess, compile, assemble, and link our program, producing the executable `foobar`. By default, however, GCC does not retain the intermediate (i.e., `.i`, `.s`, and `.o`) files generated during the build process. To implement incremental builds, however, we need to retain the `.o` files. To do so, we instead build `foobar` in two steps, as we did above. The first command translates `foo.c` and `bar.c` into object files `foo.o` and `bar.o`. The second command links foo.o and bar.o, producing the executable `foobar`. Fundamentally, the only difference between these two build approaches is that the two-command approach retains the intermediate object files while the single-command approach does not.
+Or via two commands:
+
+```bash
+gcc217 -c foo.c bar.c
+gcc217 foo.o bar.o -o foobar
+```
+
+Fundamentally, the only difference between these two approaches is that the two-command approach retains the intermediate object files while the single-command approach does not.
 {% endhint %}
 
 ## Dependency graphs
