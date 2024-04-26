@@ -8,17 +8,17 @@ Before reading this chapter, ensure you're familiar with the GCC build process. 
 
 ## Incremental builds
 
-Incremental builds are an approach where each build builds off the previous one. The first time you build a program, you compile all of its source files, but in subsequent builds, you only compile the source files that have changed or are affected by changes.
+Incremental builds is an approach where each build builds off the previous one. The first time you build a program, you compile all of its source files, but in subsequent builds, you compile only the source files that have changed or were affected by changes.
 
-They key to implementing incremental builds is to always build a program in two steps. First, you compile the source files into object files. This is done by invoking `gcc217` with the `-c` option. Importantly, you compile only the source files that would produce different object files from the previous build. Second, you link all object files ("new "and "old") together to produce the executable.&#x20;
+They key to implementing incremental builds is to always build a program in two steps. First, you compile the source files into object files. This is done by invoking `gcc217` with the `-c` option, which instructs GCC to halt the build process after assembly. Importantly, you compile only the source files that would produce object files different from the ones you already have from the previous build. Second, you link all the object files (the "new "and "old") together to produce the executable.&#x20;
 
-For example, suppose we have a C program comprised of two `.c` files: `foo.c` and `bar.c`. To build our program, we first invoke `gcc217` with the `-c` option:
+For example, suppose we have a C program comprised of two `.c` files: `foo.c` and `bar.c`. We build our program in two steps. First, we invoke `gcc217``-c` on `foo.c` and `bar.c`:
 
 ```
 gcc217 -c foo.c bar.c
 ```
 
-Then, we link `foo.o` and `bar.o`:
+Then, we link `foo.o` and `bar.o`, producing the executable:
 
 ```bash
 gcc217 foo.o bar.o -o foobar
@@ -31,7 +31,7 @@ As we saw in [GCC Build Process](broken-reference), GCC builds C programs in fou
 
 `gcc217 foo.c bar.c -o foobar`
 
-GCC will preprocess, compile, assemble, and link our program, producing the executable `foobar`. By default, however, GCC does not retain the intermediate (i.e., `.i`, `.s`, and `.o`) files generated during the build process. To implement incremental builds, however, we need to retain the `.o` files. To do so, we instead build `foobar` in two steps, as we did above. The first command preprocesses, compiles, and assembles `foo.c` and `bar.c`, producing `foo.o` and `bar.o`. The second command links `foo.o` and `bar.o`, producing the executable `foobar`. Fundamentally, the only difference between these two build approaches is that the two-command approach retains the intermediate object files while the single-command approach does not. &#x20;
+GCC will preprocess, compile, assemble, and link our program, producing the executable `foobar`. By default, however, GCC does not retain the intermediate (i.e., `.i`, `.s`, and `.o`) files generated during the build process. To implement incremental builds, however, we need to retain the `.o` files. To do so, we instead build `foobar` in two steps, as we did above.  Fundamentally, the only difference between these two build approaches is that the two-command approach retains the intermediate object files while the single-command approach does not.
 {% endhint %}
 
 ## Dependency graphs
