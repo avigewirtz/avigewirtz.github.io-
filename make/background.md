@@ -106,13 +106,13 @@ int lcm(int i, int j); 
 {% endtab %}
 {% endtabs %}
 
-The first time we build `testintmath`, we invoke `gcc217` with the `-c` option on `intmath.c` and `testintmath.c`:
+To build `testintmath`, we invoke `gcc217` with the `-c` option on `intmath.c` and `testintmath.c`:&#x20;
 
 ```
 gcc217 -c intmath.c testintmath.c 
 ```
 
-This compiles `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`. We then we invoke `gcc217` on `intmath.o` and `testintmath.o`:
+This translates `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`. We then we invoke `gcc217` on `intmath.o` and `testintmath.o`:
 
 ```
 gcc217 intmath.o testintmath.o -o testintmath
@@ -120,7 +120,7 @@ gcc217 intmath.o testintmath.o -o testintmath
 
 This links the object files together, generating the executable `testintmath`.&#x20;
 
-Going forward, if we modify a source file, we only need to rebuild the affected `.o` files, and then link all the `.o` files together to produce the updated executable. Let's visualize the dependencies for testintmath with a dependency graph. We can construct one by following these simple steps:
+Going forward, if we modify a source file, we need to only rebuild the affected `.o` files. To see how changes affect the .o files, let's construct a dependency graph.  This can be done by following these simple steps:
 
 1. Create a node for each of the program files (i.e., the `.c`, `.h`, `.o` files and the executable).&#x20;
 2. Draw an arrow from:
@@ -133,4 +133,4 @@ This results in the following dependency graph:
 
 <figure><img src="../.gitbook/assets/Group 125 (1).png" alt=""><figcaption></figcaption></figure>
 
-As we can see, a modification to `testintmath.c` requires `testintmath.o` and `testintmath` to be rebuilt, but it does not require `intmath.o` to be rebuilt. Similarly, a modification to `intmath.c` requires `intmath.o` and `testintmath` to be rebuilt, but it does not require `testintmath.o` to be rebuilt. A modification to `intmath.h` is more drastic, however. It requires `intmath.o`, `testintmath.o`, and `testintmath` to be rebuilt.&#x20;
+A modification to a file requires all the files pointing to it--directly or indirectly--to be rebuilt. A modification to `testintmath.c` requires `testintmath.o` (which is directly dependency on `testintmath.c`) and `testintmath` (which is indirectly dependent on `testintmath.c`) to be rebuilt, but it does not require `intmath.o` to be rebuilt. Similarly, a modification to `intmath.c` requires `intmath.o` and `testintmath` to be rebuilt, but it does not require `testintmath.o` to be rebuilt. A modification to `intmath.h` is more drastic, however. It requires `intmath.o`, `testintmath.o`, and `testintmath` to be rebuilt.&#x20;
