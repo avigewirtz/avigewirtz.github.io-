@@ -1,6 +1,6 @@
 # makefiles
 
-As we saw in the previous section, managing incremental builds manually is possible but tedious and error-prone. It requires you to:
+As we saw in the previous section, managing incremental builds manually is possible but tends to be tedious and error-prone. It requires you to:
 
 * Keep track of which files have been modified.
 * Understand the dependencies among all the program's files.
