@@ -58,9 +58,9 @@ To demonstrate incremental builds, we'll use the `testintmath` program from prec
 int main() {
   int i, j;
   printf("Enter the first integer:\n");
-  scanf("%sd", &i);
+  scanf("%d", &i);
   printf("Enter the second integer:\n");
-  scanf("%sd", &j);
+  scanf("%d", &j);
   printf("Greatest common divisor: %d.\n", gcd(i, j));
   printf("Least common multiple: %d.\n", lcm(i, j));
   return 0;
