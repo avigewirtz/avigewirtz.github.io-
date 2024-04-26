@@ -53,5 +53,5 @@ make intmath.o
 ```
 
 {% hint style="info" %}
-**Note**: `make` does not read a makefile from top to bottom, processing all rules within it. It starts with the default rule or the rule specified on the command line, and then processes only the rules that are reachable from it.&#x20;
+`make` does not read a makefile from top to bottom, processing all rules within it. It starts with the default rule or the rule specified on the command line, and then processes only the rules that are reachable from it.&#x20;
 {% endhint %}
