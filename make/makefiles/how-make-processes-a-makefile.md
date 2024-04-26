@@ -1,6 +1,6 @@
 # How make processes a Makefile
 
-`make` processes a Makefile via a depth first search (DFS) traversal of its dependency graph, starting from the default target. Let's examine the traversal for our `testintmath` makefile at various points of development.&#x20;
+`make` processes a Makefile via a [depth first search](https://en.wikipedia.org/wiki/Depth-first\_search) (DFS) traversal of its dependency graph, starting from the default target. Let's examine the traversal for our `testintmath` makefile at various points of development.&#x20;
 
 ## Case 1: Running our makefile when all the targets don't exist
 
