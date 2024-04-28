@@ -14,8 +14,6 @@ As a simple example, suppose we have a program composed of three files. No heade
 
 Building object files from source files
 
-The benefit of this appraoch
-
 
 
 Incremental builds are a technique where you compile only the parts of a program that have changed since the last build, rather than recompiling the entire program.
