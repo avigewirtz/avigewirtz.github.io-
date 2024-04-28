@@ -6,89 +6,30 @@ In a nutshell, make is a software tool that automates the process of incremental
 Before reading this chapter, ensure you're familiar with the GCC build process. An overview is provided in [GCC Build Process](broken-reference/).
 {% endhint %}
 
-## Incremental builds
-
-* technique supported by almost all programming languages&#x20;
+## Incremental builds as an idea
 
 Incremental builds are a technique where you compile only the parts of a program that have changed since the last build, rather than recompiling the entire program.
 
 Conceptually, The idea is as follows:
 
-* Rather than compiling a program as a monolithic unit (for example, by combining the source code in all files into a single file and then compiling that file) we compile it as a series of independent units. Techincal term is translation units. We'll discuss what exactly a transaltion unit consists of shortly.
-* We separately translate each translation unit into machine code. Technical term is relocatable object file, but typically referred to as just object file.&#x20;
+* Rather than compiling a program as a monolithic unit (for example, by combining the source code in all files into a single file and then compiling that file) we compile it as a series of independent units. Techincal term is translation units. We'll discuss what exactly a transaltion unit consists of shortly. We separately translate each translation unit into machine code. Technical term is relocatable object file, but typically referred to as just object file.&#x20;
 * We link the object files together, generating an executable
 * If any part of one of the translation units are modified, we recompile only that translation unit, and then link the resulting object file with the "old" object files
-* The result is that we saved a lot of time. Granted all Compilation is the bulk of the work.&#x20;
+* The result is that we saved a lot of time.&#x20;
 
-<figure><img src="../.gitbook/assets/Frame 2 (6).png" alt="" width="563"><figcaption></figcaption></figure>
+## Translation Unit still abstract idea
 
-## Translation Unit
-
-What exactly comprises a source code unit in a C program? It's not as simple as each .c file being a translation unit, since as we know, before compilation begins, the preprocessor first inserts any files included via the include directive. A `.c` file plus any files included via the #include directive.
-
-For example, suppose we have a program with three `.c` files: `foo.c`, `bar.c`, and `baz.c`. `foo.c` #includes the header file `a.h`, `bar.c` #includes `b.h` and `c.h`, and `baz.c` does not #include any files.&#x20;
-
-<figure><img src="../.gitbook/assets/Group 157 (3).png" alt="" width="563"><figcaption></figcaption></figure>
+What exactly comprises a translation unit in a C program? It's not as simple as each .c file being a translation unit, since as we know, before compilation begins, the preprocessor first inserts any files included via the include directive. A `.c` file plus any files included via the #include directive. For example, suppose foo.c #includes a.h and b.h. Then the combination of foo.c, a.h, and b.h comprises a translation unit.&#x20;
 
 {% hint style="info" %}
 Recall from GCC Build Process&#x20;
 {% endhint %}
 
+## Dependencies
 
+Notice that each object file depends on the files in the translation unit. If any oner of them are modified, the&#x20;
 
-Conceptually,&#x20;
-
-They key to implementing incremental builds is twofold:&#x20;
-
-1. &#x20;Always build a program in two steps. First, you compile the source files into object files. Then, you link the object files, producing the executable
-2. Don't compile a source file if the resulting object file will be identical to the one generated in the previous build.&#x20;
-
-Incremental builds is essentially a caching teqnique, whereby you use an approach where each build of a program builds off previous builds. The first time you build a program, you compile all of its source files, but in subsequent builds, you compile only the source files that have changed or were affected by changes.
-
-The general principle behind incremental builds is straightforward.&#x20;
-
-They key to implementing incremental builds is to always build a program in two steps. In the first step, you compile the source files into object files. This is done by invoking `gcc217` with the `-c` option, which instructs GCC to halt the build process after assembly. Importantly, you compile only the source files that would produce object files different from the ones you already have from the previous build. In the second step, you link all the object files (the "new "and "old") together to produce the executable.
-
-For example, suppose we have a C program comprised of two `.c` files: `foo.c` and `bar.c`. We build our program in two steps. First, we invoke `gcc217 -c` on `foo.c` and `bar.c`:
-
-```
-gcc217 -c foo.c bar.c
-```
-
-Then, we link `foo.o` and `bar.o`, producing the executable:
-
-```bash
-gcc217 foo.o bar.o -o foobar
-```
-
-Note that `-o foobar` instructs GCC to name the executable `foobar`, rather than `a.out`.&#x20;
-
-{% hint style="info" %}
-As we saw in [GCC Build Process](broken-reference/), GCC builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. This is the case whether we build our program via a single command:
-
-```bash
-gcc217 foo.c bar.c -o foobar # preprocess, compile, assemble, and link
-```
-
-Or via two commands:
-
-```bash
-gcc217 -c foo.c bar.c # preprocess, compile, assemble, and halt
-gcc217 foo.o bar.o -o foobar # link
-```
-
-Fundamentally, the only difference between these two build approaches is that the two-command approach retains the intermediate object files while the single-command approach does not.
-{% endhint %}
-
-## Dependency graphs
-
-Convinient method is via dependency graph
-
-The key to effective incremental builds is accurate dependency tracking. The build system must precisely know which files depend on which, so it can determine exactly what needs to be recompiled when a file changes.
-
-* essentially same as graph shown before, but emphasis is on dependency's.&#x20;
-
-To know which files need to be rebuilt after changes are made to one or more of the source files, you need to have a good grasp of the dependencies among the program's files. A program's dependencies are best visualized with a dependency graph, such as the one shown in Figure 2.3.
+The key to effective incremental builds is accurate dependency tracking. We must precisely know which files depend on which, so we can determine exactly what needs to be recompiled when a file changes. A program's dependencies can be formally described via a dependency graph, such as the one shown in Figure 2.3.
 
 <figure><img src="../.gitbook/assets/Group 132.png" alt=""><figcaption></figcaption></figure>
 
@@ -184,3 +125,20 @@ This results in the following dependency graph:
 <figure><img src="../.gitbook/assets/Group 125 (1).png" alt=""><figcaption></figcaption></figure>
 
 A modification to a file requires all the files pointing to it--directly or indirectly--to be rebuilt. For example, a modification to `testintmath.c` requires `testintmath.o` (which is directly dependent on `testintmath.c`) and `testintmath` (which is indirectly dependent on `testintmath.c`) to be rebuilt, but it does not require `intmath.o` to be rebuilt. The same idea applies to `intmath.c`. A modification to `intmath.h`, however, is more drastic. It requires `intmath.o`, `testintmath.o`, and `testintmath` to be rebuilt.&#x20;
+
+{% hint style="info" %}
+As we saw in [GCC Build Process](broken-reference/), GCC builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. This is the case whether we build our program via a single command:
+
+```bash
+gcc217 foo.c bar.c baz.c -o foobarbaz
+```
+
+Or via two commands:
+
+```bash
+gcc217 -c foo.c bar.c baz.c 
+gcc217 foo.o bar.o baz.o -o foobarbaz 
+```
+
+Fundamentally, the only difference between these two build approaches is that the two-command approach retains the intermediate object files while the single-command approach does not.
+{% endhint %}

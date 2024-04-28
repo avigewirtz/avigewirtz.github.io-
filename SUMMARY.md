@@ -117,6 +117,7 @@
 ## Make
 
 * [Introduction](make/background.md)
+* [Dependency graphs](make/dependency-graphs.md)
 * [Makefiles](make/makefiles/README.md)
   * [Writing a Makefile](make/makefiles/makefile-version-1-basic.md)
   * [How make processes a Makefile](make/makefiles/how-make-processes-a-makefile.md)
