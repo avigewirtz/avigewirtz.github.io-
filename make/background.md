@@ -6,30 +6,48 @@ In a nutshell, make is a software tool that automates the process of incremental
 Before reading this chapter, ensure you're familiar with the GCC build process. An overview is provided in [GCC Build Process](broken-reference/).
 {% endhint %}
 
-## Incremental builds as an idea
+## Incremental builds
+
+Wy typically think building as a single step process, involving building executable from C files. With incremental builds, we completely discard that way of thinking, and instead think of building as a two step process. First, we build object files from source files. Then, we build the executable from the object files.&#x20;
+
+As a simple example, suppose we have a program composed of three files. No header files. SHOW COMMANDS.&#x20;
+
+Building object files from source files
+
+The benefit of this appraoch
+
+
 
 Incremental builds are a technique where you compile only the parts of a program that have changed since the last build, rather than recompiling the entire program.
 
-Conceptually, The idea is as follows:
+Conceptually, here's how incremental builds work in C:
 
-* Rather than compiling a program as a monolithic unit (for example, by combining the source code in all files into a single file and then compiling that file) we compile it as a series of independent units. Techincal term is translation units. We'll discuss what exactly a transaltion unit consists of shortly. We separately translate each translation unit into machine code. Technical term is relocatable object file, but typically referred to as just object file.&#x20;
-* We link the object files together, generating an executable
+* Program is organized into a sequence of independent modules. For now, we'll assume each .c file is an independent unit.&#x20;
+* Each translation unit is separately compiled into an object file, which is a machine code representation of the translation unit.&#x20;
+* The object files are combined, pruducing an executable
 * If any part of one of the translation units are modified, we recompile only that translation unit, and then link the resulting object file with the "old" object files
-* The result is that we saved a lot of time.&#x20;
 
-## Translation Unit still abstract idea
+<figure><img src="../.gitbook/assets/Group 175 (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
-What exactly comprises a translation unit in a C program? It's not as simple as each .c file being a translation unit, since as we know, before compilation begins, the preprocessor first inserts any files included via the include directive. A `.c` file plus any files included via the #include directive. For example, suppose foo.c #includes a.h and b.h. Then the combination of foo.c, a.h, and b.h comprises a translation unit.&#x20;
 
-{% hint style="info" %}
-Recall from GCC Build Process&#x20;
-{% endhint %}
+
+
 
 ## Dependencies
 
-Notice that each object file depends on the files in the translation unit. If any oner of them are modified, the&#x20;
+The key to effective incremental builds is accurate dependency tracking. We must precisely know which files depend on which, so we can determine exactly what needs to be recompiled when a file changes.
 
-The key to effective incremental builds is accurate dependency tracking. We must precisely know which files depend on which, so we can determine exactly what needs to be recompiled when a file changes. A program's dependencies can be formally described via a dependency graph, such as the one shown in Figure 2.3.
+In the previous example, we used an extremely simple model, where each translation unit was a single .c file. In this case, dependency tracking is extremely easy. executable depends on .o files. Each .o file depends on .c file.&#x20;
+
+In practice, trasnslation units typically comprise multiple files. A translation unit is not only the .c file being invoked with gcc, but all files included directly or indirectly. Let's make our example more realiztic:
+
+<figure><img src="../.gitbook/assets/Group 184.png" alt="" width="375"><figcaption></figcaption></figure>
+
+
+
+## Dependency graph
+
+A program's dependencies can be formally described via a dependency graph, such as the one shown in Figure 2.3.
 
 <figure><img src="../.gitbook/assets/Group 132.png" alt=""><figcaption></figcaption></figure>
 
