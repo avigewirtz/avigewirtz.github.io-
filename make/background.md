@@ -34,6 +34,23 @@ The benefit to this approach is if a change is made to one of the source files, 
 
 <figure><img src="../.gitbook/assets/Frame 7 (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
+{% hint style="info" %}
+As we saw in [GCC Build Process](broken-reference/), GCC builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. This is the case whether we build our program via a single command:
+
+```bash
+gcc217 foo.c bar.c baz.c -o foobarbaz
+```
+
+Or via two commands:
+
+```bash
+gcc217 -c foo.c bar.c baz.c 
+gcc217 foo.o bar.o baz.o -o foobarbaz 
+```
+
+Fundamentally, the only difference between these two build approaches is that the two-command approach retains the intermediate object files while the single-command approach does not.
+{% endhint %}
+
 ## Dependencies
 
 The key to effective incremental builds is accurate dependency tracking. We must precisely know which files depend on which, so we can determine exactly what needs to be recompiled when a file changes.
@@ -48,7 +65,7 @@ In practice, trasnslation units typically comprise multiple files. A translation
 
 ## Dependency graph
 
-A program's dependencies can be formally described via a dependency graph, such as the one shown in Figure 2.3.
+A program's dependencies can be formally described via a what is known in mathematics as a dependency graph, such as the one shown in Figure 2.3.
 
 <figure><img src="../.gitbook/assets/Group 132.png" alt=""><figcaption></figcaption></figure>
 
@@ -56,7 +73,7 @@ In this graph, the nodes represent files, which (when applicable) are annotated 
 
 Notice the relationship between object files and header files in our dependency graph. Multiple object files can depend on a single header file (e.g., `a.o, b.o` and c`.o` all depend on y`.h`), and an object file can depend on multiple header files (e.g., `b.o` depends on both `x.h` and `y.h`). While such relationships are possible for C files, in practice they're rare. Typically, there is a one-to-one relationship between object files and C files, as is the case in our graph.
 
-## Example
+## Putting it all together: Example
 
 To demonstrate incremental builds, we'll use the `testintmath` program from precept 4, whose source code is shown below.
 
@@ -161,3 +178,5 @@ gcc217 foo.o bar.o baz.o -o foobarbaz
 
 Fundamentally, the only difference between these two build approaches is that the two-command approach retains the intermediate object files while the single-command approach does not.
 {% endhint %}
+
+n
