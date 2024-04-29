@@ -8,44 +8,37 @@ Before reading this chapter, ensure you're familiar with the GCC build process. 
 
 ## Incremental builds
 
-* EXPLAIN THAT INCREMENTAL BUILDS AVOIDS REDUNDAnt
-* requires shift in way of thinking. rather than thinking of building as single step where we build executable from source files, we think of it as two step.
-* for example, suppose we have a simple c program. no header files, so each&#x20;
+Incremental builds are a technique where you compile only the parts of a program that have changed since the last build, rather than recompiling the entire program. Implementing incremental builds requirs a shift in our way of thinking about builds. We typically think of builds as a single-step process, where the executable is built from the source files. For example, suppose we have a program with three source files: foo.c, bar.c, and baz.c. For simplicity, we'll assume neither of these files #include any other files. To build the executable, we might invoke:
 
-Wy typically think building as a single step process, involving building executable from C files. With incremental builds, we completely discard that way of thinking, and instead think of building as a two step process. In the first step, we build object files from the source files. This is done by compiling the source files with the -c option. In the second step, we build the executable by linking the object files.
+```
+gcc217 foo.c bar.c baz.c -o foobarbaz
+```
 
-Whenever a change is made to the source code, the first question we asks ourselves is which object files it affects. Then, we recompile only the source files who's object files need to be updated, and then link the object files.&#x20;
+<figure><img src="../.gitbook/assets/Group 175 (2).png" alt="" width="375"><figcaption></figcaption></figure>
 
-* TIMESTAMPS
+We build foobarbaz from foo.c, bar.c and baz.c. While this build appraoch is simple, the downside is that if any of the source files are changed, all of them them have to be recompiled in order to generate a new executable.&#x20;
 
-First, we build object files from source files. Then, we build the executable from the object files.&#x20;
+The key to incremental builds is we instead think of building as a two-step process. In the first step, we build object files from the source files. This is done by compiling the source files with the -c option:
 
-As a simple example, suppose we have a program composed of three files. No header files. SHOW COMMANDS.&#x20;
+```
+gcc217 -c foo.c bar.c baz.c
+```
 
-Building object files from source files
+In the second step, we build the executable by linking the object files:
 
+```
+gcc217 foo.o bar.o baz.o -o foobarbaz
+```
 
+The benefit to this approach is if a change is made to one of the source files, such as baz.c for example, only bar.c needs to be recompiled. We then link the newly generated bar.o with the foo.o and baz.o, producing an updated executable (Figure 12).&#x20;
 
-Incremental builds are a technique where you compile only the parts of a program that have changed since the last build, rather than recompiling the entire program.
-
-Conceptually, here's how incremental builds work in C:
-
-* Program is organized into a sequence of independent modules. For now, we'll assume each .c file is an independent unit.&#x20;
-* Each translation unit is separately compiled into an object file, which is a machine code representation of the translation unit.&#x20;
-* The object files are combined, pruducing an executable
-* If any part of one of the translation units are modified, we recompile only that translation unit, and then link the resulting object file with the "old" object files
-
-<figure><img src="../.gitbook/assets/Group 175 (1).png" alt="" width="563"><figcaption></figcaption></figure>
-
-
-
-
+<figure><img src="../.gitbook/assets/Frame 7 (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 ## Dependencies
 
 The key to effective incremental builds is accurate dependency tracking. We must precisely know which files depend on which, so we can determine exactly what needs to be recompiled when a file changes.
 
-In the previous example, we used an extremely simple model, where each translation unit was a single .c file. In this case, dependency tracking is extremely easy. executable depends on .o files. Each .o file depends on .c file.&#x20;
+In the previous example, we used an extremely simple model, where each object file depended on a single file. In this case, dependency tracking is extremely easy. executable depends on .o files. Each .o file depends on .c file.&#x20;
 
 In practice, trasnslation units typically comprise multiple files. A translation unit is not only the .c file being invoked with gcc, but all files included directly or indirectly. Let's make our example more realiztic:
 
