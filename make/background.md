@@ -8,6 +8,10 @@ Before reading this chapter, ensure you're familiar with the GCC build process. 
 
 ## Incremental builds
 
+* EXPLAIN THAT INCREMENTAL BUILDS AVOIDS REDUNDAnt
+* requires shift in way of thinking. rather than thinking of building as single step where we build executable from source files, we think of it as two step.
+* for example, suppose we have a simple c program. no header files, so each&#x20;
+
 Wy typically think building as a single step process, involving building executable from C files. With incremental builds, we completely discard that way of thinking, and instead think of building as a two step process. In the first step, we build object files from the source files. This is done by compiling the source files with the -c option. In the second step, we build the executable by linking the object files.
 
 Whenever a change is made to the source code, the first question we asks ourselves is which object files it affects. Then, we recompile only the source files who's object files need to be updated, and then link the object files.&#x20;
