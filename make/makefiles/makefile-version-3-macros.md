@@ -1,6 +1,6 @@
 # Macros
 
-Make has a macro facility that performs textual substitution, which is similar to the `#define` directive in C. To define a macro, you simply assign a value to a name. For example:
+Make has a macro facility that performs textual substitution, similar to the `#define` directive in C. To define a macro, you simply assign a value to a name. For example:
 
 ```makefile
 CC = gcc217
@@ -13,11 +13,11 @@ intmath.o: intmath.c intmath.h
     $(CC) -c intmath.c
 ```
 
-In this rule, `$(CC)` will be replaced by `gcc217` when the Makefile is processed. In other words, the command executed will be `gcc217 -c intmath.c`.
+In this rule, `$(CC)` will be replaced by `gcc217` when the Makefile is processed.
 
 ## Common macros
 
-Common macros include CC (C compiler), which we just covered, and CFLAGS, which specifies options to provide to the C compiler. The benefit of these macros is we can change the compiler or compiler flags by modifying a single line in the Makefile, rather than having to modify each command individually. Let's enhance our makefile by adding these two macros:
+Common macros include CC, which we just covered, and CFLAGS, which is used to specify command line options to invoke the compiler with. The benefit of using these macros is we can change the compiler or compiler flags by modifying a single line in the Makefile, rather than having to modify each command individually. Let's enhance our makefile by adding these two macros:
 
 {% code title="makefile version 3" lineNumbers="true" %}
 ```makefile
