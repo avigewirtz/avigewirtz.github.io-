@@ -65,7 +65,7 @@ In practice, trasnslation units typically comprise multiple files. A translation
 
 ## Dependency graph
 
-A program's dependencies can be formally described via a what is known in mathematics as a dependency graph, such as the one shown in Figure 2.3.
+A program's dependencies can be formally described via a what is known in mathematics as a dependency graph. A dependency graph for our `foobarbaz` program is shown in Figure 2.3.
 
 <figure><img src="../.gitbook/assets/Group 132.png" alt=""><figcaption></figcaption></figure>
 
