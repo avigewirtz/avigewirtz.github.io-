@@ -12,15 +12,19 @@ Associated with each file and directory are three categories of users to whom ac
 * **Group**: A predefined group of users.&#x20;
 * **Other**:  All other users.
 
-Each of these user categories may be granted three types of permissions: read, write, and execute. In this section, we will go over how to view and interpret file and directory access permissions, as well as commands for changing the access permissions.&#x20;
+Each of these user categories may be granted three types of permissions: read, write, and execute. In this section, we will go over how to view and interpret file and directory access permissions.
 
 ### Viewing access permissions
 
 You can view the permissions of each of user category by invoking `ls -l` on the command line, which lists directory entries in long format:&#x20;
 
-<figure><img src="../.gitbook/assets/Group 2 (2).png" alt=""><figcaption></figcaption></figure>
+```
+$ ls -l
+drwxr-xr-x  3  sgewirtz  utempter    68  Jun 26  15:37  public_html
+-rw-r--r--  1  sgewirtz  utempter  4017  Feb 17  2023   index.html
+```
 
-Let's zoom in on the parts relevant to our discussion, shown in Figure 1:&#x20;
+Let's zoom in on the parts relevant to our discussion:
 
 <figure><img src="../.gitbook/assets/Group 1 (4).png" alt=""><figcaption></figcaption></figure>
 
