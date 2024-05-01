@@ -2,57 +2,71 @@
 
 ## Creating Directories
 
-Directories can be created using the _mkdir_ command, whose syntax is as follows: <mark style="color:red;">**`mkdir`**</mark><mark style="color:blue;">**`DIRECTORY(IES)`**</mark>.
+To create a new directory, use the `mkdir` command followed by the name of the directory you want to create. For example, to create `dir1`, invoke:&#x20;
 
-<mark style="color:blue;">**`DIRECTORY(IES)`**</mark> represents the name(s) of the directory(ies) you want to create.
-
-
-
-{% hint style="warning" %}
-Before creating directories, let's revisit filenames. As stated [earlier](../filesystem/filenames.md), Linux filesystems impose very few restrictions on file and directory names. That said, not all valid filenames are equal. Some are poorly suited for the shell environment and are best avoided. The following naming suggestions will make your life on the command line easier:&#x20;
-
-1. Avoid using whitespace or special characters in filenames, since such files are harder to reference on the command line. The following characters are special:&#x20;
-
-{% code overflow="wrap" %}
+```bash
+mkdir dir1
 ```
-&   ;   |   *   ?   '   "   ‘   [   ]   (   )   $   <   >   {   }   #   /   \   !   ~
+
+dir1 will be created in the working directory
+
+### Creating multiple directories
+
+Multiple directories can be created via a single invocation of `mkdir` by supplying multiple directory names as arguments. For example:
+
+```bash
+mkdir dir1 dir2 dir3
 ```
-{% endcode %}
-{% endhint %}
+
+### Creating a directory with whitespace in its name
+
+Suppose we want to create a directory named `assignment 1`. As you can probably guess, invoking:
+
+```bash
+mkdir assignment 1
+```
+
+will not work; it'll create two directories--`assignment`, and `1`. A simple solution is to enclose the directiory name in quotation marks:
+
+```bash
+mkdir "assignment 1"
+```
+
+This will create a single directory named `assignment 1`.
 
 ## Creating Files
 
-## Touch
+There are numerous commands you can use to create files. We'll cover two: `touch`, and `emacs`.&#x20;
 
-There are numerous ways you can create files on the command line. The simplest method is via the `touch` command, which takes filenames as arguments. However, `touch` can only be used to create a file, not to edit or even open a file. For those operations, you need to use tools like the less pager or emacs text editor. In the following exercises, we will create files using the touch command. Note that if the supplied file already exists, `touch` will update its timestamps.&#x20;
+### touch
 
-### Exercises
+The simplest way to create a file is via the `touch` command. Simply invoke `touch` followed by the names of one or more files you want to create. For example:
 
-1. Create _file1_:
+```
+touch file1 file2 file3
+```
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.07.49 PM.png" alt=""><figcaption></figcaption></figure>
+Note that if one of the files supplied as an argument to `touch` already exists, `touch` will update its last modification timestamp to the current time.&#x20;
 
-2. Create _file2_ in _dir2_:
+The limitation with `touch` is that it cannot be used to view or edit files. It is strictly for creating new, empty files or for updating the timestamps of existing files.
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.08.03 PM.png" alt=""><figcaption></figcaption></figure>
+### **emacs**
 
-3. Create _file3_ and _file4_:
+If your goal is to create a file and immediately begin working in it, your best bet is to do so via a text editor like Emacs. Simply invoke `emacs` followed by the name of the file you want to create:
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.11.32 PM.png" alt=""><figcaption></figcaption></figure>
+```
+emacs file1
+```
 
-
+{% hint style="warning" %}
+Technically, `emacs file1` does not actually create `file1`. It creates a temporary buffer in memory. The physical file is only created on disk when you save your changes within Emacs. This is done by pressing `Ctrl + x` followed by `Ctrl + s`.
+{% endhint %}
 
 
 
 ## Deleting files and directories
 
-rmdir & rm
 
-Deleting files and directories can be accomplished with the `rm` command. Its syntax is as follows: <mark style="color:red;">**`rm`**</mark><mark style="color:green;">**`OPTION(S)`**</mark><mark style="color:blue;">**`FILES/DIRECTORY(IES)`**</mark>.&#x20;
-
-The <mark style="color:blue;">**FILES/DIRECTORY(IES)**</mark> parameter represents the files or directories you want to delete. By default, the `rm` command only deletes files. To use it to delete directories, you must supply the `-r` option (i.e., `rm -r DIRECTORY(IES)`.&#x20;
-
-While both empty and nonempty files and directories can be deleted with the `rm` command, you can also use the `rmdir` command to delete empty directories. The benefit of using the `rmdir` command to delete directories is it provides a more explicit and cautious approach to deleting directories. By restricting itself to empty directories, it helps prevent accidental deletion of nonempty directories and their contents.
 
 <details>
 
@@ -71,7 +85,7 @@ While both empty and nonempty files and directories can be deleted with the `rm`
 </details>
 
 {% hint style="danger" %}
-Deleting files and directories is a dangerous operation. If you’re not careful, the operating system will do exactly what you tell it to, including destroying every last one of your files and directories. For this reason, deleting non-empty files or non-empty directories is deliberately made difficult.&#x20;
+Deleting files and directories is a dangerous operation, and should be used with caution. If you’re not careful, Linux will do exactly what you tell it to do, up to deleting every last one of your files and directories.&#x20;
 {% endhint %}
 
 ### Exercises
