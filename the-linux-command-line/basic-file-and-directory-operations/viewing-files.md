@@ -1,4 +1,4 @@
-# Viewing Files
+# File Viewing
 
 In this section, we'll go over four commands for viewing the contents of files: cat, less, head, and tail.&#x20;
 
@@ -6,7 +6,7 @@ In this section, we'll go over four commands for viewing the contents of files: 
 
 A quick and easy way to view the contents of a file is with the `cat` command, which prints the contents of a file on the screen. For example, to print berra\_quote.txt, invoke:
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 4.48.26 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.48.26 PM.png" alt=""><figcaption></figcaption></figure>
 
 #### Combining contents of multiple files
 
@@ -20,7 +20,7 @@ The name `cat` is short for "concatenate," which may be a hint that it can be us
 
 1. Concatenate _berra\_quote.txt_ and _einstein\_quote.txt_ and display the result on screen with line numbers:&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 4.48.33 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.48.33 PM.png" alt=""><figcaption></figcaption></figure>
 
 ## heads and tails
 
@@ -56,7 +56,7 @@ The result of pressing return after typing `/rose` in [Listing 3.6](https://www.
 
 
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 4.49.52 PM.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.49.52 PM.png" alt="" width="563"><figcaption></figcaption></figure>
 
 Table 2 summarizes commonly used less commands.&#x20;
 

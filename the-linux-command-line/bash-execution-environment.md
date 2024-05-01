@@ -47,7 +47,7 @@ If there is a conflict between any two configuration files, the one executed sec
 When a user logs out of a bash terminal session, the `~/.bash_logout` configuration file is executed. This performs cleanup tasks, such as clearing the terminal and saving command history.
 
 {% hint style="info" %}
-You can view the contents of configuration files by using any of the [file viewing commands](viewing-files.md), such as `cat` or `emacs`. Understanding these configuration files enables you to customize the behavior and appearance of your Bash terminal sessions.
+You can view the contents of configuration files by using any of the [file viewing commands](basic-file-and-directory-operations/viewing-files.md), such as `cat` or `emacs`. Understanding these configuration files enables you to customize the behavior and appearance of your Bash terminal sessions.
 {% endhint %}
 
 ## Environment variables

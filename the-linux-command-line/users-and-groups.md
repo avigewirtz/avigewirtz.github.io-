@@ -15,7 +15,7 @@ A typical user account consists of the following information:
 
 You can find out the information of your user account via the id command. When I invoke it on armlab, I get the following output:
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-04-27 at 11.56.24 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-04-27 at 11.56.24 PM.png" alt=""><figcaption></figcaption></figure>
 
 Here's what each part of the highlighted part means:
 
@@ -53,7 +53,7 @@ group_name:password:GID:user_list
 
 You can display your login name, group name, UID, and GID by issuing the `id` command. When I issue it on armlab, I get the following output:
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-04-27 at 11.56.24 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-04-27 at 11.56.24 PM.png" alt=""><figcaption></figcaption></figure>
 
 Let's break this down:
 

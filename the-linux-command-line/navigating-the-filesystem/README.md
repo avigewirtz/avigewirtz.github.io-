@@ -4,7 +4,7 @@ To effectively navigate the Linux filesystem, you need to be familiar with three
 
 ## **`pwd` - A sense of Location**
 
-Whenever you're using the command line, bash is always positioned somewhere in the filesystem. This location is known as your (or, more accurately, Bash's) working directory (see [Working Directory](introduction/filesystem/notable-directories.md#working-directory)).
+Whenever you're using the command line, bash is always positioned somewhere in the filesystem. This location is known as your (or, more accurately, Bash's) working directory (see [Working Directory](../filesystem/notable-directories.md#working-directory)).
 
 You can find out your current working directory by invoking `pwd` (**p**rint **w**orking **d**irectory), which displays the absolute pathname of your working directory on stdout. By default, your working directory will be your home directory, which on Armlab is `/u/yourNetID`. When I invoke `pwd` on Armlab, I get the following output:
 
@@ -17,7 +17,7 @@ $
 As we'll soon see, you can change your working directory with the `cd` command.
 
 {% hint style="success" %}
-On Armlab, your working directory is displayed in the [shell prompt](warm-up-commands/#shell-prompt), between the colon (:) and dollar ($) sign. Thus, you can determine what your working directory is without invoking `pwd`.&#x20;
+On Armlab, your working directory is displayed in the [shell prompt](../warm-up-commands.md#shell-prompt), between the colon (:) and dollar ($) sign. Thus, you can determine what your working directory is without invoking `pwd`.&#x20;
 {% endhint %}
 
 ## **`ls` - A sense of surroundings**
@@ -36,7 +36,7 @@ A1	A2	CLI_playground
 
 ### Displaying Hidden Files
 
-By default, `ls` does not display [hidden](introduction/filesystem/notable-directories.md#hidden-files-directories) entries (i.e., files and directories whose names begin with a `.`, such as `.bashrc`). To include hidden entries in the directory listing, use the `-a` option:
+By default, `ls` does not display [hidden](../filesystem/notable-directories.md#hidden-files-directories) entries (i.e., files and directories whose names begin with a `.`, such as `.bashrc`). To include hidden entries in the directory listing, use the `-a` option:
 
 ```bash
 ~$ ls 
@@ -67,7 +67,7 @@ Let's break down the output using the entry for `README.md` as an example:&#x20;
 
 *   **-rw-------.**&#x20;
 
-    &#x20;   The file's access permissions. This will be covered in F[ile and Directory Access Permissions](file-and-directory-access-permissions.md).&#x20;
+    &#x20;   The file's access permissions. This will be covered in F[ile and Directory Access Permissions](../file-and-directory-access-permissions.md).&#x20;
 *   **1**
 
     &#x20;   Number of hard links. You can safely ignore this column.&#x20;
@@ -108,13 +108,13 @@ You can change your working directory using the `cd` (**c**hange working **d**ir
 cd DIRECTORY_PATHNAME
 ```
 
-`DIRECTORY_PATHNAME` refers to either the absolute or relative pathname of the target directory (see [pathnames](introduction/filesystem/pathnames.md)).&#x20;
+`DIRECTORY_PATHNAME` refers to either the absolute or relative pathname of the target directory (see [pathnames](../filesystem/pathnames.md)).&#x20;
 
 ### Example&#x20;
 
 As we mentioned earlier, the default working directory is your home directory, which on Armlab is `/u/yourNetID`. Suppose we want to change our working directory to `/usr/bin` (Figure 12).&#x20;
 
-<figure><img src="../.gitbook/assets/filesystem10.17 (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/filesystem10.17 (7).png" alt=""><figcaption></figcaption></figure>
 
 Using its absolute pathname, we'd invoke:
 
@@ -124,7 +124,7 @@ cd /usr/bin
 
 The "journey" begins at the root directory (Figure 14).&#x20;
 
-<figure><img src="../.gitbook/assets/Group 43.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Group 43.png" alt=""><figcaption></figcaption></figure>
 
 Using it's relative pathname, the journey begins at the working directory. Hence, we need to navigate up to the root directory and then descend into `usr/bin`. Recall that `..` represents the parent directory. Thus, the command is:
 
@@ -132,10 +132,10 @@ Using it's relative pathname, the journey begins at the working directory. Hence
 cd ../../usr/bin
 ```
 
-<figure><img src="../.gitbook/assets/filesystem10.17 (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/filesystem10.17 (6).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="warning" %}
-To navigate to a directory, you must have appropriate access permissions. This will be covered in [File and Directory Access Permissions](file-and-directory-access-permissions.md). If you try to navigate to a directory for which you don't have appropriate access permissions, you'll get a "permission denied" error. This will be the case if, for example, we try to navigate to another user's home directory, such as`/u/bwk`:
+To navigate to a directory, you must have appropriate access permissions. This will be covered in [File and Directory Access Permissions](../file-and-directory-access-permissions.md). If you try to navigate to a directory for which you don't have appropriate access permissions, you'll get a "permission denied" error. This will be the case if, for example, we try to navigate to another user's home directory, such as`/u/bwk`:
 
 ```bash
 ~$ cd /u/bwk

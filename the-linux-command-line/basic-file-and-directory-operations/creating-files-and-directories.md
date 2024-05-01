@@ -1,6 +1,4 @@
-# Creating/Deleting Files and Directories
-
-In this section, we'll cover the commands to create and delete files and directories.
+# Creating Files/Directories
 
 ## Creating Directories
 
@@ -10,10 +8,8 @@ Directories can be created using the _mkdir_ command, whose syntax is as follows
 
 
 
-{% hint style="danger" %}
-
-
-Before creating directories, let's revisit filenames. As stated [earlier](introduction/filesystem/filenames.md), Linux filesystems impose very few restrictions on file and directory names. That said, not all valid filenames are equal. Some are poorly suited for the shell environment and are best avoided. The following naming suggestions will make your life on the command line easier:&#x20;
+{% hint style="warning" %}
+Before creating directories, let's revisit filenames. As stated [earlier](../filesystem/filenames.md), Linux filesystems impose very few restrictions on file and directory names. That said, not all valid filenames are equal. Some are poorly suited for the shell environment and are best avoided. The following naming suggestions will make your life on the command line easier:&#x20;
 
 1. Avoid using whitespace or special characters in filenames, since such files are harder to reference on the command line. The following characters are special:&#x20;
 
@@ -22,9 +18,6 @@ Before creating directories, let's revisit filenames. As stated [earlier](introd
 &   ;   |   *   ?   '   "   ‘   [   ]   (   )   $   <   >   {   }   #   /   \   !   ~
 ```
 {% endcode %}
-
-2. Avoid beginning a file or directory name with a **-** (hyphen). This is because a leading hyphen might cause the shell to confuse the file/directory for a command line option.
-3. Avoid beginning a file or directory name with a **.** (period), unless you want it to be hidden.&#x20;
 {% endhint %}
 
 ## Creating Files
@@ -37,15 +30,15 @@ There are numerous ways you can create files on the command line. The simplest m
 
 1. Create _file1_:
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 4.07.49 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.07.49 PM.png" alt=""><figcaption></figcaption></figure>
 
 2. Create _file2_ in _dir2_:
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 4.08.03 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.08.03 PM.png" alt=""><figcaption></figcaption></figure>
 
 3. Create _file3_ and _file4_:
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 4.11.32 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.11.32 PM.png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -85,31 +78,31 @@ Deleting files and directories is a dangerous operation. If you’re not careful
 
 1. Delete _dir1_ using `rmdir`:
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 4.22.41 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.22.41 PM.png" alt=""><figcaption></figcaption></figure>
 
 The operation succeeds since _dir1_ is empty.
 
 2. Delete _dir2_ using `rmdir`:
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 4.23.00 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.23.00 PM.png" alt=""><figcaption></figcaption></figure>
 
 The operation fails since _dir2_ is not empty.&#x20;
 
 3. Let's clean things up a bit. Delete _dir3_, _dir4_, _bad_, _name_, and '_bad name_':
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 4.23.11 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.23.11 PM.png" alt=""><figcaption></figcaption></figure>
 
 4. Delete _file1_:
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 4.29.21 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.29.21 PM.png" alt=""><figcaption></figcaption></figure>
 
 The prompt `rm: remove regular empty file 'file1'?`  is displayed because on Armlab, `rm` is aliased to `rm -i`.&#x20;
 
 2. Delete _dir2_:
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 4.29.29 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.29.29 PM.png" alt=""><figcaption></figcaption></figure>
 
 3. Delete _file3_ and _file4_ using the `-f` option, which removes the confirmation prompt:
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-26 at 4.29.39 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.29.39 PM.png" alt=""><figcaption></figcaption></figure>
 

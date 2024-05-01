@@ -18,13 +18,13 @@ Bash typically runs in a terminal and executes commands interactively, but it ca
 
 Bash operates in a simple loop: It accepts a command, interprets the command, executes the command, and then waits for another command. See Fig. 3. Bash indicates its readiness to accept a command by displaying a prompt.&#x20;
 
-<figure><img src="../../.gitbook/assets/Group 12 (2).png" alt="" width="188"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 12 (2).png" alt="" width="188"><figcaption></figcaption></figure>
 
 ### Shell prompt
 
 When you begin a bash session, the first thing you'll notice is the shell prompt. On Armlab, it looks like the following:
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-04-25 at 3.08.46 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-04-25 at 3.08.46 PM.png" alt=""><figcaption></figcaption></figure>
 
 In addition to indicating its readiness to accept a command, the prompt provides us with a couple of useful pieces of information:
 
@@ -33,7 +33,7 @@ In addition to indicating its readiness to accept a command, the prompt provides
 
 Generalizing, the prompt on Armlab has the following format:&#x20;
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-05-24 at 9.53.35 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-05-24 at 9.53.35 PM.png" alt=""><figcaption></figcaption></figure>
 
 ## What's in a command?
 

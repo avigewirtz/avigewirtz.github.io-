@@ -1,4 +1,4 @@
-# The shell
+# Shell
 
 Have you ever thought about what happens when you type a command and press enter? In other words,&#x20;
 
