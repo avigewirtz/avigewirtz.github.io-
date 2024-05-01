@@ -16,7 +16,7 @@ Each of these user categories may be granted three types of permissions: read, w
 
 ### Viewing access permissions
 
-You can view the permissions of each of user category by invoking `ls -l` on the command line, which lists directory entries in long format:&#x20;
+You can view the permissions of each of user category by invoking `ls -l` on the command line, which lists directory entries in long format. Here's an example of the output you might get:
 
 ```
 $ ls -l
