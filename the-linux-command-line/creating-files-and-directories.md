@@ -1,4 +1,4 @@
-# Creating and Deleting Files and Directories
+# Creating/Deleting Files and Directories
 
 In this section, we'll cover the commands to create and delete files and directories.
 
@@ -13,7 +13,7 @@ Directories can be created using the _mkdir_ command, whose syntax is as follows
 {% hint style="danger" %}
 
 
-Before creating directories, let's revisit filenames. As stated [earlier](filesystem/filenames.md), Linux filesystems impose very few restrictions on file and directory names. That said, not all valid filenames are equal. Some are poorly suited for the shell environment and are best avoided. The following naming suggestions will make your life on the command line easier:&#x20;
+Before creating directories, let's revisit filenames. As stated [earlier](introduction/filesystem/filenames.md), Linux filesystems impose very few restrictions on file and directory names. That said, not all valid filenames are equal. Some are poorly suited for the shell environment and are best avoided. The following naming suggestions will make your life on the command line easier:&#x20;
 
 1. Avoid using whitespace or special characters in filenames, since such files are harder to reference on the command line. The following characters are special:&#x20;
 

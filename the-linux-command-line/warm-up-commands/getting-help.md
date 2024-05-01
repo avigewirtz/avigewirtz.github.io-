@@ -28,10 +28,10 @@ For an external program such as _cal_, you can get its _manpage_ (manual page) b
 man cal
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2024-03-19 at 3.54.12 PM.png" alt="" width="375"><figcaption><p>Figure 1: <em>cal</em> manpage</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2024-03-19 at 3.54.12 PM.png" alt="" width="375"><figcaption><p>Figure 1: <em>cal</em> manpage</p></figcaption></figure>
 
 ### help
 
 For bash builtins such as _exit_, use the `help` command:&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-25 at 2.04.36 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-25 at 2.04.36 PM.png" alt=""><figcaption></figcaption></figure>

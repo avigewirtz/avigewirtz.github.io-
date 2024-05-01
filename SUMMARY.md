@@ -15,44 +15,37 @@
   * [Secure Shell (SSH) Protocol](cos217-computing-environment/armlab/ssh-protocol.md)
   * [Configuring Your Armlab Environment](cos217-computing-environment/armlab/configuring-your-armlab-environment.md)
 
-## Fundamental Concepts
-
-* [Linux and GNU](fundamental-concepts/linux-and-gnu.md)
-* [Command Line Interface](fundamental-concepts/command-line-interface.md)
-* [Terminal](fundamental-concepts/terminal.md)
-* [Shell](fundamental-concepts/shell.md)
-* [GNU Core Utilities](fundamental-concepts/gnu-core-utilities.md)
-* [Operating System](fundamental-concepts/operating-system.md)
-* [Putting it All Together](fundamental-concepts/putting-it-all-together.md)
-
 ## The Linux command line
 
-* [What is Bash?](the-linux-command-line/background.md)
-* [Getting Started](the-linux-command-line/warm-up-commands.md)
-* [What commands represent](the-linux-command-line/what-commands-represent.md)
-* [Command-line shortcuts](the-linux-command-line/useful-command-line-features.md)
-* [Getting Help](the-linux-command-line/getting-help.md)
-* [Navigating the filesystem](the-linux-command-line/navigating-the-filesystem/README.md)
-  * [Printing Working Directory](the-linux-command-line/navigating-the-filesystem/pwd-print-working-directory.md)
-  * [cd (Change Working Directory)](the-linux-command-line/navigating-the-filesystem/cd-change-working-directory.md)
-  * [ls (List Directory Contents)](the-linux-command-line/navigating-the-filesystem/ls-list-directory-contents.md)
-  * [Exercises](the-linux-command-line/navigating-the-filesystem/exercises.md)
-* [Creating and Deleting Files and Directories](the-linux-command-line/creating-files-and-directories.md)
-* [Viewing Files](the-linux-command-line/viewing-files.md)
-* [Redirecting Input and Output](the-linux-command-line/redirection-and-piping.md)
-* [Pipelines and Filters](the-linux-command-line/pipelines-and-filters.md)
+* [Introduction](the-linux-command-line/introduction/README.md)
+  * [Linux and GNU](the-linux-command-line/introduction/linux-and-gnu.md)
+  * [Command Line Interface](the-linux-command-line/introduction/command-line-interface.md)
+  * [Terminal](the-linux-command-line/introduction/terminal.md)
+  * [Shell](the-linux-command-line/introduction/shell.md)
+  * [GNU Core Utilities](the-linux-command-line/introduction/gnu-core-utilities.md)
+  * [Operating System](the-linux-command-line/introduction/operating-system.md)
+  * [Putting it All Together](the-linux-command-line/introduction/putting-it-all-together.md)
+  * [Users Accounts](the-linux-command-line/introduction/users-and-groups.md)
+  * [Linux Filesystem](the-linux-command-line/introduction/filesystem/README.md)
+    * [Files and Directories](the-linux-command-line/introduction/filesystem/files-and-directories.md)
+    * [Filenames](the-linux-command-line/introduction/filesystem/filenames.md)
+    * [Filesystem Layout](the-linux-command-line/introduction/filesystem/filesystem-layout.md)
+    * [Notable Directories](the-linux-command-line/introduction/filesystem/notable-directories.md)
+    * [Pathnames](the-linux-command-line/introduction/filesystem/pathnames.md)
+* [Getting Started](the-linux-command-line/warm-up-commands/README.md)
+  * [What is Bash?](the-linux-command-line/warm-up-commands/background.md)
+  * [What commands represent](the-linux-command-line/warm-up-commands/what-commands-represent.md)
+  * [Command-line shortcuts](the-linux-command-line/warm-up-commands/useful-command-line-features.md)
+  * [Getting Help](the-linux-command-line/warm-up-commands/getting-help.md)
+* [Navigating the filesystem](the-linux-command-line/navigating-the-filesystem.md)
+* [Creating/Deleting Files and Directories](the-linux-command-line/creating-files-and-directories.md)
+* [Viewing File's Contents](the-linux-command-line/viewing-files.md)
+* [Redirection and piping](the-linux-command-line/redirection-and-piping.md)
 * [Copying Files and Directories](the-linux-command-line/copying-files-and-directories/README.md)
   * [Moving and Renaming Files and Directories](the-linux-command-line/copying-files-and-directories/moving-and-renaming-files-and-directories.md)
-* [Users Accounts](the-linux-command-line/users-and-groups.md)
 * [File and Directory Access Permissions](the-linux-command-line/file-and-directory-access-permissions.md)
 * [Bash Execution Environment](the-linux-command-line/bash-execution-environment.md)
-* [Linux Filesystem](the-linux-command-line/filesystem/README.md)
-  * [Files and Directories](the-linux-command-line/filesystem/files-and-directories.md)
-  * [Filenames](the-linux-command-line/filesystem/filenames.md)
-  * [Filesystem Layout](the-linux-command-line/filesystem/filesystem-layout.md)
-  * [Notable Directories](the-linux-command-line/filesystem/notable-directories.md)
-  * [Pathnames](the-linux-command-line/filesystem/pathnames.md)
-* [Bash Cheat Sheet](the-linux-command-line/bash-cheat-sheet.md)
+* [Cheat Sheet](the-linux-command-line/bash-cheat-sheet.md)
 * [Further Reading](the-linux-command-line/further-reading.md)
 
 ## Git
@@ -95,10 +88,6 @@
   * [COS217 Development Workflow](git/acquiring-cos217-assignment-repositories/cos217-development-workflow.md)
 * [Git Cheatsheet](git/git-cheat-sheet.md)
 * [Further Reading](git/further-reading.md)
-
-## Part I. Local Git Workflow
-
-* [Page 1](part-i.-local-git-workflow/page-1.md)
 
 ## GCC Build Process
 
