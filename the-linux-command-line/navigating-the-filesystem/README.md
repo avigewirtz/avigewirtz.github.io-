@@ -1,8 +1,8 @@
-# Navigating the filesystem
+# Navigating the Filesystem
 
 To effectively navigate the Linux filesystem, you need to be familiar with three commands: `pwd`, `ls`, and `cd`. These commands are perhaps the most commonly used Bash commands, so it is worth your while to make the extra effort to master them.
 
-## **`pwd` - A sense of Location**
+## **`pwd` - A Sense of Location**
 
 Whenever you're using the command line, bash is always positioned somewhere in the filesystem. This location is known as your (or, more accurately, Bash's) working directory (see [Working Directory](../filesystem/notable-directories.md#working-directory)).
 
@@ -20,11 +20,11 @@ As we'll soon see, you can change your working directory with the `cd` command.
 On Armlab, your working directory is displayed in the [shell prompt](../warm-up-commands.md#shell-prompt), between the colon (:) and dollar ($) sign. Thus, you can determine what your working directory is without invoking `pwd`.&#x20;
 {% endhint %}
 
-## **`ls` - A sense of surroundings**
+## **`ls` - A Sense of Surroundings**
 
 Knowing where you are in the filesystem is important, but in order to navigate, you also need to be familiar with what's around you. The `ls` (**l**i**s**t) command can be used to list the contents of any directory in the filesystem. &#x20;
 
-### Basic usage
+#### Basic usage
 
 The most basic usage of `ls` is to list the names of the files and directories in the working directory. To do so, invoke `ls` without arguments:
 
@@ -34,7 +34,7 @@ A1	A2	CLI_playground
 ~$ 
 ```
 
-### Displaying Hidden Files
+#### Displaying Hidden Files
 
 By default, `ls` does not display [hidden](../filesystem/notable-directories.md#hidden-files-directories) entries (i.e., files and directories whose names begin with a `.`, such as `.bashrc`). To include hidden entries in the directory listing, use the `-a` option:
 
@@ -46,10 +46,10 @@ By default, `ls` does not display [hidden](../filesystem/notable-directories.md#
 ```
 
 {% hint style="warning" %}
-On armlab, ls is aliased to..&#x20;
+On Armlab, '`ls'` is aliased to `'ls -a --color=always'`.  Thus, an invocation of ls will display hidden entries. You can avoid alias expansion by prefixing the command with a '`\'` (e.g., `\ls`). If you invoke `ls` in this manner, you'll see that hidden entries are not displayed.&#x20;
 {% endhint %}
 
-### Displaying file metadata
+#### Displaying file metadata
 
 Each file and directory has associated metadata, such as access permissions, owner username, and last modification time. You can display the metadata using the `-l` option, which lists the directory's contents in long format:
 
@@ -87,9 +87,9 @@ Let's break down the output using the entry for `README.md` as an example:&#x20;
 
     &#x20;   name of the file
 
-### Displaying the Contents of Another Directory
+#### Displaying the Contents of Another Directory
 
-To list the contents of a directory other than the working directory, simply supply the target directory's pathname (absolute or relative) as an argument to `ls`. For example, to list the contents of `/var`:
+To list the contents of a directory that is not your working directory, simply supply the target directory's pathname (absolute or relative) as an argument to `ls`. For example, to list the contents of `/var`:
 
 ```bash
 $ ls /var
@@ -110,7 +110,7 @@ cd DIRECTORY_PATHNAME
 
 `DIRECTORY_PATHNAME` refers to either the absolute or relative pathname of the target directory (see [pathnames](../filesystem/pathnames.md)).&#x20;
 
-### Example&#x20;
+#### Example&#x20;
 
 As we mentioned earlier, the default working directory is your home directory, which on Armlab is `/u/yourNetID`. Suppose we want to change our working directory to `/usr/bin` (Figure 12).&#x20;
 
@@ -156,7 +156,7 @@ cd "assignment 1"
 
 * **Going home**: If you invoke `cd` without arguments, it'll take you to your home directory.&#x20;
 * **Returning to the last working directory**. `cd -` (hyphen) returns you to your previous working directory.&#x20;
-* **Tilde (`~`):** You can use tilde instead of typing out your home directory. For example, you can invoke `cd ~/A1` instead of `cd /u/yourNetID/A1`.
+* **Tilde (`~`):** You can use the tilde character as a shortcut for your home directory. For example,  `cd ~/A1` in equivalent to `cd /u/yourNetID/A1`.
 * **Tab Completion**: If you start typing an directory name and press Tab, Bash will attempt to auto-completes the directory name. This will save you time and reduce typos.
 
 ## Exercises

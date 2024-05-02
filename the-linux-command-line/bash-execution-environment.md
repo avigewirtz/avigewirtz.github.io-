@@ -2,31 +2,13 @@
 
 The exact behavior of commands issued in Bash depends upon the execution environment provided by Bash.
 
-Bash maintains a set of _environment variables_ that are used to provide information, like the current working directory, and the type of terminal being used, to the programs you run. The environment variables are passed to all programs that are not built into Bash and may be consulted, or modified, by the program. By convention, environment variables are given in upper case letters.
+Execution environment consists of:
 
-To view all the environment variables, use the command:
+* environment variables
+* working directory
+* home directory
 
-```
-printenv
-```
-
-You can also view a particular environment variable using the echo command:
-
-```
-echo $TERM
-```
-
-### The creation of the execution environment
-
-When the shell program starts, it reads configuration files called _login scripts_ to configure the execution environment. On HP-UX, the file /etc/profile provides initialization parameters for ksh and sh, while the file /etc/csh.login is used for csh. After the system login scripts are read, the shell looks for user-specified login scripts.
-
-Shell startup: User login scripts After the system login scripts are read, the shell reads user login scripts. User login scripts are kept in one's home directory, and are the means by which one can customize the shell environment. Sh and ksh look for a file called .profile. Ksh also reads a file defined in the environment variable ENV. Csh reads a file called .cshrc, and (if it is the login shell), the file .login.
-
-
-
-## Execution environment
-
-When a user logs in or out of a Bash terminal session, various Bash configuration files are automatically executed.&#x20;
+When a user logs in or out of a Bash terminal session, various Bash configuration files are automatically executed. t reads configuration files called _login scripts_ to configure the execution environment. After the system login scripts are read, the shell looks for user-specified login scripts. User login scripts are kept in one's home directory, and are the means by which one can customize the shell environment.
 
 ## Login configuration files
 
@@ -51,6 +33,20 @@ You can view the contents of configuration files by using any of the [file viewi
 {% endhint %}
 
 ## Environment variables
+
+Bash maintains a set of _environment variables_ that are used to provide information, like the current working directory, and the type of terminal being used, to the programs you run. The environment variables are passed to all programs that are not built into Bash and may be consulted, or modified, by the program. By convention, environment variables are given in upper case letters.
+
+To view all the environment variables, use the command:
+
+```
+printenv
+```
+
+You can also view a particular environment variable using the echo command:
+
+```
+echo $TERM
+```
 
 In Linux, environment variables are a type of variable used to store information about the system environment, such as the current user's name, the current system's directory path, or settings for software applications. Standard environment variables on Linux include:
 

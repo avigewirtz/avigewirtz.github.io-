@@ -1,6 +1,6 @@
-# Basic file & directory operations
+# Basic File and Directory Operations
 
-In this section we'll go over the following commands:
+In this section we'll cover the commands for basic, everyday tasks&#x20;
 
 `mkdir`   create a directory&#x20;
 

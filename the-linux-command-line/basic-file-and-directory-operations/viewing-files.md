@@ -1,62 +1,119 @@
-# File Viewing
+# Viewing Files
 
-In this section, we'll go over four commands for viewing the contents of files: cat, less, head, and tail.&#x20;
+There are numerous commands you can use to view the contents of a file. In this section, we'll go over four of them: `cat`, `head`, `tails`, and `less`.&#x20;
 
 ## cat
 
-A quick and easy way to view the contents of a file is with the `cat` command, which prints the contents of a file on the screen. For example, to print berra\_quote.txt, invoke:
+A quick and easy way to view the contents of a file is by using the `cat` command, which displays the file's contents in the terminal window. Its most basic use is to display the contents of a single file. To do this, type `cat` followed by the name of the file you want to view. For example:
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.48.26 PM.png" alt=""><figcaption></figcaption></figure>
+```bash
+~/CLI_playground$ cat berra_quote.txt
+The future ain't what it used to be. - Yogi Berra
+~/CLI_playground$
+```
 
-#### Combining contents of multiple files
-
-The name `cat` is short for "concatenate," which may be a hint that it can be used to combine the contents of multiple files. To do so, simply provide both files as arguments to cat:
+If the file is longer than what can be displayed on one screen, the terminal will show the end of the file. To view the beginning, you'll need to scroll all the way up. &#x20;
 
 #### Numbering output lines
 
-**`-n`**: Numbers all output lines.
+You can number the output lines by using the `-n` option. For example:&#x20;
 
+```bash
+~/CLI_playground$ cat -n the_odyssey.txt
+ ...
+ ...
+ 10415	But Ulysses gave a great cry, and gathering himself together swooped
+ 10416	down like a soaring eagle. Then the son of Saturn sent a thunderbolt
+ 10417	of fire that fell just in front of Minerva, so she said to Ulysses,
+ 10418	"Ulysses, noble son of Laertes, stop this warful strife, or Jove will
+ 10419	be angry with you." 
+ 10420	
+ 10421	Thus spoke Minerva, and Ulysses obeyed her gladly. Then Minerva assumed
+ 10422	the form and voice of Mentor, and presently made a covenant of peace
+ 10423	between the two contending parties. 
+ 10424	
+ 10425	THE END
+ 10426	
+ 10427	----------------------------------------------------------------------
+ 10428	
+ 10429	Copyright statement:
+ 10430	The Internet Classics Archive by Daniel C. Stevenson, Web Atomics.
+ 10431	World Wide Web presentation is copyright (C) 1994-2000, Daniel
+ 10432	C. Stevenson, Web Atomics.
+ 10433	All rights reserved under international and pan-American copyright
+ 10434	conventions, including the right of reproduction in whole or in part
+ 10435	in any form. Direct permission requests to classics@classics.mit.edu.
+ 10436	Translation of "The Deeds of the Divine Augustus" by Augustus is
+ 10437	copyright (C) Thomas Bushnell, BSG.
+~/CLI_playground$
+```
 
+#### Concatenating Files
 
-1. Concatenate _berra\_quote.txt_ and _einstein\_quote.txt_ and display the result on screen with line numbers:&#x20;
+`cat` is short for "concatenate." This might be a hint that it can be used to combine the contents of multiple files. To do so, provide both files as arguments to `cat`. For example:
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.48.33 PM.png" alt=""><figcaption></figcaption></figure>
+```bash
+~/CLI_playground$ cat berra_quote.txt einstein_quote.txt
+The future ain't what it used to be. - Yogi Berra
+Everything should be as simple as possible, but no simpler. - Albert Einstein
+~/CLI_playground$
+```
 
 ## heads and tails
 
-Two complementary commands for inspecting files are `head` and `tail`, which respectively allow us to view the beginning (head) and end (tail) of the file. The `head` command shows the first 10 lines of the file ([Listing 3.2](https://www.learnenough.com/command-line-tutorial/inspecting\_files#code-head)).
+Two complementary commands for inspecting files are `head` and `tail.` `head` shows the first 10 lines of the file. For example:
+
+```bash
+~/CLI_playground$ head the_odyssey.txt 
+Provided by The Internet Classics Archive.
+See bottom for copyright. Available online at
+    http://classics.mit.edu//Homer/odyssey.html
+
+The Odyssey
+By Homer
 
 
+Translated by Samuel Butler
 
-While `tail` shows the last 10 lines of the file ([Listing 3.3](https://www.learnenough.com/command-line-tutorial/inspecting\_files#code-tail)).
+~/CLI_playground$ 
+```
 
+While `tail` shows the last 10 lines of the file:
 
+```bash
+~/CLI_playground$ tail the_odyssey.txt 
 
-These two commands are useful when (as is often the case) you know for sure you only need to inspect the beginning or end of a file.
+Copyright statement:
+The Internet Classics Archive by Daniel C. Stevenson, Web Atomics.
+World Wide Web presentation is copyright (C) 1994-2000, Daniel
+C. Stevenson, Web Atomics.
+All rights reserved under international and pan-American copyright
+conventions, including the right of reproduction in whole or in part
+in any form. Direct permission requests to classics@classics.mit.edu.
+Translation of "The Deeds of the Divine Augustus" by Augustus is
+copyright (C) Thomas Bushnell, BSG.
+~/CLI_playground$
+```
 
-
+These two commands are useful when you only need to view the beginning or end of a file.
 
 ## less
 
-`cat` has two main drawbacks. First, It prints the entire on stdout. This can cause issues when the file is extremely large. For example, say you print a file such as _encyclopaedia.txt_ with cat, which contains almost 100,000 lines of text. Printing all the output takes quite some time, and your terminal will be unusable until it is complete.&#x20;
+`cat` has several drawbacks that make it inconvenient to use for files that span more than a few pages. Most notably, it does not have any useful features for navigating the file’s output; the only way you can navigate the file is by scrolling up and down. an alternative is less.&#x20;
 
-The second drawback of `cat` is it does not have any useful features for navigating the file’s output; the only way you can navigate the file is by scrolling up and down.&#x20;
+When you open a file with `less`, you can scroll through the document line by line or page by page using keyboard commands. Pressing the `spacebar` scrolls down one screen, and `b` scrolls back one screen. To quit `less`, type '`q'`.
 
-To address these shortcomings with `cat`, other tools were developed. A popular alternative is the  `less.`
+{% hint style="success" %}
+The `man` command outputs _with_ `less`, so by getting familair with `less` you’ll get better at navigating _manpages_ as well.
+{% endhint %}
 
-The `less` program is interactive, so it’s hard to capture in print, but here’s roughly what it looks like:
+A powerful feature of `less` you can search for text within the file by pressing `/` followed by the text you're searching for, and navigate to the next or previous occurrence with `n` or `N`, respectively. For example, suppose we wanted to search for the word "home" in the\_oddysey. The way to do this in `less` is to type `/rose` (read “slash rose”), as shown in [Listing 3.6](https://www.learnenough.com/command-line-tutorial/inspecting\_files#code-rose\_search). The result of pressing return after typing `/rose` in [Listing 3.6](https://www.learnenough.com/command-line-tutorial/inspecting\_files#code-rose\_search) is to highlight the first occurrence of “rose” in the file. You can then press `n` to navigate to the next match, or `N` to navigate to the previous match.
 
-The advantage of `less` over cat is that it lets you navigate through the file in several useful ways, such as moving one line up or down with the arrow keys, pressing the spacebar to move a page down, and pressing `⌃F` to move forward a page (i.e., the same as spacebar) or `⌃B` to move back a page. To quit `less`, type `q` (for “quit”).
-
-I encourage you to get in the habit of using `less` as your go-to utility for looking at the contents of a file. The skills you develop have other applications as well; for example, the man pages ([Section 1.4](https://www.learnenough.com/command-line-tutorial#sec-man\_pages)) use `less`, so by learning about `less` you’ll get better at navigating the man pages as well.
-
-Perhaps the most powerful aspect of `less` is the forward slash key `/`, which lets you search through the file from beginning to end. For example, suppose we wanted to search through `sonnets.txt` for “rose” ([Figure 3.1](https://www.learnenough.com/command-line-tutorial/inspecting\_files#fig-tudor\_rose)),[6](https://www.learnenough.com/command-line-tutorial/inspecting\_files#cha-3\_footnote-6) one of the most frequently used images in the _Sonnets_.[7](https://www.learnenough.com/command-line-tutorial/inspecting\_files#cha-3\_footnote-7) The way to do this in `less` is to type `/rose` (read “slash rose”), as shown in [Listing 3.6](https://www.learnenough.com/command-line-tutorial/inspecting\_files#code-rose\_search).
-
-The result of pressing return after typing `/rose` in [Listing 3.6](https://www.learnenough.com/command-line-tutorial/inspecting\_files#code-rose\_search) is to highlight the first occurrence of “rose” in the file. You can then press `n` to navigate to the next match, or `N` to navigate to the previous match.
+{% hint style="success" %}
+The `man` command outputs _with_ `less`, so by getting familair with `less` you’ll get better at navigating _manpages_ as well.
+{% endhint %}
 
 
-
-<figure><img src="../../.gitbook/assets/Screenshot 2023-04-26 at 4.49.52 PM.png" alt="" width="563"><figcaption></figcaption></figure>
 
 Table 2 summarizes commonly used less commands.&#x20;
 
