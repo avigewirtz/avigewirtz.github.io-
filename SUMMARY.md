@@ -42,7 +42,7 @@
 * [Users Accounts](the-linux-command-line/users-and-groups.md)
 * [File and Directory Access Permissions](the-linux-command-line/file-and-directory-access-permissions.md)
 * [Bash Execution Environment](the-linux-command-line/bash-execution-environment.md)
-* [Cheat Sheet](the-linux-command-line/bash-cheat-sheet.md)
+* [Linux CLI Cheat Sheet](the-linux-command-line/bash-cheat-sheet.md)
 * [Further Reading](the-linux-command-line/further-reading.md)
 
 ## Git
