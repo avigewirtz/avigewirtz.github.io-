@@ -2,6 +2,10 @@
 
 SSH is a protocol that provides an encrypted communication channel between two computers over a network. Its primary function is to enable users to log into a remote computer and execute commands.&#x20;
 
+Program that runs continuously on a server, accepts network connections from ssh clients, and relays text back/forth to a local shell (e.g., bash).
+
+
+
 ## SSH Architecture
 
 SSH operates on the client-server model, connecting an instance of an _SSH client_ with an instance of an _SSH server_. An example of an SSH client is the _ssh_ program. An example of an SSH server is the _sshd_ program_._&#x20;

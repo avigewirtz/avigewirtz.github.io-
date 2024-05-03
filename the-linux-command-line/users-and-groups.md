@@ -13,7 +13,7 @@ A typical user account consists of the following information:
 
 ## Viewing account information
 
-You can find out the information of your user account via the id command. When I invoke it on armlab, I get the following output:
+You can find out the information of your user account via the id command. When I invoke it on Armlab, I get the following output:
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-04-27 at 11.56.24 PM.png" alt=""><figcaption></figcaption></figure>
 

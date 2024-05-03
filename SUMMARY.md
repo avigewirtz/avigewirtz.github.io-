@@ -38,7 +38,7 @@
   * [Viewing Files](the-linux-command-line/basic-file-and-directory-operations/viewing-files.md)
   * [Copying Files/Directories](the-linux-command-line/basic-file-and-directory-operations/copying-files-and-directories.md)
   * [Moving and Renaming Files/Directories](the-linux-command-line/basic-file-and-directory-operations/moving-and-renaming-files-and-directories.md)
-* [Redirection and piping](the-linux-command-line/redirection-and-piping.md)
+* [Redirection and Piping](the-linux-command-line/redirection-and-piping.md)
 * [Users Accounts](the-linux-command-line/users-and-groups.md)
 * [File and Directory Access Permissions](the-linux-command-line/file-and-directory-access-permissions.md)
 * [Bash Execution Environment](the-linux-command-line/bash-execution-environment.md)
