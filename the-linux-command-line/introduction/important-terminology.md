@@ -1,5 +1,7 @@
 # Important Terminology
 
+Linux is an operating system kernel.&#x20;
+
 ## Operating System
 
 Like all things programing, the term "operating system" isn't well defined. There's two definitions in common usage:

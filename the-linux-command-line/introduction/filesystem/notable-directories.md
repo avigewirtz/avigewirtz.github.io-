@@ -12,7 +12,7 @@ By default, the contents of a user's home are accessible by the user and the sys
 
 ## Working Directory
 
-Whenever you're using the command line, Bash is always positioned somewhere in the filesystem. This location is known as your (or, more accurately, Bash's) _working directory_. By default, your working directory will be your home directory. You can change the working directory using the `cd` command, which will be covered in [Navigating the Filesystem](../navigating-the-filesystem/).
+Whenever you're using the command line, Bash is always positioned somewhere in the filesystem. This location is known as your (or, more accurately, Bash's) _working directory_. By default, your working directory will be your home directory. You can change the working directory using the `cd` command, which will be covered in [Navigating the Filesystem](../../navigating-the-filesystem/).
 
 The concept of a working directory is at its core a connivence thing, created to enable relative pathnames.&#x20;
 

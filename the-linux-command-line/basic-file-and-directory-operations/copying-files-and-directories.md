@@ -1,6 +1,6 @@
-# Copying Files/Directories
+# Copying and Moving Files/Directories
 
-The `cp` command in Unix-like operating systems is used to copy files and directories. It's basic syntax is as follows:
+Two very similar commands are cp and mv, so we'll cover them together. The `cp` command in Unix-like operating systems is used to copy files and directories. It's basic syntax is as follows:
 
 ```bash
 cp source destination

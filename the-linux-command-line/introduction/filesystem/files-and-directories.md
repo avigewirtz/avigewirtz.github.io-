@@ -24,7 +24,7 @@ Very few restrictions are placed on filenames. On armlab, which uses the popular
 * Filenames may not exceed 255 bytes. (This normally corresponds to 255 characters.)
 * Filenames may not contain a _/_ (forward slash), which is reserved for seperating directory paths, or the _ASCII NUL_ character.&#x20;
 
-While any filename adhering to these rules is considered valid, some filenames are not ideal for use in a shell environment and are best avoided, as will be discussed [later](../basic-file-and-directory-operations/creating-files-and-directories.md#directory-and-file-creation).
+While any filename adhering to these rules is considered valid, some filenames are not ideal for use in a shell environment and are best avoided, as will be discussed [later](../../basic-file-and-directory-operations/creating-files-and-directories.md#directory-and-file-creation).
 
 ### Filename extensions
 

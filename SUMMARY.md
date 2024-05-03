@@ -18,14 +18,17 @@
 ## The Linux command line
 
 * [Introduction](the-linux-command-line/introduction/README.md)
+  * [What is Linux?](the-linux-command-line/introduction/what-is-linux.md)
+  * [The Terminal and Shell](the-linux-command-line/introduction/the-terminal-and-shell.md)
   * [Important Terminology](the-linux-command-line/introduction/important-terminology.md)
   * [GNU Core Utilities](fundamental-concepts/gnu-core-utilities.md)
-* [Linux Filesystem](the-linux-command-line/filesystem/README.md)
-  * [Files and Directories](the-linux-command-line/filesystem/files-and-directories.md)
-  * [Filesystem Structure](the-linux-command-line/filesystem/filesystem-layout.md)
-  * [Notable Directories](the-linux-command-line/filesystem/notable-directories.md)
-  * [Pathnames](the-linux-command-line/filesystem/pathnames.md)
-* [Getting Started](the-linux-command-line/warm-up-commands.md)
+  * [Linux Filesystem](the-linux-command-line/introduction/filesystem/README.md)
+    * [Files and Directories](the-linux-command-line/introduction/filesystem/files-and-directories.md)
+    * [Filesystem Structure](the-linux-command-line/introduction/filesystem/filesystem-layout.md)
+    * [Notable Directories](the-linux-command-line/introduction/filesystem/notable-directories.md)
+    * [Pathnames](the-linux-command-line/introduction/filesystem/pathnames.md)
+  * [The Bash Shell](the-linux-command-line/introduction/the-bash-shell.md)
+* [First Command Line Session](the-linux-command-line/warm-up-commands.md)
   * [What is Bash?](the-linux-command-line/background.md)
   * [What commands represent](the-linux-command-line/what-commands-represent.md)
   * [Command-line shortcuts](the-linux-command-line/useful-command-line-features.md)
@@ -36,12 +39,15 @@
   * [Creating Files/Directories](the-linux-command-line/basic-file-and-directory-operations/creating-files-and-directories.md)
   * [Deleting Files/Directories](the-linux-command-line/basic-file-and-directory-operations/deleting-files-directories.md)
   * [Viewing Files](the-linux-command-line/basic-file-and-directory-operations/viewing-files.md)
-  * [Copying Files/Directories](the-linux-command-line/basic-file-and-directory-operations/copying-files-and-directories.md)
-  * [Moving and Renaming Files/Directories](the-linux-command-line/basic-file-and-directory-operations/moving-and-renaming-files-and-directories.md)
+  * [Copying and Moving Files/Directories](the-linux-command-line/basic-file-and-directory-operations/copying-files-and-directories.md)
 * [Redirection and Piping](the-linux-command-line/redirection-and-piping.md)
 * [Users Accounts](the-linux-command-line/users-and-groups.md)
 * [File and Directory Access Permissions](the-linux-command-line/file-and-directory-access-permissions.md)
-* [Bash Execution Environment](the-linux-command-line/bash-execution-environment.md)
+* [More advanced topics](the-linux-command-line/more-advanced-topics/README.md)
+  * [Processes](the-linux-command-line/more-advanced-topics/processes.md)
+  * [Bash Execution Environment](the-linux-command-line/more-advanced-topics/bash-execution-environment.md)
+  * [Revisiting Redirection and Piping](the-linux-command-line/more-advanced-topics/revisiting-redirection-and-piping.md)
+  * [How Bash Executes Cammands](the-linux-command-line/more-advanced-topics/how-bash-executes-cammands.md)
 * [Linux CLI Cheat Sheet](the-linux-command-line/bash-cheat-sheet.md)
 * [Further Reading](the-linux-command-line/further-reading.md)
 
@@ -140,8 +146,6 @@
 
 * [Assembly](appendices/assembly.md)
 * [Machine Code](appendices/machine-code.md)
-* [How Bash Executes Cammands](appendices/how-bash-executes-cammands/README.md)
-  * [Path Environment Variable](appendices/how-bash-executes-cammands/path-environment-variable.md)
 
 ## Group 1
 
