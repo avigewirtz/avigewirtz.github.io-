@@ -1,6 +1,6 @@
 # Users Accounts
 
-User accounts enable Linux to tailor the computing environment based on who is logged in. This is for security, such as ensuring one user doesn't access another user's files, and convenience.&#x20;
+To access a Linux system you must login. User accounts enable Linux to tailor the computing environment based on who is logged in. This is for security, such as ensuring one user doesn't access another user's files, and convenience.&#x20;
 
 ### Users
 
@@ -13,6 +13,11 @@ User information, including the username, UID, and other details, are stored in 
 ```bash
 username:password:UID:GID:comment:home_directory:shell
 ```
+
+additional info associated with each account:
+
+* Location of the home directory
+* Preferred shell
 
 ### Groups
 
@@ -41,13 +46,4 @@ Let's break down the first row:&#x20;
 * `groups=35(utempter)`: This part of the output lists all the groups that I belong to, which is only one group (_utemper_).&#x20;
 
 You can safely ignore the output on the second row.&#x20;
-
-
-
-{% hint style="info" %}
-additional info associated with each account:
-
-* Location of the home directory
-* Preferred shell
-{% endhint %}
 
