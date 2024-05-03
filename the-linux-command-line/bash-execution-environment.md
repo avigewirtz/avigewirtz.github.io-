@@ -1,6 +1,6 @@
 # Bash Execution Environment
 
-The exact behavior of commands issued in Bash depends upon the execution environment provided by Bash.
+The precise behavior of commands issued in Bash depends upon the execution environment provided by Bash.
 
 Execution environment consists of:
 

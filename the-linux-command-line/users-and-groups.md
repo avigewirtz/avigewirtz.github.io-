@@ -1,6 +1,6 @@
 # Users Accounts
 
-User accounts enable Linux to tailor the computing environment based on who is logged in. This is for securtiy, such as ensuring one user doesn't access another user's files, and convinience.&#x20;
+User accounts enable Linux to tailor the computing environment based on who is logged in. This is for security, such as ensuring one user doesn't access another user's files, and convinience.&#x20;
 
 A typical user account consists of the following information:
 

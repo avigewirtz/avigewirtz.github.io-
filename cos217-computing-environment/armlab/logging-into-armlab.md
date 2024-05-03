@@ -1,6 +1,6 @@
-# Logging into & out of Armlab
+# Logging Into & Out of Armlab
 
-## Logging into Armlab
+## Logging Into Armlab
 
 Logging into Armlab is accomplished via an _SSH client,_ which is a program that uses the [SSH Protocol](ssh-protocol.md) to communicate with a remote computer.
 
@@ -21,7 +21,7 @@ The first time you log into Armlab, an SSH-related message will appear. Respond 
 
 Assuming your login is successful, a shell prompt like the following will appear on your terminal window:
 
-<figure><img src="../../../.gitbook/assets/Screenshot 2023-04-23 at 3.12.10 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-23 at 3.12.10 PM.png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 The prompt will either state armlab01 or armlab02. These computers are interconnected and share the same filesystem, so it is inconsequential which one you are logged into.
@@ -45,7 +45,7 @@ The PuTTY terminal emulator has a built-in SSH client.
 
 If your login is successful, a shell prompt like the following will be displayed in your terminal window:
 
-<figure><img src="../../../.gitbook/assets/Screenshot 2023-04-23 at 3.12.10 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-23 at 3.12.10 PM.png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 The prompt will either state armlab01 or armlab02. These computers are interconnected and share the same filesystem, so it is inconsequential which one you are logged into.
@@ -57,6 +57,6 @@ The prompt will either state armlab01 or armlab02. These computers are interconn
 
 To log out of Armlab, simply invoke `logout`, and your terminal session will be closed:
 
-<figure><img src="../../../.gitbook/assets/Screenshot 2023-05-09 at 3.44.12 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-09 at 3.44.12 PM.png" alt=""><figcaption></figcaption></figure>
 
 [^1]: Replace with your real NetID.

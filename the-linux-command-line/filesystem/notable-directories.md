@@ -2,29 +2,31 @@
 
 The filesystem has many notable directories you need to be familiar with to effectively utilize the command line.&#x20;
 
-<figure><img src="https://lh4.googleusercontent.com/BheXyNU0t154mGoTPcX5POBMs60EjSzSdkn4LJezjzPwmA2I4ABbsnOBp3Errnc2t11JstAjl_JbDticzMOhV42yBJ5OMRF5ZyogG0grk_UKCEIFQ_M3rw1P0LazjLliGXaC6lr9QKD2yRIkupm5j50" alt=""><figcaption></figcaption></figure>
+
 
 ## Home Directory
 
-Each user on a Linux system is assigned a personal directory, called a _home directory_, for them to store their files and directories. The name of the home directory usually corresponds to the user's login name. On armlab, it corresponds to your NetID.
+Each user on a Linux system is assigned a personal directory, called a _home directory_, for them to store their files and directories. The name of a user's home directory is usually their login name. On Armlab, the name of your home directory is your NetID.
 
 By default, the contents of a user's home are accessible by the user and the system administrator only, ensuring the privacy and security of the user's files.
 
-Upon login, a user’s home directory is by default their _working directory_.
-
 ## Working Directory
 
-Each [process](broken-reference) has a dynamically associated directory, called a _working directory_**,** which, informally, can be thought of as the "location" where the process is currently "working in." (If this idea seems abstract, it should become more concrete when we cover [pathnames](pathnames.md).)
+Whenever you're using the command line, Bash is always positioned somewhere in the filesystem. This location is known as your (or, more accurately, Bash's) _working directory_. By default, your working directory will be your home directory. You can change the working directory using the `cd` command, which will be covered in [Navigating the Filesystem](../navigating-the-filesystem/).
 
-When you log into a terminal session, your home directory is by default set as your working directory. You can change the working directory, however, using the [`cd` command](broken-reference), which we'll cover later.
+The concept of a working directory is at its core a connivence thing, created to enable relative pathnames.&#x20;
+
+{% hint style="info" %}
+In fact, every process (running program) always has a dynamically associated directory, called a _working directory_**,** which, informally, can be thought of as the "location" that the process is currently "working in." (If this idea seems abstract, it should become more concrete when we cover [pathnames](pathnames.md).)
+{% endhint %}
 
 ## Hidden files/directories
 
-Files or directories that start with a period (.) are considered _hidden_, meaning they are not displayed in directory listings, whether in a graphical user interface (GUI) or a command-line interface (CLI). To view these hidden entries, you need to explicitly request for them to be displayed.
+Files or directories whose names begin with a  `.` (period) are _hidden_, meaning that by default they are not displayed in directory listings, whether in a GUI or CLI environment. To view these hidden entries, you need to explicitly request for them to be displayed.
 
 ## The . (dot) and .. (dot dot) directories
 
-By convention, every directory contains at least two hidden entries: `.` (dot) and `..` (dot dot). These entries refer to the directory itself and to its parent directory, respectively.&#x20;
+By convention, every directory contains at least two hidden directories: `.` (dot), which refers to the directory itself, and `..` (dot dot), which refers to the parent directory. Being familiar with this notation is critical to using relative pathnames.&#x20;
 
 ## Important standard directories
 
