@@ -1,61 +1,66 @@
 # Copying Files/Directories
 
-The `cp` command is used to copy files and directories from a source to a destination. It's basic syntax is as follows:
+The `cp` command in Unix-like operating systems is used to copy files and directories. It's basic syntax is as follows:
 
 ```bash
 cp source destination
 ```
 
-Here, I'll explain the basic usage of `cp` in different situations:
+Below, I'll outline its various use cases and provide examples for each, starting from the basic operation to more complex scenarios.
 
-1. **Source is a file, destination is a file.** In this case, the source file will be copied to the destination file. If the destination file exists, it will be overwritten. If it doesn't exist, a new file will be created. Syntax: `cp source_file destination_file`
-2. **Source is a file, destination is a directory:** The source file will be copied to the destination directory with the same file name. If a file with the same name already exists in the destination directory, it will be overwritten. Syntax: `cp source_file destination_directory`
-3. **Source is a directory, destination is a file**: This scenario is invalid, as you cannot copy a directory to a file. You'll get an error stating that the source is a directory, not a file.
-4. **Source is a directory, destination is a directory**: The source directory and its contents (including subdirectories and their contents) will be copied to the destination directory. If the destination directory doesn't exist, it will be created. If it exists, the source directory's contents will be merged with the destination directory's contents. In case of duplicate file names, the destination files will be overwritten. Syntax: `cp -r source_directory destination_directory`. Note that in this case, (I.e., when the source is a directory, you must use the `-r` option for the command to succeed). &#x20;
+#### Copying a File within the Same Directory
 
-<details>
+This involves creating a copy of a file in the same directory. It goes without saying that the copy must have a different name, since two files in the same directory cannot have the same name. Suppose we want to copy `einstein_quote.txt` to a new file named `einstein_quote_backup.txt` in the same directory. We'd invoke:
 
-<summary>Common options</summary>
+```bash
+cp einstein_quote.txt einstein_quote_backup.txt
+```
 
-* **`-i`**: Prompts the user for confirmation before overwriting.&#x20;
+Note that if `einstein_quote_backup.txt` already exists, it will be overwritten. To avoid accidentally overwriting files, you can use the `-i` (interactive) option with `cp`, which prompts you for confirmation before overwriting an existing file. For example, suppose we invoke the same command again, but this time with the `-i` option. We will be asked to confirm that we want to overwrite `einstein_quote_backup.txt`, to which we can respond y (yes) or n (no):
 
-<!---->
+```bash
+~/CLI_playground$ cp -i einstein_quote.txt einstein_quote_backup.txt
+overwrite einstein_quote_backup.txt? (y/n [n]) n
+not overwritten
+~/CLI_playground$
+```
 
-* **`-f`**: Overrides `-i` option (i.e., removes confirmation prompt).&#x20;
+{% hint style="info" %}
+On Armlab, '`cp`' is aliased to '`cp -i`', meaning by default you will be prompted for confirmation before overwriting a file. If you are sure about overwriting a file and do not want to be prompted, you can remove the confirmation with the `-f` option.
+{% endhint %}
 
-<!---->
+#### Copying a File to Another Directory
 
-* **`-r`**: Copies directory recursively.
+Suppose we want to copy `einstein_quote.txt` to a different directory, say our home directory. We now have a choice whether the copy should retain the original name (i.e., `einstein_quote.txt`) or be renamed. To retain its name, we'd invoke:
 
-</details>
+```bash
+cp einstein_quote.txt ~ # recall that ~ = /path/to/home/directory
+```
 
-### Examples
+To rename the copy `einstein_quote_backup.txt`, we'd invoke:
 
-1.  Copy `berra_quote.txt` to a new file named `berra_quote_backup.txt`:
+```
+cp einstein_quote.txt ~/einstein_quote_backup.txt
+```
 
-    ```bash
-    cp berra_quote.txt berra_quote_backup.txt
-    ```
-2.  Copy `einstein_quote.txt`a new directory named `quotes`:
+#### Copying Multiple Files to a Directory
 
-    First, create the directory `quotes`:
+To copy multiple files from one directory to another, list all files followed by the destination directory. For example, to copy `einstein_quote.txt` and `berra_quote.txt` to our home directory, we'd invoke:
 
-    ```bash
-    mkdir quotes
-    ```
+```bash
+cp berra_quote.txt einstein_quote.txt ~
+```
 
-    Then, use `cp` to copy `einstein_quote.txt` to the `quotes` directory:
+If we wanted to rename the copies (e.g., to `berra_quote_backup.txt` and `einstein_quote_backup.txt` and respectively) , this operation would require two commands:
 
-    ```bash
-    cp einstein_quote.txt quotes/
-    ```
-3.  Copy both `berra_quote.txt` and `einstein_quote.txt` to the `quotes` directory:
+```bash
+cp berra_quote.txt ~/berra_quote_backup.txt
+cp einstein_quote.txt ~/einstein_quote_backup.txt
+```
 
-    ```bash
-    cp berra_quote.txt einstein_quote.txt quotes/
-    ```
-4.  Copy the entire quotes directory to your home directory:&#x20;
+## Copying Directories
 
-    ```bash
-    cp -r quotes ~
-    ```
+* copy directory to another
+* copy to nonexistent directory
+* merge with existing directory. address overwriting.
+
