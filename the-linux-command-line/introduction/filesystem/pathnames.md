@@ -1,29 +1,22 @@
 # Pathnames
 
-Every file and directory has a _pathname_, which is a string that uniquely identifies its location in the directory hierarchy. There are two types of pathnames: _absolute_ or _relative_. An absolute pathname pinpoints the location of a file or directory by specifying its path from the root directory; a relative pathname specifying its path from the working directory.&#x20;
+The location of a file in the directory hierarchy can be expressed by specifying its path from the root directory. Such paths are built by listing all directory names starting from the root, separated by slashes, followed by the file's name. This is called an _absolute pathname_. For example:`/u/sgewirtz/CLI_playground/the_odyssey.txt` means start at root directory, go to u, then sgewirtz, then CLI\_playground, and there you'll find the\_odyssey.txt. Since no two files in the same directory may have the same name, the absolute pathname uniquely identifies its location in the directory hierarchy. Figure 3 shows several examples of absolute pathnames.
 
-### Absolute pathnames
+## Working Directory
 
-The absolute pathname of a directory or file has the following format:
+Listing full pathnames can become cumbersome. For that reason, we have the concept of a working directory, which can be thought of as the directory you're currently "in." When you specify a path that does not begin with `/`, it is interpreted as starting from the working directory. This is known as a _relative pathname_. By default, your working directory will be your home directory, but you can change it using the `cd` command, which we'll cover in [Navigating the Filesystem](../../navigating-the-filesystem/#cd-relocating). &#x20;
 
-```
-/dir1/dir2/…/dirN_or_file
-```
+Suppose our working directory is `/u/sgewirtz` and we invoke `emacs .bashrc`. The system will look for `.bashrc` in `/u/sgewirtz`.
 
-The first _/_ represents the root directory; the intermediate directories, each delimited by _/_, represent the directories on the trail from the root directory to _dirN\_or\_file_. Figure 3 illustrates four absolute pathnames.
 
-<figure><img src="https://lh6.googleusercontent.com/L5AY4VGHdsVYWSKkicK4tU758bIXimYQphD7_ojQwtjKISL6dhGrPlLbFVKurw_vqRGYRbmp4ZTV22RP9QmeL9oNkaf83SRzdP0Ou6oJ7Akomg2DbQrtY7iJa-lKHdbh39qvpm0cceJBFW54y499qbQ" alt=""><figcaption><p>Figure 3: Absolute Pathname Examples</p></figcaption></figure>
 
-### Relative pathnames
+{% hint style="info" %}
+**Tilde notation**
 
-The relative pathname of a directory or file has the following format:
+**Home directories often occur in pathnames.Can abbrevieate with tilde. Will be expanded by shell.** Note that pathname beggining with tilde is absolute pathname.&#x20;
 
-```
-dir1/dir2/…/dirN_or_file
-```
+* \~/ your home directory
+* \~
 
-_dir1_ normally represents the parent (denoted `..`) or child of the working directory, but it can also represent the working directory itself (denoted `.`). The intermediate directories, each delimited by _/_, represent the directories on the trail from _dir1_ to _dirN\_or\_file_. Figure 4 illustrates four relative pathnames.
-
-<figure><img src="https://lh3.googleusercontent.com/G6fYIoWumsNAoXkf7lnMwc5TEdyJ1zDcFSyqwmyFm-J8xG0YwJB2-zCmzuwDkOFFEv-Tzo3l8e7e7h9KkrJbfBO7qe7Khj5caDlE8P8R_kN2H8RAA_LF2gD-uk5dSEQK23Yv1DxJM0F4chlgWH3tnYE" alt=""><figcaption><p>Figure 4: Relative Pathname Examples</p></figcaption></figure>
-
-It's important to note that the working directory can change during a session, so the meaning of a relative pathname is context specific.&#x20;
+Tilde is a shell concept, not an OS concept.&#x20;
+{% endhint %}

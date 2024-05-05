@@ -2,54 +2,11 @@
 description: This page introduces Bash commands.
 ---
 
-# Getting Started
+# Introduction to Bash
 
 In addition, their order is irrelevant, so typing `ls -trl` gives the same result.
 
-
-
 We'll begin our command line journey by executing a few simple Bash commands on Armlab.&#x20;
-
-{% hint style="info" %}
-**Switching macOS to Bash**
-
-If you’re using macOS, at this point you should make sure you’re using the right shell program for this tutorial. The default shell as of [macOS Catalina](https://en.wikipedia.org/wiki/MacOS\_Catalina) is [_Z shell_](https://en.wikipedia.org/wiki/Z\_shell) (Zsh), but to get results consistent with this tutorial you should switch to the shell known as [_Bash_](https://en.wikipedia.org/wiki/Bash\_\(Unix\_shell\)).
-
-The first step is to determine which shell your system is running, which you can do using the `echo` command ([Section 1.3](https://www.learnenough.com/command-line-tutorial#sec-our\_first\_command)):
-
-```
-  $ echo $SHELL
-  /bin/bash
-```
-
-This prints out the `$SHELL` [environment variable](https://www.cyberciti.biz/faq/set-environment-variable-unix/). If you see the result shown above, indicating that you’re already using Bash, you’re done and can proceed with the rest of the tutorial. (In rare cases, `$SHELL` may differ from the current shell, but the procedure below will still correctly change from one shell to another.) The alert shown in [Listing 1.1](https://www.learnenough.com/command-line-tutorial#code-macos\_zsh\_alert) is safe to ignore. For more information, including how to switch to and use Z shell with this tutorial, see the Learn Enough blog post “[Using Z Shell on Macs with the Learn Enough Tutorials](https://news.learnenough.com/macos-bash-zshell)”.
-
-The other possible result of `echo` is this:
-
-```
-  $ echo $SHELL
-  /bin/zsh
-```
-
-If that’s the result you get, you should use the `chsh` (“change shell”) command as follows:
-
-```
-  $ chsh -s /bin/bash
-```
-
-You’ll almost certainly be prompted to type your system password at this point, which you should do. Then completely exit your shell program using Command-Q and relaunch it.
-
-You can confirm that the change succeeded using `echo`:
-
-```
-  $ echo $SHELL
-  /bin/bash
-```
-
-At this point, you will probably start seeing the alert shown in [Listing 1.1](https://www.learnenough.com/command-line-tutorial#code-macos\_zsh\_alert), which you should ignore.
-
-Note that the procedure above is entirely reversible, so there is no need to be concerned about damaging your system. See “[Using Z Shell on Macs with the Learn Enough Tutorials](https://news.learnenough.com/macos-bash-zshell)” for more information.
-{% endhint %}
 
 ### The Big Picture
 

@@ -4,7 +4,7 @@ To effectively navigate the Linux filesystem, you need to be familiar with three
 
 ## **`pwd` - A Sense of Location**
 
-Whenever you're using the command line, bash is always positioned somewhere in the filesystem. This location is known as your (or, more accurately, Bash's) working directory (see [Working Directory](../introduction/filesystem/notable-directories.md#working-directory)).
+Whenever you're using the command line, bash is always positioned somewhere in the filesystem. This location is known as your (or, more accurately, Bash's) working directory (see [Working Directory](broken-reference)).
 
 You can find out your current working directory by invoking `pwd` (**p**rint **w**orking **d**irectory), which displays the absolute pathname of your working directory on stdout. By default, your working directory will be your home directory, which on Armlab is `/u/yourNetID`. When I invoke `pwd` on Armlab, I get the following output:
 
@@ -36,7 +36,7 @@ A1	A2	CLI_playground
 
 #### Displaying Hidden Files
 
-By default, `ls` does not display [hidden](../introduction/filesystem/notable-directories.md#hidden-files-directories) entries (i.e., files and directories whose names begin with a `.`, such as `.bashrc`). To include hidden entries in the directory listing, use the `-a` option:
+By default, `ls` does not display [hidden](broken-reference) entries (i.e., files and directories whose names begin with a `.`, such as `.bashrc`). To include hidden entries in the directory listing, use the `-a` option:
 
 ```bash
 ~$ ls 
