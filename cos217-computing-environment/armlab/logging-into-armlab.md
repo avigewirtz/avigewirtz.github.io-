@@ -1,4 +1,4 @@
-# Logging Into & Out of Armlab
+# Logging Into and Out of Armlab
 
 ## Logging Into Armlab
 
@@ -29,7 +29,7 @@ The prompt will either state armlab01 or armlab02. These computers are interconn
 {% endtab %}
 
 {% tab title="Windows" %}
-The PuTTY terminal emulator has a built-in SSH client.
+On Windows, logging into Armlab is done with PuTTY, which has a built in ssh client program.&#x20;
 
 1. Launch PuTTY. Using Windows Explorer, double-click on the putty.exe file.
 2. Click on the Window | Colours Category, and make sure the Use system colours checkbox is checked.
