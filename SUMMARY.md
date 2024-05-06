@@ -27,7 +27,7 @@
   * [Aliases](the-linux-command-line/useful-command-line-features/aliases.md)
   * [Wildcards](the-linux-command-line/useful-command-line-features/wildcards.md)
 * [Navigating the Filesystem](the-linux-command-line/navigating-the-filesystem/README.md)
-* [Manual Pages](the-linux-command-line/getting-help.md)
+* [Getting Documentation For Commands](the-linux-command-line/getting-help.md)
 * [Basic File and Directory Operations](the-linux-command-line/basic-file-and-directory-operations/README.md)
   * [Creating Files and Directories](the-linux-command-line/basic-file-and-directory-operations/creating-files-and-directories.md)
   * [Deleting Files and Directories](the-linux-command-line/basic-file-and-directory-operations/deleting-files-and-directories.md)

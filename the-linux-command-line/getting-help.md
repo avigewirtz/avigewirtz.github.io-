@@ -1,6 +1,4 @@
-# Manual Pages
-
-* i think it should have coverage of manpage and then a hint box about help command
+# Getting Documentation For Commands
 
 Almost all commands come with some form of documentation that can be accessed from the command line. Such documentation is helpful when you need information on how to use a command or want more information about the command’s specifics, such as it's options. &#x20;
 
