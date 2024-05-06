@@ -11,7 +11,7 @@
 
 * [Armlab](cos217-computing-environment/armlab/README.md)
   * [Activating Your Armlab Account](cos217-computing-environment/armlab/activating-your-armlab-account.md)
-  * [Logging Into & Out of Armlab](cos217-computing-environment/armlab/logging-into-armlab.md)
+  * [Logging Into and Out of Armlab](cos217-computing-environment/armlab/logging-into-armlab.md)
   * [Secure Shell (SSH) Protocol](cos217-computing-environment/armlab/ssh-protocol.md)
   * [Configuring Your Armlab Environment](cos217-computing-environment/armlab/configuring-your-armlab-environment.md)
 
