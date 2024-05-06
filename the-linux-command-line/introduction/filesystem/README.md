@@ -3,7 +3,7 @@
 One of the most fundamental services provided by the operating system is the filesystem, which is an abstracted model of computer storage. At its core, a file is a linear array of bytes of arbitrary length. Each Linux file has a _type_ that indicates its role:
 
 * A _regular file_ contains arbitrary data, such as text, images, audio, executable programs, and so on. Application program's typically distinguish between different types of files, but Linux. To the kernel there is no difference between text and binary files.
-* A _directory_ is a file that contains an array of links, where each entry maps a filename to a file, which may be another directory. Every directory contains at least two entries: `.` (dot), which is a link to itself, and `..` (dot dot), which is a link to its parent.&#x20;
+* A _directory_ is a file that contains an array of links, where each entry maps a filename to a file, which may be another directory. Each directory may have an arbitrary amount of subdirectories, expanding the structure as necessary. Every directory contains at least two entries: `.` (dot), which is a link to itself, and `..` (dot dot), which is a link to its parent.&#x20;
 
 {% hint style="info" %}
 Other types of files include named pipes, sockets, symbolic links, and character and block device files, which are beyond our scope.&#x20;
@@ -11,14 +11,12 @@ Other types of files include named pipes, sockets, symbolic links, and character
 
 ## Directory Hierarchy
 
-Linux organizes all files as a single hierarchical structure, in which all files and directories descend from a single directory, known as the root directory, denoted by a `/` (forward slash). Figure 1 shows a snapshot of a portion of the directory hierarchy on Armlab.&#x20;
+The Linux filesystem is organized as a single hierarchical structure, resembling an inverted tree. At the base is the _root directory_, denoted by `/` (slash), from which all files and directories in the system descend. An example of this hierarchical structure is shown in Figure 1, which depicts a partial snapshot of the Armlab filesystem.
 
-<figure><img src="../../../.gitbook/assets/filesystem10.17 (16).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (3) (1).png" alt=""><figcaption><p>Figure 1: Filesystem Structure</p></figcaption></figure>
 
-Like a tree, the hierarchy grows from the root, with paths connecting the root to each of the tree’s subdirectories and files. Each directory may have an arbitrary amount of subdirectories, expanding the structure as necessary. The terms _parent_ and _child_ are commonly used to describe the relationship between two adjacent directories. In the above snapshot, for example, `u` is the parent of `tal5`, `bwk`, and `sgewirtz`, and they are `u`'s children.
-
-{% hint style="warning" %}
-Although conventionally denoted `/`, the root directory technically has no name--its "name" is the empty part before the `/`.
+{% hint style="info" %}
+The terms _parent_ and _child_ are commonly used to describe the relationship between a adjacent directories. In the above snapshot, for example, `tal5` is a child of `u` (and `u` is the parent of `tal5`, `bwk`, and `sgewirtz`).
 {% endhint %}
 
 #### Filenames
