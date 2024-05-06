@@ -22,7 +22,6 @@
   * [The Bash shell](the-linux-command-line/introduction/the-bash-shell.md)
   * [Linux Filesystem](the-linux-command-line/introduction/filesystem/README.md)
     * [Directory Hierarchy](the-linux-command-line/introduction/filesystem/filesystem-layout.md)
-    * [Filenames](the-linux-command-line/introduction/filesystem/filenames.md)
     * [Home Directory +](the-linux-command-line/introduction/filesystem/home-directory-+.md)
     * [Pathnames](the-linux-command-line/introduction/filesystem/pathnames.md)
 * [Getting Started With Bash](the-linux-command-line/warm-up-commands.md)
