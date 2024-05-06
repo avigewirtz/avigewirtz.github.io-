@@ -19,7 +19,7 @@
 
 * [Introduction](the-linux-command-line/introduction/README.md)
   * [Linux Kernel](the-linux-command-line/introduction/linux-kernel.md)
-  * [The Bash shell](the-linux-command-line/introduction/the-bash-shell.md)
+  * [Terminal and Shell](the-linux-command-line/introduction/terminal-and-shell.md)
   * [Linux Filesystem](the-linux-command-line/introduction/filesystem/README.md)
 * [Getting Started With Bash](the-linux-command-line/warm-up-commands.md)
 * [Bash Shortcuts](the-linux-command-line/useful-command-line-features/README.md)
