@@ -7,13 +7,13 @@
 * [Conventions used](preface/conventions-used.md)
 * [Acknowledgments](preface/acknowledgments.md)
 
-## COS217 Computing Environment
+## Armlab
 
-* [Armlab](cos217-computing-environment/armlab/README.md)
-  * [Activating Your Armlab Account](cos217-computing-environment/armlab/activating-your-armlab-account.md)
-  * [Logging Into and Out of Armlab](cos217-computing-environment/armlab/logging-into-armlab.md)
-  * [Secure Shell (SSH) Protocol](cos217-computing-environment/armlab/ssh-protocol.md)
-  * [Configuring Your Armlab Environment](cos217-computing-environment/armlab/configuring-your-armlab-environment.md)
+* [Armlab](armlab/armlab/README.md)
+  * [Activating Your Armlab Account](armlab/armlab/activating-your-armlab-account.md)
+  * [Logging Into and Out of Armlab](armlab/armlab/logging-into-armlab.md)
+  * [Secure Shell (SSH) Protocol](armlab/armlab/ssh-protocol.md)
+  * [Configuring Your Armlab Environment](armlab/armlab/configuring-your-armlab-environment.md)
 
 ## The Linux command line
 
