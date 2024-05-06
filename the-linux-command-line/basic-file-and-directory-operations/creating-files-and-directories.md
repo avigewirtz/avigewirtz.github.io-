@@ -1,4 +1,4 @@
-# Creating Files/Directories
+# Creating Files and Directories
 
 ## Creating Directories
 
@@ -8,14 +8,13 @@ To create a new directory, use the `mkdir` command followed by the name of the d
 mkdir dir1
 ```
 
-#### Creating multiple directories
-
-Multiple directories can be created via a single invocation of `mkdir` by supplying multiple directory names as arguments. For example:
+To create multiple directories via a single invocation of mkdir, supply the name of each directory as an argument. For example, to create `dir2`, `dir3`, and `dir4`:
 
 ```bash
-mkdir dir1 dir2 dir3
+mkdir dir2 dir3 dir4
 ```
 
+{% hint style="warning" %}
 #### Creating a directory with whitespace in its name
 
 Suppose we want to create a directory named `assignment 1`. As you can probably guess, invoking:
@@ -31,10 +30,6 @@ mkdir "assignment 1"
 ```
 
 This will create a single directory named `assignment 1`.
-
-{% hint style="info" %}
-**Good naming practice**\
-When you consider both case sensitivity and escaping, a good rule of thumb is to keep your file names all lower case, with only letters, numbers, underscores and hyphens. For files there’s usually also a dot and a few characters on the end to indicate the type of file it is (referred to as the “file extension”). This guideline may seem restrictive, but if you end up using the command line with any frequency you’ll be glad you stuck to this pattern.
 {% endhint %}
 
 ## Creating Files
