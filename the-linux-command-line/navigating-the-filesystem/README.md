@@ -108,7 +108,7 @@ You can change your working directory using the `cd` (**c**hange working **d**ir
 cd DIRECTORY_PATHNAME
 ```
 
-`DIRECTORY_PATHNAME` refers to either the absolute or relative pathname of the target directory (see [pathnames](../introduction/filesystem/pathnames.md)).&#x20;
+`DIRECTORY_PATHNAME` refers to either the absolute or relative pathname of the target directory (see [pathnames](broken-reference)).&#x20;
 
 #### Example&#x20;
 
