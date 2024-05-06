@@ -1,6 +1,6 @@
-# The Terminal and Shell
+# The Bash shell
 
-how do we interact with Linux, or with any computer for that matter? Nowadays, most users intearct with computers via a graphical user interface (GUI).&#x20;
+how do we interact with Linux, or with any computer for that matter? Nowadays, most users intearct with computers via a graphical user interface (GUI). A GUI is a program that...
 
 back in the day, used to do it with a device known  as a terminal. the first terminals were hardware&#x20;
 
@@ -30,38 +30,17 @@ Given the much steeper learning curve of the CLI compared to the GUI, you might 
 
 CLI commands are issued via a _terminal_. In the nascent days of interactive computing, terminals were hardware devices, consisting of a keyboard and a display unit. The first terminals were teletype machines, such as the Model 33 ASR shown in Figure 1, whose display unit was a paper-roll printer.
 
-<figure><img src="https://lh4.googleusercontent.com/Sui_O3OmVfRuG7TS5Ro-pkF7IOJAAbL3Wxb5wHU2xvDIbpFmwGSHkM35HSD2Eic31K5unT9XBYsh63ta-eK33dyWUfQrfJKI48zSJjDUxw2m3LaRKU73PD2WRTUNqETK1FU1RoFPWQSqlph9K8Zoqc4" alt="" width="375"><figcaption><p>Figure 1: Teletype Model 33 ASR</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/560px-Teletype-IMG_7287.jpg" alt="" width="280"><figcaption><p>Figure 1: Teletype Model 33 ASR</p></figcaption></figure>
 
-Teletypes fell out of use in the 1970s with the advent of video display terminals, such as the DEC VT100 shown in Figure 2. These terminals provided instant user-feedback and editing capabilities, making the CLI far more efficient and user-friendly.&#x20;
+Teletypes fell out of use in the 1970s with the advent of video display terminals, such as the DEC VT100 shown in Figure 2, which provided instant user-feedback and editing capabilities.&#x20;
 
 <figure><img src="../../.gitbook/assets/1200px-DEC_VT100_terminal_transparent.png" alt="" width="375"><figcaption></figcaption></figure>
 
-Today, hardware terminals are largely obsolete. The predominant method for accessing the CLI is through a _terminal emulator_, which is a GUI program that simulates the functionality of a hardware terminal, such as the VT-100. An example of such a terminal emulator is macOS's Terminal, shown in Figure 3.&#x20;
+Today, hardware terminals are largely obsolete. The predominant method for accessing the CLI is through a _terminal emulator_, which is a GUI program that simulates the functionality of a hardware terminal. An example of a terminal emulator is macOS's Terminal, shown in Figure 3.&#x20;
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-05-19 at 5.46.26 PM.png" alt="" width="563"><figcaption><p>Figure 3: macOS Terminal Application</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-19 at 5.46.26 PM.png" alt="" width="375"><figcaption><p>Figure 3: macOS Terminal Application</p></figcaption></figure>
 
 
 
 ## Shell
 
-Have you ever thought about what happens when you type a command and press enter? In other words,&#x20;
-
-When you type commands, how are the commands implemented?&#x20;
-
-The shell is a program that implements a command line interface.&#x20;
-
-
-
-
-
-
-
-
-
-
-
-
-
-While Unix shells such as Bash and Zsh have slight differences in their syntax and capabilities, they share many similarities, making transitioning from one to the other (such as from Bash to Zsh or vice versa) relatively seamless.
-
-##

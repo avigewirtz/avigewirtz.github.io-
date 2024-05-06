@@ -1,37 +1,39 @@
-# Getting Help
+# Getting Documentation
 
 Almost all commands come with some form of documentation that can be accessed from the command line. Such documentation is helpful when you need information on how to use a command or want more information about the command’s specifics, such as it's options. &#x20;
 
-The command you use to retrieve the documentation depends on whether the command represents a shell builtin, such as _exit_, or an external program, such as _cal_. You can tell whether a command is a shell built-in or an external program by using the `type` command.  For example, if we invoke:
+The command you use to retrieve the documentation depends on whether the command is a shell builtin, such as `exit`, or an external program, such as `cal`. For standalone programs such as `cal`,  use the `man` command, which outputs the command's _manpage_ (manual page) via the [`less`](basic-file-and-directory-operations/viewing-files.md#less) pager :&#x20;
 
 ```bash
-~> type exit
-exit is a shell builtin
-~> 
+man cal
 ```
 
-It tells us that _exit_ is a shell builtin. However, if we invoke type on cal, which is a standalone program, we get the following output:
+<figure><img src="../.gitbook/assets/Screenshot 2024-03-19 at 3.54.12 PM.png" alt="" width="375"><figcaption><p>Figure 1: <code>cal</code> manpage</p></figcaption></figure>
+
+For shell builtins such as `exit`, use the `help` command:&#x20;
+
+```bash
+~$ help exit
+exit: exit [n]
+    Exit the shell with a status of N.  If N is omitted, the exit status
+    is that of the last command executed.
+~$
+```
+
+{% hint style="info" %}
+You can determine whether a command is a shell built-in or a standalone program by invoking `type command_name`. For example:
+
+```bash
+~$ type exit
+exit is a shell builtin
+~$
+```
+
+If the command is a standalone program, it'll return its absolute pathname:&#x20;
 
 ```bash
 ~> type cal
 cal is /usr/bin/cal
 ~> 
 ```
-
-Which is it's absolute pathname.
-
-### man
-
-For an external program such as _cal_, you can get its _manpage_ (manual page) by invoking the  `man` command. Note that the output will be displayed via the _less_ pager:
-
-```bash
-man cal
-```
-
-<figure><img src="../.gitbook/assets/Screenshot 2024-03-19 at 3.54.12 PM.png" alt="" width="375"><figcaption><p>Figure 1: <em>cal</em> manpage</p></figcaption></figure>
-
-### help
-
-For bash builtins such as _exit_, use the `help` command:&#x20;
-
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-25 at 2.04.36 PM.png" alt=""><figcaption></figcaption></figure>
+{% endhint %}
