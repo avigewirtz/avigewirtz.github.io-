@@ -16,7 +16,7 @@ target: dependencies
 * **Dependencies** . These are the files that the target _directly_ depends on (e.g., `testintmath` directly depends on `testintmath.o` and `intmath.o`).  We do not include indirect dependencies.&#x20;
 * **Command**. This is the command make invokes to build the target. Note that it must be preceded by a Tab character.&#x20;
 
-Our program has three targets--`testintmath`, `testintmath.o`, and `intmath.o`--leading to the following Makefile:&#x20;
+Our program has three targets--`testintmath`, `testintmath.o`, and `intmath.o`. This leads to the following Makefile:&#x20;
 
 ```makefile
 testintmath: testintmath.o intmath.o
