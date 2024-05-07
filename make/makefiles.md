@@ -7,7 +7,7 @@ As we saw in the previous section, managing incremental builds manually can be t
 
 For a small program like `testintmath`, this might be manageable, but as programs grow larger, it becomes increasingly difficult.
 
-A much better approach is to automate the process with 'make'. To do so, you create a file named `Makefile` (or `makefile`) in your program's directory, which you populate with a dependency graph of the your program. This dependency graph describes the relationships between your program's files and provide 'make' with the necessary build commands. Once you have a suitable Makefile, you can build your program by simply invoking:
+A much better approach is to automate the process with 'make'. To do so, you create a file named `Makefile` (or `makefile`) in your program's directory, which you populate with a _dependency graph_ of the your program. Such a graph describes the relationships between your program's files and provide 'make' with the necessary build commands. Once you have a suitable Makefile, you can build your program by simply invoking:
 
 ```bash
 make
@@ -17,30 +17,22 @@ make
 
 ### Dependency Graphs
 
-In such a graph, each file is represented by a node, which, when applicable, is annotated with the commands to build it. Dependencies are indicated by arrows (i.e., directed edges) between nodes. If there is an arrow from file A to file B (A → B), then A depends on B, meaning changes to B require A to be rebuilt. If A → B and B → C, then A is indirectly (or transitively) dependent on C. A change to C requires B to be rebuilt, which in turn requires A to be rebuilt.  A dependency graph for our `testintmath` program is shown in Figure 12.3.&#x20;
+The dependencies among files in a program can be formally described with a dependency graph. In such a graph, each node represents a file. When applicable, the node is labeled with the command to build it. A directed edge (arrow) from A to B (A -> B) indicates that file A depends on file B, meaning that changes to B require A to be rebuilt. If A → B and B → C, then A is indirectly (or transitively) dependent on C. A change to C requires B to be rebuilt, which in turn requires A to be rebuilt. A dependency graph for our `testintmath` program is shown in Figure 12.3.&#x20;
 
 <figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
 
-### Describing dependency graoh in text
+### Describing dependency graph in text
 
-makefile contain sytanx for rules.
-
-Next, we populate the Makefile with a textual representation of `testintmath`'s dependency graph. This consists of a _dependency rule_ for each object file (`intmath.o`, `testintmath.o`) and for the executable (`testintmath`). A dependency rule has the following syntax:
+Each node that isn't a leaf is known as a target in make terminology. Create a rule for each target.&#x20;
 
 ```
 target: dependencies
 <tab> command
 ```
 
-* **Target**: The file you want to build (e.g., `testintmath`).
-* **Dependencies**: The files that the target _directly_ depends on (e.g., `intmath.o`, `testintmath.o`).
-* **Command**: The command to build the target (e.g., `gcc217 intmath.o testintmath.o -o testintmath`). **Note:** The command must be preceded by a tab.
-
-In our case, we create three dependency rules: one for `testintmath`, one for `testintmath.o`, and one for `intmath.o`. Figuring our which files each of these targets directly depends on can sometimes be challenging, but with our dependency graph, the dependencies are obvious:
-
-* `testintmath` directly depends on `testintmath.o` and `intmath.o`
-* `testintmath.o` directly depends on `tetsintmath.c` and `intmath.h`
-* `intmath.o` directly depends on `intmath.c` and `intmath.h`
+* **Target**: The file you want to build.&#x20;
+* **Dependencies**: The files that the target depends on. Note that you do not list indirect dependencies here.
+* **Command**: The command to build the target. **Note:** The command must be preceded by a tab.
 
 This results in the following makefile:
 
