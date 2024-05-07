@@ -6,7 +6,7 @@ The transition from a dependency graph to makefile is quite straightforward. We'
 
 ### Dependency Rules
 
-We create a what is known as a dependency rule for each node that isn't a leaf. These nodes correspond to files that are built via GCC commands. In make terminology, they're called targets. Dependency rules have the following syntax:
+We create a what is known as a dependency rule for each file that needs to be built. In make terminology, such files are know as targets. Dependency rules have the following syntax:
 
 ```
 target: dependencies
@@ -16,7 +16,7 @@ target: dependencies
 * **Dependencies** . These are the files that the target _directly_ depends on (e.g., `testintmath` directly depends on `testintmath.o` and `intmath.o`).  We do not include indirect dependencies.&#x20;
 * **Command**. This is the command make invokes to build the target. Note that it must be preceded by a Tab character.&#x20;
 
-Our program has three targets--`testintmath`, `testintmath.o`, and `intmath.o`. This results in the following Makefile:&#x20;
+Target's correspond to nodes that do not have any leafs, making them easy to identify. Our program has three targets--`testintmath`, `testintmath.o`, and `intmath.o`. This results in the following Makefile:&#x20;
 
 ```makefile
 testintmath: testintmath.o intmath.o
