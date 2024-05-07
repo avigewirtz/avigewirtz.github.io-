@@ -6,7 +6,7 @@ The transition from a dependency graph to makefile is quite straightforward. We'
 
 ### Dependency Rules
 
-We create a what is known as a dependency rule for each file that is created via a build. In make terminology, such files are know as targets. Targets are easy to identify, since they correspond to nodes with children (i.e., non leaf nodes). In our case, we have three targets: intmath.o, testintmath.o, and testintmath. Dependency rules have the following syntax:
+We create a what is known as a dependency rule for each file that is created via a build. In make terminology, such files are know as targets. Targets are easy to identify, since they correspond to nodes that have children. In our case, we have three targets: intmath.o, testintmath.o, and testintmath. Dependency rules have the following syntax:
 
 ```
 target: dependencies
