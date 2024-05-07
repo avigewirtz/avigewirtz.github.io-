@@ -10,7 +10,7 @@ Before reading this chapter, ensure you're familiar with the GCC build process. 
 
 Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, instead of the entire project. This significantly reduces build times, especially in larger projects. We'll start with a mathematical example to illustrate the core concept, then translate that to the world of C programming
 
-### Mathematical Example
+#### Mathematical Example
 
 Consider the following mathematical functions:
 
@@ -39,13 +39,13 @@ We can formally describe the dependencies among the A, B, C, X, Y, and H using a
 
 <figure><img src="../.gitbook/assets/Frame 26.png" alt="" width="375"><figcaption><p>Dependency Graph</p></figcaption></figure>
 
-In this graph, a _directed edge_ A -> B indicates that A depends on B, meaning that a change to B requires A to be updated. If A -> B and B -> C, then A is indirectly (or transitively) dependent on C. With this dependency graph, determining how to recompute A after a change to X, Y, or H is extremely simple:
+In this graph, a _directed edge_ A -> B indicates that A directly depends on B, meaning that a change to B requires A to be updated. If A -> B and B -> C, then A is indirectly (or transitively) dependent on C. With this dependency graph, determining how to recompute A after a change to X, Y, or H is extremely simple:
 
 * **If X changes:** We recompute B and then A.&#x20;
 * **If Y changes:** We recompute C and then A.&#x20;
 * **If H changes:** We recompute B and C (in any order) and then recompute A.
 
-### Transition to C
+#### Transition to C
 
 The core principles  we just described apply directly to C programs. Let's demonstarte with a practical example. Consider the `testintmath` program from precept 4, whose source code is shown below.
 
@@ -114,6 +114,8 @@ $$\text{testintmath} = \text{link}(\text{testintmath.o, intmath.o})$$
 $$\text{testintmath.o} = \text{compile}(\text{testintmath.c, intmath.h})$$
 
 $$\text{intmath.o} = \text{compile}(\text{intmath.c, intmath.h})$$
+
+<figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
 
 {% hint style="info" %}
 Recall that the contents of #included files are inserted by the preprocessor before compilation proper begins. Hence, object files are derived from their corresponding C file as well as all #included source files.&#x20;
