@@ -81,7 +81,7 @@ int lcm(int i, int j);
 
 ### Building testintmath
 
-We build `testintmath` in two steps. First, we compile `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`. This is done by invoking `gcc217` with the `-c` option:&#x20;
+We build `testintmath` in two steps. First, we translate `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`. This is done by invoking `gcc217` with the `-c` option:&#x20;
 
 ```
 gcc217 -c intmath.c testintmath.c 
@@ -113,10 +113,8 @@ gcc217 intmath.o testintmath.o -o testintmath
 
 Fundamentally, the only difference between these two build approaches is that the two-command approach retains the intermediate object files while the single-command approach does not.
 
-When I distinguish between "monolithic" and "two-step" approaches, I'm referring to how we conceptualize the build process, not the underlying GCC mechanisms.
+When I distinguish between "monolithic" and "two-step" approaches, I'm referring to how we might conceptualize the build process, not the underlying GCC mechanisms.
 {% endhint %}
-
-
 
 ### &#x20;Rebuilding `testintmath`
 
