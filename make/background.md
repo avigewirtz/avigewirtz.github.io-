@@ -6,20 +6,48 @@ In a nutshell, make is a software tool that automates the process of incremental
 Before reading this chapter, ensure you're familiar with the GCC build process. An overview is provided in [GCC Build Process](broken-reference/).
 {% endhint %}
 
-### **Incremental Builds**
+## **Incremental Builds**
 
-Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, instead of the entire project. This significantly reduces build times, especially in larger projects.
+Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, instead of the entire project. This significantly reduces build times, especially in larger projects. We'll start with a mathematical example to illustrate the core concept, then translate that to the world of C programming
 
-Implementing incremental builds requires a change in how we approach the build process. Instead of treating it as a monolithic unit and building it in a single step, we build it in two steps:
+### Mathematical Example
 
-1. **Separate Compilation:** Source files are individually translated into object files. This is done by invoking `gcc217` with the `-c` option.
-2. **Linking:** The resulting object files are linked together to create the final executable.&#x20;
+Consider the following mathematical functions:
 
-This approach allows for targeted builds: when the program is modified, only the affected source files are recompiled. The updated object files are then linked with the unaffected object files from previous builds, generating a new executable. &#x20;
+$$A = B + C$$
 
-#### Example
+$$B = (X + H)^2$$
 
-As an example, consider the `testintmath` program from precept 4, whose source code is shown below.
+$$C = (Y + H)^2$$
+
+Given the values $$X=3, \ Y=4,\ H=2$$, the process to compute $$A$$ involves the following computations:
+
+* $$B =  (3 + 2)^2 = 25$$
+* $$C = (4 + 2)^2 = 36$$
+* $$A = 25 + 36 = 61$$
+
+Now, let's say we change $$X$$ to $$5$$ but keep $$Y$$ and $$H$$ the same. Since $$C$$ does not depend on $$X$$, we can recompute $$A$$ without recomputing $$C$$:
+
+* $$B = (5 + 2)^2 = 49$$
+* $$A = 49 + 36 = 80$$
+
+Now, if we were to change the value $$H$$, recomputing $$A$$ we require us to first recompute both $$B$$ and $$C$$, since both of them depend on $$H$$.&#x20;
+
+#### Dependency Graph
+
+We can formally describe the dependencies among the A, B, C, X, Y, and H using a dependency graph (Figure 14).&#x20;
+
+<figure><img src="../.gitbook/assets/Frame 26.png" alt="" width="375"><figcaption><p>Dependency Graph</p></figcaption></figure>
+
+In this graph, a _directed edge_ A -> B indicates that A depends on B, meaning that a change to B requires A to be updated. If A -> B and B -> C, then A is indirectly (or transitively) dependent on C. With this dependency graph, determining how to recompute A after a change to X, Y, or H is extremely simple:
+
+* **If X changes:** We recompute B and then A.&#x20;
+* **If Y changes:** We recompute C and then A.&#x20;
+* **If H changes:** We recompute B and C (in any order) and then recompute A.
+
+### Transition to C
+
+The core principles  we just described apply directly to C programs. Let's demonstarte with a practical example. Consider the `testintmath` program from precept 4, whose source code is shown below.
 
 {% tabs %}
 {% tab title="testintmath.c (client)" %}
@@ -79,56 +107,72 @@ int lcm(int i, int j);
 {% endtab %}
 {% endtabs %}
 
-The key to incremental builds is we build `testintmath` in two steps, rather than in a single step (i.e, by invoking `gcc217 intmath.c testintmath.c -o testintmath`).&#x20;
+Explain dependencies
 
-First, we translate `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`:
+$$\text{testintmath} = \text{link}(\text{testintmath.o, intmath.o})$$
 
-```bash
-gcc217 -c intmath.c testintmath.c 
-```
+$$\text{testintmath.o} = \text{compile}(\text{testintmath.c, intmath.h})$$
 
-Then, we link `intmath.o` and `testintmath.o`, producing the executable `testintmath`:
-
-```bash
-gcc217 intmath.o testintmath.o -o testintmath
-```
-
-This process is is summarized in Figure 1.
-
-<figure><img src="../.gitbook/assets/Group 147 (4).png" alt="" width="563"><figcaption></figcaption></figure>
-
-Going forward, if we modify one of the `.c` files, we don't need to recompile everything—just the file that changed. For instance, if we modify `intmath.c`, we'd invoke `gcc217 -c` on `intmath.c` alone:
-
-```bash
-gcc217 -c intmath.c
-```
-
-We'd then link the "new" and "old" object files--`intmath.o` and `testinamth.o` respectively--to generate the updated executable:&#x20;
-
-```bash
-gcc217 -c intmath.c
-gcc217 intmath.o testintmath.o -o testintmath
-```
-
-#### Modifying a header file
-
-In general, modifying a header is more dramatic than modifying a `.c` file, since you have to recompile all `.c` files that #include it--directly or indirectly. In our case, if we modify `intmath.h`, we'd have to recompile both `intmath.c` and `testintmath.c`, since it's #included in both of them. For this reason, great care should be taken before modifying a header file.&#x20;
+$$\text{intmath.o} = \text{compile}(\text{intmath.c, intmath.h})$$
 
 {% hint style="info" %}
-As we saw in [GCC Build Process](broken-reference/), GCC always builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. This is the case whether we build `testintmath` via a single command:
+Recall that the contents of #included files are inserted by the preprocessor before compilation proper begins. Hence, object files are derived from their corresponding C file as well as all #included source files.&#x20;
+{% endhint %}
 
-```bash
-gcc217 intmath.c testintmath.c -o testintmath
+The dependency graph is shown in Figure&#x20;
+
+#### Building `testintmath`
+
+When we build `testintmath` for the first time, all object files and the execvutable have to be built. We can do so as follows:
+
+1. Build `intmath.o`. This is done by invoking `gcc217` with the `-c` option on `intmath.c`:
+
+```
+gcc217 -c intmath.c
 ```
 
-Or via two commands:
+2. Build `testintmath.o`:
 
-```bash
-gcc217 -c intmath.c testintmath.c 
+```
+gcc217 -c testintmath.c
+```
+
+3. Build `testintmath`. This is done by linking `intmath.o` and `testintmath.o`:
+
+```
 gcc217 intmath.o testintmath.o -o testintmath
 ```
 
-Fundamentally, the only difference between these two build approaches is that the two-command approach retains the intermediate object files while the single-command approach does not.
+{% hint style="info" %}
+Note that we could have built both `testintmath.o` and `intmath.o` in a single command (e.g., `gcc217 -c testintmath.c intmath.c`). The underlying GCC operations would have been the same.&#x20;
+{% endhint %}
 
-When I distinguish between "single-step" and "two-step" approaches, I'm referring to how we might conceptualize the build process, not the underlying GCC operations. When we We build programs via a single command, where are essentially building it as a monolithic unit, since a change to any part requires the entire thing to be recompiled. The fact that under the hood the source files were techincally compiled separately is of no signifigance to us.&#x20;
+#### Rebuilding `testintmath`
+
+* **If `intmath.c` is modified:** We rebuild `intmath.o` and then `testintmath`:&#x20;
+
+```bash
+gcc217 -c intmath.c
+gcc217 intmath.o tetsintmath.o -o testintmath
+```
+
+* **If `testintmath.c` is modified:** We rebuild `testintmath.o` and then `testintmath`.&#x20;
+
+```
+gcc217 -c testintmath.c
+gcc217 intmath.o tetsintmath.o -o testintmath
+```
+
+* **If `intmath.h` is modified: H changes:** We rebuild `intmath.o` and `testintmath.o` (in any order) and then `testintmath`:
+
+```
+gcc217 -c intmath.c
+gcc217 -c testintmath.c
+gcc217 intmath.o tetsintmath.o -o testintmath
+```
+
+{% hint style="info" %}
+As we saw in [GCC Build Process](broken-reference/), GCC always builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. This is the case whether we build a via a single command (e.g., `gcc217 foo.c bar.c -o foobar`), or via two commands (e.g., `gcc217 -c foo.c bar.c` followed by `gcc217 foo.o bar.o -o foobar`). Fundamentally, the only difference between these two build approaches is that the two-command approach retains the intermediate object files while the single-command approach does not.
+
+When I distinguish between "single-step" and "two-step" build approaches, I'm referring to how we might conceptualize the build process, not the underlying GCC operations.&#x20;
 {% endhint %}
