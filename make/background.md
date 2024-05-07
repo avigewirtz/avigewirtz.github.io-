@@ -1,6 +1,6 @@
 # Introduction
 
-In a nutshell, make is a software tool that automates the process of incremental builds. The key to understanding make is understanding what incremental builds are and how to implement it manually. Once you understand this, the mechanics and role of make become apparent.
+In a nutshell, make is a software tool that automates the process of incremental builds. The key to understanding make is understanding what incremental builds are and how to implement them manually. Once you grasp this, the mechanics and role of make become clear.
 
 {% hint style="warning" %}
 Before reading this chapter, ensure you're familiar with the GCC build process. An overview is provided in [GCC Build Process](broken-reference/).
@@ -15,7 +15,7 @@ Implementing incremental builds requires a change in how we approach the build p
 1. **Separate Compilation:** Source files are individually translated into object files.&#x20;
 2. **Linking:** The resulting object files are linked together to create the final executable.&#x20;
 
-This approach allows for targeted builds: when the program modified, only the affected source files need to be recompiled. The updated object files are then linked with the unaffected object files from previous builds, generating a new executable. &#x20;
+This approach allows for targeted builds: when the program is modified, only the affected source files are recompiled. The updated object files are then linked with the unaffected object files from previous builds, generating a new executable. &#x20;
 
 #### Example
 
@@ -79,23 +79,38 @@ int lcm(int i, int j);
 {% endtab %}
 {% endtabs %}
 
-### Building testintmath
-
 We build `testintmath` in two steps. First, we translate `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`. This is done by invoking `gcc217` with the `-c` option:&#x20;
 
-```
+```bash
 gcc217 -c intmath.c testintmath.c 
 ```
 
 Then, we link `intmath.o` and `testintmath.o`, producing the executable `testintmath`:
 
-```
+```bash
 gcc217 intmath.o testintmath.o -o testintmath
 ```
 
 This process is is summarized in Figure 1.
 
-<figure><img src="../.gitbook/assets/Group 147 (3).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 147 (4).png" alt="" width="563"><figcaption></figcaption></figure>
+
+Going forward, if we modify one of the `.c` files, we don't need to recompile everything—just the file that changed. For instance, if we modify `intmath.c`, we'd invoke `gcc217 -c` on `intmath.c` alone:
+
+```bash
+gcc217 -c intmath.c
+```
+
+We'd then link the "new" and "old" object files--`intmath.o` and `testinamth.o` respectively--to generate the updated executable:&#x20;
+
+```bash
+gcc217 -c intmath.c
+gcc217 intmath.o testintmath.o -o testintmath
+```
+
+#### Modifying a header file
+
+In general, modifying a header is more dramatic than modifying a `.c` file, since you have to recompile all `.c` files that #include it--directly or indirectly. In our case, if we modify `intmath.h`, we'd have to recompile both `intmath.c` and `testintmath.c`, since it's #included in both of them. For this reason, great care should be taken before modifying a header file.&#x20;
 
 {% hint style="info" %}
 As we saw in [GCC Build Process](broken-reference/), GCC always builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. This is the case whether we build `testintmath` via a single command:
@@ -115,11 +130,3 @@ Fundamentally, the only difference between these two build approaches is that th
 
 When I distinguish between "monolithic" and "two-step" approaches, I'm referring to how we might conceptualize the build process, not the underlying GCC mechanisms.
 {% endhint %}
-
-### &#x20;Rebuilding `testintmath`
-
-Whenever a change is made to the source code, we&#x20;
-
-Now suppose we modify intmath.c. To rebuild testintmath, we recompile intmath.c only, and then link the intmath.o
-
-A modification to a file requires all the files pointing to it--directly or indirectly--to be rebuilt. For example, a modification to `testintmath.c` requires `testintmath.o` (which is directly dependent on `testintmath.c`) and `testintmath` (which is indirectly dependent on `testintmath.c`) to be rebuilt, but it does not require `intmath.o` to be rebuilt. The same idea applies to `intmath.c`. A modification to `intmath.h`, however, is more drastic. It requires `intmath.o`, `testintmath.o`, and `testintmath` to be rebuilt.&#x20;
