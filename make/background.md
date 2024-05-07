@@ -12,13 +12,61 @@ Incremental builds optimize the build process by recompiling only the code modul
 
 #### Mathematical Example
 
-Consider the following mathematical functions:
+Consider the mathematical functions f, g, and h:
 
-$$A = B + C$$
+* f = g + h
+* g = (x + z)^2
+* h = (y + z)^2
 
-$$B = (X + H)^2$$
 
-$$C = (Y + H)^2$$
+
+Suppose x=3, y=4, and z=2, and we want to calculate the value of f. In order to calculate f, we have to first calculate g and h. We can do so in any order. For example:
+
+1. g = (3 + 2)^2 = 25
+2. h = (4 + 2)^2 = 36
+
+Now that we know the values of g and h, we can calculate f:
+
+f = 25 + 36 = 61.&#x20;
+
+
+
+Two relevant questions:
+
+* what values have to be recomputed.
+* In what order.
+
+**Understanding Dependencies**
+
+We can formally describe the dependencies between the f, g, h, x, y, and z using a dependency graph (Figure 14).&#x20;
+
+<figure><img src="../.gitbook/assets/Frame 26.png" alt="" width="375"><figcaption><p>Dependency Graph</p></figcaption></figure>
+
+In this graph, a _directed edge_ A -> B indicates that A directly depends on B, meaning that a change to B requires A to be updated. If A -> B and B -> C, then A is indirectly (or transitively) dependent on C. With this dependency graph, determining how to recompute A after a change to X, Y, or H is extremely simple:
+
+* **If X changes:** We recompute B and then A.&#x20;
+* **If Y changes:** We recompute C and then A.&#x20;
+* **If H changes:** We recompute B and C (in any order) and then recompute A.
+
+
+
+$$f = g + h$$
+
+$$g = (x + z)^2$$
+
+$$h = (y + z)^2$$
+
+Suppose we want to calculate the value of f when x =3, y=4, and z=2. To do so, we must first calculate g and h. Notice that f depends on g andf h. This means that, in order to compute f, we have to first compute g and h. In order to calcuate f, we need to first calculate g and h. Once we know the values of g and h we can calcuate f.&#x20;
+
+\<show calculations>
+
+#### Understanding dependencies&#x20;
+
+
+
+\<explain the dependencies. >
+
+\<point out dependencies. >
 
 Given the values $$X=3, \ Y=4,\ H=2$$, the process to compute $$A$$ involves the following computations:
 
@@ -33,9 +81,9 @@ Now, let's say we change $$X$$ to $$5$$ but keep $$Y$$ and $$H$$ the same. Since
 
 Now, if we were to change the value $$H$$, recomputing $$A$$ we require us to first recompute both $$B$$ and $$C$$, since both of them depend on $$H$$.&#x20;
 
-#### Dependency Graph
 
-We can formally describe the dependencies among the A, B, C, X, Y, and H using a dependency graph (Figure 14).&#x20;
+
+We can formally describe the dependencies between the f, g, h, x, y, and z using a dependency graph (Figure 14).&#x20;
 
 <figure><img src="../.gitbook/assets/Frame 26.png" alt="" width="375"><figcaption><p>Dependency Graph</p></figcaption></figure>
 
@@ -45,7 +93,7 @@ In this graph, a _directed edge_ A -> B indicates that A directly depends on B, 
 * **If Y changes:** We recompute C and then A.&#x20;
 * **If H changes:** We recompute B and C (in any order) and then recompute A.
 
-#### Transition to C
+#### Application In Incremental Builds
 
 The core principles  we just described apply directly to C programs. Let's demonstarte with a practical example. Consider the `testintmath` program from precept 4, whose source code is shown below.
 
