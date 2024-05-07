@@ -17,10 +17,6 @@ Implementing incremental builds requires a change in how we approach the build p
 
 This approach allows for targeted builds: when the program is modified, only the affected source files are recompiled. The updated object files are then linked with the unaffected object files from previous builds, generating a new executable. &#x20;
 
-{% hint style="info" %}
-As we saw in [GCC Build Process](broken-reference/), GCC builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. When I distinguish between "monolithic" and "two-step" build approaches, I'm referring to how we might conceptualize the build process, not the underlying GCC operations.
-{% endhint %}
-
 #### Example
 
 As an example, consider the `testintmath` program from precept 4, whose source code is shown below.
@@ -83,7 +79,7 @@ int lcm(int i, int j);
 {% endtab %}
 {% endtabs %}
 
-We build `testintmath` in two steps. First, we translate `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`:
+The key to incremental builds is rather than building `testintmath` in a single step (i.e., by invoking `gcc217 intmath.c testintmath.c -o testintmath`), we build it in two steps. First, we translate `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`:
 
 ```bash
 gcc217 -c intmath.c testintmath.c 
@@ -115,3 +111,24 @@ gcc217 intmath.o testintmath.o -o testintmath
 #### Modifying a header file
 
 In general, modifying a header is more dramatic than modifying a `.c` file, since you have to recompile all `.c` files that #include it--directly or indirectly. In our case, if we modify `intmath.h`, we'd have to recompile both `intmath.c` and `testintmath.c`, since it's #included in both of them. For this reason, great care should be taken before modifying a header file.&#x20;
+
+generating a new executable. &#x20;
+
+{% hint style="info" %}
+As we saw in [GCC Build Process](broken-reference/), GCC always builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. This is the case whether we build `testintmath` via a single command:
+
+```bash
+gcc217 intmath.c testintmath.c -o testintmath
+```
+
+Or via two commands:
+
+```bash
+gcc217 -c intmath.c testintmath.c 
+gcc217 intmath.o testintmath.o -o testintmath
+```
+
+Fundamentally, the only difference between these two build approaches is that the two-command approach retains the intermediate object files while the single-command approach does not.
+
+When I distinguish between "monolithic" and "two-step" approaches, I'm referring to how we might conceptualize the build process, not the underlying GCC mechanisms.
+{% endhint %}
