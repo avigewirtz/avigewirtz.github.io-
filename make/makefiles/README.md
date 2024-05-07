@@ -7,7 +7,7 @@ As we saw in the previous section, managing incremental builds manually can be t
 
 For a small program like `testintmath`, this might be manageable, but as programs grow larger, it becomes increasingly difficult.
 
-A much better approach is to automate the process with 'make'. This is done by creating a file named `Makefile` (or `makefile`) in your program's directory. In this file, you describe the dependencies between your program's files and provide 'make' with the necessary build commands. Once you have a suitable Makefile, you can build your program by simply invoking:
+A much better approach is to automate the process with 'make'. To do so, you create a file named `Makefile` (or `makefile`) in your program's directory. In this file, you describe the dependencies between your program's files and provide 'make' with the necessary build commands. Once you have a suitable Makefile, you can build your program by simply invoking:
 
 ```bash
 make
