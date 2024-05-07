@@ -31,7 +31,7 @@ intmath.o: intmath.c intmath.h
 
 ### Running our makefile
 
-The general syntax to run a makefile is:
+The general syntax to run a Makefile is:
 
 ```bash
 make target
@@ -39,7 +39,7 @@ make target
 
 If you omit a target, `make` defaults to the first target in the makefile.&#x20;
 
-To build `testintmath`, we can invoke `make` without arguments and it'll default to `testintmath`, since `testintmath` is the first target in our makefile:
+To build `testintmath`, we can invoke `make` without specifying a tagrget and it'll default to `testintmath`, since it's the first target in our makefile:
 
 ```bash
 make
