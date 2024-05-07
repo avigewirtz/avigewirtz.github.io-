@@ -10,7 +10,7 @@ Before reading this chapter, ensure you're familiar with the GCC build process. 
 
 Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, instead of the entire project. This significantly reduces build times, especially in larger projects.
 
-Implementing incremental builds requires a change in how we approach the build process. Instead of a monolithic "all-at-once" build, we break it down into two stages:
+Implementing incremental builds requires a change in how we approach the build process. Instead of treating it as a monolithic unit and building it in a single step, we build it in two steps:
 
 1. **Separate Compilation:** Source files are individually translated into object files. This is done by invoking `gcc217` with the `-c` option.
 2. **Linking:** The resulting object files are linked together to create the final executable.&#x20;
@@ -114,8 +114,6 @@ gcc217 intmath.o testintmath.o -o testintmath
 
 In general, modifying a header is more dramatic than modifying a `.c` file, since you have to recompile all `.c` files that #include it--directly or indirectly. In our case, if we modify `intmath.h`, we'd have to recompile both `intmath.c` and `testintmath.c`, since it's #included in both of them. For this reason, great care should be taken before modifying a header file.&#x20;
 
-generating a new executable. &#x20;
-
 {% hint style="info" %}
 As we saw in [GCC Build Process](broken-reference/), GCC always builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. This is the case whether we build `testintmath` via a single command:
 
@@ -132,5 +130,5 @@ gcc217 intmath.o testintmath.o -o testintmath
 
 Fundamentally, the only difference between these two build approaches is that the two-command approach retains the intermediate object files while the single-command approach does not.
 
-When I distinguish between "monolithic" and "two-step" approaches, I'm referring to how we might conceptualize the build process, not the underlying GCC mechanisms.
+When I distinguish between "single-step" and "two-step" approaches, I'm referring to how we might conceptualize the build process, not the underlying GCC operations. When we We build programs via a single command, where are essentially building it as a monolithic unit, since a change to any part requires the entire thing to be recompiled. The fact that under the hood the source files were techincally compiled separately is of no signifigance to us.&#x20;
 {% endhint %}
