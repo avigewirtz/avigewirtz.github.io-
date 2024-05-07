@@ -79,7 +79,9 @@ int lcm(int i, int j);
 {% endtab %}
 {% endtabs %}
 
-The key to incremental builds is rather than building `testintmath` in a single step (i.e., by invoking `gcc217 intmath.c testintmath.c -o testintmath`), we build it in two steps. First, we translate `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`:
+The key to incremental builds is we build `testintmath` in two steps, rather than in a single step (i.e, by invoking `gcc217 intmath.c testintmath.c -o testintmath`).&#x20;
+
+First, we translate `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`:
 
 ```bash
 gcc217 -c intmath.c testintmath.c 
