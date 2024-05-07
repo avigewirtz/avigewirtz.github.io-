@@ -8,7 +8,26 @@ Before reading this chapter, ensure you're familiar with the GCC build process. 
 
 ## **Incremental Builds**
 
-Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, rather than the entire project. This approach significantly reduces build times, especially in larger projects. We will demonstrate how incremental builds operate using the `testintmath` program from Precept 4 as an example. The source code is shown below.
+Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, rather than the entire project. This approach significantly reduces build times, especially in larger projects. The key to&#x20;
+
+### Dependencies
+
+The first step to implementing incremental builds is understanding a program's dependencies. The easiest way is via a dependency graph. A dependency graph for testintmath is shown below.&#x20;
+
+<figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
+
+In this graph, the nodes represent files, which, when applicable, are annotated with the commands to build them. Directed edges (arrows) indicate dependencies. If file A -> file B, then A directly depends on B. If A -> B and B -> C, then A is indirectly (or transitively) dependent on C.&#x20;
+
+The dependency graph gives us two important pieces of information:
+
+1. The order in which the files must be built.&#x20;
+2. Which files need to be rebuilt after a change is made to one of the source files. If A depends on B, then a change to B requires A to be rebuilt.&#x20;
+
+
+
+
+
+We will demonstrate how incremental builds operate using the `testintmath` program from Precept 4 as an example. The source code is shown below.
 
 {% tabs %}
 {% tab title="testintmath.c (client)" %}
@@ -74,9 +93,12 @@ The first step to implementing incremental builds is understanding a program's d
 
 <figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
 
+In this graph, the nodes represent files, which, when applicable, are annotated with the commands to build them. Directed edges (arrows) indicate dependencies. If file A -> file B, then A directly depends on B. If A -> B and B -> C, then A is indirectly (or transitively) dependent on C.&#x20;
 
+The dependency graph gives us two important pieces of information:
 
-Tells&#x20;
+1. The order in which the files must be built.&#x20;
+2. Which files need to be rebuilt after a change is made to one of the source files. If A depends on B, then a change to B requires A to be rebuilt.&#x20;
 
 
 
