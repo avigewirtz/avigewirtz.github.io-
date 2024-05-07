@@ -8,94 +8,7 @@ Before reading this chapter, ensure you're familiar with the GCC build process. 
 
 ## **Incremental Builds**
 
-Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, instead of the entire project. This significantly reduces build times, especially in larger projects. We'll start with a mathematical example to illustrate the core concept, then translate that to the world of C programming
-
-#### Mathematical Example
-
-Consider the mathematical functions f, g, and h:
-
-* f = g + h
-* g = (x + z)^2
-* h = (y + z)^2
-
-
-
-Suppose x=3, y=4, and z=2, and we want to calculate the value of f. In order to calculate f, we have to first calculate g and h. We can do so in any order. For example:
-
-1. g = (3 + 2)^2 = 25
-2. h = (4 + 2)^2 = 36
-
-Now that we know the values of g and h, we can calculate f:
-
-f = 25 + 36 = 61.&#x20;
-
-
-
-Two relevant questions:
-
-* what values have to be recomputed.
-* In what order.
-
-**Understanding Dependencies**
-
-We can formally describe the dependencies between the f, g, h, x, y, and z using a dependency graph (Figure 14).&#x20;
-
-<figure><img src="../.gitbook/assets/Frame 26.png" alt="" width="375"><figcaption><p>Dependency Graph</p></figcaption></figure>
-
-In this graph, a _directed edge_ A -> B indicates that A directly depends on B, meaning that a change to B requires A to be updated. If A -> B and B -> C, then A is indirectly (or transitively) dependent on C. With this dependency graph, determining how to recompute A after a change to X, Y, or H is extremely simple:
-
-* **If X changes:** We recompute B and then A.&#x20;
-* **If Y changes:** We recompute C and then A.&#x20;
-* **If H changes:** We recompute B and C (in any order) and then recompute A.
-
-
-
-$$f = g + h$$
-
-$$g = (x + z)^2$$
-
-$$h = (y + z)^2$$
-
-Suppose we want to calculate the value of f when x =3, y=4, and z=2. To do so, we must first calculate g and h. Notice that f depends on g andf h. This means that, in order to compute f, we have to first compute g and h. In order to calcuate f, we need to first calculate g and h. Once we know the values of g and h we can calcuate f.&#x20;
-
-\<show calculations>
-
-#### Understanding dependencies&#x20;
-
-
-
-\<explain the dependencies. >
-
-\<point out dependencies. >
-
-Given the values $$X=3, \ Y=4,\ H=2$$, the process to compute $$A$$ involves the following computations:
-
-* $$B =  (3 + 2)^2 = 25$$
-* $$C = (4 + 2)^2 = 36$$
-* $$A = 25 + 36 = 61$$
-
-Now, let's say we change $$X$$ to $$5$$ but keep $$Y$$ and $$H$$ the same. Since $$C$$ does not depend on $$X$$, we can recompute $$A$$ without recomputing $$C$$:
-
-* $$B = (5 + 2)^2 = 49$$
-* $$A = 49 + 36 = 80$$
-
-Now, if we were to change the value $$H$$, recomputing $$A$$ we require us to first recompute both $$B$$ and $$C$$, since both of them depend on $$H$$.&#x20;
-
-
-
-We can formally describe the dependencies between the f, g, h, x, y, and z using a dependency graph (Figure 14).&#x20;
-
-<figure><img src="../.gitbook/assets/Frame 26.png" alt="" width="375"><figcaption><p>Dependency Graph</p></figcaption></figure>
-
-In this graph, a _directed edge_ A -> B indicates that A directly depends on B, meaning that a change to B requires A to be updated. If A -> B and B -> C, then A is indirectly (or transitively) dependent on C. With this dependency graph, determining how to recompute A after a change to X, Y, or H is extremely simple:
-
-* **If X changes:** We recompute B and then A.&#x20;
-* **If Y changes:** We recompute C and then A.&#x20;
-* **If H changes:** We recompute B and C (in any order) and then recompute A.
-
-#### Application In Incremental Builds
-
-The core principles  we just described apply directly to C programs. Let's demonstarte with a practical example. Consider the `testintmath` program from precept 4, whose source code is shown below.
+Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, rather than the entire project. This approach significantly reduces build times, especially in larger projects. We will demonstrate how incremental builds operate using the `testintmath` program from Precept 4 as an example. The source code is shown below.
 
 {% tabs %}
 {% tab title="testintmath.c (client)" %}
@@ -155,15 +68,19 @@ int lcm(int i, int j);
 {% endtab %}
 {% endtabs %}
 
-Explain dependencies
+### Dependencies
 
-$$\text{testintmath} = \text{link}(\text{testintmath.o, intmath.o})$$
-
-$$\text{testintmath.o} = \text{compile}(\text{testintmath.c, intmath.h})$$
-
-$$\text{intmath.o} = \text{compile}(\text{intmath.c, intmath.h})$$
+The first step to implementing incremental builds is understanding a program's dependencies. The easiest way is via a dependency graph. A dependency graph for testintmath is shown below.&#x20;
 
 <figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
+
+
+
+Tells&#x20;
+
+
+
+
 
 {% hint style="info" %}
 Recall that the contents of #included files are inserted by the preprocessor before compilation proper begins. Hence, object files are derived from their corresponding C file as well as all #included source files.&#x20;
