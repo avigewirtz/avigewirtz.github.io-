@@ -1,4 +1,27 @@
-# Writing a Makefile
+# Creating a Simple Makefile
+
+As we saw in the previous section, managing incremental builds manually can be tedious and error-prone. It requires you to:
+
+* Keep track of which files have been modified.
+* Understand the dependencies among the files in your program.
+
+For a small program like `testintmath`, this might be manageable, but as programs grow larger, it becomes increasingly difficult.
+
+A much better approach is to automate the process with 'make'. To do so, you create a file named `Makefile` (or `makefile`) in your program's directory, which you populate with a dependency graph of the your program. This dependency graph describes the relationships between your program's files and provide 'make' with the necessary build commands. Once you have a suitable Makefile, you can build your program by simply invoking:
+
+```bash
+make
+```
+
+`make` will read the Makefile and (assuming its set up correctly) build the minimum necessary files to produce an updated executable.
+
+### Dependency Graphs
+
+In such a graph, each file is represented by a node, which, when applicable, is annotated with the commands to build it. Dependencies are indicated by arrows (i.e., directed edges) between nodes. If there is an arrow from file A to file B (A → B), then A depends on B, meaning changes to B require A to be rebuilt. If A → B and B → C, then A is indirectly (or transitively) dependent on C. A change to C requires B to be rebuilt, which in turn requires A to be rebuilt.  A dependency graph for our `testintmath` program is shown in Figure 12.3.&#x20;
+
+<figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
+
+### Describing dependency graoh in text
 
 makefile contain sytanx for rules.
 
@@ -32,7 +55,7 @@ intmath.o: intmath.c intmath.h
     gcc217 -c intmath.c
 ```
 
-## Running our makefile
+### Running our makefile
 
 The general syntax to run a makefile is:
 

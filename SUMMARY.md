@@ -105,12 +105,10 @@
 ## Make
 
 * [Introduction](make/background.md)
-* [Makefiles](make/makefiles/README.md)
-  * [Dependency Graphs](make/makefiles/dependency-graphs.md)
-  * [Writing a Makefile](make/makefiles/makefile-version-1-basic.md)
-  * [How make processes a Makefile](make/makefiles/how-make-processes-a-makefile.md)
-  * [Phony targets](make/makefiles/makefile-version-2-phony-targets.md)
-  * [Macros](make/makefiles/makefile-version-3-macros.md)
+* [Creating a Simple Makefile](make/makefiles.md)
+* [How make Processes a Makefile](make/how-make-processes-a-makefile.md)
+* [Phony targets](make/makefile-version-2-phony-targets.md)
+* [Macros](make/makefile-version-3-macros.md)
 * [Further Reading](make/further-reading.md)
 
 ## Emacs
