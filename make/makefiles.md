@@ -17,7 +17,7 @@ make
 
 ### Dependency Graphs
 
-The dependencies among files in a program can be formally described with a dependency graph. In such a graph, each node represents a file. When applicable, the node is labeled with the command to build it. A directed edge (arrow) from A to B (A -> B) indicates that file A depends on file B, meaning that changes to B require A to be rebuilt. If A → B and B → C, then A is indirectly (or transitively) dependent on C. A change to C requires B to be rebuilt, which in turn requires A to be rebuilt. A dependency graph for our `testintmath` program is shown in Figure 12.3.&#x20;
+A program's dependencies can be formally described with a dependency graph. In such a graph, each node represents a file. When applicable, the node is labeled with the command to build it. A directed edge (arrow) from A to B (A -> B) indicates that file A depends on file B, meaning that changes to B require A to be rebuilt. If A → B and B → C, then A is indirectly (or transitively) dependent on C. A change to C requires B to be rebuilt, which in turn requires A to be rebuilt. A dependency graph for our `testintmath` program is shown in Figure 12.3.&#x20;
 
 <figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
 
