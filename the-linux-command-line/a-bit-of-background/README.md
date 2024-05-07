@@ -1,40 +1,6 @@
-# Introduction
+# A Bit of Background
 
-Throughout the first few decades of interactive computing, people interacted with computers through command line interface. The command line interface is a way of interacting with the computer via lines of texts&#x20;
-
-A typical interaction involves five components:
-
-* Terminal
-* Shell
-* Utility programs
-* Kernel
-* Computer
-
-how do we interact with Linux, or with any computer for that matter? Nowadays, most users intearct with computers via a graphical user interface (GUI). A GUI is a program that...
-
-back in the day, used to do it with a device known  as a terminal. the first terminals were hardware&#x20;
-
-## Command line Interface
-
-The command-line interface (CLI) is a text-based method of interacting with your computer. Unlike the graphical user interfaces (GUIs) that allow you to issue commands by clicking buttons and icons, a CLI requires you to issue commands by typing typing sequences of text in a [terminal](broken-reference).&#x20;
-
-Imagine using a CLI as if you're texting with your computer: you type in your request, and it responds  with text output. Let's consider a couple of examples of computer interaction to highlight the distinction between a GUI and CLI:
-
-1. **Opening an application:**
-   * **GUI**: You might simply double-click on the application's icon.
-   * **CLI**: You would issue a command like `open -a "application_name"`.
-2. **Moving a file:**
-   * **GUI**: This could involve using the drag-and-drop paradigm.
-   * **CLI**: You'd invoke a command like `mv file.txt ~`.
-
-{% hint style="info" %}
-Given the much steeper learning curve of the CLI compared to the GUI, you might wonder why anyone uses the CLI over a GUI. Here's a few reasons:
-
-* **Speed:** Once you're familiar with commands, the CLI can be much faster than using a mouse.
-* **Automation:** The CLI makes it easy to automate repetitive tasks.
-* **Remote Access:** Remote computer interaction is much more efficient in a CLI environment.&#x20;
-* **Necessity:** Some CLI commands have no GUI equivalent.
-{% endhint %}
+This chapter introduces a range of concepts related to Linux system programming. It is intended for readers who have worked primarily with other operating systems, or who have only limited experience with Linux or another UNIX implementation.
 
 ## Terminal
 

@@ -6,38 +6,20 @@ In a nutshell, make is a software tool that automates the process of incremental
 Before reading this chapter, ensure you're familiar with the GCC build process. An overview is provided in [GCC Build Process](broken-reference/).
 {% endhint %}
 
+### **Incremental Builds**
 
+Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, instead of the entire project. This significantly reduces build times, especially in larger projects.
 
+Implementing incremental builds requires a change in how we approach the build process. Instead of a monolithic "all-at-once" build, we break it down into two stages:
 
+1. **Separate Compilation:** Source files are individually translated into object files.&#x20;
+2. **Linking:** The resulting object files are linked together to create the final executable.&#x20;
 
-## Incremental builds
+This approach allows for targeted builds: when the program modified, only the affected source files need to be recompiled. The updated object files are then linked with the unaffected object files from previous builds, generating a new executable. &#x20;
 
+#### Example
 
-
-{% hint style="info" %}
-As we saw in [GCC Build Process](broken-reference/), GCC builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. This is the case whether we build our program via a single command:
-
-```bash
-gcc217 foo.c bar.c baz.c -o foobarbaz
-```
-
-Or via two commands:
-
-```bash
-gcc217 -c foo.c bar.c baz.c 
-gcc217 foo.o bar.o baz.o -o foobarbaz 
-```
-
-Fundamentally, the only difference between these two build approaches is that the two-command approach retains the intermediate object files while the single-command approach does not.
-{% endhint %}
-
-##
-
-
-
-## Example
-
-To demonstrate incremental builds, we'll use the `testintmath` program from precept 4, whose source code is shown below.
+As an example, consider the `testintmath` program from precept 4, whose source code is shown below.
 
 {% tabs %}
 {% tab title="testintmath.c (client)" %}
@@ -97,18 +79,49 @@ int lcm(int i, int j);
 {% endtab %}
 {% endtabs %}
 
-To build `testintmath`, we invoke `gcc217` with the `-c` option on `intmath.c` and `testintmath.c`:
+### Building testintmath
+
+We build `testintmath` in two steps. First, we compile `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`. This is done by invoking `gcc217` with the `-c` option:&#x20;
 
 ```
 gcc217 -c intmath.c testintmath.c 
 ```
 
-This translates `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`. We then link `intmath.o` and `testintmath.o` together, producing the executable `testintmath`:
+Then, we link `intmath.o` and `testintmath.o`, producing the executable `testintmath`:
 
 ```
 gcc217 intmath.o testintmath.o -o testintmath
 ```
 
-Going forward, if we modify one of the source files, we rebuild only the files affected by the change (i.e., the files dependent—directly or indirectly—on the modified file).
+This process is is summarized in Figure 1.
+
+<figure><img src="../.gitbook/assets/Group 147 (3).png" alt="" width="563"><figcaption></figcaption></figure>
+
+{% hint style="info" %}
+As we saw in [GCC Build Process](broken-reference/), GCC always builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. This is the case whether we build `testintmath` via a single command:
+
+```bash
+gcc217 intmath.c testintmath.c -o testintmath
+```
+
+Or via two commands:
+
+```bash
+gcc217 -c intmath.c testintmath.c 
+gcc217 intmath.o testintmath.o -o testintmath
+```
+
+Fundamentally, the only difference between these two build approaches is that the two-command approach retains the intermediate object files while the single-command approach does not.
+
+When I distinguish between "monolithic" and "two-step" approaches, I'm referring to how we conceptualize the build process, not the underlying GCC mechanisms.
+{% endhint %}
+
+
+
+### &#x20;Rebuilding `testintmath`
+
+Whenever a change is made to the source code, we&#x20;
+
+Now suppose we modify intmath.c. To rebuild testintmath, we recompile intmath.c only, and then link the intmath.o
 
 A modification to a file requires all the files pointing to it--directly or indirectly--to be rebuilt. For example, a modification to `testintmath.c` requires `testintmath.o` (which is directly dependent on `testintmath.c`) and `testintmath` (which is indirectly dependent on `testintmath.c`) to be rebuilt, but it does not require `intmath.o` to be rebuilt. The same idea applies to `intmath.c`. A modification to `intmath.h`, however, is more drastic. It requires `intmath.o`, `testintmath.o`, and `testintmath` to be rebuilt.&#x20;

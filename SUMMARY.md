@@ -7,26 +7,29 @@
 * [Conventions used](preface/conventions-used.md)
 * [Acknowledgments](preface/acknowledgments.md)
 
-## Armlab
+## COS217 Computing Environment
 
-* [Armlab](armlab/armlab/README.md)
-  * [Activating Your Armlab Account](armlab/armlab/activating-your-armlab-account.md)
-  * [Logging Into and Out of Armlab](armlab/armlab/logging-into-armlab.md)
-  * [Secure Shell (SSH) Protocol](armlab/armlab/ssh-protocol.md)
-  * [Configuring Your Armlab Environment](armlab/armlab/configuring-your-armlab-environment.md)
+* [Armlab](cos217-computing-environment/armlab/README.md)
+  * [Activating Your Armlab Account](cos217-computing-environment/armlab/activating-your-armlab-account.md)
+  * [Logging Into and Out of Armlab](cos217-computing-environment/armlab/logging-into-armlab.md)
+  * [Secure Shell (SSH) Protocol](cos217-computing-environment/armlab/ssh-protocol.md)
+  * [Configuring Your Armlab Environment](cos217-computing-environment/armlab/configuring-your-armlab-environment.md)
 
 ## The Linux command line
 
-* [Introduction](the-linux-command-line/introduction/README.md)
-  * [Linux Kernel](the-linux-command-line/introduction/linux-kernel.md)
-  * [Terminal and Shell](the-linux-command-line/introduction/terminal-and-shell.md)
-  * [Linux Filesystem](the-linux-command-line/introduction/filesystem/README.md)
+* [Introduction](the-linux-command-line/introduction.md)
+* [A Bit of Background](the-linux-command-line/a-bit-of-background/README.md)
+  * [Linux kernel](the-linux-command-line/a-bit-of-background/linux-kernel.md)
+  * [GNU Utilities](the-linux-command-line/a-bit-of-background/gnu-utilities.md)
+  * [The Shell](the-linux-command-line/a-bit-of-background/the-shell.md)
+* [Linux Filesystem](the-linux-command-line/filesystem.md)
 * [Getting Started With Bash](the-linux-command-line/warm-up-commands.md)
+* [Under the hood](the-linux-command-line/under-the-hood.md)
+* [Navigating the Filesystem](the-linux-command-line/navigating-the-filesystem/README.md)
 * [Bash Shortcuts](the-linux-command-line/useful-command-line-features/README.md)
   * [Command history](the-linux-command-line/useful-command-line-features/command-history.md)
   * [Aliases](the-linux-command-line/useful-command-line-features/aliases.md)
   * [Wildcards](the-linux-command-line/useful-command-line-features/wildcards.md)
-* [Navigating the Filesystem](the-linux-command-line/navigating-the-filesystem/README.md)
 * [Getting Documentation For Commands](the-linux-command-line/getting-help.md)
 * [Basic File and Directory Operations](the-linux-command-line/basic-file-and-directory-operations/README.md)
   * [Creating Files and Directories](the-linux-command-line/basic-file-and-directory-operations/creating-files-and-directories.md)

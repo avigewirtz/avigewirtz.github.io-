@@ -46,7 +46,7 @@ By default, `ls` does not display [hidden](broken-reference) entries (i.e., file
 ```
 
 {% hint style="warning" %}
-On Armlab, '`ls'` is aliased to `'ls -a --color=always'`.  Thus, an invocation of ls will display hidden entries. You can avoid alias expansion by prefixing the command with a '`\'` (e.g., `\ls`). If you invoke `ls` in this manner, you'll see that hidden entries are not displayed.&#x20;
+On Armlab, '`ls'` is aliased to `'ls -a --color=always'`(see [Aliases](../useful-command-line-features/aliases.md)). Thus, an invocation of `ls` will display hidden entries. You can avoid alias expansion by prefixing the command with a '`\'` (e.g., `\ls`). If you invoke `ls` in this manner, you'll see that hidden entries are not displayed.&#x20;
 {% endhint %}
 
 #### Displaying file metadata
