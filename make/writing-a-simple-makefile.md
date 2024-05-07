@@ -6,7 +6,7 @@ The transition from a dependency graph to makefile is quite straightforward. We'
 
 
 
-We create a what is known as a dependency rule for each file that needs to be built. In make terminology, these files are known as targets. They correspond non-leaf nodes. Dependency rule for each target has the followinf syntax:
+We create a what is known as a dependency rule for each node that isn't a leaf. These nodes correspond to files that are built. In make terminology, they're called targets. Dependency rules have the following syntax:
 
 ```
 target: dependencies
