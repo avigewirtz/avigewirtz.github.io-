@@ -37,14 +37,14 @@ Notice that the first three stages of the build process (preprocessing, compilat
 
 ### Saving Intermediate Files
 
-By default, gcc does not retain the intermediate files (i.e., `.i`, `.s`, and `.o)`generated during the build process. Thus, if we invoke `ls` after building `foobar`, we won't see any of the intermediate files:&#x20;
+By default, `gcc` does not retain the intermediate files generated during the build process. Thus, if we invoke `ls` after building `foobar`, we won't see any of the `.i`, `.s`, or `.o` files:&#x20;
 
 ```bash
 $ ls
 bar.c    foo.c    foobar
 ```
 
-We can instruct gcc to save the intermediate files by using the `--save-temps` option, like so:
+We can instruct `gcc` to save the intermediate files by using the `--save-temps` option, like so:
 
 ```bash
 gcc217 --save-temps foo.c bar.c -o foobar
@@ -60,15 +60,15 @@ foo.i    foo.s    foo.o    foobar
 
 ### Halting the build process at any stage
 
-GCC provides command line options to halt the build process at any stage. Here's a breakdown of the options:
+`gcc` provides command line options to halt the build process at any stage. Here's a breakdown of the options:
 
-**`-E`:**  This instructs GCC to halt the build process after the preprocessing stage. For example, if we invoke:
+**`-E`:**  This instructs `gcc` to halt the build process after the preprocessing stage. For example, if we invoke:
 
 ```bash
 gcc217 -E foo.c bar.c
 ```
 
-GCC will preprocess `foo.c` and `bar.c` and halt. By default, the preprocessed output will be printed on stdout. To save it to `.i` files, we can use the `.o` option or the `>` redirection operator:&#x20;
+`gcc` will preprocess `foo.c` and `bar.c` and halt. By default, the preprocessed output will be printed on stdout. To save it to `.i` files, we can use the `.o` option or the `>` redirection operator:&#x20;
 
 ```bash
 gcc217 -E foo.c -o foo.i
@@ -78,7 +78,7 @@ gcc217 -E foo.c > foo.i
 gcc217 -E bar.c > bar.i
 ```
 
-**`-S`:** This instructs GCC to stop the build process after compilation. The input can be either `.c` files:&#x20;
+**`-S`:** This instructs `gcc` to stop the build process after compilation. The input can be either `.c` files:&#x20;
 
 ```
 gcc217 -S foo.c bar.c 
@@ -90,6 +90,6 @@ or `.i` files:
 gcc217 -S foo.i bar.i
 ```
 
-In the former case, GCC will preprocess and compile the files and halt. In the latter case, GCC will begin will compile the files and halt. GCC automatically saves the resulting assembly code in `.s` files.
+In the former case, `gcc` will preprocess and compile the files and halt. In the latter case, GCC will begin will compile the files and halt. GCC automatically saves the resulting assembly code in `.s` files.
 
 **`-c`:** This instructs GCC to stop the build process after assembly. The input can be either `.c`, `.i`, or `.o` files. gcc will determine which stages to perform based on which type of file it is. For example, if the file is a .c file, gcc will begin with assembly and halt. GCC automatically saves the resulting object code in `.o` files.&#x20;
