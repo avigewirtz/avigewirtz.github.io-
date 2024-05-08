@@ -12,7 +12,7 @@ Note that `-o foobar` specifies that the executable be named `foobar`_,_ rather 
 ./foobar
 ```
 
-Behind the scenes, quite a lot of work is involved in producing the executable `foobar`. It involves four sequential stages: preprocessing, compilation, assembly, and linking. An overview of the process is shown in Figure 4.2. Here's a breakdown of what happens at each stage:
+Behind the scenes, quite a lot of work is involved in producing the executable `foobar`. It involves four sequential stages: preprocessing, compilation, assembly, and linking. An overview of the process is shown in Figure 4.2. Here's a summary of what happens at each stage:
 
 1.  **Preprocessing stage:** The preprocessor modifies the source code in `foo.c` and `bar.c` by performing two main tasks:
 
