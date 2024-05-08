@@ -1,6 +1,6 @@
-# Example Program
+# Example
 
-Let's now analyze each of the build stages in detail. To do so, we'll use the multi-file C program shown below as an example.&#x20;
+Let's now analyze each of the build stages in practice. We'll use the multi-file C program shown below as an example.&#x20;
 
 {% tabs %}
 {% tab title="testcircle.c (client)" %}
