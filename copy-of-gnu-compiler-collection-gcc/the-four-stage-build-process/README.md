@@ -60,7 +60,7 @@ foo.i    foo.s    foo.o    foobar
 
 ### Stopping the build process at any stage
 
-GCC provides command line options to halt the build process at any stage of the build process. Here's a breakdown of the available options:
+GCC provides command line options to halt the build process at any stage. Here's a breakdown of the options:
 
 **`-E`:**  This instructs GCC to stop the build process after the preprocessing stage. For example, if we were to invoke:
 
