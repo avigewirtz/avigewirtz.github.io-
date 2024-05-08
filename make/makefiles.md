@@ -21,6 +21,8 @@ A program's dependencies can be formally described with what is known as a _depe
 
 <figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
 
+In this graph, nodes represent files, which, when applicable, are annotated with the commands to build them. Directed edges (arrows) indicate dependencies. If A -> B, then A directly depends on B, meaning that a modification to B requires A to be rebuilt. If A -> B and B -> C, then A is indirectly (or transitively) dependent on C. A modification to C requires B to be rebuilt, which in turn requires A to be rebuilt.&#x20;
+
 ### Dependency Rules
 
 The transition from a dependency graph to a makefile is quite straightforward. We create a what is known as a dependency rule for each file that is created via a build. In make terminology, such files are called targets. Targets are easy to identify, since they correspond to leaf nodes (i.e., nodes with no children). In our case, we have three targets: `intmath.o`, `testintmath.o`, and `testintmath`. Dependency rules have the following syntax:
