@@ -29,10 +29,10 @@ Behind the scenes, quite a lot of work is involved in producing the executable `
 Notice that the first three stages of the build process (preprocessing, compilation, and assembly) are performed on each file separately. Recognizing this is critical to understanding how the build process works.
 
 {% hint style="info" %}
-A couple of points are worth noting:
+**Insight**
 
-* gcc (that is, lowercase gcc, the program we invoke on the command line) is a driver program. The actual programs that actually perform the preprocessing, compilation, assembly, and linking are cpp, cc1, as, and ld. You can see the full sequence of command gcc invokes by invoking gcc with the -v (verbose) option.&#x20;
-* In current GCC implementations, the preprocessor (cpp) is integrated into the compiler (cc1). Logically the sequence is the same, just that the preprocessor and compiler aren't distinct programs.&#x20;
+* Although `gcc` (that is, lowercase `gcc`, the program we invoke on the command line)  is often colloquially referred to as a compiler, it is technically a driver program, meaning delegates the actual build tasks to other programs.. These programs include `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). You can see the full sequence of commands `gcc` invokes these programs with by using the `-v` (verbose) option.
+* In current GCC implementations, the preprocessor (`cpp`) is integrated into the compiler (`cc1`). The underlying sequence of operations is the same, but technically the first two build steps involve a single program.&#x20;
 {% endhint %}
 
 ### Saving Intermediate Files
