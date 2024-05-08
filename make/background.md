@@ -8,29 +8,14 @@ Before reading this chapter, ensure you're familiar with the GCC build process. 
 
 ### **Incremental Builds**
 
-Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, instead of the entire project. This significantly reduces build times, especially in larger projects. As an example, we'll use the&#x20;
+Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, instead of the entire project. This significantly reduces build times, especially in larger projects.
 
-Recall that GCC builds C programs in two main stages:&#x20;
-
-1. Translation stage: Source files are translated into object files.&#x20;
-2. Linking stage: Object files are linked together, producing the executable.&#x20;
-
-The key to incremental builds lies in caching the object files for future builds.&#x20;
-
-
-
-GCCsequential stages: preprocessing, compilation, assembly, and linking. By default, however, the intermediate files are not retained. Implementing incremental builds requires a change in how we approach the build process. Instead of treating it as a monolithic unit and building it in a single step, we build it in two steps:
+Implementing incremental builds requires a change in how we approach the build process. Instead of treating it as a monolithic unit and building it in a single step, we build it in two steps:
 
 1. **Separate Compilation:** Source files are individually translated into object files. This is done by invoking `gcc217` with the `-c` option.
 2. **Linking:** The resulting object files are linked together to create the final executable.&#x20;
 
 This approach allows for targeted builds: when the program is modified, only the affected source files are recompiled. The updated object files are then linked with the unaffected object files from previous builds, generating a new executable. &#x20;
-
-{% hint style="info" %}
-When I distinguish between "monolithic" and "two-step" approaches, I'm referring to how we might conceptualize the build process, not the underlying GCC operations.&#x20;
-
-As we saw in [GCC Build Process](broken-reference/), GCC always builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. By default, however, the intermediate files are not retained. Thus, the fact that under the hood the source files is individually translated into temporary object files is of no benefit to us.  Thus, for the purposes of rebuilds, this is tanamount to building our program as a monolithic unit.  we can view this method as building our program as a monolithic unit
-{% endhint %}
 
 #### Example
 
@@ -128,3 +113,22 @@ gcc217 intmath.o testintmath.o -o testintmath
 #### Modifying a header file
 
 In general, modifying a header is more dramatic than modifying a `.c` file, since you have to recompile all `.c` files that #include it--directly or indirectly. In our case, if we modify `intmath.h`, we'd have to recompile both `intmath.c` and `testintmath.c`, since it's #included in both of them. For this reason, great care should be taken before modifying a header file.&#x20;
+
+{% hint style="info" %}
+As we saw in [GCC Build Process](broken-reference/), GCC always builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. This is the case whether we build `testintmath` via a single command:
+
+```bash
+gcc217 intmath.c testintmath.c -o testintmath
+```
+
+Or via two commands:
+
+```bash
+gcc217 -c intmath.c testintmath.c 
+gcc217 intmath.o testintmath.o -o testintmath
+```
+
+Fundamentally, the only difference between these two build approaches is that the two-command approach retains the intermediate object files while the single-command approach does not.
+
+When I distinguish between "single-step" and "two-step" approaches, I'm referring to how we might conceptualize the build process, not the underlying GCC operations. When we We build programs via a single command, where are essentially building it as a monolithic unit, since a change to any part requires the entire thing to be recompiled. The fact that under the hood the source files were techincally compiled separately is of no signifigance to us.&#x20;
+{% endhint %}
