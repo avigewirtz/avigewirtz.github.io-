@@ -1,8 +1,6 @@
 # Compilation stage
 
-The second stage involves compilation itself. Here, testcircle.i and circle.i are sent to the compiler, which translate their C code into assembly-language.&#x20;
-
-* the specific assembly language it translates into depends on the target processor.&#x20;
+In the compilation stage, the &#x20;
 
 Compilation is the most complex stage of the build process. It involves translating C source code into a completely different language. This is where the code is checked for errors. Figure 4.3 shows what the arm64 assembly looks like.&#x20;
 
@@ -17,7 +15,7 @@ Compilation is the most complex stage of the build process. It involves translat
 
 #### Characteristics of Assembly Language
 
-A detailed explanation of assembly language is beyond the scope of this chapter. You can find a high level-overview in appendix 8. Arm64 assemvly will be covered in detail in the second hald of the course. For now, we will simply provide a few general points about assembly: &#x20;
+A detailed explanation of assembly language is beyond the scope of this chapter. Arm64 assemvly will be covered in detail in the second hald of the course. For now, we will simply provide a few general points about assembly: &#x20;
 
 * Extremely low-level language. Essentially human readable verson of target processor's machine language. Typically a one-to-one mapping between assembly language instruction and machine language instruction.&#x20;
 * Specific to target architecture. each architecture has it's own assembly language.
