@@ -28,7 +28,7 @@ Under the hood, quite a lot of work is involved in producing the executable `foo
 
 <figure><img src="../../.gitbook/assets/Group 70 (2).png" alt=""><figcaption></figcaption></figure>
 
-Notice that the first three stages of the build process (preprocessing, compilation, and assembly) are performed on each file separately. Recognizing this is critical to understanding how the build process works.
+Notice that the first three stages of the build process (i.e., preprocessing, compilation, and assembly) are performed on each file separately. Recognizing this is critical to understanding how the build process works.
 
 {% hint style="info" %}
 **Insight**

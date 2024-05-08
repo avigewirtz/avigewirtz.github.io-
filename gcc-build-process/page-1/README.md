@@ -1,6 +1,6 @@
-# Deeper dive
+# Example Program
 
-Now that we understand the four stages involved in building a C program, let's analyze them in detail. To do so, we'll analyze each of the four stages in more detail using the multi-file C program shown below as an example.&#x20;
+Let's now analyze each of the build stages in detail. To do so, we'll use the multi-file C program shown below as an example.&#x20;
 
 {% tabs %}
 {% tab title="testcircle.c" %}
