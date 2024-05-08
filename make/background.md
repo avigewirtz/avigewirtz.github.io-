@@ -8,14 +8,16 @@ Before reading this chapter, ensure you're familiar with the GCC build process. 
 
 ### **Incremental Builds**
 
+Your explanation of incremental builds is clear and effectively conveys how they optimize the build process. There's just a small typo and a slight tweak that might enhance the clarity:
+
 Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, instead of the entire project. This significantly reduces build times, especially in larger projects.
 
-Implementing incremental builds requires a change in how we approach the build process. Instead of treating it as a monolithic unit and building it in a single step, we build it in two steps:
+Implementing incremental builds requires a change in how we approach the build process. Instead of treating the source files of a program as a monolithic unit that are always built at the same time, we instead think of the source files as a collection of independent modules, each of which can be compiled independently. We break down the build process into two phases:
 
 1. **Separate Compilation:** Source files are individually translated into object files. This is done by invoking `gcc217` with the `-c` option.
-2. **Linking:** The resulting object files are linked together to create the final executable.&#x20;
+2. **Linking:** The resulting object files are linked together to create the final executable.
 
-This approach allows for targeted builds: when the program is modified, only the affected source files are recompiled. The updated object files are then linked with the unaffected object files from previous builds, generating a new executable. &#x20;
+This approach allows for targeted builds: when the program is modified, only the affected source files are recompiled. The updated object files are then linked with the unaffected object files from previous builds, generating a new executable.
 
 {% hint style="info" %}
 As we saw in [GCC Build Process](broken-reference/), GCC always builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. When I distinguish between "single-step" and "two-step" approaches, I'm referring to how we might conceptualize the build process, not the underlying GCC operations.&#x20;
