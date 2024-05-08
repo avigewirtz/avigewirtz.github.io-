@@ -1,167 +1,29 @@
 # Introduction
 
-In a nutshell, make is a software tool that automates the process of incremental builds. The key to understanding make is understanding what incremental builds are and how to implement them manually. Once you grasp this, the mechanics and role of make become clear.
+In a nutshell, make is a software tool that automates the process of incremental builds. The key to understanding make is understanding what incremental builds are and how to implement it manually. Once you understand this, the mechanics and role of make become apparent.
 
 {% hint style="warning" %}
-Before reading this chapter, ensure you're familiar with the GCC build process. An overview is provided in [GCC Build Process](broken-reference/).
+Before reading this chapter, ensure you're familiar with the GCC build process. An overview is provided in [GCC Build Process](broken-reference).
 {% endhint %}
 
-## **Incremental Builds**
+### Incremental builds <a href="#incremental-builds" id="incremental-builds"></a>
 
-Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, rather than the entire project. This approach significantly reduces build times, especially in larger projects. The key to&#x20;
+Incremental builds is an approach where each build builds off the previous one. The first time you build a program, you compile all of its source files, but in subsequent builds, you compile only the source files that have changed or were affected by changes.
 
-### Dependencies
-
-The first step to implementing incremental builds is understanding a program's dependencies. The easiest way is via a dependency graph. A dependency graph for testintmath is shown below.&#x20;
-
-<figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
-
-In this graph, the nodes represent files, which, when applicable, are annotated with the commands to build them. Directed edges (arrows) indicate dependencies. If file A -> file B, then A directly depends on B. If A -> B and B -> C, then A is indirectly (or transitively) dependent on C.&#x20;
-
-The dependency graph gives us two important pieces of information:
-
-1. The order in which the files must be built.&#x20;
-2. Which files need to be rebuilt after a change is made to one of the source files. If A depends on B, then a change to B requires A to be rebuilt.&#x20;
-
-
-
-
-
-We will demonstrate how incremental builds operate using the `testintmath` program from Precept 4 as an example. The source code is shown below.
-
-{% tabs %}
-{% tab title="testintmath.c (client)" %}
-{% code lineNumbers="true" %}
-```c
-#include "intmath.h"
-#include <stdio.h>
-
-int main() {
-  int i, j;
-  printf("Enter the first integer:\n");
-  scanf("%d", &i);
-  printf("Enter the second integer:\n");
-  scanf("%d", &j);
-  printf("Greatest common divisor: %d.\n", gcd(i, j));
-  printf("Least common multiple: %d.\n", lcm(i, j));
-  return 0;
-}
-```
-{% endcode %}
-{% endtab %}
-
-{% tab title="intmath.c (implementation)" %}
-{% code lineNumbers="true" %}
-```c
-#include "intmath.h"
-
-int gcd(int i, int j) {
-  int temp;
-  while (j != 0) {
-      temp = i % j;
-      i = j;
-      j = temp;
-  }
-  return i;
-}
-
-int lcm(int i, int j) {
-  return (i / gcd(i, j)) * j;
-}
-```
-{% endcode %}
-{% endtab %}
-
-{% tab title="intmath.h (interface)" %}
-{% code lineNumbers="true" %}
-```c
-#ifndef INTMATH_INCLUDED
-#define INTMATH_INCLUDED
-
-int gcd(int i, int j);
-int lcm(int i, int j);
-
-#endif
-```
-{% endcode %}
-{% endtab %}
-{% endtabs %}
-
-### Dependencies
-
-The first step to implementing incremental builds is understanding a program's dependencies. The easiest way is via a dependency graph. A dependency graph for testintmath is shown below.&#x20;
-
-<figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
-
-In this graph, the nodes represent files, which, when applicable, are annotated with the commands to build them. Directed edges (arrows) indicate dependencies. If file A -> file B, then A directly depends on B. If A -> B and B -> C, then A is indirectly (or transitively) dependent on C.&#x20;
-
-The dependency graph gives us two important pieces of information:
-
-1. The order in which the files must be built.&#x20;
-2. Which files need to be rebuilt after a change is made to one of the source files. If A depends on B, then a change to B requires A to be rebuilt.&#x20;
-
-
-
-
+The key to implementing incremental builds is to always build a program in two steps. First, you compile the source files into object files. This is done by invoking `gcc217` with the `-c` option. Importantly, you compile only the source files that would produce object files different from the ones you already have from the previous build. Second, you link all the object files (the "new "and "old") together to produce the executable.
 
 {% hint style="info" %}
-Recall that the contents of #included files are inserted by the preprocessor before compilation proper begins. Hence, object files are derived from their corresponding C file as well as all #included source files.&#x20;
+As we saw in GCC Build Process, GCC
 {% endhint %}
 
-The dependency graph is shown in Figure&#x20;
+### Dependency graphs <a href="#dependency-graphs" id="dependency-graphs"></a>
 
-#### Building `testintmath`
+To know which files need to be rebuilt after changes are made to the source code, you need to have a good grasp of the dependencies among the program's files. An efficient method of doing so is by constructing a dependency graph, as example of which is shown Figure 2.3.
 
-When we build `testintmath` for the first time, all object files and the execvutable have to be built. We can do so as follows:
+<figure><img src="https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Fo07Od3DcI8FNUHkrHKNH%2Fuploads%2FsGcSONmRx6U9wybclUgf%2FGroup%20132.png?alt=media&#x26;token=5d3a2178-5136-4154-a67a-04f78958625c" alt=""><figcaption></figcaption></figure>
 
-1. Build `intmath.o`. This is done by invoking `gcc217` with the `-c` option on `intmath.c`:
+In this graph, the nodes represent files, which (when applicable) are annotated with the commands to build them. The arrows represent dependencies. If file A points to file B, then A directly depends on B, meaning changes to B require A to be rebuilt. If A points to B and B points to C, then A is indirectly (or transitively) dependent on C. The distinction will become clear when we discuss makefiles.Notice the relationship between object files and header files. Multiple object files can depend on a single header file (e.g., `a.o` and `b.o` both depend on `x.h`), and an object file can depend on multiple header files (e.g., `b.o` depends on both `x.h` and `y.h`). While such relationships are possible for C files, in practice they're rare. Typically, there is a one-to-one relationship between object files and C files, as is the case in our graph.
 
-```
-gcc217 -c intmath.c
-```
+### Example <a href="#example" id="example"></a>
 
-2. Build `testintmath.o`:
-
-```
-gcc217 -c testintmath.c
-```
-
-3. Build `testintmath`. This is done by linking `intmath.o` and `testintmath.o`:
-
-```
-gcc217 intmath.o testintmath.o -o testintmath
-```
-
-{% hint style="info" %}
-Note that we could have built both `testintmath.o` and `intmath.o` in a single command (e.g., `gcc217 -c testintmath.c intmath.c`). The underlying GCC operations would have been the same.&#x20;
-{% endhint %}
-
-#### Rebuilding `testintmath`
-
-* **If `intmath.c` is modified:** We rebuild `intmath.o` and then `testintmath`:&#x20;
-
-```bash
-gcc217 -c intmath.c
-gcc217 intmath.o tetsintmath.o -o testintmath
-```
-
-* **If `testintmath.c` is modified:** We rebuild `testintmath.o` and then `testintmath`.&#x20;
-
-```
-gcc217 -c testintmath.c
-gcc217 intmath.o tetsintmath.o -o testintmath
-```
-
-* **If `intmath.h` is modified: H changes:** We rebuild `intmath.o` and `testintmath.o` (in any order) and then `testintmath`:
-
-```
-gcc217 -c intmath.c
-gcc217 -c testintmath.c
-gcc217 intmath.o tetsintmath.o -o testintmath
-```
-
-{% hint style="info" %}
-As we saw in [GCC Build Process](broken-reference/), GCC always builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. This is the case whether we build a via a single command (e.g., `gcc217 foo.c bar.c -o foobar`), or via two commands (e.g., `gcc217 -c foo.c bar.c` followed by `gcc217 foo.o bar.o -o foobar`). Fundamentally, the only difference between these two build approaches is that the two-command approach retains the intermediate object files while the single-command approach does not.
-
-When I distinguish between "single-step" and "two-step" build approaches, I'm referring to how we might conceptualize the build process, not the underlying GCC operations.&#x20;
-{% endhint %}
+To demonstrate incremental builds, we'll use the `testintmath` program from precept 4, whose source code is shown below.testintmath.c (client)intmath.c (implementation)intmath.h (interface)1#include "intmath.h"2​3int gcd(int i, int j) {4int temp;5while (j != 0) {6temp = i % j;7i = j;8j = temp;9}10return i;11}12​13int lcm(int i, int j) {14return (i / gcd(i, j)) \* j;15}To build `testintmath`, we invoke `gcc217` with the `-c` option on `intmath.c` and `testintmath.c`:gcc217 -c intmath.c testintmath.cThis translates `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`. We then we invoke `gcc217` on `intmath.o` and `testintmath.o`:
