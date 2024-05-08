@@ -20,7 +20,7 @@ The `#define` directive creates a preprocessor macro, which is essentially an al
 
 #### Conditional compilation
 
-The #ifdef / #else directives in circle.h are used to control conditional compilation,
+The #ifndef / #else directives, which we use in intmath.h, are part of a set of directives knows as conditional directives. These are used to control which parts of the source code are sent to the compiler. Here's how the #ifndef / #endif directives work in circle.h:
 
 &#x20;which is \<fill in>. Here's how it works \<fill in>
 
