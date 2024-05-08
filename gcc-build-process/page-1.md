@@ -109,7 +109,7 @@ The `#ifndef` / `#else` directives, which we use in `intmath.h`, are part of a s
 
 You can examine the preprocessed files with a text editor. Let’s examine `testcircle.i` and `circle.i` to see what precisely was done by the preprocessor. A side-by-side comparison is shown in Figure 12.
 
-<figure><img src="../../.gitbook/assets/Group 19 (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 19 (5).png" alt=""><figcaption></figcaption></figure>
 
 First, we see that the preprocessor removed all comments from `testcircle.c` and `circle.c`. Second, it replaced each `#include` directive with the contents of its specified header: `circle.h` for both `circle.c` and `testcircle.c`, and `stdio.h` and `stdlib.h` for `testcircle.c`. The `stdio.h` file contains declarations for the `printf` and `scanf` functions, while `stdlib.h` includes the declaration for the `exit` function and the definition of the `EXIT_FAILURE` macro. Finally, all macros were expanded: `PI` in `circle.c` was replaced with `3.14159`, and `EXIT_FAILURE` was replaced with `1`.
 
@@ -121,20 +121,15 @@ You can think of the preprocessor as a "search-and-replace" tool:
 * It replaces each macro with its value.
 {% endhint %}
 
-### Compilation Stage
+### Compilation Stage&#x20;
 
-In the compilation stage, the &#x20;
-
-Compilation is the most complex stage of the build process. It involves translating C source code into a completely different language. This is where the code is checked for errors. Figure 4.3 shows what the arm64 assembly looks like.&#x20;
+Compilation is the most complex stage of the build process. It involves translating C source code into a completely different language. Figure 4.3 shows what the arm64 assembly looks like.&#x20;
 
 <div align="center">
 
-<figure><img src="../../.gitbook/assets/Group 30 (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 30 (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 </div>
-
-* Assembly language&#x20;
-* testcircle.s missing definitions of printf, scanf, exit, and area
 
 #### Characteristics of Assembly Language
 
@@ -149,7 +144,7 @@ A detailed explanation of assembly language is beyond the scope of this chapter.
 
 The assembler translates the assembly-language in testcircle.s and circle.s into machine language, storing the results in testcircle.o and circle.o. This process is shown in Figure 4.3. Machine language is a binary language, consisting of only two symbols--0 and 1.
 
-<figure><img src="../../.gitbook/assets/Group 31.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 31.png" alt="" width="563"><figcaption></figcaption></figure>
 
 * machine language&#x20;
 * testcircle.o missing definitions of printf, scanf, exit, and area
@@ -160,4 +155,4 @@ To produce an executable file, the linker combines all these files--testcircle.o
 
 
 
-<figure><img src="../../.gitbook/assets/Group 49 (2).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 49 (2).png" alt="" width="563"><figcaption></figcaption></figure>
