@@ -18,12 +18,12 @@ Implementing incremental builds requires a change in how we approach the build p
 This approach allows for targeted builds: when the program is modified, only the affected source files are recompiled. The updated object files are then linked with the unaffected object files from previous builds, generating a new executable.
 
 {% hint style="info" %}
-Under the hood, "translation" is technically a three step process, involving preprocessing, compilation proper, and assembly. For the purposes of incremental builds, however, we can conceptualize translation as a single step, in which source files are converted to object files.&#x20;
+**Note**: Under the hood, "translation" is technically a three step process, involving preprocessing, compilation proper, and assembly. For the purposes of incremental builds, however, we can conceptualize translation as a single step, in which the source files are converted to object files.&#x20;
 {% endhint %}
 
 ### Example
 
-As an example, consider the `testintmath` program from precept 4, whose source code is shown below.
+Let's now demonstrate incremental how incremental builds are done in practice. As an example, we'll use the `testintmath` program from precept 4, whose source code is shown below.
 
 {% tabs %}
 {% tab title="testintmath.c (client)" %}
@@ -83,6 +83,8 @@ int lcm(int i, int j);
 {% endtab %}
 {% endtabs %}
 
+### Building testintmath for the first time
+
 The first time we build `testintmath`, we compile all source files. The key, however, is that we cache the object files, so we can reuse them in later builds. This can be done by building `testintmath` in two steps. First, we translate `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`:
 
 ```bash
@@ -116,19 +118,32 @@ gcc217 intmath.c testintmath.c -o testintmath
 The only difference between the two-command and single-command approaches is that the former retains the intermediate object files while the latter does not.&#x20;
 {% endhint %}
 
-Going forward, if we modify one of the `.c` files, we recompile only that file. For example, if we modify `intmath.c`, we'd invoke `gcc217 -c` on `intmath.c` alone:
+### Rebuilding testintmath
 
-```bash
+Whenever we rebuild testintmath (i.e., after its source code is modified), the key is that we only recompile the source file's that will produce an object file different from the one from the last build. Here's how it works:
+
+**Scenario 1: Modifying a .c File**
+
+When a `.c` file, such as `intmath.c`, is modified, the change is localized. Thus, only this specific file needs to be recompiled. The steps are straightforward:
+
+1. Recompile only `intmath.c`:
+
+```
 gcc217 -c intmath.c
 ```
 
-And then link the "new" and "old" object files--`intmath.o` and `testinamth.o` respectively--to generate the updated executable:
+2. Link the newly created `intmath.o` with the unchanged `testintmath.o` to produce the updated executable:&#x20;
 
-```bash
-gcc217 -c intmath.c
+```
 gcc217 intmath.o testintmath.o -o testintmath
 ```
 
-If we were to modify intmath.h, however, the effect would be more dramatic. We'd have to recompile all files that include it in them--in our case, both both `intmath.c` and `testintmath.c`.
+**Scenario 2: Modifying a .h File**
 
-In general, modifying a header is more dramatic than modifying a `.c` file, since you have to recompile all `.c` files that #include it--whether directly or indirectly. In our case, if we modify `intmath.h`, we'd have to recompile both `intmath.c` and `testintmath.c`, since it's #included in both of them. For this reason, great care should be taken before modifying a header file.
+Modifying a header file--in our case `intmath.h`--is more impactful because header files are typically #included in multiple other files. When a header file changes, all source files that include it (`#include "intmath.h"`) must be recompiled. In our case, if we modify `intmath.h`, we'd have to recompile both intmath.c and testintmath.c, since they both #include it:
+
+```bash
+gcc217 -c intmath.c testintmath.c -o testintmath
+gcc217 intmath.o testintmath.o -o testintmath
+```
+
