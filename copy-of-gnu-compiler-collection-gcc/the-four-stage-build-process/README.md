@@ -1,12 +1,12 @@
 # The Big Picture
 
-Suppose we have a C program comprised of two .c files: `foo.c` and `bar.c`. To build our program, we invoke the following command:&#x20;
+Suppose we have a C program comprised of two `.c` files: `foo.c` and `bar.c`. To build our program, we invoke the following command:&#x20;
 
 ```bash
 gcc217 foo.c bar.c -o foobar
 ```
 
-Note that `-o foobar` specifies that the executable be named `foobar`_,_ rather than the default name `a.out`. To run `foobar`, we simply invoke its pathname on the command line:
+Note that `-o foobar` specifies that the executable be named `foobar`_,_ rather than the default name `a.out`. To run `foobar`, we type its pathname on the command line:
 
 ```
 ./foobar
