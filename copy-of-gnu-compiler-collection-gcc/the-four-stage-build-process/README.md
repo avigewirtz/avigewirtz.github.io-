@@ -40,7 +40,7 @@ Notice that the first three stages of the build process (preprocessing, compilat
 By default, gcc does not retain the intermediate files (i.e., `.i`, `.s`, and `.o)`generated during the build process. Thus, if we invoke `ls` after building `foobar`, we won't see any of the intermediate files:&#x20;
 
 ```bash
-> ls
+$ ls
 bar.c    foo.c    foobar
 ```
 
@@ -53,7 +53,7 @@ gcc217 --save-temps foo.c bar.c -o foobar
 If we invoke `ls` again, we'll see all the intermediate files:&#x20;
 
 ```bash
-> ls
+$ ls
 bar.c    bar.i    bar.s    bar.o    foo.c    
 foo.i    foo.s    foo.o    foobar   
 ```
