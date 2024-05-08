@@ -1,8 +1,30 @@
 # Preprocessing stage
 
-* preprocessor performs two main things&#x20;
+As we mentioned earlier, the preprocessor performs two main tasks: It removes comments, which are of no use to the compiler, and handles preprocessor directives, which are lines in the code that begin with a #. Our program makes use of three types of preprocessor directives, #include, #define, and #ifdef / #else. These directives control file inclusion, macro definition, and conditional compilation.&#x20;
 
-<figure><img src="../../.gitbook/assets/Frame 1.png" alt=""><figcaption><p>Figure 4.2: Preprocessing Stage. (Click image to enlarge)</p></figcaption></figure>
+#### File inclusion
+
+
+
+
+
+1. \#include. This is used to "include" the contents of another file into the current file.  For example, `#include <stdio.h>` tells the preprocessor to insert the contents of the `stdio.h`. stdio.h is a C library header file which, among other things, contains declarations of standard I/O functions such as `printf` and `scanf`. As you can imagine, the contents of the #included file get inserted in the place where the directive appears.&#x20;
+2. \#define&#x20;
+3. \#ifdef / #else
+
+{% hint style="info" %}
+You can think of the preprocessor as a "seach-and-replace" tool:
+
+* It replaces each comment with a whitespace character
+* It replaces each #include directive with the contents of the specified file
+* It replaces each macro with its value
+{% endhint %}
+
+The output of the preprocessor is essentially raw C code. No comments.&#x20;
+
+You can examine the output of the preprocessor with a text editor. An
+
+<figure><img src="../../.gitbook/assets/Group 19 (5).png" alt=""><figcaption></figcaption></figure>
 
 Frst, we see that the preprocessor removed all comments from testcircle.c and circle.c. Second, we see that each #include directive was replaced with the contents of its specified header. Namely, circle.h for circle.c and testcircle.c, and stdio.h and stdlib.h for testcircle.h. stdio.h and stdlib.h are system header files, containing declarations of library functions and definitions of macros. stdio.h contains the declaration of printf and scanf, and stdlib contains the declaration of exit and the the definition of the EXIT\_FAILURE macro. Finally, we see that all macros were expanded. PI in circle.,c was replaced with 3.14159, and EXIT\_FAILURE was replaced with 1.&#x20;
 
