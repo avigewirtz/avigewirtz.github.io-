@@ -11,7 +11,7 @@ ASIDE BOX: #included files are typically header files, but technically any file 
 {% endhint %}
 
 {% hint style="info" %}
-ASIDE BOX: There are two syntaxes for the `#include` directive: with angle brackets (e.g., `#include <stdio.h>`), and with double quotes (e.g., `#include "circle.h"`). The difference between these two lies in how the preprocessor searches for the specified file, with the precise details being implementation-defined. In general, files included with angle brackets are searched for in the system directories, while those included with double quotes are searched for in the working directory first.
+ASIDE BOX: There are two syntaxes for the `#include` directive: with angle brackets (e.g., `#include <stdio.h>`), and with double quotes (e.g., `#include "circle.h"`). The difference between these two lies in how the preprocessor searches for the specified file, with the precise details being implementation-defined. In general, files included with angle brackets are searched for in system directories only, while those included with double quotes are searched for in the working directory first.
 {% endhint %}
 
 #### Macro definition
