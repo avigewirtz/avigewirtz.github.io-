@@ -10,15 +10,15 @@ Before reading this chapter, ensure you're familiar with the GCC build process. 
 
 Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, instead of the entire project. This significantly reduces build times, especially in larger projects.
 
-Implementing incremental builds requires a change in how we approach the build process. Instead of treating the source files of a program as a monolithic unit that are always built together, we instead think of the source files as a collection of independent modules, each of which can be compiled independently. We break down the build process into two phases:
+Implementing incremental builds requires a change in how we approach the build process. Instead of treating the source files of a program as a monolithic unit that are always built together, we instead think of the source files as a collection of independent modules that can be compiled independently. We break down the build process into two steps:
 
-1. **Separate Compilation:** Source files are individually translated into object files. This is done by invoking `gcc217` with the `-c` option.
+1. **Translation:** Source files are individually translated into object files. This is done by invoking gcc217 with the -c option.&#x20;
 2. **Linking:** The resulting object files are linked together to create the final executable.
 
 This approach allows for targeted builds: when the program is modified, only the affected source files are recompiled. The updated object files are then linked with the unaffected object files from previous builds, generating a new executable.
 
 {% hint style="info" %}
-As we saw in [GCC Build Process](broken-reference/), GCC always builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. When I distinguish between "single-step" and "two-step" approaches, I'm referring to how we might conceptualize the build process, not the underlying GCC operations.&#x20;
+Under the hood, "translation" is technically a three step process, involving preprocessing, compilation proper, and assembly. For the purposes of incremental builds, however, we can conceptualize translation as a single step, in which source files are converted to object files.&#x20;
 {% endhint %}
 
 ### Example
@@ -83,9 +83,7 @@ int lcm(int i, int j);
 {% endtab %}
 {% endtabs %}
 
-The key to incremental builds is we build `testintmath` in two steps, rather than in a single step (i.e, by invoking `gcc217 intmath.c testintmath.c -o testintmath`).&#x20;
-
-First, we translate `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`:
+The first time we build `testintmath`, we compile all source files. The key, however, is that we cache the object files, so we can reuse them in later builds. This can be done by building `testintmath` in two steps. First, we translate `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`:
 
 ```bash
 gcc217 -c intmath.c testintmath.c 
@@ -101,19 +99,36 @@ This process is is summarized in Figure 1.
 
 <figure><img src="../.gitbook/assets/Group 147 (4).png" alt="" width="563"><figcaption></figcaption></figure>
 
-Going forward, if we modify one of the `.c` files, we don't need to recompile everything—just the file that changed. For instance, if we modify `intmath.c`, we'd invoke `gcc217 -c` on `intmath.c` alone:
+{% hint style="info" %}
+Fundamentally, the underlying build process is the same irrespective of whether we build our program via two commands:
+
+```bash
+gcc217 -c intmath.c testintmath.c
+gcc217 intmath.o testintmath.o -o testintmath
+```
+
+Or via single command:
+
+```bash
+gcc217 intmath.c testintmath.c -o testintmath
+```
+
+The only difference between the two-command and single-command approaches is that the former retains the intermediate object files while the latter does not.&#x20;
+{% endhint %}
+
+Going forward, if we modify one of the `.c` files, we recompile only that file. For example, if we modify `intmath.c`, we'd invoke `gcc217 -c` on `intmath.c` alone:
 
 ```bash
 gcc217 -c intmath.c
 ```
 
-We'd then link the "new" and "old" object files--`intmath.o` and `testinamth.o` respectively--to generate the updated executable:&#x20;
+And then link the "new" and "old" object files--`intmath.o` and `testinamth.o` respectively--to generate the updated executable:
 
 ```bash
 gcc217 -c intmath.c
 gcc217 intmath.o testintmath.o -o testintmath
 ```
 
-#### Modifying a header file
+If we were to modify intmath.h, however, the effect would be more dramatic. We'd have to recompile all files that include it in them--in our case, both both `intmath.c` and `testintmath.c`.
 
-In general, modifying a header is more dramatic than modifying a `.c` file, since you have to recompile all `.c` files that #include it--whether directly or indirectly. In our case, if we modify `intmath.h`, we'd have to recompile both `intmath.c` and `testintmath.c`, since it's #included in both of them. For this reason, great care should be taken before modifying a header file.&#x20;
+In general, modifying a header is more dramatic than modifying a `.c` file, since you have to recompile all `.c` files that #include it--whether directly or indirectly. In our case, if we modify `intmath.h`, we'd have to recompile both `intmath.c` and `testintmath.c`, since it's #included in both of them. For this reason, great care should be taken before modifying a header file.
