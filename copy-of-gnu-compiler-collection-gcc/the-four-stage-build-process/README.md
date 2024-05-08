@@ -31,7 +31,7 @@ Notice that the first three stages of the build process (preprocessing, compilat
 {% hint style="info" %}
 **Insight**
 
-* Although `gcc` (that is, lowercase `gcc`, the program we invoke on the command line)  is often colloquially referred to as a compiler, it is technically a driver program, meaning it delegates the actual build tasks to other programs. These programs include `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). `gcc` invokes these programs with the necessary command line options. You can see this full sequence of operations by invoking `gcc` with the `-v` (verbose) option. You will gain a much greater appreciatiom of the role the `gcc` driver program plays in simplifying the build process.
+* Although `gcc` (that is, lowercase `gcc`, the program we invoke on the command line)  is often colloquially referred to as a compiler, it is technically a driver program, meaning it delegates the actual build tasks to other programs. These programs include `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). `gcc` invokes each of these programs with the necessary command line options. You can see this full sequence of operations by invoking `gcc` with the `-v` (verbose) option. You will gain a much greater appreciatiom of the role the `gcc` driver program plays in simplifying the build process.
 * In current GCC implementations, the preprocessor (`cpp`) is integrated into the compiler (`cc1`). The underlying sequence of operations is the same, but technically the first two build steps are performed by a single program.&#x20;
 {% endhint %}
 
