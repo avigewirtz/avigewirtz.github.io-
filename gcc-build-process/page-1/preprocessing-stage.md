@@ -7,7 +7,7 @@ As we mentioned earlier, the preprocessor performs two main tasks: It removes co
 The `#include` directive instructs the preprocessor to grab the contents of a specified file and paste it directly into the current file where the `#include` directive appears. For example, in `testcircle.c`, the preprocessor replaces `#include <stdio.h>` with the contents of `stdio.h`, a system header file that contains, among other things, declarations of standard I/O functions such as `printf` and `scanf`.
 
 {% hint style="info" %}
-ASIDE BOX: #included files are typically header files, but it ca technically be any file. For example, a .c file can be included: #include "main.c".
+ASIDE BOX: #included files are typically header files, but technically any file can be included. 
 {% endhint %}
 
 {% hint style="info" %}
