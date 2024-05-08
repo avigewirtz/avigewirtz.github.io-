@@ -28,11 +28,11 @@ The `#ifndef` / `#else` directives, which we use in `intmath.h`, are part of a s
 
 #### Examining `testcircle.i` and `circle.i`
 
-You can examine the preprocessed files with a text editor. Let’s examine `testcircle.i` and `circle.i` to see what precisely was done by the preprocessor.
+You can examine the preprocessed files with a text editor. Let’s examine `testcircle.i` and `circle.i` to see what precisely was done by the preprocessor. A side-by-side comparison is shown in Figure 12.
 
 <figure><img src="../../.gitbook/assets/Group 19 (5).png" alt=""><figcaption></figcaption></figure>
 
-First, we see that the preprocessor removed all comments from `testcircle.c` and `circle.c`. Second, we see that each `#include` directive was replaced with the contents of its specified header, namely `circle.h` for `circle.c` and `testcircle.c`, and `stdio.h` and `stdlib.h` for `testcircle.h`. `stdio.h` and `stdlib.h` are system header files, containing declarations of library functions and definitions of macros. `stdio.h` includes the declaration of `printf` and `scanf`, and `stdlib.h` includes the declaration of `exit` and the definition of the `EXIT_FAILURE` macro. Finally, we see that all macros were expanded: `PI` in `circle.c` was replaced with 3.14159, and `EXIT_FAILURE` was replaced with 1.
+First, we see that the preprocessor removed all comments from `testcircle.c` and `circle.c`. Second, it replaced each `#include` directive with the contents of its specified header: `circle.h` for both `circle.c` and `testcircle.c`, and `stdio.h` and `stdlib.h` for `testcircle.c`. The `stdio.h` file contains declarations for the `printf` and `scanf` functions, while `stdlib.h` includes the declaration for the `exit` function and the definition of the `EXIT_FAILURE` macro. Finally, all macros were expanded: `PI` in `circle.c` was replaced with `3.14159`, and `EXIT_FAILURE` was replaced with `1`.
 
 {% hint style="success" %}
 You can think of the preprocessor as a "search-and-replace" tool:
