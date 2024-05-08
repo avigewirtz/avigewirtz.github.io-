@@ -116,4 +116,4 @@ gcc217 intmath.o testintmath.o -o testintmath
 
 #### Modifying a header file
 
-In general, modifying a header is more dramatic than modifying a `.c` file, since you have to recompile all `.c` files that #include it--directly or indirectly. In our case, if we modify `intmath.h`, we'd have to recompile both `intmath.c` and `testintmath.c`, since it's #included in both of them. For this reason, great care should be taken before modifying a header file.&#x20;
+In general, modifying a header is more dramatic than modifying a `.c` file, since you have to recompile all `.c` files that #include it--whether directly or indirectly. In our case, if we modify `intmath.h`, we'd have to recompile both `intmath.c` and `testintmath.c`, since it's #included in both of them. For this reason, great care should be taken before modifying a header file.&#x20;
