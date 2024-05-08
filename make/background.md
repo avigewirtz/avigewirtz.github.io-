@@ -10,7 +10,7 @@ Before reading this chapter, ensure you're familiar with the GCC build process. 
 
 Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, instead of the entire project. This significantly reduces build times, especially in larger projects.
 
-Implementing incremental builds requires a change in how we approach the build process. Instead of treating the source files of a program as a monolithic unit that are always built at the same time, we instead think of the source files as a collection of independent modules, each of which can be compiled independently. We break down the build process into two phases:
+Implementing incremental builds requires a change in how we approach the build process. Instead of treating the source files of a program as a monolithic unit that are always built together, we instead think of the source files as a collection of independent modules, each of which can be compiled independently. We break down the build process into two phases:
 
 1. **Separate Compilation:** Source files are individually translated into object files. This is done by invoking `gcc217` with the `-c` option.
 2. **Linking:** The resulting object files are linked together to create the final executable.
