@@ -16,7 +16,7 @@ Behind the scenes, quite a lot of work is involved in producing the executable `
 
 1.  **Preprocessing stage:** The preprocessor modifies the source code in `foo.c` and `bar.c` by performing two main tasks:
 
-    1. **Removing comments.** Comments serve to help human readers understand the code, but are of no use to the compiler. Hence, they can be discarded before compilation begins.&#x20;
+    1. **Removing comments.** Comments serve to help human readers understand the code, but they are of no use to the compiler. Hence, they can be discarded before compilation begins.&#x20;
     2. **Handling preprocessor directives.** These are lines in the code that begin with a `#` (hash). Unlike traditional C code, they are meant to be interpreted by the preprocessor, not the compiler. An example of a preprocessor directive is `#include` (e.g., `#include <stdio.h>`), which instructs the preprocessor to include the contents of the specified file in the location where the `#include` directive appears.&#x20;
 
     The output is of the preprocessor is stored in `foo.i` and `bar.i.`&#x20;
