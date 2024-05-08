@@ -1,29 +1,130 @@
 # Introduction
 
-In a nutshell, make is a software tool that automates the process of incremental builds. The key to understanding make is understanding what incremental builds are and how to implement it manually. Once you understand this, the mechanics and role of make become apparent.
+In a nutshell, make is a software tool that automates the process of incremental builds. The key to understanding make is understanding what incremental builds are and how to implement them manually. Once you grasp this, the mechanics and role of make become clear.
 
 {% hint style="warning" %}
-Before reading this chapter, ensure you're familiar with the GCC build process. An overview is provided in [GCC Build Process](broken-reference).
+Before reading this chapter, ensure you're familiar with the GCC build process. An overview is provided in [GCC Build Process](broken-reference/).
 {% endhint %}
 
-### Incremental builds <a href="#incremental-builds" id="incremental-builds"></a>
+### **Incremental Builds**
 
-Incremental builds is an approach where each build builds off the previous one. The first time you build a program, you compile all of its source files, but in subsequent builds, you compile only the source files that have changed or were affected by changes.
+Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, instead of the entire project. This significantly reduces build times, especially in larger projects. As an example, we'll use the&#x20;
 
-The key to implementing incremental builds is to always build a program in two steps. First, you compile the source files into object files. This is done by invoking `gcc217` with the `-c` option. Importantly, you compile only the source files that would produce object files different from the ones you already have from the previous build. Second, you link all the object files (the "new "and "old") together to produce the executable.
+Recall that GCC builds C programs in two main stages:&#x20;
+
+1. Translation stage: Source files are translated into object files.&#x20;
+2. Linking stage: Object files are linked together, producing the executable.&#x20;
+
+The key to incremental builds lies in caching the object files for future builds.&#x20;
+
+
+
+GCCsequential stages: preprocessing, compilation, assembly, and linking. By default, however, the intermediate files are not retained. Implementing incremental builds requires a change in how we approach the build process. Instead of treating it as a monolithic unit and building it in a single step, we build it in two steps:
+
+1. **Separate Compilation:** Source files are individually translated into object files. This is done by invoking `gcc217` with the `-c` option.
+2. **Linking:** The resulting object files are linked together to create the final executable.&#x20;
+
+This approach allows for targeted builds: when the program is modified, only the affected source files are recompiled. The updated object files are then linked with the unaffected object files from previous builds, generating a new executable. &#x20;
 
 {% hint style="info" %}
-As we saw in GCC Build Process, GCC
+When I distinguish between "monolithic" and "two-step" approaches, I'm referring to how we might conceptualize the build process, not the underlying GCC operations.&#x20;
+
+As we saw in [GCC Build Process](broken-reference/), GCC always builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. By default, however, the intermediate files are not retained. Thus, the fact that under the hood the source files is individually translated into temporary object files is of no benefit to us.  Thus, for the purposes of rebuilds, this is tanamount to building our program as a monolithic unit.  we can view this method as building our program as a monolithic unit
 {% endhint %}
 
-### Dependency graphs <a href="#dependency-graphs" id="dependency-graphs"></a>
+#### Example
 
-To know which files need to be rebuilt after changes are made to the source code, you need to have a good grasp of the dependencies among the program's files. An efficient method of doing so is by constructing a dependency graph, as example of which is shown Figure 2.3.
+As an example, consider the `testintmath` program from precept 4, whose source code is shown below.
 
-<figure><img src="https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Fo07Od3DcI8FNUHkrHKNH%2Fuploads%2FsGcSONmRx6U9wybclUgf%2FGroup%20132.png?alt=media&#x26;token=5d3a2178-5136-4154-a67a-04f78958625c" alt=""><figcaption></figcaption></figure>
+{% tabs %}
+{% tab title="testintmath.c (client)" %}
+{% code lineNumbers="true" %}
+```c
+#include "intmath.h"
+#include <stdio.h>
 
-In this graph, the nodes represent files, which (when applicable) are annotated with the commands to build them. The arrows represent dependencies. If file A points to file B, then A directly depends on B, meaning changes to B require A to be rebuilt. If A points to B and B points to C, then A is indirectly (or transitively) dependent on C. The distinction will become clear when we discuss makefiles.Notice the relationship between object files and header files. Multiple object files can depend on a single header file (e.g., `a.o` and `b.o` both depend on `x.h`), and an object file can depend on multiple header files (e.g., `b.o` depends on both `x.h` and `y.h`). While such relationships are possible for C files, in practice they're rare. Typically, there is a one-to-one relationship between object files and C files, as is the case in our graph.
+int main() {
+  int i, j;
+  printf("Enter the first integer:\n");
+  scanf("%d", &i);
+  printf("Enter the second integer:\n");
+  scanf("%d", &j);
+  printf("Greatest common divisor: %d.\n", gcd(i, j));
+  printf("Least common multiple: %d.\n", lcm(i, j));
+  return 0;
+}
+```
+{% endcode %}
+{% endtab %}
 
-### Example <a href="#example" id="example"></a>
+{% tab title="intmath.c (implementation)" %}
+{% code lineNumbers="true" %}
+```c
+#include "intmath.h"
 
-To demonstrate incremental builds, we'll use the `testintmath` program from precept 4, whose source code is shown below.testintmath.c (client)intmath.c (implementation)intmath.h (interface)1#include "intmath.h"2​3int gcd(int i, int j) {4int temp;5while (j != 0) {6temp = i % j;7i = j;8j = temp;9}10return i;11}12​13int lcm(int i, int j) {14return (i / gcd(i, j)) \* j;15}To build `testintmath`, we invoke `gcc217` with the `-c` option on `intmath.c` and `testintmath.c`:gcc217 -c intmath.c testintmath.cThis translates `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`. We then we invoke `gcc217` on `intmath.o` and `testintmath.o`:
+int gcd(int i, int j) {
+  int temp;
+  while (j != 0) {
+      temp = i % j;
+      i = j;
+      j = temp;
+  }
+  return i;
+}
+
+int lcm(int i, int j) {
+  return (i / gcd(i, j)) * j;
+}
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="intmath.h (interface)" %}
+{% code lineNumbers="true" %}
+```c
+#ifndef INTMATH_INCLUDED
+#define INTMATH_INCLUDED
+
+int gcd(int i, int j);
+int lcm(int i, int j);
+
+#endif
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
+
+The key to incremental builds is we build `testintmath` in two steps, rather than in a single step (i.e, by invoking `gcc217 intmath.c testintmath.c -o testintmath`).&#x20;
+
+First, we translate `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`:
+
+```bash
+gcc217 -c intmath.c testintmath.c 
+```
+
+Then, we link `intmath.o` and `testintmath.o`, producing the executable `testintmath`:
+
+```bash
+gcc217 intmath.o testintmath.o -o testintmath
+```
+
+This process is is summarized in Figure 1.
+
+<figure><img src="../.gitbook/assets/Group 147 (4).png" alt="" width="563"><figcaption></figcaption></figure>
+
+Going forward, if we modify one of the `.c` files, we don't need to recompile everything—just the file that changed. For instance, if we modify `intmath.c`, we'd invoke `gcc217 -c` on `intmath.c` alone:
+
+```bash
+gcc217 -c intmath.c
+```
+
+We'd then link the "new" and "old" object files--`intmath.o` and `testinamth.o` respectively--to generate the updated executable:&#x20;
+
+```bash
+gcc217 -c intmath.c
+gcc217 intmath.o testintmath.o -o testintmath
+```
+
+#### Modifying a header file
+
+In general, modifying a header is more dramatic than modifying a `.c` file, since you have to recompile all `.c` files that #include it--directly or indirectly. In our case, if we modify `intmath.h`, we'd have to recompile both `intmath.c` and `testintmath.c`, since it's #included in both of them. For this reason, great care should be taken before modifying a header file.&#x20;
