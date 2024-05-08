@@ -90,6 +90,6 @@ or `.i` files:
 gcc217 -S foo.i bar.i
 ```
 
-In the former case, GCC will preprocess and compile the files and halt. in the latter case, GCC will begin will begin with compilation and halt. GCC automatically saves the resulting assembly code in `.s` files.
+In the former case, GCC will preprocess and compile the files and halt. In the latter case, GCC will begin will compile the files and halt. GCC automatically saves the resulting assembly code in `.s` files.
 
 **`-c`:** This instructs GCC to stop the build process after assembly. The input can be either `.c`, `.i`, or `.o` files. gcc will determine which stages to perform based on which type of file it is. For example, if the file is a .c file, gcc will begin with assembly and halt. GCC automatically saves the resulting object code in `.o` files.&#x20;
