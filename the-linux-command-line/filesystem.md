@@ -1,5 +1,7 @@
 # Linux Filesystem
 
+One of the core services of the operating system is the Provision of a file system filesystem, which is an abstraction of computer storage. Here, we discuss the basics of the Linux filesystem.&#x20;
+
 ### Files
 
 At its core, a file is a linear array of bytes of arbitrary length. Each Linux file has a _type_ that indicates its role:

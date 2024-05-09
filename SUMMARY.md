@@ -4,8 +4,6 @@
 
 * [About This Tutorial](README.md)
 * [Organization of this tutorial](preface/organization-of-this-tutorial.md)
-* [Conventions used](preface/conventions-used.md)
-* [Acknowledgments](preface/acknowledgments.md)
 
 ## Armlab
 
@@ -18,13 +16,9 @@
 ## The Linux command line
 
 * [Introduction](the-linux-command-line/introduction.md)
-* [A Bit of Background](the-linux-command-line/a-bit-of-background/README.md)
-  * [Linux kernel](the-linux-command-line/a-bit-of-background/linux-kernel.md)
-  * [GNU Utilities](the-linux-command-line/a-bit-of-background/gnu-utilities.md)
-  * [The Shell](the-linux-command-line/a-bit-of-background/the-shell.md)
+* [Understanding the Linux Command Line Environment](the-linux-command-line/a-bit-of-background.md)
 * [Linux Filesystem](the-linux-command-line/filesystem.md)
 * [Getting Started With Bash](the-linux-command-line/warm-up-commands.md)
-* [Under the hood](the-linux-command-line/under-the-hood.md)
 * [Navigating the Filesystem](the-linux-command-line/navigating-the-filesystem/README.md)
 * [Bash Shortcuts](the-linux-command-line/useful-command-line-features.md)
 * [Getting Documentation For Commands](the-linux-command-line/getting-help.md)

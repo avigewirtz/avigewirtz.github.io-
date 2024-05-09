@@ -1,6 +1,6 @@
 # Organization of this tutorial
 
-We've arranged the chapters to give you a gentle and enjoyable entry into UNIX and the tools on the disk. We start with basic utilities you'll use right away, like the Emacs text editor and the C compiler, and continue to more advanced tools that you'll be glad are there, such as make and RCS. The first two chapters are general and do not directly concern the software on the disk; later chapters are about par- ticular tools on the disk.
+* each chapter designed to be independent&#x20;
 
 ### Part 1: Armlab
 
@@ -18,11 +18,11 @@ Part 3 covers the Bash shell. It starts with the basic steps to get started with
 
 Part 4 covers Emacs, a widely-used text editor. It covers the fundamentals for editing files as well as more advanced commands like managing windows and buffers, search and replace, and building with Emacs. It also touches on Emacs configuration files and provides an Emacs cheat sheet.
 
-### Part 5: Git & GitHub
+### Part 5: Git
 
 The next portion delves into Git & GitHub, explaining how to set up your Git environment and use Git fundamentals. It also walks you through obtaining and creating repositories, authentication, Git workflow, and pushing and pulling. It discusses important Git commands, such as checking the status of your repository, viewing commit history, ignoring files, and resolving merge conflicts.
 
-### Part 6: Gnu Compiler Collection (GCC)
+### Part 6: GCC Build Process
 
 The GCC section breaks down the four-stage build process, with the intention of helping you understand each stage from machine code to high-level languages.
 

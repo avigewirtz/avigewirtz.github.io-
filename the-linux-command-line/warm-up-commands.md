@@ -4,12 +4,6 @@ description: This page introduces Bash commands.
 
 # Getting Started With Bash
 
-### The Big Picture
-
-Bash operates in a simple loop: It accepts a command, interprets the command, executes the command, and then waits for another command. See Fig. 3. Bash indicates its readiness to accept a command by displaying a prompt.&#x20;
-
-<figure><img src="../.gitbook/assets/Group 12 (2).png" alt="" width="188"><figcaption></figcaption></figure>
-
 ### Shell prompt
 
 When you begin a bash session, the first thing you'll notice is the shell prompt. On Armlab, it looks like the following:
@@ -25,7 +19,7 @@ Generalizing, the prompt on Armlab has the following format:&#x20;
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-24 at 9.53.35 PM.png" alt=""><figcaption></figcaption></figure>
 
-## What's a command?
+## Warm up commands
 
 Simplest command consists of just a command name. One such command us `uname`, which prints the name of your OS on stdout. To invoke it, simply type `uname` and press ENTER:
 
