@@ -1,11 +1,11 @@
-# Creating a Simple Makefile
+# Automating Builds With make
 
 As we saw in the previous section, managing incremental builds manually is possible but tends to be tedious and error prone. It requires you to:
 
 * Keep track of which files have been modified.
 * Understand the dependencies among the files in your program.
 
-Admittedly, for a small program like `testintmath` these tasks might be manageable, but as programs grow larger and the web of dependencies grows increasingly complex, these task becomes incredibly painful to do manually.&#x20;
+Admittedly, for a small program like `testintmath` this might be manageable, but as programs grow larger and the web of dependencies grows increasingly complex, this task becomes incredibly painful to do manually.&#x20;
 
 A much better approach is to automate the process with `make`. To do so, you create a file named `Makefile` or `makefile` in your program's directory, which you populate with a textual representation of your program's _dependency graph_ (see below). This graph describes the relationships between your program's files and provide make with the necessary build commands. Once you have a suitable Makefile, you can build your program by simply invoking:
 
@@ -17,19 +17,9 @@ make
 
 ### Dependency Graphs
 
-A program's dependencies can be formally described with what is known as a _dependency graph_.&#x20;
-
-<figure><img src="../.gitbook/assets/Group 138 (2).png" alt=""><figcaption></figcaption></figure>
-
-In this graph, nodes represent files and directed edges (arrows) indicate dependencies. If A -> B, then A directly depends on B, meaning that a modification to B requires A to be rebuilt. If A -> B and B -> C, then A is indirectly (or transitively) dependent on C. A modification to C requires B to be rebuilt, which in turn requires A to be rebuilt. Non-leaf nodes are labeled with commands to build them.&#x20;
-
-#### Constructing a dependency graph
-
-Constructing a dependency graph is quite simple. Let's now create one for our testintmath program.&#x20;
+A program's dependencies can be formally described with what is known as a _dependency graph_. In such a graph, nodes represent files and directed edges (arrows) indicate dependencies. If A -> B, then A directly depends on B, meaning that a modification to B requires A to be rebuilt. If A -> B and B -> C, then A is indirectly (or transitively) dependent on C. A modification to C requires B to be rebuilt, which in turn requires A to be rebuilt. Non-leaf nodes are labeled with commands to build them.&#x20;
 
 A node without any dependencies is known as a _leaf_. Non-leaf nodes are labeled with commands to build them. Leafs are typically `.c` and `.h` files, which are not  "built". A dependency graph for our `testintmath` program is shown in Figure 12.3.&#x20;
-
-<figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
 
 A few observations about our dependency graph that are typical of C programs:
 

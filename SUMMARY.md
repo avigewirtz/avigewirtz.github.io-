@@ -98,7 +98,9 @@
 ## Make
 
 * [Introduction](make/background.md)
-* [Creating a Simple Makefile](make/makefiles.md)
+* [Automating Builds With make](make/makefiles.md)
+* [Dependency Graphs](make/dependency-graphs.md)
+* [Writing a Simple Makefile](make/writing-a-simple-makefile.md)
 * [How make Processes a Makefile](make/how-make-processes-a-makefile.md)
 * [Phony targets](make/makefile-version-2-phony-targets.md)
 * [Macros](make/makefile-version-3-macros.md)
