@@ -8,7 +8,7 @@ SSH operates on a client-server model. An SSH client program, such as `ssh` conn
 
 ## Key Security Features of SSH
 
-**Authentication**: Before establishing a connection, the ssh server on the remote computer authenticates your identity by prompting you for a username/password or by using a digital key pair (one private, one public).&#x20;
+**Authentication**: Before establishing a connection, the SSH server authenticates your identity by prompting you for a username/password or by using a digital key pair (one private, one public).&#x20;
 
 **Encryption**: Once your identity is authenticated and a connection is established, SSH provides strong encryption for your session. Any data sent over the connection is encrypted on your local computer and decrypted on the remote one. This ensures that even if the data is intercepted during transmission, it cannot be read.&#x20;
 
