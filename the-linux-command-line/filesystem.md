@@ -38,7 +38,7 @@ Each user on a Linux system has a personal directory called a _home directory_. 
 
 ### Working Directory
 
-Each process (instance of a running program) has a dynamically associated directory, called its _working directory_**,** which is the location where the process is currently "working in." By default, your working directory will be your home directory, but you can change it using the `cd` command, which is covered in [Navigating the Filesystem](navigating-the-filesystem/#cd-relocating).
+Each process (instance of a running program) has a dynamically associated directory, called its _working directory_**,** which is the location the process is currently "working in." By default, your working directory will be your home directory, but you can change it using the `cd` command, which is covered in [Navigating the Filesystem](navigating-the-filesystem/#cd-relocating).
 
 ### The `.` (dot) and `..` (dot dot) Directory Entries
 
