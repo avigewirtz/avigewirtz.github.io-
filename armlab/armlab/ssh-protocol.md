@@ -4,7 +4,7 @@ SSH is a protocol that provides an encrypted communication channel between two c
 
 ## SSH Architecture
 
-SSH operates on a client-server model. An SSH client program (e.g., `ssh`) connects to a SSH server program (e.g., `sshd`) which listens for incoming connections, authenticates users, and relays commands to the local shell (e.g., bash) for execution.
+SSH operates on a client-server model. An SSH client program, sudg as `ssh` connects to a SSH server program, such as `sshd`, which relays commands to the local shell (e.g., bash).
 
 ## Key Security Features of SSH
 
