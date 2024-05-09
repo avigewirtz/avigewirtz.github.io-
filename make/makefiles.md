@@ -1,4 +1,4 @@
-# Creating a Simple Makefile
+# Automating Build Process With make
 
 As we saw in the previous section, managing incremental builds manually is possible but tends to be tedious and error prone. It requires you to:
 
@@ -17,19 +17,9 @@ make
 
 ### Dependency Graphs
 
-A program's dependencies can be formally described with what is known as a _dependency graph_.&#x20;
-
-<figure><img src="../.gitbook/assets/Group 138 (2).png" alt=""><figcaption></figcaption></figure>
-
-In this graph, nodes represent files and directed edges (arrows) indicate dependencies. If A -> B, then A directly depends on B, meaning that a modification to B requires A to be rebuilt. If A -> B and B -> C, then A is indirectly (or transitively) dependent on C. A modification to C requires B to be rebuilt, which in turn requires A to be rebuilt. Non-leaf nodes are labeled with commands to build them.&#x20;
-
-#### Constructing a dependency graph
-
-Constructing a dependency graph is quite simple. Let's now create one for our testintmath program.&#x20;
+A program's dependencies can be formally described with what is known as a _dependency graph_. In such a graph, nodes represent files and directed edges (arrows) indicate dependencies. If A -> B, then A directly depends on B, meaning that a modification to B requires A to be rebuilt. If A -> B and B -> C, then A is indirectly (or transitively) dependent on C. A modification to C requires B to be rebuilt, which in turn requires A to be rebuilt. Non-leaf nodes are labeled with commands to build them.&#x20;
 
 A node without any dependencies is known as a _leaf_. Non-leaf nodes are labeled with commands to build them. Leafs are typically `.c` and `.h` files, which are not  "built". A dependency graph for our `testintmath` program is shown in Figure 12.3.&#x20;
-
-<figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
 
 A few observations about our dependency graph that are typical of C programs:
 
