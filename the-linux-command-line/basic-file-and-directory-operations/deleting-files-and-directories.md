@@ -25,7 +25,7 @@ remove file1? y
 $
 ```
 
-It's common practice to alias `rm` to `rm -i`, ensuring you're always prompted for confirmation before deleting a file. This alias is already set up on Armlab. You can set it up on your PC by adding the following line to the `.bashrc` file in your home directory:
+It's common practice to alias `rm` to `rm -i`, ensuring you're always prompted for confirmation before deleting a file. This alias is already set up on Armlab. You can set it up on your PC by adding the following line to your `.bashrc` file:
 
 ```
 alias rm='rm -i'
