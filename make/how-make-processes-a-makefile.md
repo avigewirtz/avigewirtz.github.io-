@@ -2,6 +2,10 @@
 
 `make` processes a Makefile via a [depth first search](https://en.wikipedia.org/wiki/Depth-first\_search) (DFS) traversal of its dependency graph, starting from the default target. Let's examine the traversal for our `testintmath` makefile at various points of development.&#x20;
 
+• Algorithm:
+
+• If file B depends on A and date/time stamp of A is newer than date/time stamp of B, then rebuild B using the specified command
+
 ### Case 1: Running our makefile when all the targets don't exist
 
 Suppose we're building `testintmath` for the first time. In this case, neither `testintmath` nor `testintmath.o` and `intmath.o` exist yet. To build `testintmath`, we invoke:&#x20;
