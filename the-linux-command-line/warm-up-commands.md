@@ -19,7 +19,7 @@ When you begin a bash session, the first thing you'll notice is the shell prompt
 In addition to indicating its readiness to accept a command, the prompt provides us with a couple of useful pieces of information:
 
 * The name of the computer we are logged into (armlab02)
-* The current working directory ([\~](useful-command-line-features/#tilde-expansion))&#x20;
+* The current working directory ([\~](useful-command-line-features.md#tilde-expansion))&#x20;
 
 Generalizing, the prompt on Armlab has the following format:&#x20;
 

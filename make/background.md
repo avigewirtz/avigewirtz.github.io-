@@ -1,6 +1,6 @@
 # Introduction
 
-In a nutshell, make is a software tool that automates the process of incremental builds. The key to understanding make is understanding what incremental builds are and how to implement them manually. Once you grasp this, the mechanics and role of make become clear.
+In a nutshell, `make` is a software tool that automates the process of incremental builds. The key to understanding `make` is understanding what incremental builds are and how to implement them manually. Once you understand this, the mechanics and role of `make` become apparent
 
 {% hint style="warning" %}
 Before reading this chapter, ensure you're familiar with the GCC build process. An overview is provided in [GCC Build Process](broken-reference/).
@@ -12,7 +12,7 @@ Incremental builds optimize the build process by recompiling only the code modul
 
 Implementing incremental builds requires a change in how we approach the build process. Instead of treating the source files of a program as a monolithic unit that are always built together, we instead think of the source files as a collection of independent modules that can be compiled independently. We break down the build process into two steps:
 
-1. **Translation:** Source files are individually translated into object files. This is done by invoking gcc217 with the -c option.&#x20;
+1. **Translation:** Source files are individually translated into object files. This is done by invoking `gcc217` with the `-c` option.&#x20;
 2. **Linking:** The resulting object files are linked together to create the final executable.
 
 This approach allows for targeted builds: when the program is modified, only the affected source files are recompiled. The updated object files are then linked with the unaffected object files from previous builds, generating a new executable.
@@ -23,7 +23,7 @@ This approach allows for targeted builds: when the program is modified, only the
 
 ### Example
 
-Let's now demonstrate incremental how incremental builds are done in practice. As an example, we'll use the `testintmath` program from precept 4, whose source code is shown below.
+We'll demonstrate incremental builds using the `testintmath` program from precept 4, whose source code is shown below.
 
 {% tabs %}
 {% tab title="testintmath.c (client)" %}
@@ -120,11 +120,11 @@ The only difference between the two-command and single-command approaches is tha
 
 ### Rebuilding testintmath
 
-Whenever we rebuild testintmath (i.e., after its source code is modified), the key is that we only recompile the source file's that will produce an object file different from the one from the last build. Here's how it works:
+When we rebuild `testintmath`, we only recompile the source file's that will produce an object file different from the one we already have from the last build.&#x20;
 
 **Scenario 1: Modifying a .c File**
 
-When a `.c` file, such as `intmath.c`, is modified, the change is localized. Thus, only this specific file needs to be recompiled. The steps are straightforward:
+When a `.c` file is modified, the effect is typically localized, since `.c` files aren't normally `#included` in other files. Thus, only the modified `.c` file has to be recompiled. In our case, if we modify `intmath.c`, for example, we recompile it alone. The steps are straightforward:
 
 1. Recompile only `intmath.c`:
 
@@ -140,10 +140,9 @@ gcc217 intmath.o testintmath.o -o testintmath
 
 **Scenario 2: Modifying a .h File**
 
-Modifying a header file--in our case `intmath.h`--is more impactful because header files are typically #included in multiple other files. When a header file changes, all source files that include it (`#include "intmath.h"`) must be recompiled. In our case, if we modify `intmath.h`, we'd have to recompile both intmath.c and testintmath.c, since they both #include it:
+When a header file is modified, the effects can be quite dramatic, since all `.c` files that `#include` it have to be recompiled. In our case, if we modify `intmath.h`, we'd have to recompile both `intmath.c` and `testintmath.c`, since they both `#include` it.&#x20;
 
 ```bash
 gcc217 -c intmath.c testintmath.c -o testintmath
 gcc217 intmath.o testintmath.o -o testintmath
 ```
-

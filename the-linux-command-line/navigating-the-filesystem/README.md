@@ -4,7 +4,7 @@ To effectively navigate the Linux filesystem, you need to be familiar with three
 
 ## **`pwd` - A Sense of Location**
 
-Whenever you're using the command line, bash is always positioned somewhere in the filesystem. This location is known as your (or, more accurately, Bash's) working directory (see [Working Directory](broken-reference)).
+Whenever you're using the command line, bash is always positioned somewhere in the filesystem. This location is known as your (or, more accurately, Bash's) _working directory_.
 
 You can find out your current working directory by invoking `pwd` (**p**rint **w**orking **d**irectory), which displays the absolute pathname of your working directory on stdout. By default, your working directory will be your home directory, which on Armlab is `/u/yourNetID`. When I invoke `pwd` on Armlab, I get the following output:
 
@@ -46,7 +46,7 @@ By default, `ls` does not display [hidden](broken-reference) entries (i.e., file
 ```
 
 {% hint style="warning" %}
-On Armlab, '`ls'` is aliased to `'ls -a --color=always'`(see [Aliases](../useful-command-line-features/aliases.md)). Thus, an invocation of `ls` will display hidden entries. You can avoid alias expansion by prefixing the command with a '`\'` (e.g., `\ls`). If you invoke `ls` in this manner, you'll see that hidden entries are not displayed.&#x20;
+On Armlab, '`ls'` is aliased to `'ls -a --color=always'`(see [Aliases](broken-reference)). Thus, an invocation of `ls` will display hidden entries. You can avoid alias expansion by prefixing the command with a '`\'` (e.g., `\ls`). If you invoke `ls` in this manner, you'll see that hidden entries are not displayed.&#x20;
 {% endhint %}
 
 #### Displaying file metadata
@@ -63,7 +63,7 @@ drwx------  6 sgewirtz  utemper  192 Oct  12 14:36 CLI_playground
 ~$
 ```
 
-Let's break down the output using the entry for `README.md` as an example:&#x20;
+Let's break down the output using `README.md` as an example:&#x20;
 
 *   **-rw-------.**&#x20;
 
@@ -83,9 +83,6 @@ Let's break down the output using the entry for `README.md` as an example:&#x20;
 *   **Oct 12 14:35**
 
     &#x20;   Date and time the file was last modified.&#x20;
-*   **README.md**
-
-    &#x20;   name of the file
 
 #### Displaying the Contents of Another Directory
 
@@ -108,7 +105,7 @@ You can change your working directory using the `cd` (**c**hange working **d**ir
 cd DIRECTORY_PATHNAME
 ```
 
-`DIRECTORY_PATHNAME` refers to either the absolute or relative pathname of the target directory (see [pathnames](broken-reference)).&#x20;
+`DIRECTORY_PATHNAME` refers to either the absolute or relative pathname of the target directory (see [Pathnames](../filesystem.md#pathnames)).
 
 #### Example&#x20;
 
@@ -156,7 +153,7 @@ cd "assignment 1"
 
 * **Going home**: If you invoke `cd` without arguments, it'll take you to your home directory.&#x20;
 * **Returning to the last working directory**. `cd -` (hyphen) returns you to your previous working directory.&#x20;
-* **Tilde (`~`):** You can use the tilde character as a shortcut for your home directory. For example,  `cd ~/A1` in equivalent to `cd /u/yourNetID/A1`.
+* **Tilde (`~`):** You can use the tilde character as a shortcut for your home directory. For example,  `cd ~/A1` is equivalent to `cd /u/yourNetID/A1`.
 * **Tab Completion**: If you start typing an directory name and press Tab, Bash will attempt to auto-completes the directory name. This will save you time and reduce typos.
 
 ## Exercises
