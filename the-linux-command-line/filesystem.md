@@ -4,21 +4,24 @@
 
 At its core, a file is a linear array of bytes of arbitrary length. Each Linux file has a _type_ that indicates its role:
 
-* A _regular file_ contains arbitrary data, such as text, images, audio, executable programs, and so on. Linux does not distinguish between different types of files.&#x20;
-* A _directory_ is a file that contains an array of links, where each entry maps a filename to a file, which may be another directory.&#x20;
+* A _regular file_ contains arbitrary data, such as text, images, audio, executable programs, and so on. Essentially, just about any kind of data you can think of can be stored in a regular file.
+* A _directory_ is a file that holds a structured list of links. Each link maps a filename to a file, which may itself be a directory.&#x20;
 
 {% hint style="info" %}
-Other types of files include named pipes, sockets, symbolic links, and character and block device files, which are beyond our scope.&#x20;
+Other types of files include named pipes, sockets, symbolic links, and character and block device files, which are beyond our scope.
 {% endhint %}
 
 ### Filenames
 
-A few notes filenames in Linux are worthy of mention:
+Linux places very few restrictions on filenames. Filenames may not contain the "/" or ASCII NUL character. Additionally, no two files in the same directory may have the same name. Note, however, that filenames are case-sensitive; that is, `hello.c`, `Hello.c`, and `HELLO.C` refer to three distinct files, and all may exist in the same directory.
 
-* Linux places very few restrictions on filenames. No two filenames in the same directory may be the same, and filenames may not contain the  `/` and _ASCII NUL_ characters_._&#x20;
-* Filenames are case-sensitive; that is, _hello.c_, _Hello.c_ and _HELLO.C_ refer to three distinct files.&#x20;
-* Linux has no concept of filename extension. They are entirely optional and treated as ordinary filename characters. In other words,&#x20;
-* Files whose names begin with a  `.`  (e.g., `.bashrc`) are _hidden_, meaning that by default they are not displayed in directory listings--whether in a GUI or CLI environment. We'll go over how to display them in our coverage of the [`ls`](navigating-the-filesystem/#ls-a-sense-of-surroundings) command.&#x20;
+#### Filename Extensions
+
+Linux itself has no concept of filename extensions. They are entirely optional and are treated as ordinary characters in a filename. Some programs, however, require filename extensions. For example, Microsoft Word won't open a file unless it has an extension like `docx`_._&#x20;
+
+#### Hidden Files
+
+Files whose names begin with a period (e.g., `.bashrc`) are hidden, meaning that by default, they are not displayed in directory listings—whether in a GUI or CLI environment. We will cover how to display them in our discussion of the `ls` command.
 
 ### Single Directory Hierarchy
 
@@ -38,15 +41,15 @@ Each user on a Linux system has a personal directory called a _home directory_. 
 
 ### Working Directory
 
-Each process (instance of a running program) has a dynamically associated directory, called its _working directory_**,** which is the location the process is currently "working in." By default, your working directory will be your home directory, but you can change it using the `cd` command, which is covered in [Navigating the Filesystem](navigating-the-filesystem/#cd-relocating).
+Each process (instance of a running program) has a dynamically associated directory, called its _working directory_**,** which is the location the process is currently "working in." By default, your working directory will be your home directory, but you can change it using the `cd` command, which we'll cover in in [Navigating the Filesystem](navigating-the-filesystem/#cd-relocating).
 
 ### The `.` (dot) and `..` (dot dot) Directory Entries
 
-Every directory contains at least two entries: `.` (dot), which is a link to itself, and `..` (dot dot), which is a link to its parent.&#x20;
+Every directory contains at least two entries: `.` (dot), which is a link to itself, and `..` (dot dot), which is a link to its parent.
 
 ### Pathnames
 
 Every file has a _pathname_, which is a string that identifies its location in the directory hierarchy. Pathnames come in two forms:
 
-* An _absolute pathname_ pinpoints the location of a file by specifying its path from the root directory. It starts with a forward slash (/) followed by zero or more file names, each separated by slashes. For example, in Figure 15, the absolute pathname of `the_odyssey.txt` is `/u/sgewirtz/CLI_playground/the_odyssey.txt`. Absolute pathnames are unambiguous because they don't depend on the current working directory.
-* A _relative pathnames_ pinpoints the location of a file or directory by specifying its path from the working directory. It consists of zero or more file names, each separated by slashes. For example, in Figure 15, if `/u/sgewirtz` is the current working directory, then the relative pathname for "the\_odyssey.txt" is `./CLI_playground/the_odyssey.txt`. If `/u/sgewirtz/CLI_playground` is the current working directory, then the relative pathname is simply `./the_odyssey.txt`.
+* An _absolute pathname_ pinpoints the location of a file by specifying its path from the root directory. It starts with a forward slash (/) followed by zero or more filenames, each separated by slashes. For example, in Figure 16, the absolute pathname of `the_odyssey.txt` is `/u/sgewirtz/CLI_playground/the_odyssey.txt`. Absolute pathnames are unambiguous because they don't depend on the current working directory.
+* A _relative pathnames_ pinpoints the location of a file or directory by specifying its path from the working directory. It consists of zero or more filenames, each separated by slashes. For example, in Figure 15, if `/u/sgewirtz` is the current working directory, then the relative pathname for `the_odyssey.txt` is `./CLI_playground/the_odyssey.txt`. If `/u/sgewirtz/CLI_playground` is the current working directory, however, then the relative pathname is `./the_odyssey.txt`.
