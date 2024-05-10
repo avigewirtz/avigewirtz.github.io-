@@ -13,7 +13,7 @@ ls > output.txt  # Redirects stdout of 'ls' to output.txt, overwriting existing 
 ls -l >> output.txt  # Redirects stdout of 'ls -l' to output.txt, appending to existing content
 ```
 
-The difference between these two symbols is > overwrites the contents
+The difference between these two symbols is > overwrites the contents while >> appends.
 
 * **`2>`** and **`2>>`** : These symbols work the same as `>` and `>>`, except they redirect _stderr_. Examples:
 
