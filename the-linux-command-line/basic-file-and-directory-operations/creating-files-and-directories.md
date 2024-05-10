@@ -1,31 +1,20 @@
 # Creating Files and Directories
 
-### `mkdir`: Creates **dir**ectory/ies
+### mkdir: Creates Directories
 
-The `mkdir` (**m**a**k**e **dir**ectory/ies) command is as straightforward as it gets. Table&#x20;
+The `mkdir` command is as simple as it gets. Below are a few examples of its basic usage.
 
-| Command                   | Effect                                                                                 |
-| ------------------------- | -------------------------------------------------------------------------------------- |
-| `mkdir dir1`              | Creates `dir1` in the working directory.                                               |
-| `mkdir dir2 dir3 dir4`    | Creates `dir2`, `dir3`, and `dir4` in the working directory.                           |
-| `mkdir -p dir5/dir6/dir7` | Creates `dir5` in the working directory, and inside it `dir6`, and inside that `dir7`. |
-
-
+#### Creating a directory&#x20;
 
 ```bash
-mkdir dir1 
+mkdir dir1
 ```
 
-This creates dir1 is the working directory
-
-2. Create dir2 in dir
-3. Creating `dir2`, `dir3`, and `dir4` in the working directory:
+To create `dir2`, `dir3`, and `dir4`:
 
 ```bash
 mkdir dir2 dir3 dir4
 ```
-
-3.
 
 {% hint style="warning" %}
 #### Creating a directory with whitespace in its name
@@ -42,45 +31,10 @@ will not work; it'll create two directories--`assignment`, and `1`. A simple sol
 mkdir "assignment 1"
 ```
 
-This will create a single directory named `assignment 1`.
+This will create a single directory named `assignment 1`.&#x20;
 {% endhint %}
 
-
-
-
-
-{% hint style="info" %}
-**Special Characters**
-
-Whitespace
-
-Quoting special characters
-
-Backslash
-
-Single quotation marks
-
-Special characters, which have a special meaning to the shell, are discussed in “Filename Generation/Pathname Expansion” on page 152. These characters are mentioned here so you can avoid accidentally using them as regular characters until you understand how the shell interprets them. Avoid using any of the following characters in a filename (even though emacs and some other programs do) because they make the file harder to refer- ence on the command line:
-
-&;|\*?'"‘\[]\()$<>{}#/\\!\~
-
-Although not considered special characters, RETURN, SPACE, and TAB have special meanings to the shell. RETURN usually ends a command line and initiates execution of a command. The SPACE and TAB characters separate tokens (elements) on the command line and are collectively known as whitespace or blanks.
-
-If you need to use a character that has a special meaning to the shell as a regular char- acter, you can quote (or escape) it. When you quote a special character, you prevent the shell from giving it special meaning. The shell treats a quoted special character as a regular character. However, a slash (/) is always a separator in a pathname, even when you quote it.
-
-To quote a character, precede it with a backslash ( \\). When two or more special char- acters appear together, you must precede each with a backslash (for example, you would enter \*\* as \\\*\\\*). You can quote a backslash just as you would quote any other special character—by preceding it with a backslash (\\\\).
-
-Another way of quoting special characters is to enclose them between single quota- tion marks: '\*\*'. You can quote many special and regular characters between a pair
-
-of single quotation marks: 'This is a special character: >'. The regular characters are interpreted as usual, and the shell also interprets the special characters as regular characters.
-
-The only way to quote the erase character (CONTROL-H), the line kill character (CONTROL-U), and other control characters (try CONTROL-M) is by preceding each with a CONTROL-V. Single quotation marks and backslashes do not work. Try the following:
-
-$ echo 'xxxxxxCONTROL-U'\
-$ echo xxxxxxCONTROL-VCONTROL-U
-{% endhint %}
-
-## Creating Files
+### Creating Files
 
 There are numerous commands you can use to create files. We'll cover two: `touch`, and `emacs`.&#x20;
 
