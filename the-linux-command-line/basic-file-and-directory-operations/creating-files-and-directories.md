@@ -1,18 +1,31 @@
 # Creating Files and Directories
 
-## Creating Directories
+### `mkdir`: Creates **dir**ectory/ies
 
-Creating directories is done with the mkdir command. This commandThe command to create a new directory is `mkdir. This command is as straighforward as it gets` command followed by the names one of or more directories you want to create. For example, to create `dir1`:&#x20;
+The `mkdir` (**m**a**k**e **dir**ectory/ies) command is as straightforward as it gets. Table&#x20;
+
+| Command                   | Effect                                                                                 |
+| ------------------------- | -------------------------------------------------------------------------------------- |
+| `mkdir dir1`              | Creates `dir1` in the working directory.                                               |
+| `mkdir dir2 dir3 dir4`    | Creates `dir2`, `dir3`, and `dir4` in the working directory.                           |
+| `mkdir -p dir5/dir6/dir7` | Creates `dir5` in the working directory, and inside it `dir6`, and inside that `dir7`. |
+
+
 
 ```bash
-mkdir dir1
+mkdir dir1 
 ```
 
-To create `dir2`, `dir3`, and `dir4`:
+This creates dir1 is the working directory
+
+2. Create dir2 in dir
+3. Creating `dir2`, `dir3`, and `dir4` in the working directory:
 
 ```bash
 mkdir dir2 dir3 dir4
 ```
+
+3.
 
 {% hint style="warning" %}
 #### Creating a directory with whitespace in its name

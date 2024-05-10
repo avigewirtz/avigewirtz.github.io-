@@ -1,9 +1,28 @@
 # Copying, Moving, and Renaming Files/Directories
 
-\
-Two very similar commands in Unix-like operating systems are `cp` and `mv`. The `cp` command is used to copy files and directories, while the `mv` command moves or renames them. Here, we'll cover the usage of both commands, starting with basic operations and progressing to more complex scenarios.&#x20;
+The cp (copy) and mv (move) commands are extremely similar, so we'll cover them together. As you can guess from their names, cp makes a copy of a file, while move moves a file. If the Two very similar commands in Unix-like operating systems are `cp` and `mv`. The `cp` command is used to copy files and directories, while the `mv` command moves or renames them. Here, we'll cover the usage of both commands, starting with basic operations and progressing to more complex scenarios.&#x20;
+
+## Copying and moving files
+
+mv existing-filename new-filename
+
+### Copying and renaming files in the current directory
+
+Let's start with what is perhaps the most common use case. To copy and rename files in the current working directory.&#x20;
+
+The basic syntax to copy a file is:
+
+```
+cp SOURCE_PATHNAME TARGET_PATHNAME
+```
+
+The source-file is the name of the file that cp will copy. The destination-file is the
+
+name cp assigns to the resulting (new) copy of the file.
 
 #### Copying files in the current directory
+
+
 
 When you make a copy of a file, you can store the copy in the same directory, or you can store it in a different directory. When you store the copies in the same directory It goes without saying that the copy must have a different name, since two files in the same directory cannot have the same name. Suppose we want to copy `einstein_quote.txt` to a new file named `einstein_quote_backup.txt` in the same directory. We'd invoke:
 
