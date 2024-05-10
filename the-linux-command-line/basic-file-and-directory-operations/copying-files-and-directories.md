@@ -3,7 +3,7 @@
 \
 Two very similar commands in Unix-like operating systems are `cp` and `mv`. The `cp` command is used to copy files and directories, while the `mv` command moves or renames them. Here, we'll cover the usage of both commands, starting with basic operations and progressing to more complex scenarios.&#x20;
 
-#### Copying Files within the Same Directory
+#### Copying files in the current directory
 
 When you make a copy of a file, you can store the copy in the same directory, or you can store it in a different directory. When you store the copies in the same directory It goes without saying that the copy must have a different name, since two files in the same directory cannot have the same name. Suppose we want to copy `einstein_quote.txt` to a new file named `einstein_quote_backup.txt` in the same directory. We'd invoke:
 

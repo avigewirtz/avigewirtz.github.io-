@@ -4,6 +4,8 @@ You interact with linux via the terminal. Have you ever thought about the proces
 
 ## The shell
 
+When the system prints the prompt $ and you type commands that get exe- cuted, it's not the kernel that is talking to you, but a go-between called the command interpreter or shell.
+
 Terminal is a dumb device. Only capable is sending characters back and forth.  The terminal captures the user's keystrokes and passes the command line to the shell. Program known as the shell listening on the other end. When you hit enter, command is sent to the shell. Interprets and executes command and sends output back to the user.&#x20;
 
 Job of the shell is to interpret users commands. Called command language interpreter. Kind of like an interpreter like Python, except that the expectation.&#x20;

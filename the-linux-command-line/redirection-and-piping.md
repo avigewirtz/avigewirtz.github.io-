@@ -6,7 +6,9 @@ When a program is started up, it by default has three data streams attached to i
 
 Redirection lets you change where input comes from and where output goes. The key symbols are:
 
-**`>`** and **`>>`**  : These redirect stdout. The difference between the two is that `>` overwrites the file, while `>>` appends to it. In both case, if the file doesn't exist, it will be created. Examples:
+**`>`** and **`>>`**  : These redirect stdout.&#x20;
+
+The difference between the two is that `>` overwrites the file, while `>>` appends to it. In both case, if the file doesn't exist, it will be created. Examples:
 
 ```bash
 ls > output.txt  # Writes stdout of 'ls' to output.txt

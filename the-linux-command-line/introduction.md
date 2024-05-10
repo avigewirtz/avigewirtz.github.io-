@@ -1,6 +1,20 @@
 # Introduction
 
+When Linus Torvalds introduced Linux and for a long time thereafter, Linux did not have a graphical user interface (GUI): It ran on character-based terminals only, using a command-line interface (CLI), also referred to as a textual interface. All the tools ran from a command line. Today the Linux GUI is important, but many people— especially system administrators—run many command-line utilities. Command-line utilities are often faster, more powerful, or more complete than their GUI counter- parts. Sometimes there is no GUI counterpart to a textual utility; some people just prefer the hands-on feeling of the command line.
 
+When you work with a command-line interface, you are working with a shell (Chapters 5, 8, and 10). Before you start working with a shell, it is important that you understand something about the characters that are special to the shell, so this chapter starts with a discussion of special characters. The chapter then describes five basic utilities: ls, cat, rm, less, and hostname. It continues by describing several other file manipulation utilities as well as utilities that compress and decompress files, pack and unpack archive files, locate utilities, display system information, communicate with other users, and print files.
+
+
+
+
+
+Before the introduction of the graphical user interface, UNIX and then Linux pro- vided only a textual (command-line) interface. Today, a textual interface is available when you log in from a terminal, a terminal emulator, or a textual virtual console, or when you use ssh or telnet to log in on a system.
+
+Although the concept might seem antiquated, the textual interface has a place in modern computing. In some cases an administrator might use a command-line tool either because a graphical equivalent does not exist or because the graphical tool is not as powerful or flexible as the textual one. For example, chmod (pages 102 and 759) is more powerful and flexible than its GUI counterpart. Frequently, on a server system, a graphical interface might not even be installed. The first reason for this omission is that a GUI consumes a lot of system resources; on a server, those resources are better dedicated to the main task of the server. Additionally, security considerations mandate that a server system run as few tasks as possible because each additional task can make the system more vulnerable to attack.
+
+You can also write scripts using the textual interface. Using scripts, you can easily reproduce tasks on multiple systems, enabling you to scale the tasks to larger environ- ments. When you are the administrator of only a single system, using a GUI is often the easiest way to configure the system. When you act as administrator for many sys- tems, all of which need the same configuration installed or updated, a script can make the task go more quickly. Writing a script using command-line tools is frequently easy, whereas the same task can be difficult to impossible using graphical tools.
+
+Before the introduction of GUIs, resourceful programmers created textual interfaces that included graphical elements such as boxes, borders outlining rudimentary win- dows, highlights, and, more recently, color. These textual interfaces, called pseudographical interfaces, bridge the gap between textual and graphical interfaces. The Midnight Commander file management utility (mc; page 902) is a good example of a utility with a well-designed pseudographical interface.
 
 
 

@@ -2,13 +2,13 @@
 
 ## Creating Directories
 
-To create a new directory, use the `mkdir` command followed by the name of the directory you want to create. For example, to create `dir1`:&#x20;
+Creating directories is done with the mkdir command. This commandThe command to create a new directory is `mkdir. This command is as straighforward as it gets` command followed by the names one of or more directories you want to create. For example, to create `dir1`:&#x20;
 
 ```bash
 mkdir dir1
 ```
 
-To create multiple directories via a single invocation of mkdir, supply the name of each directory as an argument. For example, to create `dir2`, `dir3`, and `dir4`:
+To create `dir2`, `dir3`, and `dir4`:
 
 ```bash
 mkdir dir2 dir3 dir4
@@ -30,6 +30,41 @@ mkdir "assignment 1"
 ```
 
 This will create a single directory named `assignment 1`.
+{% endhint %}
+
+
+
+
+
+{% hint style="info" %}
+**Special Characters**
+
+Whitespace
+
+Quoting special characters
+
+Backslash
+
+Single quotation marks
+
+Special characters, which have a special meaning to the shell, are discussed in “Filename Generation/Pathname Expansion” on page 152. These characters are mentioned here so you can avoid accidentally using them as regular characters until you understand how the shell interprets them. Avoid using any of the following characters in a filename (even though emacs and some other programs do) because they make the file harder to refer- ence on the command line:
+
+&;|\*?'"‘\[]\()$<>{}#/\\!\~
+
+Although not considered special characters, RETURN, SPACE, and TAB have special meanings to the shell. RETURN usually ends a command line and initiates execution of a command. The SPACE and TAB characters separate tokens (elements) on the command line and are collectively known as whitespace or blanks.
+
+If you need to use a character that has a special meaning to the shell as a regular char- acter, you can quote (or escape) it. When you quote a special character, you prevent the shell from giving it special meaning. The shell treats a quoted special character as a regular character. However, a slash (/) is always a separator in a pathname, even when you quote it.
+
+To quote a character, precede it with a backslash ( \\). When two or more special char- acters appear together, you must precede each with a backslash (for example, you would enter \*\* as \\\*\\\*). You can quote a backslash just as you would quote any other special character—by preceding it with a backslash (\\\\).
+
+Another way of quoting special characters is to enclose them between single quota- tion marks: '\*\*'. You can quote many special and regular characters between a pair
+
+of single quotation marks: 'This is a special character: >'. The regular characters are interpreted as usual, and the shell also interprets the special characters as regular characters.
+
+The only way to quote the erase character (CONTROL-H), the line kill character (CONTROL-U), and other control characters (try CONTROL-M) is by preceding each with a CONTROL-V. Single quotation marks and backslashes do not work. Try the following:
+
+$ echo 'xxxxxxCONTROL-U'\
+$ echo xxxxxxCONTROL-VCONTROL-U
 {% endhint %}
 
 ## Creating Files
