@@ -8,7 +8,7 @@ Before reading this chapter, ensure you're familiar with the GCC build process. 
 
 ### **Incremental Builds**
 
-Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, instead of the entire project. This significantly reduces build times, especially in larger projects.
+Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, instead of recompiling entire project. This significantly reduces build times, especially in larger projects.
 
 Implementing incremental builds requires a change in how we approach the build process. Instead of treating the source files of a program as a monolithic unit that are always built together, we instead think of the source files as a collection of independent modules that can be compiled independently. We break down the build process into two steps:
 
