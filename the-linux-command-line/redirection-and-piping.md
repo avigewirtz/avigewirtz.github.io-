@@ -6,32 +6,40 @@ When a program is started up, it by default has three data streams attached to i
 
 Redirection lets you change where input comes from and where output goes. The key symbols are:
 
-**`>`** and **`>>`**  : These redirect stdout.&#x20;
-
-The difference between the two is that `>` overwrites the file, while `>>` appends to it. In both case, if the file doesn't exist, it will be created. Examples:
+* **`>`** and **`>>`**  : These symbols redirect _stdout_. Examples:
 
 ```bash
-ls > output.txt  # Writes stdout of 'ls' to output.txt
-ls -l >> output.txt  # Appends stdout of 'ls -l' to output.txt 
+ls > output.txt  # Redirects stdout of 'ls' to output.txt, overwriting existing content
+ls -l >> output.txt  # Redirects stdout of 'ls -l' to output.txt, appending to existing content
 ```
 
-**`2>`** and **`2>>`** : Identical to `>` and `>>`, except they redirects stderr. Examples:
+The difference between these two symbols is > overwrites the contents
+
+* **`2>`** and **`2>>`** : These symbols work the same as `>` and `>>`, except they redirect _stderr_. Examples:
 
 ```bash
-cat nonexistent_file 2> errors.txt  # Writes stderr of 'cat nonexistent_file' to errors.txt
-cat another_nonexistent_file 2>> errors.txt  # Appends stderr of 'cat another_nonexistent_file' to errors.txt
+cat nonexistent_file 2> errors.txt  # Redirects stderr of 'cat nonexistent_file' to errors.txt, overwriting existing content. 
+cat another_nonexistent_file 2>> errors.txt  # Redirects stderr of 'cat another_nonexistent_file' to errors.txt, appending to existing content. 
 # Suggestion: view the contents of errors.txt 
 ```
 
-**`>`**: Redirects stdin. Example:
+* `<`: This symbol redirects _stdin_. Example:
+
+```
+```
 
 ## Piping
 
 Piping chains commands together, using the output of one command as the input to another. The symbol is **|** . Example:
 
 ```bash
-cat file.txt | sort
+~$ cat numbers.txt | sort
+1
+1
+2
+3
+6
+~$ 
 ```
 
-The takes the output of `cat file.txt` and feeds it as input to `sort`, which sorts its contents displays the sorted version on the screen.&#x20;
-
+The takes the output of `cat numbers.txt` and feeds it as input to `sort`, which sorts its contents and displays the sorted version on the screen.&#x20;

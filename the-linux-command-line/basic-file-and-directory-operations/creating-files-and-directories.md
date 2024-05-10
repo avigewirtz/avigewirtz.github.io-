@@ -1,23 +1,23 @@
 # Creating Files and Directories
 
-### mkdir: Creates Directories
+### Creating Directories
 
-The `mkdir` command is as simple as it gets. Below are a few examples of its basic usage.
-
-#### Creating a directory&#x20;
+To create a directory, type `mkdir` (**m**a**k**`e` **dir**ectory/ies) followed by the name of the directory you want to create. For example:
 
 ```bash
 mkdir dir1
 ```
 
-To create `dir2`, `dir3`, and `dir4`:
+This creates `dir1` in the working directory. To create multiple directories, supply the name of each directory you want to create as an argument to `mkdir`. For example:&#x20;
 
 ```bash
 mkdir dir2 dir3 dir4
 ```
 
+This creates  `dir2`, `dir3`, and `dir4` in the working directory.
+
 {% hint style="warning" %}
-#### Creating a directory with whitespace in its name
+**Creating a Directory With Whitespace in Its Name**
 
 Suppose we want to create a directory named `assignment 1`. As you can probably guess, invoking:
 
@@ -36,28 +36,34 @@ This will create a single directory named `assignment 1`.&#x20;
 
 ### Creating Files
 
-There are numerous commands you can use to create files. We'll cover two: `touch`, and `emacs`.&#x20;
+There are numerous commands for creating files. We'll cover two: `touch`, and `emacs`.&#x20;
 
 ### touch
 
-The simplest way to create a file is via the `touch` command. Simply invoke `touch` followed by the names of one or more files you want to create. For example:
+The simplest way to create a file is via the `touch` command. Simply type touch followed by the name of the file you want to create. For example:
 
 ```bash
-touch file1 file2 file3
+touch file1
 ```
 
-Note that if one of the files supplied as an argument to `touch` already exists, `touch` will update its last modification timestamp to the current time.&#x20;
+This creates file1 in the working directory. To create multiple files, supply the name of each file you want to create as an argument to `touch`. For example:&#x20;
 
-The limitation with `touch` is that it cannot be used to view or edit files. It is strictly for creating new, empty files or for updating the timestamps of existing files.
+```bash
+touch file2 file3 file4
+```
+
+{% hint style="info" %}
+If one of the files supplied as an argument to `touch` already exists, `touch` will update its access and modification times. Please refer to the `touch` manpage for more details.&#x20;
+{% endhint %}
 
 ### **emacs**
 
-If your goal is to create a file and immediately begin working in it, your best bet is to do so via a text editor like Emacs. Invoke `emacs` followed by the name of the file you want to create, and the file will be created and opened in Emacs:
+The limitation of `touch` is that it cannot be used to view or edit files. It is strictly for creating new, empty files or for updating the timestamps of existing files. If your goal is to create a file and immediately begin working in it, your best bet is to do so via a text editor like Emacs. Invoke `emacs` followed by the name of the file you want to create. For example:
 
 ```bash
 emacs file1
 ```
 
-{% hint style="warning" %}
-Technically, the file is not actually created when you invoke Emacs. Emacs creates a temporary buffer in memory. The physical file is only created on disk when you save your changes within Emacs. This is done by pressing `Ctrl + x` followed by `Ctrl + s`.
+{% hint style="info" %}
+Technically, the file is not actually created. Emacs creates a temporary buffer in memory. The physical file is only created on disk when you save your work within Emacs. This is done by pressing `Ctrl + x` followed by `Ctrl + s`.
 {% endhint %}

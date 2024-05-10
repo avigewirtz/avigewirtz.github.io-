@@ -1,23 +1,23 @@
 # Deleting Files and Directories
 
-### Deleting files
+### Deleting Files
 
-To delete a file, use the `rm` (**r**e**m**ove) command followed by the name of the file you want to delete. For example, to delete `file1`, invoke:
+To delete a file, type `rm` (**r**e**m**ove) followed by the name of the file you want to delete. For example, to delete `file1`:
 
 ```bash
 rm file1
 ```
 
-To delete multiple files, supply the name of each file as an argument to `rm`. For example:
+To delete multiple files, supply the name of each file you want to delete as an argument to `rm`. For example, to delete `file1`, `file2`, and `file3`:
 
 ```bash
-rm file1 file2 file3
+rm file2 file3 file4
 ```
 
 {% hint style="danger" %}
-Deleting files and directories is a dangerous operation that should be exercised with caution. If you’re not careful, Linux will do exactly what you tell it to, up to deleting every last one of your files and directories. The contents may not be recoverable.&#x20;
+Deleting files and directories is a dangerous operation that should be exercised with caution. If you’re not careful, Linux will do exactly what you tell it to, up to deleting every last one of your files and directories. The contents may not be recoverable.
 
-A wise approach is to always invoke `rm` with the `-i` option, which prompts you for confirmation before deleting a file. Respond "y" to proceed and "n" to abort  For example:&#x20;
+A wise approach is to always invoke `rm` with the `-i` option, which prompts you for confirmation before deleting a file. Respond "y" to proceed and "n" to abort For example:
 
 ```bash
 $ rm -i file1
@@ -38,22 +38,22 @@ $ rm -f file1
 ```
 {% endhint %}
 
-### Deleting empty directories
+### Deleting Empty Directories
 
-If the directory you want to delete is empty, you can use the `rmdir` (**r**e**m**ove **dir**ectory/ies) command. For example, to delete `dir1`:
+If the directory you want to delete is empty, you can use the `rmdir` (**r**e**m**ove **dir**ectory/ies) command. Type `rmdir` followed by the name of the directory you want to delete. For example, to delete `dir1`:
 
 ```bash
 rmdir dir1
 ```
 
-To delete multiple empty directories, supply the name of each directory as an argument to `rmdir`. For example:&#x20;
+To delete multiple empty directories, supply the name of each directory as an argument to `rmdir`. For example, do delete `dir2`, `dir3`, and `dir4`:
 
 ```bash
-rmdir dir1 dir2 dir2
+rmdir dir2 dir3 dir4
 ```
 
 {% hint style="warning" %}
-If you attempt to delete a non-empty directory with `rmdir`, you'll get an error:&#x20;
+If you attempt to delete a non-empty directory with `rmdir`, you'll get an error:
 
 ```bash
 $ rmdir dir1
@@ -62,9 +62,9 @@ $
 ```
 {% endhint %}
 
-### Deleting non-empty directories
+### Deleting Non-empty Directories
 
-To delete non-empty directories, you need to use the `rm` command with the `-r` option. For example, to delete `non_empty_dir`:
+To delete non-empty directories, use the `rm` command with the `-r` option. For example, to delete `non_empty_dir`:
 
 ```bash
 rm -r non_empty_dir

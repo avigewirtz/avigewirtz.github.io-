@@ -4,7 +4,7 @@ There are numerous commands you can use to view the contents of a file. In this 
 
 ## cat
 
-A quick and easy way to view the contents of a file is by using the `cat` command, which displays the file's contents in the terminal window. Its most basic use is to display the contents of a single file. To do this, type `cat` followed by the name of the file you want to view. For example:
+A quick and easy way to view the contents of a file is by using the `cat` command, which displays the contents of the file in the terminal window. Type `cat` followed by the name of the file you want to view. For example, to view the contents of `berra_quote.txt`:
 
 ```bash
 ~/CLI_playground$ cat berra_quote.txt
@@ -12,7 +12,9 @@ The future ain't what it used to be. - Yogi Berra
 ~/CLI_playground$
 ```
 
-If the file is longer than what can be displayed on one screen, the terminal will show the end of the file. To view the beginning, you'll need to scroll all the way up. &#x20;
+{% hint style="info" %}
+If the contents of the file you're viewing with `cat` is longer than what can be displayed on one screen, the terminal will show the end of the file. To view the beginning, you'll need to scroll all the way up.&#x20;
+{% endhint %}
 
 #### Numbering output lines
 
@@ -50,7 +52,7 @@ You can number the output lines by using the `-n` option. For example:&#x20;
 
 #### Concatenating Files
 
-`cat` is short for "concatenate." This might be a hint that it can be used to combine the contents of multiple files. To do so, provide both files as arguments to `cat`. For example:
+`cat` is short for "concatenate," which might be a hint that it can be used to combine the contents of multiple files. To do so, provide both files as arguments to `cat`. For example:
 
 ```bash
 ~/CLI_playground$ cat berra_quote.txt einstein_quote.txt
@@ -61,7 +63,7 @@ Everything should be as simple as possible, but no simpler. - Albert Einstein
 
 ## heads and tails
 
-Two complementary commands for inspecting files are `head` and `tail.` `head` shows the first 10 lines of the file. For example:
+Two complementary commands for inspecting files are `head` and `tail.` `head` shows the first 10 lines of the file:
 
 ```bash
 ~/CLI_playground$ head the_odyssey.txt 
@@ -94,8 +96,6 @@ Translation of "The Deeds of the Divine Augustus" by Augustus is
 copyright (C) Thomas Bushnell, BSG.
 ~/CLI_playground$
 ```
-
-These two commands are useful when you only need to view the beginning or end of a file.
 
 ## less
 
