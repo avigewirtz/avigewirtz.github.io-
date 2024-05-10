@@ -8,7 +8,7 @@ Before reading this chapter, ensure you're familiar with the GCC build process. 
 
 ### **Incremental Builds**
 
-Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, instead of recompiling entire project. This significantly reduces build times, especially in larger projects.
+Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, rather than recompiling the entire project. This significantly reduces build times, especially in larger projects.
 
 Implementing incremental builds requires a change in how we approach the build process. Instead of treating the source files of a program as a monolithic unit that are always built together, we instead think of the source files as a collection of independent modules that can be compiled independently. We break down the build process into two steps:
 
@@ -19,6 +19,8 @@ This approach allows for targeted builds: when the program is modified, only the
 
 {% hint style="info" %}
 **Note**: Under the hood, "translation" is technically a three step process, involving preprocessing, compilation proper, and assembly. For the purposes of incremental builds, however, we can conceptualize translation as a single step, in which the source files are converted to object files.&#x20;
+
+* techincally, gcc always builds files independently. When I mention monolithic build, I'm reffering not to the underlying operations, but the practical implications
 {% endhint %}
 
 ### Example
