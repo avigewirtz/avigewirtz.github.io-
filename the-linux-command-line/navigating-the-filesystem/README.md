@@ -105,7 +105,7 @@ You can change your working directory using the `cd` (**c**hange working **d**ir
 cd DIRECTORY_PATHNAME
 ```
 
-`DIRECTORY_PATHNAME` refers to either the absolute or relative pathname of the target directory (see [Pathnames](../filesystem.md#pathnames)).
+`DIRECTORY_PATHNAME` refers to either the absolute or relative pathname of the target directory (see [Pathnames](../a-tour-of-linux/filesystem.md#pathnames)).
 
 #### Example&#x20;
 

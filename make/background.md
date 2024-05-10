@@ -10,7 +10,7 @@ Before reading this chapter, ensure you're familiar with the GCC build process. 
 
 Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, rather than recompiling the entire project. This significantly reduces build times, especially in larger projects.
 
-Implementing incremental builds requires a change in how we approach the build process. Instead of treating the source files of a program as a monolithic unit that are always built together, we instead think of the source files as a collection of independent modules that can be compiled independently. We break down the build process into two steps:
+Implementing incremental builds requires a change in how we approach the build process. Instead of treating the source files of a program as a monolithic unit that are always built together, we instead treat the source files as a collection of independent modules that can be compiled independently and then linked. We break down the build process into two steps:
 
 1. **Translation:** Source files are individually translated into object files. This is done by invoking `gcc217` with the `-c` option.&#x20;
 2. **Linking:** The resulting object files are linked together to create the final executable.
@@ -85,7 +85,7 @@ int lcm(int i, int j);
 {% endtab %}
 {% endtabs %}
 
-### Building testintmath for the first time
+#### Building testintmath for the first time
 
 The first time we build `testintmath`, we compile all source files. The key, however, is that we cache the object files, so we can reuse them in later builds. This can be done by building `testintmath` in two steps. First, we translate `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`:
 
@@ -120,7 +120,7 @@ gcc217 intmath.c testintmath.c -o testintmath
 The only difference between the two-command and single-command approaches is that the former retains the intermediate object files while the latter does not.&#x20;
 {% endhint %}
 
-### Rebuilding testintmath
+#### Rebuilding testintmath
 
 When we rebuild `testintmath`, we only recompile the source file's that will produce an object file different from the one we already have from the last build.&#x20;
 

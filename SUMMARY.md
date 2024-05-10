@@ -16,8 +16,10 @@
 ## The Linux command line
 
 * [Introduction](the-linux-command-line/introduction.md)
-* [Understanding the Linux Command Line Environment](the-linux-command-line/a-bit-of-background.md)
-* [Linux Filesystem](the-linux-command-line/filesystem.md)
+* [A Tour of Linux](the-linux-command-line/a-tour-of-linux/README.md)
+  * [Users and Groups](the-linux-command-line/a-tour-of-linux/users-and-groups.md)
+  * [The Filesystem](the-linux-command-line/a-tour-of-linux/filesystem.md)
+  * [Users Accounts](the-linux-command-line/a-tour-of-linux/users-and-groups-1.md)
 * [Getting Started With Bash](the-linux-command-line/warm-up-commands.md)
 * [Navigating the Filesystem](the-linux-command-line/navigating-the-filesystem/README.md)
 * [Bash Shortcuts](the-linux-command-line/useful-command-line-features.md)
@@ -28,7 +30,7 @@
   * [Viewing Files](the-linux-command-line/basic-file-and-directory-operations/viewing-files.md)
   * [Copying, Moving, and Renaming Files/Directories](the-linux-command-line/basic-file-and-directory-operations/copying-files-and-directories.md)
 * [Redirection and Piping](the-linux-command-line/redirection-and-piping.md)
-* [Users Accounts](the-linux-command-line/users-and-groups.md)
+* [Viewing User and Group Information](the-linux-command-line/viewing-user-and-group-information.md)
 * [File and Directory Access Permissions](the-linux-command-line/file-and-directory-access-permissions.md)
 * [More advanced topics](the-linux-command-line/more-advanced-topics/README.md)
   * [Processes](the-linux-command-line/more-advanced-topics/processes.md)

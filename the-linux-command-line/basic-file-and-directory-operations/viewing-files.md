@@ -1,10 +1,10 @@
 # Viewing Files
 
-There are numerous commands you can use to view the contents of a file. In this section, we'll go over four of them: `cat`, `head`, `tails`, and `less`.&#x20;
+There are numerous commands you can use to view the contents of a file. In this section we'll cover four of them: `cat`, `head`, `tails`, and `less`.&#x20;
 
 ## cat
 
-A quick and easy way to view the contents of a file is by using the `cat` command, which displays the contents of the file in the terminal window. Type `cat` followed by the name of the file you want to view. For example, to view the contents of `berra_quote.txt`:
+A quick and easy way to view the contents of a file is via the `cat` command, which displays the contents of the file on the terminal window. Type `cat` followed by the name of the file you want to view. For example, to view the contents of `berra_quote.txt`:
 
 ```bash
 ~/CLI_playground$ cat berra_quote.txt
@@ -12,13 +12,9 @@ The future ain't what it used to be. - Yogi Berra
 ~/CLI_playground$
 ```
 
-{% hint style="info" %}
-If the contents of the file you're viewing with `cat` is longer than what can be displayed on one screen, the terminal will show the end of the file. To view the beginning, you'll need to scroll all the way up.&#x20;
-{% endhint %}
+**Displaying Line Numbers**
 
-#### Numbering output lines
-
-You can number the output lines by using the `-n` option. For example:&#x20;
+If you want to display the contents of a file with line numbers, `cat` has an option `-n` that does just that:
 
 ```bash
 ~/CLI_playground$ cat -n the_odyssey.txt
@@ -50,9 +46,9 @@ You can number the output lines by using the `-n` option. For example:&#x20;
 ~/CLI_playground$
 ```
 
-#### Concatenating Files
+**Combining Multiple Files**
 
-`cat` is short for "concatenate," which might be a hint that it can be used to combine the contents of multiple files. To do so, provide both files as arguments to `cat`. For example:
+`cat` is short for "catenate," which might be a hint that it can be used to catenate the contents of multiple files. By default the combined output will be displayed on the screen. For example:
 
 ```bash
 ~/CLI_playground$ cat berra_quote.txt einstein_quote.txt
@@ -61,7 +57,13 @@ Everything should be as simple as possible, but no simpler. - Albert Einstein
 ~/CLI_playground$
 ```
 
-## heads and tails
+If you want to store the combined output in a new file, you would use the `>` [redirection](../redirection-and-piping.md) operator. For example:&#x20;
+
+```bash
+cat berra_quote.txt einstein_quote.txt > combined_quotes.txt.txt
+```
+
+### heads and tails
 
 Two complementary commands for inspecting files are `head` and `tail.` `head` shows the first 10 lines of the file:
 
@@ -97,33 +99,25 @@ copyright (C) Thomas Bushnell, BSG.
 ~/CLI_playground$
 ```
 
-## less
+### less
 
-`cat` has several drawbacks that make it inconvenient to use for files that span more than a few pages. Most notably, it does not have any useful features for navigating the file’s output; the only way you can navigate the file is by scrolling up and down. an alternative is less.&#x20;
+`cat` has several drawbacks that make it inconvenient to use for files that span more than a few pages. Most notably, it does not have any useful features for navigating the file’s output.&#x20;
 
-When you open a file with `less`, you can scroll through the document line by line or page by page using keyboard commands. Pressing the `spacebar` scrolls down one screen, and `b` scrolls back one screen. To quit `less`, type '`q'`.
+A useful alternative is `less`, which enables you to scroll through the file line by line or page by page using keyboard commands. Pressing `spacebar` scrolls forward one screen, and `b` scrolls back one screen. To quit `less`, type `q`.
+
+A powerful feature of `less` is the ability to search for text within the file. Press `/` followed by the text you're searching for, then navigate to the next or previous occurrence with `n` and  `N`, respectively. For example, to search for the word "home" in `the_odyssey.txt`, type `/home` in `less`. After pressing return, the first occurrence of "home" in the file will be highlighted. Use `n` to navigate to the next match, or `N` to navigate to the previous match. Table 2 summarizes commonly used `less` commands.
+
+| Command               | Effect                                      |
+| --------------------- | ------------------------------------------- |
+| q                     | Quit                                        |
+| h                     | Display a list of available `less` commands |
+| UP-ARROW / DOWN-ARROW | Navigate up and down the file               |
+| SPACEBAR              | Go forward one page                         |
+| b                     | Go backward one page                        |
+| G                     | Go to end of file                           |
+| g                     | Go to beginning of file                     |
+| /pattern              | Search file for text matching “pattern”     |
 
 {% hint style="success" %}
-The `man` command outputs _with_ `less`, so by getting familair with `less` you’ll get better at navigating _manpages_ as well.
+The `man` command uses `less` as its default pager to display manpages, so by getting familiar with `less`, you’ll get better at navigating manpages as well.
 {% endhint %}
-
-A powerful feature of `less` you can search for text within the file by pressing `/` followed by the text you're searching for, and navigate to the next or previous occurrence with `n` or `N`, respectively. For example, suppose we wanted to search for the word "home" in the\_oddysey. The way to do this in `less` is to type `/rose` (read “slash rose”), as shown in [Listing 3.6](https://www.learnenough.com/command-line-tutorial/inspecting\_files#code-rose\_search). The result of pressing return after typing `/rose` in [Listing 3.6](https://www.learnenough.com/command-line-tutorial/inspecting\_files#code-rose\_search) is to highlight the first occurrence of “rose” in the file. You can then press `n` to navigate to the next match, or `N` to navigate to the previous match.
-
-{% hint style="success" %}
-The `man` command outputs _with_ `less`, so by getting familair with `less` you’ll get better at navigating _manpages_ as well.
-{% endhint %}
-
-
-
-Table 2 summarizes commonly used less commands.&#x20;
-
-| Command               | Effect                                  |
-| --------------------- | --------------------------------------- |
-| q                     | Quit                                    |
-| h                     | Display a list of commands              |
-| UP-ARROW / DOWN-ARROW | Navigate up and down the file           |
-| SPACEBAR              | Go forward one page                     |
-| b                     | Go backward one page                    |
-| G                     | Go to end of file                       |
-| g                     | Go to beginning of file                 |
-| /pattern              | Search file for text matching “pattern” |

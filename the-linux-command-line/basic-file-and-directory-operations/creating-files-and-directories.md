@@ -53,7 +53,7 @@ touch file2 file3 file4
 ```
 
 {% hint style="info" %}
-If one of the files supplied as an argument to `touch` already exists, `touch` will update its access and modification times. Please refer to the `touch` manpage for more details.&#x20;
+If one of the files supplied as an argument to `touch` already exists, `touch` will update its access and modification timestamps. For more details, please refer to `touch`'s manpage.
 {% endhint %}
 
 ### **emacs**

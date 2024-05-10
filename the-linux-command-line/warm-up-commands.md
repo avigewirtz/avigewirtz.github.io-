@@ -4,8 +4,6 @@ description: This page introduces Bash commands.
 
 # Getting Started With Bash
 
-### Shell prompt
-
 When you begin a bash session, the first thing you'll notice is the shell prompt. On Armlab, it looks like the following:
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-04-25 at 3.08.46 PM.png" alt=""><figcaption></figcaption></figure>
@@ -19,7 +17,17 @@ Generalizing, the prompt on Armlab has the following format:&#x20;
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-24 at 9.53.35 PM.png" alt=""><figcaption></figcaption></figure>
 
-## Warm up commands
+## What's a command?
+
+A command consists of a command name and arguments.&#x20;
+
+
+
+
+
+
+
+
 
 Simplest command consists of just a command name. One such command us `uname`, which prints the name of your OS on stdout. To invoke it, simply type `uname` and press ENTER:
 

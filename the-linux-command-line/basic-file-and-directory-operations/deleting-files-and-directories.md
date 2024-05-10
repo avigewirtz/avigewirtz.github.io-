@@ -27,20 +27,22 @@ $
 
 It's common practice to alias `rm` to `rm -i`, ensuring you're always prompted for confirmation before deleting a file. This alias is already set up on Armlab. You can set it up on your PC by adding the following line to your `.bashrc` file:
 
-```
+```bash
 alias rm='rm -i'
 ```
 
-If you are sure about deleting a file and do not want to be prompted for confirmation, you can override `-i` with the`-f` (force) option:
+If you are sure about deleting a file and do not want to be prompted for confirmation, you can override the`-i` with the`-f` (force) option:
 
 ```bash
-$ rm -f file1
+rm -f file1 # expands to 'rm -i -f file1'
 ```
+
+This works since option specified later on the command line take precedence.
 {% endhint %}
 
 ### Deleting Empty Directories
 
-If the directory you want to delete is empty, you can use the `rmdir` (**r**e**m**ove **dir**ectory/ies) command. Type `rmdir` followed by the name of the directory you want to delete. For example, to delete `dir1`:
+If the directory you want to delete is empty, you can use the `rmdir` (**r**e**m**ove empty **dir**ectory/ies) command. Type `rmdir` followed by the name of the directory you want to delete. For example, to delete `dir1`:
 
 ```bash
 rmdir dir1

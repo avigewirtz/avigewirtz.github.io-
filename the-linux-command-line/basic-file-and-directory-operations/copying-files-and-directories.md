@@ -1,7 +1,7 @@
 # Copying, Moving, and Renaming Files/Directories
 
 \
-Two very similar commands in Unix-like operating systems are `cp` and `mv`. The `cp` command is used to copy files and directories, while the `mv` command moves or renames them. Here, we'll cover the usage of both commands, starting with basic operations and progressing to more complex scenarios.&#x20;
+Two very similar commands in Unix-like operating systems are `cp` and `mv`. The `cp` command is used to copy files or directories, while the `mv` command is used to move or rename them. Here, we'll cover the usage of both commands, starting with basic operations and progressing to more complex scenarios.&#x20;
 
 #### Copying files in the current directory
 

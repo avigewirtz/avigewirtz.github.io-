@@ -1,5 +1,13 @@
 # Users Accounts
 
+
+
+Each user has their own account. Allows Linux to tailor environment to you,&#x20;
+
+
+
+
+
 To access a Linux system you must login. User accounts enable Linux to tailor the computing environment based on who is logged in. This is for security, such as ensuring one user doesn't access another user's files, and convenience.&#x20;
 
 ### Users
@@ -37,7 +45,7 @@ Each user automatically has a primary group. Optionally, they may have secondary
 
 You can display your login name, group name, UID, and GID by issuing the `id` command. When I invoke `id` on Armlab, I get the following output:
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-27 at 11.56.24 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-27 at 11.56.24 PM.png" alt=""><figcaption></figcaption></figure>
 
 Let's break down the first row:&#x20;
 

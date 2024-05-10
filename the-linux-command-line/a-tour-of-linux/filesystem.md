@@ -1,6 +1,6 @@
-# Linux Filesystem
+# The Filesystem
 
-One of the core services of the operating system is the Provision of a file system filesystem, which is an abstraction of computer storage. Here, we discuss the basics of the Linux filesystem.&#x20;
+One of the core services of the Linux kernel is the Provision of a file system filesystem, which is an abstraction of computer storage. Here, we discuss the basics of the Linux filesystem.&#x20;
 
 ### Files
 
@@ -29,7 +29,7 @@ Files whose names begin with a period (e.g., `.bashrc`) are hidden, meaning that
 
 The Linux filesystem is organized as a single hierarchical structure, resembling an inverted tree. At the base is the _root directory_, denoted by `/` (slash), from which all files and directories in the system descend. An example of this hierarchical structure is shown in Figure 1, which depicts a partial snapshot of the Armlab filesystem.
 
-<figure><img src="../.gitbook/assets/filesystem10.17 (16).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/filesystem10.17 (16).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 The terms _parent_ and _child_ are commonly used to describe the relationship between a two adjacent directories. In the above snapshot, for example, `tal5` is a child of `u` (and `u` is the parent of `tal5`, `bwk`, and `sgewirtz`).
@@ -39,11 +39,11 @@ The terms _parent_ and _child_ are commonly used to describe the relationship be
 
 Each user on a Linux system has a personal directory called a _home directory_. This is a designated space to store personal files and directories. On Armlab, your home directory is located in the `/u` directory and is named after your NetID (Figure 15). For example, if your NetID is "tal5", your home directory would be `/u/tal5`. By default, the contents of your home directory are not accessible to other users (with the exception of the system administrator).
 
-<figure><img src="../.gitbook/assets/filesystem10.17 (15).png" alt=""><figcaption><p>Figure 15: Home directories</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/filesystem10.17 (15).png" alt=""><figcaption><p>Figure 15: Home directories</p></figcaption></figure>
 
 ### Working Directory
 
-Each process (instance of a running program) has a dynamically associated directory, called its _working directory_**,** which is the location the process is currently "working in." By default, your working directory will be your home directory, but you can change it using the `cd` command, which we'll cover in in [Navigating the Filesystem](navigating-the-filesystem/#cd-relocating).
+Each process (instance of a running program) has a dynamically associated directory, called its _working directory_**,** which is the location the process is currently "working in." By default, your working directory will be your home directory, but you can change it using the `cd` command, which we'll cover in in [Navigating the Filesystem](../navigating-the-filesystem/#cd-relocating).
 
 ### The `.` (dot) and `..` (dot dot) Directory Entries
 
