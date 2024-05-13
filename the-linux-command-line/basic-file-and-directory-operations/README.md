@@ -1,6 +1,6 @@
 # Basic File and Directory Operations
 
-In this section, we'll cover essential commands for everyday file and directory management. These commands form the foundation of working in a command-line environment. Commands covered:
+In this section, we'll cover the commands shown below, which are essential commands for everyday file and directory management. Commands covered:
 
 * `mkdir`: Creates directories.
 * `touch`: Creates empty files or updates the timestamps existing files.

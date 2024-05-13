@@ -1,8 +1,8 @@
-# Getting Documentation For Commands
+# Getting Documentation for Commands
 
-Almost all commands come with some form of documentation that can be accessed from the command line. Such documentation is helpful when you need information on how to use a command or want more information about the command’s specifics, such as it's options. &#x20;
+Almost all Linux commands come with documentation that can be accessed directly from the command line. Such documentation is helpful when you need information on how to use a command or want more information about the command’s specifics, such as it's options. &#x20;
 
-The command you use to retrieve the documentation depends on whether the command is a shell builtin, such as `exit`, or an external program, such as `cal`. For standalone programs such as `cal`,  use the `man` command, which outputs the command's _manpage_ (manual page) via the [`less`](basic-file-and-directory-operations/viewing-files.md#less) pager :&#x20;
+The command you use to retrieve the documentation depends on whether the command is a shell builtin, such as `exit`, or an external program, such as `cal`. For standalone programs such as `cal`,  use the `man` (**man**ual) command, which outputs the command's _manpage_ via the [`less`](basic-file-and-directory-operations/viewing-files.md#less) pager :&#x20;
 
 ```bash
 man cal
@@ -21,7 +21,7 @@ exit: exit [n]
 ```
 
 {% hint style="info" %}
-You can determine whether a command is a shell built-in or a standalone program by invoking `type command_name`. For example:
+You can determine whether a command is a shell built-in or a standalone program by invoking `type COMMAND_NAME`. For example:
 
 ```bash
 ~$ type exit
@@ -29,7 +29,7 @@ exit is a shell builtin
 ~$
 ```
 
-If the command is a standalone program, it'll return its absolute pathname:&#x20;
+If the command is a standalone program, `type` will return its absolute pathname:&#x20;
 
 ```bash
 ~> type cal

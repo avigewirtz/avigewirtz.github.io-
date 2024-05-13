@@ -38,7 +38,7 @@ In this example, the working directory contains three entries—`CLI_playground`
 
 **Identifying File Types**
 
-By default, ls doesn't tell us whether each entry is a file, directory, or executable. there are two options you can use to display the file types:&#x20;
+By default, `ls` doesn't tell you what type of file each entry in the directory listing is. There are two options you can use to display the file types:&#x20;
 
 1.  **`-F`** The `-F` option appends a character to each entry to indicate its type. For instance:
 
@@ -134,7 +134,7 @@ You can change your working directory using the `cd` (**c**hange working **d**ir
 cd DIRECTORY_PATHNAME
 ```
 
-`DIRECTORY_PATHNAME` refers to either the absolute or relative pathname of the target directory (see [Pathnames](../a-tour-of-linux/filesystem.md#pathnames)).
+`DIRECTORY_PATHNAME` is either the absolute or relative pathname of the target directory (see [Pathnames](../a-tour-of-linux/filesystem.md#pathnames)).
 
 #### Example&#x20;
 
@@ -161,7 +161,7 @@ cd ../../usr/bin
 <figure><img src="../../.gitbook/assets/filesystem10.17 (6).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="warning" %}
-To navigate to a directory, you must have appropriate access permissions. This will be covered in [File and Directory Access Permissions](../file-and-directory-access-permissions.md). If you try to navigate to a directory for which you don't have appropriate access permissions, you'll get a "permission denied" error. This will be the case if, for example, we try to navigate to another user's home directory, such as`/u/bwk`:
+To navigate to a directory, you must have appropriate access permissions. We'll cover this in [File and Directory Access Permissions](../file-and-directory-access-permissions.md). If you try to navigate to a directory for which you don't have appropriate access permissions, you'll get a "permission denied" error. This will be the case if, for example, we try to navigate to another user's home directory, such as`/u/bwk`:
 
 ```bash
 ~$ cd /u/bwk
@@ -178,14 +178,14 @@ cd "assignment 1"
 ```
 {% endhint %}
 
-### **Useful Shortcuts**
+#### **Useful Shortcuts**
 
 * **Going home**: If you invoke `cd` without arguments, it'll take you to your home directory.&#x20;
 * **Returning to the last working directory**. `cd -` (hyphen) returns you to your previous working directory.&#x20;
 * **Tilde (`~`):** You can use the tilde character as a shortcut for your home directory. For example,  `cd ~/A1` is equivalent to `cd /u/yourNetID/A1`.
 * **Tab Completion**: If you start typing an directory name and press Tab, Bash will attempt to auto-completes the directory name. This will save you time and reduce typos.
 
-## Exercises
+### Exercises
 
 **Note**: For the following questions, assume the working directory is `/u/yourNetID`, unless otherwise stated.&#x20;
 
