@@ -47,6 +47,8 @@ Utilities are usually packaged with the operating system and installed by defaul
 
 ## The shell
 
+When you start a command line session, the first The shell is a command interpreter.&#x20;
+
 You interact with linux via the terminal. Have you ever thought about the process that happens when you type a command in the terminal and hit RETURN? Several layers of of software between your terminal and Linux.&#x20;
 
 When the system prints the prompt $ and you type commands that get exe- cuted, it's not the kernel that is talking to you, but a go-between called the command interpreter or shell.
