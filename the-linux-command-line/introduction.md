@@ -14,7 +14,7 @@ Imagine using a CLI as if you're texting with your computer: you type in your re
 
 ## Terminal
 
-CLI commands are issued via a _terminal_. In the nascent days of interactive computing, terminals were hardware devices, consisting of a keyboard and a display unit. The first terminals were teletype machines, such as the Model 33 ASR shown in Figure 1, whose display unit was a paper-roll printer.
+CLI commands are issued via a _terminal_. In the nascent days of interactive computing, terminals were hardware devices, consisting of a keyboard and a display unit. The first terminals were teleprinter machines, such as the Teletype Model 33 ASR shown in Figure 1, whose display unit was a paper-roll printer.
 
 Teletypes fell out of use in the 1970s with the advent of video display terminals, such as the DEC VT100 shown in Figure 2, which provided instant user-feedback and editing capabilities.&#x20;
 

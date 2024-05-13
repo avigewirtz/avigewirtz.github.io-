@@ -19,7 +19,6 @@
 * [A Tour of Linux](the-linux-command-line/a-tour-of-linux/README.md)
   * [Users and Groups](the-linux-command-line/a-tour-of-linux/users-and-groups.md)
   * [The Filesystem](the-linux-command-line/a-tour-of-linux/filesystem.md)
-  * [Users Accounts](the-linux-command-line/a-tour-of-linux/users-and-groups-1.md)
 * [First Command-Line Session](the-linux-command-line/warm-up-commands.md)
 * [Page](the-linux-command-line/page.md)
 * [Navigating the Filesystem](the-linux-command-line/navigating-the-filesystem/README.md)

@@ -22,17 +22,46 @@ On Armlab, your working directory is displayed in the [shell prompt](../warm-up-
 
 ## **`ls` - A Sense of Surroundings**
 
-Knowing where you are in the filesystem is important, but in order to navigate, you also need to be familiar with what's around you. The `ls` (**l**i**s**t) command can be used to list the contents of any directory in the filesystem. &#x20;
+Knowing where you are in the filesystem is important, but in order to navigate, you also need to be familiar with your surroundings. The `ls` (**l**i**s**t) command can be used to list the contents of any directory in the filesystem. &#x20;
 
 #### Basic usage
 
-The most basic usage of `ls` is to list the names of the files and directories in the working directory. To do so, invoke `ls` without arguments:
+The most basic usage of `ls` is to list the names of the files and directories in the working directory. To do so, just type`ls`:
 
 ```bash
 ~$ ls 
 A1	A2	CLI_playground
 ~$ 
 ```
+
+In this example, the working directory contains three entries—`CLI_playground`, `A1`, and `A2`.
+
+**Identifying File Types**
+
+By default, ls doesn't tell us whether each entry is a file, directory, or executable. there are two options you can use to display the file types:&#x20;
+
+1.  **`-F`** The `-F` option appends a character to each entry to indicate its type. For instance:
+
+    * Directories are marked with a slash (`/`).
+    * Executable files are marked with an asterisk (`*`).
+    * Regular files appear without any appended character.
+
+    To use this option, you would enter:
+
+    ```bash
+    ls -F
+    ```
+2.  **`--color=always`** This option colors the output of `ls`, providing a visual distinction between file types. Typically:
+
+    * Directories appear in blue.
+    * Executable files appear in green.
+    * Regular files are shown in the default text color.
+
+    To enable color coding, type:
+
+    ```bash
+    ls --color=always
+    ```
 
 #### Displaying Hidden Files
 

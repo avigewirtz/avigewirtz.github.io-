@@ -35,6 +35,14 @@ The Linux filesystem is organized as a single hierarchical structure, resembling
 The terms _parent_ and _child_ are commonly used to describe the relationship between a two adjacent directories. In the above snapshot, for example, `tal5` is a child of `u` (and `u` is the parent of `tal5`, `bwk`, and `sgewirtz`).
 {% endhint %}
 
+
+
+### Home Directory
+
+Each user on a Linux system has a personal directory called a _home directory_. This is a designated space to store personal files and directories. On Armlab, your home directory is located in the `/u` directory and is named after your NetID (Figure 15). For example, if your NetID is "tal5", your home directory would be `/u/tal5`. By default, the contents of your home directory are not accessible to other users (with the exception of the system administrator).
+
+<figure><img src="../../.gitbook/assets/filesystem10.17 (15).png" alt=""><figcaption><p>Figure 15: Home directories</p></figcaption></figure>
+
 ### Pathnames
 
 * Imagine a company where all files are stored within a single, main filing cabinet. This cabinet represents the root folder. Inside, there are folders for shared company documents, like "Financial Reports" or "Marketing Materials." Additionally, each employee has their personal folder within the main cabinet. each employee does not have permission to look in another employees folder. only shared folders and their own.
@@ -66,20 +74,3 @@ emacs /u/sgewirtz/CLI_playground/the_odyssey.txt
 ```
 
 For this reason, each process (running program), has&#x20;
-
-### Home Directory
-
-Each user on a Linux system has a personal directory called a _home directory_. This is a designated space to store personal files and directories. On Armlab, your home directory is located in the `/u` directory and is named after your NetID (Figure 15). For example, if your NetID is "tal5", your home directory would be `/u/tal5`. By default, the contents of your home directory are not accessible to other users (with the exception of the system administrator).
-
-<figure><img src="../../.gitbook/assets/filesystem10.17 (15).png" alt=""><figcaption><p>Figure 15: Home directories</p></figcaption></figure>
-
-### Working Directory
-
-Each process (instance of a running program) has a dynamically associated directory, called its _working directory_**,** which is the location the process is currently "working in." By default, your working directory will be your home directory, but you can change it using the `cd` command, which we'll cover in in [Navigating the Filesystem](../navigating-the-filesystem/#cd-relocating).
-
-### Pathnames
-
-Every file has a _pathname_, which is a string that identifies its location in the directory hierarchy. Pathnames come in two forms:
-
-* An _absolute pathname_ pinpoints the location of a file by specifying its path from the root directory. It starts with a forward slash (/) followed by zero or more filenames, each separated by slashes. For example, in Figure 16, the absolute pathname of `the_odyssey.txt` is `/u/sgewirtz/CLI_playground/the_odyssey.txt`. Absolute pathnames are unambiguous because they don't depend on the current working directory.
-* A _relative pathnames_ pinpoints the location of a file or directory by specifying its path from the working directory. It consists of zero or more filenames, each separated by slashes. For example, in Figure 15, if `/u/sgewirtz` is the current working directory, then the relative pathname for `the_odyssey.txt` is `./CLI_playground/the_odyssey.txt`. If `/u/sgewirtz/CLI_playground` is the current working directory, however, then the relative pathname is `./the_odyssey.txt`.
