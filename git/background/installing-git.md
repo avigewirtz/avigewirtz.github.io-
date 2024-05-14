@@ -1,6 +1,6 @@
 # Installing Git
 
-In COS217, there is no need to install Git, since Git is already installed on Armlab. However, if you'd like to have Git on your PC as well, you can install it by following the instructions below.&#x20;
+If you do all development on Armlab, you can skip this section, since Git is already installed on Armlab. If you'd like to have Git on your PC as well, you can install it by following the instructions below.&#x20;
 
 {% tabs %}
 {% tab title="macOS" %}

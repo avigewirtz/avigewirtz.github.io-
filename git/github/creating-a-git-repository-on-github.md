@@ -1,4 +1,4 @@
-# Creating Repository on GitHub
+# Creating a Git Repository on GitHub
 
 1. [Sign in ](https://github.com/)to GitHub. You should see the following box on the front page: ![](<../../.gitbook/assets/Screenshot 2024-04-05 at 1.32.52 PM.png>)
 2. We'll name the repository "remotePractice," choose **Private**, and click **Create a New Repository**.&#x20;
@@ -16,7 +16,7 @@ essentially a sequence of several commands. Can't do this here because i haven't
 
 
 
-It goes without saying that when you upload a repository to GitHub, you don't necessarily want to make it visible to the world. As such, Github provides you the option of classifying your repository as _private_. Private repositories are only visible to their owner(s) and explicitly invited collaborators. As such, when someone attempts to clone a private repository, they need to provide authenticate credentials by providing a password. Note that this password is not the standard account password but a [Personal Access Token](../background/git-installation.md#generating-a-github-personal-access-token).
+It goes without saying that when you upload a repository to GitHub, you don't necessarily want to make it visible to the world. As such, Github provides you the option of classifying your repository as _private_. Private repositories are only visible to their owner(s) and explicitly invited collaborators. As such, when someone attempts to clone a private repository, they need to provide authenticate credentials by providing a password. Note that this password is not the standard account password but a [Personal Access Token](broken-reference).
 
 {% hint style="warning" %}
 When _uploading_ data to a repository, you need to authenticate yourself irrespective of whether the repository is public or private.

@@ -6,6 +6,12 @@ When you work with a command-line interface, you are working with a shell. Befor
 
 
 
+Some tools and technologies lend themselves to a “black-box” approach, in which new users don’t pay too much attention to how a tool works under the hood. You concentrate first on learn‐ ing to manipulate the tool; the “why” and “how” can come later. Git’s particular design, however, is better served by the opposite approach, in that a number of fundamental internal design de‐ cisions are reflected directly in how you use it. By understanding up front and in reasonable detail several key points about its op‐ eration, you will be able to come up to speed with Git more quickly and confidently, and be better prepared to continue learning on your own.
+
+Thus, I encourage you to take the time to read this chapter first, rather than just jump over it to the more tutorial, hands-on chap‐ ters that follow (most of which assume a basic grasp of the ma‐ terial presented here, in any case). You will probably find that your understanding and command of Git will grow more easily if you do.
+
+
+
 #### Outline of this chapter
 
 The command-line interface (CLI) is a text-based method of interacting with your computer. Unlike the graphical user interfaces (GUIs) that allow you to issue commands by clicking buttons and icons, a CLI requires you to issue commands by typing typing sequences of text in a [terminal](broken-reference).&#x20;

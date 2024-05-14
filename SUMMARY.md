@@ -44,9 +44,7 @@
 ## Git
 
 * [Introduction](git/background/README.md)
-  * [Goals of this tutorial](git/background/goals-of-this-tutorial.md)
   * [Installing Git](git/background/installing-git.md)
-  * [First time Git setup](git/background/git-installation.md)
   * [Getting Documentation for Git Commands](git/background/getting-help.md)
   * [Git configuration files](git/background/git-configuration-files.md)
 * [Git in a nutshell](git/git-in-a-nutshell.md)
