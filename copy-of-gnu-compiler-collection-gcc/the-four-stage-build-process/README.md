@@ -6,13 +6,17 @@ Suppose we have a C program comprised of two `.c` files: `foo.c` and `bar.c`. To
 gcc217 foo.c bar.c -o foobar
 ```
 
-Note that `-o foobar` specifies that the executable be named `foobar`_,_ rather than the default name `a.out`. To run `foobar`, we type its pathname on the command line:
+{% hint style="info" %}
+Note that `-o foobar` specifies that the executable be named `foobar`_,_ rather than the default name `a.out`.&#x20;
+{% endhint %}
+
+To run `foobar`, we type its pathname on the command line:
 
 ```
 ./foobar
 ```
 
-### Under the Hood
+#### Under the Hood
 
 Under the hood, quite a lot of work is involved in producing the executable `foobar`. It involves four sequential stages: preprocessing, compilation, assembly, and linking. An overview of the process is shown in Figure 4.2. Here's a bird's eye view of what happens at each stage:
 
@@ -22,24 +26,24 @@ Under the hood, quite a lot of work is involved in producing the executable `foo
     2. **Handling preprocessor directives.** These are lines in the code that begin with a `#` (hash). Unlike traditional C code, they are meant to be interpreted by the preprocessor, not the compiler. An example of a preprocessor directive is `#include` (e.g., `#include <stdio.h>`), which instructs the preprocessor to insert the contents of the specified file in the location where the `#include` directive appears.
 
     The output is of the preprocessor is stored in `foo.i` and `bar.i.`
-2. **Compilation stage:** The compiler translates `foo.i` and `bar.i` into assembly language files foo`.s` and `bar.s`.
+2. **Compilation stage:** The compiler translates `foo.i` and `bar.i` into assembly language files foo`.s` and `bar.s`.&#x20;
 3. **Assembly stage:** The assembler translates `foo.s` and `bar.s` into relocatable object files `foo.o` and `bar.o`. These files contain machine code but are not executable, since they contain external references.
-4. **Linking stage:** The linker combines `foo.o` and `bar.o`, along with necessary `.o` files from the C Standard Library, producing the executable file `foobar`.
+4. **Linking stage:** The linker combines `foo.o` and `bar.o`, along with necessary `.o` files from the C Standard Library, producing the executable object file `foobar`.
 
-<figure><img src="../../.gitbook/assets/Group 70 (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Group 70 (4).png" alt=""><figcaption></figcaption></figure>
 
 Notice that the first three stages of the build process (i.e., preprocessing, compilation, and assembly) are performed on each file separately. Recognizing this is critical to understanding how the build process works.
 
 {% hint style="info" %}
 **Insight**
 
-* Although `gcc` (that is, lowercase `gcc`, the program we invoke on the command line) is often colloquially referred to as a compiler, it is technically a driver program, meaning it delegates the actual build tasks to other programs. These programs include `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). `gcc` invokes each of these programs with the necessary command line options. You can see this full sequence of operations by invoking `gcc` with the `-v` (verbose) option. You will gain a much greater appreciation of the role the `gcc` driver program plays in simplifying the build process.
-* In current GCC implementations, the preprocessor (`cpp`) is integrated into the compiler (`cc1`). The underlying sequence of operations is the same, but technically the first two build steps are performed by a single program.
+* Although `gcc` (that is, lowercase `gcc`, the program we invoke on the command line) is often colloquially referred to as a compiler, it is technically a driver program, meaning it delegates the actual build tasks to other programs. These programs include `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). `gcc` invokes each of these programs with the necessary command line options. You can see the full sequence of operations by invoking `gcc` with the `-v` (verbose) option. You will gain a much greater appreciation of the role the `gcc` driver program plays in simplifying the build process.
+* In current GCC implementations, the preprocessor (`cpp`) is integrated into the compiler (`cc1`). The underlying sequence of operations is the same, but technically the first two build steps are performed by a single program (`cc1`).&#x20;
 {% endhint %}
 
-### Saving Intermediate Files
+#### Saving Intermediate Files
 
-By default, `gcc` does not retain the intermediate files generated during the build process. Thus, if we invoke `ls` after building `foobar`, we won't see any of the `.i`, `.s`, or `.o` files:
+By default, `gcc` does not retain the intermediate files generated during the build process. Thus, if we invoke `ls` after building `foobar`, we won't see the `.i`, `.s`, or `.o` files:
 
 ```bash
 $ ls
@@ -52,7 +56,7 @@ We can instruct `gcc` to save the intermediate files by using the `--save-temps`
 gcc217 --save-temps foo.c bar.c -o foobar
 ```
 
-If we invoke `ls` again, we'll see all the intermediate files:
+If we invoke `ls` again, we'll now see all the intermediate files:
 
 ```bash
 $ ls
@@ -60,7 +64,7 @@ bar.c    bar.i    bar.s    bar.o    foo.c
 foo.i    foo.s    foo.o    foobar   
 ```
 
-### Halting the build process at any stage
+#### Halting the build process at any stage
 
 `gcc` provides command line options to halt the build process at any stage. Here's a breakdown of the options:
 
@@ -94,4 +98,4 @@ gcc217 -S foo.i bar.i
 
 In the former case, `gcc` will preprocess and compile the files and halt. In the latter case, GCC will compile the files and halt. `gcc` automatically saves the resulting assembly code in `.s` files.
 
-**`-c`:** This instructs GCC to stop the build process after assembly. The input can be either `.c`, `.i`, or `.o` files. `gcc` will determine which stages to perform based on which the file extension. For example, if the file is a `.s` file, gcc will begin with assembly and halt. `gcc` automatically saves the output in `.o` files.
+**`-c`:** This instructs GCC to stop the build process after assembly. The input can be either `.c`, `.i`, or `.o` files. `gcc` will determine which stages to perform based on the file extension. For example, if the file is a `.s` file, `gcc` will begin with assembly and halt. `gcc` automatically saves the output in `.o` files.

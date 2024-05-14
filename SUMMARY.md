@@ -127,12 +127,3 @@
 * [Interpreting Gprof Output](gprof/interpreting-gprof-output.md)
   * [Flat Profile](gprof/interpreting-gprof-output/flat-profile.md)
   * [Call Graph](gprof/interpreting-gprof-output/call-graph.md)
-
-## Appendices
-
-* [Assembly](appendices/assembly.md)
-* [Machine Code](appendices/machine-code.md)
-
-## Group 1
-
-* [Glossary](appendices/glossary.md)
