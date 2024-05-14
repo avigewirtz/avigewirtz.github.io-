@@ -71,16 +71,6 @@ double calculateArea(double radius);
 {% endtab %}
 {% endtabs %}
 
-### The starting point
-
-
-
-We'll build our program using the `--save-temps` option:
-
-```
-gcc217 --save-temps intmath.c testintmath.c -o testintmath
-```
-
 ### Preprocessing Stage
 
 As we mentioned earlier, the preprocessor performs two main tasks: It removes comments, which are of no use to the compiler, and handles preprocessor directives, which are lines in the code that begin with a `#`. Our program makes use of three types of preprocessor directives: `#include`, `#define`, and `#ifndef`/ `#endif`. These directives control file inclusion, macro definition, and conditional compilation respectively.
@@ -120,6 +110,8 @@ Since preprocessed files are text files, you can view them with a text editor, j
 <figure><img src="../.gitbook/assets/Frame 61.png" alt=""><figcaption></figcaption></figure>
 
 First, we see that the preprocessor removed all comments from `testcircle.c` and `circle.c`. Second, it replaced each `#include` directive with the contents of its specified header: `circle.h` for both `circle.c` and `testcircle.c`, and `stdio.h` and `stdlib.h` for `testcircle.c`. The `stdio.h` file contains declarations for the `printf` and `scanf`  functions, while `stdlib.h` contains the declaration for the `exit` function and the definition of the `EXIT_FAILURE` macro. Finally, all macros were expanded: `PI` in `circle.c` was replaced with `3.14159`, and `EXIT_FAILURE` was replaced with `1`.
+
+Each file now contains&#x20;
 
 {% hint style="success" %}
 You can think of the preprocessor as a "search-and-replace" tool:
@@ -169,3 +161,6 @@ should mention starter code role of linker as aside. entry symbol \_start
 {% hint style="info" %}
 Throughout this chapter, we assumed static linking. Another texhbuique known as dynamic linking is also used, where library functions are linked during runtime, not during the build process.&#x20;
 {% endhint %}
+
+### Rexamining structure of our program
+
