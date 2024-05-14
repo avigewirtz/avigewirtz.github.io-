@@ -4,7 +4,7 @@ There are numerous commands you can use to view the contents of a file. In this 
 
 ## cat
 
-A quick and easy way to view the contents of a file is via the `cat` command, which displays the contents of the file on the terminal window. Type `cat` followed by the name of the file you want to view. For example, to view the contents of `berra_quote.txt`:
+A quick and easy way to view a file is with the `cat` command, which displays the file's contents on stdout. Type `cat` followed by the name of the file you want to view. For example, to view `berra_quote.txt`:
 
 ```bash
 ~/CLI_playground$ cat berra_quote.txt
@@ -14,7 +14,7 @@ The future ain't what it used to be. - Yogi Berra
 
 **Displaying Line Numbers**
 
-If you want to display the contents of a file with line numbers, `cat` has an option `-n` that does just that:
+If you want the file's output to have line numbers, invoke `cat` with the `-n` option. For example:
 
 ```bash
 ~/CLI_playground$ cat -n the_odyssey.txt
@@ -48,7 +48,7 @@ If you want to display the contents of a file with line numbers, `cat` has an op
 
 **Combining Multiple Files**
 
-`cat` is short for "catenate," which might be a hint that it can be used to catenate the contents of multiple files. By default the combined output will be displayed on the screen. For example:
+`cat` is short for "concatenate," which might be a hint that it can be used to combine the contents of multiple files. Type `cat` followed by the name of each file you want cat to combine. For example, to combine `berra_quote.txt` and `einstein_quote.txt` :
 
 ```bash
 ~/CLI_playground$ cat berra_quote.txt einstein_quote.txt
@@ -57,7 +57,7 @@ Everything should be as simple as possible, but no simpler. - Albert Einstein
 ~/CLI_playground$
 ```
 
-If you want to store the combined output in a new file, you would use the `>` [redirection](../redirection-and-piping.md) operator. For example:&#x20;
+If you want to save the combined content to a new file, you can redirect the output using the `>` operator:&#x20;
 
 ```bash
 cat berra_quote.txt einstein_quote.txt > combined_quotes.txt.txt
@@ -101,11 +101,11 @@ copyright (C) Thomas Bushnell, BSG.
 
 ### less
 
-`cat` has several drawbacks that make it inconvenient to use for files that span more than a few pages. Most notably, it does not have any useful features for navigating the file’s output.&#x20;
+`cat` has several drawbacks that make it inconvenient for use with files that span more than a few pages. Most notably, it does not have any useful features for navigating the file’s output.&#x20;
 
 A useful alternative is `less`, which enables you to scroll through the file line by line or page by page using keyboard commands. Pressing `spacebar` scrolls forward one screen, and `b` scrolls back one screen. To quit `less`, type `q`.
 
-A powerful feature of `less` is the ability to search for text within the file. Press `/` followed by the text you're searching for, then navigate to the next or previous occurrence with `n` and  `N`, respectively. For example, to search for the word "home" in `the_odyssey.txt`, type `/home` in `less`. After pressing return, the first occurrence of "home" in the file will be highlighted. Use `n` to navigate to the next match, or `N` to navigate to the previous match. Table 2 summarizes commonly used `less` commands.
+A powerful feature of `less` is the ability to search for text within the file. Press `/` followed by the text you're searching for. For example, to search for the word "home" in `the_odyssey.txt`, type `/home` in `less`. After pressing return, the first occurrence of "home" in the file will be highlighted. Use `n` to navigate to the next occurrence, or `N` to navigate to the previous occurrence. Table 2 summarizes commonly used `less` commands.
 
 | Command               | Effect                                      |
 | --------------------- | ------------------------------------------- |
@@ -119,5 +119,5 @@ A powerful feature of `less` is the ability to search for text within the file. 
 | /pattern              | Search file for text matching “pattern”     |
 
 {% hint style="success" %}
-The `man` command uses `less` as its default pager to display manpages, so by getting familiar with `less`, you’ll get better at navigating manpages as well.
+The `man` command displays its output with `less`, so by getting familiar with `less`, you’ll get better at navigating manpages as well.
 {% endhint %}

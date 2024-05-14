@@ -1,6 +1,6 @@
 # Introduction
 
-When Linus Torvalds introduced Linux and for a long time thereafter, Linux did not have a graphical user interface (GUI): It ran on character-based terminals only, using a command-line interface (CLI), also referred to as a textual interface. All the tools ran from a command line. Today the Linux GUI is important, but many people— especially system administrators—run many command-line utilities. Command-line utilities are often faster, more powerful, or more complete than their GUI counterparts. Sometimes there is no GUI counterpart to a textual utility; some people just prefer the hands-on feeling of the command line.
+When Linus Torvalds introduced Linux and for a long time thereafter, Linux did not have a graphical user interface (GUI). It ran on character-based terminals only, using a command-line interface (CLI), also referred to as a textual interface. All the tools ran from a command line. Today the Linux GUI is important, but many people— especially system administrators—run many command-line utilities. Command-line utilities are often faster,! \more powerful, or more complete than their GUI counterparts. Sometimes there is no GUI counterpart to a textual utility; some people just prefer the hands-on feeling of the command line.
 
 When you work with a command-line interface, you are working with a shell. Before you start working with a shell, it is important that you understand a basic understanding of the componentds of a Linux system and how they interact with each other.&#x20;
 

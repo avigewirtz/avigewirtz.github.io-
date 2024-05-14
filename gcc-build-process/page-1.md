@@ -20,7 +20,7 @@ Let's now analyze each of the build stages in practice. We'll use the multi-file
    EXIT_FAILURE if input is invalid. Otherwise, prints
    circle's area to stdout and returns 0. */
    
-int main() {
+int main(void) {
 
   double radius, area;
 
@@ -123,7 +123,7 @@ You can think of the preprocessor as a "search-and-replace" tool:
 
 ### Compilation Stage&#x20;
 
-Compilation is the most complex stage of the build process. It involves translating C source code into a completely different language. Figure 4.3 shows what the arm64 assembly looks like.&#x20;
+The next stage of the build process is where actual compilation takes place. In this stage, the preprocessed C code in circle.i and testcircle.i is translated into assembly language, stored in circle.s and testcircle.s (Figure 12). The specific assembly language it gets translated top depends on the target processor. On Armlab, which&#x20;
 
 <div align="center">
 
@@ -133,12 +133,11 @@ Compilation is the most complex stage of the build process. It involves translat
 
 #### Characteristics of Assembly Language
 
-A detailed explanation of assembly language is beyond the scope of this chapter. Arm64 assemvly will be covered in detail in the second hald of the course. For now, we will simply provide a few general points about assembly: &#x20;
+Detailed coverage of assembly language is beyond the scope of this chapter. ARM64 assembly will be covered in detail in the second half of the course. For now, we will simply provide a few general points about assembly:
 
-* Extremely low-level language. Essentially human readable verson of target processor's machine language. Typically a one-to-one mapping between assembly language instruction and machine language instruction.&#x20;
-* Specific to target architecture. each architecture has it's own assembly language.
-* Not portable. In simple terms, this means that if I gave you assembly language program written for an architecture like x86 and told you to run it on an architecture like ARM, you'd have a very hard time doing so.&#x20;
-* architecture Because assembly is esssentially a human readable version of the target processors machine code, just like machine language isn't portable (i.e., machine language program written for for an X86 will not run on an ARM), assembly language isn't either portable. Meaning, assembly language written for x86 cannot be translated into machine languag einstruciton for arm. compiler knows which assembly language to compile to
+* **Extremely Low-Level Language.** Essentially, a human-readable version of the target processor's machine language. There is typically a one-to-one mapping between an assembly language instruction and a machine language instruction.
+* **Specific to Target Architecture:** Each architecture has its own assembly language.
+* **Not Portable:** Unlike a high level language like C that can be  that can be easily translated into  In simple terms, this means that if I gave you an assembly language program written for an architecture like x86 and told you to run it on an architecture like ARM, you'd have a very hard time doing so.
 
 ## Assembly Stage
 
@@ -151,8 +150,20 @@ The assembler translates the assembly-language in testcircle.s and circle.s into
 
 ## Linking Stage
 
-To produce an executable file, the linker combines all these files--testcircle.o, circle.o, and C library--together, resolving all external references in our program. The output is a single file--the executable testcircle. This process is shown in Figure 6.&#x20;
+* entry symbol \_start
+
+At this point, we have two object files--circle.o and testcircle.o. These files both contain machine code, but they are not executable. circle.o has an undefined reference to \`main'. And testcircle.o has undefined references to four functions: calculateArea, exit, printf, and scanf.&#x20;
+
+In the final stage, tescircle.o and circle.o get sent to the linker. The linker linker combines all these files--testcircle.o, circle.o, and C library--together, resolving all external references in our program. The output is a single file--the executable testcircle. This process is shown in Figure 6.&#x20;
+
+{% hint style="info" %}
+should mention starter code role of linker as aside
+{% endhint %}
 
 
 
 <figure><img src="../.gitbook/assets/Group 49 (2).png" alt="" width="563"><figcaption></figcaption></figure>
+
+{% hint style="info" %}
+Throughout this chapter, we assumed static linking. Another texhbuique known as dynamic linking is also used, where library functions are linked during runtime, not during the build process.&#x20;
+{% endhint %}
