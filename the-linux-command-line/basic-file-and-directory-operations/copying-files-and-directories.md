@@ -3,6 +3,21 @@
 \
 Two very similar commands in Unix-like operating systems are `cp` and `mv`. The `cp` command is used to copy files or directories, while the `mv` command is used to move or rename them. Here, we'll cover the usage of both commands, starting with basic operations and progressing to more complex scenarios.&#x20;
 
+{% hint style="info" %}
+Wildcards
+
+
+
+
+
+### **Wildcards**
+
+Wildcards are characters that can represent any number of characters or a specific range of characters in a pattern. They are helpful when you need to perform an operation on multiple files or directories that share a similar naming pattern. Two commonly used wildcards in Bash are:
+
+* `*` (asterisk): This represents any number of characters (including zero characters). For example, `*.txt` will match any file that ends with the `.txt` extension in the current directory, such as `notes.txt`, `chapter1.txt`, and `todo.txt`.&#x20;
+* `?` (question mark): This represents exactly one character. For example, `file?.txt` matches with files like `file1.txt`, `file2.txt`, but not `file12.txt`.
+{% endhint %}
+
 #### Copying files in the current directory
 
 When you make a copy of a file, you can store the copy in the same directory, or you can store it in a different directory. When you store the copies in the same directory It goes without saying that the copy must have a different name, since two files in the same directory cannot have the same name. Suppose we want to copy `einstein_quote.txt` to a new file named `einstein_quote_backup.txt` in the same directory. We'd invoke:
