@@ -6,7 +6,7 @@ One of the core services of the Linux kernel is the provision of a filesystem, w
 
 At its core, a file is a linear array of bytes of arbitrary length. Each file has a _type_ that indicates its role:
 
-* A _regular file_ contains arbitrary data, such as text, images, audio, executable programs, and so on. Essentially, just about any kind of data you can think of can be stored in a regular file.
+* A _regular file_ contains arbitrary data, such as text, images, audio, executable programs, and so on. Essentially, just about any kind of data you can think of is stored in a regular file.
 * A _directory_ is a file that holds a structured list of links. Each link maps a filename to a file, which may itself be a directory. Every directory contains at least two entries: `.` (dot), which is a link to itself, and `..` (dotdot), which is a link to its parent. The fact that directories can contain subdirectories enables a hierarchical filesystem structure, as we'll see shortly.
 
 {% hint style="info" %}
