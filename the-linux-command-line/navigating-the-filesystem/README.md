@@ -22,63 +22,44 @@ On Armlab, your working directory is displayed in the [shell prompt](../warm-up-
 
 ### **`ls` - A Sense of Surroundings**
 
-Knowing where you are in the filesystem is important, but in order to navigate, you also need to be familiar with your surroundings. The `ls` (**l**i**s**t) command can be used to list the contents of any directory in the filesystem. &#x20;
+Knowing where you are in the filesystem is important, but in order to navigate, you also need to be familiar with your surroundings. The `ls` (**l**i**s**t) command lets you list the contents of any directory in the filesystem. &#x20;
 
 #### Basic usage
 
-The most basic usage of `ls` is to list the names of the files and directories in the working directory. To do so, just type`ls`:
+The most basic usage of `ls` is to list the files and directories in the working directory. To do so, just type `ls`:
 
 ```bash
-~$ ls 
-A1	A2	CLI_playground
+~$ ls
+.      .bashrc     A1     CLI_playground
+..     .emacs	   A2     hello
 ~$ 
 ```
 
-In this example, the working directory contains three entries—`CLI_playground`, `A1`, and `A2`.
+We see seven entries in the working directory. Recall that `.` is a reference to the directory itself, and `..` is a reference to the parent directory.
 
-**Identifying File Types**
+{% hint style="info" %}
+By default, `ls` does not display [hidden](../a-tour-of-linux/filesystem.md#hidden-files) entries (i.e., those whose names begin with a `.`, such as `.bashrc`). To include hidden entries, you need to use the`-a` option (i.e., `ls -a`). The reason hidden entries were displayed in our listing is because on Armlab, '`ls`' is [aliased](../useful-command-line-features.md#aliases) to '`ls -a --color=always`'.  (Note that `--color=always` causes regular files appear in black, directories in blue, and executable files in green).
+{% endhint %}
 
-By default, `ls` doesn't tell you what type of file each entry in the directory listing is. There are two options you can use to display the file types:&#x20;
+**Displaying File Types**
 
-1.  **`-F`** The `-F` option appends a character to each entry to indicate its type. For instance:
-
-    * Directories are marked with a slash (`/`).
-    * Executable files are marked with an asterisk (`*`).
-    * Regular files appear without any appended character.
-
-    To use this option, you would enter:
-
-    ```bash
-    ls -F
-    ```
-2.  **`--color=always`** This option colors the output of `ls`, providing a visual distinction between file types. Typically:
-
-    * Directories appear in blue.
-    * Executable files appear in green.
-    * Regular files are shown in the default text color.
-
-    To enable color coding, type:
-
-    ```bash
-    ls --color=always
-    ```
-
-#### Displaying Hidden Files
-
-By default, `ls` does not display [hidden](broken-reference) entries (i.e., files and directories whose names begin with a `.`, such as `.bashrc`). To include hidden entries in the directory listing, use the `-a` option:
+In the previous listing, there was no indication what type of file each entry is. `ls` does not indicate what type of file each entry is. So, for example, In the previous listing, there's no indication of whether A1 is a file or a directory. To know what type of file each entry is, you can use the **`-F`** option, which shows regular files as usual, but directories with a / appended to them and executable files with a \*.&#x20;
 
 ```bash
-~$ ls 
-.      .bashrc     A1     CLI_playground
-..     .emacs	   A2
-~$ 
+ls -F
+```
+
+Alternatively, you can use the `--color=always` option, which colors the output. Typically, regular files appear in black, directories in blue, and executable files in green or red:&#x20;
+
+```bash
+ls --color=always
 ```
 
 {% hint style="warning" %}
-On Armlab, '`ls'` is aliased to `'ls -a --color=always'`(see [Aliases](broken-reference)). Thus, an invocation of `ls` will display hidden entries. You can avoid alias expansion by prefixing the command with a '`\'` (e.g., `\ls`). If you invoke `ls` in this manner, you'll see that hidden entries are not displayed.&#x20;
+On Armlab, '`ls`' is [aliased](../useful-command-line-features.md#aliases) to '`ls -a --color=always`'. Thus, hidden entries and colored output is the default. Note: You can avoid alias expansion by prefixing the command with a `\` (e.g., `\ls`).
 {% endhint %}
 
-#### Displaying file metadata
+#### Displaying File Metadata
 
 Each file and directory has associated metadata, such as access permissions, owner username, and last modification time. You can display the metadata using the `-l` option, which lists the directory's contents in long format:
 
@@ -161,7 +142,7 @@ cd ../../usr/bin
 <figure><img src="../../.gitbook/assets/filesystem10.17 (6).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="warning" %}
-To navigate to a directory, you must have appropriate access permissions. We'll cover this in [File and Directory Access Permissions](../file-and-directory-access-permissions.md). If you try to navigate to a directory for which you don't have appropriate access permissions, you'll get a "permission denied" error. This will be the case if, for example, we try to navigate to another user's home directory, such as`/u/bwk`:
+To navigate to a directory, you must have appropriate access permissions. We'll cover this in [File and Directory Access Permissions](../file-and-directory-access-permissions.md). If you try to navigate to a directory for which you don't have appropriate access permissions, you'll get a "permission denied" error. This will be the case if, for example, you try to navigate to another user's home directory, such as`/u/bwk`:
 
 ```bash
 ~$ cd /u/bwk

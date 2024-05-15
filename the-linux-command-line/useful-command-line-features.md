@@ -40,21 +40,26 @@ alias rm='rm -i'
 
 #### Setting an Alias
 
-To set an alias temporarily, use the `alias` command. For example, to set `ll` as an alias for `ls -lh`, you would run:
+Say you wanted to alias `ll` to `ls -lh`.  If you want the alias to only apply to the current terminal session, you'd use the alias command, like so: &#x20;
 
 ```bash
 alias ll='ls -lh'
 ```
 
-This alias lasts until the terminal session ends. To make an alias permanent, you need to add it to your Bash startup file, typically `~/.bashrc`.&#x20;
+To make the alias permanent, you need to add it to your Bash startup file, typically `~/.bashrc`.&#x20;
 
 {% hint style="warning" %}
-When you add an alias to your `.bashrc` file, it doesn't take effect until you start a new Bash session. To make the alias available immediately, you can activate it by running the following command:
+When you add an alias to your `.bashrc` file, it doesn't take effect until Bash is reloaded. You can reload Bash by starting a new Bash session or by invoking the following command:&#x20;
 
 ```bash
 source ~/.bashrc
 ```
 {% endhint %}
+
+#### Avoiding Alias Expansion
+
+\
+To avoid alias expansion, you can prefix the command with a backslash. For example, if `ls` is aliased to `ls --color=always` (as is the case on Armlab), you can run `\ls` to execute the original `ls` command without any options.
 
 ### **Wildcards**
 
