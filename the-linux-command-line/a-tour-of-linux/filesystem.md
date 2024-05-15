@@ -16,7 +16,7 @@ Other types of files include named pipes, sockets, symbolic links, and character
 {% hint style="info" %}
 **Note on terminology**
 
-I use the term "files" generally to refer to both regular files and directories. I will specify the type only when the distinction is necessary.
+Throughout this chapter, I use the term "files" to refer to both regular files and directories. I specify the type only when the distinction is necessary.
 {% endhint %}
 
 #### Filenames
