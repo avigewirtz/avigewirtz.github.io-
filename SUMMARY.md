@@ -23,7 +23,7 @@
 * [First Command-Line Session](the-linux-command-line/warm-up-commands.md)
 * [Page](the-linux-command-line/page.md)
 * [Navigating the Filesystem](the-linux-command-line/navigating-the-filesystem/README.md)
-* [Bash Shortcuts](the-linux-command-line/useful-command-line-features.md)
+* [Aliases](the-linux-command-line/useful-command-line-features.md)
 * [Getting Documentation for Commands](the-linux-command-line/getting-help.md)
 * [Redirection and Piping](the-linux-command-line/redirection-and-piping.md)
 * [Basic File and Directory Operations](the-linux-command-line/basic-file-and-directory-operations/README.md)
