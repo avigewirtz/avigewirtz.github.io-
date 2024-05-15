@@ -16,7 +16,7 @@ Bash keeps a record of the commands you've entered in a file named `.bash_histor
 An alias in Bash is similar to a preprocessor macro in C—it’s a value that Bash expands into something else. It has two primary use cases:
 
 * **Shortcut for long command:** If you frequently use a long command, you can create a shorter alias for it. For example, on Armlab, the command `gcc -Wall -Wextra -Wno-unused-parameter -ansi -pedantic` is aliased as `gcc217`. This means you only need to type `gcc217` instead of the entire string of options each time.
-* **Changing Default Behavior**: You can also use aliases to modify the default behavior of commands. A common example is `alias rm='rm -i'`, which makes the `rm` command interactive, prompting you for confirmation before deleting files.
+* **Changing Default Behavior**: You can also use aliases to modify the default behavior of commands. A common example is `alias rm='rm -i'`, which ensures that by default you're prompted for confirmation before deleting a file.&#x20;
 
 #### Viewing aliases
 
