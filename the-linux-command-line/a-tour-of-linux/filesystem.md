@@ -54,7 +54,7 @@ Each user on a Linux system has a personal directory called a _home directory_. 
 Whenever you're using the command line, the shell (e.g., Bash) is always positioned somewhere in the filesystem. This location is known as your (or, more accurately, the shell's) _working directory_. By default, your working directory will be your home directory, but you can change it using the `cd` command (covered in [Navigating the Filesystem](../navigating-the-filesystem/#cd-relocating)).
 
 {% hint style="info" %}
-Every running program on your computer--not just the shell--has a working directory. When you launch a program (e.g., `ls`, `gcc`, `emacs`, `cat`) with the shell, that program inherits the shell's working directory and uses it to resolve relative pathnames (see below).&#x20;
+Every running program on your computer--not just the shell--has a working directory. When you launch a program (e.g., `ls`, `gcc`, `emacs`, `cat`) with the shell, that program inherits the shell's working directory, using it to resolve relative pathnames (see below).&#x20;
 {% endhint %}
 
 #### Pathnames
