@@ -1,7 +1,5 @@
 # Logging Into and Out of Armlab
 
-## Logging Into Armlab
-
 Logging into Armlab is accomplished via an _SSH client,_ which is a program that uses the [SSH Protocol](ssh-protocol.md) to communicate with a remote computer.
 
 {% tabs %}
@@ -53,7 +51,7 @@ The prompt will either state armlab01 or armlab02. These computers are interconn
 {% endtab %}
 {% endtabs %}
 
-## Logging out of Armlab
+#### Logging out of Armlab
 
 To log out of Armlab, simply invoke `logout`, and your terminal session will be closed:
 

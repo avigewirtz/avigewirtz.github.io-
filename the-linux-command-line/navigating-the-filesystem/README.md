@@ -2,7 +2,7 @@
 
 To effectively navigate the Linux filesystem, you need to be familiar with three commands: `pwd`, `ls`, and `cd`. These commands are perhaps the most commonly used Bash commands, so it is worth your while to make the extra effort to master them.
 
-## **`pwd` - A Sense of Location**
+### **`pwd` - A Sense of Location**
 
 Whenever you're using the command line, bash is always positioned somewhere in the filesystem. This location is known as your (or, more accurately, Bash's) _working directory_.
 
@@ -20,7 +20,7 @@ As we'll soon see, you can change your working directory with the `cd` command.
 On Armlab, your working directory is displayed in the [shell prompt](../warm-up-commands.md#shell-prompt), between the colon (:) and dollar ($) sign. Thus, you can determine what your working directory is without invoking `pwd`.&#x20;
 {% endhint %}
 
-## **`ls` - A Sense of Surroundings**
+### **`ls` - A Sense of Surroundings**
 
 Knowing where you are in the filesystem is important, but in order to navigate, you also need to be familiar with your surroundings. The `ls` (**l**i**s**t) command can be used to list the contents of any directory in the filesystem. &#x20;
 
@@ -126,7 +126,7 @@ adm       cvs       games       local         mail        preserve       srvmagt
 $
 ```
 
-## **`cd` - Relocating**
+### **`cd` - Relocating**
 
 You can change your working directory using the `cd` (**c**hange working **d**irectory) command. Its basic syntax is:
 

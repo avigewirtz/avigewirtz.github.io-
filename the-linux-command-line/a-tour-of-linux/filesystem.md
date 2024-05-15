@@ -2,7 +2,7 @@
 
 One of the core services of the Linux kernel is the provision of a filesystem, which is an abstracted model of computer storage. Here, we discuss the basics of the Linux filesystem.&#x20;
 
-### Files
+#### Files
 
 At its core, a file is a linear array of bytes of arbitrary length. Each file has a _type_ that indicates its role:
 
@@ -19,7 +19,7 @@ Other types of files include named pipes, sockets, symbolic links, and character
 I use the term "files" generally to refer to both regular files and directories. I will specify the type only when the distinction is necessary.
 {% endhint %}
 
-### Filenames
+#### Filenames
 
 Linux places very few restrictions on filenames. Filenames may not contain the `/` or ASCII NUL character, and no two files in the same directory may have the same name. Note, however, that filenames are case-sensitive; that is, `hello.c`, `Hello.c`, and `HELLO.C` refer to three distinct files, and all may exist in the same directory.
 
@@ -33,7 +33,7 @@ Linux itself has no concept of filename extensions. It treats them as ordinary c
 
 Files whose names begin with a `.` (e.g., `.bashrc`) are _hidden_, meaning that by default, they are not displayed in directory listings—whether in a GUI or CLI environment. We will cover how to display them in our discussion of the `ls` command.
 
-### Single Directory Hierarchy
+#### Single Directory Hierarchy
 
 The Linux filesystem is organized as a single hierarchical structure, resembling an inverted tree. At the base is the _root directory_, denoted `/` (slash), from which all files and directories in the system descend. A partial snapshot of the Armlab directory hierarchy is shown in Figure 1.
 
@@ -43,13 +43,13 @@ The Linux filesystem is organized as a single hierarchical structure, resembling
 The terms _parent_ and _child_ are commonly used to describe the relationship between two adjacent directories. In the above snapshot, for example, `tal5` is a child of `u` (and `u` is the parent of `tal5`, `bwk`, and `sgewirtz`).
 {% endhint %}
 
-### Home Directory
+#### Home Directory
 
 Each user on a Linux system has a personal directory called a _home directory_. This is a designated space to store personal files and directories. On Armlab, your home directory is located in the `/u` directory and is named after your NetID. For example, if your NetID is "tal5", your home directory would be `/u/tal5` (Figure 15). By default, the contents of your home directory are not accessible to other users (with the exception of the system administrator).
 
 <figure><img src="../../.gitbook/assets/filesystem10.17 (15).png" alt=""><figcaption><p>Figure 15: Home directories</p></figcaption></figure>
 
-### Working Directory
+#### Working Directory
 
 Whenever you're using the command line, the shell (e.g., Bash) is always positioned somewhere in the filesystem. This location is known as your (or, more accurately, the shell's) _working directory_. By default, your working directory will be your home directory, but you can change it using the `cd` command (covered in [Navigating the Filesystem](../navigating-the-filesystem/#cd-relocating)).
 
@@ -57,7 +57,7 @@ Whenever you're using the command line, the shell (e.g., Bash) is always positio
 Every running program on your computer--not just the shell--has a working directory. When you launch a program (e.g., `ls`, `gcc`, `emacs`, `cat`) with the shell, that program inherits the shell's working directory and uses it to resolve relative pathnames (see below).&#x20;
 {% endhint %}
 
-### Pathnames
+#### Pathnames
 
 Every file has a _pathname_, which is a string that identifies its location in the directory hierarchy. Pathnames come in two forms:
 
