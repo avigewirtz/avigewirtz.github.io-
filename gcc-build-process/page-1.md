@@ -73,14 +73,16 @@ double calculateArea(double radius);
 
 ### Preprocessing Stage
 
-As we mentioned earlier, the preprocessor performs two main tasks: It removes comments, which are of no use to the compiler, and handles preprocessor directives, which are lines in the code that begin with a `#`. Our program makes use of three types of preprocessor directives: `#include`, `#define`, and `#ifndef`/ `#endif`. These directives control file inclusion, macro definition, and conditional compilation respectively.
+The build process begins with preprocessing. As we mentioned earlier, the preprocessor performs two main tasks: It removes comments, which are of no use to the compiler, and handles preprocessor directives, which are lines in the code that begin with a `#`. Our program makes use of three types of preprocessor directives: `#include`, `#define`, and `#ifndef`/ `#endif`. These directives control file inclusion, macro definition, and conditional compilation respectively.
 
 #### File Inclusion
 
-The `#include filename` directive instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears. For example, in `testcircle.c`, the preprocessor replaces `#include <stdio.h>` with the contents of `stdio.h`. `#included` files are typically header files, but technically any file can be included.
+The `#include` directive instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears. For example, in `testcircle.c`, the preprocessor replaces `#include <stdio.h>` with the contents of `stdio.h`. `#included` files are typically header files, but any file can be included.&#x20;
+
+Header files typically contain declarations of functions used in the code. These need to be inserted before compilation. Compilation happens on each file indifvidually,&#x20;
 
 {% hint style="info" %}
-Notice that there are two syntaxes for the `#include` directive: with angle brackets (e.g., `#include <stdio.h>`), and with double quotes (e.g., `#include "circle.h"`). The difference between these two lies in how the preprocessor searches for the specified file, with the precise details being implementation-defined. In general, files included with angle brackets are searched for in system directories only, while those included with double quotes are searched for in the working directory first and then the system directories.&#x20;
+Notice that there are two syntaxes for the `#include` directive: with angle brackets (e.g., `#include <stdio.h>`), and with double quotes (e.g., `#include "circle.h"`). The difference between these two syntaxes lies in how the preprocessor searches for the specified file, with the precise details being implementation-defined. In general, files included with angle brackets are searched for in system directories only, while those included with double quotes are searched for in the working directory first and then in system directories.&#x20;
 {% endhint %}
 
 #### Macro Definition
@@ -109,9 +111,7 @@ Since preprocessed files are text files, you can view them with a text editor, j
 
 <figure><img src="../.gitbook/assets/Frame 61.png" alt=""><figcaption></figcaption></figure>
 
-First, we see that the preprocessor removed all comments from `testcircle.c` and `circle.c`. Second, it replaced each `#include` directive with the contents of its specified header: `circle.h` for both `circle.c` and `testcircle.c`, and `stdio.h` and `stdlib.h` for `testcircle.c`. The `stdio.h` file contains declarations for the `printf` and `scanf`  functions, while `stdlib.h` contains the declaration for the `exit` function and the definition of the `EXIT_FAILURE` macro. Finally, all macros were expanded: `PI` in `circle.c` was replaced with `3.14159`, and `EXIT_FAILURE` was replaced with `1`.
-
-Each file now contains&#x20;
+First, we see that the preprocessor removed all comments from `testcircle.c` and `circle.c`. Second, it replaced each `#include` directive with the contents of its specified header: `circle.h` for both `circle.c` and `testcircle.c`, and `stdio.h` and `stdlib.h` for `testcircle.c`. `stdio.h` contains declarations for the `printf` and `scanf`  functions, while `stdlib.h` contains the declaration for the `exit` function and the definition of the `EXIT_FAILURE` macro. Finally, all macros were expanded: `PI` in `circle.c` was replaced with `3.14159`, and `EXIT_FAILURE` was replaced with `1`.
 
 {% hint style="success" %}
 You can think of the preprocessor as a "search-and-replace" tool:
@@ -123,17 +123,15 @@ You can think of the preprocessor as a "search-and-replace" tool:
 
 ### Compilation Stage&#x20;
 
-The next stage of the build process is compilation, which is where the bulk of the work takes place. In this stage, `circle.i` and `testcircle.i` are sent to the compiler, which translates them into assembly language files `circle.s` and `testcircle.s`. The specific assembly language depends on the target processor. On Armlab, which uses the ARM64 architecture, the code will be translated into ARM assembly.
+The next stage of the build process is compilation, which is where the bulk of the work takes place. In this stage, `circle.i` and `testcircle.i` are sent to the compiler, which translates them into assembly language files `circle.s` and `testcircle.s` (Figure 13). **Assembly is basically** a human-readable version of the target processor's machine language. There is typically a one-to-one mapping between an assembly language instruction and a machine language instruction.  Hence, the specific assembly language that will be generated depends on the All characteristics of machine language apply, except it's human readable. There are also assembler macros and labels. We will defer discussion of assembly language until after we cover machine language. The specific assembly language depends on the target processor. On Armlab, which uses the ARM64 architecture, the code will be translated into ARM assembly.
 
 <figure><img src="../.gitbook/assets/Frame 63.png" alt="" width="563"><figcaption></figcaption></figure>
 
-**Assembly is basically** a human-readable version of the target processor's machine language. There is typically a one-to-one mapping between an assembly language instruction and a machine language instruction. All characteristics of machine language apply, except it's human readable. There are also assembler macros and labels. We will defer discussion of assembly language until after we cover machine language.&#x20;
-
 ### Assembly Stage
 
-The next stage of the build process is assembly. In this stage, `circle.s` and `testcircle.s` are sent to the assembler, which translates them into relocatable object files `circle.o` and `testcircle.o`. These files are essentially machine-code equivalents of `circle.s` and `testcircle.s` (and, by extension, `circle.i` and `testcircle.i` as well).&#x20;
+The next stage of the build process is assembly. In this stage, `circle.s` and `testcircle.s` are sent to the assembler, which translates them into relocatable object files `circle.o` and `testcircle.o (Figure 15)`. Relocatable object files are essentially These files are essentially machine-code equivalents of `circle.s` and `testcircle.s` (and, by extension, `circle.i` and `testcircle.i` as well).&#x20;
 
-This process is shown in Figure 4.3. Relocatable object files are essentially a machine language representation of their contain Machine language is a binary language, consisting of only two symbols--0 and 1.
+Relocatable object files are essentially a machine language representation of their contain Machine language is a binary language, consisting of only two symbols--0 and 1.
 
 <figure><img src="../.gitbook/assets/Frame 62.png" alt="" width="563"><figcaption></figcaption></figure>
 
