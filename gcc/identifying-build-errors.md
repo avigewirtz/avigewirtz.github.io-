@@ -1,9 +1,12 @@
 # Exercises: Identifying Build Errors
 
-In this section we'll go over some exercises to determine, Assume C99, where function declarations are required.&#x20;
+In this section, we'll go over some exercises to sharpen your ability to spot the cause of build errors. For each code snippet, identify the stage where the build would fail: preprocessing, compilation, linking, or neither. (We are not including assembly stage errors, as such errors are only relevant if you're coding directly in assembly.)&#x20;
 
-* If error would be caused at multiple stages, mention first
-* Assume C99, where calls to undeclared functions is not allowed
+#### Exercises
+
+{% hint style="info" %}
+For the following exercises, assume C99 Standard, where calls to undeclared functions are not allowed. Also note that these questions focus solely on build errors, not runtime errors or bugs. Thus, if a code snippet will build successfully but contains a runtime issue, the answer would be "neither".
+{% endhint %}
 
 1.
 
@@ -23,11 +26,10 @@ int main() {
 }
 ```
 
-* A) Preprocessing - answer is A
+* A) Preprocessing&#x20;
 * B) Compilation
-* C) Assembly
-* D) Linking
-* E) Neither
+* C) Linking
+* D) Neither
 
 2.
 
@@ -47,14 +49,12 @@ int main() {
 
     return 0;
 }
-
 ```
 
 * A) Preprocessing
 * B) Compilation
-* C) Assembly
-* D) Linking - Correct answer is D
-* E) Neither
+* C) Linking&#x20;
+* D) Neither
 
 3.
 
@@ -65,14 +65,12 @@ int hello() {
     printf("Hello, World!\n");
     return 0;
 }
-
 ```
 
 * A) Preprocessing
 * B) Compilation
-* C) Assembly
-* D) Linking - Correct answer is D
-* E) Neither
+* C) Linking&#x20;
+* D) Neither
 
 4. gcc217 testadd.c - preprocessing error. gcc217 testadd.c add.c. still preprocessing error.&#x20;
 
@@ -98,13 +96,12 @@ int add(int a, int b){
 {% endtab %}
 {% endtabs %}
 
-* A) Preprocessing - A
+* A) Preprocessing
 * B) Compilation
-* C) Assembly
-* D) Linking&#x20;
-* E) Neither&#x20;
+* C) Linking&#x20;
+* D) Neither&#x20;
 
-5. `gcc217 testadd.c none. gcc217 testadd.c add.c. linking error. duplicate.`&#x20;
+5. `gcc217 testadd.c`&#x20;
 
 {% tabs %}
 {% tab title="testadd.c" %}
@@ -130,20 +127,111 @@ int add(int a, int b){
 
 * A) Preprocessing&#x20;
 * B) Compilation
-* C) Assembly
-* D) Linking&#x20;
-* E) Neither - E
+* C) Linking&#x20;
+* D) Neither&#x20;
 
+`gcc217 testadd.c add.c.`
 
+* A) Preprocessing&#x20;
+* B) Compilation
+* C) Linking - correct answer is D
+* D) Neither&#x20;
 
+6. `gcc217 circumfrence.c diameter.c`
 
+{% tabs %}
+{% tab title="circumfrence.c" %}
+```c
+#include <stdio.h>
+double calculateDiameter(double radius);
 
-* preprocessor maro (like PI) used in testcircle.c, where it isn't defined
+int main() {
 
+    double radius = 5.2;
+    double diameter = calculateDiameter(radius);
+    double circumfrence = PI * diameter;
+    
+    printf("%f\n",circumfrence);
+    return 0;
+}
+```
+{% endtab %}
 
+{% tab title="diameter.c" %}
+```c
+#define PI 3.14159
 
-Preprocessor errors
+double calculateDiameter(double radius) {
+    return 2 * radius;
+}
+```
+{% endtab %}
+{% endtabs %}
 
+* A) Preprocessing&#x20;
+* B) Compilation&#x20;
+* C) Linking&#x20;
+* D) Neither&#x20;
 
+7.
 
-* incorrect prototype
+```c
+#include <stdio.h>
+int processNumber(int num);
+
+int main() {
+    double result = processNumber(3.14);
+
+    printf("Result: %f\n", result);
+
+    return 0;
+}
+
+int processNumber(int num) {
+    return num;
+}
+```
+
+* A) Preprocessing&#x20;
+* B) Compilation&#x20;
+* C) Linking&#x20;
+* D) Neither&#x20;
+
+8.
+
+```c
+#include <stdio.h>
+int processNumber(double num);
+
+int main() {
+    int result = processNumber(3);
+
+    printf("Result: %f\n", result);
+
+    return 0;
+}
+
+int processNumber(int num) {
+    return num;
+}
+```
+
+* A) Preprocessing&#x20;
+* B) Compilation&#x20;
+* C) Linking&#x20;
+* D) Neither&#x20;
+
+<details>
+
+<summary>Answers</summary>
+
+1. A
+2. C
+3. C
+4. A
+5. D
+6. B
+7. D
+8. B
+
+</details>
