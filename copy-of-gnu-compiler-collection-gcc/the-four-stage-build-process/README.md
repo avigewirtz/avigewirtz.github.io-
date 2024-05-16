@@ -87,4 +87,4 @@ gcc217 -E bar.c > bar.i
 
 **`-S`:** This instructs `gcc` to halt the build process after compilation. The input can be `.c` files (e.g., `gcc217 -S foo.c bar.c`), `.i` files (e.g., `gcc217 -S foo.i bar.i`), or even a mix of both (e.g., `gcc217 -S foo.c bar.i`). `gcc` will infer which stages to perform based on the file extension--preprocessing and compilation for `.c` files, and compilation only for `.i` files. The output will automatically be saved in `.s` files.&#x20;
 
-**`-c`:** This instructs `gcc` to halt the build process after assembly. As you might expect, the input can be .i, .c, or .s files, and `gcc` will infer which stages to perform based on the file extension.  The output will automatically be saved in `.o` files.&#x20;
+**`-c`:** This instructs `gcc` to halt the build process after assembly. As you might expect, the input can be `.i`, `.c`, or `.s` files, and `gcc` will infer which stages to perform based on the file extension.  The output will automatically be saved in `.o` files.&#x20;
