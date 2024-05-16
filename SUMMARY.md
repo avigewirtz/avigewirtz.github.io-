@@ -16,12 +16,11 @@
 ## The Linux command line
 
 * [Introduction](the-linux-command-line/introduction.md)
+* [First Command-Line Session](the-linux-command-line/warm-up-commands.md)
 * [A Tour of Linux](the-linux-command-line/a-tour-of-linux/README.md)
   * [Users and Groups](the-linux-command-line/a-tour-of-linux/users-and-groups.md)
   * [The Filesystem](the-linux-command-line/a-tour-of-linux/filesystem.md)
   * [Processes](the-linux-command-line/a-tour-of-linux/processes.md)
-* [First Command-Line Session](the-linux-command-line/warm-up-commands.md)
-* [Page](the-linux-command-line/page.md)
 * [Navigating the Filesystem](the-linux-command-line/navigating-the-filesystem/README.md)
 * [Aliases](the-linux-command-line/useful-command-line-features.md)
 * [Getting Documentation for Commands](the-linux-command-line/getting-help.md)
@@ -85,8 +84,8 @@
 * [Introduction](gnu-compiler-collection-gcc/introduction.md)
 * [The Big Picture](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/README.md)
 * [Example](gcc-build-process/page-1.md)
-* [Key takeaways](gcc-build-process/key-takeaways.md)
-* [Identifying Build Errors](gcc/identifying-build-errors.md)
+* [Key Takeaways](gcc-build-process/key-takeaways.md)
+* [Exercises: Identifying Build Errors](gcc/identifying-build-errors.md)
 * [GCC Cheatsheet](gnu-compiler-collection-gcc/gcc-cheatsheet.md)
 * [Further Reading](copy-of-gnu-compiler-collection-gcc/further-reading.md)
 

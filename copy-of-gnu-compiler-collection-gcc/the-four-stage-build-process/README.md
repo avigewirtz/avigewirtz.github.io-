@@ -39,6 +39,7 @@ Notice that the first three stages of the build process (i.e., preprocessing, co
 
 * Although `gcc` (that is, lowercase `gcc`, the program we invoke on the command line) is often colloquially referred to as a compiler, it is technically a driver program, meaning it delegates the actual build tasks to other programs. These programs include `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). `gcc` invokes each of these programs with the necessary command line options. You can see the full sequence of operations by invoking `gcc` with the `-v` (verbose) option. You will gain a much greater appreciation of the role the `gcc` driver program plays in simplifying the build process.
 * In current GCC implementations, the preprocessor (`cpp`) is integrated into the compiler (`cc1`). The underlying sequence of operations is the same, but technically the first two build steps are performed by a single program (`cc1`).&#x20;
+* The build process we discussed assumes a _static linking_ model, where all linking takes place before runtime. In practice, however, a _dynamic linking_ model might be used, where linking is performed during runtime.&#x20;
 {% endhint %}
 
 #### Saving Intermediate Files
@@ -66,7 +67,7 @@ foo.i    foo.s    foo.o    foobar
 
 #### Halting the build process at any stage
 
-`gcc` provides command line options to halt the build process at any stage. Here's a breakdown of the options:
+`gcc` provides command line options to halt the build process at any of the intermediate stages. Here's a breakdown of the options:
 
 **`-E`:** This instructs `gcc` to halt the build process after the preprocessing stage. For example, if we invoke:
 
@@ -84,18 +85,6 @@ gcc217 -E foo.c > foo.i
 gcc217 -E bar.c > bar.i
 ```
 
-**`-S`:** This instructs `gcc` to stop the build process after compilation. The input can be either `.c` files:
+**`-S`:** This instructs `gcc` to halt the build process after compilation. The input can be `.c` files (e.g., `gcc217 -S foo.c bar.c`), `.i` files (e.g., `gcc217 -S foo.i bar.i`), or even a mix of both (e.g., `gcc217 -S foo.c bar.i`). `gcc` will infer which stages to perform based on the file extension--preprocessing and compilation for `.c` files, and compilation only from `.i` files. The output will automatically be saved in `.s` files.&#x20;
 
-```
-gcc217 -S foo.c bar.c 
-```
-
-or `.i` files:
-
-```
-gcc217 -S foo.i bar.i
-```
-
-In the former case, `gcc` will preprocess and compile the files and halt. In the latter case, GCC will compile the files and halt. `gcc` automatically saves the resulting assembly code in `.s` files.
-
-**`-c`:** This instructs GCC to stop the build process after assembly. The input can be either `.c`, `.i`, or `.o` files. `gcc` will determine which stages to perform based on the file extension. For example, if the file is a `.s` file, `gcc` will begin with assembly and halt. `gcc` automatically saves the output in `.o` files.
+**`-c`:** This instructs `gcc` to halt the build process after assembly. As you might expect, the input can be .i, .c, or .s files, and `gcc` will infer which stages to perform based on the file extension.  The output will automatically be saved in `.o` files.&#x20;
