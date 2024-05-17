@@ -27,8 +27,8 @@ Under the hood, quite a lot of work is involved in producing the executable `foo
 
     The output is of the preprocessor is stored in `foo.i` and `bar.i.`
 2. **Compilation stage:** The compiler translates `foo.i` and `bar.i` into assembly language files foo`.s` and `bar.s`.
-3. **Assembly stage:** The assembler translates `foo.s` and `bar.s` into relocatable object files `foo.o` and `bar.o`. These files contain machine code but are not executable, since they contain external references.
-4. **Linking stage:** The linker combines `foo.o` and `bar.o`, along with necessary `.o` files from the C Standard Library, producing the executable object file `foobar`.
+3. **Assembly stage:** The assembler translates `foo.s` and `bar.s` into _relocatable object files_ `foo.o` and `bar.o`. These files contain machine code but are not executable due to unresolved symbols and addresses.&#x20;
+4. **Linking stage:** The linker combines `foo.o` and `bar.o`, along with necessary `.o` files from the C Standard Library, producing the _executable object file_ `foobar`, which can be loaded into memory and executed.
 
 <figure><img src="../../.gitbook/assets/Frame 27 (1).png" alt=""><figcaption><p>Figure 12: Four stage build process</p></figcaption></figure>
 
