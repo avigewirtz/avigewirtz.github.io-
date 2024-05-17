@@ -4,7 +4,6 @@ Let's now analyze each of the build stages in practice. As an example, we'll use
 
 {% tabs %}
 {% tab title="testcircle.c (client)" %}
-{% code lineNumbers="true" %}
 ```c
 /*--------------------------------------------------------------------*/
 /* testcircle.c                                                       */
@@ -37,11 +36,9 @@ int main(void) {
   return 0;
 }
 ```
-{% endcode %}
 {% endtab %}
 
 {% tab title="circle.c (implementation)" %}
-{% code lineNumbers="true" %}
 ```c
 /*--------------------------------------------------------------------*/
 /* circle.c                                                           */
@@ -54,11 +51,9 @@ double calculateArea(double radius) {
     return PI * radius * radius;
 }
 ```
-{% endcode %}
 {% endtab %}
 
 {% tab title="circle.h (interface)" %}
-{% code lineNumbers="true" %}
 ```c
 #ifndef CIRCLE_H
 #define CIRCLE_H
@@ -67,7 +62,6 @@ double calculateArea(double radius);
 
 #endif
 ```
-{% endcode %}
 {% endtab %}
 {% endtabs %}
 
@@ -97,11 +91,13 @@ gcc217 -E tescircle.c > testcircle.i
 gcc217 -E circle.c > circle.i
 ```
 
-The result is two preprocessed files: `testcircle.i`, and `circle.i`. As we mentioned earlier, the preprocessor performs two main tasks: It removes comments, which are of no use to the compiler, and handles preprocessor directives (lines in the code that begin with a `#`). Our program makes use of three types of preprocessor directives: `#include`, `#define`, and `#ifndef`/ `#endif`. These directives control file inclusion, macro definition, and conditional compilation respectively.&#x20;
+The result is two preprocessed files: `testcircle.i`, and `circle.i`. As we mentioned earlier, the preprocessor performs two main tasks: It removes comments, which are of no use to the compiler, and handles preprocessor directives (lines in the code that begin with a `#`). Let's now break down how the preprocessor transoforms testcircle.c and circle.c respectievly.&#x20;
+
+Our program makes use of three types of preprocessor directives: `#include`, `#define`, and `#ifndef`/ `#endif`. These directives control file inclusion, macro definition, and conditional compilation respectively.&#x20;
 
 #### File Inclusion
 
-The `#include` directive instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears. This means that the preprocessor will paste the `circle.h` in both `circle.c` and `testcircle.c`, and `stdio.h` and `stdlib.h` in `testcircle.c`
+The `#include` directive instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears. In testcircle.c, the preprocessor inserts the contents This means that the preprocessor will paste `circle.h` right where #include "circle.h" appears in  both `circle.c` and `testcircle.c`, and `stdio.h` and `stdlib.h` in `testcircle.c`
 
 The preprocessor pastes the contents of `stdio.h`, `stdlib.h`, and `circle.h` right where these directives appear. `stdio.h` and `stdlib.h` are C library header files. `stdio.h` contains declarations of Standard I/O functions, such as `printf` and `scanf` , while `stdlib.h` contains declarations of general utility functions, such as `exit`. circle.h, of course, contains the declaration of calculateArea.
 
