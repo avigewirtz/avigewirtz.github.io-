@@ -1,6 +1,6 @@
 # Example
 
-Let's now analyze each of the build stages in practice. As an example, we'll use the multi-file C program shown below. The program is spread across three files:  `testcircle.c`, `circle.c`, and `circle.h`. `testcircle.c` contains the `main` function, the entry point of our program. It prompts the user for the radius of a circle, calculates its area by calling the `calculateArea` function (defined in `circle.c`), and prints the area on stdout. `circle.c` contains the actual implementation of `calculateArea`. Finally, `circle.h` declares the `calculateArea` function, making it easily accessible to other files.
+Let's now analyze each of the build stages in practice. As an example, we'll use the multi-file C program shown below. The program consists of three files:  `testcircle.c`, `circle.c`, and `circle.h`. `testcircle.c` contains the `main` function, the entry point of our program. It prompts the user for the radius of a circle and prints its area on stdout. `circle.c` contains the implementation of `calculateArea`, the function that calculates the circle's area. Finally, `circle.h` contains the declaration of `calculateArea`.
 
 {% tabs %}
 {% tab title="testcircle.c (client)" %}
@@ -82,21 +82,44 @@ At this point, our program is currently in the following state:
 
 testcircle.c is missing both the definitions and the declarations are four functions: printf, scanf, exit, and calculateArea. Additionally, it uses the preprocessor macro EXIT\_FAILURE, but there's no indication of what it is.&#x20;
 
-circle.c&#x20;
+{% hint style="info" %}
+**Declaration vs. definition**
 
 
-
-circle.c&#x20;
-
-
+{% endhint %}
 
 ### Preprocessing Stage
 
-The build process begins with preprocessing. As we mentioned earlier, the preprocessor performs two main tasks: It removes comments, which are of no use to the compiler, and handles preprocessor directives, which are lines in the code that begin with a `#`. Our program makes use of three types of preprocessor directives: `#include`, `#define`, and `#ifndef`/ `#endif`. These directives control file inclusion, macro definition, and conditional compilation respectively.
+The build process begins with preprocessing. We can invoke the preprocessor alone with the following commands:
+
+```bash
+gcc217 -E tescircle.c > testcircle.i
+gcc217 -E circle.c > circle.i
+```
+
+The result is two preprocessed files: `testcircle.i`, and `circle.i`. As we mentioned earlier, the preprocessor performs two main tasks: It removes comments, which are of no use to the compiler, and handles preprocessor directives (lines in the code that begin with a `#`). Our program makes use of three types of preprocessor directives: `#include`, `#define`, and `#ifndef`/ `#endif`. These directives control file inclusion, macro definition, and conditional compilation respectively.&#x20;
 
 #### File Inclusion
 
-The `#include` directive instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears. For example, in `testcircle.c`, the preprocessor replaces `#include <stdio.h>` with the contents of `stdio.h`. `#included` files are typically header files, but any file can be included.
+The `#include` directive instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears. This means that the preprocessor will paste the `circle.h` in both `circle.c` and `testcircle.c`, and `stdio.h` and `stdlib.h` in `testcircle.c`
+
+The preprocessor pastes the contents of `stdio.h`, `stdlib.h`, and `circle.h` right where these directives appear. `stdio.h` and `stdlib.h` are C library header files. `stdio.h` contains declarations of Standard I/O functions, such as `printf` and `scanf` , while `stdlib.h` contains declarations of general utility functions, such as `exit`. circle.h, of course, contains the declaration of calculateArea.
+
+Inserting these declarations enables the compiler to ensure that the types of the arguments and return value match up correctly between the function call and the function definition.
+
+
+
+
+
+
+
+
+
+&#x20;Including these declarations enables the compiler to ensure that the argument types and return value match up correctly between the function call and the function definition.&#x20;
+
+, which contain the For example, in `testcircle.c`, the preprocessor replaces `#include <stdio.h>` with the contents of `stdio.h`. #included files are typically header files, which contain the declarations of externally defined functions.&#x20;
+
+The purpose of #including header files is to&#x20;
 
 {% hint style="info" %}
 Notice that there are two syntaxes for the `#include` directive: with angle brackets (e.g., `#include <stdio.h>`), and with double quotes (e.g., `#include "circle.h"`). The difference between these two syntaxes lies in how the preprocessor searches for the specified file, with the precise details being implementation-defined. In general, files included with angle brackets are searched for in system directories only, while those included with double quotes are searched for in the working directory first and then in system directories.
@@ -128,7 +151,9 @@ You can view the preprocessed files with a text editor like emacs. Let’s exami
 
 <figure><img src="../.gitbook/assets/Frame 61.png" alt=""><figcaption></figcaption></figure>
 
-First, we see that the preprocessor removed all comments from `testcircle.c` and `circle.c`. Second, it replaced each `#include` directive with the contents of its specified header: `circle.h` for both `circle.c` and `testcircle.c`, and `stdio.h` and `stdlib.h` for `testcircle.c`. `stdio.h` contains declarations for the `printf` and `scanf` functions, while `stdlib.h` contains the declaration for the `exit` function and the definition of the `EXIT_FAILURE` macro. Finally, all macros were expanded: `PI` in `circle.c` was replaced with `3.14159`, and `EXIT_FAILURE` was replaced with `1`.
+First, we see that the preprocessor removed all comments from `testcircle.c` and `circle.c`. Second, it replaced each `#include` directive with the contents of its specified header: `circle.h` for both `circle.c` and `testcircle.c`, and `stdio.h` and `stdlib.h` for `testcircle.c`. `stdio.h` contains declarations for the `printf` and `scanf` functions, while `stdlib.h` contains the declaration of the `exit` function and the definition of the `EXIT_FAILURE` macro. Finally, all macros were expanded: `PI` in `circle.c` was replaced with `3.14159`, and `EXIT_FAILURE` was replaced with `1`.
+
+At this point,&#x20;
 
 ### Compilation Stage
 
