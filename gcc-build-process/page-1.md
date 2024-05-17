@@ -90,7 +90,7 @@ circle.c&#x20;
 
 ### Preprocessing Stage
 
-The build process begins with preprocessing. We can invoke the preprocessor with the following commands:
+The build process begins with preprocessing. We can invoke the preprocessor on our example program with the following commands:
 
 ```bash
 gcc217 -E tescircle.c > testcircle.i
