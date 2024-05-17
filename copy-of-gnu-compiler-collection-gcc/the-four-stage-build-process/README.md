@@ -65,7 +65,7 @@ bar.c    bar.i    bar.s    bar.o    foo.c
 foo.i    foo.s    foo.o    foobar   
 ```
 
-#### Halting the Build Process at Any Stage
+#### Halting the Build Process at Any Intermediate Stage
 
 `gcc` provides command line options to halt the build process at any of the intermediate stages. Here's a breakdown of the options:
 
@@ -75,7 +75,7 @@ foo.i    foo.s    foo.o    foobar
 gcc217 -E foo.c bar.c
 ```
 
-`gcc` will preprocess `foo.c` and `bar.c` and halt. By default, the preprocessed output will be printed on stdout. To save it to `.i` files, we can use the `.o` option or the `>` redirection operator:
+`gcc` will preprocess `foo.c` and `bar.c` and halt. By default, the preprocessed output will be printed on stdout. To save the output in `.i` files, we can use the `.o` option or the `>` redirection operator:
 
 ```bash
 gcc217 -E foo.c -o foo.i

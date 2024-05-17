@@ -1,6 +1,6 @@
 # Exercises: Identifying Build Errors
 
-In this section, we'll go over some exercises to sharpen your ability to spot the cause of build errors. For each code snippet, identify the stage where the build would fail: preprocessing, compilation, linking, or neither (i.e., builds successfully). (We are not including assembly stage errors, as such errors are only relevant if you're coding directly in assembly.)&#x20;
+In this section, we'll go over some exercises to sharpen your ability to spot the cause of build errors. For each code snippet, identify the stage where the build would fail: preprocessing, compilation, linking, or neither (i.e., builds successfully). (We are not including assembly stage errors, as such errors are only relevant if you're coding directly in assembly.)
 
 #### Exercises
 
@@ -26,7 +26,7 @@ int main() {
 }
 ```
 
-* A) Preprocessing&#x20;
+* A) Preprocessing
 * B) Compilation
 * C) Linking
 * D) Neither
@@ -53,7 +53,7 @@ int main() {
 
 * A) Preprocessing
 * B) Compilation
-* C) Linking&#x20;
+* C) Linking
 * D) Neither
 
 3.
@@ -69,10 +69,10 @@ int hello() {
 
 * A) Preprocessing
 * B) Compilation
-* C) Linking&#x20;
+* C) Linking
 * D) Neither
 
-4. gcc217 testadd.c - preprocessing error. gcc217 testadd.c add.c. still preprocessing error.&#x20;
+4. gcc217 testadd.c - preprocessing error. gcc217 testadd.c add.c. still preprocessing error.
 
 {% tabs %}
 {% tab title="testadd.c" %}
@@ -98,10 +98,10 @@ int add(int a, int b){
 
 * A) Preprocessing
 * B) Compilation
-* C) Linking&#x20;
-* D) Neither&#x20;
+* C) Linking
+* D) Neither
 
-5. `gcc217 testadd.c`&#x20;
+5. `gcc217 testadd.c`
 
 {% tabs %}
 {% tab title="testadd.c" %}
@@ -125,17 +125,17 @@ int add(int a, int b){
 {% endtab %}
 {% endtabs %}
 
-* A) Preprocessing&#x20;
+* A) Preprocessing
 * B) Compilation
-* C) Linking&#x20;
-* D) Neither&#x20;
+* C) Linking
+* D) Neither
 
 `gcc217 testadd.c add.c.`
 
-* A) Preprocessing&#x20;
+* A) Preprocessing
 * B) Compilation
-* C) Linking - correct answer is D
-* D) Neither&#x20;
+* C) Linking&#x20;
+* D) Neither
 
 6. `gcc217 circumfrence.c diameter.c`
 
@@ -168,10 +168,10 @@ double calculateDiameter(double radius) {
 {% endtab %}
 {% endtabs %}
 
-* A) Preprocessing&#x20;
-* B) Compilation&#x20;
-* C) Linking&#x20;
-* D) Neither&#x20;
+* A) Preprocessing
+* B) Compilation
+* C) Linking
+* D) Neither
 
 7.
 
@@ -192,10 +192,10 @@ int processNumber(int num) {
 }
 ```
 
-* A) Preprocessing&#x20;
-* B) Compilation&#x20;
-* C) Linking&#x20;
-* D) Neither&#x20;
+* A) Preprocessing
+* B) Compilation
+* C) Linking
+* D) Neither
 
 8.
 
@@ -216,10 +216,10 @@ int processNumber(int num) {
 }
 ```
 
-* A) Preprocessing&#x20;
-* B) Compilation&#x20;
-* C) Linking&#x20;
-* D) Neither&#x20;
+* A) Preprocessing
+* B) Compilation
+* C) Linking
+* D) Neither
 
 <details>
 
@@ -229,7 +229,7 @@ int processNumber(int num) {
 2. C
 3. C
 4. A
-5. D
+5. C. 5.2 = D
 6. B
 7. D
 8. B

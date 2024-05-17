@@ -103,15 +103,24 @@ The result is two preprocessed files: `testcircle.i`, and `circle.i`. As we ment
 
 The `#include` directive instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears. For example, in `testcircle.c`, the preprocessor replaces `#include <stdio.h>` with the contents of `stdio.h`.&#x20;
 
-The main purpose of file inclusion is to include header files. Header files contain declarations for functions, macros, constants, and data types that other files can use. Including these declarations enables the compiler to to ensure that the argument and return types match up between the function calls and definition.&#x20;
-
-
-
-
-
 {% hint style="info" %}
 Notice that there are two syntaxes for the `#include` directive: with angle brackets (e.g., `#include <stdio.h>`), and with double quotes (e.g., `#include "circle.h"`). The difference between these two syntaxes lies in how the preprocessor searches for the specified file, with the precise details being implementation-defined. In general, files included with angle brackets are searched for in system directories only, while those included with double quotes are searched for in the working directory first and then in system directories.
 {% endhint %}
+
+The main use case of the #include directive it insert header files, which contain, among other things, declarations of external functions and definitions of processor constants. Including these declarations in our file enables the compiler to to ensure that functions are used correctly (i.e., \<fill>). the argument and return types match up between the function calls and definition.&#x20;
+
+`testcircle.c` includes `stdio.h`, `stdlib.h`, and `circle.h` because these contain declarations of `printf/scanf`, `exit`, and `calculateArea`, respectively.&#x20;
+
+The fact that we need to include these declarations teaches us two important things about C:
+
+1. Even C library functions need to be declared before being used.&#x20;
+2.
+
+{% hint style="warning" %}
+In C99, functions must be declared before being called. In C89/C90, a function can be called without a prior declaration, but it defaults to assuming the function returns an `int` and the parameters' types must be specified explicitly.
+{% endhint %}
+
+&#x20;
 
 #### Macro Definition
 
