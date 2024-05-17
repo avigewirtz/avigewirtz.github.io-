@@ -65,7 +65,7 @@ bar.c    bar.i    bar.s    bar.o    foo.c
 foo.i    foo.s    foo.o    foobar   
 ```
 
-#### Halting the build process at any stage
+#### Halting the Build Process at Any Stage
 
 `gcc` provides command line options to halt the build process at any of the intermediate stages. Here's a breakdown of the options:
 
