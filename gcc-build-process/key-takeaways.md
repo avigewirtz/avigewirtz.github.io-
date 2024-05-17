@@ -12,10 +12,6 @@
 
 <mark style="color:blue;">**A.**</mark> Unlike some language like Java where library&#x20;
 
-<mark style="color:blue;">**Q.**</mark> Why `#include circle.h` in `circle.c` if `circle.c` doesn’t call `calculateArea`?&#x20;
-
-<mark style="color:blue;">**A.**</mark> Including the header file in its corresponding source file (`circle.c`) helps to catch inconsistencies. If there's a mismatch between the function declarations in the header and the definitions in the source, the compiler will issue an error, preventing potential bugs.
-
 <mark style="color:blue;">**Q.**</mark> Why the assembly stage? Why not go directly from C to machine code?&#x20;
 
 <mark style="color:blue;">**A.**</mark> This is just how GCC is designed. Some C compilers do bypass the assembly stage and generate machine code directly.

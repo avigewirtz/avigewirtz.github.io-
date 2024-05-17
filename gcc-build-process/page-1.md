@@ -107,20 +107,13 @@ The `#include` directive instructs the preprocessor to grab the contents of the 
 Notice that there are two syntaxes for the `#include` directive: with angle brackets (e.g., `#include <stdio.h>`), and with double quotes (e.g., `#include "circle.h"`). The difference between these two syntaxes lies in how the preprocessor searches for the specified file, with the precise details being implementation-defined. In general, files included with angle brackets are searched for in system directories only, while those included with double quotes are searched for in the working directory first and then in system directories.
 {% endhint %}
 
-The main use case of the #include directive it insert header files, which contain, among other things, declarations of external functions and definitions of processor constants. Including these declarations in our file enables the compiler to to ensure that functions are used correctly (i.e., \<fill>). the argument and return types match up between the function calls and definition.&#x20;
+The main use case of the `#include` directive is to insert header files, which contain, among other things, declarations of external functions. `testcircle.c` includes `stdio.h`, `stdlib.h`, and `circle.h`, which contain declarations of `printf/scanf`, `exit`, and `calculateArea`, respectively. Including these declarations in our file enables the compiler to ensure that the functions are used correctly (i.e., the argument and return types match up between the function calls and definitions).
 
-`testcircle.c` includes `stdio.h`, `stdlib.h`, and `circle.h` because these contain declarations of `printf/scanf`, `exit`, and `calculateArea`, respectively.&#x20;
+{% hint style="info" %}
+**Why is `circle.h` #included in `circle.c`?**
 
-The fact that we need to include these declarations teaches us two important things about C:
-
-1. Even C library functions need to be declared before being used.&#x20;
-2.
-
-{% hint style="warning" %}
-In C99, functions must be declared before being called. In C89/C90, a function can be called without a prior declaration, but it defaults to assuming the function returns an `int` and the parameters' types must be specified explicitly.
+Although technically not necessary, including `circle.h` in `circle.c` ensures that the declaration of `calculateArea` in `circle.h` matches the definition in `circle.c`. If there's a discrepancy between the two, this will cause a compilation error, letting us know that there's a bug in our program.
 {% endhint %}
-
-&#x20;
 
 #### Macro Definition
 
