@@ -5,7 +5,7 @@ GCC build C programs in four sequential stages: preprocessing, compilation, asse
 {% hint style="info" %}
 **Note on Terminology**
 
-In this chapter, we use the term "build" (as in "building a C program") to refer to the entire process (i.e., all four stages) of transforming a C program from source code to executable machine code. We use the term "compilation" to refer specifically to step 2 of the build process.
+In this chapter, I use the term "build" (as in "building a C program") to refer to the entire process (i.e., all four stages) of transforming a C program from source code to executable machine code. I use the term "compilation" to refer specifically to step 2 of the build process.
 {% endhint %}
 
 {% hint style="info" %}

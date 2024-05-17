@@ -73,12 +73,12 @@ double calculateArea(double radius);
 
 ### The Starting Point
 
-At this point, our program is currently in the following state:
+Our program is currently in the following state:
 
 * C language. Can roughly divide into three categories:
-  * Raw C (for compiler)
-  * Preprocessing language (for preprocessor)
   * Comments (for humans)
+  * Preprocessing language (for preprocessor)
+  * Raw C code (for compiler)
 
 testcircle.c is missing both the definitions and the declarations are four functions: printf, scanf, exit, and calculateArea. Additionally, it uses the preprocessor macro EXIT\_FAILURE, but there's no indication of what it is.&#x20;
 
@@ -90,7 +90,7 @@ circle.c&#x20;
 
 ### Preprocessing Stage
 
-The build process begins with preprocessing. We can invoke the preprocessor alone with the following commands:
+The build process begins with preprocessing. We can invoke the preprocessor with the following commands:
 
 ```bash
 gcc217 -E tescircle.c > testcircle.i
@@ -103,7 +103,9 @@ The result is two preprocessed files: `testcircle.i`, and `circle.i`. As we ment
 
 The `#include` directive instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears. For example, in `testcircle.c`, the preprocessor replaces `#include <stdio.h>` with the contents of `stdio.h`.&#x20;
 
-The main purpose of file inclusion is to include header files for all undefined functions. We could simply paste their prototype in our file, but header files make it much more convinient.&#x20;
+The main purpose of file inclusion is to include header files. Header files contain declarations for functions, macros, constants, and data types that other files can use. Including these declarations enables the compiler to to ensure that the argument and return types match up between the function calls and definition.&#x20;
+
+
 
 
 
