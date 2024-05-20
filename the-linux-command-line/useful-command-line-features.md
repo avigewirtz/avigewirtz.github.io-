@@ -1,13 +1,6 @@
-# Bash Shortcuts
+# Aliases
 
-An alias in Bash is similar to a preprocessor macro in C—it’s a value that Bash expands into something else. It has two primary use cases:
-
-* **Shortcut for long command:** If you frequently use a long command, you can create a shorter alias for it. For example, on Armlab, the command `gcc -Wall -Wextra -Wno-unused-parameter -ansi -pedantic` is aliased as `gcc217`. This means you only need to type `gcc217` instead of the entire string of options each time.
-* **Changing Default Behavior**: You can also use aliases to modify the default behavior of commands. A common example is `alias rm='rm -i'`, which ensures that by default you're prompted for confirmation before deleting a file.&#x20;
-
-#### Viewing your Aliases
-
-You can view the aliases you have set by invoking the `alias` command, which will print all your aliases on stdout:
+An alias in Bash is similar to a preprocessor macro in C—it’s a value that Bash expands into something else. You can view the aliases you have set by invoking the `alias` command, which will print all your aliases on stdout:
 
 ```bash
 ~> alias
@@ -24,6 +17,13 @@ alias mysql='mysql -u root -p'
 alias rm='rm -i'
 ~> 
 ```
+
+Here, we see that, for example, cp is aliased to cp -i. This means that we invoke cp, we're really invoking cp -i.&#x20;
+
+Aliases have two primary use cases:
+
+* **Shortcut for long command:** If you frequently use a long command, you can create a shorter alias for it. For example, on Armlab, the command `gcc -Wall -Wextra -Wno-unused-parameter -ansi -pedantic` is aliased as `gcc217`. This means you only need to type `gcc217` instead of the entire string of options each time.
+* **Changing Default Behavior**: You can also use aliases to modify the default behavior of commands. For example, the command rm deletes a files without prompting for confirmastion.  A common example is `alias rm='rm -i'`, which ensures that by default you're prompted for confirmation before deleting a file.&#x20;
 
 #### Setting Up an Alias
 

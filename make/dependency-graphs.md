@@ -1,6 +1,6 @@
 # Dependency Graphs
 
-A program's dependencies can be formally described with what is known as a _dependency graph,_ an example of which is shown in Figure 12.
+A program's dependencies can be formally described with what is known as a _dependency graph,_ such as the one shown in Figure 12.
 
 <figure><img src="../.gitbook/assets/Group 138 (2).png" alt=""><figcaption></figcaption></figure>
 
