@@ -1,11 +1,11 @@
-# Exercises: Identifying Build Errors
+# Identifying Build Errors
 
-In this section, we'll go over some exercises to sharpen your ability to spot the cause of build errors. For each code snippet, identify the stage where the build would fail: preprocessing, compilation, linking, or neither (i.e., builds successfully). (We are not including assembly stage errors, as such errors are only relevant if you're coding directly in assembly.)
+In this section, we'll go over some exercises to sharpen your ability to spot the cause of build errors. For each code snippet, identify the stage where the build would fail: preprocessing, compilation, linking, or neither (i.e., builds successfully). We are not including assembly stage errors, as such errors are only relevant if you're coding directly in assembly. Also note that these questions focus solely on build errors, not runtime errors or bugs. Thus, if a code snippet will build successfully but contains a runtime issue, the answer would be "neither".
 
 #### Exercises
 
 {% hint style="info" %}
-For the following exercises, assume C99 Standard, where calls to undeclared functions are not allowed. Also note that these questions focus solely on build errors, not runtime errors or bugs. Thus, if a code snippet will build successfully but contains a runtime issue, the answer would be "neither".
+For the following exercises, assume C99 Standard, where calls to undeclared functions are not allowed.&#x20;
 {% endhint %}
 
 1.

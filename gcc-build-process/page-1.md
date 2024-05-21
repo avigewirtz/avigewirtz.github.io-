@@ -141,7 +141,7 @@ First, we see that the preprocessor removed all comments from `testcircle.c` and
 
 ### Compilation Stage
 
-The next stage of the build process is compilation, which is where the bulk of the work takes place. In this stage, the compiler translates the preprocessed source code into assembly language. If there are any syntax errors We invoke the compiler on `circle.i` and `testcircle.i` with following command:
+The next stage of the build process is compilation, which is where the bulk of the work takes place. The job of the compiler is to translate the preprocessed source code into assembly language. If there are any syntax errors in the C code, the compiler will report an error and terminate. We compile `testcircle.i` and `circle.i` with following command:
 
 ```
 gcc217 -S testcircle.i circle.i
@@ -168,38 +168,30 @@ Detailed coverage of assembly language is beyond the scope of this chapter. ARM6
 
 ### Assembly Stage
 
-The next stage of the build process is assembly. In this stage, `circle.s` and `testcircle.s` are sent to the assembler, which translates them into relocatable object files `circle.o` and `testcircle.o` (Figure 15). These relocatable object files are essentially machine-code equivalents of `circle.s` and `testcircle.s` (and, by extension, of `circle.i` and `testcircle.i`). However, they also contain metadata for the linker.
+The purpose of the assembler is to convert assembly language into machine code and generate a relocatable object file. When there are calls to external functions in the assembly source file, the assembler leaves the addresses of the external functions undefined, to be filled in later by the linker. When the compiler encounters a symbol (either a variable or function name) that is not defined in the current module, it assumes that it is defined in some other module, generates a linker symbol table entry, and leaves it for the linker to handle.
+
+Object files are merely collections of blocks of bytes. Some of these blocks contain program code, others contain program data, and others contain data structures that guide the linker.&#x20;
+
+{% hint style="info" %}
+**Object File Formats**
+
+Object files are organized according to specific object file formats, which vary from system to system. The first Unix systems from Bell Labs used the a.out format. (To this day, executables are still
+
+referred to as a.out files.) Windows uses the Portable Executable (PE) format. Mac OS-X uses the Mach-O format. Modern x86-64
+
+Linux and Unix systems use Executable and Linkable Format (ELF).
+{% endhint %}
 
 <figure><img src="../.gitbook/assets/Frame 62.png" alt="" width="563"><figcaption></figcaption></figure>
 
-When an assembler generates an object module, it does not know where the code and data will ultimately be stored in memory. Nor does it know the locations of any externally defined functions or global variables that are referenced by the module. So whenever the assembler encounters a reference to an object whose ultimate location is unknown, it generates a relocation entry that tells the linker how to modify the reference when it merges the object file into an executable.
-
-The purpose of the assembler is to convert assembly language into machine code and generate an object file. When there are calls to external functions in the assembly source file, the assembler leaves the addresses of the external functions undefined, to be filled in later by the linker
-
-Contains binary code and data in a form that can be combined with other relocatable object files at compile time to create an executable object file.
-
-Object files are merely collections of blocks of bytes. Some of these blocks contain program code, others contain program data, and others contain data structures that guide the linker and loader.
-
 ### Linking Stage
 
-The linker take as input a collection of relocatable object files and generate as output a fully linked executable object file that can be loaded and run. It's two main tasks are symbol resolution and relocation. \
+The final stage of the build process is linking. The linker take as input a collection of relocatable object files and generate as output a fully linked executable object file that can be loaded and run.&#x20;
 
-
-The input relocatable object files consist of various code and data sections, where each section is a contiguous sequence of bytes. Instructions are in one section, initialized global variables are in another section, and uninitialized variables are in yet another section.
-
-Step 1. Symbol resolution. Object files define and reference symbols, where each symbol corresponds to a function, a global variable, or a static variable (i.e., any C variable declared with the static attribute). The purpose of symbol resolution is
-
-to associate each symbol reference with exactly one symbol definition.\
-Step 2. Relocation. Compilers and assemblers generate code and data sections that start at address 0. The linker relocates these sections by associating a memory location with each symbol definition, and then modifying all of the references to those symbols so that they point to this memory location. The linker blindly performs these relocations using detailed instructions, generated by the assembler, called relocation entries.
-
-Executable object file. Contains binary code and data in a form that can be copied directly into memory and executed.
-
-<figure><img src="../.gitbook/assets/Frame 60 (1).png" alt=""><figcaption></figcaption></figure>
-
-{% hint style="info" %}
-Understanding the role of the linker
-{% endhint %}
+The two main tasks of linkers are symbol resolution, where each global symbol in an object file is bound to a unique definition, and relocation, where the ultimate memory address for each symbol is determined and where references to those objects are modified. If the linker is unable to find a definition for the referenced symbol in any of its input modules, it prints an error message and terminates.  Multiple object files can define the same symbol, and the rules that linkers use for silently resolving these multiple definitions can introduce subtle bugs in user programs.
 
 {% hint style="info" %}
 should mention starter code role of linker as aside. entry symbol \_start
 {% endhint %}
+
+<figure><img src="../.gitbook/assets/Frame 60 (1).png" alt=""><figcaption></figcaption></figure>

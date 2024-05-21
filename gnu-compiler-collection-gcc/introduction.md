@@ -1,11 +1,11 @@
 # Introduction
 
-GCC build C programs in four sequential stages: preprocessing, compilation, assembly, and linking. The goal of this chapter is to provide an overview of this process. It is not intended to be a general-purpose GCC tutorial. For further resources on GCC, please refer to the [further reading](../copy-of-gnu-compiler-collection-gcc/further-reading.md) section at the end of this chapter.
+GCC build C programs in four sequential stages: preprocessing, compilation, assembly, and linking. The goal of this chapter is to provide an overview of this process. It is not intended to be a general-purpose GCC tutorial. For more resources on GCC, please refer to the [further reading](../copy-of-gnu-compiler-collection-gcc/further-reading.md) section at the end of this chapter.
 
 {% hint style="info" %}
 **Note on Terminology**
 
-In this chapter, I use the term "build" (as in "building a C program") to refer to the entire process (i.e., all four stages) of transforming a C program from source code to executable machine code. I use the term "compilation" to refer specifically to step 2 of the build process.
+In this chapter, I use the term "build" (as in "building a C program") to refer to the entire process (i.e., all four stages) of transforming a C program from source code to executable. I use the term "compilation" to refer specifically to step 2 of the build process.
 {% endhint %}
 
 {% hint style="info" %}
