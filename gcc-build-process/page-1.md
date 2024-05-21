@@ -1,6 +1,6 @@
 # Example
 
-Let's now analyze each of the build stages in practice. As an example, we'll use the multi-file C program shown below. The program consists of three files: `testcircle.c`, `circle.c`, and `circle.h`. `testcircle.c` contains the `main` function, the entry point of our program. It prompts the user for the radius of a circle, calls the calculateArea function, and prints its area on stdout. `circle.c` contains the implementation of `calculateArea`, and `circle.h` contains its declaration.
+Let's now analyze each of the build stages in practice. As an example, we'll use the multi-file C program shown below. The program consists of three files: `testcircle.c`, `circle.c`, and `circle.h`. `testcircle.c` contains the `main` function, the entry point of our program. It prompts the user for the radius of a circle, calls the calculateArea function, and prints its area on stdout. `circle.c` and `circle.h` contain the definition (i.e., implementation) and declaration of calculateArea, respectively.
 
 {% tabs %}
 {% tab title="testcircle.c (client)" %}
