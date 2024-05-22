@@ -1,6 +1,12 @@
 # Example
 
-Let's now analyze each of the build stages in practice. As an example, we'll use the multi-file C program shown below. The program consists of three files: `testcircle.c`, `circle.c`, and `circle.h`. `testcircle.c` contains the `main` function, the entry point of our program. It prompts the user for the radius of a circle, calls the `calculateArea` function, and prints its area on stdout. `circle.c` and `circle.h` contain the definition (i.e., implementation) and declaration of `calculateArea`, respectively.
+Let's now analyze each of the build stages in practice. As an example, we'll use the multi-file C program shown below. The program consists of three files: `testcircle.c`, `circle.c`, and `circle.h`. `testcircle.c` contains the `main` function, the entry point of our program. It prompts the user for the radius of a circle, calls the `calculateArea` function, and prints its area on stdout. `circle.c` and `circle.h` contain the definition and declaration of `calculateArea`, respectively.
+
+{% hint style="info" %}
+**Definition vs. Declaration**
+
+
+{% endhint %}
 
 {% tabs %}
 {% tab title="testcircle.c (client)" %}
@@ -73,33 +79,33 @@ double calculateArea(double radius);
 
 ### The Starting Point
 
-Our program is currently in the following state:
 
-* C source code. Can roughly divide it into three categories of source code:
-  * Comments (for humans)
-  * Preprocessor directives (for preprocessor)
-  * Raw C code (for compiler)
 
 ### Preprocessing Stage
 
-The build process begins with preprocessing. We invoke the preprocessor on `testcircle.c` and `circle.c` with the following commands:
+The build process begins with preprocessing. As we mentioned earlier, the preprocessor performs two main tasks: It removes comments, which are of no use to the compiler, and handles preprocessor directives (lines in the code that begin with a `#`). We invoke the preprocessor on `testcircle.c` and `circle.c` with the following commands:
 
 ```bash
 gcc217 -E tescircle.c > testcircle.i
 gcc217 -E circle.c > circle.i
 ```
 
-The result is two preprocessed files: `testcircle.i`, and `circle.i`. As we mentioned earlier, the preprocessor performs two main tasks: It removes comments, which are of no use to the compiler, and handles preprocessor directives (lines in the code that begin with a `#`). Our program makes use of three types of preprocessor directives: `#include`, `#define`, and `#ifndef`/ `#endif`. These directives control file inclusion, macro definition, and conditional compilation respectively.
+The result is two preprocessed files: `testcircle.i`, and `circle.i`. Each of these files comprises a _translation unit_.
+
+#### Preprocessor Directives
+
+Our program makes use of three types of preprocessor directives: `#include`, `#define`, and `#ifndef`/ `#endif`. These directives control file inclusion, macro definition, and conditional compilation respectively.
 
 #### File Inclusion
 
-The `#include` directive instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears. For example, in `testcircle.c`, the preprocessor replaces `#include <stdio.h>` with the contents of `stdio.h`.
+The `#include` directive instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears. #included files are typically header files, but technically any file can be #included. `testcircle.c` #includes three header files: `stdio.h`, `stdlib.h`, and `circle.h`. These contain the declarations of the four externally defined functions called in testcircle.c: `printf`/`scanf` (`stdio.h`), `exit` (`stdlib.h`), and `calculateArea` (`circle.h`). Inserting the declarations allows the compiler to type check. The fact that we need to insert these declarations reflect two features of the C compiler:
+
+1. Declarations of library files are not part of C compiler
+2. compiler only looks at a single file.&#x20;
 
 {% hint style="info" %}
-Notice that there are two syntaxes for the `#include` directive: with angle brackets (e.g., `#include <stdio.h>`), and with double quotes (e.g., `#include "circle.h"`). The difference between these two syntaxes lies in how the preprocessor searches for the specified file, with the precise details being implementation-defined. In general, files included with angle brackets are searched for in system directories only, while those included with double quotes are searched for in the working directory first and then in system directories.
+Notice that there are two syntaxes for the `#include` directive: with angle brackets (e.g., `#include <stdio.h>`), and with double quotes (e.g., `#include "circle.h"`). The difference between these two syntaxes lies in how the preprocessor searches for the specified file, with the precise details being implementation-defined. In general, files #included with angle brackets are searched for in system directories only, while those #included with double quotes are searched for in the working directory first and then in system directories.
 {% endhint %}
-
-The main use case of the `#include` directive is to insert header files, which contain, among other things, declarations of externally defined functions. `testcircle.c` includes three header files: `stdio.h`, `stdlib.h`, and `circle.h`. These contain the declarations of `printf/scanf`, `exit`, and `calculateArea`, respectively. Including these declarations enables the compiler to ensure that the functions are called correctly.
 
 {% hint style="info" %}
 **Why is `circle.h` #included in `circle.c`?**
@@ -121,14 +127,6 @@ The `#ifndef` / `#else` directives, which we use in `intmath.h`, are part of a s
 * `#define CIRCLE_H`: This defines `CIRCLE_H`. Notice that it doesn't give `CIRCLE_H` any specific value. This is perfectly valid. The preprocessor will simply note that `CIRCLE_H` is defined.
 * `#endif`: This line ends the conditional block started by `#ifndef`.
 
-{% hint style="success" %}
-You can think of the preprocessor as a "search-and-replace" tool:
-
-* It replaces each comment with a whitespace character.
-* It replaces each `#include` directive with the contents of the specified file.
-* It replaces each macro with its value.
-{% endhint %}
-
 #### Examining `testcircle.i` and `circle.i`
 
 You can view the preprocessed files with a text editor like emacs. Let’s examine `testcircle.i` and `circle.i` to see what precisely was done by the preprocessor. A side-by-side comparison is shown in Figure 12.
@@ -136,6 +134,14 @@ You can view the preprocessed files with a text editor like emacs. Let’s exami
 <figure><img src="../.gitbook/assets/Frame 61.png" alt=""><figcaption></figcaption></figure>
 
 First, we see that the preprocessor removed all comments from `testcircle.c` and `circle.c`. Second, it replaced each `#include` directive with the contents of its specified header: `circle.h` for both `circle.c` and `testcircle.c`, and `stdio.h` and `stdlib.h` for `testcircle.c`. `stdio.h` contains declarations for the `printf` and `scanf` functions, while `stdlib.h` contains the declaration for the `exit` function and the definition of the `EXIT_FAILURE` macro. Finally, all macros were expanded: `PI` in `circle.c` was replaced with `3.14159`, and `EXIT_FAILURE` was replaced with `1`.
+
+{% hint style="success" %}
+You can think of the preprocessor as a "search-and-replace" tool:
+
+* It replaces each comment with a whitespace character.
+* It replaces each `#include` directive with the contents of the specified file.
+* It replaces each macro with its value.
+{% endhint %}
 
 ### Compilation Stage
 
