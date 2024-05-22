@@ -83,6 +83,7 @@
 
 * [Introduction](gnu-compiler-collection-gcc/introduction.md)
 * [The Big Picture](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/README.md)
+* [The compiler and assembler](gcc-build-process/the-compiler-and-assembler.md)
 * [Example](gcc-build-process/page-1.md)
 * [Key Takeaways](gcc-build-process/key-takeaways.md)
 * [Identifying Build Errors](gcc/identifying-build-errors.md)

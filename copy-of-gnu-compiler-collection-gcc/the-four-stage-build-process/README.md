@@ -18,9 +18,9 @@ To run `foobar`, we type its pathname on the command line:
 
 #### Under the Hood
 
-Under the hood, quite a lot of work is involved in producing the executable `foobar`. It involves four sequential stages: preprocessing, compilation, assembly, and linking. An overview of the process is shown in Figure 4.2. Here's a bird's eye view of what happens at each stage:
+Behind the scenes, quite a lot of work is involved in producing the executable `foobar`. It involves four sequential stages: preprocessing, compilation, assembly, and linking. An overview of the process is shown in Figure 4.2. Here's a bird's eye view of what happens at each stage:
 
-1.  **Preprocessing stage:** The preprocessor modifies the source code in `foo.c` and `bar.c` by performing two main tasks:
+1.  **Preprocessing stage:** The preprocessor modifies the source code in `foo.c` and `bar.c` by performing two key tasks:
 
     * **Removing comments.** Comments serve to help human readers understand the code, but they are of no use to the compiler. Hence, they can be discarded before compilation begins.
     * **Handling preprocessor directives.** These are lines in the code that begin with a `#` (hash). Unlike traditional C code, they are meant to be interpreted by the preprocessor, not the compiler. An example of a preprocessor directive is `#include` (e.g., `#include <stdio.h>`), which instructs the preprocessor to insert the contents of the specified file in the location where the `#include` directive appears.
@@ -37,9 +37,9 @@ Notice that the first three stages of the build process (i.e., preprocessing, co
 {% hint style="info" %}
 **Insight**
 
-* Although `gcc` (that is, lowercase `gcc`, the program we invoke on the command line) is often colloquially referred to as a compiler, it is technically a driver program, meaning it delegates the actual build tasks to other programs. These programs include `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). `gcc` invokes each of these programs with the necessary command line options. You can see the full sequence of operations by invoking `gcc` with the `-v` (verbose) option. You will gain a much greater appreciation of the role the `gcc` driver program plays in simplifying the build process.
+* Although `gcc` (that is, lowercase `gcc`, the program we invoke on the command line) is often colloquially referred to as a compiler, it is technically a driver program, meaning it delegates the actual build tasks to other programs. These programs include `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). `gcc` invokes each of these programs with the necessary command line arguments. You can see the full sequence of operations by invoking `gcc` with the `-v` (verbose) option. You will gain a much greater appreciation of the role the `gcc` driver program plays in simplifying the build process.
 * In current GCC implementations, the preprocessor (`cpp`) is integrated into the compiler (`cc1`). The underlying sequence of operations is the same, but technically the first two build steps are performed by a single program (`cc1`).
-* Our build model assumes _static linking_, where all linking takes place before runtime. In practice, however, _dynamic linking_ may be used, where linking is performed during execution of the program.
+* Our build model assumes _static linking_, where all linking takes place before runtime. In practice, however, _dynamic linking_ might be used, where linking is performed during execution of the program.
 {% endhint %}
 
 #### Saving Intermediate Files

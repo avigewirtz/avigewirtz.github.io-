@@ -1,15 +1,11 @@
 # Example
 
-Let's now analyze each of the build stages in practice. As an example, we'll use the multi-file C program shown below. The program consists of three files: `testcircle.c`, `circle.c`, and `circle.h`. `testcircle.c` contains the `main` function, the entry point of our program. It prompts the user for the radius of a circle, calls the `calculateArea` function, and prints its area on stdout. `circle.c` and `circle.h` contain the definition and declaration of `calculateArea`, respectively.
+Let's now analyze each of the build stages in practice.&#x20;
 
-{% hint style="info" %}
-**Definition vs. Declaration**
-
-
-{% endhint %}
+As an example, we'll use the multi-file C program shown below.&#x20;
 
 {% tabs %}
-{% tab title="testcircle.c (client)" %}
+{% tab title="testcircle.c" %}
 {% code lineNumbers="true" %}
 ```c
 /*--------------------------------------------------------------------*/
@@ -46,7 +42,7 @@ int main(void) {
 {% endcode %}
 {% endtab %}
 
-{% tab title="circle.c (implementation)" %}
+{% tab title="circle.c" %}
 {% code lineNumbers="true" %}
 ```c
 /*--------------------------------------------------------------------*/
@@ -63,7 +59,7 @@ double calculateArea(double radius) {
 {% endcode %}
 {% endtab %}
 
-{% tab title="circle.h (interface)" %}
+{% tab title="circle.h" %}
 {% code lineNumbers="true" %}
 ```c
 #ifndef CIRCLE_H
@@ -78,6 +74,15 @@ double calculateArea(double radius);
 {% endtabs %}
 
 ### The Starting Point
+
+Program consists of two .c files and three .h files.&#x20;
+
+* `testcircle.c` contains the `main` function, the entry point of our program. It prompts the user for the radius of a circle, calls the `calculateArea` function, and prints its area on stdout.&#x20;
+* `circle.c` contain the definition of `calculateArea`.
+* `circle.h` contain the declaration of `calculateArea`.
+* `circle.h` contain the declaration of `calculateArea`.
+
+.h files contain the declarations of all&#x20;
 
 Our program is currently in the following state:
 
@@ -103,10 +108,7 @@ Our program makes use of three types of preprocessor directives: `#include`, `#d
 
 #### File Inclusion
 
-The `#include` directive instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears. #included files are typically header files, but technically any file can be #included. `testcircle.c` #includes three header files: `stdio.h`, `stdlib.h`, and `circle.h`. These contain the declarations of the four externally defined functions called in testcircle.c: `printf`/`scanf` (`stdio.h`), `exit` (`stdlib.h`), and `calculateArea` (`circle.h`). Inserting the declarations allows the compiler to type check. The fact that we need to insert these declarations reflect two features of the C compiler:
-
-1. Declarations of library files are not part of C compiler
-2. compiler only looks at a single file.&#x20;
+The `#include` directive instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears. #included files are typically header files, but technically any file can be #included. `testcircle.c` #includes three header files: `stdio.h`, `stdlib.h`, and `circle.h`. These contain the declarations of the four externally defined functions called in `testcircle.c`: `printf`/`scanf` (`stdio.h`), `exit` (`stdlib.h`), and `calculateArea` (`circle.h`). Inserting the declarations allows the compiler to type check.&#x20;
 
 {% hint style="info" %}
 Notice that there are two syntaxes for the `#include` directive: with angle brackets (e.g., `#include <stdio.h>`), and with double quotes (e.g., `#include "circle.h"`). The difference between these two syntaxes lies in how the preprocessor searches for the specified file, with the precise details being implementation-defined. In general, files #included with angle brackets are searched for in system directories only, while those #included with double quotes are searched for in the working directory first and then in system directories.
@@ -115,7 +117,7 @@ Notice that there are two syntaxes for the `#include` directive: with angle brac
 {% hint style="info" %}
 **Why is `circle.h` #included in `circle.c`?**
 
-Although technically not necessary, including `circle.h` in `circle.c` ensures that the declaration of `calculateArea` in `circle.h` matches the definition in `circle.c`. If there's a discrepancy between the two, the compiler will report an error.
+Although technically not necessary, including `circle.h` in `circle.c` ensures that the declaration of `calculateArea` in `circle.h` matches the declaration (in the definition) in `circle.c`. If there's a discrepancy between the two, the compiler will report an error.
 {% endhint %}
 
 #### Macro Definition
@@ -139,6 +141,8 @@ You can view the preprocessed files with a text editor like emacs. Let’s exami
 <figure><img src="../.gitbook/assets/Frame 61.png" alt=""><figcaption></figcaption></figure>
 
 First, we see that the preprocessor removed all comments from `testcircle.c` and `circle.c`. Second, it replaced each `#include` directive with the contents of its specified header: `circle.h` for both `circle.c` and `testcircle.c`, and `stdio.h` and `stdlib.h` for `testcircle.c`. `stdio.h` contains declarations for the `printf` and `scanf` functions, while `stdlib.h` contains the declaration for the `exit` function and the definition of the `EXIT_FAILURE` macro. Finally, all macros were expanded: `PI` in `circle.c` was replaced with `3.14159`, and `EXIT_FAILURE` was replaced with `1`.
+
+At this point, our program has been consolodated into two source files. Each contains raw C code. Each oif the externallt defined functions has&#x20;
 
 {% hint style="success" %}
 You can think of the preprocessor as a "search-and-replace" tool:
