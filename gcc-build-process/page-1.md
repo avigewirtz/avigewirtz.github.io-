@@ -150,7 +150,7 @@ You can think of the preprocessor as a "search-and-replace" tool:
 
 ### Compilation Stage
 
-The next stage of the build process is compilation, which is where the bulk of the work takes place. The job of the compiler is to take a preprocessed source file and translate it into an assembly language file. If there are any syntax errors in the C code, the compiler will report an error and terminate. We compile `testcircle.i` and `circle.i` with following command:
+Compilation is where the bulk of the work takes place. Here, the preprocessed source code is translated into assembly language. If there are any syntax errors in the C code, the compiler will report an error and terminate. We compile `testcircle.i` and `circle.i` with following command:
 
 ```
 gcc217 -S testcircle.i circle.i
