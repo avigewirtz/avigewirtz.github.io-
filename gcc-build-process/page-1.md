@@ -79,7 +79,12 @@ double calculateArea(double radius);
 
 ### The Starting Point
 
+Our program is currently in the following state:
 
+* C source code. Can roughly divide it into three categories of source code:
+  * Comments (for humans)
+  * Preprocessor directives (for preprocessor)
+  * Raw C code (for compiler)
 
 ### Preprocessing Stage
 
