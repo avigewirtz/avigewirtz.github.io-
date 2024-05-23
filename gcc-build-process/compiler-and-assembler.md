@@ -1,32 +1,24 @@
 # Compiler and Assembler
 
+### 1. Introduction
+
 Often, the easiest way to understand the role of software is to explore what development was like before it existed. Back in the day, there was no preprocessor, compiler, assembler, or linker. All coding was done in machine code--a binary language comprised of 0s and 1s. We'll build our way up.&#x20;
 
-### Machine Language
+### 2. Machine Language
 
-* Each CPU has a set of instructions it supports. These instructions are known as machine code. There is no hard set rule for what machine code is, since each manufacturer designs their own machine code for their device. In general, however, the following two characteristics of machine code are universal to all modern computers:
-  * Binary language consisting of 1s and 0s.&#x20;
-  * Very primitive instructions, rarely more complex than adding two numbers and transferring data from one memory location to another&#x20;
+Each CPU (Central Processing Unit) has a unique set of instructions it can execute, known as machine code. There's no universal standard for machine code, as each manufacturer designs its own for their specific device. However, two fundamental characteristics of machine code are consistent across all modern computers:
 
-A processor’s control unit has a format it expects each such instruction to be in: typically a instruction will be a set length, say 16 or 32 or 64 bits and the first few bits will specify what kind of instruction it is. These first few bits, known as the **opcode** (operation code), say what general task is to be done - something like “store a number” or “add two numbers”. The rest of the instruction will contain **operands**, the extra information needed to understand the instruction - things like where to store the number or which two numbers to add.
+1. **Binary Language:** Machine code consists entirely of 1s and 0s.
+2. **Primitive Instructions:** Instructions in machine code are very basic, rarely exceeding the complexity of adding two numbers or transferring data between memory locations.
 
+A processor's control unit expects each instruction in a specific format, typically a fixed length (e.g., 16, 32, or 64 bits). The first few bits, known as the opcode (operation code), specify the general task to be performed (e.g., "store a number" or "add two numbers"). The remaining bits contain operands, providing the necessary information to interpret the instruction (e.g., where to store the number or which numbers to add).
 
+While there's no inherent requirement for machine code to use a binary system (historically, some computers used decimal systems), binary has proven to be the most efficient, leading to its adoption in all modern computers.
 
-{% hint style="info" %}
-Theres no law that mandates that machine code use a binary system. In fact, computers existed that used a decimal system. In practice, however, binary has proven to be the most efficient system, and thus all modern computers use it.&#x20;
-{% endhint %}
+#### Machine Code Program Example
 
-{% hint style="info" %}
-**Microcode**
+Imagine a hypothetical computer with 256 memory addresses and 16 general-purpose registers, each holding 16 bits. Each instruction is 16 bits long, with the first four bits indicating the opcode. Upon power-on, the computer begins execution at address 0.
 
-Machine code is by definition the lowest level of programming detail visible to the programmer, but internally many processors use [microcode](https://en.wikipedia.org/wiki/Microcode) or optimize and transform machine code instructions into sequences of [micro-ops](https://en.wikipedia.org/wiki/Micro-operation). Microcode and micro-ops are not generally considered to be machine code; except on some machines, the user cannot write microcode or micro-ops, and the operation of microcode and the transformation of machine-code instructions into micro-ops happens transparently to the programmer except for performance related side effects. In some computers, the machine code of the [architecture](https://en.wikipedia.org/wiki/Computer\_architecture) is implemented by an even more fundamental underlying layer called [microcode](https://en.wikipedia.org/wiki/Microcode), providing a common machine language interface across a line or family of different models of computer with widely different underlying [dataflows](https://en.wikipedia.org/wiki/Dataflow).&#x20;
-{% endhint %}
-
-hypothetical computer:&#x20;
-
-* 256 memory addresses and 16 general purpose registers. Each holds 16 bits.&#x20;
-* Instruction is 16 bits long. First four bits indicate opcode.&#x20;
-* suppose our machine is set that whenever it's powered on, it begins execution at address 0.&#x20;
 * suppose we want to write sum of the first $$𝑛$$ natural numbers
 
 ```asm6502
@@ -38,14 +30,14 @@ Address |  Instruction/data
 3:      |  0001000100010000  ; add the value of R0 to R1 and store the result back in R1.
 4:      |  0010000000000010  ; subtract the value of R2 (which is 1) from R0.
 5:      |  1101000000000011  ; branch to the memory address 3 if the result of the previous subtraction (R0) is positive. This means the loop continues as long as R0 is greater than 0.
-6:      |  1001000100001001  ; store the value of R1 into the memory address 9.
+6:      |  1001000100001111  ; store the value of R1 into the memory address 255 (stdout).
 7:      |  0000000000000000  ; halt execution.
 8:      |  0000000000001100  ; integer value 12
 9:      |  0000000000000000  ; result will be stored here
 ----------------------------
 ```
 
-### Assembly Language&#x20;
+### 3. Assembly Language&#x20;
 
 While machine language is convenient for computers, it is extremely inconvenient for humans. For one, it's not readable. Opcodes, registers, and memory addresses all written in binary. Second, we reference code by its memory address. Requires a lot of planning to get program to work. And what if you go through all the work and then realize you need to modify your program by adding a few lines, say at memory location 4-6. Now the entire program is broken.&#x20;
 
@@ -61,7 +53,7 @@ Address |  Instruction/data
 6:      |  0001000100010000  ; add the value of R0 to R1 and store the result back in R1.
 7:      |  0010000000000010  ; subtract the value of R2 (which is 1) from R0.
 8:      |  1101000000000011  ; branch to memory address 3 if the result of the previous subtraction (R0) is positive. This means the loop continues as long as R0 is greater than 0.
-9:      |  1001000100001001  ; store the value of R1 into the memory address 9.
+6:      |  1001000100001111  ; store the value of R1 into the memory address 255 (stdout).
 10:     |  0000000000000000  ; halt execution.
 11:     |  0000000000001100  ; integer value 12
 12:     |  0000000000000000  ; result 
@@ -77,15 +69,16 @@ As we can see, machine language programs are incredibly difficult to write and m
 LOOP:   ADD R1 R1 R0   
         SUB R0 R0 R2   
         BRP R0 LOOP
-        STR R1 SUM 
+        STR R1 STDOUT
         Halt      
 N:      12
-SUM:
 ```
 
 To run our program, we write it out like this, then we feed it to the assembler, which converts it into an equivalent machine language version. The precise memory locations wll be filled in my the assembler.&#x20;
 
-This solves the problem of being able to modify a program. Since we're reffering to labels, rather than raw addresses, even if we insert some lines and now LOOP, N, and SUM are all three memory locations further, that does not matter, since the references are to labels, not actual memory locations.&#x20;
+<figure><img src="../.gitbook/assets/Frame 65 (2).png" alt="" width="375"><figcaption></figcaption></figure>
+
+This solves the problem of being able to modify a program. Since we're reffering to labels, rather than raw addresses, even if we insert some lines and LOOP and N no point to a few memory locations later, that does not matter, since the references are to labels, not actual memory locations.&#x20;
 
 ```
         LD R0 N   
@@ -97,16 +90,37 @@ This solves the problem of being able to modify a program. Since we're reffering
 LOOP:   ADD R1 R1 R0   
         SUB R0 R0 R2   
         BRP R0 LOOP
-        STR R1 SUM 
+        STR R1 STDOUT 
         Halt      
 N:      12
-SUM:
 ```
 
-### High Level Languages
+### 4. High Level Languages
 
-While assembly language is leaps above machine language, it's still quite inconvinient to code in.&#x20;
+While assembly language is leaps above machine language, it's still quite inconvenient to code in.&#x20;
 
 * Requires intimate knowledge of processor architecture.&#x20;
 * Very simple instructions. Takes many lines to perform simple task.&#x20;
 * Not portable.&#x20;
+
+C equivalent:
+
+```c
+int printf(const char *format, ...);
+
+int main() {
+    int N = 8; // Initialize N with the value 8
+    int sum = 0; // Variable to store the sum
+
+    // Calculate the sum of natural numbers from 1 to N
+    for (int i = 1; i <= N; i++) {
+        sum += i;
+    }
+
+    // Print the result
+    printf("The sum of natural numbers from 1 to %d is %d\n", N, sum);
+
+    return 0;
+}
+
+```
