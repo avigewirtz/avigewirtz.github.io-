@@ -6,34 +6,46 @@ Often, the easiest way to understand the role of software is to explore what dev
 
 ### 2. Machine Language
 
-Each CPU (Central Processing Unit) has a unique set of instructions it can execute, known as machine code. There's no universal standard for machine code, as each manufacturer designs its own for their specific device. However, two fundamental characteristics of machine code are consistent across all modern computers:
+Each CPU has a unique set of instructions it can execute, known as machine code. There's no universal standard for machine code, as each manufacturer designs its own for their specific device. However, two fundamental characteristics of machine code are consistent across all modern computers:
 
-1. **Binary Language:** Machine code consists entirely of 1s and 0s.
-2. **Primitive Instructions:** Instructions in machine code are very basic, rarely exceeding the complexity of adding two numbers or transferring data between memory locations.
+1. Machine code is a binary language, consisting entirely of 1s and 0s. While there's no inherent requirement for machine code to use a binary system (historically, some computers used decimal systems), binary has proven to be the most efficient, leading to its adoption in all modern computers.
+2. &#x20;Instructions in machine code are very basic, rarely exceeding the complexity of adding two numbers or transferring data between memory locations.
 
 A processor's control unit expects each instruction in a specific format, typically a fixed length (e.g., 16, 32, or 64 bits). The first few bits, known as the opcode (operation code), specify the general task to be performed (e.g., "store a number" or "add two numbers"). The remaining bits contain operands, providing the necessary information to interpret the instruction (e.g., where to store the number or which numbers to add).
 
-While there's no inherent requirement for machine code to use a binary system (historically, some computers used decimal systems), binary has proven to be the most efficient, leading to its adoption in all modern computers.
-
 #### Machine Code Program Example
 
-Imagine a hypothetical computer with 256 memory addresses and 16 general-purpose registers, each holding 16 bits. Each instruction is 16 bits long, with the first four bits indicating the opcode. Upon power-on, the computer begins execution at address 0.
+Imagine a hypothetical computer with 256 memory addresses and 16 general-purpose registers. Each memory address is 1 byte (8 bits), and each register is 2 bytes. Instruction are 2 bytes long, wit the first four bits indicating the opcode.&#x20;
+
+
+
+&#x20;each holding 16 bits. Each instruction is 16 bits long, with the first four bits indicating the opcode. Upon power-on, the computer begins execution at memory address 0.
 
 * suppose we want to write sum of the first $$𝑛$$ natural numbers
 
 ```asm6502
 Address |  Instruction/data 
 ----------------------------
-0:      |  1000000000001000  ; load the value at memory address 8 into register 0.
-1:      |  0111000100000000  ; initialize register 1 to 0. This will hold the cumulative sum.
-2:      |  0111001000000001  ; initialize register 2 to 1. This is used as a decrement value.
-3:      |  0001000100010000  ; add the value of R0 to R1 and store the result back in R1.
-4:      |  0010000000000010  ; subtract the value of R2 (which is 1) from R0.
-5:      |  1101000000000011  ; branch to the memory address 3 if the result of the previous subtraction (R0) is positive. This means the loop continues as long as R0 is greater than 0.
-6:      |  1001000100001111  ; store the value of R1 into the memory address 255 (stdout).
-7:      |  0000000000000000  ; halt execution.
-8:      |  0000000000001100  ; integer value 12
-9:      |  0000000000000000  ; result will be stored here
+0:      |  10000000
+1:      |  00001000  ; load the value at memory address 8 into register 0.
+2:      |  01110001
+3:      |  00000000  ; initialize register 1 to 0. This will hold the cumulative sum.
+2:      |  01110010
+5:      |  00000001  ; initialize register 2 to 1. This is used as a decrement value.
+3:      |  00010001
+7:      |  00010000  ; add the value of R0 to R1 and store the result back in R1.
+4:      |  00100000
+9:      |  00000010  ; subtract the value of R2 (which is 1) from R0.
+5:      |  11010000
+11:     |  00000011  ; branch to the memory address 3 if the result of the previous subtraction (R0) is positive. This means the loop continues as long as R0 is greater than 0.
+6:      |  10010001
+13:     |  00001111  ; store the value of R1 into the memory address 255 (stdout).
+7:      |  00000000
+15:     |  00000000  ; halt execution.
+8:      |  00000000
+17:     |  00001100  ; integer value 12
+9:      |  00000000
+19      |  00000000  ; result will be stored here
 ----------------------------
 ```
 
