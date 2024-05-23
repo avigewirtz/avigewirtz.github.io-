@@ -15,34 +15,23 @@ A processor's control unit expects each instruction in a specific format, typica
 
 #### Machine Code Program Example
 
-Imagine a hypothetical computer with 256 memory addresses and 16 general-purpose registers. Each memory address is 1 byte (8 bits), and each register is 2 bytes. Instruction are 2 bytes long, with the first four bits indicating the opcode. Upon power-on, the computer begins execution at memory address 0.
+Imagine a hypothetical computer with 256 memory addresses and 16 general-purpose registers, each holding 16 bits. Each instruction is 16 bits long, with the first four bits indicating the opcode. Upon power-on, the computer begins execution at address 0.
 
-* supports two numerical data types: byte and int
 * suppose we want to write sum of the first $$𝑛$$ natural numbers
 
 ```asm6502
 Address |  Instruction/data 
 ----------------------------
-0:      |  10000000
-1:      |  00001000  ; load the value at memory address 17 into register 0.
-2:      |  01110001
-3:      |  00000000  ; initialize register 1 to 0. This will hold the cumulative sum.
-4:      |  01110010
-5:      |  00000001  ; initialize register 2 to 1. This is used as a decrement value.
-6:      |  00010001
-7:      |  00010000  ; add the value of R0 to R1 and store the result back in R1.
-8:      |  00100000
-9:      |  00000010  ; subtract the value of R2 (which is 1) from R0.
-10:     |  11010000
-11:     |  00000011  ; branch to the memory address 3 if the result of the previous subtraction (R0) is positive. This means the loop continues as long as R0 is greater than 0.
-12:     |  10010001
-13:     |  00001111  ; store the value of R1 into the memory address 255 (stdout).
-14:     |  00000000
-15:     |  00000000  ; halt execution.
-16:     |  00000000
-17:     |  00001100  ; integer value 12
-18:     |  00000000  ; result will be stored here
-19:     |  00000000  
+0:      |  1000000000001000  ; load the value at memory address 8 into register 0.
+1:      |  0111000100000000  ; initialize register 1 to 0. This will hold the cumulative sum.
+2:      |  0111001000000001  ; initialize register 2 to 1. This is used as a decrement value.
+3:      |  0001000100010000  ; add the value of R0 to R1 and store the result back in R1.
+4:      |  0010000000000010  ; subtract the value of R2 (which is 1) from R0.
+5:      |  1101000000000011  ; branch to the memory address 3 if the result of the previous subtraction (R0) is positive. This means the loop continues as long as R0 is greater than 0.
+6:      |  1001000100001111  ; store the value of R1 into the memory address 255 (stdout).
+7:      |  0000000000000000  ; halt execution.
+8:      |  0000000000001100  ; integer value 12
+9:      |  0000000000000000  ; result will be stored here
 ----------------------------
 ```
 
