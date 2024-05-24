@@ -84,7 +84,7 @@
 * [Introduction](gnu-compiler-collection-gcc/introduction.md)
 * [The Big Picture](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/README.md)
 * [Compiler and Assembler](gcc-build-process/compiler-and-assembler.md)
-* [Linker](gcc-build-process/linker.md)
+* [Linker and Preprocessor](gcc-build-process/linker-and-preprocessor.md)
 * [Preprocessor](gcc-build-process/preprocessor.md)
 * [Example](gcc-build-process/page-1.md)
 * [Key Takeaways](gcc-build-process/key-takeaways.md)

@@ -1,4 +1,4 @@
-# Linker
+# Linker and Preprocessor
 
 ## The linker
 
@@ -13,7 +13,7 @@ The approach C compilers use is to first compile each source file separately int
 #### Challenges of separate compilation
 
 * addresses. solution is assembler leaves them blank for the linker to fill in.&#x20;
-* type checking.  In separate compilation scheme, compiler only processes one file at a time. The problem, however, is that when a file calls a function defined in another file or uses a global variable from another file, the compiler has no way to see the definition beforehand. For example, For example, consider the following scenario:
+* type checking.  In separate compilation scheme, compiler only processes one file at a time. So, say we have a program composed of two files, foo.c and bar.c. When the compiler is processing foo.c, it has no knowledge of the contents of bar.c, that we plan on using it together with foo.c, or even that bar.c exists at all. It only looks at foo.c. Consider the following scenario:
 
 {% code title="foo.c" %}
 ```c
@@ -24,7 +24,23 @@ int main() {
 ```
 {% endcode %}
 
-Here, `foo.c` calls the `bar` function, defined elsewhere, but compiler has no way of knowing \<fill in>
+Here, `foo.c` calls the `bar` function, defined in bar.c. The problem, however, is that when compiling foo.c, the compiler doesn't have a clue what the function bar is. It doesn't know it's return type, not does it know that it in fact takes two arguments--an int and a double. The compiler can led it slide, as is was the case in C80/C90, where it assumed the function was called correctly and returned an int. This has proven to be extremely errorn prone, however, which is why C99 prohibs calling a function in this manner. &#x20;
 
-The solution is that we insert prototype of all functions called at the top of the file.   \<now show updated example>. This way, compiler can type check. (For now, we'll assume you manually enter each prototype at top of file, as we'll see soon, however, preprocessor offers a more eficient method.)
+The solution is that we insert prototype of all functions called at the top of the file. When the compiler processes foo.c, this is what it sees:
 
+{% code title="foo.c" %}
+```c
+void bar(int i, double j);
+
+int main() {
+    bar(int 1, double 2);
+    return 0;
+}
+```
+{% endcode %}
+
+The prototype is essentially our way of telling the compiler that we have a funtion named bar that takes an int and double as arguments and returns nothing. Now, when we make the call, the compiler can type check.&#x20;
+
+In fact, even if the function we're calling is from the C Standard Library, we also have to declare it first.&#x20;
+
+### Header Files and The Preprocessor
