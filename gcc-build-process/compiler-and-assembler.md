@@ -6,18 +6,22 @@ Often, the easiest way to understand the role of software is to explore what dev
 
 ### 2. Machine Language
 
-Each CPU has a unique set of instructions it can execute, known as machine code. There's no universal standard for machine code, as each manufacturer designs its own for their specific device. However, two fundamental characteristics of machine code are consistent across all modern computers:
+Each CPU has a unique set of instructions it can execute, known as machine code. There's no universal standard for machine code, as each manufacturer designs its own for their specific device. However, two fundamental characteristics of machine code are consistent across all modern computers.
 
-1. Machine code is a binary language, consisting entirely of 1s and 0s. While there's no inherent requirement for machine code to use a binary system (historically, some computers used decimal systems), binary has proven to be the most efficient, leading to its adoption in all modern computers.
-2. &#x20;Instructions in machine code are very basic, rarely exceeding the complexity of adding two numbers or transferring data between memory locations.
+First, machine code is a binary language, consisting entirely of 1s and 0s. While there's no inherent requirement for machine code to use a binary system (historically, some computers used decimal systems), binary has proven to be the most efficient, leading to its adoption in all modern computers. Second, instructions in machine code are very basic, rarely exceeding the complexity of adding two numbers or transferring data between memory locations.
 
 A processor's control unit expects each instruction in a specific format, typically a fixed length (e.g., 16, 32, or 64 bits). The first few bits, known as the opcode (operation code), specify the general task to be performed (e.g., "store a number" or "add two numbers"). The remaining bits contain operands, providing the necessary information to interpret the instruction (e.g., where to store the number or which numbers to add).
 
 #### Machine Code Program Example
 
-Imagine a hypothetical computer with 256 memory addresses and 16 general-purpose registers, each holding 16 bits. Each instruction is 16 bits long, with the first four bits indicating the opcode. Upon power-on, the computer begins execution at address 0.
+Imagine a hypothetical computer with&#x20;
 
-* suppose we want to write sum of the first $$𝑛$$ natural numbers
+* 256 memory addresses and 16 general-purpose registers, each holding 16 bits.&#x20;
+* Each instruction is 16 bits long, with the first four bits indicating the opcode.&#x20;
+
+
+
+suppose we want to write sum of the first $$𝑛$$ natural numbers
 
 ```asm6502
 Address |  Instruction/data 
@@ -35,9 +39,11 @@ Address |  Instruction/data
 ----------------------------
 ```
 
+This process seems exceedingly simple, but we still have not described the process of actually getting the program to run. For Java, we were able to describe how you would use an editor to create a file containing the program, then use a compiler and the Java Virtual Machine to execute it and view the results in the terminal window. For TOY, you have to consider that there is no operating system, no applications, certainly no editor, terminal emulator, compiler, or runtime—not even a keyboard or a display.
+
 ### 3. Assembly Language&#x20;
 
-While machine language is convenient for computers, it is extremely inconvenient for humans. For one, it's not readable. Opcodes, registers, and memory addresses all written in binary. Second, we reference code by its memory address. Requires a lot of planning to get program to work. And what if you go through all the work and then realize you need to modify your program by adding a few lines, say at memory location 4-6. Now the entire program is broken.&#x20;
+While machine language is convenient for computers, it is extremely inconvenient for humans. For one, it's not readable, with opcodes, registers, and memory addresses all written in binary. Second, code is referenced by its memory address, requiring a lot of planning to ensure a program works correctly. Imagine the frustration if you meticulously crafted a program only to realize you need to add a few lines. Inserting those lines would break the entire program because all subsequent instructions would be displaced to different memory addresses.
 
 ```asm6502
 Address |  Instruction/data 
@@ -58,7 +64,15 @@ Address |  Instruction/data
 ----------------------------
 ```
 
-As we can see, machine language programs are incredibly difficult to write and maintain. Assembly is designed to make both of these tasks easier. Instead of writing in binary, we use mnemonics for opcodes. For example, rather than using 1101 to indicate load value from memory into register, we instead use the mnemonic LD. For registers, we refer to them by R1-R16, rather than 0000 to 1111. For memory addresses, we don't refer to them directly at all. Instead, we use labels, which are essentially placeholders for memory addresses that the assembler will fill in.&#x20;
+As we can see, machine language programs are incredibly difficult to write and maintain. Assembly is designed to make both of these tasks easier. Instead of writing raw binary opcodes (e.g., `1000` for "load value"), assembly language uses human-readable mnemonics. For example, the mnemonic `LD` is used for loading values, `ADD` for addition, and `BRP` for branching if a result is positive. This makes the code much easier to understand.
+
+Program known as assembler converts the mnemonic opcodes to binary.&#x20;
+
+Rather than referring to registers by their binary numbers (e.g., `0000` for register 0), assembly language uses names like `R0`, `R1`, up to `R16` (or however many the architecture supports). This is more intuitive for programmers.
+
+Instead of hardcoding specific memory addresses (e.g., `00001000` for address 8), assembly language allows you to use labels. These labels are essentially symbolic names for memory locations. For instance, you might have a label called `START` to indicate where your program begins or a label `DATA` to represent a section of memory where your data is stored. The assembler automatically calculates the actual memory addresses corresponding to these labels, making your code much more flexible.
+
+Here's what our&#x20;
 
 ```
         LD R0 N   
@@ -68,7 +82,7 @@ LOOP:   ADD R1 R1 R0
         SUB R0 R0 R2   
         BRP R0 LOOP
         STR R1 STDOUT
-        Halt      
+        HALT     
 N:      12
 ```
 
@@ -95,30 +109,24 @@ N:      12
 
 ### 4. High Level Languages
 
-While assembly language is leaps above machine language, it's still quite inconvenient to code in.&#x20;
+While assembly language represents a significant improvement over machine language, it is still cumbersome for many reasons.&#x20;
 
-* Requires intimate knowledge of processor architecture.&#x20;
-* Very simple instructions. Takes many lines to perform simple task.&#x20;
-* Not portable.&#x20;
+First, to write efficient assembly code, you need to be intimately familiar with the specific processor you're targeting. This means knowing the number and types of registers, the available instruction set, and the nuances of how those instructions interact with memory. This makes assembly programming a specialized skill.
 
-C equivalent:
+Second, extremely tedious because assembly instructions are very low-level. As we saw, each instruction performs a very basic task, like loading a value into a register, adding two numbers, or jumping to a different part of the program. Building complex functionality, such as calculating an average, sorting data, or displaying graphics, requires many lines of assembly code. This can lead to long, intricate programs that are difficult to write, understand, and maintain.
+
+Perhaps the most significant limitation of assembly language is its lack of portability. Assembly code is tightly coupled to a specific processor architecture. Imagine you've written a fantastic game in assembly language for the TOY architecture. If you want to make that game available for other computers, you'd essentially need to rewrite the entire game for each different processor architecture—an impractical and costly endeavor. There's no straightforward way to automatically translate assembly code from one architecture to another because the instructions and underlying hardware are fundamentally different.
+
+\<explain how high level languages address these challenges>
 
 ```c
-int printf(const char *format, ...);
+< write pseudocode in high-level language of assembly program showing how it's easier>
 
-int main() {
-    int N = 8; // Initialize N with the value 8
-    int sum = 0; // Variable to store the sum
-
-    // Calculate the sum of natural numbers from 1 to N
+    int N = 8, sum = 0;
     for (int i = 1; i <= N; i++) {
         sum += i;
     }
+    print(sum);
 
-    // Print the result
-    printf("The sum of natural numbers from 1 to %d is %d\n", N, sum);
-
-    return 0;
-}
 
 ```
