@@ -26,7 +26,7 @@ Behind the scenes, quite a lot of work is involved in producing the executable `
     * **Handling preprocessor directives.** These are lines in the code that begin with a `#` (hash). Unlike traditional C code, they are meant to be interpreted by the preprocessor, not the compiler. An example of a preprocessor directive is `#include` (e.g., `#include <stdio.h>`), which instructs the preprocessor to insert the contents of the specified file in the location where the `#include` directive appears.
 
     The output is of the preprocessor is stored in `foo.i` and `bar.i.`
-2. **Compilation stage:** The compiler translates `foo.i` and `bar.i` into assembly language files foo`.s` and `bar.s`.
+2. **Compilation stage:** The compiler translates `foo.i` and `bar.i` into assembly language files `foo.s` and `bar.s`.
 3. **Assembly stage:** The assembler translates `foo.s` and `bar.s` into _relocatable object files_ `foo.o` and `bar.o`. These files are essentially machine code equivalents of their respective source files.&#x20;
 4. **Linking stage:** The linker combines `foo.o` and `bar.o`, along with necessary `.o` files from the C Standard Library, producing the _executable object file_ `foobar`, which can be loaded into memory and executed.
 
