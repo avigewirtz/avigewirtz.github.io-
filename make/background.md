@@ -1,6 +1,7 @@
 # Introduction
 
-In a nutshell, `make` is a software tool that automates the process of incremental builds. Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, rather than recompiling the entire project. This significantly reduces build times, especially in larger projects. The key to understanding `make` is understanding what incremental builds are and how to implement them manually. Once you understand this, the mechanics and role of `make` become apparent
+In a nutshell, `make` is a software tool that automates the process of incremental builds. Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, rather than recompiling the entire project. This significantly reduces build times, especially in larger projects. The key to understanding `make` is understanding what incremental builds are and how to implement them manually. Once you understand this, the mechanics and role of `make` become apparent. 
+As a running example throughout this chapter, we'll use the testintmath program from precept 4, comprised of three files: testintmath.c, intmath.c, and intmath.h. For reference, the source code is provided below. 
 
 ### Review: GCC Build Process&#x20;
 
