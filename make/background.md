@@ -1,31 +1,40 @@
 # Introduction
 
-In a nutshell, `make` is a software tool that automates the process of incremental builds. The key to understanding `make` is understanding what incremental builds are and how to implement them manually. Once you understand this, the mechanics and role of `make` become apparent
+In a nutshell, `make` is a software tool that automates the process of incremental builds. Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, rather than recompiling the entire project. This significantly reduces build times, especially in larger projects. The key to understanding `make` is understanding what incremental builds are and how to implement them manually. Once you understand this, the mechanics and role of `make` become apparent
 
-{% hint style="warning" %}
-Before reading this chapter, ensure you're familiar with the GCC build process. An overview is provided in [GCC Build Process](broken-reference/).
-{% endhint %}
+### Review: GCC Build Process&#x20;
 
-### **Incremental Builds**
+Recall that GCC builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. In the first stage, each .c file is sent to the preprocessor, which, among other things, inserts into each file all files specified with the #include directive. Each preprocessed file is a translation unit. In the next two stages, each translation unit is compiled and then asssmbled, resulting in a relocateable object file. Finally, the relocatable object files, including reocateblae object files from C standard library, are sent to the linker, which produces as output an executable object file--i.e., a single file that can be loaded into memory and executed.&#x20;
 
-Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, rather than recompiling the entire project. This significantly reduces build times, especially in larger projects.
+<figure><img src="../.gitbook/assets/Frame 27 (3).png" alt=""><figcaption></figcaption></figure>
 
-Implementing incremental builds requires a change in how we approach the build process. Instead of treating the source files of a program as a monolithic unit that are always built together, we instead treat the source files as a collection of independent modules that can be compiled independently and then linked. We break down the build process into two steps:
+### **How Incremental Builds Work**
 
-1. **Translation:** Source files are individually translated into object files. This is done by invoking `gcc217` with the `-c` option.&#x20;
-2. **Linking:** The resulting object files are linked together to create the final executable.
+Recall that by default, GCC does not retain intermediate files. For the purposes of incremental builds, .i and .s files are of no use (since we're not programming in them directly) , so we can leave those discraded. The key to incremental builds, however, is caching object files. This way, we can reuse them in later builds. When source code is modified, only affected object files are rebuilt, and then the new and old object files are linked, producing an updated executable. The general strategy for building a program with incremental builds is as follows:
 
-This approach allows for targeted builds: when the program is modified, only the affected source files are recompiled. The updated object files are then linked with the unaffected object files from previous builds, generating a new executable.
+* Think of building as a two step process. First step you build all object files that need to be built. Second step you build executable by linking all object files. In the first step, you build only the object files depend on the modified source files. Put another way, you invoke gcc -c on a .c file only if the resulting object file will be different from the one you already have from a previous build. Note that in the linking step, you always link all object files. Thus, incremental builds do not lower link times. However, linking is only a minor part of build process.&#x20;
 
-{% hint style="info" %}
-**Note**: Under the hood, "translation" is technically a three step process, involving preprocessing, compilation proper, and assembly. For the purposes of incremental builds, however, we can conceptualize translation as a single step, in which the source files are converted to object files.&#x20;
+<figure><img src="../.gitbook/assets/Frame 28 (1).png" alt=""><figcaption></figcaption></figure>
 
-* techincally, gcc always builds files independently. When I mention monolithic build, I'm reffering not to the underlying operations, but the practical implications
-{% endhint %}
+### Dependency graph
 
-### Example
+We mentioned that object file has to be rebuilt if&#x20;
 
-We'll demonstrate incremental builds using the `testintmath` program from precept 4, whose source code is shown below.
+A program's dependencies can be formally described with what is known as a _dependency graph,_ such as the one shown in Figure 12.
+
+<figure><img src="../.gitbook/assets/Group 138 (2).png" alt=""><figcaption></figcaption></figure>
+
+In this graph, nodes represent files and directed edges (arrows) indicate dependencies. If A -> B, then A directly depends on B, meaning that a modification to B requires A to be rebuilt. If A -> B and B -> C, then A is indirectly (or transitively) dependent on C. A modification to C requires B to be rebuilt, which in turn requires A to be rebuilt. Non-leaf nodes are labeled with commands to build them. A node without any dependencies is known as a _leaf_. Non-leaf nodes are labeled with commands to build them. Leafs are typically `.c` and `.h` files, which are not  "built". A dependency graph for our `testintmath` program is shown in Figure 12.3.&#x20;
+
+A few observations about our dependency graph that are typical of C programs:
+
+* 2 levels of dependencies. Execuitable depends on object files, and object files depend on .c and .h filesrelationship
+
+
+
+#### Example
+
+Let's demonstrate how this works in practice using the `testintmath` program from precept 4, whose source code is shown below.
 
 {% tabs %}
 {% tab title="testintmath.c (client)" %}
@@ -87,7 +96,11 @@ int lcm(int i, int j);
 
 #### Building testintmath for the first time
 
-The first time we build `testintmath`, we compile all source files. The key, however, is that we cache the object files, so we can reuse them in later builds. This can be done by building `testintmath` in two steps. First, we translate `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`:
+The first time we build `testintmath`, we build as usual. However, we ensure to cache the object files.&#x20;
+
+
+
+compile all source files. The key, however, is that we cache the object files, so we can reuse them in later builds. This can be done by building `testintmath` in two steps. First, we translate `intmath.c` and `testintmath.c` into object files `intmath.o` and `testintmath.o`:
 
 ```bash
 gcc217 -c intmath.c testintmath.c 
@@ -100,8 +113,6 @@ gcc217 intmath.o testintmath.o -o testintmath
 ```
 
 This process is is summarized in Figure 1.
-
-<figure><img src="../.gitbook/assets/Group 147 (4).png" alt="" width="563"><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 Fundamentally, the underlying build process is the same irrespective of whether we build our program via two commands:

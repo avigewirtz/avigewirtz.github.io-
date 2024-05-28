@@ -30,7 +30,7 @@ Behind the scenes, quite a lot of work is involved in producing the executable `
 3. **Assembly stage:** The assembler translates `foo.s` and `bar.s` into _relocatable object files_ `foo.o` and `bar.o`. These files are essentially machine code equivalents of their respective source files.&#x20;
 4. **Linking stage:** The linker combines `foo.o` and `bar.o`, along with necessary `.o` files from the C Standard Library, producing the _executable object file_ `foobar`, which can be loaded into memory and executed.
 
-<figure><img src="../../.gitbook/assets/Frame 27 (1).png" alt=""><figcaption><p>Figure 12: Four stage build process</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Frame 27 (3).png" alt=""><figcaption></figcaption></figure>
 
 Notice that the first three stages of the build process (i.e., preprocessing, compilation, and assembly) are performed on each file separately. Recognizing this is critical to understanding how the build process works.
 
