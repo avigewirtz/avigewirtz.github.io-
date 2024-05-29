@@ -94,3 +94,16 @@ gcc217 intmath.c testintmath.c -o testintmath
 
 The only difference between the two-command and single-command approaches is that the former retains the intermediate object files while the latter does not.
 {% endhint %}
+
+#### Challenges of manually implementing Incremental Builds
+
+As this example shows, implementing incremental builds manually is possible but it requires you to:
+
+1. Keeo track of which source files have been modified since the last build.
+2. Understand which object files are affected by these changes.&#x20;
+
+Even for a small program like testintmath, this task isn’t particulurly exciting, though it is reasonably manageable. As programs grow larger, however, and the web of dependencies grows increasingly complex, this task becomes incredibly tedious and error-prone.
+
+Consider a scenario, for example, where you modify a header file `A`, that is `#included` in, say, 20 of your program's `.c` files. You’d have to track down each one of these `.c` files and recompile it. Worse yet, imagine header file `A` is also `#include`d in header file `B`. You'd then have to also track down all `.c` files that `#include` `B` and recompile them.
+
+For this reason, the `make` tool was developed, which automates the process of incremental builds. The section that follows describes how to use make.

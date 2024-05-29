@@ -1,10 +1,6 @@
 # Automating Builds With make
 
-As we saw in the previous section, implementing incremental builds manually requires you to (1) keep track of which source files have been modified since the last build; and (2) understand which object files are affected by these changes. Even for a small program like testintmath, this task isn’t exactly fun, though it is reasonably manageable. As programs grow larger, however, and the web of dependencies grows increasingly complex, this task becomes incredibly tedious and error-prone.
-
-Consider a scenario, for example, where you modify a header file, `A`, that is `#include`d in, say, 20 of your program's `.c` files. You’d have to track down each one of these `.c` files and recompile it. Worse yet, imagine header file `A` is also `#include`d in another header file, `B`. You'd then have to also track down all `.c` files that `#include` `B` and recompile them.
-
-For this reason, the `make` tool was developed, which automates the process of incremental builds. Here's how it works: you create a file named `Makefile` or `makefile` in your program's directory. In this `Makefile`, you describe the dependencies among the files in your program and provide `make` with the necessary commands to build each file from its dependencies. Once you have a suitable Makefile set up, you can build your entire program by simply invoking:&#x20;
+To automate builds with the `make` utility, you create a file named `Makefile` (or `makefile`) in your program's directory. In this Makefile, you describe the dependencies between the files in your program and provide `make` with the necessary commands to build each file from its dependencies. Once you have a suitable Makefile set up, you can build your entire program by simply invoking:
 
 ```bash
 make
@@ -14,15 +10,16 @@ make
 
 ### Dependency Graphs
 
-The dependencies among files in a program can be formally described via a _dependency graph_. In this graph, nodes represent files and directed edges (arrows) indicate dependencies. If A -> B, then A depends on B, meaning that a modification to B requires A to be rebuilt. If A -> B and B -> C, then A indirectly (or transitively) depends on C. A modification to C requires B to be rebuilt, which in turn requires A to be rebuilt. A node without any dependencies is known as a _leaf_. Non-leaf nodes are labeled with commands to build them. Leafs are typically `.c` and `.h` files, which are not "built". A dependency graph for our `testintmath` program is shown in Figure 12.3.
+The dependencies among the files in a program can be formally described via a _dependency graph_. In such a graph, nodes represent files and directed edges (arrows) indicate dependencies. If file A -> B, then A depends on B, meaning that a modification to B requires A to be rebuilt. If A -> B and B -> C, then A indirectly (or transitively) depends on C. A modification to C requires B to be rebuilt, which in turn requires A to be rebuilt. Each file with dependencies is labeled with the command to build it. A dependency graph for our `testintmath` program is shown in Figure 12.3.
 
 <figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
 
-A few observations about our dependency graph that are typical of C programs:
+Notice a few characteristics of our dependency graph. These are common among C programs.&#x20;
 
-* .c, and .h files are leaf nodes. They do not have any dependencies.
-* Each .o file depends on only one .c file.&#x20;
-* 2 levels of dependencies. Execuitable depends on object files, and object files depend on .c and .h filesrelationship
+* 2 levels of dependencies. Execuitable object file depends on relocateable object files, and relocateable object files depend on .c and .h files.&#x20;
+* `.c` and `.h` files do not have any dependencies. This makes sense, since source files are not "built".
+* one-to-one relationship between .c and .o files.&#x20;
+* many-to-many relationship between .h and .o files.
 
 #### Dependency Graph to Makefile
 
