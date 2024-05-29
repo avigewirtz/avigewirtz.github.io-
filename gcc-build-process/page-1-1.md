@@ -80,7 +80,7 @@ gcc217 -E tescircle.c > testcircle.i
 gcc217 -E circle.c > circle.i
 ```
 
-The result is two preprocessed files: `testcircle.i`, and `circle.i`. As mentioned earlier, the preprocessor performs two main tasks: It removes comments, which are of no use to the compiler, and handles preprocessor directives (lines in the code that begin with a `#`). `testcircle.c` and `circle.c` make use of two types of preprocessor directives: `#include`, and `#define`. These directives control file inclusion and macro definition, respectively.
+The result is two preprocessed files: `testcircle.i`, and `circle.i`. As mentioned earlier, the preprocessor performs two main tasks: It removes comments, which are of no use to the compiler, and handles preprocessor directives (lines in the code that begin with a `#`). `testcircle.c` and `circle.c` make use of three types of preprocessor directives: `#include` (`testintmath.c` and `intmath.c`), `#define` (`intmath.c`), and `#ifndef` / `#else` (`intmath.h`). These directives control file inclusion, macro definition, and conditional compilation, respectively.
 
 #### File Inclusion
 
@@ -108,6 +108,16 @@ Notice that there are two syntaxes for the `#include` directive: with angle brac
 
 The `#define` directive creates a preprocessor macro, which is essentially an alias for a specific value or code snippet. In `circle.c`, `#define PI 3.14159` creates the macro `PI` and assigns it the value `3.14159`. Whenever `PI` is subsequently used in `circle.c`, the preprocessor replaces it with `3.14159`.
 
+`testcirle.c` uses the macro `EXIT_FAILURE`, which is defined in `stdlib.h`. The exact value of `EXIT_FAILURE` can vary between different systems, but it is commonly set to 1, as it is in our case. This value is used to signal a non-successful termination status from the program.
+
+#### Conditional Compilation
+
+The `#ifndef` / `#else` directives, which we use in `intmath.h`, are part of a set of directives known as _conditional_ directives. These are used to control which parts of the source code are sent to the compiler. One of their most common use cases is to prevent the contents of a header file from being included twice in the same compilation unit (i.e., `.i` file). This technique is known as an _#include guard_. Here's how it works in `intmath.h`:
+
+* `#ifndef CIRCLE_H`: This checks if the macro `CIRCLE_H` is defined. If this evaluates to TRUE (i.e., `CIRCLE_H` is not defined), the preprocessor continues to process the code between `#ifndef` and `#endif`. If it evaluates to FALSE, the preprocessor skips the entire block within `#ifndef` ... `#endif`.
+* `#define CIRCLE_H`: This defines `CIRCLE_H`. Notice that it doesn't give `CIRCLE_H` any specific value. This is perfectly valid. The preprocessor will simply note that `CIRCLE_H` is defined.
+* `#endif`: This line ends the conditional block started by `#ifndef`.
+
 #### Examining Preprocessed Output&#x20;
 
 You can view the preprocessed files with a text editor like emacs. Let’s examine `testcircle.i` and `circle.i` to see what precisely was done by the preprocessor. A side-by-side comparison is shown in Figure 12.
@@ -122,16 +132,6 @@ You can think of the preprocessor as a "search-and-replace" tool:
 * It replaces each comment with a whitespace character.
 * It replaces each `#include` directive with the contents of the specified file.
 * It replaces each macro with its value.
-{% endhint %}
-
-{% hint style="info" %}
-#### Conditional Compilation
-
-The `#ifndef` / `#else` directives, which we use in `intmath.h`, are part of a set of directives known as _conditional_ directives. These are used to control which parts of the source code are sent to the compiler. One of their most common use cases is to prevent the contents of a header file from being included twice in the same compilation unit (i.e., `.i` file). This technique is known as an _#include guard_. Here's how it works in `intmath.h`:
-
-* `#ifndef CIRCLE_H`: This checks if the macro `CIRCLE_H` is defined. If this evaluates to TRUE (i.e., `CIRCLE_H` is not defined), the preprocessor continues to process the code between `#ifndef` and `#endif`. If it evaluates to FALSE, the preprocessor skips the entire block within `#ifndef` ... `#endif`.
-* `#define CIRCLE_H`: This defines `CIRCLE_H`. Notice that it doesn't give `CIRCLE_H` any specific value. This is perfectly valid. The preprocessor will simply note that `CIRCLE_H` is defined.
-* `#endif`: This line ends the conditional block started by `#ifndef`.
 {% endhint %}
 
 ### Compilation Stage
