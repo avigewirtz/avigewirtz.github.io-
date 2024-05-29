@@ -48,7 +48,7 @@ The critical point to recognize is that definitions of library functions are onl
 
 #### Building a Multi-file C Program
 
-As we know, the source code of a C program may be distributed across any arbitrary number of files.   Suppose we modify our program by dividing it into two `.c` files, `foo.c`, and `bar.c`. We build our program by supplying both files as arguments to `gcc217`:&#x20;
+As we know, the source code of a C program may be distributed among any arbitrary number of files.   Suppose we modify our program by dividing it into two `.c` files, `foo.c`, and `bar.c`. We build our program by supplying both files as arguments to `gcc217`:&#x20;
 
 ```bash
 gcc217 foo.c bar.c -o foobar
