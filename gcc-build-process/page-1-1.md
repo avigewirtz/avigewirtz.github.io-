@@ -80,13 +80,27 @@ gcc217 -E tescircle.c > testcircle.i
 gcc217 -E circle.c > circle.i
 ```
 
-The result is two preprocessed files: `testcircle.i`, and `circle.i`. As mentioned earlier, the preprocessor performs two main tasks: It removes comments, which are of no use to the compiler, and handles preprocessor directives (lines in the code that begin with a `#`). testcircle.c and circle.c make use of two types of preprocessor directives: `#include`, and `#define`. These directives control file inclusion and macro definition respectively.
+The result is two preprocessed files: `testcircle.i`, and `circle.i`. As mentioned earlier, the preprocessor performs two main tasks: It removes comments, which are of no use to the compiler, and handles preprocessor directives (lines in the code that begin with a `#`). `testcircle.c` and `circle.c` make use of two types of preprocessor directives: `#include`, and `#define`. These directives control file inclusion and macro definition, respectively.
 
 #### File Inclusion
 
-The `#include` directive instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears. For example, in `testcircle.c`, the preprocessor replaces `#include <stdio.h>` with the contents of `stdio.h`.&#x20;
+Recall that definitions of externally defined functions are resolved at link time. Thus, when the compiler processes a file, it has no knowledge of these function definitions, even if they're defined in another file passed to the compiler simultaneously. This is because the compiler processes only one file at a time.
+
+Consider `testcircle.c`. It uses four externally defined functions: `printf`, `scanf`, `exit`, and `calculateArea`. The first three are defined in the C standard library, while `calculateArea` is defined in `circle.c`
+
+This presents a challenge. The compiler needs to know, at a minimum, the return type of each function being called so it can properly handle the returned value. Ideally, it should also know the number and types of arguments the function takes so it can verify correct usage and perform type checking. How can the compiler obtain this information if it doesn't have access to the full function definitions?
+
+The solution is to insert declarations of each externally defined function into every file where the function is called. A declaration specifies the function's name, return type, and the number and types of its arguments. It's a way of informing the compiler, "A function with this signature exists." This enables the compiler to generate correct code for function calls and detect potential errors.
+
+When C first came out, it had no preprocessor, and thus no file inclusion mechanism. Programmers had to manually insert the declaration of all externally defined function into the files in which they were called. As you can imagine, this proved tedious and error prone. The solution was to adopt a file-inclusion mechanism. In this scheme, related declarations are bundled into a header file. For example, all standard I/O functions are bundled into the header file stdio.h. Now, to use I/O library functions, all you have to do is `#include <stdio.h>` into your file, rather than manually adding all relevant declarations.&#x20;
+
+`testintmath.c` `#includes` three header files: `stdio.h`, `stdlib.h`, and `circle.h`. These contain the declarations of the `printf/scanf`, `exit`, and `calculateArea` functions, respectively.  Additionally, `stdlib.h` contains the definition of the `EXIT_FAILURE` macro (see below).
+
+Although not strictly necessary, `circle.c` also includes `circle.h`. This ensures that the declaration of `calculateArea` in `circle.h` matches its declaration (in its definition) in `circle.c`. If there's a discrepancy between the two, the compiler will report an error.
 
 {% hint style="info" %}
+**`#include` Syntax**
+
 Notice that there are two syntaxes for the `#include` directive: with angle brackets (e.g., `#include <stdio.h>`), and with double quotes (e.g., `#include "circle.h"`). The difference between these two syntaxes lies in how the preprocessor searches for the specified file, with the precise details being implementation-defined. In general, files #included with angle brackets are searched for in system directories only, while those #included with double quotes are searched for in the working directory first and then in system directories.
 {% endhint %}
 
@@ -102,10 +116,12 @@ You can view the preprocessed files with a text editor like emacs. Let’s exami
 
 First, we see that the preprocessor removed all comments from `testcircle.c` and `circle.c`. Second, it replaced each `#include` directive with the contents of its specified header: `circle.h` for both `circle.c` and `testcircle.c`, and `stdio.h` and `stdlib.h` for `testcircle.c`. `stdio.h` contains declarations for the `printf` and `scanf` functions, while `stdlib.h` contains the declaration for the `exit` function and the definition of the `EXIT_FAILURE` macro. Finally, all macros were expanded: `PI` in `circle.c` was replaced with `3.14159`, and `EXIT_FAILURE` was replaced with `1`.
 
-{% hint style="info" %}
-**Why is `circle.h` #included in `circle.c`?**
+{% hint style="success" %}
+You can think of the preprocessor as a "search-and-replace" tool:
 
-Although technically not necessary, including `circle.h` in `circle.c` ensures that the declaration of `calculateArea` in `circle.h` matches the declaration (in the definition) in `circle.c`. If there's a discrepancy between the two, the compiler will report an error.
+* It replaces each comment with a whitespace character.
+* It replaces each `#include` directive with the contents of the specified file.
+* It replaces each macro with its value.
 {% endhint %}
 
 {% hint style="info" %}
@@ -116,14 +132,6 @@ The `#ifndef` / `#else` directives, which we use in `intmath.h`, are part of a s
 * `#ifndef CIRCLE_H`: This checks if the macro `CIRCLE_H` is defined. If this evaluates to TRUE (i.e., `CIRCLE_H` is not defined), the preprocessor continues to process the code between `#ifndef` and `#endif`. If it evaluates to FALSE, the preprocessor skips the entire block within `#ifndef` ... `#endif`.
 * `#define CIRCLE_H`: This defines `CIRCLE_H`. Notice that it doesn't give `CIRCLE_H` any specific value. This is perfectly valid. The preprocessor will simply note that `CIRCLE_H` is defined.
 * `#endif`: This line ends the conditional block started by `#ifndef`.
-{% endhint %}
-
-{% hint style="success" %}
-You can think of the preprocessor as a "search-and-replace" tool:
-
-* It replaces each comment with a whitespace character.
-* It replaces each `#include` directive with the contents of the specified file.
-* It replaces each macro with its value.
 {% endhint %}
 
 ### Compilation Stage
