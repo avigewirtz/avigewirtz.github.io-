@@ -43,7 +43,7 @@ The critical point to recognize is that definitions of library functions are onl
 
 * Although `gcc` (that is, lowercase `gcc`, the program we invoke on the command line) is often colloquially referred to as a compiler, it is technically a driver program, meaning it delegates the actual build tasks to other programs. These programs include `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). `gcc` invokes each of these programs with the necessary command line arguments. You can see the full sequence of operations by invoking `gcc` with the `-v` (verbose) option. You will gain a much greater appreciation of the role the `gcc` driver program plays in simplifying the build process.
 * In current GCC implementations, the preprocessor (`cpp`) is integrated into the compiler (`cc1`). The underlying sequence of operations is the same, but technically the first two build steps are performed by a single program (`cc1`).
-* Our build model assumes _static linking_, where all linking takes place before runtime. In practice, however, _dynamic linking_ might be used, where linking is performed during execution of the program.
+* The build model we described assumes _static linking_, where all linking takes place before runtime. In practice, however, _dynamic linking_ might be used, where linking is performed during execution of the program.
 {% endhint %}
 
 #### Building a Multi-file C Program
