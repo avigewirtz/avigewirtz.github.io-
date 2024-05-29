@@ -80,7 +80,7 @@ gcc217 -E tescircle.c > testcircle.i
 gcc217 -E circle.c > circle.i
 ```
 
-The result is two preprocessed files: `testcircle.i`, and `circle.i`. As mentioned earlier, the preprocessor performs two main tasks: It removes comments, which are of no use to the compiler, and handles preprocessor directives (lines in the code that begin with a `#`). `testcircle.c` and `circle.c` make use of three types of preprocessor directives: `#include` (`testintmath.c` and `intmath.c`), `#define` (`intmath.c`), and `#ifndef` / `#else` (`intmath.h`). These directives control file inclusion, macro definition, and conditional compilation, respectively.
+The result is two preprocessed files: `testcircle.i`, and `circle.i`. As mentioned earlier, the preprocessor performs two main tasks: It removes comments, which are of no use to the compiler, and handles preprocessor directives (lines in the code that begin with a `#`). Our program makes use of three types of preprocessor directives: `#include` (`testintmath.c` and `intmath.c`), `#define` (`intmath.c`), and `#ifndef` / `#else` (`intmath.h`). These directives control file inclusion, macro definition, and conditional compilation, respectively.
 
 #### File Inclusion
 
