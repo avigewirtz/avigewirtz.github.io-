@@ -72,7 +72,7 @@ Preprocessor fetches #included files. In fact, that the whole point of the #incl
 
 #### Saving Intermediate Files
 
-By default, `gcc` does not retain the intermediate files generated during the build process. Thus, if we invoke `ls` after building `foobar`, we won't see the `.i`, `.s`, or `.o` files:
+By default, `gcc` does not retain the intermediate files generated during the build process. Thus, if we invoke `ls` after building `foobar`, for example, we won't see any of the `.i`, `.s`, or `.o` files in our directory:
 
 ```bash
 $ ls
