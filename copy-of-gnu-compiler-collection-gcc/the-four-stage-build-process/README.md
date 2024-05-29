@@ -22,7 +22,7 @@ The shell loads `foo` into memory and execute it.&#x20;
 
 #### Under the Hood
 
-Behind the scenes, quite a lot of work is involved in producing the executable `foo`. It involves four sequential stages: preprocessing, compilation, assembly, and linking. An overview of the process is shown in Figure 4.2. Here's a bird's eye view of what happens at each stage:
+Behind the scenes, quite a lot of work is involved in producing the executable `foo`. It involves four sequential stages: preprocessing, compilation, assembly, and linking. An overview of this process is shown in Figure 4.2. Here's a bird's eye view of what happens at each stage:
 
 1.  **Preprocessing stage:** The preprocessor modifies the source code in `foo.c` by performing two key tasks:
 
