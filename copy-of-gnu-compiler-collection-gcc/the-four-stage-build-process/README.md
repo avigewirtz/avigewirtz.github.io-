@@ -1,8 +1,8 @@
 # The Big Picture
 
-#### Building a C Program
+#### Building a Single-file C Program
 
-Suppose we have a C program comprised of a single .c file, `foo.c`. To build our program, we invoke the following command:
+Suppose we have a C program contained in a single `.c` file, `foo.c`. To build our program, we use the following command:
 
 ```bash
 gcc217 foo.c -o foo
@@ -18,7 +18,7 @@ To run `foo`, we type its name on the command line, prefixed by a `./`:
 ./foo
 ```
 
-The shell will load the program into memory and execute it.&#x20;
+The shell loads `foo` into memory and execute it.&#x20;
 
 #### Under the Hood
 
@@ -36,6 +36,8 @@ Behind the scenes, quite a lot of work is involved in producing the executable `
 
 <figure><img src="../../.gitbook/assets/Frame 27 (4).png" alt=""><figcaption></figcaption></figure>
 
+The critical point to recognize is that definitions of library functions are only inserted after&#x20;
+
 {% hint style="info" %}
 **Insight**
 
@@ -46,29 +48,27 @@ Behind the scenes, quite a lot of work is involved in producing the executable `
 
 #### Building a Multi-file C Program
 
-As we know, the source code for a C program can be distributed across an arbitrary number of files. Suppose our program is distributed across two `.c` files, `foo.c`, and `bar.c`. We build our program by invoking the following command:
+As we know, the source code of a C program may be distributed across any arbitrary number of files. To build such a program, we invoke `gcc217` followed by the names of each of the program's `.c` files.   Suppose our program is distributed across two `.c` files, `foo.c`, and `bar.c`. We build our program with the following command:
 
 ```bash
 gcc217 foo.c bar.c -o foobar
 ```
 
-The critical thing to recognize is that the first three stages of the build process (i.e., preprocessing, compilation, and assembly) are performed on each file separately. In other words, the preprocessing, compiling, and assembly of foo.c is completely independent of bar.c, and vice versa. The technical sequence of operations is as follows:
+The technical sequence of operations performed by `gcc` is as follows:
 
-1. Preprocessor on `foo.c`, which outputs preprocessed source file `foo.i`.
-2. Compiler on `foo.i`, which outputs assembly-language file `foo.s`.
-3. Assembler on `foo.s`, which outputs relocatable object file file `foo.o`.
-4. Preprocessor on `bar.c`, which outputs preprocessed source file `bar.i`.
-5. Compiler on `bar.i`, which outputs assembly-language file `bar.s`.
-6. Assembler on `bar.s`, which outputs relocatable object file file `bar.o`.
-7. Linker on `foo.o`, `bar.o`, and C standard library, producing executable object file `foobar`.
+1. Preprocessor on `foo.c`, producing `foo.i`.
+2. Compiler on `foo.i`, producing `foo.s`.
+3. Assembler on `foo.s`, producing `foo.o`.
+4. Preprocessor on `bar.c`, producing `bar.i`.
+5. Compiler on `bar.i`, producing `bar.s`.
+6. Assembler on `bar.s`, producing `bar.o`.
+7. Linker on `foo.o`, `bar.o`, and C standard library, producing `foobar`.
 
-This sequence of operations is summarized in Figure 2.
+This sequence of operations is summarized in Figure 2.&#x20;
 
 <figure><img src="../../.gitbook/assets/Frame 27 (3).png" alt=""><figcaption></figcaption></figure>
 
-{% hint style="info" %}
-Preprocessor fetches #included files. In fact, that the whole point of the #include directuve--to tell preprocessor which file to fetch, and where in the file to paste the content. Linker does not fetch code from C standard library. In general, it It is up to the programmer to provide library as input to linker. Thankfully, gcc automativcally supplies C standard library to linker.&#x20;
-{% endhint %}
+The critical thing to recognize is that the first three stages of the build process (i.e., preprocessing, compilation, and assembly) are performed on each file separately. In other words, when the preprocessor, compiler, and assembler process `foo.*`, they have no knowledge of `bar.*`, and vice versa.  This means that even if a function called&#x20;
 
 #### Saving Intermediate Files
 
