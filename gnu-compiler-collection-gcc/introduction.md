@@ -9,7 +9,7 @@ In this chapter, I use the term "build" (as in "building a C program") to refer 
 {% endhint %}
 
 {% hint style="info" %}
-**Aside: What is gcc217?**
+**What is gcc217?**
 
 In COS217, we use `gcc217` instead of `gcc`. It's important to understand that `gcc217` is not a different compiler; it is simply a shell [alias](../the-linux-command-line/useful-command-line-features.md#aliases) on Armlab for `gcc -Wall -Wextra -Wno-unused-parameter -ansi -pedantic`. In other words, when you invoke `gcc217`, you're really invoking `gcc -Wall -Wextra -Wno-unused-parameter -ansi -pedantic`. For details on what each option does, please refer to the `gcc` manpage.
 {% endhint %}

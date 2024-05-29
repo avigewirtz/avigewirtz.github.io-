@@ -1,38 +1,40 @@
 # The Big Picture
 
-Suppose we have a C program comprised of two `.c` files: `foo.c` and `bar.c`. To build our program, we invoke the following command:
+#### Building a C Program
+
+Suppose we have a C program comprised of a single .c file, `foo.c`. To build our program, we invoke the following command:
 
 ```bash
-gcc217 foo.c bar.c -o foobar
+gcc217 foo.c -o foo
 ```
 
 {% hint style="info" %}
-Note that `-o foobar` specifies that the executable be named `foobar`_,_ rather than the default name `a.out`.
+Note that `-o foo` specifies that the executable be named `foo`_,_ rather than the default name `a.out`.
 {% endhint %}
 
-To run `foobar`, we type its pathname on the command line:
+To run `foo`, we type its name on the command line, prefixed by a `./`:
 
+```bash
+./foo
 ```
-./foobar
-```
+
+The shell will load the program into memory and execute it.&#x20;
 
 #### Under the Hood
 
-Behind the scenes, quite a lot of work is involved in producing the executable `foobar`. It involves four sequential stages: preprocessing, compilation, assembly, and linking. An overview of the process is shown in Figure 4.2. Here's a bird's eye view of what happens at each stage:
+Behind the scenes, quite a lot of work is involved in producing the executable `foo`. It involves four sequential stages: preprocessing, compilation, assembly, and linking. An overview of the process is shown in Figure 4.2. Here's a bird's eye view of what happens at each stage:
 
-1.  **Preprocessing stage:** The preprocessor modifies the source code in `foo.c` and `bar.c` by performing two key tasks:
+1.  **Preprocessing stage:** The preprocessor modifies the source code in `foo.c` by performing two key tasks:
 
     * **Removing comments.** Comments serve to help human readers understand the code, but they are of no use to the compiler. Hence, they can be discarded before compilation begins.
-    * **Handling preprocessor directives.** These are lines in the code that begin with a `#` (hash). Unlike traditional C code, they are meant to be interpreted by the preprocessor, not the compiler. An example of a preprocessor directive is `#include` (e.g., `#include <stdio.h>`), which instructs the preprocessor to insert the contents of the specified file in the location where the `#include` directive appears.
+    * **Handling preprocessor directives.** These are lines in the code that begin with a `#` (hash). Unlike traditional C code, they are meant to be interpreted by the preprocessor, not the compiler. An example of a preprocessor directive is `#include <filename>` (e.g., `#include <stdio.h>`), which instructs the preprocessor to grab the contents of the specified file and paste it in the location where the `#include` directive appears.
 
-    The output is of the preprocessor is stored in `foo.i` and `bar.i.`
-2. **Compilation stage:** The compiler translates `foo.i` and `bar.i` into assembly language files `foo.s` and `bar.s`.
-3. **Assembly stage:** The assembler translates `foo.s` and `bar.s` into _relocatable object files_ `foo.o` and `bar.o`. These files are essentially machine code equivalents of their respective source files.&#x20;
-4. **Linking stage:** The linker combines `foo.o` and `bar.o`, along with necessary `.o` files from the C Standard Library, producing the _executable object file_ `foobar`, which can be loaded into memory and executed.
+    The output is of the preprocessor is stored in `foo.i`.
+2. **Compilation stage:** The compiler translates `foo.i`  into assembly language file `foo.s`.
+3. **Assembly stage:** The assembler translates `foo.s` into _relocatable object file_ `foo.o`. This file is essentially machine code equivalent of `foo.s`. &#x20;
+4. **Linking stage:** The linker combines `foo.o` with the necessary `.o` files from the C Standard Library, producing the _executable object file_ `foo`, which can be loaded into memory and executed.
 
-<figure><img src="../../.gitbook/assets/Frame 27 (3).png" alt=""><figcaption></figcaption></figure>
-
-Notice that the first three stages of the build process (i.e., preprocessing, compilation, and assembly) are performed on each file separately. Recognizing this is critical to understanding how the build process works.
+<figure><img src="../../.gitbook/assets/Frame 27 (4).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 **Insight**
@@ -40,6 +42,32 @@ Notice that the first three stages of the build process (i.e., preprocessing, co
 * Although `gcc` (that is, lowercase `gcc`, the program we invoke on the command line) is often colloquially referred to as a compiler, it is technically a driver program, meaning it delegates the actual build tasks to other programs. These programs include `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). `gcc` invokes each of these programs with the necessary command line arguments. You can see the full sequence of operations by invoking `gcc` with the `-v` (verbose) option. You will gain a much greater appreciation of the role the `gcc` driver program plays in simplifying the build process.
 * In current GCC implementations, the preprocessor (`cpp`) is integrated into the compiler (`cc1`). The underlying sequence of operations is the same, but technically the first two build steps are performed by a single program (`cc1`).
 * Our build model assumes _static linking_, where all linking takes place before runtime. In practice, however, _dynamic linking_ might be used, where linking is performed during execution of the program.
+{% endhint %}
+
+#### Building a Multi-file C Program
+
+As we know, the source code for a C program can be distributed across an arbitrary number of files. Suppose our program is distributed across two `.c` files, `foo.c`, and `bar.c`. We build our program by invoking the following command:
+
+```bash
+gcc217 foo.c bar.c -o foobar
+```
+
+The critical thing to recognize is that the first three stages of the build process (i.e., preprocessing, compilation, and assembly) are performed on each file separately. In other words, the preprocessing, compiling, and assembly of foo.c is completely independent of bar.c, and vice versa. The technical sequence of operations is as follows:
+
+1. Preprocessor on `foo.c`, which outputs preprocessed source file `foo.i`.
+2. Compiler on `foo.i`, which outputs assembly-language file `foo.s`.
+3. Assembler on `foo.s`, which outputs relocatable object file file `foo.o`.
+4. Preprocessor on `bar.c`, which outputs preprocessed source file `bar.i`.
+5. Compiler on `bar.i`, which outputs assembly-language file `bar.s`.
+6. Assembler on `bar.s`, which outputs relocatable object file file `bar.o`.
+7. Linker on `foo.o`, `bar.o`, and C standard library, producing executable object file `foobar`.
+
+This sequence of operations is summarized in Figure 2.
+
+<figure><img src="../../.gitbook/assets/Frame 27 (3).png" alt=""><figcaption></figcaption></figure>
+
+{% hint style="info" %}
+Preprocessor fetches #included files. In fact, that the whole point of the #include directuve--to tell preprocessor which file to fetch, and where in the file to paste the content. Linker does not fetch code from C standard library. In general, it It is up to the programmer to provide library as input to linker. Thankfully, gcc automativcally supplies C standard library to linker.&#x20;
 {% endhint %}
 
 #### Saving Intermediate Files

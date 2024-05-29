@@ -1,25 +1,60 @@
 # Introduction
 
-In a nutshell, `make` is a software tool that automates the process of incremental builds. Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, rather than recompiling the entire project. This significantly reduces build times, especially in larger projects. The key to understanding `make` is understanding what incremental builds are and how to implement them manually. Once you understand this, the mechanics and role of `make` become apparent.&#x20;
+In a nutshell, `make` is a software tool that automates the process of incremental builds. Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, rather than recompiling the entire project. This significantly reduces build times, making it especially important in large projects, where build times are a bottleneck. The key to understanding `make` is understanding how incremental builds work and how to implement them manually. Once you understand this, the mechanics and role of `make` become apparent.&#x20;
 
-As a running example throughout this chapter, we'll use the testintmath program from precept 4, comprised of three files: testintmath.c, intmath.c, and intmath.h. For reference, the source code is provided below.
+As a running example throughout this chapter, we'll use the `testintmath` program from precept 4, comprised of three files: `testintmath.c`, `intmath.c`, and `intmath.h`. For reference, the source code is provided below.
 
 {% tabs %}
 {% tab title="testintmath.c (client)" %}
 {% code lineNumbers="true" %}
 ```c
+/*--------------------------------------------------------------------*/
+/* testintmath.c                                                      */
+/* Author: Bob Dondero                                                */
+/*--------------------------------------------------------------------*/
+
 #include "intmath.h"
 #include <stdio.h>
+#include <stdlib.h>
 
-int main() {
-  int i, j;
-  printf("Enter the first integer:\n");
-  scanf("%d", &i);
-  printf("Enter the second integer:\n");
-  scanf("%d", &j);
-  printf("Greatest common divisor: %d.\n", gcd(i, j));
-  printf("Least common multiple: %d.\n", lcm(i, j));
-  return 0;
+/* Read two positive integers from stdin. Return EXIT_FAILURE if stdin
+   contains bad data. Otherwise compute the greatest common divisor
+   and least common multiple of the two positive integers, write those
+   two values to stdout, and return 0. */
+
+int main(void)
+{
+   int i1;
+   int i2;
+   int iGcd;
+   int iLcm;
+   int iScanfReturn;
+
+   printf("Enter the first positive integer:\n");
+   iScanfReturn = scanf("%d", &i1);
+   if ((iScanfReturn != 1) || (i1 <= 0))
+   {
+      fprintf(stderr, "Error: Not a positive integer.\n");
+      exit(EXIT_FAILURE);
+   }
+
+   printf("Enter the second positive integer:\n");
+   iScanfReturn = scanf("%d", &i2);
+   if ((iScanfReturn != 1) || (i2 <= 0))
+   {
+      fprintf(stderr, "Error: Not a positive integer.\n");
+      exit(EXIT_FAILURE);
+   }
+
+   iGcd = IntMath_gcd(i1, i2);
+   iLcm = IntMath_lcm(i1, i2);
+
+   printf("The greatest common divisor of %d and %d is %d.\n",
+      i1, i2, iGcd);
+   printf("The least common multiple of %d and %d is %d.\n",
+      i1, i2, iLcm);
+
+   return 0;
 }
 ```
 {% endcode %}
@@ -28,20 +63,39 @@ int main() {
 {% tab title="intmath.c (implementation)" %}
 {% code lineNumbers="true" %}
 ```c
-#include "intmath.h"
+/*--------------------------------------------------------------------*/
+/* intmath.c                                                          */
+/* Author: Bob Dondero                                                */
+/*--------------------------------------------------------------------*/
 
-int gcd(int i, int j) {
-  int temp;
-  while (j != 0) {
-      temp = i % j;
-      i = j;
-      j = temp;
-  }
-  return i;
+#include "intmath.h"
+#include <assert.h>
+
+int IntMath_gcd(int iFirst, int iSecond)
+{
+   int iTemp;
+
+   assert(iFirst > 0);
+   assert(iSecond > 0);
+
+   /* Use Euclid's algorithm. */
+
+   while (iSecond != 0)
+   {
+     iTemp = iFirst % iSecond;
+     iFirst = iSecond;
+     iSecond = iTemp;
+   }
+
+   return iFirst;
 }
 
-int lcm(int i, int j) {
-  return (i / gcd(i, j)) * j;
+int IntMath_lcm(int iFirst, int iSecond)
+{
+   assert(iFirst > 0);
+   assert(iSecond > 0);
+
+   return (iFirst / IntMath_gcd(iFirst, iSecond)) * iSecond;
 }
 ```
 {% endcode %}
@@ -50,11 +104,23 @@ int lcm(int i, int j) {
 {% tab title="intmath.h (interface)" %}
 {% code lineNumbers="true" %}
 ```c
+/*--------------------------------------------------------------------*/
+/* intmath.h                                                          */
+/* Author: Bob Dondero                                                */
+/*--------------------------------------------------------------------*/
+
 #ifndef INTMATH_INCLUDED
 #define INTMATH_INCLUDED
 
-int gcd(int i, int j);
-int lcm(int i, int j);
+/* Return the greatest common divisor of positive integers iFirst and
+   iSecond. */
+
+int IntMath_gcd(int iFirst, int iSecond);
+
+/* Return the least common multiple of positive integers iFirst and
+   iSecond. */
+
+int IntMath_lcm(int iFirst, int iSecond);
 
 #endif
 ```
