@@ -136,7 +136,7 @@ You can think of the preprocessor as a "search-and-replace" tool:
 
 ### Compilation Stage
 
-Compilation is where the bulk of the work takes place. Here, the preprocessed source code is translated into assembly language. If there are any syntax or semantic errors in the C code, the compiler will flag them and terminate. We compile `testcircle.i` and `circle.i` with following command:
+Compilation is where the bulk of the work takes place. Here, the preprocessed source code in `testcircle.i` and `circle.i` is translated into assembly language. If there are any syntax or semantic errors in the C code, the compiler will flag them and terminate. We compile `testcircle.i` and `circle.i` with following command:
 
 ```
 gcc217 -S testcircle.i circle.i
