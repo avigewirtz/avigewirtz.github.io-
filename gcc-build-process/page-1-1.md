@@ -116,7 +116,7 @@ The `#ifndef` / `#else` directives, which we use in `intmath.h`, are part of a s
 
 * `#ifndef CIRCLE_H`: This checks if the macro `CIRCLE_H` is defined. If this evaluates to TRUE (i.e., `CIRCLE_H` is not defined), the preprocessor continues to process the code between `#ifndef` and `#endif`. If it evaluates to FALSE, the preprocessor skips the entire block within `#ifndef` ... `#endif`.
 * `#define CIRCLE_H`: This defines `CIRCLE_H`. Notice that it doesn't give `CIRCLE_H` any specific value. This is perfectly valid. The preprocessor will simply note that `CIRCLE_H` is defined.
-* `#endif`: This line ends the conditional block started by `#ifndef`.
+* `#endif`: This ends the conditional block started by `#ifndef`.
 
 #### Examining Preprocessed Output&#x20;
 
