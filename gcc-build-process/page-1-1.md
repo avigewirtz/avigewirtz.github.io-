@@ -1,8 +1,6 @@
-# Example
+# Deep Dive
 
-Let's now analyze each of the build stages in practice.&#x20;
-
-As an example, we'll use the multi-file C program shown below.&#x20;
+Let's now analyze each of the build stages in practice. As an example, we'll use the multi-file C program shown below.&#x20;
 
 {% tabs %}
 {% tab title="testcircle.c" %}
@@ -73,27 +71,9 @@ double calculateArea(double radius);
 {% endtab %}
 {% endtabs %}
 
-### The Starting Point
-
-Program consists of two .c files and three .h files.&#x20;
-
-* `testcircle.c` contains the `main` function, the entry point of our program. It prompts the user for the radius of a circle, calls the `calculateArea` function, and prints its area on stdout.&#x20;
-* `circle.c` contain the definition of `calculateArea`.
-* `circle.h` contain the declaration of `calculateArea`.
-* `circle.h` contain the declaration of `calculateArea`.
-
-.h files contain the declarations of all&#x20;
-
-Our program is currently in the following state:
-
-* C source code. Can roughly divide it into three categories of source code:
-  * Comments (for humans)
-  * Preprocessor directives (for preprocessor)
-  * Raw C code (for compiler)
-
 ### Preprocessing Stage
 
-The build process begins with preprocessing. As we mentioned earlier, the preprocessor performs two main tasks: It removes comments, which are of no use to the compiler, and handles preprocessor directives (lines in the code that begin with a `#`). We invoke the preprocessor on `testcircle.c` and `circle.c` with the following commands:
+As we mentioned earlier, the preprocessor performs two main tasks: It removes comments, which are of no use to the compiler, and handles preprocessor directives (lines in the code that begin with a `#`). We invoke the preprocessor on `testcircle.c` and `circle.c` with the following commands:
 
 ```bash
 gcc217 -E tescircle.c > testcircle.i
@@ -108,7 +88,7 @@ Our program makes use of three types of preprocessor directives: `#include`, `#d
 
 #### File Inclusion
 
-The `#include` directive instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears. #included files are typically header files, but technically any file can be #included. `testcircle.c` #includes three header files: `stdio.h`, `stdlib.h`, and `circle.h`. These contain the declarations of the four externally defined functions called in `testcircle.c`: `printf`/`scanf` (`stdio.h`), `exit` (`stdlib.h`), and `calculateArea` (`circle.h`). Inserting the declarations allows the compiler to type check.&#x20;
+&#x20;`testcircle.c` #includes three header files: `stdio.h`, `stdlib.h`, and `circle.h`. These contain the declarations of the four externally defined functions called in `testcircle.c`: `printf`/`scanf`, `exit`, and `calculateArea`, respectively. Inserting the declarations allows the compiler to type check.&#x20;
 
 {% hint style="info" %}
 Notice that there are two syntaxes for the `#include` directive: with angle brackets (e.g., `#include <stdio.h>`), and with double quotes (e.g., `#include "circle.h"`). The difference between these two syntaxes lies in how the preprocessor searches for the specified file, with the precise details being implementation-defined. In general, files #included with angle brackets are searched for in system directories only, while those #included with double quotes are searched for in the working directory first and then in system directories.
@@ -154,7 +134,7 @@ You can think of the preprocessor as a "search-and-replace" tool:
 
 ### Compilation Stage
 
-Compilation is where the bulk of the work takes place. Here, the preprocessed source code is translated into assembly language. If there are any syntax errors in the C code, the compiler will flag them and terminate. We compile `testcircle.i` and `circle.i` with following command:
+Compilation is where the bulk of the work takes place. Here, the preprocessed source code is translated into assembly language. If there are any syntax or semantic errors in the C code, the compiler will flag them and terminate. We compile `testcircle.i` and `circle.i` with following command:
 
 ```
 gcc217 -S testcircle.i circle.i

@@ -27,7 +27,7 @@ Behind the scenes, quite a lot of work is involved in producing the executable `
 1.  **Preprocessing stage:** The preprocessor modifies the source code in `foo.c` by performing two key tasks:
 
     * **Removing comments.** Comments serve to help human readers understand the code, but they are of no use to the compiler. Hence, they can be discarded before compilation begins.
-    * **Handling preprocessor directives.** These are lines in the code that begin with a `#` (hash). Unlike traditional C code, they are meant to be interpreted by the preprocessor, not the compiler. An example of a preprocessor directive is `#include <filename>` (e.g., `#include <stdio.h>`), which instructs the preprocessor to grab the contents of the specified file and paste it in the location where the `#include` directive appears.
+    * **Handling preprocessor directives.** These are lines in the code that begin with a `#` (hash). Unlike traditional C code, they are meant to be interpreted by the preprocessor, not the compiler. An example of a preprocessor directive is `#include` (e.g., `#include <stdio.h>`), which instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears.
 
     The output is of the preprocessor is stored in `foo.i`.
 2. **Compilation stage:** The compiler translates `foo.i`  into assembly language file `foo.s`.
@@ -48,27 +48,15 @@ The critical point to recognize is that definitions of library functions are onl
 
 #### Building a Multi-file C Program
 
-As we know, the source code of a C program may be distributed across any arbitrary number of files.   Suppose our program is distributed across two `.c` files, `foo.c`, and `bar.c`. We build our program with the following command:
+As we know, the source code of a C program may be distributed across any arbitrary number of files.   Suppose we modify our program by dividing it into two `.c` files, `foo.c`, and `bar.c`. We build our program by supplying both files as arguments to `gcc217`:&#x20;
 
 ```bash
 gcc217 foo.c bar.c -o foobar
 ```
 
-The technical sequence of operations performed by `gcc` is as follows:
-
-1. Preprocessor on `foo.c`, producing `foo.i`.
-2. Compiler on `foo.i`, producing `foo.s`.
-3. Assembler on `foo.s`, producing `foo.o`.
-4. Preprocessor on `bar.c`, producing `bar.i`.
-5. Compiler on `bar.i`, producing `bar.s`.
-6. Assembler on `bar.s`, producing `bar.o`.
-7. Linker on `foo.o`, `bar.o`, and C standard library, producing `foobar`.
-
-This sequence of operations is summarized in Figure 2.&#x20;
+The sequence of operations performed by `gcc` is summarized in Figure 12. The critical point to recognize is that the first three stages of the build process (i.e., preprocessing, compilation, and assembly) are performed on each file separately. In other words, when the preprocessor, compiler, and assembler process `foo.*`, they have no knowledge of `bar.*`, and vice versa.  This means that even if a function called&#x20;
 
 <figure><img src="../../.gitbook/assets/Frame 27 (3).png" alt=""><figcaption></figcaption></figure>
-
-The critical thing to recognize is that the first three stages of the build process (i.e., preprocessing, compilation, and assembly) are performed on each file separately. In other words, when the preprocessor, compiler, and assembler process `foo.*`, they have no knowledge of `bar.*`, and vice versa.  This means that even if a function called&#x20;
 
 #### Saving Intermediate Files
 
