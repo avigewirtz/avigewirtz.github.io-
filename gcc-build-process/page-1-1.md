@@ -108,7 +108,7 @@ Notice that there are two syntaxes for the `#include` directive: with angle brac
 
 The `#define` directive creates a preprocessor macro, which is essentially an alias for a specific value or code snippet. In `circle.c`, `#define PI 3.14159` creates the macro `PI` and assigns it the value `3.14159`. Whenever `PI` is subsequently used in `circle.c`, the preprocessor replaces it with `3.14159`.
 
-`testcirle.c` uses the macro `EXIT_FAILURE`, which is defined in `stdlib.h`. This is used to signal a non-successful termination status from the program. The exact value of `EXIT_FAILURE` can vary between different systems, but it is commonly set to 1, as it is in our case.
+`testcirle.c` uses the macro `EXIT_FAILURE`, which is defined in `stdlib.h`. The exact value of `EXIT_FAILURE` can vary between different systems, but it is commonly set to 1, as it is in our case.
 
 #### Conditional Compilation
 
