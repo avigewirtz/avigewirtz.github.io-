@@ -18,8 +18,6 @@ To run `foo`, we type its name on the command line, prefixed by a `./`:
 ./foo
 ```
 
-The shell loads `foo` into memory and execute it.&#x20;
-
 #### Under the Hood
 
 Behind the scenes, quite a lot of work is involved in producing the executable `foo`. It involves four sequential stages: preprocessing, compilation, assembly, and linking. An overview of this process is shown in Figure 4.2. Here's a bird's eye view of what happens at each stage:
@@ -32,31 +30,31 @@ Behind the scenes, quite a lot of work is involved in producing the executable `
     The output is of the preprocessor is stored in `foo.i`.
 2. **Compilation stage:** The compiler translates `foo.i`  into assembly language file `foo.s`. Assembly language is essentially a human-readable version of the target processor's machine language.
 3. **Assembly stage:** The assembler translates `foo.s` into _relocatable object file_ `foo.o`. This file is essentially machine code equivalent of `foo.s`. &#x20;
-4. **Linking stage:** The linker combines `foo.o` with the necessary `.o` files from the C Standard Library, producing the _executable object file_ `foo`, which can be loaded into memory and executed.
+4. **Linking stage:** The linker combines `foo.o` with the necessary `.o` files from the C Standard Library, producing the _executable object file_ `foo`.
 
-<figure><img src="../../.gitbook/assets/Frame 27 (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Frame 27 (5).png" alt=""><figcaption></figcaption></figure>
 
-The critical point to recognize is that definitions of library functions are only inserted after&#x20;
+The critical point to recognize is that definitions of library functions called in `foo.c` are resolved at link time. We will see the practical implications of this in the next section.
 
 {% hint style="info" %}
 **Insight**
 
-* Although `gcc` (that is, lowercase `gcc`, the program we invoke on the command line) is often colloquially referred to as a compiler, it is technically a driver program, meaning it delegates the actual build tasks to other programs. These programs include `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). `gcc` invokes each of these programs with the necessary command line arguments. You can see the full sequence of operations by invoking `gcc` with the `-v` (verbose) option. You will gain a much greater appreciation of the role the `gcc` driver program plays in simplifying the build process.
+* Although `gcc` (that is, lowercase `gcc`, the program we invoke on the command line) is often colloquially referred to as a compiler, it is technically a driver program, meaning it delegates the actual build tasks to other programs. These programs are `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). `gcc` invokes each of these programs with the necessary command line arguments. You can see the full sequence of operations by invoking `gcc` with the `-v` (verbose) option. You will gain a much greater appreciation of the role the `gcc` driver program plays in simplifying the build process.
 * In current GCC implementations, the preprocessor (`cpp`) is integrated into the compiler (`cc1`). The underlying sequence of operations is the same, but technically the first two build steps are performed by a single program (`cc1`).
 * The build model we described assumes _static linking_, where all linking takes place before runtime. In practice, however, _dynamic linking_ might be used, where linking is performed during execution of the program.
 {% endhint %}
 
 #### Building a Multi-file C Program
 
-As we know, the source code of a C program may be distributed among any arbitrary number of files.   Suppose we modify our program by dividing it into two `.c` files, `foo.c`, and `bar.c`. We build our program by supplying both files as arguments to `gcc217`:&#x20;
+As we know, the source code of a C program may be distributed across any number of files. Suppose we divide our program into two `.c` files, `foo.c`, and `bar.c`. We build our program by supplying both files as arguments to `gcc217`:&#x20;
 
 ```bash
 gcc217 foo.c bar.c -o foobar
 ```
 
-The sequence of operations performed by `gcc` is summarized in Figure 12. The critical point to recognize is that the first three stages of the build process (i.e., preprocessing, compilation, and assembly) are performed on each file separately. In other words, when the preprocessor, compiler, and assembler process `foo.*`, they have no knowledge of `bar.*`, and vice versa.  This means that even if a function called&#x20;
+The sequence of operations performed by `gcc` is summarized in Figure 12. The critical point to recognize here is that the first three stages of the build process (i.e., preprocessing, compilation, and assembly) are performed on each file independently. Thus, definitions in foo.\* are not visible to the compiler when its processing bar.\*, and vice versa. Here too, the definitions are resolved at link time.
 
-<figure><img src="../../.gitbook/assets/Frame 27 (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Frame 29.png" alt=""><figcaption></figcaption></figure>
 
 #### Saving Intermediate Files
 

@@ -1,6 +1,6 @@
 # Deep Dive
 
-Let's now analyze each of the build stages in practice. As an example, we'll use the multi-file C program shown below. The program consists of three files: `testcircle.c`, `circle.c`, and `circle.h`. `testcircle.c` contains the `main` function, the entry point of our program. It prompts the user for the radius of a circle, calls the `calculateArea` function, and prints its area on stdout. `circle.c` and `circle.h` contain the definition (i.e., implementation) and declaration of `calculateArea`, respectively.
+Let's now analyze each of the build stages in practice. As an example, we'll use the multi-file C program shown below. The program consists of three files: `testcircle.c`, `circle.c`, and `circle.h`. `testcircle.c` contains the `main` function, the entry point of our program. It prompts the user for the radius of a circle, computes its area using the `calculateArea` function, and prints the result on stdout. `circle.c` and `circle.h` contain the definition (i.e., implementation) and declaration of `calculateArea`, respectively.&#x20;
 
 {% tabs %}
 {% tab title="testcircle.c (client)" %}
@@ -108,15 +108,15 @@ Notice that there are two syntaxes for the `#include` directive: with angle brac
 
 The `#define` directive creates a preprocessor macro, which is essentially an alias for a specific value or code snippet. In `circle.c`, `#define PI 3.14159` creates the macro `PI` and assigns it the value `3.14159`. Whenever `PI` is subsequently used in `circle.c`, the preprocessor replaces it with `3.14159`.
 
-`testcirle.c` uses the macro `EXIT_FAILURE`, which is defined in `stdlib.h`. The exact value of `EXIT_FAILURE` can vary between different systems, but it is commonly set to 1, as it is in our case. This value is used to signal a non-successful termination status from the program.
+`testcirle.c` uses the macro `EXIT_FAILURE`, which is defined in `stdlib.h`. This is used to signal a non-successful termination status from the program. The exact value of `EXIT_FAILURE` can vary between different systems, but it is commonly set to 1, as it is in our case.
 
 #### Conditional Compilation
 
-The `#ifndef` / `#else` directives, which we use in `intmath.h`, are part of a set of directives known as _conditional_ directives. These are used to control which parts of the source code are sent to the compiler. One of their most common use cases is to prevent the contents of a header file from being included twice in the same compilation unit (i.e., `.i` file). This technique is known as an _#include guard_. Here's how it works in `intmath.h`:
+The `#ifndef` / `#else` directives, which we use in `intmath.h`, are part of a set of directives known as _conditional_ directives. They define a block of code that is either to be included These are used to control which parts of the source code are sent to the compiler. One of their most common use cases is to prevent the contents of a header file from being included twice in the same compilation unit (i.e., `.i` file). This technique is known as an _#include guard_. Here's how it works in `intmath.h`:
 
-* `#ifndef CIRCLE_H`: This checks if the macro `CIRCLE_H` is defined. If this evaluates to TRUE (i.e., `CIRCLE_H` is not defined), the preprocessor continues to process the code between `#ifndef` and `#endif`. If it evaluates to FALSE, the preprocessor skips the entire block within `#ifndef` ... `#endif`.
+* `#ifndef CIRCLE_H`: This checks if `CIRCLE_H` is defined as a macro. If this evaluates to TRUE (1) (i.e., `CIRCLE_H` is not defined), the preprocessor will continue to process the code between `#ifndef` and `#endif`. If it evaluates to FALSE (0), the preprocessor will skip the entire block within `#ifndef` ... `#endif`.&#x20;
 * `#define CIRCLE_H`: This defines `CIRCLE_H`. Notice that it doesn't give `CIRCLE_H` any specific value. This is perfectly valid. The preprocessor will simply note that `CIRCLE_H` is defined. Going forward, `#ifndef CIRCLE_H` will evaluate to FALSE, and the preprocessor will skip the block.
-* `#endif`: This ends the conditional block started by `#ifndef`. Every conditional directives must have a corresponding `#endif`.
+* `#endif`: This ends the conditional block started by `#ifndef`. Every conditional directive must have a corresponding `#endif`.
 
 #### Examining Preprocessed Output&#x20;
 
@@ -136,52 +136,58 @@ You can think of the preprocessor as a "search-and-replace" tool:
 
 ### Compilation Stage
 
-Compilation is where the bulk of the work takes place. Here, the preprocessed source code in `testcircle.i` and `circle.i` is translated into assembly language. If there are any syntax or semantic errors in the C code, the compiler will flag them and terminate. We compile `testcircle.i` and `circle.i` with following command:
+Compilation is where the bulk of the work takes place. Here, the preprocessed source code in `testcircle.i` and `circle.i` is translated into assembly language. If there are any syntax or semantic errors in the C code, the compiler will flag them and terminate.&#x20;
 
+{% hint style="info" %}
+An example of a syntax error is a missing semicolon at the end of a statement. An example of a semantic error is using a variable before it has been declared.&#x20;
+
+```c
+int main() {
+    a = 10; /* semantics error. 'a' assigned before it's delcared */ 
+    int a;
+    return 0 /* syntax error. missing semicolon */
+}
 ```
+{% endhint %}
+
+We compile `testcircle.i` and `circle.i` with following command:
+
+```bash
 gcc217 -S testcircle.i circle.i
 ```
 
-The output is assembly language files `circle.s` and `testcircle.s` . Assembly language is essentially a human-readable version of the target processor's machine language. As such, the precise assembly language generated by the compiler depends on the target processor. Figure 14 shows the assembly output for an ARM64 machine.
+The output is assembly language files `testcircle.s` and `circle.s`. Assembly language is essentially a human-readable version of the target processor's machine language. As such, the precise assembly language generated by the compiler depends on the architecture of the target processor. Figure 14 shows what the assembly output might look like on an ARM64 machine, such as Armlab.
 
 <figure><img src="../.gitbook/assets/Frame 63.png" alt="" width="563"><figcaption></figcaption></figure>
 
 #### Characteristics of Assembly language
 
-Detailed coverage of assembly language is beyond the scope of this chapter. ARM64 assembly will be covered in detail in the second half of the course. For now, we will make a few general points about assembly. Note that these points follow from the fact the assembly is closely tied to the processors.
+Detailed coverage of assembly language is beyond the scope of this chapter. ARM64 assembly will be covered in detail in the second half of COS217. For now, we will make a few general points about assembly.&#x20;
 
-* **Assembly language is not portable**. This is easiest to explain by means of an analogy with C. \<fill in>.
-*   **Assembly language instructions are extremely simple**. Each assembly instruction performs a very basic task, such as adding two numbers or transferring data between memory locations. A single C statement might take several instructions. For example, a simple C statement like `x = y + z` might require four ARM assembly instructions:
+*   Each assembly instruction performs a very basic task, such as adding two numbers or moving data from one memory location to another. As such, it has a poor ratio of functionality to code size compared to higher-level languages like C. For example, the C statement like `x = y + z` requires four ARM assembly instructions:
 
     ```armasm
-    LDR X0, [y]      // Load the value of y into register X0 
-    LDR X1, [z]      // Load the value of z into register X1
-    ADD X0, X0, X1   // Add the values in X0 and X1, store result in X0
-    STR X0, [x]      // Store the result from X0 into the variable x
+    LDR X0, [y]      ; Load the value of y into register X0 
+    LDR X1, [z]      ; Load the value of z into register X1
+    ADD X0, X0, X1   ; Add the values in X0 and X1, store result in X0
+    STR X0, [x]      ; Store the result from X0 into the variable x
     ```
-* Programmers rarely program in assembly, since modern compilers can produce code as good as humans. However, still has its place in modern computing. Gives you more direct control over hardare. Some instructions cannot be performed in C. Assembly language might be used to optimize performance-critical sections of code, to write low-level device drivers, or to develop code for embedded systems with limited resources.
+* Assembly language gives you total control over the CPU. Some operations possible in assembly have no high-level language equivalent. This allows you to optimize performance and resource usage to a degree not possible in higher-level languages.
+* One of the main drawbacks of assembly is that it's not portable. Unlike like a high-level language like C, \<fill in>.
 
 ### Assembly Stage
 
-The job of the assembler is to translate assembly language into machine language and generate a relocatable object file. When the assembler encounters a symbol (either a variable or function name) that is not defined in the current module, it assumes that it is defined in some other module, generates a linker symbol table entry, and leaves it for the linker to handle. We assemble `testcircle.s` and `circle.s` with the following command:
+The job of the assembler is to translate assembly language into machine language and generate a relocatable object file. We assemble `testcircle.s` and `circle.s` with the following command:
 
 ```bash
 gcc217 -c testcircle.s circle.s
 ```
 
-The output is `circle.o` and `testcircle.o`. The technical term for these binary files is relocatable object files.&#x20;
+The output is `circle.o` and `testcircle.o`. This stage marks a turning point. Code is converted from text to binary.&#x20;
 
 
 
-
-
-Object files are merely collections of blocks of bytes. Some of these blocks contain program code, others contain program data, and others contain data structures that guide the linker.
-
-
-
-
-
-there are calls to external functions in the assembly source file, the assembler leaves the addresses of the external functions undefined, to be filled in later by the linker.&#x20;
+Object files are binary files. Not human readable. Can't open with text editor. Relocateable object files are not human readable, since&#x20;
 
 
 
