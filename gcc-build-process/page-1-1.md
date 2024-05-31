@@ -122,7 +122,7 @@ The `#ifndef` / `#else` directives, which we use in `intmath.h`, are part of a s
 
 You can view the preprocessed files with a text editor like emacs. Let’s examine `testcircle.i` and `circle.i` to see what precisely was done by the preprocessor. A side-by-side comparison is shown in Figure 12.
 
-<figure><img src="../.gitbook/assets/Frame 61.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 20 (9).png" alt=""><figcaption></figcaption></figure>
 
 First, we see that the preprocessor removed all comments from `testcircle.c` and `circle.c`. Second, it replaced each `#include` directive with the contents of its specified header: `circle.h` for both `circle.c` and `testcircle.c`, and `stdio.h` and `stdlib.h` for `testcircle.c`. `stdio.h` contains declarations for the `printf` and `scanf` functions, while `stdlib.h` contains the declaration for the `exit` function and the definition of the `EXIT_FAILURE` macro. Finally, all macros were expanded: `PI` in `circle.c` was replaced with `3.14159`, and `EXIT_FAILURE` was replaced with `1`.
 
@@ -136,21 +136,7 @@ You can think of the preprocessor as a "search-and-replace" tool:
 
 ### Compilation Stage
 
-Compilation is where the bulk of the work takes place. Here, the preprocessed source code in `testcircle.i` and `circle.i` is translated into assembly language. If there are any syntax or semantic errors in the C code, the compiler will flag them and terminate.&#x20;
-
-{% hint style="info" %}
-An example of a syntax error is a missing semicolon at the end of a statement. An example of a semantic error is using a variable before it has been declared.&#x20;
-
-```c
-int main() {
-    a = 10; /* semantics error. 'a' assigned before it's delcared */ 
-    int a;
-    return 0 /* syntax error. missing semicolon */
-}
-```
-{% endhint %}
-
-We compile `testcircle.i` and `circle.i` with following command:
+Compilation is where the bulk of the work takes place. Here, the preprocessed source code in `testcircle.i` and `circle.i` is translated into assembly language. If there are any syntax or semantic errors in the C code, the compiler will flag them and terminate. We compile `testcircle.i` and `circle.i` with following command:
 
 ```bash
 gcc217 -S testcircle.i circle.i
@@ -177,40 +163,38 @@ Detailed coverage of assembly language is beyond the scope of this chapter. ARM6
 
 ### Assembly Stage
 
-The job of the assembler is to translate assembly language into machine language and generate a relocatable object file. We assemble `testcircle.s` and `circle.s` with the following command:
+The job of the assembler is to translate an assembly language file into an equivalent machine language file. Because there's typically a one-to-one mapping between assembly language instructions and machine-language instructions, this translation is much more trivial than compilation. We invoke the assembler on `testcircle.s` and `circle.s` with the following command:
 
 ```bash
 gcc217 -c testcircle.s circle.s
 ```
 
-The output is `circle.o` and `testcircle.o`. This stage marks a turning point. Code is converted from text to binary.&#x20;
-
-
-
-Object files are binary files. Not human readable. Can't open with text editor. Relocateable object files are not human readable, since&#x20;
-
-
-
-{% hint style="info" %}
-**Object File Formats**
-
-Object files are organized according to specific object file formats, which vary from system to system. The first Unix systems from Bell Labs used the a.out format. (To this day, executables are still
-
-referred to as a.out files.) Windows uses the Portable Executable (PE) format. Mac OS-X uses the Mach-O format. Modern x86-64
-
-Linux and Unix systems use Executable and Linkable Format (ELF).
-{% endhint %}
+The assembler outputs machine-language files testcircle.o and circle.o. Because `testcircle.s` and `circle.s` are each incomplete programs, it follows to reason that testcircle.o and circle.o are also incoplete programs. Thus, even though they're in machine code, they're not executable. The techincal term for such these files is relocatebale object file.&#x20;
 
 <figure><img src="../.gitbook/assets/Frame 62.png" alt="" width="563"><figcaption></figcaption></figure>
 
 ### Linking Stage
 
-The final stage of the build process is linking. The linker take as input a collection of relocatable object files and generate as output a fully linked executable object file that can be loaded and run.
+Linking marks the final stage of the build process. The linker take as input a collection of relocatable object files and generates as output an _executable object file_. As its name suggests, an executable object file contains machine code in a form that can be loaded into memory and executed. In our case, the input to the linker is testcircle.o, circle.o, and the C standard library, which is packaged in archive file libc.a. The C standard library is packaged into a form known as an archive file. We invoke the linker with the following command:
 
-The two main tasks of linkers are symbol resolution, where each global symbol in an object file is bound to a unique definition, and relocation, where the ultimate memory address for each symbol is determined and where references to those objects are modified. If the linker is unable to find a definition for the referenced symbol in any of its input modules, it prints an error message and terminates. Multiple object files can define the same symbol, and the rules that linkers use for silently resolving these multiple definitions can introduce subtle bugs in user programs.
+```
+gcc217 testcircle.o circle.o -o testcircle
+```
+
+We don't have to explicitly pass libc.a to the linker, since gcc automatically passes it. The output is executable object file testcircle.&#x20;
+
+<figure><img src="../.gitbook/assets/Frame 60 (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-should mention starter code role of linker as aside. entry symbol \_start
+ASIDE: In addition to inserting defintions of printf, scanf, and exit from C standard library, it also inserts run-time code from c standard library. \<explain>.
 {% endhint %}
 
-<figure><img src="../.gitbook/assets/Frame 60 (1).png" alt=""><figcaption></figcaption></figure>
+#### Tasks performed by the linker
+
+The two main tasks of linkers are symbol resolution, where each global symbol in an object file is bound to a unique definition, and relocation, where the ultimate memory address for each symbol is determined and where references to those objects are modified. If the linker is unable to find a definition for the referenced symbol in any of its input modules, it prints an error message and terminates.&#x20;
+
+* linking errors&#x20;
+* static symbol
+
+
+
