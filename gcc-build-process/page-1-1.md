@@ -136,7 +136,7 @@ You can think of the preprocessor as a "search-and-replace" tool:
 
 ### Compilation Stage
 
-Compilation is where the bulk of the work takes place. Here, the preprocessed source code in `testcircle.i` and `circle.i` is translated into assembly language. If there are any syntax or semantic errors in the C code, the compiler will flag them and terminate. We compile `testcircle.i` and `circle.i` with following command:
+Compilation is where the bulk of the work takes place. Here, the compiler translates the preprocessed source code in `testcircle.i` and `circle.i` into assembly language. If there are any syntax or semantic errors in the C code, the compiler will flag them and terminate. We compile `testcircle.i` and `circle.i` with following command:
 
 ```bash
 gcc217 -S testcircle.i circle.i
@@ -163,48 +163,40 @@ Detailed coverage of assembly language is beyond the scope of this chapter. ARM6
 
 ### Assembly Stage
 
-The job of the assembler is to translate an assembly language file into an equivalent machine language file. Because there's typically a one-to-one mapping between assembly language instructions and machine-language instructions, this translation is much more trivial than compilation. We invoke the assembler on `testcircle.s` and `circle.s` with the following command:
+The third stage is assembly. Here, the assembler translates the assembly language in `testcircle.s` and `circle.s` into machine language and stores the result in what are known as _relocatable object files_, which by convention have a `.o` extension. Because there's typically a one-to-one mapping between assembly language instructions and machine-language instructions, this translation is much simpler than compilation.
 
-```bash
+We invoke the assembler on `testcircle.s` and `circle.s` with the following command:
+
+```
 gcc217 -c testcircle.s circle.s
 ```
 
-The assembler outputs machine-language files testcircle.o and circle.o. Because `testcircle.s` and `circle.s` are each incomplete programs, it follows to reason that testcircle.o and circle.o are also incoplete programs. Thus, even though they're in machine code, they're not executable. The techincal term for such these files is relocatebale object file.&#x20;
+The result is two relocatable object files, `testcircle.o` and `circle.o`. Because these are binary files, viewing their contents with a text editor will display gibberish.&#x20;
 
 <figure><img src="../.gitbook/assets/Frame 62.png" alt="" width="563"><figcaption></figcaption></figure>
 
+{% hint style="info" %}
+relocateable object files are binary files divided into sections.&#x20;
+{% endhint %}
+
 ### Linking Stage
 
-Linking marks the final stage of the build process. The linker takes as input a collection of relocatable object files and combines into a single file known as an _executable object file_. As its name suggests, an executable object file contains machine code in a form that can be loaded into memory and executed. In our case, the input to the linker is `testcircle.o`, `circle.o`, and the C standard library, which on Linux is stored in`libc.a`. We invoke the linker with the following command:
+Linking marks the final stage of the build process. The linker takes as input a collection of relocatable object files and combines them into a single file known as an _executable object file_. As its name suggests, an executable object file contains machine code in a form that can be loaded into memory and executed. In our example, the linker's inputs are `testcircle.o`, `circle.o`, and the C standard library, which on Linux is stored in `libc.a`. We invoke the linker using the following command:
 
 ```
 gcc217 testcircle.o circle.o -o testcircle
 ```
 
-Note that we don't have to explicitly pass libc.a to the linker, since gcc automatically passes it. The output is executable object file testcircle.&#x20;
+Note that we don't need to explicitly pass `libc.a` to the linker, as `gcc` automatically includes it. The output is the executable object file `testcircle`.
 
 <figure><img src="../.gitbook/assets/Frame 60 (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 **libc.a**&#x20;
 
-On Linux, the C Standard Library is stored in the archive file `libc.a`. An archive file is a single file that contains one or more relocatable object files, along with metadata. This metadata pinpoints the location of each relocatable object file within the archive. Only the object files containing those referenced functions are extracted from the archive and incorporated into the final executable.&#x20;
+`libc.a` is an archive file. An archive file is a single file that contains within it a collection of relocatable object files, along with metadata describing the location of each file. The linker extracts only the relocatable object files of the functions referenced by our program.&#x20;
 {% endhint %}
 
 {% hint style="info" %}
-ASIDE: In addition to inserting defintions of printf, scanf, and exit from C standard library, it also inserts run-time code from c standard library. \<explain>.
+Besides inserting definitions of functions like `printf`, `scanf`, and `exit` from the C standard library, the linker also inserts some runtime starter code. This includes the startup routine responsible for setting up the program's environment and ultimately calling the `main` function.&#x20;
 {% endhint %}
-
-#### Tasks performed by the linker
-
-The two main tasks of linkers are symbol resolution, where each global symbol in an object file is bound to a unique definition, and relocation, where the ultimate memory address for each symbol is determined and where references to those objects are modified. If the linker is unable to find a definition for the referenced symbol in any of its input modules, it prints an error message and terminates.&#x20;
-
-
-
-{% hint style="info" %}
-ASIDE: static functions and variables
-{% endhint %}
-
-
-
-b
