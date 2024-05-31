@@ -4,131 +4,83 @@ In a nutshell, `make` is a software tool that automates the process of increment
 
 As a running example throughout this chapter, we'll use the `testintmath` program from precept 4, comprised of three files: `testintmath.c`, `intmath.c`, and `intmath.h`. For reference, the source code is provided below.
 
+
+
 {% tabs %}
-{% tab title="testintmath.c (client)" %}
-{% code lineNumbers="true" %}
+{% tab title="main.c" %}
 ```c
-/*--------------------------------------------------------------------*/
-/* testintmath.c                                                      */
-/* Author: Bob Dondero                                                */
-/*--------------------------------------------------------------------*/
-
-#include "intmath.h"
 #include <stdio.h>
-#include <stdlib.h>
+#include "add.h"
+#include "mult.h"
 
-/* Read two positive integers from stdin. Return EXIT_FAILURE if stdin
-   contains bad data. Otherwise compute the greatest common divisor
-   and least common multiple of the two positive integers, write those
-   two values to stdout, and return 0. */
-
-int main(void)
-{
-   int i1;
-   int i2;
-   int iGcd;
-   int iLcm;
-   int iScanfReturn;
-
-   printf("Enter the first positive integer:\n");
-   iScanfReturn = scanf("%d", &i1);
-   if ((iScanfReturn != 1) || (i1 <= 0))
-   {
-      fprintf(stderr, "Error: Not a positive integer.\n");
-      exit(EXIT_FAILURE);
-   }
-
-   printf("Enter the second positive integer:\n");
-   iScanfReturn = scanf("%d", &i2);
-   if ((iScanfReturn != 1) || (i2 <= 0))
-   {
-      fprintf(stderr, "Error: Not a positive integer.\n");
-      exit(EXIT_FAILURE);
-   }
-
-   iGcd = IntMath_gcd(i1, i2);
-   iLcm = IntMath_lcm(i1, i2);
-
-   printf("The greatest common divisor of %d and %d is %d.\n",
-      i1, i2, iGcd);
-   printf("The least common multiple of %d and %d is %d.\n",
-      i1, i2, iLcm);
-
-   return 0;
+int main() {
+    int sum = add(5, 3);
+    int product = mult(5, 3);
+    printf("The result of adding 5 and 3 is: %d\n", result);
+    printf("The The result of multiplying 5 and 3 is: %d\n", multiplied);
+    return 0;
 }
 ```
-{% endcode %}
 {% endtab %}
 
-{% tab title="intmath.c (implementation)" %}
-{% code lineNumbers="true" %}
+{% tab title="add.c" %}
 ```c
-/*--------------------------------------------------------------------*/
-/* intmath.c                                                          */
-/* Author: Bob Dondero                                                */
-/*--------------------------------------------------------------------*/
+#include "add.h"
 
-#include "intmath.h"
-#include <assert.h>
-
-int IntMath_gcd(int iFirst, int iSecond)
-{
-   int iTemp;
-
-   assert(iFirst > 0);
-   assert(iSecond > 0);
-
-   /* Use Euclid's algorithm. */
-
-   while (iSecond != 0)
-   {
-     iTemp = iFirst % iSecond;
-     iFirst = iSecond;
-     iSecond = iTemp;
-   }
-
-   return iFirst;
-}
-
-int IntMath_lcm(int iFirst, int iSecond)
-{
-   assert(iFirst > 0);
-   assert(iSecond > 0);
-
-   return (iFirst / IntMath_gcd(iFirst, iSecond)) * iSecond;
+int add(int a, int b) {
+    return a + b;
 }
 ```
-{% endcode %}
 {% endtab %}
 
-{% tab title="intmath.h (interface)" %}
-{% code lineNumbers="true" %}
+{% tab title="multiply.c" %}
 ```c
-/*--------------------------------------------------------------------*/
-/* intmath.h                                                          */
-/* Author: Bob Dondero                                                */
-/*--------------------------------------------------------------------*/
+#include "mult.h"
 
-#ifndef INTMATH_INCLUDED
-#define INTMATH_INCLUDED
+int mult(int x, int y) {
+    return x * y;
+}
+```
+{% endtab %}
 
-/* Return the greatest common divisor of positive integers iFirst and
-   iSecond. */
+{% tab title="add.h" %}
+```c
+#ifndef ADD_INCLUDED
+#define ADD_INCLUDED
 
-int IntMath_gcd(int iFirst, int iSecond);
-
-/* Return the least common multiple of positive integers iFirst and
-   iSecond. */
-
-int IntMath_lcm(int iFirst, int iSecond);
+int add(int x, int y);
 
 #endif
 ```
-{% endcode %}
+{% endtab %}
+
+{% tab title="mult.h" %}
+```c
+#ifndef MULT_INCLUDED
+#define MULT_INCLUDED
+
+int mult(int x, int y);
+
+#endif
+```
 {% endtab %}
 {% endtabs %}
 
+
+
+
+
+
+
+
+
+
+
 #### Review: GCC Build Process
+
+
+
+<figure><img src="../.gitbook/assets/Frame 30.png" alt=""><figcaption></figcaption></figure>
 
 Recall that the GCC build process involves four sequential stages: preprocessing, compilation, assembly, and linking. This process for our `testintmath` program is shown in Figure 4. For the purposes of incremental builds, recall the following:
 
@@ -160,6 +112,10 @@ gcc217 intmath.c testintmath.c -o testintmath
 
 The only difference between the two-command and single-command approaches is that the former retains the intermediate object files while the latter does not.
 {% endhint %}
+
+#### Incremental Builds In Action
+
+
 
 #### Challenges of manually implementing Incremental Builds
 
