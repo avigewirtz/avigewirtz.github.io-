@@ -2,12 +2,10 @@
 
 In a nutshell, `make` is a software tool that automates the process of incremental builds. Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, rather than recompiling the entire project. This significantly reduces build times, making it especially important in large projects, where build times are a bottleneck. The key to understanding `make` is understanding how incremental builds work and how to implement them manually. Once you understand this, the mechanics and role of `make` become apparent.&#x20;
 
-As a running example throughout this chapter, we'll use the `testintmath` program from precept 4, comprised of three files: `testintmath.c`, `intmath.c`, and `intmath.h`. For reference, the source code is provided below.
-
-
+As a running example throughout this chapter, we'll use the multi-file C program shown below.  It consists of five source files: calc.c, add.c, mult.c, add.h, and mult.h. This contrived program is designed to be easy to follow so you can focus on incremental build concepts without getting bogged down in complex code.
 
 {% tabs %}
-{% tab title="main.c" %}
+{% tab title="calc.c" %}
 ```c
 #include <stdio.h>
 #include "add.h"
@@ -33,7 +31,7 @@ int add(int a, int b) {
 ```
 {% endtab %}
 
-{% tab title="multiply.c" %}
+{% tab title="mult.c" %}
 ```c
 #include "mult.h"
 
@@ -66,35 +64,35 @@ int mult(int x, int y);
 {% endtab %}
 {% endtabs %}
 
-
-
-
-
-
-
-
-
-
-
 #### Review: GCC Build Process
 
+Each file in our program, along with header files included, represents a separate module. When we invoke gcc to build our prigram, it builds them each separately and then links them.&#x20;
 
 
-<figure><img src="../.gitbook/assets/Frame 30.png" alt=""><figcaption></figcaption></figure>
 
-Recall that the GCC build process involves four sequential stages: preprocessing, compilation, assembly, and linking. This process for our `testintmath` program is shown in Figure 4. For the purposes of incremental builds, recall the following:
 
-* First three stages are performed on each file independently.&#x20;
-* In the first stage, the preprocessor inserts the contents of #included files into each file. The result is that our program, initially distributed across two .c files and _n_ .h files, is now consolidated into two .i files—testintmath.i and intmath.i. These files are known as translation units.
-* In the second and third stages, each file is compiled and assembled, resulting in relocatable object files testintmath.o and intmath.o.
-* In the final stage, the linker combines testintmath.o and intmath.o, along with relavant relocateble object files from C library, producing as output executable object file testintmath.
-* By default, object fils not retained. Can retain them via the -c option.&#x20;
+
+Recall how multi-file programs are built in C. Each .c file is preprocessed, compiled, and assembled independently into relocatable object files. These relocatable object files are then linked, producing an executable object file. Usually we don't care about any of this. We provide gcc without our input files and get an executable.&#x20;
+
+
+
+
+
+This process is shown in Figure 2. The following points are of note:
+
+* Of note is that in the preprocessing stage, preprocessor inserts into each file the files specified via include directive.&#x20;
+* can build all files in a single command
+* can build each file seperately and then link the two
+
+<figure><img src="../.gitbook/assets/Frame 30 (2).png" alt=""><figcaption></figcaption></figure>
 
 #### How Incremental Builds Work
 
-As is aparent from Figure 14, each relocatebale object file is derived from, or _depends_ on, its corresponding C file, as well as any header files #included in the correspinding C file. It is _not_ derived from any other C file. For example, intmath.o depends on intmath.c and intmath.h. It does not depend on testintmath.c or stdio.h. Thus, so long as we retained object files, a change to testintmath.c does not require intmath.o to be rebuilt. Only testintmath.o and testintmath must be rebuilt (testintmath.o by compiling testintmath.c, and testintmath by linking intmath.o and testintmath.o). Similarly, a change to intmath.c does not require testintmath.o to be rebuilt--only intmath.o and testintmath must be rebuilt. Consider the effect of modifying intmath.h. Because both .c files #include it, intmath.o, testintmath.o, and testintmath must be rebuilt. Figure 15 summarizes use of incremental builds with testintmath.&#x20;
+The idea behind incremental builds in quite straightforward. Notice in Figure 14 that each .o file is derived from it's corresponding .c file, as well as any file included in the .c file. However, they are not derived from any other source files. For example, add.o is derived from add.c and add.h. It is not derived from calc.c, mult.c, or any .h files other than add.h.&#x20;
 
-<figure><img src="../.gitbook/assets/Frame 28 (1).png" alt=""><figcaption></figcaption></figure>
+It stands to reason that if we cache object files, we can 'reuse' them in later builds.&#x20;
+
+
 
 {% hint style="warning" %}
 Fundamentally, the underlying GCC build process is the same irrespective of whether we build our program via two commands:
