@@ -40,9 +40,27 @@ rm -f file1 # expands to 'rm -i -f file1'
 This works since options specified later on the command line take precedence.
 {% endhint %}
 
+### Deleting Directories
+
+To delete directories, you can use the rm command on the way you used it for files, except you have to add the `-r` (recursive) option. For example, to delete `non_empty_dir`:
+
+```bash
+rm -r non_empty_dir
+```
+This deletes non_empty_dir, along with all the files in it. 
+
+
+
+
+{% hint style="info" %}
+It may seem that `rmdir` is redundant, since `rm -r` can handle both empty and non-empty directories. However, `rmdir` is safer because it ensures you do not accidentally delete non-empty directories.
+{% endhint %}
+
+
+
 ### Deleting Empty Directories
 
-If the directory you want to delete is empty, you can use the `rmdir` (**r**e**m**ove empty **dir**ectory/ies) command. Type `rmdir` followed by the name of the directory you want to delete. For example, to delete `dir1`:
+The `rm -r` command can be used to delete both empty and non-empty directories. However, Linux provides the `rmdir` (**r**e**m**ove empty **dir**ectory/ies) command as well, which only works if the directory is empty. It comes in handy when you want to delete a directory only if it is empty, without having to first check if it's empty. Type `rmdir` followed by the name of the directory you want to delete. For example, to delete empty directory `dir1`:
 
 ```bash
 rmdir dir1
@@ -64,14 +82,3 @@ $
 ```
 {% endhint %}
 
-### Deleting Non-empty Directories
-
-To delete non-empty directories, you need to use the `rm` command with the `-r` (recursive) option. For example, to delete `non_empty_dir`:
-
-```bash
-rm -r non_empty_dir
-```
-
-{% hint style="info" %}
-It may seem that `rmdir` is redundant, since `rm -r` can handle both empty and non-empty directories. However, `rmdir` is safer because it ensures you do not accidentally delete non-empty directories.
-{% endhint %}
