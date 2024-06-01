@@ -53,17 +53,25 @@ The general syntax to run a Makefile is:
 ```bash
 make target
 ```
- Where `target` is the name of the file you want to build. If you omit a target, `make` defaults to the first target in the Makefile. In our Makefile, testintmath is the first target. Thus, can can build it by invoking make without specifying a target: 
+ Where `target` is the name of the file you want `make` to build. For example, to build `intmath.o`, you'd invoke:
 
-```bash
-make
-```
-This is equivalent to invoking make testintmath. If we wanted to build `intmath.o` alone, we'd invoke:
 
 ```bash
 make intmath.o
 ```
 
+If you omit a target, `make` defaults to the first target in the Makefile. In our Makefile, testintmath is the first target. Thus, invoking:
+
+```bash
+make
+```
+Is equivalent to invoking:
+
+```bash
+make testintmath
+```
+In both cases, make will build testintmath. 
+
 {% hint style="info" %}
-`make` does not read a makefile from top to bottom, processing all rules within it. It starts with the default rule or the rule specified on the command line, and then processes only the rules that are reachable from it.&#x20;
+`make` does not read a makefile from top to bottom, processing all rules within it. It starts with the first rule or the rule specified on the command line, and then processes only the rules that are reachable from it.&#x20;
 {% endhint %}
