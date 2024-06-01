@@ -40,7 +40,7 @@ There are numerous commands you can use to create files. We'll cover two: `touch
 
 ### touch
 
-The simplest way to create a file is via the `touch` command. Type `touch` followed by the name of the file you want to create. For example:
+A quick and easy way to create a file is via the `touch` command. Simply type `touch` followed by the name of the file you want to create. For example:
 
 ```bash
 touch file1
