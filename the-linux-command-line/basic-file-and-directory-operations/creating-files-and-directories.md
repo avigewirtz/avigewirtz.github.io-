@@ -60,12 +60,12 @@ If one of the files supplied as an argument to `touch` already exists, `touch` w
 
 ### **emacs**
 
-The limitation of `touch` is that it cannot be used to view or edit files. It is strictly for creating new, empty files or for updating the timestamps of existing files. If your goal is to create a file and immediately begin working on it, your best bet is to do so via a text editor like Emacs. Invoke `emacs` followed by the name of the file you want to create. For example, to create `file1`:
+The limitation of `touch` is that it cannot be used to view or edit files. It is strictly for creating new, empty files or for updating the timestamps of existing files. If your goal is to create a file and immediately begin working on it, your best bet is to do so via a text editor like Emacs. Type `emacs` followed by the name of the file you want to create. For example, to create `file1`:
 
 ```
 emacs file1
 ```
 
 {% hint style="info" %}
-Technically, the file is not actually created when you open Emacs. Instead, Emacs creates a temporary buffer in memory. The file is only created on disk when you save your work within Emacs. This is done by pressing `Ctrl + X` followed by `Ctrl + S`.
+Technically, the file is not actually created with this command. Instead, Emacs creates a temporary buffer in memory. The file is only created on disk when you save your work within Emacs. This is done by pressing `Ctrl + X` followed by `Ctrl + S`.
 {% endhint %}
