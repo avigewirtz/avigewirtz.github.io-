@@ -21,7 +21,7 @@ Notice a few characteristics of our dependency graph. These are common among C p
 * one-to-one relationship between .c and .o files.&#x20;
 * many-to-many relationship between .h and .o files.
 
-#### Dependency Graph to Makefile
+#### `make` Dependency Graph Syntax
 
 
 The transition from a dependency graph to a makefile is quite straightforward. 
