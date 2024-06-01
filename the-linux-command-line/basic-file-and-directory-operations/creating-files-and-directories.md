@@ -36,7 +36,7 @@ This tells bash to interpret `assignment 1` as a single directory name. The resu
 
 ### Creating Files
 
-There are numerous commands for creating files. We'll cover two: `touch`, and `emacs`.&#x20;
+There are numerous commands you can use to create files. We'll cover two: `touch`, and `emacs`.&#x20;
 
 ### touch
 
