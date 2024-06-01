@@ -2,6 +2,20 @@
 
 ## How version control works with git
 
+
+
+- first step is having git installed in your system. 
+- ask git to initialize a repository for your project. repository is essentially a fancy word for a database that will store snapshots of your project's history. you do so by invoking git init. 
+
+- git then creates a .git directory in the root directory of your project's workspace. this directory contains your repository. by default you won't see the directory, since it's hidden. 
+
+
+- you might think your work is done at this point. you created a repository. now, going forward, git will monitor your work and record all changes. 
+
+- this is very much not how it works. version control with Git is a very active process. each time you want to a snapshot of your project to be saved, you must explicitly ask git to do so. this is called a committing, and each snapshot is called a "commit". the command for committing so is git commit -m "message". 
+
+- not so fast. the catch is that when you commit, git does not save a snapshot of 
+
 The basic idea of how version control works in git is you have Git software on your system, located in a directory like usr/bin. If you want want to version control a project, you ask git to initialize a repository in the root directory of the project. The Git repository is stored in a .git directory in the root of the project. A repository is essentially a fancy word for a local database that keeps snapshots of your project's content--files and directories--at various points in time. Each snapshot is called a "commit." Figure 5.1 shows a filesystem with two projects under git version control: A1 and greetings. Each of them contain a .git directory in the project's root directory.&#x20;
 
 
