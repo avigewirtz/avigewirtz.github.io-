@@ -4,7 +4,7 @@ To effectively navigate the Linux filesystem, you need to be familiar with three
 
 ### **`pwd` - A Sense of Location**
 
-Whenever you're using the command line, bash is always positioned somewhere in the filesystem. This location is known as your (or, more accurately, Bash's) _working directory_.
+Recall that whenever you're using the command line, `bash` is always positioned somewhere in the filesystem. This location is known as your (or, more accurately, Bash's) _working directory_.
 
 You can find out your current working directory by invoking `pwd` (**p**rint **w**orking **d**irectory), which displays the absolute pathname of your working directory on stdout. By default, your working directory will be your home directory, which on Armlab is `/u/yourNetID`. When I invoke `pwd` on Armlab, I get the following output:
 
