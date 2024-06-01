@@ -101,7 +101,7 @@ copyright (C) Thomas Bushnell, BSG.
 
 ### less
 
-`cat` has several drawbacks that make it inconvenient to use with files that span more than a few pages. Most notably, it does not have any useful features for navigating the file’s output.&#x20;
+`cat` has several drawbacks that make it inconvenient to use for displaying files that span more than a few pages. Most notably, `cat` it not have any useful features for navigating the file’s output.&#x20;
 
 A useful alternative is `less`, which enables you to scroll through the file line by line or page by page using keyboard commands. Pressing `spacebar` scrolls forward one screen, and `b` scrolls back one screen. To quit `less`, type `q`.
 
