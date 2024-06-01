@@ -112,8 +112,8 @@ A powerful feature of `less` is the ability to search for text within the file. 
 | `q`                     | Quit                                        |
 | `h`                     | Display a list of available `less` commands |
 | `UP-ARROW / DOWN-ARROW` | Navigate up and down the file               |
-| `SPACEBAR`              | Go forward one page                         |
-| `b`                     | Go backward one page                        |
+| `SPACEBAR`              | Go forward one screen                         |
+| `b`                     | Go backward one screen                        |
 | `G`                     | Go to end of file                           |
 | `g`                     | Go to beginning of file                     |
 | `/pattern`              | Search file for text matching “pattern”     |
@@ -138,7 +138,7 @@ The `man` command displays its output with `less`, so by getting familiar with `
    * A) Goes to the beginning of the file.
    * B) Goes to the end of the file.
    * C) Finds the next occurrence of a search.
-   * D) Scrolls down one page.
+   * D) Scrolls down one screen.
 4. **If you want to view the contents of `file1.txt` followed by `file2.txt` in a single command using `cat`, and then redirect the output to `combined.txt`, which command would you use?**
    * A) `cat file1.txt; cat file2.txt > combined.txt`
    * B) `cat file1.txt > combined.txt; cat file2.txt >> combined.txt`
