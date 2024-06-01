@@ -66,8 +66,6 @@ int mult(int x, int y);
 {% endtab %}
 {% endtabs %}
 
-#### Review: GCC Build Process
-
 ## building testintmath: the non-incremental build approach
 
 Comsider the multi-file C program shown below. We'll use it as a running example throughout this chapter. 
@@ -90,37 +88,6 @@ recall that you can save object files with the -c option. it instructs gcc to ha
 - the key is saving object files and tracking dependencies 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Recall how `gcc` builds multi-file C programs. Each `.c` file is preprocessed, compiled, and assembled independently into a relocatable object file. These relocatable object files are then linked, producing an executable object file. Of note is that in the preprocessing stage, the preprocessor inserts into each file the files specified via #include directives. -c option. This process is shown in Figure 2.&#x20;
-
-<figure><img src="../.gitbook/assets/Frame 30 (2).png" alt=""><figcaption></figcaption></figure>
-
-#### How Incremental Builds Work
-
-The idea behind incremental builds is straightforward. the first time we build a program, we build the entire thing. The key, however, is we ensure to save the object files. in subsequent builds, we rebuols only the affected object files. we then link the updated object file with the old ones to produce an updated executable. 
-
-notice in figure 14 that each .o file is derived from it's coresponding .c file and any files included. thus, only if one of those files are modified to we rebuld the .o file. Formally, if a modification to source file A requires object file B to be rebuilt, we say that B depends on A.&#x20;
-
-#### Incremental Builds In Action
-
-show examples here using actaul commands
-
-scenario 1: modfying a .c file
-
-scenario 2: modifying a .h file
 
 {% hint style="success" %}
 Fundamentally, the underlying GCC build process is the same irrespective of whether we build our program via two commands:
