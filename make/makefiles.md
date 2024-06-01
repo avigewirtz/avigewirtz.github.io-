@@ -10,7 +10,7 @@ make
 
 ### Dependency Graphs
 
-The dependencies among the files in a program can be formally described via a _dependency graph_. In this graph, nodes represent files, and directed edges indicate dependencies. If file A -> B, then A depends on B, meaning that a modification to B requires A to be rebuilt. If A -> B and B -> C, then A indirectly (or transitively) depends on C. A modification to C requires B to be rebuilt, which in turn requires A to be rebuilt. Each file with dependencies is labeled with the command to build it from its dependencies. A visual representation of our program's dependency graph is shown in Figure 12.3.
+The dependencies among the files in a program can be formally described via a _dependency graph_. In this graph, nodes represent files, and directed edges indicate dependencies. If file A -> B, then A depends on B, meaning that a modification to B requires A to be rebuilt. If A -> B and B -> C, then A indirectly (or transitively) depends on C. A modification to C requires B to be rebuilt, which in turn requires A to be rebuilt. Each file with dependencies is labeled with the command to build it from its dependencies. In make terminology, these files are known as targets. A visual representation of our program's dependency graph is shown in Figure 12.3.
 
 <figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
 
@@ -27,7 +27,7 @@ Notice a few characteristics of our dependency graph. These are common among C p
 The transition from a dependency graph to a makefile is quite straightforward. 
 
 
-We create what is known as a _dependency rule_ for each node in the graph that has dependencies. In our case, these corresponds to (relocatable and executable) object file nodes. In make terminology, these files are called targets. Dependency rules have the following syntax:
+We create what is known as a _dependency rule_ for each target in the dependency graph. In our case, that corresponds to testintmath.o, intmath.o, and testintmath. Dependency rules have the following syntax:
 
 ```
 target: dependencies
