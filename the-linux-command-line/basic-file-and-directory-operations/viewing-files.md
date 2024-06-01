@@ -48,7 +48,7 @@ If you want the file's output to have line numbers, invoke `cat` with the `-n` o
 
 #### **Combining Multiple Files**
 
-`cat` is short for "concatenate," which might be a hint that it can be used to combine the contents of multiple files. Type `cat` followed by the name of each file you want cat to combine. For example, to combine `berra_quote.txt` and `einstein_quote.txt` :
+`cat` is short for "concatenate," which might be a hint that it can be used to combine the contents of multiple files. To do so, type `cat` followed by the name of each file you want cat to combine. For example, to combine `berra_quote.txt` and `einstein_quote.txt` :
 
 ```bash
 ~/CLI_playground$ cat berra_quote.txt einstein_quote.txt
