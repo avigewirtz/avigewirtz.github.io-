@@ -10,7 +10,7 @@ make
 
 ### Dependency Graphs
 
-The dependencies among the files in a program can be formally described via a _dependency graph_. In such a graph, nodes represent files and directed edges (arrows) indicate dependencies. If file A -> B, then A depends on B, meaning that a modification to B requires A to be rebuilt. If A -> B and B -> C, then A indirectly (or transitively) depends on C. A modification to C requires B to be rebuilt, which in turn requires A to be rebuilt. Each file with dependencies is labeled with the command to build it. A dependency graph for our `testintmath` program is shown in Figure 12.3.
+The dependencies among the files in a program can be formally described via a _dependency graph_. In this graph, nodes represent files, and directed edges indicate dependencies. If file A -> B, then A depends on B, meaning that a modification to B requires A to be rebuilt. If A -> B and B -> C, then A indirectly (or transitively) depends on C. A modification to C requires B to be rebuilt, which in turn requires A to be rebuilt. Each file with dependencies is labeled with the command to build it from its dependencies. A visual representation of our program's dependency graph is shown in Figure 12.3.
 
 <figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
 
@@ -23,17 +23,22 @@ Notice a few characteristics of our dependency graph. These are common among C p
 
 #### Dependency Graph to Makefile
 
-The transition from a dependency graph to a makefile is quite straightforward. We create what is known as a _dependency rule_ for each file in the dependency graph that is not a leaf. In make terminology, such files are called targets. In our case, we have three targets: `intmath.o`, `testintmath.o`, and `testintmath`. Dependency rules have the following syntax:
+
+The transition from a dependency graph to a makefile is quite straightforward. 
+
+
+We create what is known as a _dependency rule_ for each node in the graph that has dependencies. In our case, these corresponds to (relocatable and executable) object file nodes. In make terminology, these files are called targets. Dependency rules have the following syntax:
 
 ```
 target: dependencies
 <tab> command
 ```
 
-* **Dependencies** . These are the files that the target _directly_ depends on (e.g., `testintmath` directly depends on `testintmath.o` and `intmath.o`). We do not include indirect dependencies.
-* **Command**. This is the command make invokes to build the target. Note that it must be preceded by a Tab character.
+* **Dependencies** . These are the files that the target depends on (e.g., `testintmath` depends on `testintmath.o` and `intmath.o`). 
 
-This results in the following Makefile, containing three dependency rules:
+* **Command**. This is the command to build the target. In our graph, each target is labeled with the command to build it. Note that the command must be preceded by a Tab character.
+
+This results in three dependency rules: one for testintmath, one for intmath.o, and one for testintmath.o, leading to the following makefile:
 
 ```makefile
 testintmath: testintmath.o intmath.o
