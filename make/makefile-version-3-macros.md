@@ -1,6 +1,6 @@
 # Macros
 
-Make has a macro facility that performs textual substitution, similar to the `#define` directive in C. To define a macro, you simply assign a value to a name. For example:
+Make has a macro facility that performs textual substitution, similar to the `#define` directive in C. This allows you to define a shorthand term for a longer sequence of characters and to use the shorthand in your program. To define a macro, you simply assign a value to a name. For example:
 
 ```makefile
 CC = gcc217
@@ -13,7 +13,7 @@ intmath.o: intmath.c intmath.h
     $(CC) -c intmath.c
 ```
 
-In this rule, `$(CC)` will be replaced by `gcc217` when the Makefile is processed.
+When this rule is processed, `$(CC)` will be replaced with `gcc217`.
 
 ## Common macros
 
