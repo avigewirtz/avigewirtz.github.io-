@@ -20,7 +20,7 @@ To run `foo`, we type its name on the command line, prefixed by a `./`:
 
 #### Under the Hood
 
-Behind the scenes, quite a lot of work is involved in producing the executable `foo`. It involves four sequential stages: preprocessing, compilation, assembly, and linking. An overview of this process is shown in Figure 4.2. Here's a bird's eye view of what happens at each stage:
+Behind the scenes, quite a lot of work is involved in producing the executable `foo`. It involves four sequential stages: preprocessing, compilation, assembly, and linking. Here's a bird's eye view of what happens at each stage:
 
 1.  **Preprocessing stage:** foo.c is sent to the preprocessor. The preprocessors a program that modifies the source code before compilation begins. It performs two key tasks:
 
@@ -32,6 +32,7 @@ Behind the scenes, quite a lot of work is involved in producing the executable `
 3. **Assembly stage:** The assembler translates `foo.s` into _relocatable object file_ `foo.o`. This file is essentially machine code equivalent of `foo.s`. &#x20;
 4. **Linking stage:** The linker combines `foo.o` with the necessary `.o` files from the C Standard Library, producing the _executable object file_ `foo`.
 
+An overview of this process is shown in Figure 4.2. 
 <figure><img src="../../.gitbook/assets/Frame 27 (5).png" alt=""><figcaption></figcaption></figure>
 
 The critical point to recognize is that definitions of library functions called in `foo.c` are resolved at link time. We will see the practical implications of this in the next section.
