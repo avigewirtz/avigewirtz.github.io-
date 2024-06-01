@@ -31,7 +31,7 @@ would not work; this will create two directories--`assignment`, and `1`. A simpl
 mkdir "assignment 1"
 ```
 
-This tells bash to interpret `assignment 1` as a single directory name.
+This tells bash to interpret `assignment 1` as a single directory name. The result is a single directory names `assignment 1`.
 {% endhint %}
 
 ### Creating Files
