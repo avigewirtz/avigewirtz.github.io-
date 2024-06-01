@@ -68,6 +68,8 @@ int mult(int x, int y);
 
 #### Review: GCC Build Process
 
+## building testintmath: the non-incremental build approach
+
 Comsider the multi-file C program shown below. We'll use it as a running example throughout this chapter. 
 
 The current approach we've been using is to build out program with the following command:
