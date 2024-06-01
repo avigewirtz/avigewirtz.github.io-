@@ -1,6 +1,6 @@
 # Automating Builds With make
 
-To automate builds with the `make` utility, you create a file named `Makefile` (or `makefile`) in your program's directory. In this Makefile, you describe the dependencies between the files in your program and provide `make` with the necessary commands to build each file from its dependencies. Once you have a suitable Makefile set up, you can build your entire program by simply invoking:
+To automate builds with `make`, you create a file named `Makefile` (or `makefile`) in your program's directory. In this Makefile, you describe the dependencies between the files in your program and provide `make` with the necessary commands to build each file from its dependencies. Once you have a suitable Makefile set up, you can build your entire program by simply invoking:
 
 ```bash
 make
@@ -33,7 +33,7 @@ target: dependencies
 * **Dependencies** . These are the files that the target _directly_ depends on (e.g., `testintmath` directly depends on `testintmath.o` and `intmath.o`). We do not include indirect dependencies.
 * **Command**. This is the command make invokes to build the target. Note that it must be preceded by a Tab character.
 
-This results in the following Makefile:
+This results in the following Makefile, containing three dependency rules:
 
 ```makefile
 testintmath: testintmath.o intmath.o
@@ -53,10 +53,7 @@ The general syntax to run a Makefile is:
 ```bash
 make target
 ```
-
-If you omit a target, `make` defaults to the first target in the makefile.
-
-To build `testintmath`, we can invoke make without specifying a target and make will default to `testintmath`, since it's the first target in our Makefile:
+ Where `target` is the name of the file you want to build. If you omit a target, `make` defaults to the first target in the Makefile. In our Makefile, testintmath is the first target. Thus, can can build it by invoking make without specifying a target: 
 
 ```bash
 make
