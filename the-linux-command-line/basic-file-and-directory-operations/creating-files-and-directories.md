@@ -2,7 +2,7 @@
 
 ### Creating Directories
 
-To create a directory, type `mkdir` (**m**a**k**`e` **dir**ectory/ies) followed by the name of the directory you want to create. For example:
+Creating a directory is as simple as it gets. Simply type `mkdir` (**m**a**k**`e` **dir**ectory/ies) followed by the name of the directory you want to create. For example:
 
 ```bash
 mkdir dir1
@@ -25,13 +25,13 @@ Suppose we want to create a directory named `assignment 1`. As you can probably 
 mkdir assignment 1
 ```
 
-would not work; this would create two directories--`assignment`, and `1`. A simple solution is to enclose the directory name in quotation marks:
+would not work; this will create two directories--`assignment`, and `1`. A simple solution is to enclose the directory name in quotation marks:
 
 ```bash
 mkdir "assignment 1"
 ```
 
-This will create a single directory named `assignment 1`. This same principle applies to filenames.
+This tells bash to interpret `assignment 1` as a single directory name.
 {% endhint %}
 
 ### Creating Files
