@@ -1,6 +1,8 @@
 # Introduction
 
-In a nutshell, `make` is a software tool that automates the process of incremental builds. Incremental builds optimize the build process by recompiling only the code modules that have changed since the last build, rather than recompiling the entire project. This significantly reduces build times, making it especially important in large projects where build times can become a bottleneck. The key to understanding `make` is understanding how incremental builds work and how to implement them manually. Once you understand this, the mechanics and role of `make` become apparent.&#x20;
+In a nutshell, `make` is a software tool that automates the process of incremental builds. 
+
+The premise behind incremental builds is simple: after you change source files and want to rebuild your program, you recompile one y the code modules that have changed, instead of wasting time recompiling the entire program.This is especially important in large projects, where build times become a bottleneck. The key to understanding `make` is understanding how incremental builds work and how to implement them manually. Once you understand this, the mechanics and role of `make` become apparent.&#x20;
 
 #### Running Example
 
