@@ -68,6 +68,40 @@ int mult(int x, int y);
 
 #### Review: GCC Build Process
 
+Comsider the multi-file C program shown below. We'll use it as a running example throughout this chapter. 
+
+The current approach we've been using is to build out program with the following command:
+
+gcc ...
+
+suppose we change add.c. we rebuild
+our program by invoking the same command again: 
+
+
+Incremental builds 
+
+Recall what happens under the hood when we built our program. each file, along with all files included, is independently preprocessoed, compiled, and assembled, producing .o files. then, the .o files are linked, producing the executable. 
+
+in the previous example, we recompiled all source files after only add.c was modified. we were affectivelt treating the entire program as a monolithic unit, wheere all files are always compiled at the same time. notice, however, that the only files affected by the change were add.o and calc. calc.o and mult were not affected. thus, had we have saved the object files from the last build, we could have rebuilt the program by rebuilding add.o alone and then linking it with the "old" object files. 
+
+recall that you can save object files with the -c option. it instructs gcc to halt after assembly and output the .o files. thus, the incremental build approach would have been to invoke gcc on all files with the -c 
+- the key is saving object files and tracking dependencies 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Recall how `gcc` builds multi-file C programs. Each `.c` file is preprocessed, compiled, and assembled independently into a relocatable object file. These relocatable object files are then linked, producing an executable object file. Of note is that in the preprocessing stage, the preprocessor inserts into each file the files specified via #include directives. -c option. This process is shown in Figure 2.&#x20;
 
 <figure><img src="../.gitbook/assets/Frame 30 (2).png" alt=""><figcaption></figcaption></figure>
