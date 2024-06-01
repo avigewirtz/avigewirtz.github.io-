@@ -58,8 +58,7 @@ make target
 ```bash
 make
 ```
-
-If we wanted to build `intmath.o` alone, we'd invoke:
+This is equivalent to invoking make testintmath. If we wanted to build `intmath.o` alone, we'd invoke:
 
 ```bash
 make intmath.o
