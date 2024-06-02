@@ -1,32 +1,40 @@
 # Automating Builds With make
 
-
-
-* Make reads a text file describing the dependency graph.
-
-To automate builds with `make`, you create a file named `Makefile` (or `makefile`) in your program's directory. In this Makefile, you describe the dependencies between the files in your program and provide `make` with the necessary commands to build each file from its dependencies. Once you have a suitable Makefile set up, you can build your entire program by simply invoking:
+`make` is a standard utility on all unix-like systems. It automates the incremental build process we discussed in the last section. Instead of having to keep track of which files have changed and which files are affected by the changes and then invoking a sequence of commands to rebuild the executable, `make` can do all this work for you. All you have to do is invoke:
 
 ```bash
 make
 ```
 
-`make` will read the Makefile, and, assuming it is set up correctly, build the minimum necessary files to produce an updated executable.
+and make will figure out and perform all the necessary recompilations.&#x20;
+
+#### makefiles
+
+if the scheme we just described sounds too goo to be true, it is. There is some initial setup work. to use make to build your project, you have to first set up a file known as a makefile. in this makefile, you describe the dependencies among the files in your program and provide make with the command to build each file from its dependencies. when you invoke make, it looks for a file in the current working directory named makefile or Makefile, reads the dependency rules, and determines the minimum neccessary recompilations. it's algorithm works something like this: If file A depends on B, and B was modified more recently that A, rebuild B by recompiling A.&#x20;
+
+{% hint style="info" %}
+#### Assumptions made in this chapter
+
+In this chapter, we assume the following:
+
+* name of your makefile is makefile or Makefile. In practice you can name it something else, but then you'd have to specify the name on the command-line when you invoke make.&#x20;
+* makefile and all project files are in the working directory. make looks for the makefile in the working directory.&#x20;
+
+These assumptions are summarized in Figure 2. Of course, none of these assumptions need actually be true in practice. However,&#x20;
+{% endhint %}
 
 ### Dependency Graphs
 
-make processes a dependency graph. We describe dependency graph in make syntax.&#x20;
-
-* a dependency graph is a directed acyclic graph, where files are represented by nodes and dependencies are represented by directed edges. A visual representation of testintmath's dependency graph is shown in Figure 3.&#x20;
-* &#x20;depndency graph, each of the programs files are represented by nodes
-* dependencies are represented by&#x20;
-
-The dependencies among the files in a program can be formally described via a _dependency graph_. In this graph, nodes represent files, and directed edges indicate dependencies. If file A -> B, then A depends on B, meaning that a modification to B requires A to be rebuilt. If A -> B and B -> C, then A indirectly (or transitively) depends on C. A modification to C requires B to be rebuilt, which in turn requires A to be rebuilt. Each file with dependencies is labeled with the command to build it from its dependencies. In make terminology, these files are known as _targets_. A visual representation of our program's dependency graph is shown in Figure 12.3.
+the heart of a makefile is a dependency graph. make processes a dependency graph. Before we describe how to create a dependency graph for testintmath in make syntax, let's first go over a visual representation of testintmath's dependency graph. We describe dependency graph in make syntax.&#x20;
 
 <figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
 
-#### `make` Dependency Graph Syntax
+Notice a few characteristics of our dependency graph. These are common among C programs.
 
-The transition from a dependency graph to a makefile is quite straightforward.
+* 2 levels of dependencies. Execuitable object file depends on relocateable object files, and relocateable object files depend on .c and .h files. `.c` and `.h` files do not have any dependencies. (note, however, that it's not impossible for .c files to have dependencies.)&#x20;
+* each .o file depends on a single .c file, but it can depend on an arbitrary number of .h files.&#x20;
+
+#### Dependency Graph in `make` Syntax
 
 We create what is known as a _dependency rule_ for each target in the dependency graph. In our case, that corresponds to testintmath.o, intmath.o, and testintmath. Dependency rules have the following syntax:
 
@@ -51,9 +59,7 @@ intmath.o: intmath.c intmath.h
     gcc217 -c intmath.c
 ```
 
-### Running a makefile
-
-
+### Running make
 
 Make normally prints,then executes, the necessary commands a line at a time.
 
@@ -69,29 +75,18 @@ Where `target` is the name of the file you want `make` to build. For example, to
 make intmath.o
 ```
 
-If you omit a target, `make` defaults to the first target in the Makefile. In our Makefile, testintmath is the first target. Thus, invoking:
+If you omit a target, `make` defaults to the first target in the Makefile. In our Makefile, `testintmath` is the first target. Thus, the command:
 
 ```bash
 make
 ```
 
-Is equivalent to invoking:
+Is equivalent to:
 
 ```bash
 make testintmath
 ```
 
-In both cases, make will build testintmath.
-
 {% hint style="info" %}
 `make` does not read a makefile from top to bottom, processing all rules within it. It starts with the first rule or the rule specified on the command line, and then processes only the rules that are reachable from it.
 {% endhint %}
-
-#### characteristics of makfile
-
-Notice a few characteristics of our dependency graph. These are common among C programs.
-
-* 2 levels of dependencies. Execuitable object file depends on relocateable object files, and relocateable object files depend on .c and .h files.
-* `.c` and `.h` files do not have any dependencies. This makes sense, since source files are not "built".
-* one-to-one relationship between .c and .o files.
-* many-to-many relationship between .h and .o files.

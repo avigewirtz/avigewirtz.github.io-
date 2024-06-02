@@ -28,11 +28,12 @@ Behind the scenes, quite a lot of work is involved in producing the executable `
     * **Handling preprocessor directives.** These are lines in the code that begin with a `#` (hash). Unlike traditional C code, they are meant to be interpreted by the preprocessor, not the compiler. An example of a preprocessor directive is `#include` (e.g., `#include <stdio.h>`), which instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears.
 
     The output is of the preprocessor is stored in `foo.i`.
-2. **Compilation stage:** The compiler translates `foo.i`  into assembly language file `foo.s`. Assembly language is essentially a human-readable version of the target processor's machine language.
-3. **Assembly stage:** The assembler translates `foo.s` into _relocatable object file_ `foo.o`. This file is essentially machine code equivalent of `foo.s`. &#x20;
-4. **Linking stage:** The linker combines `foo.o` with the necessary `.o` files from the C Standard Library, producing the _executable object file_ `foo`.
+2. **Compilation stage:** The compiler translates `foo.i` into assembly language file `foo.s`. Assembly language is essentially a human-readable version of the target processor's machine language.
+3. **Assembly stage:** The assembler translates `foo.s` into _relocatable object file_ `foo.o`. This file is essentially machine code equivalent of `foo.s`.
+4. **Linking stage:** The linker combines `foo.o` with the necessary `.o` files from the C Standard Library, producing the _executable object file_ `foo`. <mark style="color:red;">Linker (ld) puts binary together with startup code and required libraries</mark>
 
-An overview of this process is shown in Figure 4.2. 
+An overview of this process is shown in Figure 4.2.
+
 <figure><img src="../../.gitbook/assets/Frame 27 (5).png" alt=""><figcaption></figcaption></figure>
 
 The critical point to recognize is that definitions of library functions called in `foo.c` are resolved at link time. We will see the practical implications of this in the next section.
@@ -47,7 +48,7 @@ The critical point to recognize is that definitions of library functions called 
 
 #### Building a Multi-file C Program
 
-As we know, the source code of a C program may be distributed across any number of files. Suppose we divide our program into two `.c` files, `foo.c`, and `bar.c`. We build our program by supplying both files as arguments to `gcc217`:&#x20;
+As we know, the source code of a C program may be distributed across any number of files. Suppose we divide our program into two `.c` files, `foo.c`, and `bar.c`. We build our program by supplying both files as arguments to `gcc217`:
 
 ```bash
 gcc217 foo.c bar.c -o foobar

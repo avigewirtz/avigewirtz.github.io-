@@ -1,23 +1,31 @@
 # Macros
 
-Make has a macro facility that performs textual substitution, similar to the `#define` directive in C. To define a macro, you simply assign a value to a name. For example:
+Make has a macro facility that performs textual substitution, similar to the `#define` directive in C. The syntax to define a macro is as follows:
+
+```makefile
+MACRO_NAME = value
+```
+
+For example, to define the macro `CC` and assign it the value `gcc217`, you'd enter:&#x20;
 
 ```makefile
 CC = gcc217
 ```
 
-Here, `CC` is the name of the macro, and `gcc217` is the value assigned to it. Once a macro is defined, you can use it anywhere in the Makefile by referencing its name prefixed with a dollar sign and enclosed in parentheses or curly braces. For instance:
+Once a macro is defined, you can use it anywhere in the Makefile by referencing its name prefixed with a dollar sign and enclosed in parentheses or curly braces. For example:
 
 ```makefile
 intmath.o: intmath.c intmath.h
     $(CC) -c intmath.c
 ```
 
-When this rule is processed, `$(CC)` will be replaced with `gcc217`.
+When this command is executed, make will replace `$(CC)` with `gcc217`.&#x20;
 
-## Common macros
 
-Common macros include CC, which we just covered, and CFLAGS, which is used to specify command line options to invoke the compiler with. The benefit of using these macros is we can change the compiler or compiler flags by modifying a single line in the Makefile, rather than having to modify each command individually. Let's enhance our makefile by adding these two macros:
+
+The benefit of this macro that we can easily substitute the compiler for many commands by changing a single value. For example, if we want to change the compiler to clang, you'd change CC = gcc217 to CC = clang, and then all commands with this macro will use clang. Typically, you create several versions of a macro, and then comment out all but the one you're currently using.&#x20;
+
+Another commonly used macro is CFLAGS,  used to control the options the compiler is invoked with. Let's enhance our makefile by adding these the CC and CFLAGS macros:
 
 {% code title="makefile version 3" lineNumbers="true" %}
 ```makefile
