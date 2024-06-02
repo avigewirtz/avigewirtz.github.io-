@@ -10,7 +10,7 @@ and make will figure out and perform all the necessary recompilations.&#x20;
 
 #### makefiles
 
-if the scheme we just described sounds too goo to be true, it is. There is some initial setup work. to use make to build your project, you have to first set up a file known as a makefile. in this makefile, you describe the dependencies among the files in your program and provide make with the command to build each file from its dependencies. when you invoke make, it looks for a file in the current working directory named makefile or Makefile, reads the dependency rules, and determines the minimum neccessary recompilations. it's algorithm works something like this: If file A depends on B, and B was modified more recently that A, rebuild B by recompiling A.&#x20;
+if the scheme we just described sounds too goo to be true, it is. There is some initial setup work. to use make to build your project, you have to first set up a file known as a makefile. this makefile a dependency graph, describing dependencies among files in the program, and commands to build each file from its dependencies. when you invoke make, it looks for a file in the current working directory named makefile or Makefile, reads the dependency rules, and determines the minimum neccessary recompilations. it's algorithm works something like this: If file A depends on B, and B was modified more recently that A, rebuild B by recompiling A.&#x20;
 
 {% hint style="info" %}
 #### Assumptions made in this chapter
@@ -23,30 +23,23 @@ In this chapter, we assume the following:
 These assumptions are summarized in Figure 2. Of course, none of these assumptions need actually be true in practice. However,&#x20;
 {% endhint %}
 
-### Dependency Graphs
+#### Writing a makefile
 
-the heart of a makefile is a dependency graph. make processes a dependency graph. Before we describe how to create a dependency graph for testintmath in make syntax, let's first go over a visual representation of testintmath's dependency graph. We describe dependency graph in make syntax.&#x20;
+we mentioned that makefile essentially a dependency graph labeled with build commands. Before we describe how to create a dependency graph for testintmath in make syntax, let's first go over a visual representation of testintmath's dependency graph. A visual representation of testintmath dependency graph is shown in figure 12. Here, nodes represent files, and directed edges represent dependencies. each node that has dependencies is labeled with the command to build it from its dependencies. In our case, the nodes are testintmath, testintmath.o, and intmath.o and labeled with their build commands. in make terminology, these files are known as targets. targets typically represent relocateable and executable object files.&#x20;
 
 <figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
 
-Notice a few characteristics of our dependency graph. These are common among C programs.
-
-* 2 levels of dependencies. Execuitable object file depends on relocateable object files, and relocateable object files depend on .c and .h files. `.c` and `.h` files do not have any dependencies. (note, however, that it's not impossible for .c files to have dependencies.)&#x20;
-* each .o file depends on a single .c file, but it can depend on an arbitrary number of .h files.&#x20;
-
-#### Dependency Graph in `make` Syntax
-
-We create what is known as a _dependency rule_ for each target in the dependency graph. In our case, that corresponds to testintmath.o, intmath.o, and testintmath. Dependency rules have the following syntax:
+Describing this dependency graph in make syntax is extremely simple. We create what is known as a _dependency rule_ for each target in the dependency graph. In our case, that corresponds to testintmath.o, intmath.o, and testintmath. Dependency rules have the following syntax:
 
 ```
 target: dependencies
 <tab> command
 ```
 
-* **Dependencies** . These are the files that the target depends on (e.g., `testintmath` depends on `testintmath.o` and `intmath.o`).
-* **Command**. This is the command to build the target. In our graph, each target is labeled with the command to build it. Note that the command must be preceded by a Tab character.
+* **Dependencies**. The files that the target depends on (e.g., `testintmath` depends on `testintmath.o` and `intmath.o`).
+* **Command**. The command to build the target from its dependencies (e.g., the command to build testintmath is gcc217 intmath.o testintmath.o -o testintmath). Note that the command must be preceded by a Tab character.
 
-This results in three dependency rules: one for testintmath, one for intmath.o, and one for testintmath.o, leading to the following makefile:
+This results in the following makefile:
 
 ```makefile
 testintmath: testintmath.o intmath.o
@@ -58,6 +51,15 @@ testintmath.o: testintmath.c intmath.h
 intmath.o: intmath.c intmath.h
     gcc217 -c intmath.c
 ```
+
+{% hint style="info" %}
+**Characteristics of makefiles for C programs**
+
+Notice a few characteristics of our dependency graph. These are common among C programs.
+
+* 2 levels of dependencies. Execuitable object file depends on relocateable object files, and relocateable object files depend on .c and .h files. `.c` and `.h` files do not have any dependencies. (note, however, that it's not impossible for .c files to have dependencies.)&#x20;
+* each .o file depends on a single .c file, but it can depend on an arbitrary number of .h files.&#x20;
+{% endhint %}
 
 ### Running make
 
