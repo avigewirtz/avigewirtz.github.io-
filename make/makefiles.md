@@ -1,5 +1,9 @@
 # Automating Builds With make
 
+
+
+* Make reads a text file describing the dependency graph.
+
 To automate builds with `make`, you create a file named `Makefile` (or `makefile`) in your program's directory. In this Makefile, you describe the dependencies between the files in your program and provide `make` with the necessary commands to build each file from its dependencies. Once you have a suitable Makefile set up, you can build your entire program by simply invoking:
 
 ```bash
@@ -48,6 +52,10 @@ intmath.o: intmath.c intmath.h
 ```
 
 ### Running a makefile
+
+
+
+Make normally prints,then executes, the necessary commands a line at a time.
 
 The general syntax to run a Makefile is:
 

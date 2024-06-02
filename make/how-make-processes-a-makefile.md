@@ -6,6 +6,8 @@
 
 • If file B depends on A and date/time stamp of A is newer than date/time stamp of B, then rebuild B using the specified command
 
+c z.c If none of the source or ob ject les had changed since the last time prog was made, all of the les would be current, and the command make would just announce this fact and stop. If, however, the defs le had been edited, x.c and y.c (but not z.c ) would be recompiled, and then prog would be created from the new \`\`.o'' les. If only the le y.c had changed, only it would be recompiled, but it would still be necessary to reloa
+
 ### Case 1: Running our makefile when all the targets don't exist
 
 Suppose we're building `testintmath` for the first time. In this case, neither `testintmath` nor `testintmath.o` and `intmath.o` exist yet. To build `testintmath`, we invoke:&#x20;

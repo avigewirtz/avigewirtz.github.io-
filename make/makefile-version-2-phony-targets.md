@@ -1,42 +1,46 @@
 # Phony targets
 
-In a makefile, a rule's target is typically the name of a file that is built when when the rule's command is executed. For example, in the following rule:
+In our current makefile, each rule's target is the name of a file that is built when when the rule's command is executed. For example, in the following rule:
 
 ```makefile
 intmath.o: intmath.c intmath.h
   gcc217 -c intmath.c
 ```
 
-The target is `intmath.o`, which is built when `gcc217 -c intmath.c` is executed. Recall that the command will be executed if either the target does not exist or if the dependencies have a more recent modification timestamp. A flexible feature of make is that it does not actaully verify that the command builds the target
+The target is `intmath.o`, which is built when the command `gcc217 -c intmath.c` is executed. Recall that the command will be executed if either the target does not exist or if its dependencies have a more recent modification timestamp.&#x20;
 
-However, a flexible feature of make is that it does not require that the target actually represent a file. Instead, it can represent a label for a command you want make to execute. Such a target is called a _phony target_. For example, consider the following rule:
+A flexible feature of make is that it does not require that the target actually represent a file. Instead, it can represent a label for an arbitrary command you want make to execute. Such a target is called a _phony target_. For example, consider the following rule:
 
 ```
-sayHello:
-    echo "Hello there!" 
+hello:
+    echo "Hello, world!" 
 ```
 
-The target, `sayHello`, does not represent a file (i.e, there is no file in our directory named `sayHello`, and the command `echo "hello there"` does not create such a file). If we were to invoke `make sayHello`, make would look for a file in the current directory named `sayHello`, and because it will not find one, make will run `echo "Hello there!"`:
+The target, `hello`, does not represent a file, that is, there is no file in our directory named `hello`, and its command, `echo "hello, world"`, does not create such a file. What happens when we invoke this rule? Let's give it a shot:
 
 ```bash
-$ make sayHello
-echo "Hello there!"
-Hello there!
+$ make hello
+echo "Hello, world!"
+Hello, world!
 ```
 
-But because this command will never create a file named `sayHello`, we can run `make sayHello` as many times as we'd like, and each time, make will execute `echo "Hello there!"`. For example, if we execute `make sayHello` three times in a row:
+We see that make executed the command echo "Hello, world!", printing Hello, world! on stdout. Here's how it works. When make processes this rule, it assumes that hello represents a file. It thus looks for a file named hello in the working directory. Because it does not find one, it executes the command `echo "Hello, world!"`.  At this point, make considers its job finished. It does not actually verify whether hello was created.&#x20;
+
+The important thing to recognize is that because a file named hello will never be created when we run this rule, we can run it as many times as we'd like, and each time, make will execute the command `echo "Hello, world!"`. For example, if we run `make hello` three times in a row:
 
 ```bash
-$ make sayHello
-echo "Hello there!"
-Hello there!
-$ make sayHello
-echo "Hello there!"
-Hello there!
-$ make sayHello
-echo "Hello there!"
-Hello there!
+$ make hello
+echo "Hello, world!"
+Hello, world!
+$ make hello
+echo "Hello, world!"
+Hello, world!
+$ make hello
+echo "Hello, world!"
+Hello, world!
 ```
+
+
 
 ## Common phony targets
 
