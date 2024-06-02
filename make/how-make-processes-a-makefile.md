@@ -1,14 +1,8 @@
 # How make Processes a Makefile
 
-`make` processes a Makefile via a [depth first search](https://en.wikipedia.org/wiki/Depth-first\_search) (DFS) traversal of its dependency graph, starting from the default target. Let's examine the traversal for our `testintmath` makefile at various points of development.&#x20;
+`make` processes a Makefile via a [depth first search](https://en.wikipedia.org/wiki/Depth-first\_search) (DFS) traversal of its dependency graph, starting from the default target or from the target specified on the command line. Let's examine the traversal for our `testintmath` makefile at various points of development.&#x20;
 
-• Algorithm:
-
-• If file B depends on A and date/time stamp of A is newer than date/time stamp of B, then rebuild B using the specified command
-
-c z.c If none of the source or ob ject les had changed since the last time prog was made, all of the les would be current, and the command make would just announce this fact and stop. If, however, the defs le had been edited, x.c and y.c (but not z.c ) would be recompiled, and then prog would be created from the new \`\`.o'' les. If only the le y.c had changed, only it would be recompiled, but it would still be necessary to reloa
-
-### Case 1: Running our makefile when all the targets don't exist
+#### Case 1: Running our makefile when all the targets don't exist
 
 Suppose we're building `testintmath` for the first time. In this case, neither `testintmath` nor `testintmath.o` and `intmath.o` exist yet. To build `testintmath`, we invoke:&#x20;
 
@@ -37,7 +31,7 @@ The DFS traversal is summarized in Figure 2.4.
 
 <figure><img src="../.gitbook/assets/Group 66 (7).png" alt=""><figcaption></figcaption></figure>
 
-### Case 2: Running our makefile when all targets are up to date
+#### Case 2: Running our makefile when all targets are up to date
 
 Suppose we invoke `make` immediately after building `testintmath`. make will respond by notifying us that `testintmath` is up to date, and hence it will not execute any commands:&#x20;
 
@@ -51,7 +45,7 @@ The DFS traversal is summarized in Figure 2.5.
 
 <figure><img src="../.gitbook/assets/Group 67 (2).png" alt=""><figcaption></figcaption></figure>
 
-### Case 3: Running our makefile after a source file is modified
+#### Case 3: Running our makefile after a source file is modified
 
 Suppose we invoke `make` after `intmath.c` is modified, but all the other files remain untouched. Make will execute the commands to build `intmath.o` and `testintmath`, but it will not execute the command to build `testintmath.o`:
 

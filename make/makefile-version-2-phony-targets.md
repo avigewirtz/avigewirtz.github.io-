@@ -9,14 +9,14 @@ intmath.o: intmath.c intmath.h
 
 The target is `intmath.o`, which is built when the command `gcc217 -c intmath.c` is executed. Recall that this command will be executed if either `intmath.o` does not exist or if one of its dependencies have a more recent modification timestamp.
 
-A flexible feature of make is that it does not require that the target actually represent a file. Instead, it can represent a label for an arbitrary command you want make to execute. Such a target is called a _phony target_. Consider the following rule:
+A flexible feature of `make` is that it does not require that the target actually represent a file. Instead, it can represent a label for an arbitrary command you want `make` to execute. Such a target is called a _phony target_. Consider the following rule:
 
 ```makefile
 hello: 
     echo "Hello, world!" 
 ```
 
-The target, `hello`, does not represent a file—that is, there is no file in our directory named `hello`, and the command `echo "hello, world"` does not create such a file. What happens when we invoke this rule? Let's give it a shot:
+The target, `hello`, does not represent a file—that is, there is no file in our directory named `hello`, and the command `echo "hello, world"` does not create such a file. (Also notice that the target does not have any dependencies. This is perfectly valid, as dependencies are optional.) What happens when we invoke this rule? Let's give it a shot:
 
 ```bash
 $ make hello
@@ -27,9 +27,9 @@ $
 
 We see that `make` executes the command `echo "Hello, world!"`, printing `Hello, world!` on stdout. `make` does not complain about the fact that a file named `hello` was not created by this command.
 
-Here's how it works. When make processes this rule, it assumes that `hello` represents a file. It thus looks for a file named `hello` in the working directory. Because it does not find one, it determines that `hello` has to be built, and it thus executes the command `echo "Hello, world!"`. At this point, make considers its job complete. It does not care whether `hello` is in fact created.
+Here's how it works. When `make` processes this rule, it assumes that `hello` represents a file. It thus looks for a file named `hello` in the working directory. Because it does not find one, it determines that `hello` needs to be built, and it thus executes the command `echo "Hello, world!"`. At this point, `make` considers its job complete. It does not care whether `hello` is in fact created.
 
-The important thing to recognize is that because this rule will never create a file named `hello`, we can run `make hello` as many times as we'd like, and each time, make will execute the command `echo "Hello, world!"`. For example, if we run `make hello` three times in a row:
+The important thing to recognize is that because this rule will never create a file named `hello`, we can run `make hello` as many times as we'd like, and, each time, `make` will execute the command `echo "Hello, world!"`. For example, if we run `make hello` three times in a row:
 
 ```bash
 $ make hello
@@ -44,27 +44,15 @@ Hello, world!
 $
 ```
 
-{% hint style="warning" %}
-In this example, the `hello` target will not work properly if a file named clean is ever created in this directory. Since it has no dependencies, `hello` would always be considered up to date and its command would not be executed. To avoid this problem you can explicitly declare the target to be phony by making it a prerequisite of the special target `.PHONY` as follows:
-
-```makefile
-.PHONY: hello
-hello: 
-    echo "Hello, world!" 
-```
-
-Once this is done, `make hello` will run the command regardless of whether there is a file named `hello`.
-{% endhint %}
-
 #### Common Phony Targets
 
-As our previous example has shown, a phony target serves as a label for an arbitrary command or action that you want `make` to carry out. Of course, using make to automate printing "Hello, world!" is not particularly useful. In real world makefiles, you'll commonly see the following three phony targets: `all`, `clean`, and `clobber`.&#x20;
+As our previous example has shown, a phony target serves as a label for an arbitrary command or action that you want `make` to carry out. Of course, using `make` to automate the printing of `Hello, world!` is not particularly useful. In real world makefiles, you'll commonly see the following three phony targets: `all`, `clean`, and `clobber`.&#x20;
 
 * `all` to build the entire program and it should be the default target; To execute this target, we invoke make. Because of this, many users often put an _artificial_ rule at the beginning of a makefile, naming all the targets they remake most frequently. The following example could serve as the first rule of a makefile:
 * `clean` to delete the files typically created when the program is built; to execute this target, we invoke make clean.&#x20;
 * `clobber` to extend `clean` by also deleting files like Emacs backup and autosave files. to execute this target, we invoke make clobber.&#x20;
 
-Let's enhance our Makefile by adding these three phony targets:
+Let's enhance our Makefile by adding these three phony targets. Note that in a Makefile, everything following `#` on a line is a comment.
 
 {% code title="makefile version 2" %}
 ```makefile
@@ -88,16 +76,6 @@ intmath.o: intmath.c intmath.h
   gcc217 -c intmath.c
 ```
 {% endcode %}
-
-{% hint style="info" %}
-#### Comments
-
-Note that in a Makefile, everything following a `#` on a line is a comment:
-
-```makefile
-# This is a comment
-```
-{% endhint %}
 
 {% hint style="info" %}
 **Purpose of the 'all' target**
