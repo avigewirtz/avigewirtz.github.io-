@@ -60,7 +60,7 @@ Once this is done, `make hello` will run the command regardless of whether there
 
 As our previous example has shown, a phony target serves as a label for an arbitrary command or action that you want `make` to carry out. Of course, using make to automate printing "Hello, world!" is not particularly useful. In real world makefiles, you'll commonly see the following three phony targets: `all`, `clean`, and `clobber`.&#x20;
 
-* `all` to build the entire program and it should be the default target; To execute this target, we invoke make.&#x20;
+* `all` to build the entire program and it should be the default target; To execute this target, we invoke make. Because of this, many users often put an _artificial_ rule at the beginning of a makefile, naming all the targets they remake most frequently. The following example could serve as the first rule of a makefile:
 * `clean` to delete the files typically created when the program is built; to execute this target, we invoke make clean.&#x20;
 * `clobber` to extend `clean` by also deleting files like Emacs backup and autosave files. to execute this target, we invoke make clobber.&#x20;
 
