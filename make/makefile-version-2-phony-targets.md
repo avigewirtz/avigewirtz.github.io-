@@ -25,7 +25,7 @@ Hello, world!
 $
 ```
 
-We see that `make` executes the command `echo "Hello, world!"`, printing `Hello, world!` on stdout. `make` does not complain about the fact that a file named `hello` was not created.&#x20;
+We see that `make` executes the command `echo "Hello, world!"`, printing `Hello, world!` on stdout. `make` does not complain about the fact that a file named `hello` was not created by this command.&#x20;
 
 Here's how it works. When make processes this rule, it assumes that `hello` represents a file. It thus looks for a file named `hello` in the working directory. Because it does not find one, it determines that hello has to be built, and it thus executes the command `echo "Hello, world!"`.  At this point, make considers its job finished. It does not care whether `hello` is in fact created.&#x20;
 
