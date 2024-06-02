@@ -1,6 +1,6 @@
 # Macros
 
-Make has a macro facility that performs textual substitution, similar to the `#define` directive in C. This allows you to define a shorthand term for a longer sequence of characters and to use the shorthand in your program. To define a macro, you simply assign a value to a name. For example:
+Make has a macro facility that performs textual substitution, similar to the `#define` directive in C. To define a macro, you simply assign a value to a name. For example:
 
 ```makefile
 CC = gcc217
