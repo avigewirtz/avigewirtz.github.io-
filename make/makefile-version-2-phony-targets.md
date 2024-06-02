@@ -9,7 +9,7 @@ intmath.o: intmath.c intmath.h
 
 The target is `intmath.o`, which is built when the command `gcc217 -c intmath.c` is executed. Recall that this command will be executed if either `intmath.o` does not exist or if one of its dependencies have a more recent modification timestamp.&#x20;
 
-A flexible feature of make is that it does not require that the target actually represent a file. Instead, it can represent a label for an arbitrary command you want make to execute. Such a target is called a _phony target_. For example, consider the following rule:
+A flexible feature of make is that it does not require that the target actually represent a file. Instead, it can represent a label for an arbitrary command you want make to execute. Such a target is called a _phony target_. Consider the following rule:
 
 ```makefile
 hello:
