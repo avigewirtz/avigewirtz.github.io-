@@ -16,7 +16,7 @@ hello:
     echo "Hello, world!" 
 ```
 
-The target, `hello`, does not represent a file, that is, there is no file in our directory named `hello`, and the command `echo "hello, world"` does not create such a file. What happens when we invoke this rule? Let's give it a shot:
+The target, `hello`, does not represent a file—that is, there is no file in our directory named `hello`, and the command `echo "hello, world"` does not create such a file. What happens when we invoke this rule? Let's give it a shot:
 
 ```bash
 $ make hello
