@@ -1,13 +1,15 @@
 # Phony targets
 
-In a makefile, a rule's target typically represents the name of a file that is built when the rule's command is executed. For example, in the following rule:
+In a makefile, a rule's target is typically the name of a file that is built when when the rule's command is executed. For example, in the following rule:
 
 ```makefile
 intmath.o: intmath.c intmath.h
   gcc217 -c intmath.c
 ```
 
-The target is `intmath.o`, which is built when `gcc217 -c intmath.c` is executed. However, a flexible feature of make is that it does not require that the target actually represent a file. Instead, it can represent a label for a command you want make to execute. Such a target is called a _phony target_. For example, consider the following rule:
+The target is `intmath.o`, which is built when `gcc217 -c intmath.c` is executed. Recall that the command will be executed if either the target does not exist or if the dependencies have a more recent modification timestamp. A flexible feature of make is that it does not actaully verify that the command builds the target
+
+However, a flexible feature of make is that it does not require that the target actually represent a file. Instead, it can represent a label for a command you want make to execute. Such a target is called a _phony target_. For example, consider the following rule:
 
 ```
 sayHello:

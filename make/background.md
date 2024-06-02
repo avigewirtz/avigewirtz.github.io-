@@ -1,6 +1,6 @@
 # Introduction
 
-In a nutshell, `make` is a software tool that automates the process of incremental builds.The premise behind incremental builds is simple: after you change source files and want to rebuild your program, you rebuild only the affected files, instead of wasting time and rebuilding the entire program. This is especially important in large projects, where build times become a bottleneck. The key to understanding `make` is understanding how incremental builds work and how to implement them manually. Once you understand this, the mechanics and role of `make` become apparent.&#x20;
+In a nutshell, `make` is a software tool that automates the process of incremental builds.The premise behind incremental builds is simple: after you change source files and want to rebuild your program, you rebuild only the affected files, instead of wasting time and rebuilding the entire program. This is especially important in large projects, where build times become a bottleneck. The key to understanding `make` is understanding how incremental builds work and how to implement them manually. Once you understand this, the mechanics and role of `make` become apparent.
 
 #### Running Example
 
@@ -66,28 +66,25 @@ int mult(int x, int y);
 {% endtab %}
 {% endtabs %}
 
-## building testintmath: the non-incremental build approach
+#### Building testintmath: the non-incremental build approach
 
-Comsider the multi-file C program shown below. We'll use it as a running example throughout this chapter. 
+
 
 The current approach we've been using is to build out program with the following command:
 
 gcc ...
 
-suppose we change add.c. we rebuild
-our program by invoking the same command again: 
+suppose we change add.c. we rebuild our program by invoking the same command again:
 
+Incremental builds
 
-Incremental builds 
+Recall what happens under the hood when we built our program. each file, along with all files included, is independently preprocessoed, compiled, and assembled, producing .o files. then, the .o files are linked, producing the executable.
 
-Recall what happens under the hood when we built our program. each file, along with all files included, is independently preprocessoed, compiled, and assembled, producing .o files. then, the .o files are linked, producing the executable. 
+in the previous example, we recompiled all source files after only add.c was modified. we were affectivelt treating the entire program as a monolithic unit, wheere all files are always compiled at the same time. notice, however, that the only files affected by the change were add.o and calc. calc.o and mult were not affected. thus, had we have saved the object files from the last build, we could have rebuilt the program by rebuilding add.o alone and then linking it with the "old" object files.
 
-in the previous example, we recompiled all source files after only add.c was modified. we were affectivelt treating the entire program as a monolithic unit, wheere all files are always compiled at the same time. notice, however, that the only files affected by the change were add.o and calc. calc.o and mult were not affected. thus, had we have saved the object files from the last build, we could have rebuilt the program by rebuilding add.o alone and then linking it with the "old" object files. 
+recall that you can save object files with the -c option. it instructs gcc to halt after assembly and output the .o files. thus, the incremental build approach would have been to invoke gcc on all files with the -c
 
-recall that you can save object files with the -c option. it instructs gcc to halt after assembly and output the .o files. thus, the incremental build approach would have been to invoke gcc on all files with the -c 
-- the key is saving object files and tracking dependencies 
-
-
+* the key is saving object files and tracking dependencies
 
 {% hint style="success" %}
 Fundamentally, the underlying GCC build process is the same irrespective of whether we build our program via two commands:
@@ -111,7 +108,7 @@ The only difference between the two-command and single-command approaches is tha
 As this example shows, implementing incremental builds manually is possible but it requires you to:
 
 1. Keeo track of which source files have been modified since the last build.
-2. Understand which object files are affected by these changes.&#x20;
+2. Understand which object files are affected by these changes.
 
 Even for a small program like testintmath, this task isn’t particulurly exciting, though it is reasonably manageable. As programs grow larger, however, and the web of dependencies grows increasingly complex, this task becomes incredibly tedious and error-prone.
 
