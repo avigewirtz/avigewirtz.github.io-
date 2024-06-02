@@ -124,7 +124,7 @@ You can view the preprocessed files with a text editor like emacs. Let’s exami
 
 <figure><img src="../.gitbook/assets/Group 20 (9).png" alt=""><figcaption></figcaption></figure>
 
-First, we see that the preprocessor removed all comments from `testcircle.c` and `circle.c`. Second, it replaced each `#include` directive with the contents of its specified header: `circle.h` for both `circle.c` and `testcircle.c`, and `stdio.h` and `stdlib.h` for `testcircle.c`. `stdio.h` contains declarations for the `printf` and `scanf` functions, while `stdlib.h` contains the declaration for the `exit` function and the definition of the `EXIT_FAILURE` macro. Finally, all macros were expanded: `PI` in `circle.c` was replaced with `3.14159`, and `EXIT_FAILURE` was replaced with `1`.
+First, we see that the preprocessor removed all comments from `testcircle.c` and `circle.c`. Second, it replaced each `#include` directive with the contents of its specified header: `circle.h` for both `circle.c` and `testcircle.c`, and `stdio.h` and `stdlib.h` for `testcircle.c`. Finally, all macros were expanded: `PI` in `circle.c` was replaced with `3.14159`, and `EXIT_FAILURE` was replaced with `1`.
 
 {% hint style="success" %}
 You can think of the preprocessor as a "search-and-replace" tool:
@@ -150,7 +150,7 @@ The output is assembly language files `testcircle.s` and `circle.s`. Assembly la
 
 Detailed coverage of assembly language is beyond the scope of this chapter. ARM64 assembly will be covered in detail in the second half of COS217. For now, we will make a few general points about assembly.&#x20;
 
-*   Each assembly instruction performs a very basic task, such as adding two numbers or moving data from one memory location to another. As such, it has a poor ratio of functionality to code size compared to higher-level languages like C. For example, the C statement like `x = y + z` requires four ARM assembly instructions:
+*   Each assembly instruction performs a very basic task, such as adding two numbers or moving data from one memory location to another. As such, it has a poor ratio of functionality to code size compared to higher-level languages like C. For example, the C statement `x = y + z` requires four ARM assembly instructions:
 
     ```armasm
     LDR X0, [y]      ; Load the value of y into register X0 
