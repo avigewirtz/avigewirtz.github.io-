@@ -1,6 +1,6 @@
 # Phony targets
 
-In our current makefile, each rule's target is the name of a file that is built when when the rule's command is executed. For example, in the following rule:
+In our makefile, each rule's target is the name of a file that is built when when the rule's command is executed. For example, in the following rule:
 
 ```makefile
 intmath.o: intmath.c intmath.h
@@ -24,7 +24,7 @@ echo "Hello, world!"
 Hello, world!
 ```
 
-We see that make executed the command echo "Hello, world!", printing Hello, world! on stdout. Here's how it works. When make processes this rule, it assumes that hello represents a file. It thus looks for a file named hello in the working directory. Because it does not find one, it executes the command `echo "Hello, world!"`.  At this point, make considers its job finished. It does not actually verify whether hello was created.&#x20;
+We see that make executed the command `echo "Hello, world!"`, printing `Hello, world!` on stdout. Here's how it works. When make processes this rule, it assumes that `hello` represents a file. It thus looks for a file named `hello` in the working directory. Because it does not find one, it determines that hello has to be built, and it thus executes the command `echo "Hello, world!"`.  At this point, make considers its job finished. It does not actually verify whether `hello` was created. Thus, the fact that a file named `hello` is not in fact created does not generate an error.&#x20;
 
 The important thing to recognize is that because a file named hello will never be created when we run this rule, we can run it as many times as we'd like, and each time, make will execute the command `echo "Hello, world!"`. For example, if we run `make hello` three times in a row:
 
@@ -39,8 +39,6 @@ $ make hello
 echo "Hello, world!"
 Hello, world!
 ```
-
-
 
 ## Common phony targets
 
