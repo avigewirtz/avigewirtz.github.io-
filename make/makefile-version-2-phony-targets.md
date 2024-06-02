@@ -11,20 +11,23 @@ The target is `intmath.o`, which is built when the command `gcc217 -c intmath.c`
 
 A flexible feature of make is that it does not require that the target actually represent a file. Instead, it can represent a label for an arbitrary command you want make to execute. Such a target is called a _phony target_. For example, consider the following rule:
 
-```
+```makefile
 hello:
     echo "Hello, world!" 
 ```
 
-The target, `hello`, does not represent a file, that is, there is no file in our directory named `hello`, and its command, `echo "hello, world"`, does not create such a file. What happens when we invoke this rule? Let's give it a shot:
+The target, `hello`, does not represent a file, that is, there is no file in our directory named `hello`, and the command `echo "hello, world"` does not create such a file. What happens when we invoke this rule? Let's give it a shot:
 
 ```bash
 $ make hello
 echo "Hello, world!"
 Hello, world!
+$
 ```
 
-We see that make executed the command `echo "Hello, world!"`, printing `Hello, world!` on stdout. Here's how it works. When make processes this rule, it assumes that `hello` represents a file. It thus looks for a file named `hello` in the working directory. Because it does not find one, it determines that hello has to be built, and it thus executes the command `echo "Hello, world!"`.  At this point, make considers its job finished. It does not actually verify whether `hello` was created. Thus, the fact that a file named `hello` is not in fact created does not generate an error.&#x20;
+We see that `make` executes the command `echo "Hello, world!"`, printing `Hello, world!` on stdout. `make` does not complain about the fact that a file named `hello` was not created.&#x20;
+
+Here's how it works. When make processes this rule, it assumes that `hello` represents a file. It thus looks for a file named `hello` in the working directory. Because it does not find one, it determines that hello has to be built, and it thus executes the command `echo "Hello, world!"`.  At this point, make considers its job finished. It does not actually verify whether `hello` was created. Thus, the fact that a file named `hello` is not in fact created does not generate an error.&#x20;
 
 The important thing to recognize is that because a file named hello will never be created when we run this rule, we can run it as many times as we'd like, and each time, make will execute the command `echo "Hello, world!"`. For example, if we run `make hello` three times in a row:
 
@@ -38,6 +41,7 @@ Hello, world!
 $ make hello
 echo "Hello, world!"
 Hello, world!
+$
 ```
 
 ## Common phony targets
