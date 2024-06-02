@@ -126,7 +126,7 @@ int IntMath_lcm(int iFirst, int iSecond);
 {% endtab %}
 {% endtabs %}
 
-#### Building testintmath: the non-incremental build approach
+#### Building testintmath: The Non-incremental Build Approach
 
 
 
@@ -136,7 +136,7 @@ gcc ...
 
 suppose we change add.c. we rebuild our program by invoking the same command again:
 
-Incremental builds
+#### Building testintmath: The Incremental Build Approach
 
 Recall what happens under the hood when we built our program. each file, along with all files included, is independently preprocessoed, compiled, and assembled, producing .o files. then, the .o files are linked, producing the executable.
 
