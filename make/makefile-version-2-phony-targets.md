@@ -44,15 +44,21 @@ Hello, world!
 $
 ```
 
-{% hint style="info" %}
-\<can you write a note here about phony target will only work if in fact no file with such a name exists. If it does, make will report that file is up-to-date and not use it. for example, if we in fact have a file in our directory name hello, invoking make hello won't work.&#x20;
+{% hint style="warning" %}
+In this example, the `hello` target will not work properly if a file named clean is ever created in this directory. Since it has no dependencies, `hello` would always be considered up to date and its command would not be executed. To avoid this problem you can explicitly declare the target to be phony by making it a prerequisite of the special target `.PHONY` as follows:
 
-There are two solutions. The first is to ensure that phony targets do not correspind to real file names. The second, offered by GNU Make, is to preprend the target with .PHONY. This way, even if there is or ends up being a file with the same name, won't cause issues.
+```makefile
+.PHONY: hello
+hello: 
+    echo "Hello, world!" 
+```
+
+Once this is done, `make hello` will run the command regardless of whether there is a file named `hello`.
 {% endhint %}
 
 #### Common Phony Targets
 
-As our previous example has shown, phony target are used as a label for an arbitrary command or action that you want make to carry out. Of course, using make to automate printing "Hello, world!" is not particularly useful. In real world makefiles, you'll commonly see the following three phony targets: `all`, `clean`, and `clobber`.&#x20;
+As our previous example has shown, a phony target serves as a label for an arbitrary command or action that you want `make` to carry out. Of course, using make to automate printing "Hello, world!" is not particularly useful. In real world makefiles, you'll commonly see the following three phony targets: `all`, `clean`, and `clobber`.&#x20;
 
 * `all` to build the entire program and it should be the default target; To execute this target, we invoke make.&#x20;
 * `clean` to delete the files typically created when the program is built; to execute this target, we invoke make clean.&#x20;
