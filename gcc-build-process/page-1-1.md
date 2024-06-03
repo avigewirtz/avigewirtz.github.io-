@@ -26,8 +26,8 @@ int main(void) {
 
   printf("Enter radius of circle: ");
   if (scanf("%lf", &radius) != 1 || radius <= 0) {
-    printf("Invalid input. Must be a positive number.\n");
-    exit(EXIT_FAILURE);
+      fprintf(stderr, "Invalid input. Must be a positive number.\n");
+      exit(EXIT_FAILURE);
   }
 
   area = calculateArea(radius);
