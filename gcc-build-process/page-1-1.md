@@ -1,6 +1,6 @@
 # Deep Dive
 
-Let's now analyze each of the build stages in practice. As an example, we'll use the multi-file C program shown below. The program consists of three files: `testcircle.c`, `circle.c`, and `circle.h`. `testcircle.c` contains the `main` function, the entry point of our program. It prompts the user for the radius of a circle, computes its area using the `calculateArea` function, and prints the result on stdout. `circle.c` and `circle.h` contain the definition (i.e., implementation) and declaration of `calculateArea`, respectively.&#x20;
+Let's now analyze each of the build stages in practice. As an example, we'll use the multi-file C program shown below. The program consists of three files: `testcircle.c`, `circle.c`, and `circle.h`. `testcircle.c` contains the `main` function, the entry point of our program. It prompts the user for the radius of a circle, computes its area using the `calculateArea` function, and prints the result on stdout. `circle.c` and `circle.h` contain the definition (i.e., implementation) and declaration of `calculateArea`, respectively.
 
 {% tabs %}
 {% tab title="testcircle.c (client)" %}
@@ -88,13 +88,13 @@ Recall that definitions of externally defined functions are resolved at link tim
 
 Consider `testcircle.c`. It uses four externally defined functions: `printf`, `scanf`, `exit`, and `calculateArea`. The first three are defined in the C standard library, while `calculateArea` is defined in `circle.c`
 
-This presents a challenge. The compiler needs to know, at a minimum, the return type of each function being called so it can properly handle the returned value. Ideally, it should also know the number and types of arguments the function takes so it can verify correct usage and perform type checking. How can the compiler obtain this information if it doesn't have access to the full function definitions?
+This presents a challenge. One of the roles of the compiler is to check for semantics errors in the code. The compiler needs to know, at a minimum, the return type of each function being called so it can properly handle the returned value. Ideally, it should also know the number and types of arguments the function takes so it can verify correct usage and perform type checking. How can the compiler obtain this information if it doesn't have access to the full function definitions?
 
 The solution is to insert declarations of each externally defined function into every file where the function is called. A declaration specifies the function's name, return type, and the number and types of its arguments. It's a way of informing the compiler, "A function with this signature exists." This enables the compiler to generate correct code for function calls and detect potential errors.
 
-When C first came out, it had no preprocessor, and thus no file inclusion mechanism. Programmers had to manually insert the declaration of all externally defined function into the files in which they were called. As you can imagine, this proved tedious and error prone. The solution was to adopt a file-inclusion mechanism. In this scheme, related declarations are bundled into a header file. For example, all standard I/O functions are bundled into the header file stdio.h. Now, to use I/O library functions, all you have to do is `#include <stdio.h>` into your file, rather than manually adding all relevant declarations.&#x20;
+When C first came out, it had no preprocessor, and thus no file inclusion mechanism. Programmers had to manually insert the declaration of all externally defined function into the files in which they were called. As you can imagine, this proved tedious and error prone. The solution was to adopt a file-inclusion mechanism. In this scheme, related declarations are bundled into a header file. For example, all standard I/O functions are bundled into the header file stdio.h. Now, to use I/O library functions, all you have to do is `#include <stdio.h>` into your file, rather than manually adding all relevant declarations.
 
-`testintmath.c` `#includes` three header files: `stdio.h`, `stdlib.h`, and `circle.h`. These contain the declarations of the `printf/scanf`, `exit`, and `calculateArea` functions, respectively.  Additionally, `stdlib.h` contains the definition of the `EXIT_FAILURE` macro (see below).
+`testintmath.c` `#includes` three header files: `stdio.h`, `stdlib.h`, and `circle.h`. These contain the declarations of the `printf/scanf`, `exit`, and `calculateArea` functions, respectively. Additionally, `stdlib.h` contains the definition of the `EXIT_FAILURE` macro (see below).
 
 Although not strictly necessary, `circle.c` also includes `circle.h`. This ensures that the declaration of `calculateArea` in `circle.h` matches its declaration (in its definition) in `circle.c`. If there's a discrepancy between the two, the compiler will report an error.
 
@@ -114,11 +114,11 @@ The `#define` directive creates a preprocessor macro, which is essentially an al
 
 The `#ifndef` / `#else` directives, which we use in `intmath.h`, are part of a set of directives known as _conditional_ directives. They define a block of code that is either to be included These are used to control which parts of the source code are sent to the compiler. One of their most common use cases is to prevent the contents of a header file from being included twice in the same compilation unit (i.e., `.i` file). This technique is known as an _#include guard_. Here's how it works in `intmath.h`:
 
-* `#ifndef CIRCLE_H`: This checks if `CIRCLE_H` is defined as a macro. If this evaluates to TRUE (1) (i.e., `CIRCLE_H` is not defined), the preprocessor will continue to process the code between `#ifndef` and `#endif`. If it evaluates to FALSE (0), the preprocessor will skip the entire block within `#ifndef` ... `#endif`.&#x20;
+* `#ifndef CIRCLE_H`: This checks if `CIRCLE_H` is defined as a macro. If this evaluates to TRUE (1) (i.e., `CIRCLE_H` is not defined), the preprocessor will continue to process the code between `#ifndef` and `#endif`. If it evaluates to FALSE (0), the preprocessor will skip the entire block within `#ifndef` ... `#endif`.
 * `#define CIRCLE_H`: This defines `CIRCLE_H`. Notice that it doesn't give `CIRCLE_H` any specific value. This is perfectly valid. The preprocessor will simply note that `CIRCLE_H` is defined. Going forward, `#ifndef CIRCLE_H` will evaluate to FALSE, and the preprocessor will skip the block.
 * `#endif`: This ends the conditional block started by `#ifndef`. Every conditional directive must have a corresponding `#endif`.
 
-#### Examining Preprocessed Output&#x20;
+#### Examining Preprocessed Output
 
 You can view the preprocessed files with a text editor like emacs. Let’s examine `testcircle.i` and `circle.i` to see what precisely was done by the preprocessor. A side-by-side comparison is shown in Figure 12.
 
@@ -136,9 +136,9 @@ You can think of the preprocessor as a "search-and-replace" tool:
 
 ### Compilation Stage
 
-Compilation is where the bulk of the work takes place. Here, the compiler translates the preprocessed source code in `testcircle.i` and `circle.i` into assembly language. If there are any syntax or semantic errors in the C code, the compiler will flag them and terminate. 
+Compilation is where the bulk of the work takes place. The job of the compiler is to translate preprocessed source code into assembly language. If the compiler encounters any syntax or semantic errors in the C code, it will flag them and terminate.
 
-Syntax errors are straightforward grammar related mistakes, such as forgetting a semicolon or curly brace. Semantic errors, on the other hand, refer to more complex issues that affect the meaning of the code, such as using variables that have not been initialized, type mismatches, or operations that don’t make sense on the given data types. These are often not as immediately obvious as syntax errors and can result in logic errors if not caught.
+Syntax errors are straightforward grammar related mistakes, such as forgetting a semicolon or a curly brace. Semantic errors, on the other hand, are more complex errors that affect the meaning of the code, such as using variables that have not been initialized, type mismatches, or operations that don’t make sense on the given data types. These are often not as immediately obvious as syntax errors and can result in logic errors if not caught. An example of a semantics error is calling a function with incompatible arguments, or wrong return type. This is precisely why we wrong number of arguments
 
 We compile `testcircle.i` and `circle.i` by invoking `gcc217` with the `-S` option:
 
@@ -152,7 +152,7 @@ This instructs the `gcc` to stop after compilation and output assembly-language 
 
 #### Characteristics of Assembly language
 
-Detailed coverage of assembly language is beyond the scope of this chapter. ARM64 assembly will be covered in detail in the second half of COS217. For now, we will make a few general points about assembly.&#x20;
+Detailed coverage of assembly language is beyond the scope of this chapter. ARM64 assembly will be covered in detail in the second half of COS217. For now, we will make a few general points about assembly.
 
 *   Each assembly instruction performs a very basic task, such as adding two numbers or moving data from one memory location to another. As such, it has a poor ratio of functionality to code size compared to higher-level languages like C. For example, the C statement `x = y + z` requires four ARM assembly instructions:
 
@@ -175,12 +175,12 @@ We invoke the assembler on `testcircle.s` and `circle.s` with the following comm
 gcc217 -c testcircle.s circle.s
 ```
 
-The result is two relocatable object files, `testcircle.o` and `circle.o`. Because these are binary files, viewing their contents with a text editor will display gibberish.&#x20;
+The result is two relocatable object files, `testcircle.o` and `circle.o`. Because these are binary files, viewing their contents with a text editor will display gibberish.
 
 <figure><img src="../.gitbook/assets/Frame 62.png" alt="" width="563"><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-relocateable object files are binary files divided into sections.&#x20;
+relocateable object files are binary files divided into sections.
 {% endhint %}
 
 ### Linking Stage
@@ -196,11 +196,11 @@ Note that we don't need to explicitly pass `libc.a` to the linker, as `gcc` auto
 <figure><img src="../.gitbook/assets/Frame 60 (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-**libc.a**&#x20;
+**libc.a**
 
-`libc.a` is an archive file. An archive file is a single file that contains within it a collection of relocatable object files, along with metadata describing the location of each file. The linker extracts only the relocatable object files of the functions referenced by our program.&#x20;
+`libc.a` is an archive file. An archive file is a single file that contains within it a collection of relocatable object files, along with metadata describing the location of each file. The linker extracts only the relocatable object files of the functions referenced by our program.
 {% endhint %}
 
 {% hint style="info" %}
-Besides inserting definitions of functions like `printf`, `scanf`, and `exit` from the C standard library, the linker also inserts some runtime starter code. This includes the startup routine responsible for setting up the program's environment and ultimately calling the `main` function.&#x20;
+Besides inserting definitions of functions like `printf`, `scanf`, and `exit` from the C standard library, the linker also inserts some runtime starter code. This includes the startup routine responsible for setting up the program's environment and ultimately calling the `main` function.
 {% endhint %}
