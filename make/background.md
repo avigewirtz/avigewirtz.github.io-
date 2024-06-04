@@ -138,7 +138,7 @@ We run this command whether we're building `testintmath` for the first time, ten
 
 #### Building testintmath: The Incremental Build Approach
 
-Recall what happens under the hood when we build `testintmath`. First, `gcc` preprocesses, compiles, and assembles `testintmath.c`, producing  relocatable object file `testintmath.o`. Next, `gcc` preprocesses, compiles, and assembles `intmath.c`, producing relocatable object file `intmath.o`. In the preprocessing stage, `intmath.h` is inserted into each file. Finally, `gcc` links `testintmath.o` and `intmath.o`--along with necessary `.o` files from the C standard library--producing executable object file `testintmath`. Recall that by default, `gcc` discards the relocatable object files. The approach we showed before was essentially a shortcut to perform all steps via a single command. This processed is shown in Figure 8.&#x20;
+Recall what happens under the hood when we build `testintmath`. First, `gcc` preprocesses, compiles, and assembles `testintmath.c`, producing  relocatable object file `testintmath.o`. Next, `gcc` preprocesses, compiles, and assembles `intmath.c`, producing relocatable object file `intmath.o`. In the preprocessing stage, `intmath.h` is inserted into each file. Finally, `gcc` links `testintmath.o` and `intmath.o`--along with necessary `.o` files from the C standard library--producing executable object file `testintmath`. Recall that by default, `gcc` discards the relocatable object files. This processed is shown in Figure 8.&#x20;
 
 <figure><img src="../.gitbook/assets/Group 234 (3).png" alt="" width="375"><figcaption></figcaption></figure>
 
