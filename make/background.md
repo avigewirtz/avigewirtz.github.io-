@@ -134,7 +134,7 @@ The non-incremental build approach to building `testintmath` is as simple as it 
 gcc217 testintmath.c intmath.c -o testintmath
 ```
 
-We use this command whether we're building our program for the first time, the tenth time, or the one hundredth time. In other words, we don't take into consideration which files were modified since the last build. We just rebuild the whole program. &#x20;
+We run this command whether we're building our program for the first time, the tenth time, or the one hundredth time. In other words, we don't take into consideration which files were modified since the last build. We just rebuild the whole program. &#x20;
 
 #### Building testintmath: The Incremental Build Approach
 
