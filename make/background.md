@@ -142,7 +142,7 @@ Recall what happens under the hood when we build `testintmath`. First, `gcc` pre
 
 <figure><img src="../.gitbook/assets/Group 234 (3).png" alt="" width="375"><figcaption></figcaption></figure>
 
-Notice that `testintmath.o` is derived from `testintmath.c` and `intmath.o` only, that is, it is not in any way derived form `intmath.c`. Similarly, `intmath.o` is derived from `intmath.o` and intmath.h only. It follows that changes to `testintmath.c` do not affect `intmath.o`, and changes to `intmath.c` do not affect `testintmath.o`.&#x20;
+Notice that `testintmath.o` is derived from `testintmath.c` and `intmath.o`, but it is not in any way derived form `intmath.c`. Likewise, `intmath.o` is derived from `intmath.c` and `intmath.h`, but it is not in any way derived from `testintmath.c`. It follows that changes to `testintmath.c` do not affect `intmath.o`, and changes to `intmath.c` do not affect `testintmath.o`.&#x20;
 
 In the previous example, we rebuilt both `intmath.o` and `testintmath.o` even if only a single `.c` file such as `intmath.c` was modified. That was wasteful, however, since `testintmath.o` was not affected by a modification to `intmath.c`. We could have rebuilt only `intmath.o` and then linked it with `testintmath.o` generated from the previous build. Had we have retained `testintmath.o`, that is.&#x20;
 
