@@ -187,11 +187,10 @@ The only difference between these two approaches is that the two-command approac
 
 As this example shows, implementing incremental builds manually is possible but it requires you to:
 
-1. Keep track of which source files have been modified since the last build.
-2. Understand which object files are affected by these changes.
-3. Rebuild in the correct sequence, that is, .o files before executable. Trivial in our case, but in real life
+1. Keep track of which `.c` and `.h` files were modified since the last build.
+2. Keep track of which `.o` files were affected the changes. This requires a good understanding banding of the program's dependencies.
 
-Even for a small program like testintmath, this task isn’t particulurly exciting, though it is reasonably manageable. As programs grow larger, however, and the web of dependencies grows increasingly complex, this task becomes incredibly tedious and error-prone.
+Even for a small program like `testintmath`, this task isn’t particulurly fun, though it is admittedly manageable. As programs grow larger, however, and the web of dependencies grows increasingly complex, this task becomes incredibly tedious and error-prone.
 
 Consider a scenario, for example, where you modify a header file `A`, that is `#included` in, say, 20 of your program's `.c` files. You’d have to track down each one of these `.c` files and recompile it. Worse yet, imagine header file `A` is also `#include`d in header file `B`. You'd then have to also track down all `.c` files that `#include` `B` and recompile them.
 
