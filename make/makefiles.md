@@ -1,6 +1,6 @@
 # Automating Builds With make
 
-`make` is a standard utility on all unix-like systems. It automates the incremental build process we discussed in the last section. Instead of having to keep track of which files have changed and which files are affected by the changes and then invoking a sequence of commands to rebuild the executable, `make` can do all this work for you. All you have to do is invoke:
+`make` is a standard utility on all unix-like systems. It automates the incremental build process we described in the last section. Instead of having to keep track of which files have changed and which files are affected by the changes and then invoking a sequence of commands to rebuild the executable, `make` can do all this work for you. All you have to do is invoke:
 
 ```bash
 make
