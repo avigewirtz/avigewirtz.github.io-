@@ -128,7 +128,7 @@ int IntMath_lcm(int iFirst, int iSecond);
 
 #### Building testintmath: The Non-incremental Build Approach
 
-The non-incremental build approach to building `testintmath` is as simple as it gets. Each time we want to build `testintmath`, we run the following command: 
+The non-incremental approach to building `testintmath` is as simple as it gets. Each time we want to build `testintmath`, we run the following command: 
 
 ```bash
 gcc217 testintmath.c intmath.c -o testintmath
