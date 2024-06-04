@@ -112,7 +112,7 @@ The `#define` directive creates a preprocessor macro, which is essentially an al
 
 #### Conditional Compilation
 
-The `#ifndef` / `#else` directives, which we use in `intmath.h`, are part of a set of directives known as _conditional_ directives. They define a block of code that is either to be included These are used to control which parts of the source code are sent to the compiler. One of their most common use cases is to prevent the contents of a header file from being included twice in the same compilation unit (i.e., `.i` file). This technique is known as an _#include guard_. Here's how it works in `intmath.h`:
+The `#ifndef` / `#else` directives, which we use in `intmath.h`, are part of a set of directives known as _conditional_ directives. These are used to control which parts of the source code are sent to the compiler. One of their most common use cases is to prevent the contents of a header file from being included twice in the same compilation unit (i.e., `.i` file). This technique is known as an _#include guard_. Here's how it works in `intmath.h`:
 
 * `#ifndef CIRCLE_H`: This checks if `CIRCLE_H` is defined as a macro. If this evaluates to TRUE (1) (i.e., `CIRCLE_H` is not defined), the preprocessor will continue to process the code between `#ifndef` and `#endif`. If it evaluates to FALSE (0), the preprocessor will skip the entire block within `#ifndef` ... `#endif`.
 * `#define CIRCLE_H`: This defines `CIRCLE_H`. Notice that it doesn't give `CIRCLE_H` any specific value. This is perfectly valid. The preprocessor will simply note that `CIRCLE_H` is defined. Going forward, `#ifndef CIRCLE_H` will evaluate to FALSE, and the preprocessor will skip the block.
@@ -163,7 +163,7 @@ Detailed coverage of assembly language is beyond the scope of this chapter. ARM6
     STR X0, [x]      ; Store the result from X0 into the variable x
     ```
 * Assembly language gives you total control over the CPU. Some operations possible in assembly have no high-level language equivalent. This allows you to optimize performance and resource usage to a degree not possible in higher-level languages.
-* One of the main drawbacks of assembly is that it's not portable. Unlike like a high-level language like C, \<fill in>.
+* One of the main drawbacks of assembly is that it's not portable. Unlike high-level languages like C, \<fill in>.
 
 ### Assembly Stage
 
@@ -180,7 +180,7 @@ The result is two relocatable object files, `testcircle.o` and `circle.o`. Becau
 <figure><img src="../.gitbook/assets/Frame 62.png" alt="" width="563"><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-relocateable object files are binary files divided into sections.
+relocatable object files are binary files divided into sections.
 {% endhint %}
 
 ### Linking Stage
