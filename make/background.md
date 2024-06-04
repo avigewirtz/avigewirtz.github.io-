@@ -128,13 +128,13 @@ int IntMath_lcm(int iFirst, int iSecond);
 
 #### Building testintmath: The Non-incremental Build Approach
 
-The current approach we've been using is to build multi-file programs like `testintmath` is via the following command:
+The non-incremental build approach, which we've using thus far, is as simple as it gets. Each time we want to build `testintmath`, we run the following command: 
 
 ```bash
 gcc217 testintmath.c intmath.c -o testintmath
 ```
 
-We use this command whether we're building our program for the first time or the tenth after, say, modifying `intmath.c`.&#x20;
+We use this command whether we're building our program for the first time, the tenth time, or the one hundredth time. In other words, we don't take into consideration which files were modified since the last build. We just rebuild the whole program. &#x20;
 
 #### Building testintmath: The Incremental Build Approach
 
