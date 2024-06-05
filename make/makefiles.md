@@ -58,7 +58,7 @@ The general syntax to run a makefile is:
 make target
 ```
 
-where `target` is the name of the file you want `make` to build. In our case, the target can be `testintmath.o`, `intmath.o`, or `testintmath`. If you omit a target on the command line, `make` defaults to the first target in the makefile. In our case, that's `testintmath`. Thus, the command:
+where `target` is the name of the file you want `make` to build. In our case, the target can be `testintmath.o`, `intmath.o`, or `testintmath`. If you omit a target, `make` defaults to the first target in the makefile. In our case, that's `testintmath`. Thus, the command:
 
 ```bash
 make
