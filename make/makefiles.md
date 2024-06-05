@@ -1,27 +1,27 @@
 # Automating Builds With make
 
-Automating the incremental build process with `make` is quite straightforward. You create a text file in your program's directory known as a _makefile._ In this makefile, you describe the dependencies among the files in your program and provide `make` with the commands to build them. Once you have a suitable makefile set up, the command:
+`make` is a standard utility on all unix-like systems. It automates the incremental build process we described in the last section. It tracks changes in files, determines which files are affected by these changes, and invokes a sequence of commands to rebuild the executable.
 
-```bash
+To use `make` to build a program, you need to create a file known as a _makefile_, which you populate with a textual representation of your program's dependency graph (see below). Once you have a suitable makefile set up, the command:
+
+```
 make
 ```
 
-Is all it takes to incrementally build your program. `make` will read your program's makefile and, based on the dependency graph and the latest modification timesstamps of each file,  rebuild the minimum necessary files to produce an updated executable. determine the minimum set of look for a file named `makefile` or `Makefile` in the working directory and analyze its dependency graph. If file A depends on B and B has a more recent modification timestamp, make will rebuild A.
+Is all it takes to build your program. `make` will look for a file in the working directory named makefile or Makefile and analyze its dependency graph. If file A depends on B and B has a more recent modification timestamp, make will rebuild A.
 
 {% hint style="info" %}
-**Assumptions**
+**Assumptions made in this chapter**
 
-We made some implicit assumptions, which we'll continue to make.&#x20;
+We make the following implicit asumptions in this chapter:&#x20;
 
-* name of makefile is Makefile or makefile. In practice you can name it anything, but make
-*
-
-
+* The name of the makefile is `makefile` or `Makefile`. In practice you can name it something else, but then you'd have to specify its name on the command-line when you invoke `make`.
+* The makefile and all project files are located in the working directory.
 {% endhint %}
 
 #### Writing a makefile for testintmath
 
-The core of a makefile is a dependency graph. Have to Identical to graph shown in Figure 12, but with arrows flipped.
+The core of a makefile is a dependency graph. Identical to graph shown in Figure 12, but with arrows flipped.
 
 <figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
 
@@ -33,7 +33,7 @@ target: dependencies
 ```
 
 * **Dependencies**. The files that the target _directly_ depends on (e.g., `testintmath` directly depends on `testintmath.o` and `intmath.o`).
-* **Command**. The command to build the target (e.g., `gcc217 intmath.o testintmath.o -o testintmath`). Note that the command _must_ be preceded by a Tab character. Failure to do so will result in an error.
+* **Command**. The command to build the target (e.g., the command to build `testintmath` is `gcc217 intmath.o testintmath.o -o testintmath`). Note that the command _must_ be preceded by a Tab character. Failure to do so will result in an error.
 
 This results in the following makefile:
 
@@ -78,7 +78,7 @@ gcc testintmath.o intmath.o -o testintmath
 $
 ```
 
-If we run `make` again immediately afterward, make will respond that the target is up to date, and it will and not execute any commands:
+If we run `make` again immediately afterward, make will report that the target is up to date and not execute any commands:
 
 ```bash
 $ make
