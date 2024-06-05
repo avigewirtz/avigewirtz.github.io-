@@ -24,44 +24,51 @@ On Armlab, your working directory is displayed in the [shell prompt](../warm-up-
 
 Knowing where you are in the filesystem is important, but in order to navigate, you also need to be familiar with your surroundings. The `ls` (**l**i**s**t) command can be used to list the contents of any directory in the filesystem.
 
-#### Basic usage
+**Basic usage**
 
-The most basic usage of `ls` is to list the files and directories in the working directory. To do so, just type `ls`:
+The most basic usage of `ls` is to list the names of the files and directories in the working directory. To do so, just invoke `ls`:
 
 ```bash
-~$ ls
-.      .bashrc     A1     CLI_playground
-..     .emacs	   A2     hello
+~$ ls 
+A1	A2	CLI_playground
 ~$ 
 ```
 
-We see seven entries in the working directory. Recall that `.` is a reference to the directory itself, and `..` is a reference to the parent directory.
+We see three entires in the working directory--`A1`, `A2`, and `CLI_playground`.
 
-{% hint style="info" %}
-By default, `ls` does not display [hidden](../a-tour-of-linux/filesystem.md#hidden-files) entries (i.e., those whose names begin with a `.`, such as `.bashrc`). To include hidden entries, you need to use the`-a` option (i.e., `ls -a`). The reason hidden entries were displayed in our listing is because on Armlab, '`ls`' is [aliased](../useful-command-line-features.md#aliases) to '`ls -a --color=always`'. (Note that `--color=always` causes regular files appear in black, directories in blue, and executable files in green).
-{% endhint %}
+**Displaying Hidden Files**
 
-**Displaying File Types**
-
-In the previous listing, there was no indication what type of file each entry is. `ls` does not indicate what type of file each entry is. So, for example, In the previous listing, there's no indication of whether A1 is a file or a directory. To know what type of file each entry is, you can use the **`-F`** option, which shows regular files as usual, but directories with a / appended to them and executable files with a \*.
+By default, `ls` does not display [hidden](https://github.com/avigewirtz/avigewirtz.github.io-/blob/614f5aebcff4121b100c156cfe8a2067ecef97f9/the-linux-command-line/navigating-the-filesystem/broken-reference) entries (i.e., files and directories whose names begin with a `.`, such as `.bashrc`). To include hidden entries in the directory listing, use the `-a` option:
 
 ```bash
-ls -F
+~$ ls 
+.      .bashrc     A1     CLI_playground
+..     .emacs	   A2
+~$ 
 ```
 
-Alternatively, you can use the `--color=always` option, which colors the output. Typically, regular files appear in black, directories in blue, and executable files in green or red:
+We now see four additional entries displayed: `.`, `..`, `.bashrc`, and `.emacs`. Recall that `.` is a reference to the directory itself, and `..` is a reference to its parent directory.&#x20;
+
+**Displaying file metadata**
+
+Notice in the previous listings that there is no indication of whether each entry represents a file or a directory. All entries are displayed identically. The distinction is often important.  To know the entry types, you can use the `-F` option, which shows regular files as usual, but directories with a `/` appended to them:
 
 ```bash
-ls --color=always
+~$ ls 
+./      .bashrc     A1/     CLI_playground/
+../     .emacs	    A2/
+~$ 
 ```
+
+We now know .bashrc and .emacs are files, and all the other entries are directories. Note that if the the file is an executable (not shown here), `ls -F` will append a `*` to it (e.g., `hello*`). Another option to display file type is the `--color=always` option, which displays regular files in black, directories in blue, and executable files in green or red.&#x20;
 
 {% hint style="warning" %}
-On Armlab, '`ls`' is [aliased](../useful-command-line-features.md#aliases) to '`ls -a --color=always`'. Thus, hidden entries and colored output is the default. Note: You can avoid alias expansion by prefixing the command with a `\` (e.g., `\ls`).
+On Armlab, '`ls`' is [aliased](../useful-command-line-features.md#aliases) to '`ls -a --color=always`'. Thus, by default, hidden entries will always be displayed and the output will be colored.&#x20;
 {% endhint %}
 
 #### Displaying File Metadata
 
-Each file and directory has associated metadata, such as access permissions, owner username, and last modification time. You can display the metadata using the `-l` option, which lists the directory's contents in long format:
+Each file and directory has associated metadata, such as its access permissions, owner's username, and its last modification time. You can display the metadata using the `-l` (long) option:&#x20;
 
 ```bash
 ~$ ls -l
