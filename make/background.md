@@ -1,6 +1,8 @@
 # Introduction
 
-In a nutshell, `make` is a software tool that automates the process of incremental builds. The premise behind incremental builds is simple: when you rebuild your program after making a change to the source code, you rebuild only the affected files, not the entire program. This is especially important in large projects, where build times can become a bottleneck. As we'll see soon, implementing incremental builds manually is tedious and error-prone. For that reason, the `make` tool was developed, which automates the process.
+In a nutshell, `make` is a software tool that automates the process of incremental builds. The premise behind incremental builds is simple: when you rebuild your program after making a change to the source code, you rebuild only the affected files, not the entire program. This is especially important in large projects, where build times can become a bottleneck.&#x20;
+
+In this chapter, we first review how to implement incremental builds manually. Then, we discuss how to automate the process with make.&#x20;
 
 #### Running Example
 
@@ -128,36 +130,32 @@ int IntMath_lcm(int iFirst, int iSecond);
 
 #### Building testintmath: The Non-incremental Build Approach
 
-The non-incremental approach to building `testintmath` is as straightforward as it gets. Every time you want to build `testintmath`, you run the following command:
+The non-incremental approach to building `testintmath` is as straightforward as it gets. Every time we build `testintmath`, we run the following command:
 
 ```bash
 gcc217 testintmath.c intmath.c -o testintmath
 ```
 
-You run this command whether you're building `testintmath` for the first time, tenth time, or hundredth time. In other words, you don't take into account which files were actually modified since the last build. You just rebuild the whole program.
+We run this command whether we're building `testintmath` for the first time, tenth time, or hundredth time. In other words, we don't take into account which files were actually modified since the last build. We just rebuild the whole program.&#x20;
 
 #### Building testintmath: The Incremental Build Approach
 
-Recall what happens under the hood when we build `testintmath`.&#x20;
-
-* gcc preprocesses, compiles, and assembled intmath.c and testintmath.c independenctly into relocateable object files tetsintmath.o and intmath.o. `gcc` then links `testintmath.o` and `intmath.o`--along with necessary `.o` files from the C standard library--producing the executable object file `testintmath`.
-* In the preprocessing stage, intmath.h is inserted into both testintmath.c and intmath.c
-* By default, gcc does not retain .o files. However, you can reating object files First, `gcc` preprocesses, compiles, and assembles `testintmath.c`, producing relocatable object file `testintmath.o`. Next, `gcc` preprocesses, compiles, and assembles `intmath.c`, producing relocatable object file `intmath.o`. Recall that `intmath.h` is inserted into both files during preprocessing. Finally, `gcc` links `testintmath.o` and `intmath.o`--along with necessary `.o` files from the C standard library--producing the executable object file `testintmath`. This processed is shown in Figure 8.
+Recall what happens under the hood when we build `testintmath`. First, `gcc` preprocesses, compiles, and assembles `testintmath.c`, producing relocatable object file `testintmath.o`. Next, `gcc` preprocesses, compiles, and assembles `intmath.c`, producing relocatable object file `intmath.o`. In the preprocessing stage, `intmath.h` is inserted into each file. Finally, `gcc` links `testintmath.o` and `intmath.o`--along with necessary `.o` files from the C standard library--producing executable object file `testintmath`. Recall that by default, `gcc` discards the relocatable object files. This processed is shown in Figure 8.
 
 <figure><img src="../.gitbook/assets/Group 234 (3).png" alt="" width="375"><figcaption></figcaption></figure>
 
-Notice that `testintmath.o` is derived from `testintmath.c` and `intmath.o`, but not `intmath.c`. Likewise, `intmath.o` is derived from `intmath.c` and `intmath.h`, but not `testintmath.c`. It follows that changes to `testintmath.c` do not affect `intmath.o`, and changes to `intmath.c` do not affect `testintmath.o`.
+The key observation is that each .o file is derived from, or depends on, its corresponding .c file as well as intmath.h. It does not depend on any other source files.  It follows that changes to `testintmath.c` do not affect `intmath.o`, and changes to `intmath.c` do not affect `testintmath.o`.
 
 In the previous example, we did not retain the .o files. Thus, we had to rebuild the entire program whenever a change was made. If we retain the object files, however, then if only a single .c file is modified, we need to rebuild only its corresponding object file, and then we can link it with the "old" object file to produce an updated executable. For example, if we modify intmath.c, we rebuild intmath.o alone, and then we link it with the testintmath.o from the previous build to produce an updated testintmath.
 
-gcc does not offer any shortcut option to build a program in a single command and retain the relocatable object files. Recall, however, that you can save object files using the `-c` option . This instructs gcc to stop after assembly and output the `.o` files. You can then link the .o files by invoking as usual. Thus, to build our program and save the object files, we build our program with the following two command:
+gcc does not offer any shortcut option to build a program in a single command and retain the relocatable object files. Recall, however, that you can save object files using the `-c` option . This instructs gcc to stop after assembly and output the `.o` files. You can then link the .o files by invoking gcc as usual. Thus, to build our program and save the object files, we us following two commands:
 
 ```
 gcc217 -c testintmath.c intmath.c
 gcc217 testintmath.o intmath.o -o testintmath
 ```
 
-Now, with the object files in hand, the next time we build our program, we rebuild only the affected object files(s) and then link them to produce an uipdated executable. For example, if we modify intmath.c, we rebuild intmath.o only, and then link intmath.o with testintmath.o, producing the updated executable testintmath:
+Now, with the object files in hand, the next time we build our program, we rebuild only the affected object files(s) and then link them to produce an updated executable. For example, if we modify intmath.c, we rebuild intmath.o only, and then link intmath.o with testintmath.o, producing the updated executable testintmath:
 
 ```
 gcc217 -c intmath.c
@@ -187,12 +185,12 @@ gcc217 intmath.c testintmath.c -o testintmath
 The only difference between these two approaches is that the two-command approach retains the`.o` files while the single-command approach does not.
 {% endhint %}
 
-#### Challenges of manually implementing Incremental Builds
+#### Challenges of Manually Implementing Incremental Builds
 
 As this example shows, implementing incremental builds manually is possible but it requires some work. In particular, you have to:
 
 1. Keep track of which `.c` and `.h` files were modified since the last build.
-2. Keep track of which `.o` files are affected by the changes to the source files. This requires a good understanding of the program's dependencies.
+2. Know which `.o` files depend on the modified `.c` and `.o` files.&#x20;
 
 Even for a small program like `testintmath`, this task isn’t particularly fun, though it is admittedly manageable. As programs grow larger, however, and the web of dependencies grows increasingly complex, this task becomes incredibly tedious and error-prone.
 

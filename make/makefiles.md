@@ -1,29 +1,27 @@
 # Automating Builds With make
 
-`make` is a standard utility on all unix-like systems. It automates the incremental build process we described in the last section. Instead of having to keep track of which files have changed and which files are affected by the changes and then invoking a sequence of commands to rebuild the executable, `make` can do all this work for you.&#x20;
+Automating the incremental build process with `make` is quite straightforward. You create a text file in your program's directory known as a _makefile._ In this makefile, you describe the dependencies among the files in your program and provide `make` with the commands to build them. Once you have a suitable makefile set up, the command:
 
-To use `make` to build a program, you need to create a file known as a _makefile_, which you populate with a textual representation of your program's dependency graph (see below). Once you have a suitable makefile set up, the command:
-
-```
+```bash
 make
 ```
 
-Is all it takes to build your program. `make` will look for a file in the working directory named makefile or Makefile and analyze its dependency graph. If file A depends on B and B has a more recent modification timestamp, make will rebuild A.&#x20;
+Is all it takes to incrementally build your program. `make` will read your program's makefile and, based on the dependency graph and the latest modification timesstamps of each file,  rebuild the minimum necessary files to produce an updated executable. determine the minimum set of look for a file named `makefile` or `Makefile` in the working directory and analyze its dependency graph. If file A depends on B and B has a more recent modification timestamp, make will rebuild A.
 
 {% hint style="info" %}
-**Assumptions made in this chapter**
+**Assumptions**
 
-In this chapter, we assume the following:
+We made some implicit assumptions, which we'll continue to make.&#x20;
 
-* The name of the makefile is makefile or Makefile. In practice you can name it something else, but then you'd have to specify the name on the command-line when you invoke make.
-* makefile and all project files are in the working directory.&#x20;
+* name of makefile is Makefile or makefile. In practice you can name it anything, but make
+*
+
+
 {% endhint %}
 
 #### Writing a makefile for testintmath
 
-The core of a makefile is a dependency graph. Identical to graph shown in Figure 12, but with arrows flipped.&#x20;
-
-
+The core of a makefile is a dependency graph. Have to Identical to graph shown in Figure 12, but with arrows flipped.
 
 <figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
 
@@ -70,7 +68,7 @@ Is equivalent to:
 make testintmath
 ```
 
-`make` prints each of the commands it executes to build the target. Thus, say we're building our program for the first time. make will print all three commands:
+`make` prints each of the commands it executes to build the target. Thus, say we're building our program for the first time. `make` will execute and print all three commands:
 
 ```bash
 $ make
@@ -80,7 +78,7 @@ gcc testintmath.o intmath.o -o testintmath
 $
 ```
 
-If we run make again immediately afterward, make will print "target up-to-date" and not execute any commands:
+If we run `make` again immediately afterward, make will respond that the target is up to date, and it will and not execute any commands:
 
 ```bash
 $ make
@@ -88,10 +86,10 @@ make: `testintmath' is up to date.
 $
 ```
 
-Note that `make` does not read a makefile from top to bottom, processing all rules within it. It starts with the first rule or the rule specified on the command line, and then processes only the rules that are reachable from it. So, for example, if we invoke:
+An important thing to recognize is that `make` does not read a makefile from top to bottom, processing all rules within it. It starts with the first rule in the makefile or the rule specified on the command line and then processes only the rules that are reachable from it. So, for example, if we invoke:
 
 ```bash
 make intmath.o
 ```
 
-make will process the rule for `intmath.o` only (i.e., it will build intmath.o or tell us it's up to date). It will not process the rules for `testintmath.o` or `testintmath`.
+make will process the rule for `intmath.o` only. It will not process the rules for `testintmath.o` or `testintmath`.
