@@ -188,7 +188,7 @@ The only difference between these two approaches is that the two-command approac
 As this example shows, implementing incremental builds manually is possible but it requires some work. In particular, you have to:
 
 1. Keep track of which `.c` and `.h` files were modified since the last build.
-2. Keep track of which `.o` files are affected by the changes to the source files. This requires a good understanding banding of the program's dependencies.
+2. Keep track of which `.o` files are affected by the changes to the source files. This requires a good understanding of the program's dependencies.
 
 Even for a small program like `testintmath`, this task isn’t particulurly fun, though it is admittedly manageable. As programs grow larger, however, and the web of dependencies grows increasingly complex, this task becomes incredibly tedious and error-prone.
 
