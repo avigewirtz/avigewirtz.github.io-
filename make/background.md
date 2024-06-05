@@ -174,7 +174,7 @@ gcc217 -c intmath.c testintmath.c
 gcc217 intmath.o testintmath.o -o testintmath
 ```
 
-Or via single command:
+Or via a single command:
 
 ```bash
 gcc217 intmath.c testintmath.c -o testintmath
