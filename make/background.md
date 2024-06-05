@@ -128,21 +128,25 @@ int IntMath_lcm(int iFirst, int iSecond);
 
 #### Building testintmath: The Non-incremental Build Approach
 
-The non-incremental approach to building `testintmath` is as simple as it gets. Each time we want to build `testintmath`, we run the following command:
+The non-incremental approach to building `testintmath` is as straightforward as it gets. Every time you want to build `testintmath`, you run the following command:
 
 ```bash
 gcc217 testintmath.c intmath.c -o testintmath
 ```
 
-We run this command whether we're building `testintmath` for the first time, tenth time, or hundredth time. In other words, we don't take into account which files were actually modified since the last build. We just rebuild the whole program.
+You run this command whether you're building `testintmath` for the first time, tenth time, or hundredth time. In other words, you don't take into account which files were actually modified since the last build. You just rebuild the whole program.
 
 #### Building testintmath: The Incremental Build Approach
 
-Recall what happens under the hood when we build `testintmath`. First, `gcc` preprocesses, compiles, and assembles `testintmath.c`, producing relocatable object file `testintmath.o`. Next, `gcc` preprocesses, compiles, and assembles `intmath.c`, producing relocatable object file `intmath.o`. In the preprocessing stage, `intmath.h` is inserted into each file. Finally, `gcc` links `testintmath.o` and `intmath.o`--along with necessary `.o` files from the C standard library--producing executable object file `testintmath`. Recall that by default, `gcc` discards the relocatable object files. This processed is shown in Figure 8.
+Recall what happens under the hood when we build `testintmath`.&#x20;
+
+* gcc preprocesses, compiles, and assembled intmath.c and testintmath.c independenctly into relocateable object files tetsintmath.o and intmath.o. `gcc` then links `testintmath.o` and `intmath.o`--along with necessary `.o` files from the C standard library--producing the executable object file `testintmath`.
+* In the preprocessing stage, intmath.h is inserted into both testintmath.c and intmath.c
+* By default, gcc does not retain .o files. However, you can reating object files First, `gcc` preprocesses, compiles, and assembles `testintmath.c`, producing relocatable object file `testintmath.o`. Next, `gcc` preprocesses, compiles, and assembles `intmath.c`, producing relocatable object file `intmath.o`. Recall that `intmath.h` is inserted into both files during preprocessing. Finally, `gcc` links `testintmath.o` and `intmath.o`--along with necessary `.o` files from the C standard library--producing the executable object file `testintmath`. This processed is shown in Figure 8.
 
 <figure><img src="../.gitbook/assets/Group 234 (3).png" alt="" width="375"><figcaption></figcaption></figure>
 
-Notice that `testintmath.o` is derived from `testintmath.c` and `intmath.o`, but it is not in any way derived form `intmath.c`. Likewise, `intmath.o` is derived from `intmath.c` and `intmath.h`, but it is not in any way derived from `testintmath.c`. It follows that changes to `testintmath.c` do not affect `intmath.o`, and changes to `intmath.c` do not affect `testintmath.o`.
+Notice that `testintmath.o` is derived from `testintmath.c` and `intmath.o`, but not `intmath.c`. Likewise, `intmath.o` is derived from `intmath.c` and `intmath.h`, but not `testintmath.c`. It follows that changes to `testintmath.c` do not affect `intmath.o`, and changes to `intmath.c` do not affect `testintmath.o`.
 
 In the previous example, we did not retain the .o files. Thus, we had to rebuild the entire program whenever a change was made. If we retain the object files, however, then if only a single .c file is modified, we need to rebuild only its corresponding object file, and then we can link it with the "old" object file to produce an updated executable. For example, if we modify intmath.c, we rebuild intmath.o alone, and then we link it with the testintmath.o from the previous build to produce an updated testintmath.
 
