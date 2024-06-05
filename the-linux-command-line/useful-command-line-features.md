@@ -10,7 +10,7 @@ Repeatedly typing this command gets annoying quickly. To make life easier, you c
 
 gcc217=‘gcc -Wall -Wextra -Wno-unused-parameter -ansi -pedantic’
 
-Now, every time you run gcc217, bash will replace it with gcc -Wall -Wextra -Wno-unused-parameter -ansi -pedantic. Note, however, that by default, this alias will not take effect until your next Bash session. To make it take effect immediately, you can run the following command:
+Going forward, instead of typing out the long command, you simply type gcc217, and bash will replace it with gcc -Wall -Wextra -Wno-unused-parameter -ansi -pedantic. Note, however, that by default, this alias will not take effect until your next Bash session. To make it take effect immediately, you can run the following command:
 
 
 If you want the alias to only apply to the current terminal session, you'd use the alias command, like so: &#x20;
