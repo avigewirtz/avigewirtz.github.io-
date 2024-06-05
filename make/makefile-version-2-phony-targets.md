@@ -9,7 +9,7 @@ intmath.o: intmath.c intmath.h
 
 The target is `intmath.o`, which is built when the command `gcc217 -c intmath.c` is executed. Recall that this command will be executed if either `intmath.o` does not exist or if one of its dependencies have a more recent modification timestamp.
 
-A flexible feature of `make` is that it does not require that the target actually represent a file. Instead, it can represent a label for an arbitrary command you want `make` to execute. Such a target is called a _phony target_. Consider the following rule:
+A flexible feature of `make` is that it does not require that the target actually represent a file. Instead, it can represent a label for an arbitrary command or action you want `make` to execute. Such a target is called a _phony target_. Consider the following rule:
 
 ```makefile
 hello: 
@@ -46,26 +46,24 @@ $
 
 #### Common Phony Targets
 
-As our previous example has shown, a phony target serves as a label for an arbitrary command or action that you want `make` to carry out. Of course, using `make` to automate the printing of `Hello, world!` is not particularly useful. In real world makefiles, you'll commonly see the following three phony targets: `all`, `clean`, and `clobber`.&#x20;
-
-* `all` to build the entire program and it should be the default target; To execute this target, we invoke make. Because of this, many users often put an _artificial_ rule at the beginning of a makefile, naming all the targets they remake most frequently. The following example could serve as the first rule of a makefile:
-* `clean` to delete the files typically created when the program is built; to execute this target, we invoke make clean.&#x20;
-* `clobber` to extend `clean` by also deleting files like Emacs backup and autosave files. to execute this target, we invoke make clobber.&#x20;
-
-Let's enhance our Makefile by adding these three phony targets. Note that in a Makefile, everything following `#` on a line is a comment.
+In real world makefiles, you'll commonly see the following three phony targets: `all`, `clean`, and `clobber`. Let's enhance our Makefile by adding these three phony targets. An explanation of each is provided below. Note that in a Makefile, everything following `#` on a line is a comment.
 
 {% code title="makefile version 2" %}
 ```makefile
 # Dependency rules for non-file targets
+
 # Default target. Builds entire program. 
 all: testintmath
+
 # Delete Emacs backup and autosave files (*~ specifie all files that end with a '~',
 # \#*\# specifies all files that start and end with a '#')
 clobber: clean
   rm -f *~ \#*\#
+  
 # Delete all files generated when program is built (i.e., testintmath and .o files)
 clean:
   rm -f testintmath *.o
+  
   
 # Dependency rules for file targets
 testintmath: testintmath.o intmath.o
@@ -76,6 +74,12 @@ intmath.o: intmath.c intmath.h
   gcc217 -c intmath.c
 ```
 {% endcode %}
+
+Here's what each of the three phony targets do:
+
+* `all`. To control the default behavior you run make without specifying a target.
+* `clean`. to delete the files typically created when the program is built.&#x20;
+* `clobber` to extend `clean` by also deleting files like Emacs backup and autosave files.
 
 {% hint style="info" %}
 **Purpose of the 'all' target**
