@@ -190,7 +190,7 @@ As this example shows, implementing incremental builds manually is possible but 
 1. Keep track of which `.c` and `.h` files were modified since the last build.
 2. Keep track of which `.o` files are affected by the changes to the source files. This requires a good understanding of the program's dependencies.
 
-Even for a small program like `testintmath`, this task isn’t particulurly fun, though it is admittedly manageable. As programs grow larger, however, and the web of dependencies grows increasingly complex, this task becomes incredibly tedious and error-prone.
+Even for a small program like `testintmath`, this task isn’t particularly fun, though it is admittedly manageable. As programs grow larger, however, and the web of dependencies grows increasingly complex, this task becomes incredibly tedious and error-prone.
 
 Consider a scenario, for example, where you modify header file `A`, which is `#included` in, say, 20 `.c` files. You’d have to track down each one of these `.c` files and recompile it. Worse yet, imagine header file `A` is also `#included` in header file `B`. You'd have to also track down all `.c` files that `#include "B"`, and recompile them as well.
 
