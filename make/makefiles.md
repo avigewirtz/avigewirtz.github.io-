@@ -70,7 +70,7 @@ Is equivalent to:
 make testintmath
 ```
 
-`make` prints each of the commands it executes to build the target. If the target is already up-to-date, it will respond: `target up to date`. Thus, say we run make when all targets need to be built. make will print all three commands:
+`make` prints each of the commands it executes to build the target. Thus, say we're building our program for the first time. make will print all three commands:
 
 ```bash
 $ make
