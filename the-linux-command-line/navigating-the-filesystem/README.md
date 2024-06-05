@@ -122,11 +122,11 @@ You can change your working directory using the `cd` (**c**hange working **d**ir
 cd DIRECTORY_PATHNAME
 ```
 
-`DIRECTORY_PATHNAME` is either the absolute or relative pathname of the target directory (see [Pathnames](../a-tour-of-linux/filesystem.md#pathnames)).
+Where `DIRECTORY_PATHNAME` is either the absolute or relative pathname of the target directory (see [Pathnames](../a-tour-of-linux/filesystem.md#pathnames)).
 
 #### Example
 
-As we mentioned earlier, the default working directory is your home directory, which on Armlab is `/u/yourNetID`. Suppose we want to change our working directory to `/usr/bin` (Figure 12).
+As we mentioned earlier, by default your working directory will be your home directory, which on Armlab is `/u/yourNetID`. Suppose we want to change our working directory to `/usr/bin` (Figure 12).
 
 <figure><img src="../../.gitbook/assets/filesystem10.17 (7).png" alt=""><figcaption></figcaption></figure>
 
@@ -170,8 +170,8 @@ cd "assignment 1"
 
 * **Going home**: If you invoke `cd` without arguments, it'll take you to your home directory.
 * **Returning to the last working directory**. `cd -` (hyphen) returns you to your previous working directory.
-* **Tilde (`~`):** You can use the tilde character as a shortcut for your home directory. For example, `cd ~/A1` is equivalent to `cd /u/yourNetID/A1`.
-* **Tab Completion**: If you start typing an directory name and press Tab, Bash will attempt to auto-completes the directory name. This will save you time and reduce typos.
+* **Tilde (`~`):** You can use the tilde character as a shortcut for your home directory or for another user's home directory. For example, `cd ~` is equivalent to `cd /u/yourNetID`, and `cd ~/tal5` is equivalent to `cd /u/tal5`.
+* **Tab Completion**: If you start typing an directory name and press Tab, `bash` will attempt to auto-completes the directory name. This will save you time and reduce typos.
 
 ### Exercises
 
