@@ -194,4 +194,4 @@ Even for a small program like `testintmath`, this task isn’t particularly fun,
 
 Consider a scenario, for example, where you modify header file `A`, which is `#included` in, say, 20 `.c` files. You’d have to track down and recompile all these `.c` file. Worse yet, imagine header file `A` is also `#included` in header file `B`. You'd then have to also track down and recompile all the `.c` files that `#include` `B`.
 
-For this reason, the `make` tool was developed, which automates the process of incremental builds. The section that follows describes how to use `make`.
+For this reason, the `make` tool was developed, which automates the process of incremental builds. In the next section, we describe how to use `make`.
