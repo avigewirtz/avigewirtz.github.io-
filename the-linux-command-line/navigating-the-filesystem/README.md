@@ -17,12 +17,12 @@ $
 As we'll soon see, you can change your working directory with the `cd` command.
 
 {% hint style="success" %}
-On Armlab, your working directory is displayed in the [shell prompt](../warm-up-commands.md#shell-prompt), between the colon (:) and dollar ($) sign. Thus, you can determine what your working directory is without invoking `pwd`.&#x20;
+On Armlab, your working directory is displayed in the [shell prompt](../warm-up-commands.md#shell-prompt), between the colon (:) and dollar ($) sign. Thus, you can determine what your working directory is without invoking `pwd`.
 {% endhint %}
 
 ### **`ls` - A Sense of Surroundings**
 
-Knowing where you are in the filesystem is important, but in order to navigate, you also need to be familiar with your surroundings. The `ls` (**l**i**s**t) command lets you list the contents of any directory in the filesystem. &#x20;
+Knowing where you are in the filesystem is important, but in order to navigate, you also need to be familiar with your surroundings. The `ls` (**l**i**s**t) command can be used to list the contents of any directory in the filesystem.
 
 #### Basic usage
 
@@ -38,18 +38,18 @@ The most basic usage of `ls` is to list the files and directories in the working
 We see seven entries in the working directory. Recall that `.` is a reference to the directory itself, and `..` is a reference to the parent directory.
 
 {% hint style="info" %}
-By default, `ls` does not display [hidden](../a-tour-of-linux/filesystem.md#hidden-files) entries (i.e., those whose names begin with a `.`, such as `.bashrc`). To include hidden entries, you need to use the`-a` option (i.e., `ls -a`). The reason hidden entries were displayed in our listing is because on Armlab, '`ls`' is [aliased](../useful-command-line-features.md#aliases) to '`ls -a --color=always`'.  (Note that `--color=always` causes regular files appear in black, directories in blue, and executable files in green).
+By default, `ls` does not display [hidden](../a-tour-of-linux/filesystem.md#hidden-files) entries (i.e., those whose names begin with a `.`, such as `.bashrc`). To include hidden entries, you need to use the`-a` option (i.e., `ls -a`). The reason hidden entries were displayed in our listing is because on Armlab, '`ls`' is [aliased](../useful-command-line-features.md#aliases) to '`ls -a --color=always`'. (Note that `--color=always` causes regular files appear in black, directories in blue, and executable files in green).
 {% endhint %}
 
 **Displaying File Types**
 
-In the previous listing, there was no indication what type of file each entry is. `ls` does not indicate what type of file each entry is. So, for example, In the previous listing, there's no indication of whether A1 is a file or a directory. To know what type of file each entry is, you can use the **`-F`** option, which shows regular files as usual, but directories with a / appended to them and executable files with a \*.&#x20;
+In the previous listing, there was no indication what type of file each entry is. `ls` does not indicate what type of file each entry is. So, for example, In the previous listing, there's no indication of whether A1 is a file or a directory. To know what type of file each entry is, you can use the **`-F`** option, which shows regular files as usual, but directories with a / appended to them and executable files with a \*.
 
 ```bash
 ls -F
 ```
 
-Alternatively, you can use the `--color=always` option, which colors the output. Typically, regular files appear in black, directories in blue, and executable files in green or red:&#x20;
+Alternatively, you can use the `--color=always` option, which colors the output. Typically, regular files appear in black, directories in blue, and executable files in green or red:
 
 ```bash
 ls --color=always
@@ -73,26 +73,26 @@ drwx------  6 sgewirtz  utemper  192 Oct  12 14:36 CLI_playground
 ~$
 ```
 
-Let's break down the output using `README.md` as an example:&#x20;
+Let's break down the output using `README.md` as an example:
 
-*   **-rw-------.**&#x20;
+*   **-rw-------.**
 
-    &#x20;   The file's access permissions. This will be covered in F[ile and Directory Access Permissions](../file-and-directory-access-permissions.md).&#x20;
+    The file's access permissions. This will be covered in F[ile and Directory Access Permissions](../file-and-directory-access-permissions.md).
 *   **1**
 
-    &#x20;   Number of hard links. You can safely ignore this column.&#x20;
-*   **sgewirtz**&#x20;
+    Number of hard links. You can safely ignore this column.
+*   **sgewirtz**
 
-    &#x20;   Name of the user who owns the file.&#x20;
-*   **utemper**&#x20;
+    Name of the user who owns the file.
+*   **utemper**
 
-    &#x20;   Name of the group that owns the file.&#x20;
+    Name of the group that owns the file.
 *   **17**
 
-    &#x20;   Size of the file's contents in bytes.&#x20;
+    Size of the file's contents in bytes.
 *   **Oct 12 14:35**
 
-    &#x20;   Date and time the file was last modified.&#x20;
+    Date and time the file was last modified.
 
 #### Displaying the Contents of Another Directory
 
@@ -117,9 +117,9 @@ cd DIRECTORY_PATHNAME
 
 `DIRECTORY_PATHNAME` is either the absolute or relative pathname of the target directory (see [Pathnames](../a-tour-of-linux/filesystem.md#pathnames)).
 
-#### Example&#x20;
+#### Example
 
-As we mentioned earlier, the default working directory is your home directory, which on Armlab is `/u/yourNetID`. Suppose we want to change our working directory to `/usr/bin` (Figure 12).&#x20;
+As we mentioned earlier, the default working directory is your home directory, which on Armlab is `/u/yourNetID`. Suppose we want to change our working directory to `/usr/bin` (Figure 12).
 
 <figure><img src="../../.gitbook/assets/filesystem10.17 (7).png" alt=""><figcaption></figcaption></figure>
 
@@ -129,7 +129,7 @@ Using its absolute pathname, we'd invoke:
 cd /usr/bin
 ```
 
-The "journey" begins at the root directory (Figure 14).&#x20;
+The "journey" begins at the root directory (Figure 14).
 
 <figure><img src="../../.gitbook/assets/Group 43.png" alt=""><figcaption></figcaption></figure>
 
@@ -161,14 +161,14 @@ cd "assignment 1"
 
 #### **Useful Shortcuts**
 
-* **Going home**: If you invoke `cd` without arguments, it'll take you to your home directory.&#x20;
-* **Returning to the last working directory**. `cd -` (hyphen) returns you to your previous working directory.&#x20;
-* **Tilde (`~`):** You can use the tilde character as a shortcut for your home directory. For example,  `cd ~/A1` is equivalent to `cd /u/yourNetID/A1`.
+* **Going home**: If you invoke `cd` without arguments, it'll take you to your home directory.
+* **Returning to the last working directory**. `cd -` (hyphen) returns you to your previous working directory.
+* **Tilde (`~`):** You can use the tilde character as a shortcut for your home directory. For example, `cd ~/A1` is equivalent to `cd /u/yourNetID/A1`.
 * **Tab Completion**: If you start typing an directory name and press Tab, Bash will attempt to auto-completes the directory name. This will save you time and reduce typos.
 
 ### Exercises
 
-**Note**: For the following questions, assume the working directory is `/u/yourNetID`, unless otherwise stated.&#x20;
+**Note**: For the following questions, assume the working directory is `/u/yourNetID`, unless otherwise stated.
 
 1. Which of the following commands lists the metadata of all files in the working directory, including hidden files?
    * A) `ls -a`
@@ -216,7 +216,7 @@ cd "assignment 1"
    * C) The command is successful
    * D) `.bashrc`
 10. What is the effect of invoking `cd ././././`?
-    * A) It moves you up four levels in the filesystem.&#x20;
+    * A) It moves you up four levels in the filesystem.
     * B) It generates an error message, as the command is invalid.
     * C) It has no effect, as it essentially changes the directory to itself.
     * D) It takes you to the root directory.
@@ -225,15 +225,15 @@ cd "assignment 1"
 
 <summary>Answers to exercises</summary>
 
-1. &#x20; C
-2. &#x20; A
-3. &#x20; C
-4. &#x20; A and B
-5. &#x20; B
-6. &#x20; A, B, and C
-7. &#x20; C
-8. &#x20; D
-9. &#x20; B
+1. C
+2. A
+3. C
+4. A and B
+5. B
+6. A, B, and C
+7. C
+8. D
+9. B
 10. C
 
 </details>
