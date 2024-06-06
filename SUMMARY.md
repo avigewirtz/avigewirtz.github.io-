@@ -88,7 +88,7 @@
 ## Make
 
 * [Introduction](make/background.md)
-* [Automating Builds With make](make/makefiles.md)
+* [Automating Incremental Builds With make](make/makefiles.md)
 * [How make Processes a Makefile](make/how-make-processes-a-makefile.md)
 * [Phony targets](make/makefile-version-2-phony-targets.md)
 * [Macros](make/makefile-version-3-macros.md)

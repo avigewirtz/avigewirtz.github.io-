@@ -1,6 +1,6 @@
-# Automating Builds With make
+# Automating Incremental Builds With make
 
-To use `make` to build a program, you need to create a file known as a _makefile_, which you populate with a textual representation of your program's dependency graph (see below). Once you have a suitable makefile set up, the command:
+Automating incremental builds is quite straightforward. Here, we'll describe how it's done using our `testintmath` program as an example. To use `make` to build a program, you need to create a file known as a _makefile_, which you populate with a textual representation of your program's dependency graph (see below). Once you have a suitable makefile set up, the command:
 
 ```
 make
