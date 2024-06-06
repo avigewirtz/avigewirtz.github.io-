@@ -21,7 +21,7 @@ intmath.o: intmath.c intmath.h
 
 When this command is executed, make will replace `$(CC)` with `gcc217`.&#x20;
 
-The benefit of this macro that we can easily substitute the compiler used by an arbitrary number of commands by changing a single value. For example, if we want to change the compiler to `clang`, we'd change `CC = gcc217` to `CC = clang`, and then all commands with this macro will use `clang`. Typically, you create several versions of a macro, and then comment out all but the one you're currently using.&#x20;
+The benefit of defining this sort macro is that it enables us to easily control which compiler is used. instead of changing the compiler in every command, we change just a single value. For example, if we want to change the compiler to `clang`, we'd change `CC = gcc217` to `CC = clang`, and then all commands with this macro will use `clang`. Typically, you create several versions of a macro, and then comment out all but the one you're currently using.&#x20;
 
 Another commonly used macro is `CFLAGS`, used to specify different sets of command line options to invoke the compiler with. Let's enhance our makefile by adding these `CC` and `CFLAGS` macros:
 

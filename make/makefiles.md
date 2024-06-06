@@ -1,7 +1,5 @@
 # Automating Builds With make
 
-`make` is a standard utility on all unix-like systems. It automates the incremental build process we described in the last section. It tracks changes in files, determines which files are affected by these changes, and invokes a sequence of commands to rebuild the executable.
-
 To use `make` to build a program, you need to create a file known as a _makefile_, which you populate with a textual representation of your program's dependency graph (see below). Once you have a suitable makefile set up, the command:
 
 ```
