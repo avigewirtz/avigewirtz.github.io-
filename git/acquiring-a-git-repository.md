@@ -6,7 +6,7 @@ In the first part of this tutorial, we'll go over using version control for pers
 
 Consider the `git_playground` project shown in Figure 2. We'll use it as a running example to demonstrate the basics of the local git workflow.&#x20;
 
-<figure><img src="../../.gitbook/assets/Group 118 (1).png" alt="" width="188"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 118 (1).png" alt="" width="188"><figcaption></figcaption></figure>
 
 The first step to version controlling `git_playground` with Git is to initialize a local database or _repository_ where git will store it's history. To do so, we first cd into git\_playground:&#x20;
 
@@ -24,13 +24,13 @@ Initialized empty Git repository in /u/sgewirtz/git_playground/.git/
 
 git creates a `.git` directory in the root directory of our project's workspace (Figure 15), which contains the git repository.
 
-<figure><img src="../../.gitbook/assets/Group 133.png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 133.png" alt="" width="375"><figcaption></figcaption></figure>
 
 #### Saving a Snapshot
 
 It might seem like at this point our work is complete. We created a repository for our project; now, Git will monitor our work and periodically record a snapshot of its current state. This is very much not how it works. Saving snapshots is a manual process. You must explicitly tell Git each time you want it to save a snapshot. This is known as committing. What's more, committing is a two-step process. You must first add the files that you want Git to include in the next commit into an intermediate area known as the index or staging area. Once this is complete, you commit.&#x20;
 
-<figure><img src="../../.gitbook/assets/Group 124.png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 124.png" alt="" width="375"><figcaption></figcaption></figure>
 
 #### Staging files
 
@@ -42,7 +42,7 @@ git add .
 
 And now hello.txt, hi.txt, and bye/bye.txt will be listed in the staging area (Figure 1-1).&#x20;
 
-<figure><img src="../../.gitbook/assets/Group 129 (1).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 129 (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
 #### Committing
 
@@ -54,11 +54,11 @@ git commit -m "COMMIT_MESSAGE"
 
 COMMIT\_MESSAGE is typically a concise, meaningful description of the changes we're committing. This message becomes a part of your commit and helps you (and potentially others) understand the purpose of the commit when reviewing the project's history. In our case, since it's our first commit and we don't have anything meaningful to say, we'll simply write "first commit":
 
-<figure><img src="../../.gitbook/assets/Screenshot 2024-04-04 at 4.47.23 PM.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2024-04-04 at 4.47.23 PM.png" alt="" width="563"><figcaption></figcaption></figure>
 
 Our repository now contains a single commit. For simplicity, we'll label this commit "commit 1," but as we'll see soon, commits are identified by a 40-digit hex number.&#x20;
 
-<figure><img src="../../.gitbook/assets/Group 131.png" alt="" width="375"><figcaption><p>Figure 3: Our repository after the first commit.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 131.png" alt="" width="375"><figcaption><p>Figure 3: Our repository after the first commit.</p></figcaption></figure>
 
 #### Components of a Git Project
 
@@ -68,13 +68,13 @@ Before we delve into recording changes to a repository, let's ensure we understa
 * The index, or staging area. Contains the files that will be the next commit. Essentially a pseodocommit. An important, often misunderstood thing is that the index does nor merely contain the changes to be committed. It is the next commit. Not just list of filenames, but copy of actual contents from the time you staged. Not just changes, but the entire next commit. As we'll see soon, you only have to manually add changes since last commit, since by dfualy unmodified files are automatically in in the staging area.&#x20;
 * Commits. The actual snapshots of your prject stored by git. This is the core of your repository.&#x20;
 
-&#x20;to record changes&#x20;
+&#x20;&#x20;
 
 ## Modifying the working tree <a href="#checking_status" id="checking_status"></a>
 
 At this point, if we invoke git status, it'll tell us that our working tree is "clean":
 
-<figure><img src="../../.gitbook/assets/Screenshot 2024-04-04 at 5.10.37 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2024-04-04 at 5.10.37 PM.png" alt=""><figcaption></figcaption></figure>
 
 A clean working tree means that our working tree does not contain any new, modified or deleted files. In Git terminology, all the files in our working tree are "unmodified."&#x20;
 
@@ -146,6 +146,4 @@ The timing for creating commits is up to you, but it's a good practice to commit
 {% endhint %}
 
 ###
-
-<figure><img src="../../.gitbook/assets/image (7) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
