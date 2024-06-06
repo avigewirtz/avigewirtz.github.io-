@@ -144,7 +144,7 @@ Recall what happens under the hood when we build `testintmath`. First, `gcc` pre
 
 <figure><img src="../.gitbook/assets/Group 234 (3).png" alt="" width="375"><figcaption></figcaption></figure>
 
-The key observation is that each .o file is derived from, or depends on, its corresponding .c file as well as intmath.h. It does not depend on any other source files.  It follows that changes to `testintmath.c` do not affect `intmath.o`, and changes to `intmath.c` do not affect `testintmath.o`.
+The key observation is that each `.o` file is derived from, or depends on, its corresponding .c file, as well as any header files #included in the .c file. It does not depend on any other source files. For example, intmath.o depends on intmath.c and intmath.h, but it does not depend on testintmath.c. It follows that changes to `testintmath.c` do not affect `intmath.o`, and changes to `intmath.c` do not affect `testintmath.o`.
 
 In the previous example, we did not retain the .o files. Thus, we had to rebuild the entire program whenever a change was made. If we retain the object files, however, then if only a single .c file is modified, we need to rebuild only its corresponding object file, and then we can link it with the "old" object file to produce an updated executable. For example, if we modify intmath.c, we rebuild intmath.o alone, and then we link it with the testintmath.o from the previous build to produce an updated testintmath.
 
