@@ -47,7 +47,7 @@
   * [Getting Documentation for Git Commands](git/background/getting-help.md)
   * [Git configuration files](git/background/git-configuration-files.md)
 * [Local Git Workflow](git/git-in-a-nutshell.md)
-* [Beginner Local Workflow](git/acquiring-a-git-repository/README.md)
+* [Local Workflow](git/acquiring-a-git-repository/README.md)
   * [Setting up a git project](git/acquiring-a-git-repository/setting-up-a-git-project.md)
   * [Understanding the index](git/acquiring-a-git-repository/understanding-the-index.md)
   * [Recording changes to repository](git/acquiring-a-git-repository/recording-changes-to-repository.md)
