@@ -1,4 +1,7 @@
-# Commits
+# Commits Graph
+
+
+- in components of git project I'll go over commits 
 
 We know that eachh commit represents a snapshot of project at certain point in time.&#x20;
 
@@ -25,34 +28,7 @@ if someone else has the same sha-1 for their commit, you can be sure you're both
 
 ## Commit graph
 
-The set of all commits in a repository forms a “commit graph”. The commit graph might be a simple linear history, as shown in Figure 1-2.
-
-<figure><img src="../../.gitbook/assets/Group 410.png" alt="" width="375"><figcaption><p>Figure 1-2: A linear commit graph</p></figcaption></figure>
-
-Figure 1-2. A linear commit graph
-
-Or a complex graph involving several branches and merges, as shown in Figure 1-3.
-
-<figure><img src="../../.gitbook/assets/Group 426 (1).png" alt=""><figcaption></figcaption></figure>
-
-Each node represents a commit, labeled by the first 5 letters of the commit's sha-1 hash.  Arrows point from a commit to its parents. Commit 3b917 has no parents and is called a “root commit”; it was the initial commit in this repository’s history. Most commits have a single parent, indicating that they evolved in a straightforward way from a single previous state of the project. Some commits, here just commit 9c527, have multiple parents and are called “merge commits.” This indicates that the commit is derived by merging distinct branches of the commit graph. We’ll define branches and merges more precisely in a moment.
-
-
-
-The labels on the right side of this picture—master, topic, and release—denote “branches.” The branch name refers to the latest commit on that branch; here, commits F, 4, and Z, respectively, are called the “tip” of the branch. The branch itself is defined as the collection of all commits in the graph that are reachable from the tip by following the parent arrows backward along the history. Here, the branches are:
-
-* release = {A, B, C, X, Y, Z}
-* master = {A, B, C, D, E, F, 1, 2}
-
-Overview | 3
-
-• topic = {A, B, 1, 2, 3, 4}
-
-{% hint style="info" %}
-A commit graph has two characteristics: it is _directed_, meaning that the nodes can only be traversed in one direction, and _acyclic_, meaning the graph does not contain any loops (i.e., a way to follow traverse the graph and encounter the same commit twice). In mathematical terms, this is called a _directed acyclic graph,_ or DAG for short.&#x20;
-{% endhint %}
-
-## Viewing the commit graph
+The complete history of all commits in a repository forms a “commit graph”. You can print rhe commit graph using the git log command. assuming you've followed along in the previous section, you're commit graph will look like the following: 
 
 To display the commit graph of your project, you can invoke git log with the `--graph` and `--all` options:
 
@@ -60,4 +36,27 @@ To display the commit graph of your project, you can invoke git log with the `--
 git log --all --graph
 ```
 
-This shows a graphical representation of the entire commit history of your project, starting with the most recent commit. The entry for each commit includes its 40-digit SHA-1 hash, the author's information (name and email), the timestamp, and the commit message.
+
+A visual representation of this graph is shown in Fugure 20. 
+
+<figure><img src="../../.gitbook/assets/Group 410.png" alt="" width="375"><figcaption><p>Figure 1-2: A linear commit graph</p></figcaption></figure>
+
+Figure 1-2. A linear commit graph
+
+
+Each node represents a commit, labeled by the first 5 letters of the commit's sha-1 hash (see below).  
+
+
+Arrows point from a commit to its parents. The first commit has no parents is called the “root commit”. 
+
+the latest commit is pointed to by main, which in turn is pointed to by HEAD. 
+
+
+
+The labels on the right side of this picture—master, topic, and release—denote “branches.” The branch name refers to the latest commit on that branch; here, commits F, 4, and Z, respectively, are called the “tip” of the branch. The branch itself is defined as the collection of all commits in the graph that are reachable from the tip by following the parent arrows backward along the history. Here, the branches are:
+
+
+{% hint style="info" %}
+A commit graph has two characteristics: it is _directed_, meaning that the nodes can only be traversed in one direction, and _acyclic_, meaning the graph does not contain any loops (i.e., a way to follow traverse the graph and encounter the same commit twice). In mathematical terms, this is called a _directed acyclic graph,_ or DAG for short.&#x20;
+{% endhint %}
+
