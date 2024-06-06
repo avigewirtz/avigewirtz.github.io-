@@ -1,4 +1,4 @@
-# Beginner Local Workflow
+# Local Workflow
 
 In the first part of this tutorial, we'll go over using version control for personal use. All work contained within a single, local repository. We're doing it this way since it's simpler to explain.&#x20;
 
@@ -34,33 +34,41 @@ It might seem like at this point our work is complete. We created a repository f
 
 #### Staging files
 
-To stage the files in the working tree, we invoke git add followed by the names of the files or directories we want to stage. If you stage a directory, then all it's contents will be included. Assuming our working directory is \~/git\_playground, we can stage all files in our project by invoking:&#x20;
+To stage the files in the working tree, we invoke `git add` followed by the names of the files or directories we want to stage. If you stage a directory, then all it's contents will be included. Assuming our working directory is \~/git\_playground, we can stage all files in our project by invoking:&#x20;
 
 ```bash
 git add .
 ```
 
-And now hello.txt, hi.txt, and bye.txt will be listed in the staging area (Figure 1-1).&#x20;
+And now hello.txt, hi.txt, and bye/bye.txt will be listed in the staging area (Figure 1-1).&#x20;
 
 <figure><img src="../../.gitbook/assets/Group 129 (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
 #### Committing
 
-\<fill in>
-
-The general form of a Git commit command is as follows:
+To save a snapshot of the files in the staging area, we use the `git commit` command. It's general syntax is as follows:&#x20;
 
 ```bash
 git commit -m "COMMIT_MESSAGE"
 ```
 
-Where COMMIT\_MESSAGE is replaced with a concise, meaningful description of the changes you made. This message becomes a part of your commit and helps you (and potentially others) understand the purpose of the commit when reviewing the project's history. In our case, since it's our first commit and we don't have anything meaningful to say, we'll simply write "first commit" in the message spot:
+COMMIT\_MESSAGE is typically a concise, meaningful description of the changes we're committing. This message becomes a part of your commit and helps you (and potentially others) understand the purpose of the commit when reviewing the project's history. In our case, since it's our first commit and we don't have anything meaningful to say, we'll simply write "first commit":
 
 <figure><img src="../../.gitbook/assets/Screenshot 2024-04-04 at 4.47.23 PM.png" alt="" width="563"><figcaption></figcaption></figure>
 
-The result is that a snapshot of the current state of our project is now stored in the repository. For simplicity, we label this commit "commit 1," but as we'll see soon, commits are identified by a 40-digit hex number.&#x20;
+Our repository now contains a single commit. For simplicity, we'll label this commit "commit 1," but as we'll see soon, commits are identified by a 40-digit hex number.&#x20;
 
 <figure><img src="../../.gitbook/assets/Group 131.png" alt="" width="375"><figcaption><p>Figure 3: Our repository after the first commit.</p></figcaption></figure>
+
+#### Components of a Git Project
+
+Before we delve into recording changes to a repository, let's ensure we understand the components of a Git project. A Git project consists of three components:
+
+* The workspace, or working tree. A working copy of a specific commit, plus any changes.
+* The index, or staging area. Contains the files that will be the next commit. Essentially a pseodocommit. An important, often misunderstood thing is that the index does nor merely contain the changes to be committed. It is the next commit. Not just list of filenames, but copy of actual contents from the time you staged. Not just changes, but the entire next commit. As we'll see soon, you only have to manually add changes since last commit, since by dfualy unmodified files are automatically in in the staging area.&#x20;
+* Commits. The actual snapshots of your prject stored by git. This is the core of your repository.&#x20;
+
+&#x20;to record changes&#x20;
 
 ## Modifying the working tree <a href="#checking_status" id="checking_status"></a>
 
