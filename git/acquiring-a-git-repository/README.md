@@ -1,115 +1,52 @@
 # Beginner Local Workflow
 
-There are two contexts in which version control is useful: personal use and collaborative use. Nowadays, almost all projects make use of some of Git's collaborative features. Even if your not actually working with someone else on the project, chances are you obtained your project by cloning somoene else's repository.&#x20;
-
 In the first part of this tutorial, we'll go over using version control for personal use. All work contained within a single, local repository. We're doing it this way since it's simpler to explain.&#x20;
 
-## The big picture
+#### Initializing a Git Repository
 
-A simple local git workflow might look something like the following:
-
-1. Set up a project by creating a new directory and populating it with files.&#x20;
-2. Initialize a git repository in the root directory of the project.
-3. Save a snapshot of the contents of your project to the git repository.&#x20;
-4. Modify project by:
-   1. Adding new files
-   2. Modifying existing files
-   3. Deleting files
-5. Repeat steps 3-4.&#x20;
-
-We'll go over each of these steps one by one. This should give you a good understanding of the basics of git. An important command we'll be using the throughout this section is the `git status`, which tells you the current state of your working tree and index.
-
-## Setting up a gir project
-
-To create&#x20;
-
-```
-mkdir playground
-cd playground
-```
-
-add a few files:
-
-```
-echo "hello" > hello.txt 
-echo "hi" > hi.txt     
-mkdir bye        
-echo "bye" > bye/bye.txt
-```
-
-
+Consider the `git_playground` project shown in Figure 2. We'll use it as a running example to demonstrate the basics of the local git workflow.&#x20;
 
 <figure><img src="../../.gitbook/assets/Group 118 (1).png" alt="" width="188"><figcaption></figcaption></figure>
 
-## Initializing a repository
+The first step to version controlling `git_playground` with Git is to initialize a local database or _repository_ where git will store it's history. To do so, we first cd into git\_playground:&#x20;
 
-Simply invoke `git init` (short for initialize):&#x20;
-
-```bash
-~/playground> git init
-Initialized empty Git repository in /Users/avigewirtz/playground/.git/
-~/playground> 
+```
+cd ~/git_playground
 ```
 
-If we invoke ls -l , we'll see that playground has a .git subdirectory:&#x20;
+Then, we run `git init` (short for initialize):
 
 ```bash
-~/playground> \ls -A
-.git    bye    hello.txt    hi.txt
-~/playground>
+~/git_playground> git init
+Initialized empty Git repository in /u/sgewirtz/git_playground/.git/
+~/git_playground> 
 ```
+
+git creates a `.git` directory in the root directory of our project's workspace (Figure 15), which contains the git repository.
 
 <figure><img src="../../.gitbook/assets/Group 133.png" alt="" width="375"><figcaption></figcaption></figure>
 
-The .git subdirectory is a skeleton repository. Essentially empty. As we mentioned in git in a nutshell, the repository contains tow main parts: the staging area and commit history. Since we just initialized the repository and haven't stages any files or made commits, both will be empty.&#x20;
+#### Saving a Snapshot
+
+It might seem like at this point our work is complete. We created a repository for our project; now, Git will monitor our work and periodically record a snapshot of its current state. This is very much not how it works. Saving snapshots is a manual process. You must explicitly tell Git each time you want it to save a snapshot. This is known as committing. What's more, committing is a two-step process. You must first add the files that you want Git to include in the next commit into an intermediate area known as the index or staging area. Once this is complete, you commit.&#x20;
 
 <figure><img src="../../.gitbook/assets/Group 124.png" alt="" width="375"><figcaption></figcaption></figure>
 
-## Saving a snapshot
+#### Staging files
 
-The "index" holds a snapshot of the content of the working tree, and it
-
-&#x20;      is this snapshot that is taken as the contents of the next commit. Thus
-
-&#x20;      after making any changes to the working tree, and before running the
-
-&#x20;      commit command, you must use the add command to add any new or modified
-
-&#x20;      files to the index.
-
-Recall that saving a snapshot is a two-step process. First we add the files we want to be in commit in the staging area, and then we commit, which captures all the files in the staging area. Basic form of stage command is as follows:
-
-```
-git add filenames
-```
-
-The filename can be a directory, in which case Git adds all the files descending from it as well. To stage all files in our project, we invoke:
+To stage the files in the working tree, we invoke git add followed by the names of the files or directories we want to stage. If you stage a directory, then all it's contents will be included. Assuming our working directory is \~/git\_playground, we can stage all files in our project by invoking:&#x20;
 
 ```bash
-git add hello.txt hi.txt bye
-```
-
-And now hello.txt, hi.txt, and bye.txt will be listed in the staging area (Figure 1-1). We can confirm this by invoking git status:
-
-<figure><img src="../../.gitbook/assets/Group 129 (1).png" alt="" width="375"><figcaption></figcaption></figure>
-
-#### Staging shortcuts
-
-Recall that "." represents the working directory. Thus, to stage all changes in the working directory, simply invoke:&#x20;
-
-```
 git add .
 ```
 
-To stage all changes in the working tree, invoke:
+And now hello.txt, hi.txt, and bye.txt will be listed in the staging area (Figure 1-1).&#x20;
 
-```
-git add -A
-```
+<figure><img src="../../.gitbook/assets/Group 129 (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
-If you're in the root directory of your project, then these two commands are functionally equivalent.&#x20;
+#### Committing
 
-### Committing
+\<fill in>
 
 The general form of a Git commit command is as follows:
 
@@ -203,3 +140,4 @@ The timing for creating commits is up to you, but it's a good practice to commit
 ###
 
 <figure><img src="../../.gitbook/assets/image (7) (1) (1).png" alt=""><figcaption></figcaption></figure>
+

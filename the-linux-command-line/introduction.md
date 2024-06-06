@@ -4,12 +4,6 @@ When Linus Torvalds introduced Linux and for a long time thereafter, Linux did n
 
 When you work with a command-line interface, you are working with a shell. Before you start working with a shell, it is important that you understand a basic understanding of the componentds of a Linux system and how they interact with each other.&#x20;
 
-
-
-#### What is Linux?
-
-
-
 #### What's a command line?
 
 The command-line interface (CLI) is a text-based method of interacting with your computer. Unlike the graphical user interfaces (GUIs) that allow you to issue commands by clicking buttons and icons, a CLI requires you to issue commands by typing typing sequences of text in a [terminal](broken-reference).&#x20;
@@ -25,3 +19,29 @@ Teletypes fell out of use in the 1970s with the advent of video display terminal
 Today, hardware terminals are largely obsolete. The predominant method for accessing the CLI is through a _terminal emulator_, which is a GUI program that simulates the functionality of a hardware terminal. An example of a terminal emulator is macOS's Terminal, shown in Figure 3.&#x20;
 
 <figure><img src="../.gitbook/assets/Frame 1 (4).png" alt=""><figcaption></figcaption></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* enter commands in terminal&#x20;
