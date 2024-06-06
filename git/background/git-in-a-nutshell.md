@@ -1,45 +1,4 @@
-# Local Git Workflow
-
-One of the powerful features of Git is collaboratiln. In the first part of this tutorial, we will focus exclusively on the local git workflow. then we'll go on to working with remotes. Use an example of&#x20;
-
-#### Initializing a Git Repository
-
-
-
-## How version control works with git
-
-* first step is having git installed in your system.
-* ask git to initialize a repository for your project. repository is essentially a fancy word for a database that will store snapshots of your project's history. you do so by invoking git init.
-* git then creates a .git directory in the root directory of your project's workspace. this directory contains your repository. by default you won't see the directory, since it's hidden.
-* you might think your work is done at this point. you created a repository. now, going forward, git will monitor your work and record all changes.
-* this is very much not how it works. version control with Git is a very active process. each time you want to a snapshot of your project to be saved, you must explicitly ask git to do so. this is called a committing, and each snapshot is called a "commit". the command for committing so is git commit -m "message".
-* not so fast. the catch is that when you commit, git does not save a snapshot of
-
-The basic idea of how version control works in git is you have Git software on your system, located in a directory like usr/bin. If you want want to version control a project, you ask git to initialize a repository in the root directory of the project. The Git repository is stored in a .git directory in the root of the project. A repository is essentially a fancy word for a local database that keeps snapshots of your project's content--files and directories--at various points in time. Each snapshot is called a "commit." Figure 5.1 shows a filesystem with two projects under git version control: A1 and greetings. Each of them contain a .git directory in the project's root directory.
-
-<figure><img src="../.gitbook/assets/Group 139.png" alt=""><figcaption></figcaption></figure>
-
-## You can duplicate an existing repository
-
-Under the hood, git initializes an empty repository and populates it with the contents of the repository you're cloning. To work on a project, you “clone” it from an existing repository, possibly over a network via protocols such as HTTP and SSH. Your clone is a full copy of the original, including all project history, completely functional on its own.
-
-## Commits, not autosave
-
-It's important to understand that Git does not monitor your work and constantly or periodically save a snapshot automatically. All saving must be done manually. This is called committing.
-
-### Committing is a two step process
-
-Might think in order to save a snapshot you invoke "git commit" and it saves a snapshot of your current working tree. But that's not how it works. Applying changes to a repository is a two-step process: you add the changes to a staging area called the “index,” then commit those changes to the repository. The extra step allows you to easily apply just some of the changes in your current working files (including a subset of changes to a single file), rather than being forced to apply them all at once, or undoing some of those changes yourself before committing and then redoing them by hand. This encourages splitting changes up into better organized, more coherent and reusable sets.
-
-## Components of a Git project
-
-Summing things up, a Git project consists of three main components:
-
-* The working tree.
-* Staging area. The list of files to be included in your next commit.
-* Commits. Historical snapshots of your project since its inception.
-
-<figure><img src="../.gitbook/assets/Group 141 (3).png" alt="" width="563"><figcaption></figcaption></figure>
+# Git in a nutshell
 
 ### Commit graph
 
@@ -50,8 +9,6 @@ Figure 1-2. A linear commit graph
 Or a complex graph involving many branches and merges, as shown in Figure 1-3.
 
 The letters and numbers here represent commits, and arrows point from a commit to its parents. Commit A has no parents and is called a “root commit”; it was the initial commit in this repository’s history. Most commits have a single parent, indicat‐ ing that they evolved in a straightforward way from a single pre‐ vious state of the project, usually incorporating a set of related changes made by one person. Some commits, here just the one labeled E, have multiple parents and are called “merge commits.” This indicates that the commit reconciles the changes made on distinct branches of the commit graph, often combining contri‐ butions made separately by different people.
-
-## Branches
 
 ## Remotes
 
@@ -92,11 +49,7 @@ It is theoretically possible for any two repositories to exchange data with each
 
 Thus, the standard collboration workflow is to do so via a central, bare repository--that is, one thatr neither you nor anyone else works in.
 
-\\
-
 Central repositories are typically hosted on sites like GitHub, which is easily accessible to anyone in the world. However, there’s no reason it has to be GitHub. It can be any server that all collaborators have appropriate access to.
-
-\\
 
 Putting it all together, we can add a fourth box to our previous diagram, representing a remote repository.
 

@@ -86,8 +86,6 @@ invoking git status, we'll now see that hello.txt is listed as modified:
 
 
 
-
-
 Next, let's create a new file named hey.txt, and write "hey" in it:
 
 ```
@@ -102,27 +100,4 @@ rm -rf hi.txt
 
 Invokig git status, we see that hello.txt is listed as modified, hey.txt as untracked, and hi.txt.&#x20;
 
-
-
-
-
-
-
 We see that the newly added file hey.txt is listed as "untracked." What happens is, git looks at the index, and sees no file with the name "hey.txt". (This is different that the previous example of. If a file is not in the index, then then not only is it not part of a previous commit, Git does not even track it. was it never part of In simple terms, an untracked file is one that is not in the staging area.  As we'll see soon, if you modify or delete an untracked file, Git won't&#x20;
-
-
-
-
-
-{% hint style="info" %}
-## When to commit
-
-
-
-When working on your own, it’s useful to commit “early and often,” so that you can explore different ideas and make changes freely without worrying about recovering earlier work. Such commits are likely to be somewhat disorganized and have cryptic commit messages, which is fine because they need to be intelligible only to you, and for a short period of time. Once a portion of your work is finished and you’re ready to share it with others, though, you may want to reorganize those commits, to make them well-factored with regard to reusability of the changes being made (especially with software), and to give them mean‐ ingful, well-written commit messages.
-
-The timing for creating commits is up to you, but it's a good practice to commit whenever you've completed a logical chunk of work. For example, if you've implemented a new feature, tested it, and everything works, that's an ideal time to commit. Remember, it's usually better to have smaller, focused commits rather than massive ones that try to cram in many unrelated changes.
-{% endhint %}
-
-###
-
