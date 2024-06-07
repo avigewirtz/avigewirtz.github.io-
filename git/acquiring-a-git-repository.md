@@ -63,17 +63,17 @@ Git creates a hidden directory named `.git` in your project directory. This dire
 
 #### Our first commit
 
-An important thing to undersatand about git is that it isn't some sort of autosave tool that constantly monitors our work and preiodically saves snapshots.  You must explicitly tell Git each time you want it to save a snapshot. This is known as committing. What's more, committing is a two-step process. you add the changes to a staging area called the _index_ or _staging area_, then commit those changes to the repository. The extra step allows you to easily apply just some of the changes in your current working files (including a subset of changes to a single file), rather than being forced to apply them all at once, or undoing some of those changes yourself before committing and then redoing them by hand. This encourages splitting changes up into better organized, more coherent and reusable sets.
+An important thing to understand about git is that it isn't some sort of autosave tool that monitors your work and periodically saves a snapshot of it. Whenever you want Git to save a snapshot of your project, you must explicitly tell it do to so. This is known as committing. What's more, committing is a two-step process. You add the changes to an intermediate area known as the index or staging area and then commit those changes to the repository. The extra step allows you to easily apply just some of the changes in your working tree (including a subset of changes to a single file), rather than being forced to apply them all at once.
 
 <figure><img src="../.gitbook/assets/Group 124.png" alt="" width="375"><figcaption></figcaption></figure>
 
-To stage the files in the working tree, we invoke `git add` followed by the names of the files or directories we want to stage. If you stage a directory, then all it's contents will be included. Assuming our working directory is \~/git\_playground, we can stage all files in our project by invoking:&#x20;
+To stage the files in the working tree, we invoke `git add` followed by the names of the files and directories we want to stage. If you stage a directory, then all it's contents will be included. Assuming our working directory is \~/git\_playground, we can stage all files in our project by invoking:&#x20;
 
 ```bash
 git add .
 ```
 
-And now hello.txt, hi.txt, and bye/bye.txt will be listed in the staging area (Figure 1-1).&#x20;
+And now hello.txt, hi.txt, and bye/bye.txt will be added to the staging area (Figure 1-1).&#x20;. You can print the list of files in the staging area with the git ls command. 
 
 <figure><img src="../.gitbook/assets/Group 129 (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
@@ -105,7 +105,7 @@ Before we delve into the details of recording changes to a repository, let's ens
 
 #### Recording Changes To Our Repository <a href="#checking_status" id="checking_status"></a>
 
-An important command we'll be using is git status. At this point, if we invoke git status, it'll tell us that our working tree is "clean":
+Now that we understand the components of a Git repository, let's get into the nitty gritty of recording changes to the repository. An important command we'll be using is git status, which tells us the status of our working tree. At this point, if we invoke git status, it'll tell us that our working tree is "clean":
 
 <figure><img src="../.gitbook/assets/Screenshot 2024-04-04 at 5.10.37 PM.png" alt=""><figcaption></figcaption></figure>
 
@@ -118,6 +118,23 @@ echo "world" >> hello.txt
 ```
 
 invoking git status, we'll now see that hello.txt is listed as modified:
+
+
+git compares hello.txt in our working tree to the version of hello.txt in the index and sees that they're different.
+
+
+scenario 2: modifying a file after staging it 
+
+
+let's now modify hello.txt again and stage it, but this time, before committing it, we modify it another time. 
+
+
+scenario 3: 
+
+suppose we now create a new file in our working tree, which we'll call hey.txt. 
+
+git status, we see it listed as untracked. 
+
 
 
 
