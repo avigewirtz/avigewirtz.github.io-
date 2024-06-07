@@ -13,7 +13,9 @@ mkdir git_playground
 cd git_playground
 ```
 
-This creates a new directory called `git_playground` and moves you into it. Next, let's add a few files to our project. We'll create two text files and a subdirectory with another text file. Run the following commands:
+This creates a new directory called `git_playground` and moves you into it.&#x20;
+
+Next, let's add a few files to our project. We'll create two text files and a subdirectory with another text file. Run the following commands:
 
 ```sh
 echo "hello" > hello.txt
@@ -49,7 +51,7 @@ Initialized empty Git repository in /u/sgewirtz/git_playground/.git/
 ~/git_playground$
 ```
 
-Git creates a hidden directory named `.git` in your project directory. This `.git` directory contains all the metadata and object database for your repository. You can verify its existence by running the `ls -a` command:
+Git creates a hidden directory named `.git` in your project directory. This directory contains the repository. You can verify its existence by running `ls -a`:
 
 ```bash
 ~git_playground$ ls -a
@@ -61,7 +63,7 @@ Git creates a hidden directory named `.git` in your project directory. This `.gi
 
 #### Our first commit
 
-It might seem like at this point our work is complete. We created a repository for our project; now, Git will monitor our work and periodically record a snapshot of its current state. This is very much not how it works. Saving snapshots is a manual process. You must explicitly tell Git each time you want it to save a snapshot. This is known as committing. What's more, committing is a two-step process. you add the changes to a staging area called the _index_ or _staging area_, then commit those changes to the repository. The extra step allows you to easily apply just some of the changes in your current working files (including a subset of changes to a single file), rather than being forced to apply them all at once, or undoing some of those changes yourself before committing and then redoing them by hand. This encourages splitting changes up into better organized, more coherent and reusable sets.
+An important thing to undersatand about git is that it isn't some sort of autosave tool that constantly monitors our work and preiodically saves snapshots.  You must explicitly tell Git each time you want it to save a snapshot. This is known as committing. What's more, committing is a two-step process. you add the changes to a staging area called the _index_ or _staging area_, then commit those changes to the repository. The extra step allows you to easily apply just some of the changes in your current working files (including a subset of changes to a single file), rather than being forced to apply them all at once, or undoing some of those changes yourself before committing and then redoing them by hand. This encourages splitting changes up into better organized, more coherent and reusable sets.
 
 <figure><img src="../.gitbook/assets/Group 124.png" alt="" width="375"><figcaption></figcaption></figure>
 
