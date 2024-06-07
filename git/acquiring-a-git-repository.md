@@ -2,27 +2,60 @@
 
 In the first part of this tutorial, we'll go over using version control for personal use. All work contained within a single, local repository. We're doing it this way since it's simpler to explain.&#x20;
 
-#### Initializing a Git Repository
+#### Setting Up Our Project
 
-Consider the `git_playground` project shown in Figure 2. We'll use it as a running example to demonstrate the basics of the local git workflow.&#x20;
+Before we dive into using Git, let's set up a simple project that we'll use as a running example throughout this tutorial. Follow these steps to create your project.
+
+First, open your terminal and navigate to the directory where you want your project to reside. Then, create a new directory for the project by running the following commands:
+
+```bash
+mkdir git_playground
+cd git_playground
+```
+
+This creates a new directory called `git_playground` and moves you into it. Next, let's add a few files to our project. We'll create two text files and a subdirectory with another text file. Run the following commands:
+
+```sh
+echo "hello" > hello.txt
+echo "hi" > hi.txt
+mkdir bye
+echo "bye" > bye/bye.txt
+```
+
+These commands create a `hello.txt` file containing the text "hello", a `hi.txt` file with the text "hi", and a `bye.txt` file with the text "bye" inside a subdirectory named `bye`.&#x20;
 
 <figure><img src="../.gitbook/assets/Group 118 (1).png" alt="" width="188"><figcaption></figcaption></figure>
 
-The first step to version controlling `git_playground` with Git is to initialize a local database or _repository_ where git will store it's history. To do so, we first cd into git\_playground:&#x20;
+To ensure the files were created correctly, list the contents of git\_playground with the `ls -R` command. You should see the following output:
 
-```
-cd ~/git_playground
+```sh
+~/git_playground$ ls -R
+.    ..    bye    hello.txt    hi.txt
+
+./bye:
+.    ..    bye.txt
+~/git_playground$ 
 ```
 
-Then, we run `git init` (short for initialize):
+#### Initializing a Git Repository
+
+With our project set up, the next step is to initialize a Git repository in it. A repository is essentially a database where git stores the history of our project.&#x20;
+
+To initialize a Git repository, run `git init` (short for initialize):
 
 ```bash
-~/git_playground> git init
+~/git_playground$ git init
 Initialized empty Git repository in /u/sgewirtz/git_playground/.git/
-~/git_playground> 
+~/git_playground$
 ```
 
-git creates a `.git` directory in the root directory of our project's workspace (Figure 15), which contains the git repository.
+Git creates a hidden directory named `.git` in your project directory. This `.git` directory contains all the metadata and object database for your repository. You can verify its existence by running the `ls -a` command:
+
+```bash
+~git_playground$ ls -a
+.    ..    .git    bye    hello.txt    hi.txt
+~/git_playground$ 
+```
 
 <figure><img src="../.gitbook/assets/Group 133.png" alt="" width="375"><figcaption></figcaption></figure>
 
