@@ -1,4 +1,4 @@
-# Commits
+# Commit History
 
 Now that we've made a few commits, let's take a closer look at&#x20;
 
