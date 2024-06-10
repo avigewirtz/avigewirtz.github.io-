@@ -1,18 +1,12 @@
 # Commit History
 
-Now that we've made a few commits, let's take a closer look at&#x20;
+Now that we've made a few commits, we'll go over how to view commit history. Before we do so, however, helpful to first understand how git stores history at&#x20;
 
 
 
 
 
 &#x20;how Git tracks changes using the commit graph.&#x20;
-
-Things we'll cover:
-
-* What exactly is contained in each commit
-* How git identifies commits
-* How git stores history of commits
 
 
 
