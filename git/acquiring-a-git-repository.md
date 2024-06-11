@@ -63,31 +63,63 @@ Git creates a hidden directory named `.git` in your project directory. This dire
 
 #### Our first commit
 
-In Git terminology, the files and directories descending from git\_playground make up the working tree. An important thing to understand about git is that it isn't some sort of autosave tool that constantly monitors our work and periodically saves snapshots.  You must explicitly tell Git each time you want it to save a snapshot. This is known as committing. What's more, committing is a two-step process. First, you add the changes to an intermediate area called the _index_ or _staging area_, then commit those changes to the repository. The extra step allows you to easily apply just some of the changes in your working tree (including a subset of changes to a single file), rather than being forced to apply them all at once.&#x20;
+In Git terminology, the files and directories descending from `git_playground` make up the working tree. An important thing to understand about Git is that it isn't some sort of autosave tool that monitors the working tree and automatically records snapshots of it at different points in time. Whenever you want Git to record a snapshot, you must explicitly tell it to do so. This is known as committing. What's more, committing is a two-step process. First, you must add all (new or modified) files that you want to be included in the next commit into an intermediate area called the index or staging area. Then, you commit the contents of the index to the repository. This extra step allows you to easily apply just some of the changes in your working tree (including a subset of changes to a single file), rather than being forced to apply them all at once.
 
 <figure><img src="../.gitbook/assets/Group 124.png" alt="" width="375"><figcaption></figcaption></figure>
 
-To stage the files in the working tree, we invoke `git add` followed by the names of the files and directories we want to stage. If you stage a directory, then all it's contents will be included. Assuming our working directory is \~/git\_playground, we can stage all files in our project by invoking:
+Let’s now stage and commit our project’s files. The command to stage files is `git add`, which takes one or more files or directories as arguments. If the argument is a directory, it adds all files descending from it.
+
+To stage all files in our `git_playground`, we run:
 
 ```bash
 git add .
 ```
 
-And now hello.txt, hi.txt, and bye/bye.txt will be added to the staging area (Figure 1-1). . You can print the list of files in the staging area with the git ls command.
+Recall that `.` is a reference to the current directory. Thus, this tells Git to stage all the files descending from `git_playground`. Now, hello.txt, hi.txt, and bye/bye.txt will in the staging area (Figure 1-1). You can print the contents of the staging area with the `git ls-files` command:
 
 <figure><img src="../.gitbook/assets/Group 129 (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
-To save a snapshot of the files in the staging area, we use the `git commit` command. It's general syntax is as follows:
+To save a snapshot of the contents in the index, we run the `git commit` command. This will open your default text editor and prompt you for a commit message
 
-```bash
-git commit -m "COMMIT_MESSAGE"
+{% code lineNumbers="true" %}
 ```
 
-COMMIT\_MESSAGE is typically a concise, meaningful description of the changes we're committing. This message becomes a part of your commit and helps you (and potentially others) understand the purpose of the commit when reviewing the project's history. In our case, since it's our first commit and we don't have anything meaningful to say, we'll simply write "first commit":
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+#
+# Initial commit
+#
+# Changes to be committed:
+#       new file:   bye/bye.txt
+#       new file:   hello.txt
+#       new file:   hi.txt
+#
+```
+{% endcode %}
 
-<figure><img src="../.gitbook/assets/Screenshot 2024-04-04 at 4.47.23 PM.png" alt="" width="563"><figcaption></figcaption></figure>
+Add your commit message on line 1 and save the file. The purpose of the commit message is to explain to you or even potentially someone else down the line what changes to the project were introduced by the commit. As such, it should be reasonably descriptive. In our case, because it’s our first commit and we don’t have anything meaningful to say, we’ll just write “first commit”.  Then save the file in the text editor. You should see the following message:
 
-Our repository now contains a single commit. For simplicity, we'll label this commit "commit 1," but as we'll see soon, commits are identified by a 40-digit hex number.
+```bash
+~/git_playground> git commit
+[main (root-commit) f44f93d] first commit
+ 3 files changed, 4 insertions(+)
+ create mode 100644 bye/bye.txt
+ create mode 100644 hello.txt
+ create mode 100644 hi.txt
+~/git_playground> 
+```
+
+As an alternative, you can directly add the commit message in the command line using the `-m` option, like
+
+```bash
+git commit -m "first commit"
+```
+
+We’ll use this approach throughout the tutorial.&#x20;
+
+Our repository now contains a single commit (Fig 5). For simplicity, we'll label this commit "commit 1," but as we'll see in the next section, commits are identified by a 40-digit hex number.
 
 <figure><img src="../.gitbook/assets/Group 131.png" alt="" width="375"><figcaption><p>Figure 3: Our repository after the first commit.</p></figcaption></figure>
 
