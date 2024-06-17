@@ -24,8 +24,8 @@ Under the hood, quite a lot of work is involved in producing the executable `foo
 
 1.  **Preprocessing stage:** `foo.c` is sent to the preprocessor, a program that modifies C source code before actual compilation begins. It performs two key tasks:
 
-    * **Removing comments.** Comments serve to help human readers understand the code, but they are of no use to the compiler. Hence, they can be discarded before compilation begins.
-    * **Handling preprocessor directives.** These are lines in the code that begin with a `#` (hash). Unlike traditional C code, they are meant to be interpreted by the preprocessor, not the compiler. An example of a preprocessor directive is `#include` (e.g., `#include <stdio.h>`), which instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears.
+    * **Removes comments.** Comments serve to help human readers understand the code, but they are of no use to the compiler. Hence, they can be discarded before compilation begins.
+    * **Handles preprocessor directives.** These are lines in the code that begin with a `#` (hash). Unlike traditional C code, they are meant to be interpreted by the preprocessor, not the compiler. An example of a preprocessor directive is `#include` (e.g., `#include <stdio.h>`), which instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears.
 
     The preprocessed output is stored in `foo.i`.
 
