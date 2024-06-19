@@ -20,16 +20,17 @@ To run `foo`, we type its name on the command line, prefixed by a `./`:
 
 #### Under the Hood
 
+* First, gcc sends foo.c to the preprocessor, which performs two key tasks,&#x20;
+
 Under the hood, quite a lot of work is involved in producing the executable `foo`. It involves four sequential stages: preprocessing, compilation, assembly, and linking. Here's a bird's eye view of what happens at each stage:
 
-1.  **Preprocessing stage:** `foo.c` is sent to the preprocessor, a program that modifies C source code before actual compilation begins. It performs two key tasks:
+1.  **Preprocessing stage:** The preprocessor modifies the C source code in foo.c by performing It performs two key tasks:
 
     * **Removes comments.** Comments serve to help human readers understand the code, but they are of no use to the compiler. Hence, they can be discarded before compilation begins.
     * **Handles preprocessor directives.** These are lines in the code that begin with a `#` (hash). Unlike traditional C code, these directives are meant to be interpreted by the preprocessor, not the compiler. An example of a preprocessor directive is `#include` (e.g., `#include <stdio.h>`), which instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears.
 
     The preprocessed output is stored in `foo.i`.
-
-2. **Compilation stage:** The compiler translates `foo.i` into assembly language file `foo.s`. Assembly language is essentially a human-readable version of the target processor's machine language.
+2. **Compilation stage:** The preprocessed output is then sent to compiler. The compiler translates `foo.i` into assembly language file `foo.s`. Assembly language is essentially a human-readable version of the target processor's machine language.
 3. **Assembly stage:** The assembler translates `foo.s` into _relocatable object file_ `foo.o`. This file is essentially machine code equivalent of `foo.s`.
 4. **Linking stage:** The linker combines `foo.o` with the necessary `.o` files from the C Standard Library, producing the _executable object file_ `foo`. <mark style="color:red;">Linker (ld) puts binary together with startup code and required libraries</mark>
 
