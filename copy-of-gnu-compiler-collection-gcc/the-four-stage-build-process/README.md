@@ -18,11 +18,7 @@ To run `foo`, we type its name on the command line, prefixed by a `./`:
 
 #### Under the Hood
 
-Under the hood, producing the executable `foo` it is a multi-stage process involving multiple programs. The **gcc** binary is actually just a relatively small driver program. It parses the command line, determines what you want to do, and calls other programs to do the actual build work. The programs that do the work are the preprocessor _cpp_, the compiler _cc1_, the assembler _as_, and the linker _ld_.
-
-When you run the command `gcc foo.c -o foo`, `gcc` calls each of these four programs programs in sequence on your behalf, passing the output of each program as input to the next. A useful analogy is to think of the process as an assembly line, where the product is a C program, the tools are cpp, cc1, as, and ld, and the manager orchestrating the process is gcc. Each stage transforms the source code into a more refined form until it eventually becomes an executable file.
-
-<figure><img src="../../.gitbook/assets/Frame 27 (5).png" alt=""><figcaption></figcaption></figure>
+Under the hood, quite a lot of work is involved in producing the executable foo. It can be broken down into four main stages: preprocessing, compilation, assembly, and linking. The programs that perform these stages are `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker), respectively. The `gcc` binary is actually just a relatively small driver program. It parses the command line, determines what you want to do, and calls the aforementioned programs to do the actaul build work. When you run the command `gcc foo.c -o foo`, `gcc` calls each of these four programs programs in sequence on your behalf, passing the output of each program as input to the next.&#x20;
 
 Here's a bird's eye view of what happens at each stage:
 
@@ -36,7 +32,9 @@ Here's a bird's eye view of what happens at each stage:
 3. **Assembly stage:** After that, the assembler (`as`) converts the assembly language in `foo.s` into machine code, creating a relocatable object file named `foo.o`.
 4. **Linking stage:** Finally, gcc sends foo.o to the linker (ld). The linker combines `foo.o` with the necessary `.o` files from the C Standard Library, producing the _executable object file_ `foo`.&#x20;
 
-You can see this full sequence of operations by invoking `gcc` with the `-v` (verbose) option. You will gain a much greater appreciation of the role the `gcc` driver program plays in simplifying the build process.
+A useful analogy is to think of the process as an assembly line, where the product is a C program, the tools are cpp, cc1, as, and ld, and the manager orchestrating the process is gcc. Each stage transforms the source code into a more refined form until it eventually becomes an executable file. You can see this full sequence of operations by invoking `gcc` with the `-v` (verbose) option. You will gain a much greater appreciation of the role the `gcc` driver program plays in simplifying the build process.
+
+<figure><img src="../../.gitbook/assets/Frame 27 (5).png" alt=""><figcaption></figcaption></figure>
 
 The critical point to recognize is that definitions of library functions called in `foo.c` are resolved at link time. We will see the practical implications of this in the next section.
 
