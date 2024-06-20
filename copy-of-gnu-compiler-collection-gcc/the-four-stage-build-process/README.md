@@ -47,25 +47,24 @@ The critical point to recognize is that definitions of library functions called 
 
 #### Saving Intermediate Files
 
-By default, `gcc` stores the intermediate files in `/tmp` and deleted by gcc. Thus, if we invoke `ls` after building `foobar`, for example, we won't see any of the `.i`, `.s`, or `.o` files in our directory:
+By default, `gcc` stores the intermediate files in `/tmp` and deletes them. Thus, if we invoke `ls` after building `foo`, we won't see any of the `.i`, `.s`, or `.o` files in our directory:
 
 ```bash
 $ ls
-bar.c    foo.c    foobar
+foo.c
 ```
 
 We can instruct `gcc` to save the intermediate files in the working directory by using the `--save-temps` option, like so:
 
 ```bash
-gcc217 --save-temps foo.c bar.c -o foobar
+gcc217 --save-temps foo.c -o foo
 ```
 
 If we invoke `ls` again, we'll now see all the intermediate files in the working directory:
 
 ```bash
 $ ls
-bar.c    bar.i    bar.s    bar.o    foo.c    
-foo.i    foo.s    foo.o    foobar   
+foo.c    foo.i    foo.s    foo.o    foo 
 ```
 
 #### Halting the Build Process at Any Intermediate Stage
@@ -75,20 +74,18 @@ By default, `gcc` performs all four stages of the build process. However, it pro
 **`-E`:** This instructs `gcc` to halt the build process after the preprocessing stage. For example, if we invoke:
 
 ```bash
-gcc217 -E foo.c bar.c
+gcc217 -E foo.c
 ```
 
-`gcc` will preprocess `foo.c` and `bar.c` and halt. By default, the preprocessed output will be printed on stdout. To save the output in `.i` files, we can use the `.o` option or the `>` redirection operator:
+`gcc` will preprocess `foo.c` and halt. By default, the preprocessed output will be printed on stdout. To save the output in a `.i` file, we can use the `.o` option or the `>` redirection operator:
 
 ```bash
 gcc217 -E foo.c -o foo.i
-gcc217 -E bar.c -o bar.i
 # or
 gcc217 -E foo.c > foo.i
-gcc217 -E bar.c > bar.i
 ```
 
-**`-S`:** This instructs `gcc` to halt the build process after compilation. The input can be `.c` files (e.g., `gcc217 -S foo.c bar.c`), `.i` files (e.g., `gcc217 -S foo.i bar.i`), or even a mix of both (e.g., `gcc217 -S foo.c bar.i`). `gcc` will infer which stages to perform based on the file extension--preprocessing and compilation for `.c` files, and compilation only for `.i` files. The output will automatically be saved in `.s` files.
+**`-S`:** This instructs `gcc` to halt the build process after compilation. The input can be `.c` file(s) (e.g., `gcc217 -S foo.c`), `.i` file(s) (e.g., `gcc217 -S foo.i`), or even a mix of both (e.g., `gcc217 -S foo.c bar.i`). `gcc` will infer which stages to perform based on the file extension--preprocessing and compilation for `.c` files, and compilation only for `.i` files. The output will automatically be saved in `.s` files.
 
 **`-c`:** This instructs `gcc` to halt the build process after assembly. As you might expect, the input can be `.i`, `.c`, or `.s` files, and `gcc` will infer which stages to perform based on the file extension. The output will automatically be saved in `.o` files.
 
