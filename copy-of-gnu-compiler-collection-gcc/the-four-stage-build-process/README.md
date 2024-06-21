@@ -18,7 +18,7 @@ To run `foo`, we type its name on the command line, prefixed by a `./`:
 
 #### Under the Hood
 
-Under the hood, quite a lot of work is involved in producing the executable `foo`. It can be broken down into four main stages: preprocessing, compilation, assembly, and linking. Each stage transforms the program one step further until it eventually becomes an executable file. An interesting but not so well known fact is that neither of these stages is performed by `gcc` itself. The programs that actually perform the work are `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). `gcc` (that is, the `gcc` binary, typically stored in `/usr/bin`) is actually just a relatively small driver program that orchestrates this four stage process. When we run `gcc217 foo.c -o foo`, gcc calls of each these four programs in sequence on our behalf, passing the output of each program as input into the next. Here's a bird's eye view of the process:&#x20;
+Under the hood, quite a lot of work is involved in producing the executable `foo`. It can be broken down into four main stages: preprocessing, compilation, assembly, and linking. Each stage transforms the program one step further until it eventually becomes an executable file. An interesting but not so well known fact is that neither of these stages is performed by `gcc` itself (that is, the `gcc` binary, typically stored in `/usr/bin`). The programs that actually perform the work are `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). `gcc` is a relatively small driver program that orchestrates this four stage process. When we run `gcc217 foo.c -o foo`, gcc calls of each these four programs in sequence on our behalf, passing the output of each program as input into the next. Here's a bird's eye view of the process:&#x20;
 
 1.  **Preprocessing stage.** First, `gcc` sends `foo.c` to the preprocessor. The preprocessor is a ... that performs basic modifications to the source code before compilation begins. The two main ones are:&#x20;
 
@@ -86,17 +86,3 @@ gcc217 -E foo.c > foo.i
 **`-S`:** This instructs `gcc` to halt the build process after compilation. The input can be `.c` file(s) (e.g., `gcc217 -S foo.c`), `.i` file(s) (e.g., `gcc217 -S foo.i`), or even a mix of both (e.g., `gcc217 -S foo.c bar.i`). `gcc` will infer which stages to perform based on the file extension--preprocessing and compilation for `.c` files, and compilation only for `.i` files. The output will automatically be saved in `.s` files.
 
 **`-c`:** This instructs `gcc` to halt the build process after assembly. As you might expect, the input can be `.i`, `.c`, or `.s` files, and `gcc` will infer which stages to perform based on the file extension. The output will automatically be saved in `.o` files.
-
-#### Building a Multi-file C Program
-
-As we know, the source code of a C program may be distributed across any number of files. Suppose we divide our program into two `.c` files, `foo.c`, and `bar.c`. We build our program by supplying both files as arguments to `gcc217`:
-
-```bash
-gcc217 foo.c bar.c -o foobar
-```
-
-
-
-The sequence of operations performed by `gcc` is summarized in Figure 12. The critical point to recognize here is that the first three stages of the build process (i.e., preprocessing, compilation, and assembly) are performed on each file independently. Thus, definitions in foo.\* are not visible to the compiler when its processing bar.\*, and vice versa. Here too, the definitions are resolved at link time.
-
-<figure><img src="../../.gitbook/assets/Frame 29.png" alt=""><figcaption></figcaption></figure>
