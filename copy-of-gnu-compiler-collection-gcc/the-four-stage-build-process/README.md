@@ -20,7 +20,7 @@ To run `foo`, we type its name on the command line, prefixed by a `./`:
 
 Under the hood, quite a lot of work is involved in producing the executable `foo`. It can be broken down into four main stages: preprocessing, compilation, assembly, and linking. Each stage transforms the program one step further until it eventually becomes an executable file. The programs that perform these stages are `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker), respectively. `gcc` itself (that is, the `gcc` binary, typically stored in `/usr/bin`) is actually just a relatively small driver program. Its job is to parse the command line, figure out what you want it to do, and then call the aforementioned programs to do the actual build work.&#x20;
 
-Here's a bird's eye view of what happened under the hood when we ran `gcc217 foo.c -o foo`:&#x20;
+Here's a bird's eye view of what happens during each stage:&#x20;
 
 1.  **Preprocessing stage.** First, `gcc` sends `foo.c` to the preprocessor. The preprocessor is a ... that performs basic modifications to the source code before compilation begins. The two main ones are:&#x20;
 
