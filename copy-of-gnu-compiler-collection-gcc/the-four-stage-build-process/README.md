@@ -18,11 +18,11 @@ To run `foo`, we type its name on the command line, prefixed by a `./`:
 
 #### Under the Hood
 
-Under the hood, quite a lot of work is involved in producing the executable foo. It can be broken down into four main stages: preprocessing, compilation, assembly, and linking. The programs that perform these stages are `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker), respectively. The `gcc` binary is actually just a relatively small driver program. It parses the command line, determines what you want to do, and calls the aforementioned programs to do the actaul build work. When you run the command `gcc foo.c -o foo`, `gcc` calls each of these four programs programs in sequence on your behalf, passing the output of each program as input to the next.&#x20;
+Under the hood, quite a lot of work is involved in producing the executable `foo`. It can be broken down into four main stages: preprocessing, compilation, assembly, and linking. Each stage transforms the program one step further until it eventually becomes an executable file. The programs that perform these stages are `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker), respectively. `gcc` itself (that is, the `gcc` binary, typically stored in `/usr/bin`) is actually just a relatively small driver program. Its job is to parse the command line, figure out what you want it to do, and then call the aforementioned programs to do the actual build work.&#x20;
 
-Here's a bird's eye view of what happens at each stage:
+Here's a bird's eye view of what happened under the hood when we ran `gcc217 foo.c -o foo`:&#x20;
 
-1.  **Preprocessing stage.** First, `gcc` sends foo.c to the preprocessor, cpp. The preprocessor modifies the source code in `foo.c` in two key ways:&#x20;
+1.  **Preprocessing stage.** First, `gcc` sends `foo.c` to the preprocessor. The preprocessor is a ... that performs basic modifications to the source code before compilation begins. The two main ones are:&#x20;
 
     * **Removes comments.** Comments serve to help human readers understand the code, but they are of no use to the compiler. Hence, they can be discarded before compilation begins.
     * **Handles preprocessor directives.** These are lines in the code that begin with a `#` (hash). An example of a preprocessor directive is `#include` (e.g., `#include <stdio.h>`), which instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears.
@@ -69,7 +69,7 @@ foo.c    foo.i    foo.s    foo.o    foo
 
 #### Halting the Build Process at Any Intermediate Stage
 
-By default, `gcc` performs all four stages of the build process. However, it provides command line options to halt the build process at any of the intermediate stages. Here's a breakdown of the options:
+`gcc` provides command line options to halt the build process at any of the intermediate stages. Here's a breakdown of the options:
 
 **`-E`:** This instructs `gcc` to halt the build process after the preprocessing stage. For example, if we invoke:
 
