@@ -32,7 +32,7 @@ Here's a bird's eye view of what happened under the hood when we ran `gcc217 foo
 3. **Assembly stage:** After that, the assembler (`as`) converts the assembly language in `foo.s` into machine code, creating a relocatable object file named `foo.o`.
 4. **Linking stage:** Finally, gcc sends foo.o to the linker (ld). The linker combines `foo.o` with the necessary `.o` files from the C Standard Library, producing the _executable object file_ `foo`.&#x20;
 
-A useful analogy is to think of the process as an assembly line, where the product is a C program, the tools are cpp, cc1, as, and ld, and the manager orchestrating the process is gcc. Each stage transforms the source code into a more refined form until it eventually becomes an executable file. You can see this full sequence of operations by invoking `gcc` with the `-v` (verbose) option. You will gain a much greater appreciation of the role the `gcc` driver program plays in simplifying the build process.
+You can see this full sequence of operations by invoking `gcc` with the `-v` (verbose) option. You will gain a much greater appreciation of the role the `gcc` driver program plays in simplifying the build process. A useful analogy is to think of the process as an assembly line, where the product is a C program, which begins life as a C source file and comes out as an executable. The tools in the assembly line that work on the program are cpp, cc1, as, and ld. The manager manager orchestrating the process is gcc. &#x20;
 
 <figure><img src="../../.gitbook/assets/Frame 27 (5).png" alt=""><figcaption></figcaption></figure>
 
