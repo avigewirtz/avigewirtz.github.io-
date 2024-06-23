@@ -18,7 +18,7 @@ To run `foo`, we type its name on the command line, prefixed by a `./`:
 
 #### Under the Hood
 
-Under the hood, quite a lot of work is involved in producing the executable `foo`. It can be broken down into four main stages: preprocessing, compilation, assembly, and linking. Each stage transforms the program one step further until it eventually becomes an executable file. An interesting but not so well known fact is that neither of these stages is performed by `gcc` itself (that is, the `gcc` binary, typically stored in `/usr/bin`). The programs that actually perform the work are `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). `gcc` is a relatively small driver program that orchestrates this four stage process. When we run `gcc217 foo.c -o foo`, gcc calls of each these four programs in sequence on our behalf, passing the output of each program as input into the next. Here's a bird's eye view of the process:&#x20;
+Under the hood, quite a lot of work is involved in producing the executable `foo`. It can be broken down into four main stages: preprocessing, compilation, assembly, and linking. Each stage transforms the program one step further until it eventually becomes an executable file. An interesting but not so well known fact is that neither of these stages is actually performed by `gcc` itself (that is, the `gcc` binary, typically stored in `/usr/bin`). The programs that perform the build work are `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). `gcc` is a relatively small driver program that orchestrates this four stage process. When we run `gcc217 foo.c -o foo`, `gcc` calls of each these four programs in sequence on our behalf, passing the output of each program as input into the next. Here's a bird's eye view of the process:&#x20;
 
 1.  **Preprocessing stage.** First, `gcc` sends `foo.c` to the preprocessor. The preprocessor is a ... that performs basic modifications to the source code before compilation begins. The two main ones are:&#x20;
 
@@ -27,14 +27,18 @@ Under the hood, quite a lot of work is involved in producing the executable `foo
 
     The output of the preprocessor is `foo.i`.
 2. **Compilation stage.** Next, gcc sends foo.i to the compiler (`cc1`). The compiler takes the preprocessed file `foo.i` and translates it into assembly language, producing a file called `foo.s`. Assembly language is a low-level representation of the program that is closer to machine code but still readable by humans.
-3. **Assembly stage:** After that, the assembler (`as`) converts the assembly language in `foo.s` into machine code, creating a relocatable object file named `foo.o`.
+3. **Assembly stage:** Next, gcc invokes the assembler on `foo.s`, generating an object file. This is a binary file format, containing machine code and metadata, typically in a file format called ELF.&#x20;
 4. **Linking stage:** Finally, gcc sends foo.o to the linker (ld). The linker combines `foo.o` with the necessary `.o` files from the C Standard Library, producing the _executable object file_ `foo`.&#x20;
 
-This process is summarized in Figure 4. A useful analogy is to think of the process as an assembly line, where the product is a C program, the tools are cpp, cc1, as, and ld, and the manager orchestrating the process is gcc. The program begins life as a source file stored in foo.c. As it goes through the assembly line, it gets worked by each of these tools, each transforming it one step closer to an executable. By the end, the produce emerges as an executable file, foo, ready to be loaded into memory and executed. &#x20;
+This process is summarized in Figure 4.&#x20;
+
+{% hint style="info" %}
+A useful analogy is to think of the process as an assembly line, where the product is a C program, the tools are cpp, cc1, as, and ld, and the manager orchestrating the process is gcc. The program begins life as a source file stored in foo.c. As it goes through the assembly line, it gets worked by each of these tools, each transforming it one step closer to an executable. By the end, the produce emerges as an executable file, foo, ready to be loaded into memory and executed. &#x20;
+{% endhint %}
 
 <figure><img src="../../.gitbook/assets/Frame 27 (5).png" alt=""><figcaption></figcaption></figure>
 
-The critical point to recognize is that definitions of library functions called in `foo.c` are resolved at link time. We will see the practical implications of this in the next section.
+The key point to recognize is that definitions of library functions called in `foo.c` are resolved at link time. We will see the practical implications of this in the next section.
 
 {% hint style="info" %}
 **Note**

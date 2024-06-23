@@ -4,6 +4,12 @@ In a nutshell, `make` is a software tool that automates the process of increment
 
 In this chapter, we'll first describe how to implement incremental builds manually. Then, we'll discuss how to automate the process with make.
 
+
+
+#### Incremental Builds
+
+Recall that in a multi-file C program, all source files need not be built together.&#x20;
+
 #### Review: GCC Build Process
 
 Before we can discuss incremental builds, we need to refresh our memory on the GCC build process. In particular, recall the following:&#x20;
