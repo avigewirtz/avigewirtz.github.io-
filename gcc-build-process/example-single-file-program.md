@@ -1,51 +1,53 @@
 # Example: Single-file Program
 
-Let's now examine four stage process using a real program as an example.&#x20;
+Let's walk through the four-stage process of building the \`charcount.c\` program. Instead of using the all-in-one shortcut command to build it, let’s invoke each stage individually, similar to how it happens under the hood.&#x20;
 
 {% code title="charcount.c" %}
 ```c
 #include <stdio.h>
-/* Write to stdout the number of
- chars in stdin. Return 0. */
+
+/* Write to stdout the number of chars in stdin. Return 0. */
 int main(void) {
- int c;
- int charCount = 0;
- c = getchar();
- while (c != EOF) {
- charCount++;
- c = getchar();
- }
- printf("%d\n", charCount);
- return 0;
+    int c;
+    int charCount = 0;
+
+    c = getchar();
+    while (c != EOF) {
+        charCount++;
+        c = getchar();
+    }
+
+    printf("%d\n", charCount);
+    return 0;
 }
 ```
 {% endcode %}
 
-### Preprocessing Stage
+#### Preprocessing
 
-The build process begins with preprocessing. We invoke the preprocessor on `charcount.c` with the -E option:
+The first step to building our program is to preprocess it. The command to invoke the preprocessor is:&#x20;
 
 ```bash
 gcc217 -E charcount.c -o charcount.i
 ```
 
-The result is the preprocessed file `charcount.i`. As we mentioned earlier, the preprocessor performs two main tasks: It removes comments, which are of no use to the compiler, and handles preprocessor directives (lines in the code that begin with a `#`). Our code has only a single preprocessor directive: `#include <stdio.h>`. This instructs the preprocessor to grab the contents of `stdio.h` and paste it directly into the current file where the `#include` directive appears. stdio.h is a big file, containing somewhere on the order of 1000 lines. It contains declarations of standard I/O functions, such as printf.&#x20;
+The result is the preprocessed file `charcount.i`. As we mentioned earlier, the preprocessor performs two main tasks: It removes comments, which are of no use to the compiler, and handles preprocessor directives (lines in the code that begin with a `#`). `charcount.c` has only a single preprocessor directive: `#include <stdio.h>`. This directive instructs the preprocessor to grab the contents of `stdio.h` and paste it directly in the spot in `charcount.c` where the `#include` directive appears. stdio.h is a system header file representing an interface for standard I/O functions. We'll get into the details in the next section, but for now, all you need to know is that whenever a program uses functionality from C standard I/O, it needs to #include stdio.h in it.
+
+The entire file is quite large, containing somewhere on the order of 1000 lines. It contains declarations of standard I/O functions, such as printf.&#x20;
 
 ```c
 int printf(const char *format, ...);
 ```
 
-Additionally, it contains many preprocessor macros of it's own, all of which are now added to our program. Of note is the following preprocessor directive:
+Additionally, it contains the definition of EOF.&#x20;
 
 ```c
 #define EOF -1
 ```
 
-#### Examining Preprocessed Output
 
-You can view the preprocessed files with a text editor like emacs. Let’s examine `testcircle.i` and `circle.i` to see what precisely was done by the preprocessor. A side-by-side comparison is shown in Figure 12.
 
-First, we see that the preprocessor removed all comments from `testcircle.c` and `circle.c`. Second, it replaced each `#include` directive with the contents of its specified header: `circle.h` for both `circle.c` and `testcircle.c`, and `stdio.h` and `stdlib.h` for `testcircle.c`. Finally, all macros were expanded: `PI` in `circle.c` was replaced with `3.14159`, and `EXIT_FAILURE` was replaced with `1`.
+You can view the preprocessed output in `charcount.i` using a text editor like emacs. It should look something like this:
 
 {% hint style="success" %}
 You can think of the preprocessor as a "search-and-replace" tool:
@@ -54,6 +56,53 @@ You can think of the preprocessor as a "search-and-replace" tool:
 * It replaces each `#include` directive with the contents of the specified file.
 * It replaces each macro with its value.
 {% endhint %}
+
+#### Compilation&#x20;
+
+The next step is to run the compiler on `charcount.i`. The compiler two main things. First, it checks for errors in the program. If it finds any, it reports them to the user and terminates. If it does not detect any errors, it translates the preprocessed C code into assembly.&#x20;
+
+We run the compiler on `charcount.i` with the following command:
+
+```
+gcc217 -S charcount.i
+```
+
+The output is assembly language file `charcount.s`. Let's break down what takes place behind the scenes during this stage.
+
+#### Error Checking
+
+Before the compiler translates the code to assembly, it first checks for errors in the C code. The compiler first checks for syntax errors. Syntax errors are caused by not following these grammar rules of the language. For example, forgetting a semicolon after a statement or a closing brace after a function will yield a syntax errors. Syntax errors are generally easy to fix.&#x20;
+
+
+
+
+
+Assembly language is essentially a human-readable version of the target processor's machine language. As such, the precise assembly language generated by the compiler depends on the architecture of the target processor. Figure 14 shows what the assembly output might look like on an ARM64 machine, such as Armlab.
+
+
+
+
+
+{% hint style="info" %}
+#### Characteristics of Assembly language
+
+Detailed coverage of assembly language is beyond the scope of this chapter. ARM64 assembly will be covered in detail in the second half of COS217. For now, we will make a few general points about assembly.
+
+*   Each assembly instruction performs a very basic task, such as adding two numbers or moving data from one memory location to another. As such, it has a poor ratio of functionality to code size compared to higher-level languages like C. For example, the C statement `x = y + z` requires four ARM assembly instructions:
+
+    ```armasm
+    LDR X0, [y]      ; Load the value of y into register X0 
+    LDR X1, [z]      ; Load the value of z into register X1
+    ADD X0, X0, X1   ; Add the values in X0 and X1, store result in X0
+    STR X0, [x]      ; Store the result from X0 into the variable x
+    ```
+* Assembly language gives you total control over the CPU. Some operations possible in assembly have no high-level language equivalent. This allows you to optimize performance and resource usage to a degree not possible in higher-level languages.
+* One of the main drawbacks of assembly is that it's not portable. Unlike high-level languages like C, \<fill in>.
+{% endhint %}
+
+
+
+
 
 {% hint style="info" %}
 **Understanding the Role of Header Files**

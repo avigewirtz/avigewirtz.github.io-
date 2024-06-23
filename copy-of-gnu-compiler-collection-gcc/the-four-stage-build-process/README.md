@@ -7,7 +7,7 @@ gcc217 foo.c -o foo
 ```
 
 {% hint style="info" %}
-Note that `-o foo` tells `gcc` to the executable `foo`_,_ rather than the default name `a.out`.
+Note that `-o foo` tells `gcc` to name the executable `foo`_,_ rather than the default name `a.out`.
 {% endhint %}
 
 To run `foo`, we type its name on the command line, prefixed by a `./`:
