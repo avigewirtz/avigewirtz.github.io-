@@ -167,3 +167,17 @@ Our program is now in machine language form, stored in charcount.o. It is not ex
 
 #### Linking&#x20;
 
+The final stage in the build process is the linking stage. Here, the linker inserts the definitions of the printf and getChar library functions into our program, making it a complete, executable program. 
+
+We invoke the linker with the following command:
+
+gcc charcount.o -o charcount
+
+The output is charcount, which can be loaded into memory and run. 
+
+A couple of points about the linking stage are worth noting. 
+
+1. The C library is stored in libc.a. 
+2. The linker extracts only the relevant code from libc.a. 
+3. Typically, the name of libraries we’re linking against must be supplied as an argument in the linking command. However, we’d need not supply libc.a, since GCC automatically supplied it to linker. 
+
