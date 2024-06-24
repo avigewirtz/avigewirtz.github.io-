@@ -163,7 +163,7 @@ gcc217 -c charcount.s
 ```
 
 
-Our program is now in machine language form, stored in charcount.o. This file is not executable, however, since it’s missing the definitions of the library functions printf and getChar.&#x20;
+Our program is now in machine language form, stored in charcount.o. It is not executable, however, since it’s missing the definitions of the library functions printf and getChar.&#x20;
 
 #### Linking&#x20;
 
