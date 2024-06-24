@@ -105,7 +105,7 @@ The output is assembly language file `charcount.s`. Let's break down what takes 
 
 First, the compiler checks for syntax errors in our code. Syntax errors occur if you don’t follow the grammar rules of the C language. For example, forgetting a semicolon or a curly brace. Thankfully we don’t have any syntax errors, but if we did, the compiler would report the errors and terminate.
 
-Next, the compiler checks for semantic errors. Semantic errors occur when the syntax is correct, but you attempt to perform an illegal operation, such as using a variable before it is declared or passing a ... to a function that expects a ... Here, the compiler uses the declarations of `printf` and `getchar` that were inserted into our program during the preprocessing stage to ensure that the functions are called correctly.&#x20;
+Next, the compiler checks for semantic errors. Semantic errors occur when the syntax is correct, but you attempt to perform an illegal operation, such as using a variable before it is declared or passing a ... to a function that expects a ... It is during this stage where the purpose of inserting the declarations of `printf` and `getchar` become evident.&#x20;
 
 #### Translation to Assembly
 
