@@ -1,6 +1,8 @@
 # Example: Single-file Program
 
-Let's walk through the four-stage process of building a program in practice. As an example, we'll use the `charcount` program. Instead of using the all-in-one shortcut command to build it, we'll invoke each stage individually, similar to what happens under the hood.
+Let's walk through the four-stage process of building a program in practice. As an example, we'll use the `charcount` program shown below. This program counts the number of characters input through stdin and outputs the count to stdout.
+
+Instead of using the all-in-one shortcut command to build it (I.e., `gcc217 charcount.c -o charcount`), which performs preprocessing, compilation, assembly, and linking, we'll run each stage individually, similar to how it happens under the hood.
 
 {% code title="charcount.c" %}
 ```c
@@ -23,6 +25,15 @@ int main(void) {
 ```
 {% endcode %}
 
+#### The Starting Point
+
+Our program begins as a C source file in the following state:
+
+* Raw C code&#x20;
+* \#include preprocessor directive and EOF macro
+* Comments&#x20;
+* Calls to two library functions: `printf` and `getchar`.&#x20;
+
 ### Preprocessing
 
 The first step to building our program is to preprocess it. The command to invoke the preprocessor is:
@@ -33,19 +44,43 @@ gcc217 -E charcount.c -o charcount.i
 
 The result is the preprocessed file `charcount.i`. As we mentioned earlier, the preprocessor performs two main tasks: It removes comments, which are of no use to the compiler, and handles preprocessor directives (lines in the code that begin with a `#`). `charcount.c` has only a single preprocessor directive: `#include <stdio.h>`. This directive instructs the preprocessor to grab the contents of `stdio.h` and paste it directly in the spot in `charcount.c` where the `#include` directive appears. stdio.h is a system header file representing an interface for standard I/O functions. We'll get into the details in the next section, but for now, all you need to know is that whenever a program uses functionality from C standard I/O, it needs to #include stdio.h in it.
 
-The entire file is quite large, containing somewhere on the order of 1000 lines. It contains declarations of standard I/O functions, such as printf.
+stdio.h is a large file, containing function declarations and macro definitions. Of note to us is that it contains the declarations of printf and getChar, and it contains the definition of the EOF macro.&#x20;
 
 ```c
 int printf(const char *format, ...);
+int getChar(void);
 ```
-
-Additionally, it contains the definition of EOF.
 
 ```c
 #define EOF -1
 ```
 
-You can view the preprocessed output in `charcount.i` using a text editor like emacs. It should look something like this:
+You can view the preprocessed output in `charcount.i` with a text editor like emacs. You'll find that the file has expanded significantly, typically to around 500-700 lines. Most of this additional content comes from `stdio.h` and includes various declarations and macro definitions that our program depends on.
+
+{% code title="charcount.i" %}
+```c
+...
+int printf(const char *format, ...);
+int getChar(void);
+...
+
+int main(void) {
+    int c;
+    int charCount = 0;
+
+    c = getchar();
+    while (c != -1) {
+        charCount++;
+        c = getchar();
+    }
+
+    printf("%d\n", charCount);
+    return 0;
+}
+```
+{% endcode %}
+
+At this point, our program contains raw C code only, which declarations of printf and getChar functions at the top.&#x20;
 
 {% hint style="success" %}
 You can think of the preprocessor as a "search-and-replace" tool:
