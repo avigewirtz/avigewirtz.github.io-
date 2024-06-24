@@ -81,7 +81,7 @@ int main(void) {
 ```
 {% endcode %}
 
-At this point, our program contains raw C code only, with declarations of printf and getChar functions at the top.
+Notice that the comment is removed, the contents of stdio.h were inserted, and the EOF macro was replaced with -1. At this point, our program contains raw C code only, with declarations of printf and getChar functions at the top.
 
 {% hint style="success" %}
 You can think of the preprocessor as a "search-and-replace" tool:
