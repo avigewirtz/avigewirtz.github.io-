@@ -1,4 +1,4 @@
-# Example: Single-file Program
+# Example: charcount.c
 
 Now that we have a high-level understanding of the four stage build process, let's walk through it using a real program as an example. Our example program will be the `charcount` program from lecture 3, whose source code is shown below. Recall that this program counts the number of characters input through stdin and outputs the count to stdout.
 
@@ -28,10 +28,10 @@ int main(void) {
 Our program begins as a C source file, stored in charcount.c. We can roughly divide the source code into three categories:
 
 * **Comments**, meant for human readers.
-* **Preprocessing language**, meant for preprocessor. The preprocessing language in our program consists of the `#include <stdio.h>` directive and the `EOF` macro. More on these shortly.&#x20;
-* **Raw C code** (i.e., everything else).&#x20;
+* **Preprocessing language**, meant for preprocessor. The preprocessing language in our program consists of the `#include <stdio.h>` directive and the `EOF` macro. More on these shortly.
+* **Raw C code** (i.e., everything else).
 
-Of note is that our program make calls to two library functions: `printf` and `getchar`. Their definitions will be inserted at link time.&#x20;
+Of note is that our program make calls to two library functions: `printf` and `getchar`. Their definitions will be inserted at link time.
 
 ### Preprocessing
 
@@ -43,8 +43,8 @@ gcc217 -E charcount.c -o charcount.i
 
 The result is the preprocessed file `charcount.i`. Let's break down what the preprocessor does.
 
-1. removes the `/* Write to stdout the number of chars in stdin. Return 0. */` comment on line 3, replacing it with a space character.&#x20;
-2. Next, it inserts the contents of `stdio.h`. The #include \<stdio.h> directive tells the preprocessor to grab the contents of `stdio.h` (typically located in `/usr/include`) and paste it into our program right where the `#include` directive appears. stdio.h is a large file, containing function declarations and macro definitions. Of note are the following three lines:&#x20;
+1. removes the `/* Write to stdout the number of chars in stdin. Return 0. */` comment on line 3, replacing it with a space character. Comments serve to help human readers understand the code, but they are of no use to the compiler. Hence, they can be discarded before compilation begins.
+2. Next, it inserts the contents of `stdio.h`. **Handles preprocessor directives.** These are lines in the code that begin with a `#` (hash). An example of a preprocessor directive is `#include` (e.g., `#include <stdio.h>`), which instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears. The #include \<stdio.h> directive tells the preprocessor to grab the contents of `stdio.h` (typically located in `/usr/include`) and paste it into our program right where the `#include` directive appears. stdio.h is a large file, containing function declarations and macro definitions. Of note are the following three lines:
 
 ```c
 int printf(const char *format, ...);
@@ -52,11 +52,11 @@ int getChar(void);
 #define EOF -1
 ```
 
-Purpose of inserting these is to provide information to the compiler so it can type check that they're used correctly. Compiler wouldn't otherwise be able to type check, since the definitions are only inserted at link time.&#x20;
+Purpose of inserting these is to provide information to the compiler so it can type check that they're used correctly. Compiler wouldn't otherwise be able to type check, since the definitions are only inserted at link time.
 
-3. Expands the `EOF` macro to -1.&#x20;
+3. Expands the `EOF` macro to -1.
 
-You can view the preprocessed output in `charcount.i` with a text editor like emacs. You'll find that the file has expanded significantly, typically to around 500-700 lines. Most of this additional content comes from `stdio.h` .  The relevant part is shown below.&#x20;
+You can view the preprocessed output in `charcount.i` with a text editor like emacs. You'll find that the file has expanded significantly, typically to around 500-700 lines. Most of this additional content comes from `stdio.h` . The relevant part is shown below.
 
 {% code title="charcount.i" %}
 ```c
@@ -105,7 +105,7 @@ The output is assembly language file `charcount.s`. Let's break down what takes 
 
 First, the compiler checks for syntax errors in our code. Syntax errors occur if you don’t follow the grammar rules of the C language. For example, forgetting a semicolon or a curly brace. Thankfully we don’t have any syntax errors, but if we did, the compiler would report the errors and terminate.
 
-Next, the compiler checks for semantic errors. Semantic errors occur when the syntax is correct, but you attempt to perform an illegal operation, such as using a variable before it is declared or passing a ... to a function that expects a ... It is during this stage where the purpose of inserting the declarations of `printf` and `getchar` become evident.&#x20;
+Next, the compiler checks for semantic errors. Semantic errors occur when the syntax is correct, but you attempt to perform an illegal operation, such as using a variable before it is declared or passing a ... to a function that expects a ... It is during this stage where the purpose of inserting the declarations of `printf` and `getchar` become evident.
 
 #### Translation to Assembly
 
@@ -162,22 +162,20 @@ The next step is to translate our code yet again--this time, from assembly to ma
 gcc217 -c charcount.s
 ```
 
+Our program is now in machine language form, stored in charcount.o. It is not executable, however, since it’s missing the definitions of the library functions printf and getChar.
 
-Our program is now in machine language form, stored in charcount.o. It is not executable, however, since it’s missing the definitions of the library functions printf and getChar.&#x20;
+#### Linking
 
-#### Linking&#x20;
-
-The final stage in the build process is the linking stage. Here, the linker inserts the definitions of the printf and getChar library functions into our program, making it a complete, executable program. 
+The final stage in the build process is the linking stage. Here, the linker inserts the definitions of the printf and getChar library functions into our program, making it a complete, executable program.
 
 We invoke the linker with the following command:
 
 gcc charcount.o -o charcount
 
-The output is charcount, which can be loaded into memory and run. 
+The output is charcount, which can be loaded into memory and run.
 
-A couple of points about the linking stage are worth noting. 
+A couple of points about the linking stage are worth noting.
 
-1. The C library is stored in libc.a. 
-2. The linker extracts only the relevant code from libc.a. 
-3. Typically, the name of libraries we’re linking against must be supplied as an argument in the linking command. However, we’d need not supply libc.a, since GCC automatically supplied it to linker. 
-
+1. The C library is stored in libc.a.
+2. The linker extracts only the relevant code from libc.a.
+3. Typically, the name of libraries we’re linking against must be supplied as an argument in the linking command. However, we’d need not supply libc.a, since GCC automatically supplied it to linker.

@@ -18,14 +18,9 @@ Note that `-o foo` tells `gcc` to name the executable `foo`_,_ rather than the d
 
 If we take a look into this box, we see that the process takes place in a sequence of four phases, each of which transforms the program from one form into another, culminating in an executable. The phases are preprocessing, compilation, assembly, and linking. Interestingly, none of these phases is performed by `gcc` itself. The programs that perform the build work are `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). `gcc` (that is, the `gcc` binary, typically stored in `/usr/bin`) is a relatively small driver program that serves as our interface to this toolchain. It parses our command line, figures out what we want to do, and then calls the aforementioned programs to do the actual work.&#x20;
 
-Here's a bird's eye view of what happened under the hood when we ran gcc217 foo.c -o foo.&#x20;
+Here's a bird's eye view of what happens under the hood when we run `gcc217 foo.c -o foo`:
 
-1.  **Preprocessing phase.** First, `gcc` sends `foo.c` to the preprocessor. The preprocessor is a ... that performs basic modifications to the source code before compilation begins. The two main ones are:
-
-    * **Removes comments.** Comments serve to help human readers understand the code, but they are of no use to the compiler. Hence, they can be discarded before compilation begins.
-    * **Handles preprocessor directives.** These are lines in the code that begin with a `#` (hash). An example of a preprocessor directive is `#include` (e.g., `#include <stdio.h>`), which instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears.
-
-    The output of the preprocessor is `foo.i`.
+1. **Preprocessing phase.** First, `gcc` sends `foo.c` to the preprocessor. The preprocessor performs basic modifications to the source code, such as removing comments, inserting header files, and expanding macros. The output of the preprocessor is `foo.i`.
 2. **Compilation phase.** Next, gcc sends foo.i to the compiler (`cc1`). The compiler takes the preprocessed file `foo.i` and translates it into assembly language, producing a file called `foo.s`. Assembly language is a low-level representation of the program that is closer to machine code but still readable by humans.
 3. **Assembly phase:** Next, gcc invokes the assembler on `foo.s`, generating an object file. This is a binary file format, containing machine code and metadata, typically in a file format called ELF.
 4. **Linking phase:** Finally, gcc sends foo.o to the linker (ld). The linker combines `foo.o` with the necessary `.o` files from the C Standard Library, producing the _executable object file_ `foo`.
