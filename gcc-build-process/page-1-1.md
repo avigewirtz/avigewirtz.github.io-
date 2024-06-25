@@ -4,7 +4,7 @@ In our previous example, all the source code of our program was contained within
 
 Let's now walk through the four stage build process again, but this time, let's use a multi-file program as an example. Because we've already gone over the details, we'll focus on the multi-file aspects of the process.
 
-For our example, we'll use the `testintmath` program from precept 4, whose source code is distributed across two `.c` files, `testintmath.c` and `intmath.c`, and one (user written) `.h` file, `intmath.h`. `testcircle.c` contains the `main` function, the entry point of our program. It reads two positive integers from stdin and returns their greatest common divisor (gcd) and least common multiple (lcm). `intmath.c` contains the implementation (i.e., definitions) of the `gcd` and `lcm` functions.
+For our example, we'll use the `testintmath` program from precept 4, whose source code is distributed across two `.c` files, `testintmath.c` and `intmath.c`, and one (user written) `.h` file, `intmath.h`. `testintmath.c` contains the `main` function, the entry point of our program. It reads two integers from stdin and returns their greatest common divisor (gcd) and least common multiple (lcm). `intmath.c` contains the implementation (i.e., definitions) of the `gcd` and `lcm` functions.
 
 {% tabs %}
 {% tab title="testintmath.c (client)" %}
@@ -129,7 +129,7 @@ int IntMath_lcm(int iFirst, int iSecond);
 {% hint style="info" %}
 **`#include` Syntax**
 
-Notice that there are two syntaxes for the `#include` directive: with angle brackets (e.g., `#include <stdio.h>`), and with double quotes (e.g., `#include "circle.h"`). The difference between these two syntaxes lies in how the preprocessor searches for the specified file, with the precise details being implementation-defined. In general, files #included with angle brackets are searched for in system directories only, while those #included with double quotes are searched for in the working directory first and then in system directories.
+Notice that the include direcive for intmath.h uses double quotes rather than angle brackets.  are two syntaxes for the `#include` directive: with angle brackets (e.g., `#include <stdio.h>`), and with double quotes (e.g., `#include "intmath.h"`). The difference between these two syntaxes lies in how the preprocessor searches for the specified file, with the precise details being implementation-defined. In general, files #included with angle brackets are searched for in system directories only, while those #included with double quotes are searched for in the working directory first and then in system directories.
 {% endhint %}
 
 #### Building testintmath

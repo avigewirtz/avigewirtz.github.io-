@@ -81,6 +81,7 @@
 * [Introduction](gnu-compiler-collection-gcc/introduction.md)
 * [The Big Picture](copy-of-gnu-compiler-collection-gcc/the-four-stage-build-process/README.md)
 * [Example: Single-file Program](gcc-build-process/example-single-file-program.md)
+* [Building Multi-file Programs](gcc-build-process/building-multi-file-programs.md)
 * [Example: Multi-file Program](gcc-build-process/page-1-1.md)
 * [Identifying Build Errors](gcc/identifying-build-errors.md)
 * [GCC Cheatsheet](gnu-compiler-collection-gcc/gcc-cheatsheet.md)
