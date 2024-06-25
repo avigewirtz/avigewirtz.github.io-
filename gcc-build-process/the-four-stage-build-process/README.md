@@ -16,7 +16,7 @@ And out comes the executable `foo`, which we can run by typing its name on the c
 Note that `-o foo` tells `gcc` to name the executable `foo`_,_ rather than the default name `a.out`.
 {% endhint %}
 
-If we take a look into this box, we see that the process takes place in a sequence of four phases, each of which transforms the program from one form into another, culminating in an executable. The phases are preprocessing, compilation, assembly, and linking. In fact, neither of these stages is performed by `gcc` itself. The programs that perform the build work are `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). `gcc` (that is, the `gcc` binary, typically stored in `/usr/bin`) is a relatively small driver program that serves as our interface to this toolchain. It parses our command line, figures out what we want to do, and then calls the aforementioned programs to do the actual work.&#x20;
+If we take a look into this box, we see that the process takes place in a sequence of four phases, each of which transforms the program from one form into another, culminating in an executable. The phases are preprocessing, compilation, assembly, and linking. Interestingly, none of these phases is performed by `gcc` itself. The programs that perform the build work are `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). `gcc` (that is, the `gcc` binary, typically stored in `/usr/bin`) is a relatively small driver program that serves as our interface to this toolchain. It parses our command line, figures out what we want to do, and then calls the aforementioned programs to do the actual work.&#x20;
 
 Here's a bird's eye view of what happened under the hood when we ran gcc217 foo.c -o foo.&#x20;
 
