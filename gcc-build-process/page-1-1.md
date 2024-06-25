@@ -1,75 +1,134 @@
-# Deep Dive
+# Example: Multi-file Program
 
-Let's now analyze each of the build stages in practice. As an example, we'll use the multi-file C program shown below. The program consists of three files: `testcircle.c`, `circle.c`, and `circle.h`. `testcircle.c` contains the `main` function, the entry point of our program. It prompts the user for the radius of a circle, computes its area using the `calculateArea` function, and prints the result on stdout. `circle.c` and `circle.h` contain the definition (i.e., implementation) and declaration of `calculateArea`, respectively.
+In our previous example, all the source code of our program was contained within a single .c file—charcount.c. However, in real-world scenarios, the source code of a C program is often distributed across multiple files. In such a case, the underlying operations get more interesting, and the true power of the linker is more appreciated.
+
+Let's now walk through the four stage build process again, but this time, let's use a multi-file program as an example. We'll use the testintmath program from prevept four. we'll go over the process in much less detail, since much of the details remain the same. the emphasis here is on the multi-file aspect of the build process.
+
+Let's now analyze each of the build stages in practice. As an example, we'll use the `testintmath` program from precept 4, whose source code is distributed across three files: `testintmath.c`, `intmath.c`, and `intmath.h`. The program consists of three files: `testcircle.c`, `circle.c`, and `circle.h`. `testcircle.c` contains the `main` function, the entry point of our program. It reads two positive integers from stdin and returns their greatest common divisor (gcd) and least common multiple (lcm). `intmath.c` and `intmath.h` contain the definition (i.e., implementation) and declaration of the `gcd` and `lcm` functions, respectively.
 
 {% tabs %}
-{% tab title="testcircle.c (client)" %}
+{% tab title="testintmath.c (client)" %}
 {% code lineNumbers="true" %}
 ```c
 /*--------------------------------------------------------------------*/
-/* testcircle.c                                                       */
-/*                                                                    */
-/* Calculates the area of a circle given its radius.                  */
+/* testintmath.c                                                      */
+/* Author: Bob Dondero                                                */
 /*--------------------------------------------------------------------*/
- 
+
+#include "intmath.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "circle.h"
 
-/* Prompts user for the radius of a circle. Returns
-   EXIT_FAILURE if input is invalid. Otherwise, prints
-   circle's area to stdout and returns 0. */
-   
-int main(void) {
+/* Read two positive integers from stdin. Return EXIT_FAILURE if stdin
+   contains bad data. Otherwise compute the greatest common divisor
+   and least common multiple of the two positive integers, write those
+   two values to stdout, and return 0. */
 
-  double radius, area;
+int main(void)
+{
+   int i1;
+   int i2;
+   int iGcd;
+   int iLcm;
+   int iScanfReturn;
 
-  printf("Enter radius of circle: ");
-  if (scanf("%lf", &radius) != 1 || radius <= 0) {
-      fprintf(stderr, "Invalid input. Must be a positive number.\n");
+   printf("Enter the first positive integer:\n");
+   iScanfReturn = scanf("%d", &i1);
+   if ((iScanfReturn != 1) || (i1 <= 0))
+   {
+      fprintf(stderr, "Error: Not a positive integer.\n");
       exit(EXIT_FAILURE);
-  }
+   }
 
-  area = calculateArea(radius);
+   printf("Enter the second positive integer:\n");
+   iScanfReturn = scanf("%d", &i2);
+   if ((iScanfReturn != 1) || (i2 <= 0))
+   {
+      fprintf(stderr, "Error: Not a positive integer.\n");
+      exit(EXIT_FAILURE);
+   }
 
-  printf("The area of the circle is: %.2f\n", area);
+   iGcd = IntMath_gcd(i1, i2);
+   iLcm = IntMath_lcm(i1, i2);
 
-  return 0;
+   printf("The greatest common divisor of %d and %d is %d.\n",
+      i1, i2, iGcd);
+   printf("The least common multiple of %d and %d is %d.\n",
+      i1, i2, iLcm);
+
+   return 0;
 }
 ```
 {% endcode %}
 {% endtab %}
 
-{% tab title="circle.c (implementation)" %}
-{% code lineNumbers="true" %}
+{% tab title="intmath.c (implementation)" %}
 ```c
 /*--------------------------------------------------------------------*/
-/* circle.c                                                           */
+/* intmath.c                                                          */
+/* Author: Bob Dondero                                                */
 /*--------------------------------------------------------------------*/
 
-#include "circle.h"
-#define PI 3.14159
+#include "intmath.h"
+#include <assert.h>
 
-double calculateArea(double radius) {
-    return PI * radius * radius;
+int IntMath_gcd(int iFirst, int iSecond)
+{
+   int iTemp;
+
+   assert(iFirst > 0);
+   assert(iSecond > 0);
+
+   /* Use Euclid's algorithm. */
+
+   while (iSecond != 0)
+   {
+     iTemp = iFirst % iSecond;
+     iFirst = iSecond;
+     iSecond = iTemp;
+   }
+
+   return iFirst;
+}
+
+int IntMath_lcm(int iFirst, int iSecond)
+{
+   assert(iFirst > 0);
+   assert(iSecond > 0);
+
+   return (iFirst / IntMath_gcd(iFirst, iSecond)) * iSecond;
 }
 ```
-{% endcode %}
 {% endtab %}
 
-{% tab title="circle.h (interface)" %}
-{% code lineNumbers="true" %}
+{% tab title="intmath.h (interface)" %}
 ```c
-#ifndef CIRCLE_H
-#define CIRCLE_H
+/*--------------------------------------------------------------------*/
+/* intmath.h                                                          */
+/* Author: Bob Dondero                                                */
+/*--------------------------------------------------------------------*/
 
-double calculateArea(double radius);
+#ifndef INTMATH_INCLUDED
+#define INTMATH_INCLUDED
+
+/* Return the greatest common divisor of positive integers iFirst and
+   iSecond. */
+
+int IntMath_gcd(int iFirst, int iSecond);
+
+/* Return the least common multiple of positive integers iFirst and
+   iSecond. */
+
+int IntMath_lcm(int iFirst, int iSecond);
 
 #endif
 ```
-{% endcode %}
 {% endtab %}
 {% endtabs %}
+
+### The Starting Point
+
+Program is spread across three files.&#x20;
 
 ### Preprocessing Stage
 
