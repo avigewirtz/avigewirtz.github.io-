@@ -2,9 +2,7 @@
 
 In our previous example, all the source code of our program was contained within a single .c file—charcount.c. However, in real-world scenarios, the source code of a C program is often distributed across multiple files. In such a case, the underlying operations get more interesting, and the true power of the linker is more appreciated.
 
-Let's now walk through the four stage build process again, but this time, let's use a multi-file program as an example. We'll use the testintmath program from prevept four. we'll go over the process in much less detail, since much of the details remain the same. the emphasis here is on the multi-file aspect of the build process.
-
-Let's now analyze each of the build stages in practice. As an example, we'll use the `testintmath` program from precept 4, whose source code is distributed across three files: `testintmath.c`, `intmath.c`, and `intmath.h`. The program consists of three files: `testcircle.c`, `circle.c`, and `circle.h`. `testcircle.c` contains the `main` function, the entry point of our program. It reads two positive integers from stdin and returns their greatest common divisor (gcd) and least common multiple (lcm). `intmath.c` and `intmath.h` contain the definition (i.e., implementation) and declaration of the `gcd` and `lcm` functions, respectively.
+Let's now walk through the four stage build process again, but this time, let's use a multi-file program as an example. For our example, We'll use the `testintmath` program from precept 4, whose source code is distributed across two .c files, `testintmath.c`, `intmath.c`, and one (user written) .h file, `intmath.h`. The program consists of three files: `testcircle.c`, `circle.c`, and `circle.h`. `testcircle.c` contains the `main` function, the entry point of our program. It reads two positive integers from stdin and returns their greatest common divisor (gcd) and least common multiple (lcm). `intmath.c` and `intmath.h` contain the definition (i.e., implementation) and declaration of the `gcd` and `lcm` functions, respectively.
 
 {% tabs %}
 {% tab title="testintmath.c (client)" %}
