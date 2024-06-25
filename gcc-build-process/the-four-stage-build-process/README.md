@@ -20,15 +20,15 @@ If we take a look into this box, we see that the process takes place in a sequen
 
 Here's a bird's eye view of what happened under the hood when we ran gcc217 foo.c -o foo.&#x20;
 
-1.  **Preprocessing stage.** First, `gcc` sends `foo.c` to the preprocessor. The preprocessor is a ... that performs basic modifications to the source code before compilation begins. The two main ones are:
+1.  **Preprocessing phase.** First, `gcc` sends `foo.c` to the preprocessor. The preprocessor is a ... that performs basic modifications to the source code before compilation begins. The two main ones are:
 
     * **Removes comments.** Comments serve to help human readers understand the code, but they are of no use to the compiler. Hence, they can be discarded before compilation begins.
     * **Handles preprocessor directives.** These are lines in the code that begin with a `#` (hash). An example of a preprocessor directive is `#include` (e.g., `#include <stdio.h>`), which instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears.
 
     The output of the preprocessor is `foo.i`.
-2. **Compilation stage.** Next, gcc sends foo.i to the compiler (`cc1`). The compiler takes the preprocessed file `foo.i` and translates it into assembly language, producing a file called `foo.s`. Assembly language is a low-level representation of the program that is closer to machine code but still readable by humans.
-3. **Assembly stage:** Next, gcc invokes the assembler on `foo.s`, generating an object file. This is a binary file format, containing machine code and metadata, typically in a file format called ELF.
-4. **Linking stage:** Finally, gcc sends foo.o to the linker (ld). The linker combines `foo.o` with the necessary `.o` files from the C Standard Library, producing the _executable object file_ `foo`.
+2. **Compilation phase.** Next, gcc sends foo.i to the compiler (`cc1`). The compiler takes the preprocessed file `foo.i` and translates it into assembly language, producing a file called `foo.s`. Assembly language is a low-level representation of the program that is closer to machine code but still readable by humans.
+3. **Assembly phase:** Next, gcc invokes the assembler on `foo.s`, generating an object file. This is a binary file format, containing machine code and metadata, typically in a file format called ELF.
+4. **Linking phase:** Finally, gcc sends foo.o to the linker (ld). The linker combines `foo.o` with the necessary `.o` files from the C Standard Library, producing the _executable object file_ `foo`.
 
 This process is summarized in Figure 4.
 
@@ -47,14 +47,14 @@ A useful analogy is to think of the process as an assembly line, where the produ
 
 #### Saving Intermediate Files
 
-By default, `gcc` stores the intermediate files in `/tmp` and deletes them. Thus, if we invoke `ls` after building `foo`, we won't see any of the `.i`, `.s`, or `.o` files in our directory:
+By default, `gcc` does not retain the intermediate files generated during the build process. Thus, if we invoke `ls` after building `foo`, we won't see any of the `.i`, `.s`, or `.o` files in our directory:
 
 ```bash
 $ ls
-foo.c
+foo.c foo
 ```
 
-We can instruct `gcc` to save the intermediate files in the working directory by using the `--save-temps` option, like so:
+We can instruct `gcc` to save the intermediate files by using the `--save-temps` option, like so:
 
 ```bash
 gcc217 --save-temps foo.c -o foo
