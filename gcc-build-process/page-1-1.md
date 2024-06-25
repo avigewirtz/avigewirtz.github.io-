@@ -2,9 +2,9 @@
 
 In our previous example, all the source code of our program was contained within a single .c file—charcount.c. However, in real-world scenarios, the source code of a C program is often distributed across multiple files. In such a case, the underlying operations get more interesting, and the true power of the linker is more appreciated.
 
-Let's now walk through the four stage build process again, but this time, let's use a multi-file program as an example. Because we've already gone over the details, we'll focus on the multi-file aspects of the process. 
+Let's now walk through the four stage build process again, but this time, let's use a multi-file program as an example. Because we've already gone over the details, we'll focus on the multi-file aspects of the process.
 
-For our example, we'll use the `testintmath` program from precept 4, whose source code is distributed across two `.c` files, `testintmath.c` and `intmath.c`, and one (user written) `.h` file, `intmath.h`. `testcircle.c` contains the `main` function, the entry point of our program. It reads two positive integers from stdin and returns their greatest common divisor (gcd) and least common multiple (lcm). `intmath.c` contains the implementation (i.e., definitions) of the `gcd` and `lcm` functions. 
+For our example, we'll use the `testintmath` program from precept 4, whose source code is distributed across two `.c` files, `testintmath.c` and `intmath.c`, and one (user written) `.h` file, `intmath.h`. `testcircle.c` contains the `main` function, the entry point of our program. It reads two positive integers from stdin and returns their greatest common divisor (gcd) and least common multiple (lcm). `intmath.c` contains the implementation (i.e., definitions) of the `gcd` and `lcm` functions.
 
 {% tabs %}
 {% tab title="testintmath.c (client)" %}
@@ -126,19 +126,15 @@ int IntMath_lcm(int iFirst, int iSecond);
 {% endtab %}
 {% endtabs %}
 
-
 {% hint style="info" %}
 **`#include` Syntax**
 
 Notice that there are two syntaxes for the `#include` directive: with angle brackets (e.g., `#include <stdio.h>`), and with double quotes (e.g., `#include "circle.h"`). The difference between these two syntaxes lies in how the preprocessor searches for the specified file, with the precise details being implementation-defined. In general, files #included with angle brackets are searched for in system directories only, while those #included with double quotes are searched for in the working directory first and then in system directories.
 {% endhint %}
 
+#### Building testintmath
 
-### Building testintmath
-
-The most important thing to understand about a 
-
-Program is spread across three files.&#x20;
+Like a single file program, we can build a multi-file program via a single gcc217 command, or by invoking each stage seperately. No matter how we do it, however, the important thing to recognize is that each .c file is preprocessed, compiled, and assembled independen
 
 ### Preprocessing Stage
 
@@ -148,8 +144,6 @@ The build process begins with preprocessing. We invoke the preprocessor on `test
 gcc217 -E tescircle.c > testcircle.i
 gcc217 -E circle.c > circle.i
 ```
-
-
 
 Although not strictly necessary, `circle.c` also includes `circle.h`. This ensures that the declaration of `calculateArea` in `circle.h` matches its declaration (in its definition) in `circle.c`. If there's a discrepancy between the two, the compiler will report an error.
 
@@ -173,13 +167,9 @@ We compile `testcircle.i` and `circle.i` by invoking `gcc217` with the `-S` opti
 gcc217 -S testcircle.i circle.i
 ```
 
-
-
 <figure><img src="../.gitbook/assets/Frame 63.png" alt="" width="563"><figcaption></figcaption></figure>
 
-
 ### Assembly Stage
-
 
 We invoke the assembler on `testcircle.s` and `circle.s` with the following command:
 
