@@ -1,4 +1,4 @@
-# Example: Multi-file Program
+# Example: testintmath
 
 In our previous example, all the source code of our program was contained within a single .c file—charcount.c. However, in real-world scenarios, the source code of a C program is often distributed across multiple files. In such a case, the underlying operations get more interesting, and the true power of the linker is more appreciated.
 
@@ -155,7 +155,7 @@ The `#ifndef` / `#else` directives, which we use in `intmath.h`, are part of a s
 * `#define CIRCLE_H`: This defines `CIRCLE_H`. Notice that it doesn't give `CIRCLE_H` any specific value. This is perfectly valid. The preprocessor will simply note that `CIRCLE_H` is defined. Going forward, `#ifndef CIRCLE_H` will evaluate to FALSE, and the preprocessor will skip the block.
 * `#endif`: This ends the conditional block started by `#ifndef`. Every conditional directive must have a corresponding `#endif`.
 
-<figure><img src="../.gitbook/assets/Group 20 (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Group 20 (9).png" alt=""><figcaption></figcaption></figure>
 
 First, we see that the preprocessor removed all comments from `testcircle.c` and `circle.c`. Second, it replaced each `#include` directive with the contents of its specified header: `circle.h` for both `circle.c` and `testcircle.c`, and `stdio.h` and `stdlib.h` for `testcircle.c`. Finally, all macros were expanded: `PI` in `circle.c` was replaced with `3.14159`, and `EXIT_FAILURE` was replaced with `1`.
 
@@ -167,7 +167,7 @@ We compile `testcircle.i` and `circle.i` by invoking `gcc217` with the `-S` opti
 gcc217 -S testcircle.i circle.i
 ```
 
-<figure><img src="../.gitbook/assets/Frame 63.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Frame 63.png" alt="" width="563"><figcaption></figcaption></figure>
 
 ### Assembly Stage
 
@@ -179,7 +179,7 @@ gcc217 -c testcircle.s circle.s
 
 The result is two relocatable object files, `testcircle.o` and `circle.o`.
 
-<figure><img src="../.gitbook/assets/Frame 62.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Frame 62.png" alt="" width="563"><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 relocatable object files are binary files divided into sections.
@@ -195,7 +195,7 @@ gcc217 testcircle.o circle.o -o testcircle
 
 Note that we don't need to explicitly pass `libc.a` to the linker, as `gcc` automatically includes it. The output is the executable object file `testcircle`.
 
-<figure><img src="../.gitbook/assets/Frame 60 (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Frame 60 (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 **libc.a**
