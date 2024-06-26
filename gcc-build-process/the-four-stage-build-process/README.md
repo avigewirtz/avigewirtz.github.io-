@@ -8,13 +8,17 @@ Consider a C program contained within a single `.c` file, `foo.c`. Running the c
 gcc217 foo.c -o foo
 ```
 
-Results in an executable named `foo`, which we can run by typing its name on the command line, prefixed by a `./:`
+Results in an executable named `foo`, which we can run by typing its name on the command line, prefixed by a `./`:
 
 ```bash
 ./foo
 ```
 
-(Note that `-o foo` tells `gcc` to name the executable `foo` rather than `a.out`, the default name for executables on Unix systems). Here's a bird's eye view of what takes place under the hood:&#x20;
+{% hint style="info" %}
+Note that `-o foo` tells `gcc` to name the executable `foo` rather than `a.out`, the default name for executables on Unix systems.
+{% endhint %}
+
+Here's a bird's eye view of what takes place under the hood:&#x20;
 
 1. **Preprocessing phase.** First, `gcc` sends `foo.c` to the preprocessor (`cpp`). The preprocessor performs basic modifications to the source code, such as removing comments, inserting header files, and expanding macros. Note that the latter two operations are triggered by preprocessor directives--`#include` and `#define`, respectively. More on these directives in the next section. The output of the preprocessor is `foo.i`.&#x20;
 2. **Compilation phase.** Next, `gcc` sends `foo.i` to the compiler (`cc1`). The compiler translates the preprocessed file `foo.i` into assembly language, producing a file called `foo.s`. Assembly language is a low-level representation of the program that is closer to machine code but still readable by humans.
