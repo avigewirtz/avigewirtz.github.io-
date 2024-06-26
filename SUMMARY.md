@@ -79,7 +79,7 @@
 ## GCC Build Process
 
 * [Introduction](gnu-compiler-collection-gcc/introduction.md)
-* [Building Single-file Programs](gcc-build-process/the-four-stage-build-process/README.md)
+* [The Big Picture](gcc-build-process/the-four-stage-build-process/README.md)
   * [Example: charcount.c](gcc-build-process/the-four-stage-build-process/example-single-file-program.md)
 * [Building Multi-file Programs](gcc-build-process/building-multi-file-programs/README.md)
   * [Example: testintmath](gcc-build-process/building-multi-file-programs/page-1-1.md)

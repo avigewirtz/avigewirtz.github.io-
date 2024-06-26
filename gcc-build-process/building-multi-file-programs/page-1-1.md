@@ -1,10 +1,10 @@
 # Example: testintmath
 
-In our previous example, all the source code of our program was contained within a single .c file—charcount.c. However, in real-world scenarios, the source code of a C program is often distributed across multiple files. In such a case, the underlying operations get more interesting, and the true power of the linker is more appreciated.
+In our previous example, all the source code of our program was contained within a single .c file—`charcount.c`. In real-world scenarios, however, the source code of a C program is often distributed across many `.c` files. In such a case, the underlying operations get more interesting, and the true power of the linker is more appreciated.
 
 Let's now walk through the four stage build process again, but this time, let's use a multi-file program as an example. Because we've already gone over the details, we'll focus on the multi-file aspects of the process.
 
-For our example, we'll use the `testintmath` program from precept 4, whose source code is distributed across two `.c` files, `testintmath.c` and `intmath.c`, and one (user written) `.h` file, `intmath.h`. `testintmath.c` contains the `main` function, the entry point of our program. It reads two integers from stdin and returns their greatest common divisor (gcd) and least common multiple (lcm). `intmath.c` contains the implementation (i.e., definitions) of the `gcd` and `lcm` functions.
+For our example, we'll use the `testintmath` program from precept 4, whose source code is distributed across two `.c` files, `testintmath.c` and `intmath.c`, and one (user written) `.h` file, `intmath.h`. `testintmath.c` contains the `main` function, the entry point of our program. It reads two integers from stdin and returns their greatest common divisor (gcd) and least common multiple (lcm). `intmath.c` contains the implementation (i.e., definitions) of the `gcd` and `lcm` functions. `intmath.h` contains the declarations of the `gcd` and `lcm` functions, serving as their interface.&#x20;
 
 {% tabs %}
 {% tab title="testintmath.c (client)" %}
@@ -19,10 +19,13 @@ For our example, we'll use the `testintmath` program from precept 4, whose sourc
 #include <stdio.h>
 #include <stdlib.h>
 
+/*--------------------------------------------------------------------*/
+
 /* Read two positive integers from stdin. Return EXIT_FAILURE if stdin
-   contains bad data. Otherwise compute the greatest common divisor
-   and least common multiple of the two positive integers, write those
-   two values to stdout, and return 0. */
+   contains bad data and an write error message to stderr. Otherwise
+   compute the greatest common divisor and least common multiple of
+   the two positive integers, write those two values to stdout, and
+   return 0. */
 
 int main(void)
 {
@@ -48,8 +51,8 @@ int main(void)
       exit(EXIT_FAILURE);
    }
 
-   iGcd = IntMath_gcd(i1, i2);
-   iLcm = IntMath_lcm(i1, i2);
+   iGcd = gcd(i1, i2);
+   iLcm = lcm(i1, i2);
 
    printf("The greatest common divisor of %d and %d is %d.\n",
       i1, i2, iGcd);
@@ -63,6 +66,7 @@ int main(void)
 {% endtab %}
 
 {% tab title="intmath.c (implementation)" %}
+{% code lineNumbers="true" %}
 ```c
 /*--------------------------------------------------------------------*/
 /* intmath.c                                                          */
@@ -70,35 +74,33 @@ int main(void)
 /*--------------------------------------------------------------------*/
 
 #include "intmath.h"
-#include <assert.h>
 
-int IntMath_gcd(int iFirst, int iSecond)
+/*--------------------------------------------------------------------*/
+
+int gcd(int iFirst, int iSecond)
 {
    int iTemp;
-
-   assert(iFirst > 0);
-   assert(iSecond > 0);
 
    /* Use Euclid's algorithm. */
 
    while (iSecond != 0)
    {
-     iTemp = iFirst % iSecond;
-     iFirst = iSecond;
-     iSecond = iTemp;
+      iTemp = iFirst % iSecond;
+      iFirst = iSecond;
+      iSecond = iTemp;
    }
 
    return iFirst;
 }
 
-int IntMath_lcm(int iFirst, int iSecond)
-{
-   assert(iFirst > 0);
-   assert(iSecond > 0);
+/*--------------------------------------------------------------------*/
 
-   return (iFirst / IntMath_gcd(iFirst, iSecond)) * iSecond;
+int lcm(int iFirst, int iSecond)
+{
+   return (iFirst / gcd(iFirst, iSecond)) * iSecond;
 }
 ```
+{% endcode %}
 {% endtab %}
 
 {% tab title="intmath.h (interface)" %}
@@ -108,20 +110,17 @@ int IntMath_lcm(int iFirst, int iSecond)
 /* Author: Bob Dondero                                                */
 /*--------------------------------------------------------------------*/
 
-#ifndef INTMATH_INCLUDED
-#define INTMATH_INCLUDED
-
 /* Return the greatest common divisor of positive integers iFirst and
    iSecond. */
 
-int IntMath_gcd(int iFirst, int iSecond);
+int gcd(int iFirst, int iSecond);
+
+/*--------------------------------------------------------------------*/
 
 /* Return the least common multiple of positive integers iFirst and
    iSecond. */
 
-int IntMath_lcm(int iFirst, int iSecond);
-
-#endif
+int lcm(int iFirst, int iSecond);
 ```
 {% endtab %}
 {% endtabs %}
@@ -129,10 +128,18 @@ int IntMath_lcm(int iFirst, int iSecond);
 {% hint style="info" %}
 **`#include` Syntax**
 
-Notice that the include direcive for intmath.h uses double quotes rather than angle brackets.  are two syntaxes for the `#include` directive: with angle brackets (e.g., `#include <stdio.h>`), and with double quotes (e.g., `#include "intmath.h"`). The difference between these two syntaxes lies in how the preprocessor searches for the specified file, with the precise details being implementation-defined. In general, files #included with angle brackets are searched for in system directories only, while those #included with double quotes are searched for in the working directory first and then in system directories.
+Notice that the include directive for `intmath.h` uses double quotes (i.e., `#include "intmath.h"`) rather than angle brackets, which we used for the other header files. Using doubel quites tells the preprocessor to look in the current directory for the file, instead of just the system directories.&#x20;
 {% endhint %}
 
 #### Building testintmath
+
+The most important aspect to understand about building multi-file programs is that each .c file is treated as a separate unit that is preprocessed, compiled, and assembled separately. As we know of course, .c files may include header files, which are inserted during preprocessing.&#x20;
+
+
+
+
+
+header files can be included into .c fileduring the preprocessing stage, header files are inserted&#x20;
 
 Like a single file program, we can build a multi-file program via a single gcc217 command, or by invoking each stage seperately. No matter how we do it, however, the important thing to recognize is that each .c file is preprocessed, compiled, and assembled independen
 
