@@ -16,17 +16,17 @@ Results in an executable named `foo`, which we can run by typing its name on the
 
 (Note that `-o foo` tells `gcc` to name the executable `foo` rather than `a.out`, the default name for executables on Unix systems). Here's a bird's eye view of what takes place under the hood:&#x20;
 
-1. **Preprocessing phase.** First, `gcc` sends `foo.c` to the preprocessor (`cpp`). The preprocessor performs basic modifications to the source code, such as removing comments, inserting header files, and expanding macros. Note that the latter two operations are triggered by preprocessor directives--`#include` and `#define`, respectively. More on these in the next section. The output of the preprocessor is `foo.i`. By default, the assembler file name for a source file is made by replacing the suffix ‘.c’, ‘.i’, etc., with ‘.s’.
+1. **Preprocessing phase.** First, `gcc` sends `foo.c` to the preprocessor (`cpp`). The preprocessor performs basic modifications to the source code, such as removing comments, inserting header files, and expanding macros. Note that the latter two operations are triggered by preprocessor directives--`#include` and `#define`, respectively. More on these directives in the next section. The output of the preprocessor is `foo.i`.&#x20;
 2. **Compilation phase.** Next, `gcc` sends `foo.i` to the compiler (`cc1`). The compiler translates the preprocessed file `foo.i` into assembly language, producing a file called `foo.s`. Assembly language is a low-level representation of the program that is closer to machine code but still readable by humans.
-3. **Assembly phase:**  `gcc` then invokes the assembler (`as`) on `foo.s`, generating an object file. This is a binary file format, containing machine code and metadata, typically in a file format called ELF.
-4. **Linking phase:** Finally, `gcc` sends `foo.o` to the linker (`ld`). The linker combines `foo.o` with the necessary `.o` files from the C Standard Library, producing the executable `foo`.
+3. **Assembly phase:**  `gcc` then send `foo.s` to the assembler (`as`), which translates it into machine code and stored the result in the object file `foo.o`. This is a binary file containing machine code and metadata.
+4. **Linking phase:** Finally, `gcc` sends `foo.o` to the linker (`ld`). The linker then combines foo.o with the necessary .o files from the C standard library. Contains definitions of librayr functions called by foo.c, as well as generic starter code. The output is the executable file foo.&#x20;
 
 This process is summarized in Figure 4.
 
 <figure><img src="../../.gitbook/assets/Frame 27 (5).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-A useful analogy is to think of the process as an assembly line, where the product is a C program, the tools are cpp, cc1, as, and ld, and the manager orchestrating the process is gcc. The program begins life as a source file stored in foo.c. As it goes through the assembly line, it gets worked by each of these tools, each transforming it one step closer to an executable. By the end, the produce emerges as an executable file, foo, ready to be loaded into memory and executed.
+A useful analogy is to think of the process as an assembly line, where the product is a C program that begins as C source file and emerges as an executable file. The tools that work on the product are cpp, cc1, as, and ld, and the manager orchestrating the process is gcc.&#x20;
 {% endhint %}
 
 {% hint style="info" %}
@@ -76,6 +76,18 @@ gcc217 -E foo.c -o foo.i
 gcc217 -E foo.c > foo.i
 ```
 
-**`-S`:** This instructs `gcc` to halt the build process after compilation. The input can be a `.c` file, a `.i` file, or even a mix of both. `gcc` will infer which stages to perform based on the file's extension--preprocessing and compilation for `.c` files, and compilation only for `.i` files. The output will automatically be saved in `.s` files.
+**`-S`:** This instructs `gcc` to halt the build process after compilation. The input can a `.c` file:
 
-**`-c`:** This instructs `gcc` to halt the build process after assembly. As you might expect, the input can be `.i`, `.c`, or `.s` files, and `gcc` will infer which stages to perform based on the file extension. The output will automatically be saved in `.o` files.
+```bash
+gcc217 -S foo.c
+```
+
+Or a `.i` file:
+
+```
+gcc217 -S foo.i
+```
+
+`gcc` will infer which stages to perform based on the file's extension--preprocessing and compilation for a `.c` file, and compilation only for a `.i` file. The output will automatically be saved in a `.s` file.
+
+**`-c`:** This instructs `gcc` to halt the build process after assembly. As you might expect, the input can be a `.i`, `.c`, or `.s` file, and `gcc` will infer which stages to perform based on the file's extension. The output will automatically be saved in a `.o` file.
