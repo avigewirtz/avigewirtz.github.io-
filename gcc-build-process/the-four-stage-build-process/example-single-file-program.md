@@ -43,8 +43,9 @@ gcc217 -E charcount.c -o charcount.i
 
 The result is the preprocessed file `charcount.i`. Let's break down what the preprocessor does.
 
-1. First, it removes the `/* Write to stdout the number of chars in stdin. Return 0. */` comment on line 3, replacing it with a space character. Comments serve to help human readers understand the code, but they are of no use to the compiler. Hence, they can be discarded before compilation begins.
-2. Next, it inserts the contents of `stdio.h`. **Handles preprocessor directives.** These are lines in the code that begin with a `#` (hash). An example of a preprocessor directive is `#include` (e.g., `#include <stdio.h>`), which instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears. The #include \<stdio.h> directive tells the preprocessor to grab the contents of `stdio.h` (typically located in `/usr/include`) and paste it into our program right where the `#include` directive appears. stdio.h is a large file, containing function declarations and macro definitions. Of note are the following three lines:
+First, it removes the `/* Write to stdout the number of chars in stdin. Return 0. */` comment on line 3, replacing it with a space character. Comments serve to help human readers understand the code, but they are of no use to the compiler. Hence, they can be discarded before compilation begins.
+
+Next, it inserts the contents of `stdio.h`. **Handles preprocessor directives.** These are lines in the code that begin with a `#` (hash). An example of a preprocessor directive is `#include` (e.g., `#include <stdio.h>`), which instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears. The #include \<stdio.h> directive tells the preprocessor to grab the contents of `stdio.h` (typically located in `/usr/include`) and paste it into our program right where the `#include` directive appears. stdio.h is a large file, containing function declarations and macro definitions. Of note are the following three lines:
 
 ```c
 int printf(const char *format, ...);
@@ -54,9 +55,9 @@ int getChar(void);
 
 Purpose of inserting these is to provide information to the compiler so it can type check that they're used correctly. Compiler wouldn't otherwise be able to type check, since the definitions are only inserted at link time.
 
-3. Expands the `EOF` macro to -1.
+Finally, it replaces the `EOF` macro with its value—-1.
 
-You can view the preprocessed output in `charcount.i` with a text editor like emacs. You'll find that the file has expanded significantly, typically to around 500-700 lines. Most of this additional content comes from `stdio.h` . The relevant part is shown below.
+You can view the contents of `charcount.i` with a text editor like emacs. You'll find that our program has expanded significantly, typically to around 500-700 lines. Most of this additional content comes from `stdio.h` . For simplicity, only the relevant parts are shown below.
 
 {% code title="charcount.i" %}
 ```c
@@ -81,7 +82,7 @@ int main(void) {
 ```
 {% endcode %}
 
-Notice that the comment is removed, the contents of stdio.h were inserted, and the EOF macro was replaced with -1. At this point, our program contains raw C code only, with declarations of printf and getChar functions at the top.
+As you can see, this file contains only raw C code—no comments or prwproxessor directives. The contents of stdio.h were inserted, and the EOF macro was replaced with -1. 
 
 {% hint style="success" %}
 You can think of the preprocessor as a "search-and-replace" tool:
