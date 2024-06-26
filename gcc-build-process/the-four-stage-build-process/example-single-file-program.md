@@ -28,10 +28,10 @@ int main(void) {
 Our program begins as a C source file, stored in charcount.c. We can roughly divide the source code into three categories:
 
 * **Comments**, meant for human readers.
-* **Preprocessing language**, meant for preprocessor. The preprocessing language in our program consists of the `#include <stdio.h>` directive and the `EOF` macro. More on these shortly.
+* **Preprocessing language**, meant for preprocessor. The preprocessing language in our program consists of the `#include <stdio.h>` directive and the `EOF` macro. 
 * **Raw C code** (i.e., everything else).
 
-Of note is that our program make calls to two library functions: `printf` and `getchar`. Their definitions will be inserted at link time.
+Of note is that our program make calls to two library functions: `printf` and `getchar`. Nowhere in our program is there defintioons for there functions. in fact, in its current form, our program does not even contain declarations for them. 
 
 ### Preprocessing
 
@@ -43,7 +43,7 @@ gcc217 -E charcount.c -o charcount.i
 
 The result is the preprocessed file `charcount.i`. Let's break down what the preprocessor does.
 
-1. removes the `/* Write to stdout the number of chars in stdin. Return 0. */` comment on line 3, replacing it with a space character. Comments serve to help human readers understand the code, but they are of no use to the compiler. Hence, they can be discarded before compilation begins.
+1. First, it removes the `/* Write to stdout the number of chars in stdin. Return 0. */` comment on line 3, replacing it with a space character. Comments serve to help human readers understand the code, but they are of no use to the compiler. Hence, they can be discarded before compilation begins.
 2. Next, it inserts the contents of `stdio.h`. **Handles preprocessor directives.** These are lines in the code that begin with a `#` (hash). An example of a preprocessor directive is `#include` (e.g., `#include <stdio.h>`), which instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears. The #include \<stdio.h> directive tells the preprocessor to grab the contents of `stdio.h` (typically located in `/usr/include`) and paste it into our program right where the `#include` directive appears. stdio.h is a large file, containing function declarations and macro definitions. Of note are the following three lines:
 
 ```c
