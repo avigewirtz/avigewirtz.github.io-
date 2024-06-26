@@ -31,7 +31,7 @@ Our program begins as a C source file, stored in charcount.c. We can roughly div
 * **Preprocessing language**, meant for preprocessor. The preprocessing language in our program consists of the `#include <stdio.h>` directive and the `EOF` macro. 
 * **Raw C code** (i.e., everything else).
 
-Of note is that our program make calls to two library functions: `printf` and `getchar`. Nowhere in our program is there defintioons for there functions. in fact, in its current form, our program does not even contain declarations for them. 
+Of note is that our program make calls to two library functions: `printf` and `getchar`. Nowhere in our program is there defintioons for there functions. As we saw in the previous section, definitions of library functions are resolved at link time. 
 
 ### Preprocessing
 
