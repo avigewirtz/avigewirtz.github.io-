@@ -1,6 +1,6 @@
 # Introduction
 
-_Building_ a C program refers to the process of transforming it from one or more source files into a single file in a form that can be loaded into memory and executed. GCC builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. The goal of this chapter is to provide an overview of this four stage build process. It is not intended to be a general-purpose GCC tutorial. For more resources on GCC, please refer to the [further reading](../copy-of-gnu-compiler-collection-gcc/further-reading.md) section at the end of this chapter.
+_Building_ a C program refers to the process of transforming it from one or more source files into a single file that can be loaded into memory and executed. GCC builds C programs in four sequential stages: preprocessing, compilation, assembly, and linking. The goal of this chapter is to provide an overview of this four stage build process. It is not intended to be a general-purpose GCC tutorial. For more resources on GCC, please refer to the [further reading](../copy-of-gnu-compiler-collection-gcc/further-reading.md) section at the end of this chapter.
 
 {% hint style="info" %}
 **Note on Terminology**
