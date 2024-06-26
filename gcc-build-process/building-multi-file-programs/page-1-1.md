@@ -133,7 +133,7 @@ Notice that the include directive for `intmath.h` uses double quotes (i.e., `#in
 
 #### Building testintmath
 
-
+Preprocessor compiler and assembler only take a single unit as input. In the case of the preproccesor, this unit is the .c file, along with all files included with the include directive. In the case of the compiler and assembler, 
 
 
 #### Preprocessing
