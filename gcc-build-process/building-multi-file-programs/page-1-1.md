@@ -1,10 +1,10 @@
 # Example: testintmath
 
-In our previous example, all the source code of our program was contained within a single .c file—`charcount.c`. In real-world scenarios, however, the source code of a C program is often distributed across many `.c` files. In such a case, the underlying operations get more interesting, and the true power of the linker is more appreciated.
+In our previous example, all the source code of our program was contained within a single .c file—`charcount.c`. In real-world scenarios, however, the source code of a C program is often distributed across many `.c` files. What does the underlying build process look like then?
 
-Let's now walk through the four stage build process again, but this time, let's use a multi-file program as an example. Because we've already gone over the details, we'll focus on the multi-file aspects of the process.
+Let's now walk through the four stage build process again, but this time, let's use a multi-file program as an example. Because we've already gone over the details, we won't go over it in detail again. Our goal here is to teach the multi-file aspects of the process.
 
-For our example, we'll use the `testintmath` program from precept 4, whose source code is distributed across two `.c` files, `testintmath.c` and `intmath.c`, and one (user written) `.h` file, `intmath.h`. `testintmath.c` contains the `main` function, the entry point of our program. It reads two integers from stdin and returns their greatest common divisor (gcd) and least common multiple (lcm). `intmath.c` contains the implementation (i.e., definitions) of the `gcd` and `lcm` functions. `intmath.h` contains the declarations of the `gcd` and `lcm` functions, serving as their interface.&#x20;
+For our example, we'll use the `testintmath` program from precept 4, whose source code is shown below. The program is distributed across two `.c` files, `testintmath.c` and `intmath.c`, and one (user written) `.h` file, `intmath.h`. `testintmath.c` contains the `main` function, the entry point of our program. It reads two integers from stdin and returns their greatest common divisor (gcd) and least common multiple (lcm). `intmath.c` contains the implementation (i.e., definitions) of the `gcd` and `lcm` functions, which `testintmath.c` calls. `intmath.h` contains the declarations of the `gcd` and `lcm` functions. Note that `intmath.h` is `#included` in both `testintmath.c` and `intmath.c`. We'll explain why shortly.&#x20;
 
 {% tabs %}
 {% tab title="testintmath.c (client)" %}
@@ -128,22 +128,14 @@ int lcm(int iFirst, int iSecond);
 {% hint style="info" %}
 **`#include` Syntax**
 
-Notice that the include directive for `intmath.h` uses double quotes (i.e., `#include "intmath.h"`) rather than angle brackets, which we used for the other header files. Using doubel quites tells the preprocessor to look in the current directory for the file, instead of just the system directories.&#x20;
+Notice that the include directive for `intmath.h` uses double quotes (i.e., `#include "intmath.h"`) rather than angle brackets, as is used for system headers like `stdio.h`. Using doubel quites tells the preprocessor to look in the current directory for the file, instead of just the system directories.&#x20;
 {% endhint %}
 
 #### Building testintmath
 
-The most important aspect to understand about building multi-file programs is that each .c file is treated as a separate unit that is preprocessed, compiled, and assembled separately. As we know of course, .c files may include header files, which are inserted during preprocessing.&#x20;
 
 
-
-
-
-header files can be included into .c fileduring the preprocessing stage, header files are inserted&#x20;
-
-Like a single file program, we can build a multi-file program via a single gcc217 command, or by invoking each stage seperately. No matter how we do it, however, the important thing to recognize is that each .c file is preprocessed, compiled, and assembled independen
-
-### Preprocessing Stage
+#### Preprocessing
 
 The build process begins with preprocessing. We invoke the preprocessor on `testcircle.c` and `circle.c` with the following commands:
 
