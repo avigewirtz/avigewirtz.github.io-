@@ -1,13 +1,17 @@
 # Example: testintmath
 
-In our previous example, all the source code of our program was contained within a single .c file—`charcount.c`. In real-world scenarios, however, the source code of a C program is often distributed across many `.c` files. What does the underlying build process look like then?
+In our previous example, all the source code of our program was contained within a single `.c` file—`charcount.c`. In real-world scenarios, however, the source code of a C program is often distributed across many `.c` files. What does the underlying build process look like then?
 
-Let's now walk through the four stage build process again, but this time, let's use a multi-file program as an example. Because we've already gone over the details, we won't go over it in detail again. Our goal here is to teach the multi-file aspects of the process.
+Let's walk through the four-stage build process again, but this time, using a multi-file program as an example. We won't go over every detail since we've covered the basics. Our goal here is to illustrate the multi-file aspects of the process.
 
-For our example, we'll use the `testintmath` program from precept 4, whose source code is shown below. The program is distributed across two `.c` files, `testintmath.c` and `intmath.c`, and one (user written) `.h` file, `intmath.h`. `testintmath.c` contains the `main` function, the entry point of our program. It reads two integers from stdin and returns their greatest common divisor (gcd) and least common multiple (lcm). `intmath.c` contains the implementation (i.e., definitions) of the `gcd` and `lcm` functions, which `testintmath.c` calls. `intmath.h` contains the declarations of the `gcd` and `lcm` functions. Note that `intmath.h` is `#included` in both `testintmath.c` and `intmath.c`. We'll explain why shortly.
+For our example, we'll use the `testintmath` program from precept 4. Its source code is distributed across two `.c` files (`testintmath.c` and `intmath.c`) and one user-written `.h` file (`intmath.h`).
+
+* `testintmath.c` (client)**.** Contains the `main` function, the entry point of our program. It reads two integers from standard input (stdin) and returns their greatest common divisor (GCD) and least common multiple (LCM).
+* `intmath.c` (implementation)**.** Contains the definitions of the `gcd` and `lcm` functions, which `testintmath.c` calls.
+* `intmath.h` (interface)**.** Contains the declarations of the `gcd` and `lcm` functions. Note that intmath.h is #included in both `testintmath.c` and `intmath.c`. We'll see why shortly.
 
 {% tabs %}
-{% tab title="testintmath.c (client)" %}
+{% tab title="testintmath.c" %}
 {% code lineNumbers="true" %}
 ```c
 /*--------------------------------------------------------------------*/
@@ -65,7 +69,7 @@ int main(void)
 {% endcode %}
 {% endtab %}
 
-{% tab title="intmath.c (implementation)" %}
+{% tab title="intmath.c " %}
 {% code lineNumbers="true" %}
 ```c
 /*--------------------------------------------------------------------*/
@@ -103,7 +107,7 @@ int lcm(int iFirst, int iSecond)
 {% endcode %}
 {% endtab %}
 
-{% tab title="intmath.h (interface)" %}
+{% tab title="intmath.h " %}
 ```c
 /*--------------------------------------------------------------------*/
 /* intmath.h                                                          */
@@ -128,18 +132,28 @@ int lcm(int iFirst, int iSecond);
 {% hint style="info" %}
 **`#include` Syntax**
 
-Notice that the include directive for `intmath.h` uses double quotes (i.e., `#include "intmath.h"`) rather than angle brackets, as is used for system headers like `stdio.h`. Using doubel quites tells the preprocessor to look in the current directory for the file, instead of just the system directories.
+Notice that the include directive for `intmath.h` uses double quotes (`#include "intmath.h"`) rather than angle brackets, as is used for system headers like `stdio.h`. Using double quotes tells the preprocessor to look in the current directory for the file, instead of just the system directories.
 {% endhint %}
 
 #### Building testintmath
 
-Like with a single-file program, we can build a multi-file program via a single gcc command. We simple list both .c files:&#x20;
+Like with a single-file program, we can build a multi-file program with a single `gcc` command. We simply list both `.c` files:
 
 ```
 gcc intmath.c testintmath.c -o testintmath 
 ```
 
-This command takes testintmath.c and intmath.c as input and produces the exercutable testintmath as output. What takes place under the hood?&#x20;
+This command takes `testintmath.c` and `intmath.c` as input and produces the executable `testintmath` as output. What happens under the hood?
+
+Each `.c` file is processed independently by the preprocessor, compiler, and assembler, resulting in separate object files (`.o`). The linker then combines these object files, along with any necessary library code, to produce the final executable `testintmath`.
+
+The important thing to understand is that each stage of the build process (preprocessor, compiler, assembler) works on one unit of input at a time. For the preprocessor, this unit is a `.c` file and its included files. For the compiler and assembler, the units are `.i` and `.s` files, respectively.
+
+
+
+
+
+Like a singe-file program, the process involves four stages:preprocessing, compilation, assembly, and linking. The important thing to understand is that each stage of the build process (preprocessor, compiler, assembler) works on one unit of input at a time. For the preprocessor, this unit is a `.c` file and its included files. For the compiler and assembler, the units are `.i` and `.s` files, respectively.
 
 
 
