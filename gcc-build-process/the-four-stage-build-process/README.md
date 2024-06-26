@@ -10,7 +10,7 @@ gcc217 foo.c -o foo
 
 Results in an executable named `foo`, which we can run by typing its name on the command line, prefixed by a `./:`
 
-```
+```bash
 ./foo
 ```
 
@@ -84,7 +84,7 @@ gcc217 -S foo.c
 
 Or a `.i` file:
 
-```
+```bash
 gcc217 -S foo.i
 ```
 
