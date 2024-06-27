@@ -133,7 +133,7 @@ Notice that the include directive for `intmath.h` uses double quotes (i.e, `#inc
 
 #### Building testintmath
 
-Like with a single-file program, we can build a multi-file program with a single `gcc` command. We simply list both `.c` files:
+Like with a single-file program, we can build a multi-file program with a single `gcc` command. We simply list both `.c` files as arguments:
 
 ```bash
 gcc intmath.c testintmath.c -o testintmath 
@@ -146,7 +146,7 @@ ls
 intmath.c testintmath.c testintmath
 ```
 
-What happens under the hood? There are many ideas we can come up with, but thankfully, we don't have to guess. Thankfully, we don’t have to guess. Gcc tells us the precise operations it performs to build our program if we run it with the -v option. Unfortunately, however, the output is extremely long and difficult to read. Thus, we won’t show it here. Instead, we'll just summarize it here.
+What happens under the hood? There are many ideas we can come up with, but thankfully, we don't have to guess. Thankfully, we don’t have to guess. gcc tells us the precise operations it performs to build our program if we run it with the -v option. The output is extremely long and difficult to read, so we won’t show it here.&#x20;
 
 1. Preprocessor on `testintmath.c`, generating `testintmath.i`
 2. Compiler on `testintmath.i`, generating `testintmath.s`
@@ -156,22 +156,17 @@ What happens under the hood? There are many ideas we can come up with, but thank
 6. Assembler on `intmath.s`, generating `intmath.o`
 7. Linker on `testintmath.o`, `intmath.o`, and `libc.a`, generating `testintmath`
 
-A few critical things:
+points to make:
 
 * even though we compiled with a single command, each file is processed independently
 * No knowledge of each other
 * Intermediate files not retained
 
+Let's now go over what happens at each stage in detail.&#x20;
+
 #### Preprocessing
 
-The build process begins with preprocessing. We invoke the preprocessor on `testcircle.c` and `circle.c` with the following commands:
 
-```bash
-gcc217 -E tescircle.c > testcircle.i
-gcc217 -E circle.c > circle.i
-```
-
-Although not strictly necessary, `circle.c` also includes `circle.h`. This ensures that the declaration of `calculateArea` in `circle.h` matches its declaration (in its definition) in `circle.c`. If there's a discrepancy between the two, the compiler will report an error.
 
 #### Conditional Compilation
 
