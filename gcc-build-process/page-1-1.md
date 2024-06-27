@@ -150,7 +150,7 @@ ls
 intmath.c testintmath.c testintmath
 ```
 
-What happens under the hood? There are many ideas we can come up with, but thankfully, we don't have to guess. Thankfully, we don’t have to guess. Gcc tells us the precise operations it performs if we run it with the -v option. Unfortunately, however, the output is extremely long and difficult to read. Thus, we won’t show it here. Instead, you’ll just have to trust me. 
+What happens under the hood? There are many ideas we can come up with, but thankfully, we don't have to guess. Thankfully, we don’t have to guess. Gcc tells us the precise operations it performs if we run it with the -v option. Unfortunately, however, the output is extremely long and difficult to read. Thus, we won’t show it here. Instead, we'll just summarize it here. 
 
 - preprocessor on testintmath.c, generating testintmath.i 
 - Compiler on testintmath.i, generating testintmath.s
