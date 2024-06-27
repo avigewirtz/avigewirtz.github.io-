@@ -143,7 +143,33 @@ Like with a single-file program, we can build a multi-file program with a single
 gcc intmath.c testintmath.c -o testintmath 
 ```
 
-This command takes `testintmath.c` and `intmath.c` as input and produces the executable `testintmath` as output. What happens under the hood?
+This command takes `testintmath.c` and `intmath.c` as input and produces the executable `testintmath` as output. We can confirm this with ls:
+
+```
+ls
+intmath.c testintmath.c testintmath
+```
+
+What happens under the hood? There are many ideas we can come up with, but thankfully, we don't have to guess. Thankfully, we don’t have to guess. Gcc tells us the precise operations it performs if we run it with the -v option. Unfortunately, however, the output is extremely long and difficult to read. Thus, we won’t show it here. Instead, you’ll just have to trust me. 
+
+- preprocessor on testintmath.c, generating testintmath.i 
+- Compiler on testintmath.i, generating testintmath.s
+- Assembler on testintmath.s, generating testintmath.o 
+- Preprocessor on intmath.c, generating intmath.i
+- Compiler on intmath.i, generating intmath.s
+- Assembler on intmath.s, generating intmath.o 
+- Linker on testintmath.o, intmath.o, and libc.a, generating testintmath. 
+
+
+A few critical things:
+
+- even though we compiled with a single command, each file is processed independently 
+- No knowledge of each other 
+- Intermediate files not retained 
+
+
+
+
 
 Each `.c` file is processed independently by the preprocessor, compiler, and assembler, resulting in separate object files (`.o`). The linker then combines these object files, along with any necessary library code, to produce the final executable `testintmath`.
 
