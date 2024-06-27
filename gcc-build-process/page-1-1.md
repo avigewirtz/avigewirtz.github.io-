@@ -154,29 +154,19 @@ intmath.c testintmath.c testintmath
 
 What happens under the hood? There are many ideas we can come up with, but thankfully, we don't have to guess. Thankfully, we don’t have to guess. Gcc tells us the precise operations it performs to build our program if we run it with the -v option. Unfortunately, however, the output is extremely long and difficult to read. Thus, we won’t show it here. Instead, we'll just summarize it here.
 
-* preprocessor on testintmath.c, generating testintmath.i
-* Compiler on testintmath.i, generating testintmath.s
-* Assembler on testintmath.s, generating testintmath.o
-* Preprocessor on intmath.c, generating intmath.i
-* Compiler on intmath.i, generating intmath.s
-* Assembler on intmath.s, generating intmath.o
-* Linker on testintmath.o, intmath.o, and libc.a, generating testintmath.
+1. Preprocessor on testintmath.c, generating testintmath.i
+2. Compiler on testintmath.i, generating testintmath.s
+3. Assembler on testintmath.s, generating testintmath.o
+4. Preprocessor on intmath.c, generating intmath.i
+5. Compiler on intmath.i, generating intmath.s
+6. Assembler on intmath.s, generating intmath.o
+7. Linker on testintmath.o, intmath.o, and libc.a, generating testintmath.
 
 A few critical things:
 
 * even though we compiled with a single command, each file is processed independently
 * No knowledge of each other
 * Intermediate files not retained
-
-Each `.c` file is processed independently by the preprocessor, compiler, and assembler, resulting in separate object files (`.o`). The linker then combines these object files, along with any necessary library code, to produce the final executable `testintmath`.
-
-The important thing to understand is that each stage of the build process (preprocessor, compiler, assembler) works on one unit of input at a time. For the preprocessor, this unit is a `.c` file and its included files. For the compiler and assembler, the units are `.i` and `.s` files, respectively.
-
-Like a singe-file program, the process involves four stages:preprocessing, compilation, assembly, and linking. The important thing to understand is that each stage of the build process (preprocessor, compiler, assembler) works on one unit of input at a time. For the preprocessor, this unit is a `.c` file and its included files. For the compiler and assembler, the units are `.i` and `.s` files, respectively.
-
-a single file as output--the executable testintnmath. The important thing to understand, however, is that the preprocessor, compiler, and assembler process only a single unit of input at a time. In the case of the preprocessor, this unit is the .c file along with all files included in it via the #include directive. In the case of the compiler and assembler, the unit is a .i and .s file, respectively.
-
-For our example program, this means that testintmath.c and intmath.c will each be preprocessed, compiled, and assembled separately.
 
 #### Preprocessing
 
