@@ -6,7 +6,7 @@ Let's walk through the four-stage build process again, but this time, using a mu
 
 For our example, we'll use the `testintmath` program from precept 4. Its source code is distributed across two `.c` files (`testintmath.c` and `intmath.c`) and one user-written `.h` file (`intmath.h`).
 
-* `testintmath.c` (client)**.** Contains the `main` function, the entry point of our program. It reads two integers from standard input (stdin) and returns their greatest common divisor (GCD) and least common multiple (LCM).
+* `testintmath.c` (client)**.** Contains the `main` function, the entry point of the program. It reads two integers from standard input (stdin) and returns their greatest common divisor (GCD) and least common multiple (LCM).
 * `intmath.c` (implementation)**.** Contains the definitions of the `gcd` and `lcm` functions, which `testintmath.c` calls.
 * `intmath.h` (interface)**.** Contains the declarations of the `gcd` and `lcm` functions. Note that intmath.h is #included in both `testintmath.c` and `intmath.c`. We'll see why shortly.
 
