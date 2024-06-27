@@ -1,14 +1,10 @@
-# Example: testintmath
+# Building Multi-file Programs
 
-In our previous example, all the source code of our program was contained within a single `.c` file—`charcount.c`. In real-world scenarios, however, the source code of a C program is often distributed across many `.c` files. What does the underlying build process look like then?
+In our previous example, all the source code of our program was contained within a single `.c` file—`charcount.c`. In real-world scenarios, however, the source code of a C program is often distributed across many `.c` files. What does the underlying build process look like in such cases?
 
 Let's walk through the four-stage build process again, but this time, using a multi-file program as an example. We won't go over every detail since we've covered the basics. Our goal here is to illustrate the multi-file aspects of the process.
 
-For our example, we'll use the `testintmath` program from precept 4. Its source code is distributed across two `.c` files (`testintmath.c` and `intmath.c`) and one user-written `.h` file (`intmath.h`).
-
-* `testintmath.c` (client)**.** Contains the `main` function, the entry point of the program. It reads two integers from standard input (stdin) and returns their greatest common divisor (GCD) and least common multiple (LCM).
-* `intmath.c` (implementation)**.** Contains the definitions of the `gcd` and `lcm` functions, which `testintmath.c` calls.
-* `intmath.h` (interface)**.** Contains the declarations of the `gcd` and `lcm` functions. Note that intmath.h is #included in both `testintmath.c` and `intmath.c`. We'll see why shortly.
+For our example, we'll use the `testintmath` program from precept 4. Its source code is distributed across two `.c` files--`testintmath.c` and `intmath.c`--and one (user-written) `.h` file--`intmath.h`. `testintmath.c` contains the `main` function, the entry point of the program. It reads two integers from standard input (stdin) and returns their greatest common divisor (GCD) and least common multiple (LCM). `intmath.c` contains the definitions of the `gcd` and `lcm` functions, which `testintmath.c` calls. `intmath.h` contains the declarations of the `gcd` and `lcm` functions. Notice that `intmath.h` is #included in both `testintmath.c` and `intmath.c`.&#x20;
 
 {% tabs %}
 {% tab title="testintmath.c" %}
@@ -132,35 +128,33 @@ int lcm(int iFirst, int iSecond);
 {% hint style="info" %}
 **`#include` Syntax**
 
-Notice that the include directive for `intmath.h` uses double quotes (`#include "intmath.h"`) rather than angle brackets, as is used for system headers like `stdio.h`. Using double quotes tells the preprocessor to look in the current directory for the file, instead of just the system directories.
+Notice that the include directive for `intmath.h` uses double quotes (i.e, `#include "intmath.h"`) rather than angle brackets, as is used for system headers like `stdio.h`. Using double quotes tells the preprocessor to look in the current directory for the file, instead of just the system directories.
 {% endhint %}
 
 #### Building testintmath
 
-I think main point i want to emphasize is separate compilation. Hence i should focus on the fact the we can build each file separtely.&#x20;
-
 Like with a single-file program, we can build a multi-file program with a single `gcc` command. We simply list both `.c` files:
 
-```
+```bash
 gcc intmath.c testintmath.c -o testintmath 
 ```
 
-This command takes `testintmath.c` and `intmath.c` as input and produces the executable `testintmath` as output. We can confirm this with ls:
+This command takes `testintmath.c` and `intmath.c` as input and produces the executable `testintmath` as output. We can confirm this with `ls`:
 
-```
+```bash
 ls
 intmath.c testintmath.c testintmath
 ```
 
 What happens under the hood? There are many ideas we can come up with, but thankfully, we don't have to guess. Thankfully, we don’t have to guess. Gcc tells us the precise operations it performs to build our program if we run it with the -v option. Unfortunately, however, the output is extremely long and difficult to read. Thus, we won’t show it here. Instead, we'll just summarize it here.
 
-1. Preprocessor on testintmath.c, generating testintmath.i
-2. Compiler on testintmath.i, generating testintmath.s
-3. Assembler on testintmath.s, generating testintmath.o
-4. Preprocessor on intmath.c, generating intmath.i
-5. Compiler on intmath.i, generating intmath.s
-6. Assembler on intmath.s, generating intmath.o
-7. Linker on testintmath.o, intmath.o, and libc.a, generating testintmath.
+1. Preprocessor on `testintmath.c`, generating `testintmath.i`
+2. Compiler on `testintmath.i`, generating `testintmath.s`
+3. Assembler on `testintmath.s`, generating `testintmath.o`
+4. Preprocessor on `intmath.c`, generating `intmath.i`
+5. Compiler on `intmath.i`, generating `intmath.s`
+6. Assembler on `intmath.s`, generating `intmath.o`
+7. Linker on `testintmath.o`, `intmath.o`, and `libc.a`, generating `testintmath`
 
 A few critical things:
 
