@@ -68,7 +68,7 @@ int main(void)
 {% endtab %}
 {% endtabs %}
 
-#### Incremental Builds
+#### Building testintmath: The Incremental Build Appraoch
 
 Recall the process by which multi-file programs such as `testintmath` are built. Each .c file is _independently_ preprocessed, compiled, and assembled into an object file.  Of note is that when the file is preprocessed, all headers specified in #include directives are inserted into the file. Then, the object files are combined--along with along with necessary object files from the C standard library--to produce an executable file. This process for our testintmath program is shown is Figure 12.&#x20;
 
