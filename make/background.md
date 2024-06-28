@@ -66,80 +66,13 @@ int main(void)
 ```
 {% endcode %}
 {% endtab %}
-
-{% tab title="intmath.c " %}
-{% code lineNumbers="true" %}
-```c
-/*--------------------------------------------------------------------*/
-/* intmath.c                                                          */
-/* Author: Bob Dondero                                                */
-/*--------------------------------------------------------------------*/
-
-#include "intmath.h"
-
-/*--------------------------------------------------------------------*/
-
-int gcd(int iFirst, int iSecond)
-{
-   int iTemp;
-
-   /* Use Euclid's algorithm. */
-
-   while (iSecond != 0)
-   {
-      iTemp = iFirst % iSecond;
-      iFirst = iSecond;
-      iSecond = iTemp;
-   }
-
-   return iFirst;
-}
-
-/*--------------------------------------------------------------------*/
-
-int lcm(int iFirst, int iSecond)
-{
-   return (iFirst / gcd(iFirst, iSecond)) * iSecond;
-}
-```
-{% endcode %}
-{% endtab %}
-
-{% tab title="intmath.h " %}
-```c
-/*--------------------------------------------------------------------*/
-/* intmath.h                                                          */
-/* Author: Bob Dondero                                                */
-/*--------------------------------------------------------------------*/
-
-/* Return the greatest common divisor of positive integers iFirst and
-   iSecond. */
-
-int gcd(int iFirst, int iSecond);
-
-/*--------------------------------------------------------------------*/
-
-/* Return the least common multiple of positive integers iFirst and
-   iSecond. */
-
-int lcm(int iFirst, int iSecond);
-```
-{% endtab %}
 {% endtabs %}
 
 #### Incremental Builds
 
-How do we implementn incremental builds for our testintmath program?&#x20;
-
-
-
-Recall the process by which multi-file programs such as `testintmath` are built. Each .c file is _independently_ preprocessed, compiled, and assembled into an object file.  Of note is that when the file is preprocessed, all headers specified in #include directives are inserted into the file. Then, the object files are combined--along with along with necessary object files from the C standard library--to produce an executable file. This process for our testintmath program is sumarized is Figure 12.&#x20;
+Recall the process by which multi-file programs such as `testintmath` are built. Each .c file is _independently_ preprocessed, compiled, and assembled into an object file.  Of note is that when the file is preprocessed, all headers specified in #include directives are inserted into the file. Then, the object files are combined--along with along with necessary object files from the C standard library--to produce an executable file. This process for our testintmath program is shown is Figure 12.&#x20;
 
 <figure><img src="../.gitbook/assets/Frame 31 (2).png" alt=""><figcaption></figcaption></figure>
-
-With this in mind, Implementing incremental builds is extremelyt simple. The first time you build you program, you build the entire thing. However, you ensure to save object files.&#x20;
-
-
 
 We can perform all these steps via a single gcc command--namely:
 
@@ -147,7 +80,9 @@ We can perform all these steps via a single gcc command--namely:
 gcc217 intmath.c testintmath.c -o testintmath
 ```
 
-By default, however, gcc does not retain the object files. If you look carefully at figure 12, however, you'll notice that saving object files is the key to incremental builds. This is because each object file is dervied, or depends on, only form it's corresponding .c file and #included headers. It does not depend on any other files. Consider the benefits of saving the object files, however.&#x20;
+By default, however, gcc does not retain the object files. To implement incremental builds, however, you need to retain object files. Why? Well notice that each object file is derived only from it's corresponding .c file and #included headers. It does not depend on any other files. Therefore, a change to another file does not require that file to be rebuilt. For example, a change to intmath.o does not require testintmath.o to be rebuilt. Insyead, you'd be able to rebuild only intmath.o, and then link it with the testintmath.o object file from the previous build, generating a new executable.&#x20;
+
+How do we save object files? Simple.&#x20;
 
 
 
