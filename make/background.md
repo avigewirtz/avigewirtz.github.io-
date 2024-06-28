@@ -74,11 +74,13 @@ Recall the process by which multi-file programs such as `testintmath` are built.
 
 <figure><img src="../.gitbook/assets/Frame 31 (2).png" alt=""><figcaption></figcaption></figure>
 
-We can perform all these steps via a single gcc command--namely:
+Recall that gcc provides a shortcut command 
+The underlying build process we just described holds true regardless of which we build our program. The default behavior of GCC, however, is to We can perform all these steps via a single gcc command--namely:
 
 ```
 gcc217 intmath.c testintmath.c -o testintmath
 ```
+
 
 By default, however, gcc does not retain the object files. To implement incremental builds, however, you need to retain object files. Why? Well notice that each object file is derived only from it's corresponding .c file and #included headers. It does not depend on any other files. Therefore, a change to another file does not require that file to be rebuilt. For example, a change to intmath.o does not require testintmath.o to be rebuilt. Insyead, you'd be able to rebuild only intmath.o, and then link it with the testintmath.o object file from the previous build, generating a new executable.&#x20;
 
