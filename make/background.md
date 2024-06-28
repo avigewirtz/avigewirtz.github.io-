@@ -2,11 +2,28 @@
 
 In a nutshell, `make` is a software tool that automates the process of incremental builds. The premise behind incremental builds is simple: when you rebuild your program after making a change to the source code, you rebuild only the affected files, not the entire program. This is especially important in large projects, where build times can become a bottleneck.
 
-In this chapter, we'll first describe how to implement incremental builds manually. Then, we'll show how to automate the process with make.
+In this chapter, we'll first describe incremental builds and how to implement incremental builds manually. Then, we'll show how to automate the process with make.
 
-#### Running Example
+#### Incremental Builds
 
-As a running example throughout this chapter on Make, we'll use the `testintmath` program we used in the chapter on GCC to explore the multi-file build process. For reference, the source code is provided below.&#x20;
+Say we have the equation $$z=sin(x) + cos(y)$$, where $$x=37^∘$$and $$y=73^∘$$. To compute $$z$$, we first calculate $$sin(37^∘)$$, which is approximately $$0.6018$$. Next, we calculate $$cos(73^∘)$$, which is approximately $$0.2924$$. Adding these together, we get  $$z=0.6018 + 0.2924 = 0.8942$$.
+
+Now, suppose 𝑦 changes from $$y=73^∘$$ to  $$y=83^∘$$. To recompute 𝑧, we don’t need to recompute  $$sin(37^∘)$$. We can reuse the value $$0.6018$$ from our previous calculation--provided we saved it, that is! The only new nontrivial computation needed is $$cos(83^∘)$$, which is approximately $$0.1219$$. So now,   $$z=0.6018 + 0.1219 = 0.7237$$.
+
+What does this have to do with C programs? Well, the principles of incremental builds in C work exactly the same way. Recall the process by which multi-file programs are built. Each `.c` file is _independently_ preprocessed, compiled, and assembled into an object file. Of note is that when the file is preprocessed, all headers specified in `#include` directives are inserted into the file. Then, the object files are combined--along with along with necessary object files from the C standard library--to produce an executable file. This process is shown is Figure 12.&#x20;
+
+<figure><img src="../.gitbook/assets/Frame 31 (2).png" alt=""><figcaption></figcaption></figure>
+
+Notice that each object file is derived only from it's corresponding .c file and included headers. It is not derived from any other source files. Applying the principles of incremental builds, after the source code is modified, only the affected object files need to be rebuilt. Then, you link the updated object files with the "old" object files from previous builds--provided you saved them, of course--to produce an updated executable.&#x20;
+
+We can summarize the incremental build strategy as follows:
+
+* The first time you build your program, build the entire thing; however, ensure to save the object files.&#x20;
+* In subsequent builds, rebuild only the affected object files. Then, link them with the "old" object files to produce an updated executable.&#x20;
+
+#### Example
+
+Let's demonstrate incremental builds in action. As an example, we'll use the testintmath program from precept four.&#x20;
 
 {% tabs %}
 {% tab title="testintmath.c" %}
@@ -66,45 +83,84 @@ int main(void)
 ```
 {% endcode %}
 {% endtab %}
+
+{% tab title="intmath.c " %}
+{% code lineNumbers="true" %}
+```c
+/*--------------------------------------------------------------------*/
+/* intmath.c                                                          */
+/* Author: Bob Dondero                                                */
+/*--------------------------------------------------------------------*/
+
+#include "intmath.h"
+
+/*--------------------------------------------------------------------*/
+
+int gcd(int iFirst, int iSecond)
+{
+   int iTemp;
+
+   /* Use Euclid's algorithm. */
+
+   while (iSecond != 0)
+   {
+      iTemp = iFirst % iSecond;
+      iFirst = iSecond;
+      iSecond = iTemp;
+   }
+
+   return iFirst;
+}
+
+/*--------------------------------------------------------------------*/
+
+int lcm(int iFirst, int iSecond)
+{
+   return (iFirst / gcd(iFirst, iSecond)) * iSecond;
+}
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="intmath.h " %}
+```c
+/*--------------------------------------------------------------------*/
+/* intmath.h                                                          */
+/* Author: Bob Dondero                                                */
+/*--------------------------------------------------------------------*/
+
+/* Return the greatest common divisor of positive integers iFirst and
+   iSecond. */
+
+int gcd(int iFirst, int iSecond);
+
+/*--------------------------------------------------------------------*/
+
+/* Return the least common multiple of positive integers iFirst and
+   iSecond. */
+
+int lcm(int iFirst, int iSecond);
+```
+{% endtab %}
 {% endtabs %}
 
-#### Building testintmath: The Incremental Build Appraoch
-
-Recall the process by which multi-file programs such as `testintmath` are built. Each .c file is _independently_ preprocessed, compiled, and assembled into an object file.  Of note is that when the file is preprocessed, all headers specified in #include directives are inserted into the file. Then, the object files are combined--along with along with necessary object files from the C standard library--to produce an executable file. This process for our testintmath program is shown is Figure 12.&#x20;
-
-<figure><img src="../.gitbook/assets/Frame 31 (2).png" alt=""><figcaption></figcaption></figure>
-
-Recall that gcc provides a shortcut command 
-The underlying build process we just described holds true regardless of which we build our program. The default behavior of GCC, however, is to We can perform all these steps via a single gcc command--namely:
-
-```
-gcc217 intmath.c testintmath.c -o testintmath
-```
-
-
-By default, however, gcc does not retain the object files. To implement incremental builds, however, you need to retain object files. Why? Well notice that each object file is derived only from it's corresponding .c file and #included headers. It does not depend on any other files. Therefore, a change to another file does not require that file to be rebuilt. For example, a change to intmath.o does not require testintmath.o to be rebuilt. Insyead, you'd be able to rebuild only intmath.o, and then link it with the testintmath.o object file from the previous build, generating a new executable.&#x20;
-
-How do we save object files? Simple.&#x20;
-
-
-
-
-
-To save the object files, we can build our program in two gcc commands. First, we run gcc with the -c option, which tells gcc to preprocess, compile, and assemble the input files, but to not link them:
+The first time we build testintmath, we build the entire program, but we ensure to save objevct files. How do we save object files? Recall the -c option, which tells gcc to halt after the assembly stage and output object files.&#x20;
 
 ```
 gcc -c intmath.c testintmath.c
+gcc intmath.o testintmath.o -o testintmath
 ```
 
-Next, we run gcc on the object files, which links them and produces an executable:
+Now suppose we modify intmath.c. We run gcc -c on intmath.c only, then we link the updated intmath.o with the testintmath.o form our previous build.&#x20;
 
 ```
-gcc217 intmath.o testintmath.o -o testintmath
+gcc -c intmath.c
+gcc intmath.o testintmath.o -o testintmath
 ```
 
-Why do we want to save the object files?&#x20;
 
-the object files are not retained. In practice, however, we often want to retain object files. Why?&#x20;
+
+
 
 {% hint style="info" %}
 It's important to understand that, fundamentally, the underlying GCC build process is the same irrespective of whether we build our program via two commands:
