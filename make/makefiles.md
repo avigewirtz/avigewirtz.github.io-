@@ -1,13 +1,14 @@
 # Automating Incremental Builds With make
 
-Our previous example has shown that implementing incremental builds manually is possible but it requires some work. In particular, it requires you to keep track of:
+As we have seen, implementing incremental builds manually is possible but it requires some work. In particular, it requires you to keep track of:
 
 1. Which `.c` and `.h` files were modified since the last build.
-2. Which `.o` files depend on the modified `.c` and `.h` files.
+2. Which `.o` files are affected by the changes to the `.c` and `.h` files.
+3. Run the commands to rebuild the program, in the correct order.&#x20;
 
 Even for a small program like `testintmath`, this task isn’t particularly fun, though it is admittedly manageable. As programs grow larger, however, and the web of dependencies grows increasingly complex, this task becomes incredibly tedious and error-prone.
 
-Consider a scenario where you modify header file `A`, which is `#included` in 20 `.c` files. You then have to track down and recompile all these `.c` file. Worse yet, imagine header file `A` is also `#included` in header file `B`. You then have to also track down and recompile all the `.c` files that `#include` `B`.
+Consider a scenario where you modify header file `A`, which is `#included` in, say, 20 `.c` files. You'd have to track down and recompile each of these `.c` files. Worse yet, imagine header file `A` is also `#included` in header file `B`. You'd then have to also track down and recompile all the `.c` files that `#include` `B`.
 
 To make life easier (no pun intended), the `make` tool was developed, which automates the process of incremental builds. `make` requires three thing:
 
@@ -16,6 +17,28 @@ To make life easier (no pun intended), the `make` tool was developed, which auto
 3. The ability to check the existence of timestamps of the files
 
 3 make can obtain on it's own from the filesystem. 1 and 2 we describe via a dependency graph input into a. makefile
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #### Dependency Graph
 
