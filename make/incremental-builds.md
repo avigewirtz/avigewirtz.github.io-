@@ -10,7 +10,7 @@ What does this have to do with C programs? Well, the principles of incremental b
 
 Notice that each object file is derived only from its corresponding .c file and included headers. It is not derived from any other source files. Applying the principles of incremental builds, after the source code is modified, only the affected object files need to be rebuilt. Then, you link the updated object files with the "old" object files from previous builds--provided you saved them, of course--to produce an updated executable.&#x20;
 
-To draw a parallel with our math example, think of the executable file \( E \) as \( E = \text{compile}(x) + \text{compile}(y) \). The compilation of each source file is analogous to calculating the trigonometric functions. When \( y \) changes, only the part of the program dependent on \( y \) needs to be recompiled (just like recalculating \( \sin(y) \)), and then it can be linked with the previously compiled parts (just like reusing \( \sin(x) \)).
+To draw a parallel with our math example, think of the executable file $$E$$ as $$E = \text{compile}(x) + \text{compile}(y)$$. The compilation of each source file is analogous to calculating the trigonometric functions. When $$y$$ changes, only the part of the program dependent on $$y$$ needs to be recompiled (just like recalculating $$\sin(y)$$, and then it can be linked with the previously compiled parts (just like reusing $$\sin(x)$$).
 
 We can summarize the incremental build strategy as follows:
 
