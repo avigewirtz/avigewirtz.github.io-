@@ -176,7 +176,7 @@ Fundamentally, the only difference between these two approaches is that the two-
 As this example shows, implementing incremental builds manually is possible but it requires some work. In particular, you have to keep track of:
 
 1. Which `.c` and `.h` files were modified since the last build.
-2. Which `.o` files depend on the modified `.c` and `.o` files.
+2. Which `.o` files depend on the modified `.c` and `.h` files.
 
 Even for a small program like `testintmath`, this task isn’t particularly fun, though it is admittedly manageable. As programs grow larger, however, and the web of dependencies grows increasingly complex, this task becomes incredibly tedious and error-prone.
 
