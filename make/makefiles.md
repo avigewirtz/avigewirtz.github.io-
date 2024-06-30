@@ -1,14 +1,14 @@
 # Automating Incremental Builds With make
 
-As we have seen, implementing incremental builds manually is possible but it requires some work. In particular, it requires you to keep track of:
+As we have seen, implementing incremental builds manually is possible but it requires some work. In particular, it requires you to:
 
-1. Which `.c` and `.h` files were modified since the last build.
-2. Which `.o` files are affected by the changes to the `.c` and `.h` files.
+1. Keep track of which `.c` and `.h` files were modified since the last build.
+2. Keep track of which `.o` files are affected by the changes to the `.c` and `.h` files.
 3. Run the commands to rebuild the program, in the correct order.&#x20;
 
 Even for a small program like `testintmath`, this task isn’t particularly fun, though it is admittedly manageable. As programs grow larger, however, and the web of dependencies grows increasingly complex, this task becomes incredibly tedious and error-prone.
 
-Consider a scenario where you modify header file `A`, which is `#included` in, say, 20 `.c` files. You'd have to track down and recompile each of these `.c` files. Worse yet, imagine header file `A` is also `#included` in header file `B`. You'd then have to also track down and recompile all the `.c` files that `#include` `B`.
+Consider a scenario where you modify header file `A`, which is `#included` in, say, 20 `.c` files. You'd have to track down each of these `.c` files and recompile them. Worse yet, imagine header file `A` is also `#included` in header file `B`. You'd then have to also track down all the `.c` files that `#include` `B` and recompile them as well. 
 
 To make life easier (no pun intended), the `make` tool was developed, which automates the process of incremental builds. `make` requires three thing:
 
