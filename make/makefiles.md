@@ -1,15 +1,29 @@
 # Automating Incremental Builds With make
 
-Once you understand the e fundamentals of jow make works, automating buulds with it is remarkebly easy. make requires theee pieces of information: 
+Our previous example has shown that implementing incremental builds manually is possible but it requires some work. In particular, it requires you to keep track of:
 
-1. description of program's dependencies 
-2. commands to build each file 
-3. ability to check timestamps 
+1. Which `.c` and `.h` files were modified since the last build.
+2. Which `.o` files depend on the modified `.c` and `.h` files.
+
+Even for a small program like `testintmath`, this task isn’t particularly fun, though it is admittedly manageable. As programs grow larger, however, and the web of dependencies grows increasingly complex, this task becomes incredibly tedious and error-prone.
+
+Consider a scenario where you modify header file `A`, which is `#included` in 20 `.c` files. You then have to track down and recompile all these `.c` file. Worse yet, imagine header file `A` is also `#included` in header file `B`. You then have to also track down and recompile all the `.c` files that `#include` `B`.
+
+To make life easier (no pun intended), the `make` tool was developed, which automates the process of incremental builds. `make` requires three thing:
+
+1. A formal description of the program's dependencies.
+2. The commands to build the files
+3. The ability to check the existence of timestamps of the files
+
+3 make can obtain on it's own from the filesystem. 1 and 2 we describe via a dependency graph input into a. makefile
+
+#### Dependency Graph
 
 
 
-- Descr of 
-Automating incremental builds is quite straightforward. Here, we'll describe how it's done using our `testintmath` program as an example. To use `make` to build a program, you need to create a file known as a _makefile_, which you populate with a textual representation of your program's dependency graph (see below). Once you have a suitable makefile set up, the command:
+#### Makefiles
+
+To use `make` to build a program, you need to create a file known as a _makefile_, which you populate with a textual representation of your program's dependency graph (see below). Once you have a suitable makefile set up, the command:
 
 ```
 make
@@ -17,27 +31,17 @@ make
 
 Is all it takes to build your program. `make` will look for a file in the working directory named makefile or Makefile and analyze its dependency graph. If file A depends on B and B has a more recent modification timestamp, make will rebuild A.
 
-{% hint style="info" %}
-**Assumptions made in this chapter**
-
-We make the following implicit asumptions in this chapter:&#x20;
-
-* The name of the makefile is `makefile` or `Makefile`. In practice you can name it something else, but then you'd have to specify its name on the command-line when you invoke `make`.
-* The makefile and all project files are located in the working directory.
-{% endhint %}
-
 #### Writing a makefile for testintmath
 
 For make to determine the minimum rebuilding our program need after a modification, it needs three pieces of information:
+
 1. description dependencies among files in our program
-2. commands to build each file 
+2. commands to build each file
 3. last modification timestamps of each file
 
-Requirement 3 can be done by make automatically, so we don't have to input that information. Requiremnts 1 and 2 can be described via a makefile. 
+Requirement 3 can be done by make automatically, so we don't have to input that information. Requiremnts 1 and 2 can be described via a makefile.
 
-
-For make to build our program, we need to have some way of formally expressing the dependencies among the files in our program. This can be done via a dependency graph. 
-The core of a makefile is a dependency graph. Identical to graph shown in Figure 12, but with arrows flipped.
+For make to build our program, we need to have some way of formally expressing the dependencies among the files in our program. This can be done via a dependency graph. The core of a makefile is a dependency graph. Identical to graph shown in Figure 12, but with arrows flipped.
 
 <figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
 

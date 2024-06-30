@@ -4,22 +4,22 @@ Suppose we have the equation $$z = \sin(x) + \sin(y)$$, where $$x = 37^\circ$$ a
 
 Now, suppose 𝑦 changes from $$y = 73^\circ$$ to $$y = 83^\circ$$. To recompute 𝑧, we don’t need to recompute $$\sin(37^\circ)$$. We can reuse $$0.6018$$ from our previous calculation--provided we saved it, that is! The only new nontrivial computation needed is $$\sin(83^\circ)$$, which is approximately $$0.9925$$. So now, $$z = 0.6018 + 0.9925 = 1.5943$$.
 
-What does this have to do with C programs? Well, the principles of incremental builds in C work in exactly the same way. Recall the process by which multi-file programs are built. Each `.c` file is _independently_ preprocessed, compiled, and assembled into an object file. For simplicity, we'll refer to this process as compilation, but keep in mind that we actually mean preprocessing, compilation, and assembly. Of note is that in the preprocessing stage, the headers specified in `#include` directives are inserted into the file. Then, the object files are combined--along with necessary object files from the C standard library--to produce an executable file. This process is shown in Figure 12 using a dummy foobar program. 
+What does this have to do with C programs? Well, the principles of incremental builds in C work in exactly the same way. Recall the process by which multi-file programs are built. Each `.c` file is _independently_ translated into an object file. For simplicity, we'll refer to this process as compilation, but keep in mind that we actually mean preprocessing, compilation proper, and assembly. Of note is that in the preprocessing stage, the headers specified in `#include` directives are inserted into the file. Then, the object files are combined--along with necessary object files from the C standard library--to produce an executable file. This process is shown in Figure 12 using a dummy foobar program.
 
 <figure><img src="../.gitbook/assets/Frame 32.png" alt="" width="563"><figcaption></figcaption></figure>
 
-Notice that each object file is derived only from its corresponding .c file and included headers. It is not derived from any other source files. Applying the principles of incremental builds, after the source code is modified, only the affected object files need to be rebuilt. Then, you link the updated object files with the "old" object files from previous builds--provided you saved them, of course--to produce an updated executable.&#x20;
+Notice that each object file is derived only from its corresponding .c file and included headers. It is not derived from any other source files. Applying the principles of incremental builds, after the source code is modified, only the affected object files need to be rebuilt. Then, you link the updated object files with the "old" object files from previous builds--provided you saved them, of course--to produce an updated executable.
 
-To draw a parallel with our math example, think of the executable file $$E$$ as $$E = \text{compile}(x) + \text{compile}(y)$$. The compilation of each source file is analogous to calculating the trigonometric functions. When $$y$$ changes, only the part of the program dependent on $$y$$ needs to be recompiled (just like recalculating $$\sin(y)$$, and then it can be linked with the previously compiled parts (just like reusing $$\sin(x)$$).
+To draw a parallel with our math example, think of the executable file $$E$$ as $$E = \text{compile}(x) + \text{compile}(y)$$. When $$y$$ changes, only the part of the program dependent on $$y$$ needs to be recompiled, and then it can be linked with the previously compiled parts.
 
 We can summarize the incremental build strategy as follows:
 
-* The first time you build your program, build the entire thing; however, ensure to save the object files.&#x20;
-* In subsequent builds, rebuild only the affected object files. Then, link them with the "old" object files to produce an updated executable.&#x20;
+* The first time you build your program, build the entire thing; however, ensure to save the object files.
+* In subsequent builds, rebuild only the affected object files. Then, link them with the "old" object files to produce an updated executable.
 
 #### Example
 
-Let's demonstrate incremental builds in action. As an example, we'll use the testintmath program from precept four.&#x20;
+Let's demonstrate incremental builds in action. As an example, we'll use the testintmath program from precept four.
 
 {% tabs %}
 {% tab title="testintmath.c" %}
@@ -140,14 +140,14 @@ int lcm(int iFirst, int iSecond);
 {% endtab %}
 {% endtabs %}
 
-The first time we build testintmath, we build the entire program, but we ensure to save objevct files. How do we save object files? Recall the -c option, which tells gcc to halt after the assembly stage and output object files.&#x20;
+The first time we build testintmath, we build the entire program, but we ensure to save objevct files. How do we save object files? Recall the -c option, which tells gcc to halt after the assembly stage and output object files.
 
 ```
 gcc -c intmath.c testintmath.c
 gcc intmath.o testintmath.o -o testintmath
 ```
 
-Now suppose we modify intmath.c. We run gcc -c on intmath.c only, then we link the updated intmath.o with the testintmath.o form our previous build.&#x20;
+Now suppose we modify intmath.c. We run gcc -c on intmath.c only, then we link the updated intmath.o with the testintmath.o form our previous build.
 
 ```
 gcc -c intmath.c
@@ -170,16 +170,3 @@ gcc217 intmath.c testintmath.c -o testintmath
 
 Fundamentally, the only difference between these two approaches is that the two-command approach retains the`.o` files while the single-command approach does not.
 {% endhint %}
-
-#### Challenges of Manually Implementing Incremental Builds
-
-As this example shows, implementing incremental builds manually is possible but it requires some work. In particular, you have to keep track of:
-
-1. Which `.c` and `.h` files were modified since the last build.
-2. Which `.o` files depend on the modified `.c` and `.h` files.
-
-Even for a small program like `testintmath`, this task isn’t particularly fun, though it is admittedly manageable. As programs grow larger, however, and the web of dependencies grows increasingly complex, this task becomes incredibly tedious and error-prone.
-
-Consider a scenario where you modify header file `A`, which is `#included` in, say, 20 `.c` files. You’d have to track down and recompile all these `.c` file. Worse yet, imagine header file `A` is also `#included` in header file `B`. You'd then have to also track down and recompile all the `.c` files that `#include` `B`.
-
-To make life easier (no pun intended), the `make` tool was developed, which automates the process of incremental builds. In the next section, we describe how to use `make`.
