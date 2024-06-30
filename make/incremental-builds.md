@@ -4,11 +4,13 @@ Suppose we have the equation $$z = \sin(x) + \sin(y)$$, where $$x = 37^\circ$$ a
 
 Now, suppose 𝑦 changes from $$y = 73^\circ$$ to $$y = 83^\circ$$. To recompute 𝑧, we don’t need to recompute $$\sin(37^\circ)$$. We can reuse $$0.6018$$ from our previous calculation--provided we saved it, that is! The only new nontrivial computation needed is $$\sin(83^\circ)$$, which is approximately $$0.9925$$. So now, $$z = 0.6018 + 0.9925 = 1.5943$$.
 
-What does this have to do with C programs? Well, the principles of incremental builds in C work in exactly the same way. Recall the process by which multi-file programs are built. Each `.c` file is _independently_ preprocessed, compiled, and assembled into an object file. For simplicity, we'll refer to this process as compilation, but keep in mind that we actually mean preprocessing, compilation, and assembly. Of note is that in the preprocessing stage, the headers specified in `#include` directives are inserted into the file. Then, the object files are combined--along with necessary object files from the C standard library--to produce an executable file. This process is shown in Figure 12.&#x20;
+What does this have to do with C programs? Well, the principles of incremental builds in C work in exactly the same way. Recall the process by which multi-file programs are built. Each `.c` file is _independently_ preprocessed, compiled, and assembled into an object file. For simplicity, we'll refer to this process as compilation, but keep in mind that we actually mean preprocessing, compilation, and assembly. Of note is that in the preprocessing stage, the headers specified in `#include` directives are inserted into the file. Then, the object files are combined--along with necessary object files from the C standard library--to produce an executable file. This process is shown in Figure 12.
 
 <figure><img src="../.gitbook/assets/Frame 32.png" alt="" width="563"><figcaption></figcaption></figure>
 
 Notice that each object file is derived only from its corresponding .c file and included headers. It is not derived from any other source files. Applying the principles of incremental builds, after the source code is modified, only the affected object files need to be rebuilt. Then, you link the updated object files with the "old" object files from previous builds--provided you saved them, of course--to produce an updated executable.&#x20;
+
+To draw a parallel with our math example, think of the executable file \( E \) as \( E = \text{compile}(x) + \text{compile}(y) \). The compilation of each source file is analogous to calculating the trigonometric functions. When \( y \) changes, only the part of the program dependent on \( y \) needs to be recompiled (just like recalculating \( \sin(y) \)), and then it can be linked with the previously compiled parts (just like reusing \( \sin(x) \)).
 
 We can summarize the incremental build strategy as follows:
 
