@@ -1,6 +1,6 @@
 # Automating Incremental Builds With make
 
-As we have seen, implementing incremental builds manually is possible but it requires some work. In particular, it requires you to:
+As we have seen, implementing incremental builds manually is possible but it requires some work. In particular, you need to:
 
 1. Keep track of which `.c` and `.h` files were modified since the last build.
 2. Keep track of which `.o` files are affected by the changes to the `.c` and `.h` files.
