@@ -6,7 +6,7 @@ Make has a macro facility that performs textual substitution, similar to the mac
 MACRO_NAME = value
 ```
 
-Where MACRO_NAME is the name of the macro you’re defining and value is the value you’re assigning to it. For example, to define the macro `CC` and assign it the value `gcc217`, you'd enter:&#x20;
+Where MACRO_NAME is the name of the macro you’re defining and value is the value you’re assigning to it. For example, to define the macro `CC` and assign it the value `gcc217`, you'd add the following line to the top of your makefile: :&#x20;
 
 ```makefile
 CC = gcc217
