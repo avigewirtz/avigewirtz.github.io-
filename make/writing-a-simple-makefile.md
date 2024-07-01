@@ -1,7 +1,17 @@
 # Writing a Simple Makefile
 
 * Continuing with our testintmath example, we'll show to use make to build our program.
-* Assume the working directory contains the files of the testintmath program. The first step is to create a file in the working directory named Makefile or makefile. (In practice, the makefile can be named something other than Makefile or makefile, but then you'd need to specify its name on the command line when you run make.)
+
+* Assume the working directory contains the files of our testintmath program. When you run make, make looks for a file in the working directory named makefile or Makefile. Thus, our first step is to create such a file. I personally prefer Makefile, since it makes it stand out more, but either option is good. 
+
+```
+touch Makefile
+```
+
+
+
+
+named Makefile or makefile. (In practice, the makefile can be named something other than Makefile or makefile, but then you'd need to specify its name on the command line when you run make.)
 * The next step is to populate the Makefile with a dependency graph for testintmath. before we show how to write the dependency graph in make syntax, let's first go over it graphically. figure 12.3 shows a graphical representation of testintmath dependency graph.
 * each node represents a file, and a directed edges represent dependencies.&#x20;
 
