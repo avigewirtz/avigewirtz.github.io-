@@ -10,12 +10,12 @@ Even for a small program like `testintmath`, this task isn’t particularly fun,
 
 Consider a scenario where you modify header file `A`, which is `#included` in, say, 20 `.c` files. To rebuild your program, you'd have to track down each of these `.c` files and recompile them. Worse yet, imagine header file `A` is also `#included` in header file `B`. You'd then have to also track down each of the `.c` files that `#include` `B` and recompile them as well. 
 
-To make life easier (no pun intended), the `make` tool was developed, which automates the process of incremental builds. `make` requires two pieces of information:
+To make life easier (no pun intended), the `make` tool was developed, which automates the process of incremental builds. To incrementally build a program, `make` requires two pieces of information:
 
 1. Dependency graph. Specifies dependencies between program's files and commands to build each file from its dependencies.
-2. The ability to verify the existence/latest modification timestamps of the files.
+2. The latest modification timestamps of the files.
 
-make can obtain 3 on it's own from the filesystem. 1 and 2 we describe via a user-written file known as a makefile. Once an appropriate makefile is set up, the command:
+make can obtain the timestamps on it's own from the filesystem. The dependency graph we describe via a user-written file known as a makefile. We'll decribe how to set one up below. Once an appropriate makefile is set up, the command:
 
 make
 
