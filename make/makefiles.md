@@ -12,7 +12,7 @@ Consider a scenario where you modify header file `A`, which is `#included` in, s
 
 To make life easier (no pun intended), the `make` tool was developed, which automates the process of incremental builds. `make` requires three thing:
 
-1. A formal description of the dependencies among the files in the program.
+1. A description of the dependencies among the files in the program.
 2. The commands to build the files. 
 3. The ability to verify the existence/latest modification timestamps of the files.
 
