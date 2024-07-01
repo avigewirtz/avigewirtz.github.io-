@@ -8,7 +8,7 @@ As we have seen, implementing incremental builds manually is possible but it req
 
 Even for a small program like `testintmath`, this task isn’t particularly fun, though it is admittedly manageable. As programs grow larger, however, and the web of dependencies grows increasingly complex, this task becomes incredibly tedious and error-prone.
 
-Consider a scenario where you modify header file `A`, which is `#included` in, say, 20 `.c` files. You'd have to track down each of these `.c` files and recompile them. Worse yet, imagine header file `A` is also `#included` in header file `B`. You'd then have to also track down all the `.c` files that `#include` `B` and recompile them as well. 
+Consider a scenario where you modify header file `A`, which is `#included` in, say, 20 `.c` files. To rebuild your program, you'd have to track down each of these `.c` files and recompile them. Worse yet, imagine header file `A` is also `#included` in header file `B`. You'd then have to also track down all the `.c` files that `#include` `B` and recompile them as well. 
 
 To make life easier (no pun intended), the `make` tool was developed, which automates the process of incremental builds. `make` requires three thing:
 
