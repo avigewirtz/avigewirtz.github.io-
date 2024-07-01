@@ -26,6 +26,8 @@ is all it takes to incrementally build the program.
 
 - Continuing with our testintmath example, we'll show how to write makefile 
 - the first step is to create a file named Makefile or makefile in the testintmath directory. (In practice, it's possible to name the makefile something other than Makefile or makefile, but then you'd need to specidy its name on the command line when you run make.) 
+- next, we populate the Makefile with a dependency graph for testintmath. the dependency graph describes the dependencies among the source and binary files in testintmath and contains the commands to build each binary. before we show how to write the dependency graph in make syntax, let's first go over it graphically. 
+- figure 13 shows a graphical representation of testintmath dependency graph. 
 
 In the Makefile, we describe the 
 
