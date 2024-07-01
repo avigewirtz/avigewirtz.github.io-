@@ -25,7 +25,13 @@ is all it takes to incrementally build the program.
 
 #### Makefiles
 
-Continuing with our testintmath example, The core of a makefile is a dependency graph. Identical to graph shown in Figure 12, but with arrows flipped.
+- Continuing with our testintmath example, we'll show how to write makefile 
+- the first step is to create a file named Makefile or makefile in the testintmath directory. (In practice, it's possible to name the makefile something other than Makefile or makefile, but then you'd need to specidy its name on the command line when you run make.) 
+
+In the Makefile, we describe the 
+
+
+The core of a makefile is a dependency graph. Identical to graph shown in Figure 12, but with arrows flipped.
 
 <figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
 
