@@ -25,25 +25,7 @@ is all it takes to incrementally build the program.
 
 #### Makefiles
 
-To use `make` to build a program, you need to create a file known as a _makefile_, which you populate with a textual representation of your program's dependency graph (see below). Once you have a suitable makefile set up, the command:
-
-```
-make
-```
-
-Is all it takes to build your program. `make` will look for a file in the working directory named makefile or Makefile and analyze its dependency graph. If file A depends on B and B has a more recent modification timestamp, make will rebuild A.
-
-#### Writing a makefile for testintmath
-
-For make to determine the minimum rebuilding our program need after a modification, it needs three pieces of information:
-
-1. description dependencies among files in our program
-2. commands to build each file
-3. last modification timestamps of each file
-
-Requirement 3 can be done by make automatically, so we don't have to input that information. Requiremnts 1 and 2 can be described via a makefile.
-
-For make to build our program, we need to have some way of formally expressing the dependencies among the files in our program. This can be done via a dependency graph. The core of a makefile is a dependency graph. Identical to graph shown in Figure 12, but with arrows flipped.
+Continuing with our testintmath example, The core of a makefile is a dependency graph. Identical to graph shown in Figure 12, but with arrows flipped.
 
 <figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
 
