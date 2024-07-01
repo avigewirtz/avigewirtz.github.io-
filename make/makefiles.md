@@ -16,7 +16,7 @@ To make life easier (no pun intended), the `make` tool was developed, which auto
 2. The commands to build the files. 
 3. The ability to verify the existence/latest modification timestamps of the files.
 
-make can obtain 3 on it's own from the filesystem. 1 and 2 we describe via a user-written file known as a makefile. As you can imagine, the makefile is typically named makefile. Once an appropriate makefile is set up, the command:
+make can obtain 3 on it's own from the filesystem. 1 and 2 we describe via a user-written file known as a makefile. Once an appropriate makefile is set up, the command:
 
 make
 
