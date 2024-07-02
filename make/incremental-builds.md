@@ -8,7 +8,17 @@ What does this have to do with C programs? Well, the principles of incremental b
 
 <figure><img src="../.gitbook/assets/Frame 32.png" alt="" width="563"><figcaption></figcaption></figure>
 
-Notice that each object file is derived only from its corresponding .c file and included headers. It is not derived from any other source files. Applying the principles of incremental builds, after the source code is modified, only the affected object files need to be rebuilt. Then, you link the updated object files with the "old" object files from previous builds--provided you saved them, of course--to produce an updated executable.
+
+Notice that each object file is derived only from its corresponding .c file and included headers. It is not derived from any other source files. We can model this process using the following equatiom:
+
+foobar = compile(foo.c) + compile(bar.c)
+
+Of course, linking or more complicated than concatenating object files, but this analogy will do. 
+
+Just like in our math example, when y changed we didnt need to recomouter sin(x), so too when a .c file such as foo.c changes, we dont need to recompile bar.c. We recompile foo.c alone, and then we link foo.o with bar.o, producing an uodated foobar. 
+
+
+Applying the principles of incremental builds, after the source code is modified, only the affected object files need to be rebuilt. Then, you link the updated object files with the "old" object files from previous builds--provided you saved them, of course--to produce an updated executable.
 
 To draw a parallel with our math example, think of the executable file $$E$$ as $$E = \text{compile}(x) + \text{compile}(y)$$. When $$y$$ changes, only the part of the program dependent on $$y$$ needs to be recompiled, and then it can be linked with the previously compiled parts.
 
