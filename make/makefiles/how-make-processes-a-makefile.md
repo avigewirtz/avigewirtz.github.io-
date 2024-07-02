@@ -4,17 +4,7 @@
 
 #### Case 1: Running our makefile when all the targets don't exist
 
-Suppose we're building `testintmath` for the first time. In this case, neither `testintmath` nor `testintmath.o` and `intmath.o` exist yet. To build `testintmath`, we invoke:&#x20;
-
-```bash
-$ make
-gcc -c testintmath.c
-gcc -c intmath.c
-gcc testintmath.o intmath.o -o testintmath
-$
-```
-
-Here's how `make` processes the Makefile:
+Suppose we're building `testintmath` for the first time. In this case, neither `testintmath` nor `testintmath.o` and `intmath.o` exist yet. Here's how `make` would process the Makefile:
 
 * It starts off by examines the first target, `testintmath`. `make` notes that it does not exist. It might seem that make should immediately invoke the command to build `testintmath` (i.e., `gcc217 testintmath.o intmath.o -o testintmath`) , but make must first ensure that `testintmath`'s dependencies (i.e., `intmath.o`, `testintmath.o`) are up to date. In our case, they don't even exist yet.&#x20;
   * `make` moves on to `testintmath.o`. It notes that `testintmath.o` does not exist.&#x20;
@@ -29,7 +19,7 @@ Here's how `make` processes the Makefile:
 
 The DFS traversal is summarized in Figure 2.4.
 
-<figure><img src="../.gitbook/assets/Group 66 (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Group 66 (7).png" alt=""><figcaption></figcaption></figure>
 
 #### Case 2: Running our makefile when all targets are up to date
 
@@ -43,7 +33,7 @@ $
 
 The DFS traversal is summarized in Figure 2.5.
 
-<figure><img src="../.gitbook/assets/Group 67 (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Group 67 (2).png" alt=""><figcaption></figcaption></figure>
 
 #### Case 3: Running our makefile after a source file is modified
 
@@ -58,4 +48,4 @@ $
 
 The DFS traversal is summarized in Figure 2.6.
 
-<figure><img src="../.gitbook/assets/Group 68 (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Group 68 (4) (1).png" alt=""><figcaption></figcaption></figure>

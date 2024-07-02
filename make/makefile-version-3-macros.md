@@ -6,7 +6,7 @@ Make has a macro facility that performs textual substitution, similar to the mac
 MACRO_NAME = value
 ```
 
-Where `MACRO_NAME` is the name of the macro you’re defining and `value` is the value you’re assigning to it. To subsequently use the macro in the Makefile, enclose its name in `$()` (or `${}`), like so:
+Where `MACRO_NAME` is the name of the macro you’re defining and `value` is the value you’re assigning to it. To subsequently use the macro in the Makefile, enclose its name in `$()` , like so:
 
 ```makefile
 $(MACRO_NAME)
@@ -14,8 +14,7 @@ $(MACRO_NAME)
 
 When `make` encounters `$(MACRO_NAME)`, it will replace it with `value`.
 
-
-Makefile version 3, shown below, integrates two commonly used macros: CC, which is used to specify the compiler, and CFLAGS, which is used to specify compiler options. Notice how we have several versions of each macro, with all but the ones we're currently using commented out.
+Makefile version 3, shown below, illustrates two commonly used macros: `CC`, which is used to specify the compiler, and `CFLAGS`, which is used to specify compiler options. Notice that there are several versions of each macro, with all but the ones we're currently using commented out.
 
 {% code title="makefile version 3" lineNumbers="true" %}
 ```makefile
@@ -44,4 +43,4 @@ intmath.o: intmath.c intmath.h
 ```
 {% endcode %}
 
-The benefit of using macros is it makes it extremely easy to change values. For example, if we want to change the compiler to `clang`, we'd change `CC = gcc217` to `CC = clang`, all we need to do is change CC to change, instead of changing every compilation command. 
+The benefit of using macros is it makes it extremely easy to change values. For example, if we want to change the compiler to `clang`, all we need to do is make `CC=clang`, instead of manually changing every compilation command.
