@@ -15,7 +15,7 @@ Continuing with our `testintmath` example, let's explore how to use `make` to bu
 * The next step is to populate the Makefile with a dependency graph for testintmath. before we show how to write the dependency graph in make syntax, let's first go over it graphically. figure 12.3 shows a graphical representation of testintmath dependency graph.
 * each node represents a file, and a directed edges represent dependencies.
 
-<figure><img src="../../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
 
 In make syntax, dependency graphs are represented by dependency rules. We create what is known as a _dependency rule_ for each target in the dependency graph--`testintmath.o`, `intmath.o`, and `testintmath`. Dependency rules have the following syntax:
 

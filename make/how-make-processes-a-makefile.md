@@ -19,7 +19,7 @@ Suppose we're building `testintmath` for the first time. In this case, neither `
 
 The DFS traversal is summarized in Figure 2.4.
 
-<figure><img src="../../.gitbook/assets/Group 66 (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 66 (7).png" alt=""><figcaption></figcaption></figure>
 
 #### Case 2: Running our makefile when all targets are up to date
 
@@ -33,7 +33,7 @@ $
 
 The DFS traversal is summarized in Figure 2.5.
 
-<figure><img src="../../.gitbook/assets/Group 67 (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 67 (2).png" alt=""><figcaption></figcaption></figure>
 
 #### Case 3: Running our makefile after a source file is modified
 
@@ -48,4 +48,4 @@ $
 
 The DFS traversal is summarized in Figure 2.6.
 
-<figure><img src="../../.gitbook/assets/Group 68 (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 68 (4) (1).png" alt=""><figcaption></figcaption></figure>

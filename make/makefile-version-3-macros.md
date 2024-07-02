@@ -16,7 +16,7 @@ When `make` encounters `$(MACRO_NAME)`, it will replace it with `value`.
 
 Makefile version 3, shown below, illustrates two commonly used macros: `CC`, which is used to specify the compiler, and `CFLAGS`, which is used to specify compiler options. Notice that there are several versions of each macro, with all but the ones we're currently using commented out.
 
-{% code title="makefile version 3" lineNumbers="true" %}
+{% code title="Makefile version 3" lineNumbers="true" %}
 ```makefile
 # Macros
 CC = gcc217

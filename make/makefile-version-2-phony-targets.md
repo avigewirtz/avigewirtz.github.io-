@@ -25,11 +25,11 @@ Hello, world!
 $
 ```
 
-We see that `make` executes the command `echo "Hello, world!"`, printing `Hello, world!` on stdout. Twn fact that this command does not create a file named `hello` does not cause an error.  `make` does not complain about the fact that a file named `hello` was not created by this command.
+We see that `make` executes the command `echo "Hello, world!"`, printing `Hello, world!` on stdout. The fact that this command does not create a file named `hello` does not cause an error.&#x20;
 
 Here's how it works. When `make` processes this rule, it assumes that `hello` represents a file. It thus looks for a file named `hello` in the working directory. Because it does not find one, it determines that `hello` needs to be built, and it thus executes the command `echo "Hello, world!"`. At this point, `make` considers its job complete. It does not care whether `hello` is in fact created.
 
-Because this rule will never create a file named `hello`, we can run `make hello` as many times as we'd like, and, each time, `make` will execute the command `echo "Hello, world!"`. For example, if we run `make hello` three times in a row:
+The important point to recognize is that because this rule will never create a file named `hello`, we can run `make hello` as many times as we'd like, and, each time, `make` will execute the command `echo "Hello, world!"`. For example, if we run `make hello` three times in a row:
 
 ```bash
 $ make hello
@@ -44,23 +44,21 @@ Hello, world!
 $
 ```
 
-#### Common Phony Targets
-
-In real world makefiles, you'll commonly see the following three phony targets: `all`, `clean`, and `clobber`. Let's enhance our Makefile by adding these three phony targets. An explanation of each is provided below. Note that in a Makefile, everything following `#` on a line is a comment.
+Makefile version 2 illustrates three commonly used phony targets: `all`, `clean`, and `clobber`. An explanation of each is provided in a comment in the makefile (note that everything following a `#` on a line is a comment).
 
 {% code title="makefile version 2" %}
 ```makefile
 # Dependency rules for non-file targets
 
-# Default target. Builds entire program. 
+# Default target (i.e., target to use when make is invoked without specifying a target)
 all: testintmath
 
-# Delete Emacs backup and autosave files (*~ specifie all files that end with a '~',
-# \#*\# specifies all files that start and end with a '#')
+# Extends clean (see below) by also deleting Emacs backup and autosave files ('*~' specifies 
+# all files that end with a '~', and '\#*\#' specifies all files that start and end with a '#')
 clobber: clean
-  rm -f *~ \#*\#
+  rm -f *~ \#*\# 
   
-# Delete all files generated when program is built (i.e., testintmath and .o files)
+# Deletes all object files (.o) and the executable 
 clean:
   rm -f testintmath *.o
   
@@ -68,25 +66,21 @@ clean:
 # Dependency rules for file targets
 testintmath: testintmath.o intmath.o
   gcc217 testintmath.o intmath.o –o testintmath
+  
 testintmath.o: testintmath.c intmath.h
   gcc217 -c testintmath.c
+  
 intmath.o: intmath.c intmath.h
   gcc217 -c intmath.c
 ```
 {% endcode %}
 
-Here's what each of the three phony targets do:
-
-* `all`. To control the default behavior you run make without specifying a target.
-* `clean`. to delete the files typically created when the program is built.&#x20;
-* `clobber` to extend `clean` by also deleting files like Emacs backup and autosave files.
-
 {% hint style="info" %}
-**Purpose of the 'all' target**
+**Purpose of the 'all' target**&#x20;
 
-You might be wondering what purpose the `all` target serves in our program, as it seems to change nothing about how we build our program. Truthfully, in our program it doesn't serve any real purpose, except perhaps for accommodating users who invoke `make all` out of habit.
+You might be wondering what purpose the `all` target serves in our program compared to simply using `testintmath` as the default target. Truthfully, it doesn't serve any real purpose, except perhaps for accommodating users who invoke `make all` out of habit.
 
-The real purpose of `all` is when you have multiple independent targets and them all to be built by default when you invoke `make`. For example, suppose we have a project with two executables:`hello1` and `hello2`. We can set up our makefile as shown below and build both executables by invoking `make`. Without `all`, by default only `hello1` would be built when we invoke `make` . To build both `hello1` and `hello2`, we'd have to explicitly mention both (e.g., by invoking `make hello1 hello2`).
+The real purpose of `all` is to group multiple independent targets and effectively make them all default targets. For example, suppose we have a project with two executables:`hello1` and `hello2`. Making `hello1` and `hello2` dependencies of `all` effectively makes, as shown below, them both default targets (which will be triggered when we run `make`).
 
 ```makefile
 all: hello1 hello2
