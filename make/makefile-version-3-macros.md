@@ -6,22 +6,16 @@ Make has a macro facility that performs textual substitution, similar to the mac
 MACRO_NAME = value
 ```
 
-Where MACRO_NAME is the name of the macro you’re defining and value is the value you’re assigning to it. For example, to define the macro `CC` and assign it the value `gcc217`, you'd add the following line to the top of your makefile: :&#x20;
+Where MACRO_NAME is the name of the macro you’re defining and value is the value you’re assigning to it. Once a macro is defined, you can use it anywhere in the Makefile by enclosing its name in $() or ${}:
 
 ```makefile
-CC = gcc217
+    $(MACRO_NAME)
 ```
 
-Once a macro is defined, you can use it anywhere in the Makefile by enclosing its name in $() or ${}:
+When `make` processes encounters the macro, it will will replace it with its value.
 
-```makefile
-intmath.o: intmath.c intmath.h
-    $(CC) -c intmath.c
-```
 
-When this command is executed, `make` will replace `$(CC)` with `gcc217`.&#x20;
-
-Makefile version 3 illustrates macros. It contains the CC macro, which is used to control the compiler, and CFLAGS, which is used to control compiler options. 
+Makefile version 3 integrates two commonly used macros: CC, and CFLAGS. It contains the CC macro, which is used to control the compiler, and CFLAGS, which is used to control compiler options. 
 
 {% code title="makefile version 3" lineNumbers="true" %}
 ```makefile
