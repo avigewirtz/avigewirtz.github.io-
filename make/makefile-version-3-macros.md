@@ -1,6 +1,6 @@
 # Macros
 
-Make has a macro facility that performs textual substitution, similar to the macro facility of the C preprocessor. To define a macro, add the following line to the top of your makefile:
+Make has a macro facility that performs textual substitution, similar to the macro facility of the C preprocessor. To define a macro, you add the following line to the top of your makefile:
 
 ```makefile
 MACRO_NAME = value
