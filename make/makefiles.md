@@ -21,4 +21,4 @@ make can obtain the files' timestamps on it's own from the filesystem. The depen
 make
 ```
 
-is all it takes to incrementally build the program.
+is all it takes to incrementally build the program after changes have been made to the source code.
