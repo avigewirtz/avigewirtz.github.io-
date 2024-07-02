@@ -12,7 +12,7 @@ Where `MACRO_NAME` is the name of the macro you’re defining and `value` is the
 $(MACRO_NAME)
 ```
 
-When `make` encounters $(MACRO_NAME), it will replace it with `value`.
+When `make` encounters `$(MACRO_NAME)`, it will replace it with `value`.
 
 
 Makefile version 3 integrates two commonly used macros: CC, which is used to specify the compiler, and CFLAGS, which is used to specify compiler options. 
