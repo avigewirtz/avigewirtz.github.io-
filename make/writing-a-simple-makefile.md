@@ -9,7 +9,7 @@ The next step is to populate the Makefile testintmath's dependency graph. Before
 <figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
 
 
-In this graoh, nodes represent files, and directed edges represent dependencies. Files with dependencies—known as targets—are labeled with the commands to build them from their dependencies. Our program has three targets: the executable testintmath, and the objevt files testintmath.o and intmath.o. For convinience, theyre  circled in red. 
+In this graoh, nodes represent files, and directed edges represent dependencies. Files with dependencies—known as _targets_—are labeled with the commands to build them. Our program has three targets: the executable testintmath, and the objevt files testintmath.o and intmath.o. For convinience, they're  circled in red. 
 
 Translating this dependency graph into a Makefile is remarkably straightforward. We create what is known as a _dependency rule_ for each target in the dependency graph. Dependency rules have the following syntax:
 
