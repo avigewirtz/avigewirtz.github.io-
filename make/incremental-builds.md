@@ -9,7 +9,7 @@ What does this have to do with C programs? Well, the principles of incremental b
 <figure><img src="../.gitbook/assets/Frame 32.png" alt="" width="563"><figcaption></figcaption></figure>
 
 
-Notice that each object file is derived only from its corresponding .c file and included headers. It is not derived from any other source files. We can model this process using the following equatiom:
+We can model this process using the following equation:
 
 foobar = compile(foo.c) + compile(bar.c)
 
