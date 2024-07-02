@@ -6,7 +6,7 @@ As we have seen, implementing incremental builds manually is possible but it req
 2. Keep track of which object files (`.o`) are affected by the changes to the source files.
 3. Run the commands to rebuild the program, in the correct order.
 
-Even for a small program like `testintmath`, these tasks aren't particularly fun, though they are admittedly manageable. As programs grow larger, however, and the web of dependencies grows increasingly complex, thesw tasks quickly spiral out of control.
+Even for a small program like `testintmath`, these tasks aren't particularly fun, though they are admittedly manageable. As programs grow larger, however, and the web of dependencies grows increasingly complex, these tasks quickly spiral out of control.
 
 Consider a scenario where you modify header file `A`, which is `#included` in 20 `.c` files. To rebuild your program, you'd have to track down each of these `.c` files and recompile them. Worse yet, imagine header file `A` is also `#included` in header file `B`. You'd then have to also track down each of the `.c` files that `#include` `B` and recompile them as well.
 
