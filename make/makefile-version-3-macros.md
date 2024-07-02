@@ -15,7 +15,7 @@ Where MACRO_NAME is the name of the macro you’re defining and value is the val
 When `make` processes encounters the macro, it will will replace it with its value.
 
 
-Makefile version 3 integrates two commonly used macros: CC, and CFLAGS. It contains the CC macro, which is used to control the compiler, and CFLAGS, which is used to control compiler options. 
+Makefile version 3 integrates two commonly used macros: CC, which is used to specify the compiler, and CFLAGS, which is used to specify compiler options. 
 
 {% code title="makefile version 3" lineNumbers="true" %}
 ```makefile
@@ -44,6 +44,6 @@ intmath.o: intmath.c intmath.h
 ```
 {% endcode %}
 
-The benefit of using macros is it makes it much more convenient to change values. For example, if we want to change the compiler to `clang`, we'd change `CC = gcc217` to `CC = clang`, all we need to do is change CC to change, instead of changing every compilation command. 
+The benefit of using macros is it makes it extremely easy to change values. For example, if we want to change the compiler to `clang`, we'd change `CC = gcc217` to `CC = clang`, all we need to do is change CC to change, instead of changing every compilation command. 
 
 Notice how we have several versions of each macro, with all but the one we're currently using commented out.&#x20;
