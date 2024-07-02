@@ -1,7 +1,8 @@
 # Writing a Simple Makefile
 
-* Continuing with our testintmath example, we'll show to use make to build our program.
-* Assume the working directory contains the files of our testintmath program. When you run make, make looks for a file in the working directory named makefile or Makefile. Thus, our first step is to create such a file. I personally prefer Makefile, since it makes it stand out more, but either option is good.
+Continuing with our testintmath example, let's explore hown automate the build process with make. 
+
+Assume the working directory contains the source files of our testintmath program. When you run make, make looks for a file in the working directory named makefile or Makefile. Thus, our first step is to create such a file. I personally prefer Makefile, since it makes it stand out more, but either option is good.
 
 ```
 touch Makefile
