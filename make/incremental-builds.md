@@ -13,7 +13,7 @@ We can model this process using the following equation:
 
 foobar = compile(foo.c) + compile(bar.c)
 
-Of course, linking or more complicated than concatenating object files, but this analogy will do. 
+Of course, linking or more complicated than the simple concatenation of object files, but this equation will do. 
 
 Just like in our math example, when y changed we didnt need to recomouter sin(x), so too when a .c file such as foo.c changes, we dont need to recompile bar.c. We recompile foo.c alone, and then we link foo.o with bar.o, producing an uodated foobar. 
 
