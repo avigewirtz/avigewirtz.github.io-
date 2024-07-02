@@ -17,13 +17,7 @@ Of course, linking or more complicated than the simple concatenation of object f
 
 Just like in our math example, when y changed we didnt need to recomouter sin(x), so too when a .c file such as foo.c changes, we dont need to recompile bar.c. We recompile foo.c alone, and then we link foo.o with bar.o, producing an uodated foobar. 
 
-The caveat is that diving a C program in terms of .c files is an oversimplification, since .c files can #include .h files. Thus, we really need to think in terms of a .c file, along woth all .h files incoided in it. This is known as a transaltion unit. Thus, we really need to think in terms of trabsaltion units. 
-
-We can summarize the incremental build strategy as follows:
-
-* The first time you build your program, build the entire thing; however, ensure to save the object files.
-* In subsequent builds, recompile only the modiifed transaltion units. Then, link the resukting object files with the "old" object files to produce an updated executable.
-
+The caveat is that diving a C program in terms of .c files is an oversimplification, since .c files can #include .h files. Thus, we really need to think in terms of a .c file, along woth all .h files incoided in it. This is known as a transaltion unit. Thus, we really need to think in terms of translation units. Also note than transaltion units can iverlap. For example, suppose foo.c and bar.c both #include foo.h. Then foo.h is a part of two trabsaltion units. 
 #### Example
 
 Let's demonstrate incremental builds in action. As an example, we'll use the testintmath program from precept four.
