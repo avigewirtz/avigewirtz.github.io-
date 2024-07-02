@@ -6,7 +6,7 @@ Make has a macro facility that performs textual substitution, similar to the mac
 MACRO_NAME = value
 ```
 
-Where `MACRO_NAME` is the name of the macro you’re defining and `value` is the value you’re assigning to it. To use the macro, enclose its name in `$()` (or `${}`), like so:
+Where `MACRO_NAME` is the name of the macro you’re defining and `value` is the value you’re assigning to it. To subsequently use the macro in the Makefile, enclose its name in `$()` (or `${}`), like so:
 
 ```makefile
 $(MACRO_NAME)
