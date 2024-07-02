@@ -45,5 +45,3 @@ intmath.o: intmath.c intmath.h
 {% endcode %}
 
 The benefit of using macros is it makes it extremely easy to change values. For example, if we want to change the compiler to `clang`, we'd change `CC = gcc217` to `CC = clang`, all we need to do is change CC to change, instead of changing every compilation command. 
-
-Notice how we have several versions of each macro, with all but the one we're currently using commented out.&#x20;
