@@ -10,7 +10,7 @@ Even for a small program like `testintmath`, these task aren't particularly fun,
 
 Consider a scenario where you modify header file `A`, which is `#included` in 20 `.c` files. To rebuild your program, you'd have to track down each of these `.c` files and recompile them. Worse yet, imagine header file `A` is also `#included` in header file `B`. You'd then have to also track down each of the `.c` files that `#include` `B` and recompile them as well.
 
-To make life easier (no pun intended), the `make` tool was developed, which automates this process. To incrementally build a program, `make` requires two pieces of information:
+To make life easier (no pun intended), the `make` tool was developed, which automates this process. To incrementally build a program, `make` needs two pieces of information:
 
 1. The program's dependency graph. This specifies the dependencies between the program's files and the commands to build each file from its dependencies.
 2. The latest modification timestamp of each of the program's files.
