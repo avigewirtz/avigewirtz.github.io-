@@ -9,7 +9,7 @@ MACRO_NAME = value
 Where `MACRO_NAME` is the name of the macro you’re defining and `value` is the value you’re assigning to it. Once a macro is defined, you can use it anywhere in the Makefile by enclosing its name in `$()` (or `${}`):
 
 ```makefile
-    $(MACRO_NAME)
+$(MACRO_NAME)
 ```
 
 When `make` processes encounters the macro, it will will replace it with its value.
