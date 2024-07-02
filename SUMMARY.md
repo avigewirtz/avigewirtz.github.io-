@@ -96,6 +96,7 @@
   * [How make Processes a Makefile](make/how-make-processes-a-makefile.md)
 * [Phony targets](make/makefile-version-2-phony-targets.md)
 * [Macros](make/makefile-version-3-macros.md)
+* [Implicit Rules](make/implicit-rules.md)
 * [Further Reading](make/further-reading.md)
 
 ## Emacs
