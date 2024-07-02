@@ -154,7 +154,7 @@ gcc -c intmath.c testintmath.c
 gcc intmath.o testintmath.o -o testintmath
 ```
 
-Now suppose we modify intmath.c. We run gcc -c on intmath.c only, then we link the updated intmath.o with the testintmath.o form our previous build.
+Now suppose we modify intmath.c. To rebuild testintmath, we run gcc -c on intmath.c only. Then, we link the resulting intmath.o with the testintmath.o form our previous build.
 
 ```
 gcc -c intmath.c
