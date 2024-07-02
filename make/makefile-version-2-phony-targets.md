@@ -1,6 +1,6 @@
 # Phony targets
 
-In our makefile, each rule's target is the name of a file that is built when when the rule's command is executed. For example, in the following rule:
+In our current makefile, each rule's target is the name of a file that is built when when the rule's command is executed. For example, in the following rule:
 
 ```makefile
 intmath.o: intmath.c intmath.h
