@@ -19,7 +19,7 @@ target: dependencies
 ```
 
 * **Dependencies**. The files that the target _directly_ depends on (e.g., `testintmath` directly depends on `testintmath.o` and `intmath.o`).
-* **Command**. The command to build the target (e.g., the command to build `testintmath` is `gcc217 intmath.o testintmath.o -o testintmath`). Note that the command _must_ be preceded by a Tab character. Failure to do so will result in an error.
+* **Command**. The command to build the target. Note that the command _must_ be preceded by a Tab character. Failure to do so will result in an error.
 
 This results in the following makefile:
 
