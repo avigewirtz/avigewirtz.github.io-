@@ -1,22 +1,15 @@
 # Writing a Simple Makefile
 
-Continuing with our testintmath example, let's explore hown automate the build process with make. 
-
-Assume the working directory contains the source files of our testintmath program. When you run make, make looks for a file in the working directory named makefile or Makefile. Thus, our first step is to create such a file. I personally prefer Makefile, since it makes it stand out more, but either option is good.
-
-```
-touch Makefile
-```
-
 Continuing with our `testintmath` example, let's explore how to use `make` to build our program.
 
-* Assume the working directory contains the files of the testintmath program. The first step is to create a file in the working directory named Makefile or makefile. (In practice, the makefile can be named something other than Makefile or makefile, but then you'd need to specify its name on the command line when you run make.)
-* The next step is to populate the Makefile with a dependency graph for testintmath. before we show how to write the dependency graph in make syntax, let's first go over it graphically. figure 12.3 shows a graphical representation of testintmath dependency graph.
-* each node represents a file, and a directed edges represent dependencies.&#x20;
-* The next step is to populate the Makefile with a dependency graph for testintmath. before we show how to write the dependency graph in make syntax, let's first go over it graphically. figure 12.3 shows a graphical representation of testintmath dependency graph.
-* each node represents a file, and a directed edges represent dependencies.
+Assume the working directory contains the source files of our testintmath program. The first step is to create a makefile in the working directory. In practice, we can name the makefile whatever we like, but make automatically searches for a file named Makefile or makefile, making these names more convinient. 
+
+The next step is to populate the Makefile with a dependency graph for testintmath. Before we show how to write the dependency graph in make syntax, let's first go over it graphically. figure 12.3 shows a graphical representation of testintmath dependency graph. 
 
 <figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
+
+
+In this graoh, nodes represent files, and directed edges represent dependencies. In make terminology, files with dependencies are known are targets. Our program has three targets: the executable testintmath, and the objevt files testintmath.o and intmath.o. For convinience, theyre  circled in red. 
 
 In make syntax, dependency graphs are represented by dependency rules. We create what is known as a _dependency rule_ for each target in the dependency graph--`testintmath.o`, `intmath.o`, and `testintmath`. Dependency rules have the following syntax:
 
