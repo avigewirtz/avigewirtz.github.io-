@@ -11,7 +11,7 @@ The next step is to populate the Makefile testintmath's dependency graph. Before
 
 In this graoh, nodes represent files, and directed edges represent dependencies. Files with dependencies—known as targets—are labeled with the commands to build them from their dependencies. Our program has three targets: the executable testintmath, and the objevt files testintmath.o and intmath.o. For convinience, theyre  circled in red. 
 
- We create what is known as a _dependency rule_ for each target in the dependency graph--`testintmath.o`, `intmath.o`, and `testintmath`. Dependency rules have the following syntax:
+Trandlating this dependency graoh into a makedile is remarkebly straughtforward. We create what is known as a _dependency rule_ for each target in the dependency graph--`testintmath.o`, `intmath.o`, and `testintmath`. Dependency rules have the following syntax:
 
 ```
 target: dependencies
