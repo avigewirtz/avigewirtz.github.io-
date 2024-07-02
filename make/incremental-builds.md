@@ -17,15 +17,12 @@ Of course, linking or more complicated than concatenating object files, but this
 
 Just like in our math example, when y changed we didnt need to recomouter sin(x), so too when a .c file such as foo.c changes, we dont need to recompile bar.c. We recompile foo.c alone, and then we link foo.o with bar.o, producing an uodated foobar. 
 
-
-Applying the principles of incremental builds, after the source code is modified, only the affected object files need to be rebuilt. Then, you link the updated object files with the "old" object files from previous builds--provided you saved them, of course--to produce an updated executable.
-
-To draw a parallel with our math example, think of the executable file $$E$$ as $$E = \text{compile}(x) + \text{compile}(y)$$. When $$y$$ changes, only the part of the program dependent on $$y$$ needs to be recompiled, and then it can be linked with the previously compiled parts.
+The caveat is that thinking in terms of .c files does not capture the entire picture, since .c files can #include .h files. Thus, we really need to think in terms of a .c file, along woth all .h files incoided in it. This is known as a transaltion unit. Thus, we really need to think in terms of trabsaltion units. 
 
 We can summarize the incremental build strategy as follows:
 
 * The first time you build your program, build the entire thing; however, ensure to save the object files.
-* In subsequent builds, rebuild only the affected object files. Then, link them with the "old" object files to produce an updated executable.
+* In subsequent builds, recompile only the modiifed transaltion units. Then, link the resukting object files with the "old" object files to produce an updated executable.
 
 #### Example
 
