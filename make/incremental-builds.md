@@ -141,7 +141,14 @@ int lcm(int iFirst, int iSecond);
 {% endtab %}
 {% endtabs %}
 
-The first time we build testintmath, we compile all source files, but we ensure to save object files. How do we save object files? Recall the -c option, which tells gcc to halt after the assembly stage and output object files.
+Our program consists of two translation units. 
+
+1. intmath.c and intmath.h
+2. testintmath.c, intmafh.h, stdio.h, and stdlib.h 
+
+Because stdio.h and stdlib.h are system header files that we do not modify, we won't concern ourselves wirh the.  
+
+The first time we build testintmath, we compile all source files, but we ensure to save object files. How do we save object files? Recall the -c option, which tells gcc to halt after the assembly stage and output object files. Thus, we build our program with the following two commands:
 
 ```
 gcc -c intmath.c testintmath.c
@@ -169,5 +176,5 @@ Or via a single command:
 gcc217 intmath.c testintmath.c -o testintmath
 ```
 
-Fundamentally, the only difference between these two approaches is that the two-command approach retains the`.o` files while the single-command approach does not.
+In other words, in both cases the .c files will be independently preprocessed, conpiled, and assembled into object files, which are then linked. Fundamentally, the only difference between these two approaches is that the two-command approach retains the object files while the single-command approach does not.
 {% endhint %}
