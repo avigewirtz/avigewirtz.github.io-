@@ -17,7 +17,7 @@ Of course, linking or more complicated than the simple concatenation of object f
 
 Just like in our math example, when y changed we didnt need to recomouter sin(x), so too when a .c file such as foo.c changes, we dont need to recompile bar.c. We recompile foo.c alone, and then we link foo.o with bar.o, producing an uodated foobar. 
 
-The caveat is that thinking in terms of .c files does not capture the entire picture, since .c files can #include .h files. Thus, we really need to think in terms of a .c file, along woth all .h files incoided in it. This is known as a transaltion unit. Thus, we really need to think in terms of trabsaltion units. 
+The caveat is that diving a C program in terms of .c files is an oversimplification, since .c files can #include .h files. Thus, we really need to think in terms of a .c file, along woth all .h files incoided in it. This is known as a transaltion unit. Thus, we really need to think in terms of trabsaltion units. 
 
 We can summarize the incremental build strategy as follows:
 
@@ -147,7 +147,7 @@ int lcm(int iFirst, int iSecond);
 {% endtab %}
 {% endtabs %}
 
-The first time we build testintmath, we build the entire program, but we ensure to save objevct files. How do we save object files? Recall the -c option, which tells gcc to halt after the assembly stage and output object files.
+The first time we build testintmath, we compile all source files, but we ensure to save object files. How do we save object files? Recall the -c option, which tells gcc to halt after the assembly stage and output object files.
 
 ```
 gcc -c intmath.c testintmath.c
