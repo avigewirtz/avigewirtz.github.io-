@@ -33,3 +33,5 @@ testintmath.o: testintmath.c intmath.h
 intmath.o: intmath.c intmath.h
     gcc217 -c intmath.c
 ```
+
+This makefile is nothing more than a textual representation of the dependency graph shown in Figure 12.3. 
