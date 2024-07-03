@@ -2,7 +2,7 @@
 
 Continuing with our `testintmath` example, let's explore how to use `make` to build our program.
 
-Assume the working directory contains `testintmath`'s source files (i.e., `testintmath.c`, `intmath.c`, and `intmath.h`). The first step is to create a Makefile in the working directory. We can name the Makefile whatever we like, but `make` automatically searches for a file named `makefile` or `Makefile` (capital M), making these names more convenient.
+Assume the working directory contains `testintmath`'s source files (i.e., `testintmath.c`, `intmath.c`, and `intmath.h`). The first step is to create a Makefile in the working directory. We can name the Makefile whatever we'd like, but `make` automatically searches for a file named `makefile` or `Makefile` (capital M), making these names more convenient.
 
 The next step is to populate the Makefile `testintmath`'s dependency graph. Before we show how to write this dependency graph in `make` syntax, let's go over it graphically. Figure 12.3 shows a graphical representation of `testintmath`'s dependency graph.
 
