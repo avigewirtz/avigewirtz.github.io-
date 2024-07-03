@@ -18,17 +18,17 @@ Is equivalent to:
 make testintmath
 ```
 
-In both cases, `make` will attempt to build `testintmath`. To make prints on stdout each of the commands it executes to build the target. Say we're building testintmath for the first time. `make` will print and execute all three commands in our Makefile:
+In both cases, `make` will attempt to build `testintmath`. If `testintmath` is either out of date or does not exist, `make` will execute and display each command it runs to build it. The output might look like this:
 
 ```bash
 $ make
-gcc -c testintmath.c
-gcc -c intmath.c
-gcc testintmath.o intmath.o -o testintmath
+gcc217 -c testintmath.c
+gcc217 -c intmath.c
+gcc217 testintmath.o intmath.o -o testintmath
 $
 ```
 
-If we run `make` again immediately afterward, make will report that the target is up to date and not execute any commands:
+If we run `make` again immediately afterward, it will detect that `testintmath` is up to date and will not execute any commands:
 
 ```bash
 $ make
@@ -36,10 +36,12 @@ make: `testintmath' is up to date.
 $
 ```
 
-It's important to recognize that `make` does not read a makefile from top to bottom, processing all rules within it. It starts with the first rule in the makefile or the rule specified on the command line and then processes only the rules that are reachable from it. So, for example, if we invoke:
+{% hint style="info" %}
+It's important to recognize that `make` does not read a Makefile from top to bottom, processing all rules within it. It starts with the first rule in the makefile or the rule specified on the command line and then processes only the rules that are reachable from it. So, for example, if we invoke:
 
 ```bash
 make intmath.o
 ```
 
-make will process the rule for `intmath.o` only. It will not process the rules for `testintmath.o` or `testintmath`.
+make will process the rule for `intmath.o` only. It will not process the rules for `testintmath.o` or `testintmath`, since they are not reachable from it.
+{% endhint %}
