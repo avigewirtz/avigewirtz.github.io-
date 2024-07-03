@@ -4,7 +4,7 @@
 
 #### Case 1: Running our makefile when all the targets don't exist
 
-Suppose we're building `testintmath` for the first time. In this case, neither `testintmath` nor `testintmath.o` and `intmath.o` exist yet. Here's how `make` would process the Makefile:
+Suppose we're building `testintmath` for the first time. In this case, neither `testintmath` nor `testintmath.o` and `intmath.o` exist yet. Here's how `make` would process the Makefile if we were to run `make`:
 
 * It starts off by examines the first target, `testintmath`. `make` notes that it does not exist. It might seem that make should immediately invoke the command to build `testintmath` (i.e., `gcc217 testintmath.o intmath.o -o testintmath`) , but make must first ensure that `testintmath`'s dependencies (i.e., `intmath.o`, `testintmath.o`) are up to date. In our case, they don't even exist yet.&#x20;
   * `make` moves on to `testintmath.o`. It notes that `testintmath.o` does not exist.&#x20;
