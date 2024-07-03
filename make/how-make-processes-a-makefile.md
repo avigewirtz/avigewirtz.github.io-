@@ -1,20 +1,20 @@
 # How make Processes a Makefile
 
-`make` processes a Makefile via a [depth first search](https://en.wikipedia.org/wiki/Depth-first\_search) (DFS) traversal of its dependency graph, starting from the default target or from the target specified on the command line. Let's examine make's traversal of our `testintmath` dependency graph at various points of development.&#x20;
+`make` processes a Makefile via a [depth first search](https://en.wikipedia.org/wiki/Depth-first\_search) (DFS) traversal of its dependency graph, starting from the default target or from the target specified on the command line. Its basic operation is to Let's examine make's traversal of our `testintmath` dependency graph at various points of development.
 
 #### Case 1: Running our makefile when all the targets don't exist
 
 Suppose we're building `testintmath` for the first time. In this case, neither `testintmath` nor `testintmath.o` and `intmath.o` exist yet. Here's how `make` would process the Makefile if we were to run `make`:
 
-* It starts off by examines the first target, `testintmath`. `make` notes that it does not exist. It might seem that make should immediately invoke the command to build `testintmath` (i.e., `gcc217 testintmath.o intmath.o -o testintmath`) , but make must first ensure that `testintmath`'s dependencies (i.e., `intmath.o`, `testintmath.o`) are up to date. In our case, they don't even exist yet.&#x20;
-  * `make` moves on to `testintmath.o`. It notes that `testintmath.o` does not exist.&#x20;
+* It starts off by examines the first target, `testintmath`. `make` notes that it does not exist. It might seem that make should immediately invoke the command to build `testintmath` (i.e., `gcc217 testintmath.o intmath.o -o testintmath`) , but make must first ensure that `testintmath`'s dependencies (i.e., `intmath.o`, `testintmath.o`) are up to date. In our case, they don't even exist yet.
+  * `make` moves on to `testintmath.o`. It notes that `testintmath.o` does not exist.
     * `make` examines `testintmath.c`. It notes that it exists and is a leaf--meaning, it has no dependencies. Thus, it has no work to do for `testintmath.c`. `make` then backtracks to `testintmath.o`.
     * `make` examines `intmath.h`. It notes that it exists and is a leaf. `make` then backtracks again to `testintmath.o`.
-  * Having determined that `testintmath.o`'s dependencies exist and are up to date, `make` now builds `testintmath.o` by invoking: `gcc217 -c testintmath.c`. It then backtracks to `testintmath`.&#x20;
-  * `make` now examines testintmath's other dependency--intmath.o. It notes that it does not exist.&#x20;
-    * `make` then examines intmath.c. It notes that it exists and is a leaf.&#x20;
+  * Having determined that `testintmath.o`'s dependencies exist and are up to date, `make` now builds `testintmath.o` by invoking: `gcc217 -c testintmath.c`. It then backtracks to `testintmath`.
+  * `make` now examines testintmath's other dependency--intmath.o. It notes that it does not exist.
+    * `make` then examines intmath.c. It notes that it exists and is a leaf.
     * `make` sees that intmath.o's other dependency is intmath.h. It avoids a redundant check and instead goes back up to intmath.o
-  * `make` now builds `intmath.o` by invoking: `gcc217 -c intmath.c`. It then goes back up to `testintmath`.&#x20;
+  * `make` now builds `intmath.o` by invoking: `gcc217 -c intmath.c`. It then goes back up to `testintmath`.
 * Finally, `make` builds `testintmath` by invoking: `gcc217 testintmath.o intmath.o -o testintmath`.
 
 The DFS traversal is summarized in Figure 2.4.
@@ -23,7 +23,7 @@ The DFS traversal is summarized in Figure 2.4.
 
 #### Case 2: Running our makefile when all targets are up to date
 
-Suppose we invoke `make` immediately after building `testintmath`. make will respond by notifying us that `testintmath` is up to date, and hence it will not execute any commands:&#x20;
+Suppose we invoke `make` immediately after building `testintmath`. make will respond by notifying us that `testintmath` is up to date, and hence it will not execute any commands:
 
 ```bash
 $ make
