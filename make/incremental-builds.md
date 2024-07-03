@@ -161,7 +161,7 @@ Now suppose we modify intmath.c. To rebuild testintmath, we run gcc -c on intmat
 gcc -c intmath.c
 gcc intmath.o testintmath.o -o testintmath
 ```
-The process would be the same if we were to modify testintmath.c. Notice, however, that if modify intmath.h, we'd have to recompile both intmath.c and testintmath.c, since they both #include it. 
+The process would be the same if we were to modify testintmath.c. Notice, however, that if modify intmath.h, we'd have to recompile both intmath.c and testintmath.c, since they both #include it. Ij general, changes to header files tend to be kuch more dramatic than chnagws to .c files, sincs header files are often part of multiple trabslation units. 
 
 {% hint style="info" %}
 It's important to understand that the underlying GCC build process is the same irrespective of whether we build our program via two commands:
