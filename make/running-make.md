@@ -18,7 +18,7 @@ Is equivalent to:
 make testintmath
 ```
 
-In both cases, `make` will attempt to build `testintmath`. make prints on stdout each of the commands it executes to build the target. Say we're building our program for the first time. `make` will print and execute all three commands:
+In both cases, `make` will attempt to build `testintmath`. To make prints on stdout each of the commands it executes to build the target. Say we're building testintmath for the first time. `make` will print and execute all three commands in our Makefile:
 
 ```bash
 $ make
