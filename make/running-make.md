@@ -18,7 +18,7 @@ Is equivalent to:
 make testintmath
 ```
 
-In both cases, `make` will attempt to build `testintmath`. If `testintmath` is either out of date or does not exist, `make` will execute and display each command it runs to build it. The output might look like this:
+In both cases, `make` will attempt to build `testintmath`. If `testintmath` is either out of date or does not exist, `make` will execute and display each command it runs to build it. Say we run `make` when all targets are out of date or do not exist. The output will look like this:
 
 ```bash
 $ make
@@ -28,7 +28,7 @@ gcc217 testintmath.o intmath.o -o testintmath
 $
 ```
 
-If we run `make` again immediately afterward, it will detect that `testintmath` is up to date and will not execute any commands:
+If we run `make` again immediately afterward, it will detect that `testintmath` is up to date and not execute any commands:
 
 ```bash
 $ make
@@ -37,7 +37,7 @@ $
 ```
 
 {% hint style="info" %}
-It's important to recognize that `make` does not read a Makefile from top to bottom, processing all rules within it. It starts with the first rule in the makefile or the rule specified on the command line and then processes only the rules that are reachable from it. So, for example, if we invoke:
+It's important to recognize that `make` does not read a Makefile from top to bottom, processing all rules within it. It starts with the first rule or the rule specified on the command line and then processes only the rules that are reachable from it. So, for example, if we run:
 
 ```bash
 make intmath.o
