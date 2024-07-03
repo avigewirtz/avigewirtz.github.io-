@@ -18,7 +18,7 @@ target: dependencies
 <tab> command
 ```
 
-* **Dependencies**. The files that the target _directly_ depends on (e.g., `testintmath` directly depends on `testintmath.o` and `intmath.o`).
+* **Dependencies**. The files that the target has outgoing edges to.
 * **Command**. The command to build the target. Note that the command _must_ be preceded by a Tab character. Failure to do so will result in an error.
 
 This results in the following makefile:
