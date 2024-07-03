@@ -2,6 +2,12 @@
 
 `make` processes a Makefile via a [depth first search](https://en.wikipedia.org/wiki/Depth-first\_search) (DFS) traversal of its dependency graph, starting from the default target or from the target specified on the command line. Its basic operation is to Let's examine make's traversal of our `testintmath` dependency graph at various points of development.
 
+`make` begins with the default target or a specified target on the command line and uses a depth-first search (DFS) to traverse the dependency graph. For each target, `make` recursively examines its dependencies, diving deeper until it reaches a leaf node (a file without further dependencies). When it hits a leaf node, `make` backtracks to the previous target and checks any remaining dependencies.
+
+During backtracking, `make` compares the modification timestamps of each target and its dependencies. If a target is missing or any of its dependencies have a more recent timestamp, `make` executes the build commands for that target specified in the Makefile. This decision ensures that all dependencies are up-to-date before building the target itself.
+
+If an error occurs during the execution of any command, `make` typically stops the build process and reports the error, although this behavior can be modified with flags such as `-k` to continue despite errors. `make` continues this DFS traversal, ensuring all targets and their dependencies are up-to-date, until it completes the build process for all specified targets.
+
 #### Case 1: Running our makefile when all the targets don't exist
 
 Suppose we're building `testintmath` for the first time. In this case, neither `testintmath` nor `testintmath.o` and `intmath.o` exist yet. Here's how `make` would process the Makefile if we were to run `make`:
