@@ -25,7 +25,7 @@ Hello, world!
 $
 ```
 
-We see that `make` executes the command `echo "Hello, world!"`, printing `Hello, world!` on stdout. The fact that this command does not create a file named `hello` does not cause an error.&#x20;
+We see that `make` executes the command `echo "Hello, world!"`, printing `Hello, world!` on stdout. The fact that this command does not create a file named `hello` does not cause an error.
 
 Here's how it works. When `make` processes this rule, it assumes that `hello` represents a file. It thus looks for a file named `hello` in the working directory. Because it does not find one, it determines that `hello` needs to be built, and it thus executes the command `echo "Hello, world!"`. At this point, `make` considers its job complete. It does not care whether `hello` is in fact created.
 
@@ -44,7 +44,7 @@ Hello, world!
 $
 ```
 
-Makefile version 2 illustrates three commonly used phony targets: `all`, `clean`, and `clobber`. An explanation of each is provided in a comment in the makefile (note that everything following a `#` on a line is a comment).
+Let's now enhance our makefile by adding three commonly used phony targets: `all`, `clean`, and `clobber`. An explanation of each is provided in a comment in the makefile (note that everything following a `#` on a line is a comment).
 
 {% code title="makefile version 2" %}
 ```makefile
@@ -76,7 +76,7 @@ intmath.o: intmath.c intmath.h
 {% endcode %}
 
 {% hint style="info" %}
-**Purpose of the 'all' target**&#x20;
+**Purpose of the 'all' target**
 
 You might be wondering what purpose the `all` target serves in our program compared to simply using `testintmath` as the default target. Truthfully, it doesn't serve any real purpose, except perhaps for accommodating users who invoke `make all` out of habit.
 
