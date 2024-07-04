@@ -6,7 +6,7 @@ Assume the working directory contains `testintmath`'s source files (i.e., `testi
 
 The next step is to populate the Makefile `testintmath`'s dependency graph. Before we show how to write this dependency graph in `make` syntax, let's go over it graphically. Figure 12.3 shows a graphical representation of `testintmath`'s dependency graph.
 
-<figure><img src="../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
 
 In this graph, files are represented by nodes, and dependencies are represented by directed edges (->) . Each file with dependencies—known as a _target_—is labeled with the command to build it. Our program has three targets: the executable `testintmath`, and the object files `testintmath.o` and `intmath.o`. For convenience, these targets are circled in red. We see the following dependencies:
 
