@@ -4,20 +4,18 @@ Suppose we have the equation $$z = \sin(x) + \sin(y)$$, where $$x = 37^\circ$$ a
 
 Now, suppose 𝑦 changes from $$y = 73^\circ$$ to $$y = 83^\circ$$. To recompute 𝑧, we don’t need to recompute $$\sin(37^\circ)$$. We can reuse the $$0.6018$$ value we obtained in our previous computation--provided we saved it, that is! The only new nontrivial computation needed is $$\sin(83^\circ)$$, which is approximately $$0.9925$$. So now we have $$z = 0.6018 + 0.9925 = 1.5943$$.
 
-What does this have to do with C programs? Well, the principle of incremental builds in C work in exactly the same way. Recall the process by which multi-file programs are built. First, each `.c` file is _independently_ translated into an object file. For simplicity, we'll refer to this process as compilation, but keep in mind that we actually mean preprocessing, compilation, and assembly. Of note is that in the preprocessing stage, headers specified in `#include` directives are inserted. Then, to produce an executable, the object files are linked--along with necessary object files from the C standard library. This process is shown in Figure 12 using a dummy foobar program.
+What does this have to do with C programs? Well, the principle of incremental builds in C work in exactly the same way. Recall the process by which multi-file programs are built. Each `.c` file is _independently_ translated into an object file. For simplicity, we'll refer to this process as compilation, but keep in mind that we actually mean preprocessing, compilation, and assembly. Of note is that in the preprocessing stage, headers specified in `#include` directives are inserted. Then, to produce an executable, the object files are linked--along with necessary object files from the C standard library. This process is shown in Figure 12 using a dummy `foobar` program.
 
 <figure><img src="../.gitbook/assets/Frame 32.png" alt="" width="563"><figcaption></figcaption></figure>
 
-
 We can model this process using the following equation:
 
-foobar = compile(foo.c) + compile(bar.c)
+$$foobar = compile(foo.c) + compile(bar.c)$$
 
-Of course, linking or more complicated than the simple concatenation of object files, but this equation will do. 
+(Of course, linking or more complicated than the simple concatenation of object files, but this equation will do.) Just like in our math example where only sin(y) was recalculated when `y` changed, so too only compile(foo.c) needs to be re-run when bar.c is modified, and vice versa.&#x20;
 
-Just like in our math example, when y changed we didnt need to recomouter sin(x), so too when a .c file such as foo.c changes, we dont need to recompile bar.c. We recompile foo.c alone, and then we link foo.o with bar.o, producing an uodated foobar. 
+The caveat is that diving a C program along the lines of `.c` files is an oversimplification, since `.c` files can `#include` header files. To be more precise, we really need to think it terms of translation units. A translation unit is a .c file along with all headers included. Note that translation units can--and often do--overlap.&#x20;
 
-The caveat is that diving a C program in terms of .c files is an oversimplification, since .c files can #include .h files. Thus, we really need to think in terms of a .c file, along woth all .h files incoided in it. This is known as a transaltion unit. Thus, we really need to think in terms of translation units. Also note than transaltion units can iverlap. For example, suppose foo.c and bar.c both #include foo.h. Then foo.h is a part of two trabsaltion units. 
 #### Example
 
 Let's demonstrate incremental builds in action. As an example, we'll use the testintmath program from precept four.
@@ -141,12 +139,12 @@ int lcm(int iFirst, int iSecond);
 {% endtab %}
 {% endtabs %}
 
-Our program consists of two translation units. 
+Our program consists of two translation units.
 
 1. intmath.c and intmath.h
-2. testintmath.c, intmafh.h, stdio.h, and stdlib.h 
+2. testintmath.c, intmafh.h, stdio.h, and stdlib.h
 
-Because stdio.h and stdlib.h are system header files that we do not modify, we won't concern ourselves wirh the.  
+Because stdio.h and stdlib.h are system header files that we do not modify, we won't concern ourselves wirh the.
 
 The first time we build testintmath, we compile all source files, but we ensure to save object files. How do we save object files? Recall the -c option, which tells gcc to halt after the assembly stage and output object files. Thus, we build our program with the following two commands:
 
@@ -161,7 +159,8 @@ Now suppose we modify intmath.c. To rebuild testintmath, we run gcc -c on intmat
 gcc -c intmath.c
 gcc intmath.o testintmath.o -o testintmath
 ```
-The process would be the same if we were to modify testintmath.c. Notice, however, that if modify intmath.h, we'd have to recompile both intmath.c and testintmath.c, since they both #include it. Ij general, changes to header files tend to be kuch more dramatic than chnagws to .c files, sincs header files are often part of multiple trabslation units. 
+
+The process would be the same if we were to modify testintmath.c. Notice, however, that if modify intmath.h, we'd have to recompile both intmath.c and testintmath.c, since they both #include it. Ij general, changes to header files tend to be kuch more dramatic than chnagws to .c files, sincs header files are often part of multiple trabslation units.
 
 {% hint style="info" %}
 It's important to understand that the underlying GCC build process is the same irrespective of whether we build our program via two commands:
