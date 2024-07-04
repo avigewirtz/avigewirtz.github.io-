@@ -1,12 +1,14 @@
 # How make Processes a Makefile
 
-`make` processes a Makefile via a [depth first search](https://en.wikipedia.org/wiki/Depth-first\_search) (DFS) traversal of its dependency graph, starting from the default target or from the target specified on the command line. Its basic operation is to Let's examine make's traversal of our `testintmath` dependency graph at various points of development.
+`make` processes a Makefile via a [depth first search](https://en.wikipedia.org/wiki/Depth-first\_search) (DFS) traversal of its dependency graph, starting from the default target or from the target specified on the command line. For each target, `make` recursively examines its dependencies, diving deeper until it reaches a leaf node (a file without any dependencies). When it hits a leaf node, `make` backtracks to the previous target and checks any remaining dependencies.
 
-`make` begins with the default target or a specified target on the command line and uses a depth-first search (DFS) to traverse the dependency graph. For each target, `make` recursively examines its dependencies, diving deeper until it reaches a leaf node (a file without further dependencies). When it hits a leaf node, `make` backtracks to the previous target and checks any remaining dependencies.
+During backtracking, it executes the command to build each target if either the target does not exist or if one of its deoendencies has a more recent modification timestamp. 
 
-During backtracking, `make` compares the modification timestamps of each target and its dependencies. If a target is missing or any of its dependencies have a more recent timestamp, `make` executes the build commands for that target specified in the Makefile. This decision ensures that all dependencies are up-to-date before building the target itself.
+This DFS traversal ensures that all of a target's dependencies exist and are up to date before building it.
 
-If an error occurs during the execution of any command, `make` typically stops the build process and reports the error, although this behavior can be modified with flags such as `-k` to continue despite errors. `make` continues this DFS traversal, ensuring all targets and their dependencies are up-to-date, until it completes the build process for all specified targets.
+If an error occurs during the execution of any command, `make` typically stops the build process and reports the error, although this behavior can be modified with flags such as `-k` to continue despite errors. 
+
+Let's now examine this DFS traversal at various points in development. 
 
 #### Case 1: Running our makefile when all the targets don't exist
 
