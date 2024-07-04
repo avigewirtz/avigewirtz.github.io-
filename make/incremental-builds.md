@@ -1,8 +1,28 @@
 # Incremental Builds
 
-Suppose we have the equation $$z = \sin(x) + \sin(y)$$, where $$x = 37^\circ$$ and $$y = 73^\circ$$. To compute $$z$$, we first calculate $$\sin(37^\circ)$$, which is approximately $$0.6018$$. Next, we calculate $$\sin(73^\circ)$$, which is approximately $$0.9563$$. Adding these together, we get $$z = 0.6018 + 0.9563 = 1.5581$$.
+Incremental build work by tracking dependencies among files and rebuulding onot rhe affected files after changes are made. To illustrate, lets use a simple mathematicsl example. 
 
-Now, suppose 𝑦 changes from $$y = 73^\circ$$ to $$y = 83^\circ$$. To recompute 𝑧, we don’t need to recompute $$\sin(37^\circ)$$. We can reuse the $$0.6018$$ value we obtained in our previous computation--provided we saved it, that is! The only new nontrivial computation needed is $$\sin(83^\circ)$$, which is approximately $$0.9925$$. So now we have $$z = 0.6018 + 0.9925 = 1.5943$$.
+Suppose we have the following:
+
+$$z = x + y$$
+$$ x = \sin(a)$$
+$$y = \sin(b)$$
+
+where $$a = 37^\circ$$ and $$b = 73^\circ$$. 
+
+To compute $$z$$, we first calculate $$ x = \sin(a^\circ) = \sin(37^\circ) = 0.6018$$. Next, we calculate   $$ y = \sin(b^\circ) = \sin(73^\circ) = 0.9563$$. To compute z, we add x and y, getting $$z = 0.6018 + 0.9563 = 1.5581$$.
+
+Now, suppose 𝑦 changes from $$y = 73^\circ$$ to $$y = 83^\circ$$. To recompute 𝑧, we don’t need to recompute x. We can reuse the $$0.6018$$ value we obtained in our previous computation--provided we saved it, that is! we recompute y, then add the result to the 
+
+is $$\sin(83^\circ)$$, which is approximately $$0.9925$$. So now we have $$z = 0.6018 + 0.9925 = 1.5943$$.
+
+More formally, we can capture these dependencies via a directed graph. 
+
+
+
+
+
+As our winded example has hopefille shown, 
 
 What does this have to do with C programs? Well, the principle of incremental builds in C work in exactly the same way. Recall the process by which multi-file programs are built. Each `.c` file is _independently_ translated into an object file. For simplicity, we'll refer to this process as compilation, but keep in mind that we actually mean preprocessing, compilation, and assembly. Of note is that in the preprocessing stage, headers specified in `#include` directives are inserted. Then, to produce an executable, the object files are linked--along with necessary object files from the C standard library. This process is shown in Figure 12 using a dummy `foobar` program.
 
