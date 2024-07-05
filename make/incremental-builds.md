@@ -1,6 +1,8 @@
 # Incremental Builds
 
-Recall the process by which multi-file programs are built. The source files are independently translated into object files. Then the resulting object files are linked, generating an executable. Consider two approaches to rebuilding a program after changes have been made to the source code:
+Recall the process by which multi-file programs are built. The source files are independently translated into object files. Then the resulting object files are linked, generating an executable. 
+
+With this knowledge in mind, Consider two approaches to rebuilding a program after changes have been made to the source code:
 
 1. Rebuild all object files, then link them to produce an updated executable.
 2. Rebuild only affected object files, then link updated object files with "old" object files to produce an updated executable.&#x20;
