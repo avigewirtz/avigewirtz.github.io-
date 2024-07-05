@@ -1,61 +1,24 @@
 # Incremental Builds
 
-
-- the key idea of incremwntsl builds is to cache intermediate results rhat can potentially be reused in a sunsequent build
-
-
-- how does rhis work wirh C programs? 
-
-- recall underlying process
-
-- 
-- the key idea of incremental builds is for a build to save time by using knowledge obtained in a previous buuod 
-
-- how do we do so 
-- current method we've been using is to rebuild entire program every time a chamgw is made
-
-- an incremental build, by contrast, rebuilds only chnaged parts 
-- how do we make aomething incremwnral? 
-
-- we dont have to chnage anything about the structure of our program or the underlying build process. we simply avoid redundant work. 
-- recall the underlying process 
-- 
-
-Recall the process by which multi-file programs are built. The source files are independently translated into object files. Then the resulting object files are linked, generating an executable. This underlying proxess rakes places regardless of which soecific commands ws use to build tje prohram. 
-
-With this knowledge in mind, Consider two approaches to rebuilding a program after changes have been made to the source code:
-
-1. Rebuild all object files, then link them to produce an updated executable.
-2. Rebuild only affected object files, then link updated object files with "old" object files to produce an updated executable. Notjing about the structure ofnthe program or build process changes  we simplt avoid doing redundant work&#x20; 
-
-Approach 1 is easy, since we can blindly run the followinfg command each time a change is made:&#x20;
-
-Appraoch 2, however, requires some work. First, we have to cache object files. Second, to know which object files have been rendered obsolete by changes. This requires tracking dependencies.&#x20;
-
-
-
-
-
-
-
-Consider the following approach to building testintmath. Eaach time, we run the The current approach we've been using to build multi-file programs like testintmath is to build the entire thing every time a change is made. We do so via the following command:
-
-```
-gcc217 intmath.c testintmath.c -o testintmath
-```
-
-This appraoch is wasteful, however. Recall what happens under the hood each time we run this command. The source files are independtly preprocessed, compiled, and assembled into object files, which are then linked. Here, we're rebubuilding ovbject files that were not affected by changes. Instead, we could rebuold only the affected files. In practice, how do we make the build incremental? relies on two key things:
-
-1. caching object files. This may sound trivial, but to reuse object files, you have to actaully have them in the first place.&#x20;
-2. dependency tracking. you have to know which source files each object file depends on. only then can you know which cached object files have been rendered obsolete and must be rebuilt.&#x20;
-
-
-
-
-
-Incremental builds work by caching intermediate results of a build and then reusing them in future builds. To know which cached results can be reused and which were rendered obsolete by changes to the source code, it relies on accurate dependency tracking.&#x20;
+Incremental builds work by caching intermediate results of a build and then reusing them in future builds. To know which cached results can be reused and which were rendered obsolete by changes to the source code, it relies on accurate dependency tracking.
 
 To make things concrete, let's first apply the incremental build technique to a simple mathematical system of questions and then tie it in to C programs. Consider the following system of equations:
+
+z = x + y
+
+x = sin(a)
+
+y = sin(b)
+
+where a = 37 and y = 73.&#x20;
+
+to compute z, we first compute x = sin(37) = 0.6018. Next, we compute y = sin(73) = 0.9563. Adding these together, we get z = 0.6018 + 0.9563 = 1.5581.&#x20;
+
+Assume we saved the intermediate results generated during this computation. In other words, we remeber that x = 0.6018 and y = 0.9563.&#x20;
+
+Now, suppose y changes from 73 to 83. to recompute z, instead of recomputing everything form scratch, we go to our cache and reuse unnaffected values. the how do we determine which values we don't need to recompute x, since we already know that it equals 0.6018 from our previous conputation, and this value is completely independent of the value of b. Instead, we skip directly to calculating y = sin(83) = 0.9925. So now we have z = 0.6018 + 0.9925 = 1.5943.
+
+As this example has shown, caching intermediate results enables us avoid doing redundant work.&#x20;
 
 $$z = x + y\\ x = \sin(a)\\y = \sin(b)$$+ 3.5
 
@@ -67,13 +30,9 @@ Now, suppose b changes from $$b = 73^\circ$$ to $$b = 83^\circ$$. We now want to
 
 z and y depend on b, but x does not depend on b. therefore, we need only recompute x
 
-
-
 To recompute 𝑧, we don’t need to recompute x. We can reuse the $$0.6018$$ value we obtained in our previous computation--provided we saved it, that is! we recompute y, then add the result to the
 
 is $$\sin(83^\circ)$$, which is approximately $$0.9925$$. So now we have $$z = 0.6018 + 0.9925 = 1.5943$$.
-
-
 
 More formally, we can capture these dependencies via a directed graph.
 
