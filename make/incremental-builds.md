@@ -1,44 +1,10 @@
 # Incremental Builds
 
-Incremental builds work by caching intermediate results of a build and then reusing them in future builds. To know which cached results can be reused and which were rendered obsolete by changes to the source code, it relies on accurate dependency tracking.
+Suppose we have the equation $$z = \sin(x) + \sin(y)$$, where $$x = 37^\circ$$ and $$y = 73^\circ$$. To compute $$z$$, we first calculate $$\sin(37^\circ)$$, which is approximately $$0.6018$$. Next, we calculate $$\sin(73^\circ)$$, which is approximately $$0.9563$$. Adding these together, we get $$z = 0.6018 + 0.9563 = 1.5581$$.
 
-To make things concrete, let's first apply the incremental build technique to a simple mathematical system of questions and then tie it in to C programs. Consider the following system of equations:
+Now, suppose 𝑦 changes from $$y = 73^\circ$$ to $$y = 83^\circ$$. To recompute 𝑧, we don’t need to recompute $$\sin(37^\circ)$$. We can reuse the $$0.6018$$ value we obtained in our previous computation--provided we saved it, that is! The only new nontrivial computation needed is $$\sin(83^\circ)$$, which is approximately $$0.9925$$. So now we have $$z = 0.6018 + 0.9925 = 1.5943$$.
 
-z = x + y
-
-x = sin(a)
-
-y = sin(b)
-
-where a = 37 and y = 73.&#x20;
-
-to compute z, we first compute x = sin(37) = 0.6018. Next, we compute y = sin(73) = 0.9563. Adding these together, we get z = 0.6018 + 0.9563 = 1.5581.&#x20;
-
-Assume we saved the intermediate results generated during this computation. In other words, we remeber that x = 0.6018 and y = 0.9563.&#x20;
-
-Now, suppose y changes from 73 to 83. to recompute z, instead of recomputing everything form scratch, we go to our cache and reuse unnaffected values. the how do we determine which values we don't need to recompute x, since we already know that it equals 0.6018 from our previous conputation, and this value is completely independent of the value of b. Instead, we skip directly to calculating y = sin(83) = 0.9925. So now we have z = 0.6018 + 0.9925 = 1.5943.
-
-As this example has shown, caching intermediate results enables us avoid doing redundant work.&#x20;
-
-$$z = x + y\\ x = \sin(a)\\y = \sin(b)$$+ 3.5
-
-where $$a = 37^\circ$$ and $$b = 73^\circ$$.
-
-To compute $$z$$, we first calculate $$x = \sin(37^\circ) = 0.6018$$. Next, we calculate $$y = \sin(73^\circ) = 0.9563$$. To compute z, we add x and y, getting $$z = 0.6018 + 0.9563 = 1.5581$$.
-
-Now, suppose b changes from $$b = 73^\circ$$ to $$b = 83^\circ$$. We now want to recompute z. Two questionsDo we need to recalculate everything? Not necessarily! An incremental build would realize that:
-
-z and y depend on b, but x does not depend on b. therefore, we need only recompute x
-
-To recompute 𝑧, we don’t need to recompute x. We can reuse the $$0.6018$$ value we obtained in our previous computation--provided we saved it, that is! we recompute y, then add the result to the
-
-is $$\sin(83^\circ)$$, which is approximately $$0.9925$$. So now we have $$z = 0.6018 + 0.9925 = 1.5943$$.
-
-More formally, we can capture these dependencies via a directed graph.
-
-As our winded example has hopefille shown,
-
-What does this have to do with C programs? Well, the principle of incremental builds in C work in exactly the same way. Recall the process by which multi-file programs are built. Each `.c` file is _independently_ translated into an object file. For simplicity, we'll refer to this process as compilation, but keep in mind that we actually mean preprocessing, compilation, and assembly. Of note is that in the preprocessing stage, headers specified in `#include` directives are inserted. Then, to produce an executable, the object files are linked--along with necessary object files from the C standard library. This process is shown in Figure 12 using a dummy `foobar` program.
+Notice what we did here. We cached the intermediate values generated during the first conputation and reused the unnaffected values in the next computation. What does this have to do with C programs? Well, the principle of incremental builds in C work in exactly the same way. Recall the process by which multi-file programs are built. Each `.c` file is _independently_ preprocessed, compiled, and assembled into an object file. For simplicity, we'll refer to this process as compilation, but keep in mind that we actually mean preprocessing, compilation, and assembly. Of note is that in the preprocessing stage, headers specified in `#include` directives are inserted. Then, to produce an executable, the object files are linked--along with necessary object files from the C standard library. This process is shown in Figure 12 using a dummy `foobar` program.
 
 <figure><img src="../.gitbook/assets/Frame 32.png" alt="" width="563"><figcaption></figcaption></figure>
 
@@ -46,9 +12,15 @@ We can model this process using the following equation:
 
 $$foobar = compile(foo.c) + compile(bar.c)$$
 
-(Of course, linking or more complicated than the simple concatenation of object files, but this equation will do.) Just like in our math example where only sin(y) was recalculated when `y` changed, so too only compile(foo.c) needs to be re-run when bar.c is modified, and vice versa.
+(Of course, linking or more complicated than the simple concatenation of object files, but this equation will do.)&#x20;
 
-The caveat is that diving a C program along the lines of `.c` files is an oversimplification, since `.c` files can `#include` header files. To be more precise, we really need to think it terms of translation units. A translation unit is a .c file along with all headers included. Note that translation units can--and often do--overlap.
+We apply the same principle we did in our math example. we cache intermediate reuslts--object files. Then, in future builds, we rebuild only the object files that depend on changed source files.&#x20;
+
+
+
+Just like in our math example where only sin(y) was recalculated when `y` changed, so too only compile(foo.c) needs to be re-run when bar.c is modified, and vice versa.&#x20;
+
+The caveat is that diving a C program along the lines of `.c` files is an oversimplification, since `.c` files can `#include` header files. To be more precise, we really need to think it terms of translation units. A translation unit is a .c file along with all headers included. Note that translation units can--and often do--overlap.&#x20;
 
 #### Example
 
