@@ -1,11 +1,32 @@
 # Incremental Builds
 
+
+- the key idea of incremwntsl builds is to cache intermediate results rhat can potentially be reused in a sunsequent build
+
+
+- how does rhis work wirh C programs? 
+
+- recall underlying process
+
+- 
+- the key idea of incremental builds is for a build to save time by using knowledge obtained in a previous buuod 
+
+- how do we do so 
+- current method we've been using is to rebuild entire program every time a chamgw is made
+
+- an incremental build, by contrast, rebuilds only chnaged parts 
+- how do we make aomething incremwnral? 
+
+- we dont have to chnage anything about the structure of our program or the underlying build process. we simply avoid redundant work. 
+- recall the underlying process 
+- 
+
 Recall the process by which multi-file programs are built. The source files are independently translated into object files. Then the resulting object files are linked, generating an executable. This underlying proxess rakes places regardless of which soecific commands ws use to build tje prohram. 
 
 With this knowledge in mind, Consider two approaches to rebuilding a program after changes have been made to the source code:
 
 1. Rebuild all object files, then link them to produce an updated executable.
-2. Rebuild only affected object files, then link updated object files with "old" object files to produce an updated executable.&#x20;
+2. Rebuild only affected object files, then link updated object files with "old" object files to produce an updated executable. Notjing about the structure ofnthe program or build process changes  we simplt avoid doing redundant work&#x20; 
 
 Approach 1 is easy, since we can blindly run the followinfg command each time a change is made:&#x20;
 
