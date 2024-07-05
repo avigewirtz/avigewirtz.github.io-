@@ -1,6 +1,6 @@
 # Incremental Builds
 
-Recall the process by which multi-file programs are built. The source files are independently translated into object files. Then the resulting object files are linked, generating an executable. 
+Recall the process by which multi-file programs are built. The source files are independently translated into object files. Then the resulting object files are linked, generating an executable. This underlying proxess rakes places regardless of which soecific commands ws use to build tje prohram. 
 
 With this knowledge in mind, Consider two approaches to rebuilding a program after changes have been made to the source code:
 
