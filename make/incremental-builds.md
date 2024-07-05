@@ -1,28 +1,8 @@
 # Incremental Builds
 
-Incremental build work by tracking dependencies among files and rebuulding onot rhe affected files after changes are made. To illustrate, lets use a simple mathematicsl example. 
+Suppose we have the equation $$z = \sin(x) + \sin(y)$$, where $$x = 37^\circ$$ and $$y = 73^\circ$$. To compute $$z$$, we first calculate $$\sin(37^\circ)$$, which is approximately $$0.6018$$. Next, we calculate $$\sin(73^\circ)$$, which is approximately $$0.9563$$. Adding these together, we get $$z = 0.6018 + 0.9563 = 1.5581$$.
 
-Suppose we have the following:
-
-$$z = x + y$$
-$$ x = \sin(a)$$
-$$y = \sin(b)$$
-
-where $$a = 37^\circ$$ and $$b = 73^\circ$$. 
-
-To compute $$z$$, we first calculate $$ x = \sin(a^\circ) = \sin(37^\circ) = 0.6018$$. Next, we calculate   $$ y = \sin(b^\circ) = \sin(73^\circ) = 0.9563$$. To compute z, we add x and y, getting $$z = 0.6018 + 0.9563 = 1.5581$$.
-
-Now, suppose 𝑦 changes from $$y = 73^\circ$$ to $$y = 83^\circ$$. To recompute 𝑧, we don’t need to recompute x. We can reuse the $$0.6018$$ value we obtained in our previous computation--provided we saved it, that is! we recompute y, then add the result to the 
-
-is $$\sin(83^\circ)$$, which is approximately $$0.9925$$. So now we have $$z = 0.6018 + 0.9925 = 1.5943$$.
-
-More formally, we can capture these dependencies via a directed graph. 
-
-
-
-
-
-As our winded example has hopefille shown, 
+Now, suppose 𝑦 changes from $$y = 73^\circ$$ to $$y = 83^\circ$$. To recompute 𝑧, we don’t need to recompute $$\sin(37^\circ)$$. We can reuse the $$0.6018$$ value we obtained in our previous computation--provided we saved it, that is! The only new nontrivial computation needed is $$\sin(83^\circ)$$, which is approximately $$0.9925$$. So now we have $$z = 0.6018 + 0.9925 = 1.5943$$.
 
 What does this have to do with C programs? Well, the principle of incremental builds in C work in exactly the same way. Recall the process by which multi-file programs are built. Each `.c` file is _independently_ translated into an object file. For simplicity, we'll refer to this process as compilation, but keep in mind that we actually mean preprocessing, compilation, and assembly. Of note is that in the preprocessing stage, headers specified in `#include` directives are inserted. Then, to produce an executable, the object files are linked--along with necessary object files from the C standard library. This process is shown in Figure 12 using a dummy `foobar` program.
 
@@ -35,6 +15,10 @@ $$foobar = compile(foo.c) + compile(bar.c)$$
 (Of course, linking or more complicated than the simple concatenation of object files, but this equation will do.) Just like in our math example where only sin(y) was recalculated when `y` changed, so too only compile(foo.c) needs to be re-run when bar.c is modified, and vice versa.&#x20;
 
 The caveat is that diving a C program along the lines of `.c` files is an oversimplification, since `.c` files can `#include` header files. To be more precise, we really need to think it terms of translation units. A translation unit is a .c file along with all headers included. Note that translation units can--and often do--overlap.&#x20;
+
+
+
+dependency A relationship between two targets: target A depends on target B fi a change in target B produces a change in target A. For example, an object file, buzz.o, depends upon its source file, buzz.c, and on any other file that is included within its source file during preprocessing (buzz.h). A change in either of these sources changes the contents of the object file when it is created
 
 #### Example
 
@@ -159,10 +143,10 @@ int lcm(int iFirst, int iSecond);
 {% endtab %}
 {% endtabs %}
 
-Our program consists of two translation units.
+Our program consists of two translation units:
 
-1. intmath.c and intmath.h
-2. testintmath.c, intmafh.h, stdio.h, and stdlib.h
+1. `intmath.c` and `intmath.h`
+2. `testintmath.c`, `intmath.h`, `stdio.h`, and `stdlib.h`
 
 Because stdio.h and stdlib.h are system header files that we do not modify, we won't concern ourselves wirh the.
 
