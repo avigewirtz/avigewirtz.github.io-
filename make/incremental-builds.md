@@ -1,8 +1,60 @@
 # Incremental Builds
 
-Suppose we have the equation $$z = \sin(x) + \sin(y)$$, where $$x = 37^\circ$$ and $$y = 73^\circ$$. To compute $$z$$, we first calculate $$\sin(37^\circ)$$, which is approximately $$0.6018$$. Next, we calculate $$\sin(73^\circ)$$, which is approximately $$0.9563$$. Adding these together, we get $$z = 0.6018 + 0.9563 = 1.5581$$.
+Recall the process by which multi-file programs are built. The source files are independently translated into object files. Then the resulting object files are linked, generating an executable. Consider two approaches to rebuilding a program after changes have been made to the source code:
 
-Now, suppose 𝑦 changes from $$y = 73^\circ$$ to $$y = 83^\circ$$. To recompute 𝑧, we don’t need to recompute $$\sin(37^\circ)$$. We can reuse the $$0.6018$$ value we obtained in our previous computation--provided we saved it, that is! The only new nontrivial computation needed is $$\sin(83^\circ)$$, which is approximately $$0.9925$$. So now we have $$z = 0.6018 + 0.9925 = 1.5943$$.
+1. Rebuild all object files, then link them to produce an updated executable.
+2. Rebuild only affected object files, then link updated object files with "old" object files to produce an updated executable.&#x20;
+
+Approach 1 is easy, since we can blindly run the followinfg command each time a change is made:&#x20;
+
+Appraoch 2, however, requires some work. First, we have to cache object files. Second, to know which object files have been rendered obsolete by changes. This requires tracking dependencies.&#x20;
+
+
+
+
+
+
+
+Consider the following approach to building testintmath. Eaach time, we run the The current approach we've been using to build multi-file programs like testintmath is to build the entire thing every time a change is made. We do so via the following command:
+
+```
+gcc217 intmath.c testintmath.c -o testintmath
+```
+
+This appraoch is wasteful, however. Recall what happens under the hood each time we run this command. The source files are independtly preprocessed, compiled, and assembled into object files, which are then linked. Here, we're rebubuilding ovbject files that were not affected by changes. Instead, we could rebuold only the affected files. In practice, how do we make the build incremental? relies on two key things:
+
+1. caching object files. This may sound trivial, but to reuse object files, you have to actaully have them in the first place.&#x20;
+2. dependency tracking. you have to know which source files each object file depends on. only then can you know which cached object files have been rendered obsolete and must be rebuilt.&#x20;
+
+
+
+
+
+Incremental builds work by caching intermediate results of a build and then reusing them in future builds. To know which cached results can be reused and which were rendered obsolete by changes to the source code, it relies on accurate dependency tracking.&#x20;
+
+To make things concrete, let's first apply the incremental build technique to a simple mathematical system of questions and then tie it in to C programs. Consider the following system of equations:
+
+$$z = x + y\\ x = \sin(a)\\y = \sin(b)$$+ 3.5
+
+where $$a = 37^\circ$$ and $$b = 73^\circ$$.
+
+To compute $$z$$, we first calculate $$x = \sin(37^\circ) = 0.6018$$. Next, we calculate $$y = \sin(73^\circ) = 0.9563$$. To compute z, we add x and y, getting $$z = 0.6018 + 0.9563 = 1.5581$$.
+
+Now, suppose b changes from $$b = 73^\circ$$ to $$b = 83^\circ$$. We now want to recompute z. Two questionsDo we need to recalculate everything? Not necessarily! An incremental build would realize that:
+
+z and y depend on b, but x does not depend on b. therefore, we need only recompute x
+
+
+
+To recompute 𝑧, we don’t need to recompute x. We can reuse the $$0.6018$$ value we obtained in our previous computation--provided we saved it, that is! we recompute y, then add the result to the
+
+is $$\sin(83^\circ)$$, which is approximately $$0.9925$$. So now we have $$z = 0.6018 + 0.9925 = 1.5943$$.
+
+
+
+More formally, we can capture these dependencies via a directed graph.
+
+As our winded example has hopefille shown,
 
 What does this have to do with C programs? Well, the principle of incremental builds in C work in exactly the same way. Recall the process by which multi-file programs are built. Each `.c` file is _independently_ translated into an object file. For simplicity, we'll refer to this process as compilation, but keep in mind that we actually mean preprocessing, compilation, and assembly. Of note is that in the preprocessing stage, headers specified in `#include` directives are inserted. Then, to produce an executable, the object files are linked--along with necessary object files from the C standard library. This process is shown in Figure 12 using a dummy `foobar` program.
 
@@ -12,13 +64,9 @@ We can model this process using the following equation:
 
 $$foobar = compile(foo.c) + compile(bar.c)$$
 
-(Of course, linking or more complicated than the simple concatenation of object files, but this equation will do.) Just like in our math example where only sin(y) was recalculated when `y` changed, so too only compile(foo.c) needs to be re-run when bar.c is modified, and vice versa.&#x20;
+(Of course, linking or more complicated than the simple concatenation of object files, but this equation will do.) Just like in our math example where only sin(y) was recalculated when `y` changed, so too only compile(foo.c) needs to be re-run when bar.c is modified, and vice versa.
 
-The caveat is that diving a C program along the lines of `.c` files is an oversimplification, since `.c` files can `#include` header files. To be more precise, we really need to think it terms of translation units. A translation unit is a .c file along with all headers included. Note that translation units can--and often do--overlap.&#x20;
-
-
-
-dependency A relationship between two targets: target A depends on target B fi a change in target B produces a change in target A. For example, an object file, buzz.o, depends upon its source file, buzz.c, and on any other file that is included within its source file during preprocessing (buzz.h). A change in either of these sources changes the contents of the object file when it is created
+The caveat is that diving a C program along the lines of `.c` files is an oversimplification, since `.c` files can `#include` header files. To be more precise, we really need to think it terms of translation units. A translation unit is a .c file along with all headers included. Note that translation units can--and often do--overlap.
 
 #### Example
 
@@ -143,10 +191,10 @@ int lcm(int iFirst, int iSecond);
 {% endtab %}
 {% endtabs %}
 
-Our program consists of two translation units:
+Our program consists of two translation units.
 
-1. `intmath.c` and `intmath.h`
-2. `testintmath.c`, `intmath.h`, `stdio.h`, and `stdlib.h`
+1. intmath.c and intmath.h
+2. testintmath.c, intmafh.h, stdio.h, and stdlib.h
 
 Because stdio.h and stdlib.h are system header files that we do not modify, we won't concern ourselves wirh the.
 

@@ -12,19 +12,13 @@ Consider a scenario where you modify header file `A`, which is `#included` in 20
 
 To make life easier (no pun intended), the `make` tool was developed, which automates this process. To incrementally build a program, `make` needs two pieces of information:
 
-1. The program's dependency graph. This is a directed graph that specifies the dependencies between the program's files as well as the commands to build each file from its dependencies. More on this in the next section.
+1. The program's dependency graph. This is a directed graph that specifies the dependencies between the program's files as well as the commands to build each file from its dependencies.
 2. The latest modification timestamp of each of the program's files.
 
-`make` can obtain the files' timestamps on it's own from the filesystem. The dependency graph is provided through a user-written file known as a _Makefile_, which we'll describe how to create in the next section. Once an appropriate Makefile is set up, the command: To use make, you need to create a makefile describing how to create one or more programs correctly; then you need to enter the make command to execute the makefile. First, we describe how to create a makefile, which is by far the more dif- ficult of the two topics. Second, we describe how to invoke make.
+`make` can obtain the files' timestamps on it's own from the filesystem. The dependency graph is provided through a user-written file known as a _Makefile_, which we'll describe how to create in the next section. Once an appropriate Makefile is set up, the command:
 
 ```bash
 make
 ```
 
 is all it takes to incrementally build the program.
-
-
-
-
-
-* A target is out of date if it does not exist or if it is older than any of the prerequisites (by comparison of last-modification times).
