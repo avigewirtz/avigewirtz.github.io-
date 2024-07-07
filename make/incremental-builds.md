@@ -1,10 +1,16 @@
 # Incremental Builds
 
-Suppose we have the equation $$z = \sin(x) + \sin(y)$$, where $$x = 37^\circ$$ and $$y = 73^\circ$$. To compute $$z$$, we first calculate $$\sin(37^\circ)$$, which is approximately $$0.6018$$. Next, we calculate $$\sin(73^\circ)$$, which is approximately $$0.9563$$. Adding these together, we get $$z = 0.6018 + 0.9563 = 1.5581$$.
+Building large programs can take a really long time. This was especially true back in the day when constructing programs could take several days. Initially, there's no way around it; the entire codebase must be built from scratch. The crucial question, however, is how do we speed up rebuilding? In other words, if we make a change to the program, how can we efficiently recompile it without starting from the beginning?
 
-Now, suppose 𝑦 changes from $$y = 73^\circ$$ to $$y = 83^\circ$$. To recompute 𝑧, we don’t need to recompute $$\sin(37^\circ)$$. We can reuse the $$0.6018$$ value we obtained in our previous computation--provided we saved it, that is! The only new nontrivial computation needed is $$\sin(83^\circ)$$, which is approximately $$0.9925$$. So now we have $$z = 0.6018 + 0.9925 = 1.5943$$.
+The key to faster rebuilds lies in saving intermediate results and reusing them when the source files they depend on remain unchanged. To understand this, it's helpful to recall what happens under the hood when a multi-file program is built. During the compilation process, the program is broken down into object files, which are compiled versions of individual source files. By caching these object files and reusing the ones whose source files haven't changed, we can significantly reduce the time needed for rebuilding the program.
 
-Notice what we did here. We cached the intermediate values generated during the first conputation and reused the unnaffected values in the next computation. What does this have to do with C programs? Well, the principle of incremental builds in C work in exactly the same way. Recall the process by which multi-file programs are built. Each `.c` file is _independently_ preprocessed, compiled, and assembled into an object file. For simplicity, we'll refer to this process as compilation, but keep in mind that we actually mean preprocessing, compilation, and assembly. Of note is that in the preprocessing stage, headers specified in `#include` directives are inserted. Then, to produce an executable, the object files are linked--along with necessary object files from the C standard library. This process is shown in Figure 12 using a dummy `foobar` program.
+The neat thing about this approach is that we don't even need to alter anything about the structure of our program or the underlying build process. We simply take advantage of the separate compilation facility already offered by GCC. This built-in feature allows us to compile individual source files separately and then link them together, ensuring that only the modified parts of the code are recompiled, while the rest remains untouched. This method not only streamlines the development process but also saves valuable time and computational resources, making the task of building large programs much more manageable.
+
+
+
+
+
+Recall the process by which multi-file programs are built. Each `.c` file is _independently_ preprocessed, compiled, and assembled into an object file. For simplicity, we'll refer to this process as compilation, but keep in mind that we actually mean preprocessing, compilation, and assembly. Of note is that in the preprocessing stage, headers specified in `#include` directives are inserted. Then, to produce an executable, the object files are linked--along with necessary object files from the C standard library. This process is shown in Figure 12 using a dummy `foobar` program.
 
 <figure><img src="../.gitbook/assets/Frame 32.png" alt="" width="563"><figcaption></figcaption></figure>
 
