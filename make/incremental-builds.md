@@ -1,5 +1,7 @@
 # Incremental Builds
 
+The first time we build testintmath, we have to build the entire program. There's no way around that. The key, however, is how do we enable subsequent builds to be faster? we&#x20;
+
 Recall the process by which multi-file C programs are built. Each `.c` file is _independently_ preprocessed, compiled, and assembled into an object file. (For simplicity, we'll refer to this process as compilation, but keep in mind that we actually mean preprocessing, compilation, and assembly.) Of note is that in the preprocessing stage, headers specified in `#include` directives are inserted. To produce an executable, the object files are linked--along with necessary object files from the C standard library. This process is shown in Figure 12 using a dummy `foobar` program.
 
 <figure><img src="../.gitbook/assets/Frame 32.png" alt="" width="563"><figcaption></figcaption></figure>
