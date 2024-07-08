@@ -4,6 +4,8 @@ Recall the process by which multi-file C programs are built. Each `.c` file is _
 
 <figure><img src="../.gitbook/assets/Frame 32.png" alt="" width="563"><figcaption></figcaption></figure>
 
+Notice that each object files depends only on it's corresponding .c file, as well as any headers #included in the .c file. it does not depend on any other source files. The key to incremental builds lies in saving object files and reusing them when the source files they depend on remain unchanged.
+
 With this in mind, the strategy for implementing incremental builds becomes somewhat self-explanatory:
 
 
