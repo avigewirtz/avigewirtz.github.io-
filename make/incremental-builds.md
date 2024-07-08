@@ -1,18 +1,12 @@
 # Incremental Builds
 
-Building large programs can take a really long time. This was especially true back in the day when constructing programs could take several days. Initially, there's no way around it; the entire codebase must be built from scratch. The crucial question, however, is how do we speed up rebuilding? In other words, if we make a change to the program, how can we efficiently recompile it without starting from the beginning?
-
-The key to faster rebuilds lies in saving intermediate results and reusing them when the source files they depend on remain unchanged. To understand this, it's helpful to recall what happens under the hood when a multi-file program is built. During the compilation process, the program is broken down into object files, which are compiled versions of individual source files. By caching these object files and reusing the ones whose source files haven't changed, we can significantly reduce the time needed for rebuilding the program.
-
-The neat thing about this approach is that we don't even need to alter anything about the structure of our program or the underlying build process. We simply take advantage of the separate compilation facility already offered by GCC. This built-in feature allows us to compile individual source files separately and then link them together, ensuring that only the modified parts of the code are recompiled, while the rest remains untouched. This method not only streamlines the development process but also saves valuable time and computational resources, making the task of building large programs much more manageable.
-
-
-
-
-
-Recall the process by which multi-file programs are built. Each `.c` file is _independently_ preprocessed, compiled, and assembled into an object file. For simplicity, we'll refer to this process as compilation, but keep in mind that we actually mean preprocessing, compilation, and assembly. Of note is that in the preprocessing stage, headers specified in `#include` directives are inserted. Then, to produce an executable, the object files are linked--along with necessary object files from the C standard library. This process is shown in Figure 12 using a dummy `foobar` program.
+Recall the process by which multi-file C programs are built. Each `.c` file is _independently_ preprocessed, compiled, and assembled into an object file. (For simplicity, we'll refer to this process as compilation, but keep in mind that we actually mean preprocessing, compilation, and assembly.) Of note is that in the preprocessing stage, headers specified in `#include` directives are inserted. To produce an executable, the object files are linked--along with necessary object files from the C standard library. This process is shown in Figure 12 using a dummy `foobar` program.
 
 <figure><img src="../.gitbook/assets/Frame 32.png" alt="" width="563"><figcaption></figcaption></figure>
+
+With this in mind, the strategy for implementing incremental builds becomes somewhat self-explanatory:
+
+
 
 We can model this process using the following equation:
 
