@@ -1,16 +1,14 @@
 # Incremental Builds
 
-The first time we build testintmath, we have to build the entire program. There's no way around that. The key, however, is how do we enable subsequent builds to be faster? we&#x20;
+Suppose we have the equation $$z = \sin(x) + \sin(y)$$, where $$x = 37^\circ$$ and $$y = 73^\circ$$. To compute $$z$$, we first calculate $$\sin(37^\circ)$$, which is approximately $$0.6018$$. Next, we calculate $$\sin(73^\circ)$$, which is approximately $$0.9563$$. Adding these together, we get $$z = 0.6018 + 0.9563 = 1.5581$$.
 
-Recall the process by which multi-file C programs are built. Each `.c` file is _independently_ preprocessed, compiled, and assembled into an object file. (For simplicity, we'll refer to this process as compilation, but keep in mind that we actually mean preprocessing, compilation, and assembly.) Of note is that in the preprocessing stage, headers specified in `#include` directives are inserted. To produce an executable, the object files are linked--along with necessary object files from the C standard library. This process is shown in Figure 12 using a dummy `foobar` program.
+Now, suppose 𝑦 changes from $$y = 73^\circ$$ to $$y = 83^\circ$$. To recompute 𝑧, we don’t need to recompute $$\sin(37^\circ)$$. We can reuse the $$0.6018$$ value we obtained in our previous computation--provided we saved it, that is! The only new nontrivial computation needed is $$\sin(83^\circ)$$, which is approximately $$0.9925$$. So now we have $$z = 0.6018 + 0.9925 = 1.5943$$.
+
+Notice what we did here. We cached the intermediate values generated during the first computation and reused the unaffected values in the next computation. The principle of incremental builds in C work in almost exactly the same way.&#x20;
+
+Recall the process by which multi-file programs are built. Each `.c` file is _independently_ preprocessed, compiled, and assembled into an object file. For simplicity, we'll refer to this process as compilation, but keep in mind that we actually mean preprocessing, compilation, and assembly. Of note is that in the preprocessing stage, headers specified in `#include` directives are inserted. Then, to produce an executable, the object files are linked--along with necessary object files from the C standard library. This process is shown in Figure 12 using a dummy `foobar` program.
 
 <figure><img src="../.gitbook/assets/Frame 32.png" alt="" width="563"><figcaption></figcaption></figure>
-
-Notice that each object files depends only on it's corresponding .c file, as well as any headers #included in the .c file. it does not depend on any other source files. The key to incremental builds lies in saving object files and reusing them when the source files they depend on remain unchanged.
-
-With this in mind, the strategy for implementing incremental builds becomes somewhat self-explanatory:
-
-
 
 We can model this process using the following equation:
 
