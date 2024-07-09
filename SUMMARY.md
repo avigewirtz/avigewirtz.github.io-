@@ -89,7 +89,7 @@
 ## Make
 
 * [Introduction](make/background.md)
-* [Incremental Builds](make/incremental-builds.md)
+* [How Incremental Builds Work in C](make/incremental-builds.md)
 * [Automating Incremental Builds With make](make/makefiles.md)
 * [Writing a Simple Makefile](make/writing-a-simple-makefile/README.md)
   * [Running make](make/writing-a-simple-makefile/running-make.md)

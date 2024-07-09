@@ -15,7 +15,7 @@ To make life easier (no pun intended), the `make` tool was developed, which auto
 1. The program's dependency graph. This is a directed graph that specifies the dependencies between the program's files as well as the commands to build each file from its dependencies.
 2. The latest modification timestamp of each of the program's files.
 
-`make` can obtain the files' timestamps on it's own from the filesystem. The dependency graph is provided through a user-written file known as a _Makefile_, which we'll describe how to create in the next section. Once an appropriate Makefile is set up, the command:
+`make` can obtain the files' timestamps on it's own from the filesystem. The dependency graph is provided through a user-written file known as a _Makefile_, which we describe how to create in the next section. Once an appropriate Makefile is set up, the command:
 
 ```bash
 make
