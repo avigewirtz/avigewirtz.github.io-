@@ -27,7 +27,7 @@ $
 
 We see that `make` executes the command `echo "Hello, world!"`, printing `Hello, world!` on stdout. The fact that this command does not create a file named `hello` does not cause an error.
 
-Here's how it works. When `make` processes this rule, it assumes that `hello` represents a file. It thus looks for a file named `hello` in the working directory. Because it does not find one, it determines that `hello` needs to be built, and it thus executes the command `echo "Hello, world!"`. At this point, `make` considers its job complete. It does not care whether `hello` is in fact created.
+Here's how it works. When `make` processes this rule, it assumes that `hello` represents a file. It thus looks for a file named `hello` in the working directory. Because it does not find one, it determines that `hello` needs to be built, and it thus executes the command `echo "Hello, world!"`. At this point, `make` considers its job complete. It does not care whether a file named `hello` is in fact created.
 
 The important point to recognize is that because this rule will never create a file named `hello`, we can run `make hello` as many times as we'd like, and, each time, `make` will execute the command `echo "Hello, world!"`. For example, if we run `make hello` three times in a row:
 
@@ -44,7 +44,9 @@ Hello, world!
 $
 ```
 
-Let's now enhance our makefile by adding three commonly used phony targets: `all`, `clean`, and `clobber`. An explanation of each is provided in a comment in the makefile (note that everything following a `#` on a line is a comment).
+In real-world makefiles, three phony targets are commonly used: `all`, `clean`, and `clobber`. &#x20;
+
+Let's now enhance our makefile by adding three commonly used phony targets.
 
 {% code title="makefile version 2" %}
 ```makefile
@@ -78,7 +80,7 @@ intmath.o: intmath.c intmath.h
 {% hint style="info" %}
 **Purpose of the 'all' target**
 
-You might be wondering what purpose the `all` target serves in our program compared to simply using `testintmath` as the default target. Truthfully, it doesn't serve any real purpose, except perhaps for accommodating users who invoke `make all` out of habit.
+You might be wondering what purpose the `all` target serves in our program compared to simply using `testintmath` as the default target. Truthfully, it doesn't serve any real purpose, except perhaps for accommodating users who might invoke `make all` out of habit.
 
 The real purpose of `all` is to group multiple independent targets and effectively make them all default targets. For example, suppose we have a project with two executables:`hello1` and `hello2`. Making `hello1` and `hello2` dependencies of `all` effectively makes them both default targets (which will be triggered when we run `make`).
 

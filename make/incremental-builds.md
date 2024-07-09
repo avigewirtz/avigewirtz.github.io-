@@ -27,6 +27,8 @@ gcc -c intmath.c
 gcc intmath.o testintmath.o -o testintmath
 ```
 
+<figure><img src="../.gitbook/assets/Frame 31 (3).png" alt=""><figcaption></figcaption></figure>
+
 Similarly, suppose we modify testintmath.c. To rebuid testintmath, we run gcc -c on testintmath.c only, and then we link the newly created testintmath.o with the intmath.o from the previous build:&#x20;
 
 ```
@@ -54,5 +56,5 @@ Or via a single command:
 gcc217 intmath.c testintmath.c -o testintmath
 ```
 
-In other words, in both cases the .c files will be independently preprocessed, compiled, and assembled into object files, which are then linked. The only difference between these two approaches is that the two-command approach retains the object files while the single-command approach does not.
+In both cases, `intmath.c` and `testintmath.c` will be independently preprocessed, compiled, and assembled into object files, which are then linked. The difference between these two approaches is that the two-command approach retains the object files while the single-command approach does not.
 {% endhint %}
