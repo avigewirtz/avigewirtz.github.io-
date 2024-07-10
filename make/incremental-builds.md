@@ -13,14 +13,7 @@ gcc -c intmath.c testintmath.c
 gcc intmath.o testintmath.o -o testintmath
 ```
 
-Running `ls`, we see the object files in our directory:&#x20;
-
-```
-$ ls
-intmath.c testintmath.c intmath.o testintmath.o
-```
-
-With these object files in hand, subsequent builds can be incremental. For example, suppose we modify intmath.c. To rebuid testintmath, we run gcc -c on intmath.c **only**, and then we link the newly created intmath.o with the testintmath.o from the previous build:&#x20;
+With the object files in hand, subsequent builds can be incremental. For example, suppose we modify intmath.c. To rebuid testintmath, we run gcc -c on intmath.c **only**, and then we link the newly created intmath.o with the testintmath.o from the previous build:&#x20;
 
 ```
 gcc -c intmath.c
