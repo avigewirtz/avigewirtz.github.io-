@@ -1,28 +1,76 @@
 # Viewing the Commit History
 
-Now that we have made a few commits, let's take a look at how to view the commit history. The most basic command to view the commit history is `git log`, which displays the history in reverse chronological order. Assuming you've followed along in the previous section, your output should look similar to this:
+Now that we have made a few commits, let's take a look at how to view the commit history. The most basic command to view the commit history is `git log`, which displays the commit history in reverse chronological order, meaning the most recent commit appears first. Assuming you have followed along with the previous sections, your output should look similar to this:
 
-```bash
+```git
 $ git log
-commit 66ee698d6ffbb16d8e4b3df91f4b8b5f6c9b47d4 (HEAD -> main)
-Author: Your Name <your.email@example.com>
-Date:   Wed Jul 10 10:32:00 2024 -0400
+commit eb145a198ea3c47cd0e8b3923f5bb960b672602e (HEAD -> main)
+Author: Avi Gewirtz <sgewirtz@princeton.edu>
+Date:   Sat Apr 6 21:57:29 2024 -0400
 
     appended 'world' to hello.txt
 
-commit b78ab29f564d6fb18c0f7d8f4b8e78b1a7e60fb2
-Author: Your Name <your.email@example.com>
-Date:   Wed Jul 10 09:58:00 2024 -0400
+commit f8b9623a5c34f22f6e8e6bf9b5a438d3e2a8c1b2
+Author: Avi Gewirtz <sgewirtz@princeton.edu>
+Date:   Sat Apr 6 20:45:12 2024 -0400
 
-    initial commit with hello.txt, hi.txt, and bye/bye.txt
+    added hi.txt
+
+commit c0d3628d5a4eab36c3bba5d3f1d0459b6b5b3c1c
+Author: Avi Gewirtz <sgewirtz@princeton.edu>
+Date:   Sat Apr 6 20:30:45 2024 -0400
+
+    created bye directory with bye.txt
+
+commit b6a24e7a7c84d1e6b3a36f1b0c3d5e9d2a5c3b2d
+Author: Avi Gewirtz <sgewirtz@princeton.edu>
+Date:   Sat Apr 6 20:15:11 2024 -0400
+
+    initial commit with hello.txt and hi.txt
+
+commit a7d3627a6e34f22f3e8e6bf9b5a438d3e2a8b1a1
+Author: Avi Gewirtz <sgewirtz@princeton.edu>
+Date:   Sat Apr 6 20:00:45 2024 -0400
+
+    added project setup
+
+commit 9d2e8f6a3c24d1e3b6a35f1c0d3d5e9d1a5c3b2c
+Author: Avi Gewirtz <sgewirtz@princeton.edu>
+Date:   Sat Apr 6 19:45:23 2024 -0400
+
+    created initial structure
+
 ```
 
-We see two commit entries, each with four pieces of information:
+We see six commit entries, each with four pieces of information. Let's break it down using the most recent commit as an example:
 
-1. **Commit Hash:** A unique identifier for each commit, for example, `66ee698d6ffbb16d8e4b3df91f4b8b5f6c9b47d4`. This hash can be used to refer to a specific commit in various Git commands.
-2. **Author:** The name and email of the person who made the commit, such as `Your Name <your.email@example.com>`.
-3. **Date:** The date and time when the commit was made, e.g., `Wed Jul 10 10:32:00 2024 -0400`.
-4. **Commit Message:** A brief description of the changes introduced in the commit, for example, `appended 'world' to hello.txt`.
+*   commit eb145a198ea3c47cd0e8b3923f5bb960b672602e (HEAD -> main)
 
-At this point we only have two commits in your repo history which makes it easier to read the output easily. For repositories with many commit histories, this standard view may not help you to traverse a long list of detailed commit information with ease; In such situations you can provide the --oneline switch to list a summarized commit ID number along with the commit message.
+    This seemingly gibberish string is a 40 digit hex number that git uses to identify the commit. We'll elaborate on this in Commit ID. Note that your commit ID will be different than this, even if the content of your commit snapshot is identical.&#x20;
 
+
+*   Author: Avi Gewirtz \<sgewirtz@princeton.edu>.&#x20;
+
+    Name and email of the commit author. Git gets this information from the .git/config file.&#x20;
+
+
+*   Date:   Sat Apr 6 21:57:29 2024 -0400.&#x20;
+
+    This is the timestamp of when the commit was made.
+*   appended 'world' to hello.&#x20;
+
+    This is the commit message, describing the changes made in this commit..&#x20;
+
+
+
+At this point, we only have six commits in our repository history, making it easy to read the output. For repositories with extensive commit histories, this standard view may not be ideal. Instead, you can use the `--oneline` option, which shortens each commit entry to one line, showing only the first seven digits of the commit ID and the commit message:
+
+```
+$ git log --oneline
+eb145a1 (HEAD -> main) appended 'world' to hello.txt
+f8b9623 added hi.txt
+c0d3628 created bye directory with bye.txt
+b6a24e7 initial commit with hello.txt and hi.txt
+a7d3627 added project setup
+9d2e8f6 created initial structure
+```
