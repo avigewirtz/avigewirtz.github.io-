@@ -6,24 +6,11 @@ Continuing with our `testintmath` example, let's explore how to use `make` to au
 touch Makefile
 ```
 
-The next step is to populate the Makefile `testintmath`'s dependency graph. A dependency graph represents the relationships between the source files, object files, and the executable. Before we go over the syuntac for constructing it in make, let's first go over it graphically.&#x20;
+The next step is to populate the Makefile `testintmath`'s dependency graph. A dependency graph is a directed graph that describes the relationships between the source files, object files, and the executable. Before we go over the syntax for constructing it in make, let's first go over it graphically.&#x20;
 
 
 
 Each node in the graph represents a file, and the edges represent the dependencies between these files. For instance, if file A depends on file B, an edge from A to B indicates that B needs to be up-to-date before A can be rebuilt.
-
-
-
-\<problem is that I haven't really expained what dependency graph is properly. im not sure the reader will follow> As we mentioned eariler, a dependency graph contains two pieces of information:
-
-* The dependencies among files in the program.&#x20;
-* the commands to build each file from its dependencies
-
-
-
-* \<i think it needsIt is helpful to first sketch the dependency graph graphically and then explain how to write it in make synatx. \<explain steps to creating a dependency graph for testintmath>
-
-
 
 
 
