@@ -1,12 +1,15 @@
 # Writing a Simple Makefile
 
-Continuing with our `testintmath` example, let's explore how to use `make` to automate incremental builds. Assume the working directory contains `testintmath`'s source files (i.e., `testintmath.c`, `intmath.c`, and `intmath.h`). To build `testintmath` with `make`, the first step is to create a makefile in the working directory. We can name the makefile whatever we'd like, but `make` automatically searches for a file named `makefile` or `Makefile` making these names more convenient. You can create the makefile with the following command:
+Assume the working directory contains `testintmath`'s source files (i.e., `testintmath.c`, `intmath.c`, and `intmath.h`). To build `testintmath` with `make`, the first step is to create a makefile in the working directory. We can name the makefile whatever we'd like, but `make` automatically searches for a file named `makefile` or `Makefile` making these names more convenient. You can create the makefile with the following command:
 
 ```bash
 touch Makefile
 ```
 
-The next step is to populate the Makefile `testintmath`'s dependency graph. A dependency graph is a directed graph that describes the relationships between the source files, object files, and the executable. Before we go over the syntax for constructing it in make, let's first go over it graphically.&#x20;
+The next step is to populate the Makefile `testintmath`'s dependency graph. As we mentioned earlier, a dependency graph is a directed graph that describes the dependencies between the source files, object files, and the executable. Visually, it lools like this:
+
+The arrows indicate dependencies. 
+Before we go over the syntax for constructing it in make, let's first go over it graphically.&#x20;
 
 
 
