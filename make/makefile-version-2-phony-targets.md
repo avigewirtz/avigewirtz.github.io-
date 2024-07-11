@@ -1,7 +1,5 @@
 # Phony targets
 
-* current makefile is extremely simple, but it captures the core of make. to incrementally build a program. make has many features we havent discussed. Make is essenitally a language for describing dependency graphs. But it has more than that. First
-
 In our current makefile, each rule's target is the name of a file that is built when when the rule's command is executed. For example, in the following rule:
 
 ```makefile
@@ -46,9 +44,9 @@ Hello, world!
 $
 ```
 
-In real-world makefiles, three phony targets are commonly used: `all`, `clean`, and `clobber`. &#x20;
+In real-world makefiles, the following three phony targets are commonly used: `all`, `clean`, and `clobber`. &#x20;
 
-Let's now enhance our makefile by adding three commonly used phony targets.
+Makfile version 2 incorporates these 3 phony targets.&#x20;
 
 {% code title="makefile version 2" %}
 ```makefile

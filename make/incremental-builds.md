@@ -4,7 +4,7 @@ Recall the underlying process by which `testinmath` is built. intmath.c and test
 
 <figure><img src="../.gitbook/assets/Frame 31 (2).png" alt=""><figcaption></figcaption></figure>
 
-The key to incremental builds is caching object files and reusing them in subsequent builds when the source files they depend on haven't changed. Let’s demonstrate this in action using our testintmath program.&#x20;
+The key to incremental builds lies in caching object files and reusing them in subsequent builds when the source files they depend on haven't changed. Let’s demonstrate this in action using our testintmath program.&#x20;
 
 The first time we build `testintmath`, we do a full build. There’s no way around that. Importantly, however, we ensure to save the intermediately generated object files--intmath.o and testintmath.o--which by default gcc discards. How do we save object files? Recall the -c option, which tells gcc to halt the build process after the assembly stage and output object files. Thus, we build testintmath with the following two commands:
 
@@ -20,7 +20,7 @@ gcc -c intmath.c
 gcc intmath.o testintmath.o -o testintmath
 ```
 
-<figure><img src="../.gitbook/assets/Frame 31 (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Frame 31 (4).png" alt=""><figcaption></figcaption></figure>
 
 Similarly, suppose we modify testintmath.c. To rebuid testintmath, we run gcc -c on testintmath.c only, and then we link the newly created testintmath.o with the intmath.o from the previous build:&#x20;
 

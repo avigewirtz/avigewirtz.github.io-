@@ -21,4 +21,4 @@ To make life easier (no pun intended), the `make` tool was developed, which auto
 make
 ```
 
-is all it takes to incrementally build the program. `make` will analyze the makefile and, based on the files' dependencies and latest modification timestamps, determine the minimum set of files that need to be rebuilt to bring the program up to date.
+is all it takes to incrementally build the program. `make` will analyze the makefile and, based on the files' dependencies and latest modification timestamps, determine the minimum set of files that need to be rebuilt to bring the program up to date. It's algorithm can be summed up as follows:

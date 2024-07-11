@@ -1,70 +1,43 @@
 # Writing a Simple Makefile
 
-Assume the working directory contains `testintmath`'s source files (i.e., `testintmath.c`, `intmath.c`, and `intmath.h`). To build `testintmath` with `make`, the first step is to create a makefile in the working directory. We can name the makefile whatever we'd like, but `make` automatically searches for a file named `makefile` or `Makefile` making these names more convenient. You can create the makefile with the following command:
+Assume the working directory contains `testintmath`'s source files (i.e., `testintmath.c`, `intmath.c`, and `intmath.h`). To build `testintmath` with `make`, the first step is to create a makefile in the working directory. You can name the makefile whatever you'd like, but `make` automatically searches for a file named `makefile` or `Makefile`, making these names more convenient. To create the makefile, run the following command:
 
 ```bash
 touch Makefile
 ```
 
-The next step is to populate the Makefile `testintmath`'s dependency graph. As we mentioned earlier, a dependency graph is a directed graph that describes the dependencies between the source files, object files, and the executable. Visually, it lools like this:
+The next step is to populate the Makefile `testintmath`'s dependency graph. As we mentioned earlier, a dependency graph is a directed graph that contains two pieces of information:
 
+* The dependencies between the source files, object files, and the executable.&#x20;
+* The commands to build each each file from its dependencies.&#x20;
 
+Visually, it looks like this:
 
-The neat thing about dependency graphs is they make it really wasy to see which files are rendered bsoleye by chnages to the sourve code. Just follow the arrows. Any file which directly or indrevtly points to the kodified sourve file is rendered obsolete. So, fo example, if intmath.c is modified, intmath.o and testintmath are rendered obsolete. 
+<figure><img src="../../.gitbook/assets/Frame 33.png" alt="" width="563"><figcaption></figcaption></figure>
 
-points i want to make:
+The dependencies are indicated by arrows, and the each file with dependencies is labeled with the command to build it from its dependencies. In make temrinology, these files are known as targets.&#x20;
 
-- direcrt va transitive dependenxy 
-- why were not incouding stdio.h
-- that by nere glance it tells us which files are out of date and order ro rebuuld. for example, if intmat.c is mosifies, intmath.o and testintmath are out of date. 
+The neat thing about dependency graphs is they make it really easy to see which files are rendered obsolete by changes to one of the source files. Just follow the arrows. Any file which directly or indirectly points to the modified source file is rendered obsolete. So, for example, if intmath.c is modified, intmath.o and testintmath are rendered obsolete.&#x20;
 
+There is a difference, however, between direct and transitive dependencies. For example, intmath.o directly depends on intmath.c, but testintmath transitively depends on intmath.o.
 
+{% hint style="info" %}
+NOTE BOX: Note that we're not including stdio.h and stdlib.h, even though testintmath.c #includes them, since we don't modify these files, and as such don't need to be concerned with them in makefiles.&#x20;
+{% endhint %}
 
-The arrows indicate dependencies. So, for example, the arrows from intmath.o to intmath.c ans intmafh.h inficate that intmafh.o depends on intmath.c and intmath.h. 
-
-
-Note that were not including stdio.h and stdlib.h, even tjoigh testintmath.c depends on them as well. This is because qe dont touch thesw files. 
-
-The neat thing about a dependency graph is it tells by a quisck glance we can infer which files each file depends on. If an arrow from file A to B, then A depends on B. For example, we see that testintmath depends on both objevt files and all sourve foles. 
-
-There is an important distinction between direct dependencies and transitive dependencies. 
-
-Before we go over the syntax for constructing it in make, let's first go over it graphically.&#x20;
-
-
-
-Each node in the graph represents a file, and the edges represent the dependencies between these files. For instance, if file A depends on file B, an edge from A to B indicates that B needs to be up-to-date before A can be rebuilt.
-
-
-
-Before we show how to write this dependency graph in `make` syntax, let's go over it graphically. Figure 12.3 shows a graphical representation of `testintmath`'s dependency graph.
-
-<figure><img src="../../.gitbook/assets/Group 125 (1).png" alt="" width="563"><figcaption><p>Figure 12.3: testintmath's dependency graph</p></figcaption></figure>
-
-here's how we interpret the dependency graph:
-
-* tetsintmath depends on testintmath.o and intmath.o
-* the command to build testintmath is&#x20;
-
-
-
-In this graph, files are represented by nodes, and dependencies are represented by directed edges (->) . Each file with dependencies—known as a _target_—is labeled with the command to build it. Our program has three targets: the executable `testintmath`, and the object files `testintmath.o` and `intmath.o`. For convenience, these targets are circled in red. We see the following dependencies:
-
-* `testintmath` depends on `testintmath.o` and `intmath.o`
-* `tetsintmath.o` depends on `tetsintmath.c` and `intmath.h`
-* `intmath.o` depends on `intmath.c` and `intmath.c`
-
-Translating this dependency graph into a Makefile is remarkably straightforward. We create what is known as a _dependency rule_ for each target in the dependency graph. Dependency rules have the following syntax:
+Translating this dependency graph into a Makefile is remarkably straightforward. We create what is known as a _dependency rule_ for each target in the dependency graph. The target's in our dependency graph correspond to the object files (intmath.o and testintmath.o) and the executable (testintmath). Dependency rules have the following syntax:
 
 ```
 target: dependencies
 <tab> command
 ```
 
-* **Dependencies**. The files that the target depends on.
-* **Command**. The command to build the target. Note that the command _must_ be preceded by a Tab character. Failure to do so will result in an error.
+This syntax should hopefully be pretty self-explanatory, but note a couple of things:
 
-This results in the following makefile:
+* dependencies refers to direct dependencies, not trastitive ones. So, for example, in the rule for testintmath, we list testintmath.o and intmath.o only. We don't list&#x20;
+* the command must be preceded by a tab
+
+Here is the complete makefile for testintmath:
 
 ```makefile
 testintmath: testintmath.o intmath.o
@@ -77,4 +50,4 @@ intmath.o: intmath.c intmath.h
     gcc217 -c intmath.c
 ```
 
-This makefile is extremely simple, but it captures the core of make. Essentially a language for specifying dependency graphs.&#x20;
+This makefile is extremely simple, but it captures the core of make.&#x20;

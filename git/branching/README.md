@@ -1,21 +1,5 @@
 # Branching
 
-Before we can discuss branching, we have to first go over how git stores commit history.&#x20;
-
-
-
-We mentioned earlier that each commit contains a pointer to its parent commit.&#x20;
-
-
-
-Graphically, it looks like the following:&#x20;
-
-<figure><img src="../../.gitbook/assets/Group 410.png" alt="" width="375"><figcaption><p>Figure 1-2: A linear commit graph</p></figcaption></figure>
-
-
-
-
-
 Until now, we've being thinking of a repository as a linear sequence of commits, like the one shown in the commit graph in Figure 3.
 
 <figure><img src="../../.gitbook/assets/Group 36 (5).png" alt="" width="375"><figcaption></figcaption></figure>
