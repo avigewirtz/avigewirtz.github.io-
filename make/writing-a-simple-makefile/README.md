@@ -10,6 +10,8 @@ The next step is to populate the Makefile `testintmath`'s dependency graph. As w
 
 
 
+The neat thing about dependency graphs is they make it really wasy to see which files are rendered bsoleye by chnages to the sourve code. Just follow the arrows. Any file which directly or indrevtly points to the kodified sourve file is rendered obsolete. So, fo example, if intmath.c is modified, intmath.o and testintmath are rendered obsolete. 
+
 points i want to make:
 
 - direcrt va transitive dependenxy 
