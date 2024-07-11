@@ -8,7 +8,10 @@ touch Makefile
 
 The next step is to populate the Makefile `testintmath`'s dependency graph. As we mentioned earlier, a dependency graph is a directed graph that describes the dependencies between the source files, object files, and the executable. Visually, it lools like this:
 
-The arrows indicate dependencies. 
+The arrows indicate dependencies. The neat thing about a dependency graph is it tells by a quisck glance we can infer which files each file depends on. If an arrow from file A to B, then A depends on B. For example, we see that testintmath depends on both objevt files and all sourve foles. 
+
+There is an important distinction between direct dependencies and transitive dependencies. 
+
 Before we go over the syntax for constructing it in make, let's first go over it graphically.&#x20;
 
 
