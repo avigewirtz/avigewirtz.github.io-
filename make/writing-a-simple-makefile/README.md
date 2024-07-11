@@ -8,7 +8,22 @@ touch Makefile
 
 The next step is to populate the Makefile `testintmath`'s dependency graph. As we mentioned earlier, a dependency graph is a directed graph that describes the dependencies between the source files, object files, and the executable. Visually, it lools like this:
 
-The arrows indicate dependencies. The neat thing about a dependency graph is it tells by a quisck glance we can infer which files each file depends on. If an arrow from file A to B, then A depends on B. For example, we see that testintmath depends on both objevt files and all sourve foles. 
+
+
+points i want to make:
+
+- direcrt va transitive dependenxy 
+- why were not incouding stdio.h
+- that by nere glance it tells us which files are out of date and order ro rebuuld. for example, if intmat.c is mosifies, intmath.o and testintmath are out of date. 
+
+
+
+The arrows indicate dependencies. So, for example, the arrows from intmath.o to intmath.c ans intmafh.h inficate that intmafh.o depends on intmath.c and intmath.h. 
+
+
+Note that were not including stdio.h and stdlib.h, even tjoigh testintmath.c depends on them as well. This is because qe dont touch thesw files. 
+
+The neat thing about a dependency graph is it tells by a quisck glance we can infer which files each file depends on. If an arrow from file A to B, then A depends on B. For example, we see that testintmath depends on both objevt files and all sourve foles. 
 
 There is an important distinction between direct dependencies and transitive dependencies. 
 
