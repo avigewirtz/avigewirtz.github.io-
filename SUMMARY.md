@@ -53,7 +53,7 @@
   * [Viewing the Commit History](git/acquiring-a-git-repository/commit-graph.md)
   * [Commit Graph](git/acquiring-a-git-repository/commit-graph-1.md)
   * [Understanding the Commit ID](git/acquiring-a-git-repository/how-git-identifies-commits.md)
-  * [Page](git/acquiring-a-git-repository/page.md)
+  * [Going back in history](git/acquiring-a-git-repository/going-back-in-history.md)
 * [Branching](git/branching/README.md)
   * [Merging](git/branching/merging/README.md)
     * [How 3-way merges work](git/branching/merging/how-3-way-merges-work.md)

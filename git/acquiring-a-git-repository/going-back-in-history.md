@@ -1,4 +1,14 @@
-# Page
+# Going back in history
+
+three commands:
+
+* git checkout
+* git revert&#x20;
+* git reset&#x20;
+
+
+
+
 
 At any stage, you may want to view a previous commit, or you might want to reset to that stage.&#x20;
 
