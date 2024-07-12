@@ -83,8 +83,8 @@
 ## GCC Build Process
 
 * [Introduction](gnu-compiler-collection-gcc/introduction.md)
-* [The Big Picture](gcc-build-process/the-four-stage-build-process/README.md)
-  * [Example: charcount.c](gcc-build-process/the-four-stage-build-process/example-single-file-program.md)
+* [The Big Picture](gcc-build-process/the-four-stage-build-process.md)
+* [Example: charcount.c](gcc-build-process/example-single-file-program.md)
 * [Building Multi-file Programs](gcc-build-process/page-1-1.md)
 * [Identifying Cause of Build Errors](gcc/identifying-build-errors.md)
 * [GCC Cheatsheet](gnu-compiler-collection-gcc/gcc-cheatsheet.md)

@@ -25,17 +25,17 @@ int main(void) {
 
 #### The Starting Point
 
-Our program begins as a C source file, stored in charcount.c. We can roughly divide the source code into three categories:
+Our program begins as C source code. We can roughly divide the source code into three categories:
 
 * **Comments**, meant for human readers.
-* **Preprocessing language**, meant for preprocessor. The preprocessing language in our program consists of the `#include <stdio.h>` directive and the `EOF` macro. 
+* **Preprocessing language**, meant for preprocessor. The preprocessing language in our program consists of the `#include <stdio.h>` directive and the `EOF` macro.
 * **Raw C code** (i.e., everything else).
 
-Of note is that our program make calls to two functions: `printf` and `getchar`. Nowhere in our program is there defintioons for there functions. As we know, of course, these are library functions, and as we saw in the previous section, definitions of library functions are inserted at link time. 
+Of note is that our program make calls to two functions: `printf` and `getchar`. Nowhere in our program is there defintioons for there functions. As we know, of course, these are library functions, and as we saw in the previous section, definitions of library functions are inserted at link time.
 
 ### Preprocessing
 
-The first step to building our program is to preprocess it. The command to invoke the preprocessor is:
+The first step to building our program is preprocessing. The command to invoke the preprocessor is:
 
 ```bash
 gcc217 -E charcount.c -o charcount.i
@@ -82,7 +82,7 @@ int main(void) {
 ```
 {% endcode %}
 
-As you can see, this file contains only raw C code—no comments or prwproxessor directives. The contents of stdio.h were inserted, and the EOF macro was replaced with -1. 
+As you can see, this file contains only raw C code—no comments or prwproxessor directives. The contents of stdio.h were inserted, and the EOF macro was replaced with -1.
 
 {% hint style="success" %}
 You can think of the preprocessor as a "search-and-replace" tool:

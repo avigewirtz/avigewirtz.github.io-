@@ -1,5 +1,7 @@
 # Branching
 
+Branches allow you to work on two versions of a project at the same time. &#x20;
+
 Until now, we've being thinking of a repository as a linear sequence of commits, like the one shown in the commit graph in Figure 3.
 
 <figure><img src="../../.gitbook/assets/Group 36 (5).png" alt="" width="375"><figcaption></figcaption></figure>
