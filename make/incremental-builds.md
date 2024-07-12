@@ -1,10 +1,10 @@
 # How Incremental Builds Work in C
 
-Recall the underlying process by which `testinmath` is built. `intmath.c` and `testintmath.c` are _independently_ preprocessed, compiled, and assembled into object files `intmath.o` and `testintmath.o`. Of note is that in the preprocessing stage, headers specified via the `#include` directive are inserted into each file. Then, `intmath.o` and `testintmath.o` are linked--along with necessary object files from the C standard library--to produce the executable file `testintmath`. This process is shown in Figure X.&#x20;
+Recall the underlying process by which `testinmath` is built. `intmath.c` and `testintmath.c` are _independently_ preprocessed, compiled, and assembled into object files `intmath.o` and `testintmath.o`, respectively. Of note is that in the preprocessing stage, headers specified via the `#include` directive are fetched and inserted into each file `.c` file. Then, `intmath.o` and `testintmath.o` are linked--along with necessary object files from the C standard library--to produce the executable file `testintmath`. This multi-stage process is summarized in Figure X.&#x20;
 
 <figure><img src="../.gitbook/assets/Frame 31 (2).png" alt=""><figcaption></figcaption></figure>
 
-The key to incremental builds lies in caching object files and reusing them in subsequent builds when the source files they depend on haven't changed. Let’s demonstrate this in action using our `testintmath` program.&#x20;
+The key to incremental builds lies in caching object files and reusing them in subsequent builds when the source files they depend on haven't changed. Each object file depends on its corresping .,c files and all header included in it. Thus, intmath.o depends on intmath.c and intmath.h, while testintmath.o depends on testintmath.c, stdio.h, stdlib.h, and intmath.h. Say only `intmath.c` is modified. We rebuild our program but rebuilding intmath.o and testintmath only. We do not rebuild testintmath.o. Let’s demonstrate this incremental build strategy in action.&#x20;
 
 The first time we build `testintmath`, we do a full build. There’s no way around that. Importantly, however, we ensure to save the intermediately generated object files--`intmath.o` and `testintmath.o`--which by default `gcc` discards. How do we save object files? Recall the `-c` option, which tells `gcc` to halt the build process after the assembly stage and output object files. Thus, we build `testintmath` with the following two commands:
 
