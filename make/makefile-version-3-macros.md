@@ -1,6 +1,6 @@
 # Macros
 
-Make has a macro facility that performs textual substitution, similar to the macro facility of the C preprocessor. To define a macro, you add the following line to the top of your makefile:
+Make has a macro facility that performs textual substitution, similar to the macro facility of the C preprocessor. To define a macro, add the following line to the top of your makefile:
 
 ```makefile
 MACRO_NAME = value
@@ -14,7 +14,7 @@ $(MACRO_NAME)
 
 When `make` encounters `$(MACRO_NAME)`, it will replace it with `value`.
 
-Makefile version 3, shown below, illustrates two commonly used macros: `CC`, which is used to specify the compiler, and `CFLAGS`, which is used to specify compiler options. Notice that there are several versions of each macro, with all but the one we're currently using commented out.
+Makefile version 3, shown below, illustrates two commonly used macros: `CC`, used to specify the compiler, and `CFLAGS`, used to specify compiler options. Notice that we define several values for each macro, with all but the ones we're currently using commented out.
 
 {% code title="Makefile version 3" lineNumbers="true" %}
 ```makefile
@@ -35,7 +35,7 @@ clean:
     
 # Dependency rules for file targets
 testintmath: testintmath.o intmath.o
-    $(CC) $(CFLAGS) testintmath.o intmath.o -o testintmath
+    $(CC) testintmath.o intmath.o -o testintmath
 testintmath.o: testintmath.c intmath.h
     $(CC) $(CFLAGS) -c testintmath.c
 intmath.o: intmath.c intmath.h
@@ -43,4 +43,8 @@ intmath.o: intmath.c intmath.h
 ```
 {% endcode %}
 
-The benefit of using macros is it makes it extremely easy to change values. For example, if we want to change the compiler to `clang`, all we need to do is change `CC` to `clang`, instead of manually changing every compilation command.
+The benefit of using macros in a makefile is that it allows for easy and consistent updates across the entire file. For example, if we want to change the compiler to `clang`, all we need to do is change `CC` to `clang`, instead of manually changing every compilation command.
+
+{% hint style="info" %}
+The `CC` and `CFLAGS` macros are actually predefined by Make, meaning they are recognized by Make even if we don't explicitly define them. By default, `CC` is set to `cc`, and `CFLAGS` is a blank string. Thus, the `CFLAGS =` definition on line 4 is actually redundant. (As to why Make predefines `CFLAGS` to an empty string, this is so it can use it in implicit rules without causing an error. This will make sense after reading Implicit Rules).
+{% endhint %}

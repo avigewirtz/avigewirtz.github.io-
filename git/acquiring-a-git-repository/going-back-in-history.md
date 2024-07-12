@@ -8,15 +8,19 @@ three commands:
 
 
 
+#### Examining an earlier state of your project
 
-
-At any stage, you may want to view a previous commit, or you might want to reset to that stage.&#x20;
-
-For example, suppose we have a project with 4 commits. we either want to view commit number 2, or reset to it.&#x20;
-
+To examine an earlier state of your project, you can use the `git checkout <commit-hash>` command. This command allows you to switch your working directory to the state of a specific commit, identified by its unique commit hash. This way, you can explore the project's files and code as they were at that point in time. However, it's important to note that using `git checkout` in this manner will put you in a "detached HEAD" state, meaning you're not on any branch. This is useful for examining past states, but any changes you make won't be tied to a branch unless you create a new branch from this state.
 
 
 
+#### Resetting to an earlier state
+
+Resetting to an earlier state is achieved using the `git reset` command. This command comes with different options that determine the extent of the reset. `git reset --hard <commit-hash>` is the most aggressive option, moving the branch pointer to the specified commit and discarding all changes made after that commit in both the working directory and the staging area. This effectively reverts the project to the exact state of the specified commit, but it is destructive and can lead to loss of work if not used carefully. Alternatively, `git reset --soft <commit-hash>` resets the branch to the specified commit but leaves all changes made after that commit staged in the index, allowing you to recommit them if needed.
+
+#### Going back to an earlier state without losing history
+
+Going back to an earlier state without losing history is done using the `git revert <commit-hash>` command. This command creates a new commit that undoes the changes introduced by the specified commit, without altering the existing commit history. It is a safer and more transparent method, as it maintains a clear record of all changes, including the reversion. This approach is ideal when you need to undo specific changes but still want to preserve the project's history for future reference and collaboration.
 
 ## How  commits are stored
 

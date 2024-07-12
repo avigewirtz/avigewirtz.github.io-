@@ -46,6 +46,10 @@ $
 
 In real-world makefiles, the following three phony targets are commonly used: `all`, `clean`, and `clobber`. &#x20;
 
+* `all`: create the final executable binary file(s), often the first target listed in the Makefile&#x20;
+* `clean`: delete all .o files, executable binary file(s)&#x20;
+* `clobber`: delete all .o files, executable(s), and assorted development cruft (e.g., Emacs backup files)
+
 Makfile version 2 incorporates these 3 phony targets.&#x20;
 
 {% code title="makefile version 2" %}
