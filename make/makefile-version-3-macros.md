@@ -46,5 +46,5 @@ intmath.o: intmath.c intmath.h
 The benefit of using macros in a makefile is that it allows for easy and consistent updates across the entire file. For example, if we want to change the compiler to `clang`, all we need to do is change `CC` to `clang`, instead of manually changing every compilation command.
 
 {% hint style="info" %}
-The `CC` and `CFLAGS` macros are actually predefined by Make, meaning they are recognized by Make even if we don't explicitly define them. By default, `CC` is set to `cc`, and `CFLAGS` is a blank string. Thus, the `CFLAGS =` definition on line 4 is actually redundant. (As to why Make predefines `CFLAGS` to an empty string, this is so it can use it in implicit rules without causing an error. This will make sense after reading Implicit Rules).
+`CC` and `CFLAGS` are actually predefined macros, meaning they are recognized by Make even if we don't explicitly define them. By default, `CC` is set to `cc`, and `CFLAGS` is an empty string. Thus, the `CFLAGS =` definition on line 4 is actually redundant. (As to why Make predefines `CFLAGS` to an empty string, this is so it can use it in implicit rules without causing an error. This will make sense after reading [Implicit Rules](implicit-rules.md)).
 {% endhint %}
