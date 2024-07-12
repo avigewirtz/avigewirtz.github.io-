@@ -21,7 +21,7 @@ Note that `-o foo` tells `gcc` to name the executable `foo` rather than `a.out`,
 Here's a bird's eye view of what takes place under the hood:
 
 1. **Preprocessing phase.** First, `gcc` sends `foo.c` to the preprocessor (`cpp`). The preprocessor performs basic modifications to the source code, such as removing comments, inserting header files, and expanding macros. Note that the latter two operations are triggered by preprocessor directives--`#include` and `#define`, respectively. More on these directives in the next section. The output of the preprocessor is `foo.i`.
-2. **Compilation phase.** Next, `gcc` sends `foo.i` to the compiler (`cc1`). The compiler translates the preprocessed file `foo.i` into assembly language, producing a file called `foo.s`. Assembly language is a low-level representation of the program that is closer to machine code but still readable by humans.
+2. **Compilation phase.** Next, `gcc` sends `foo.i` to the compiler (`cc1`). The compiler translates the preprocessed file `foo.i` into assembly language and stores the result in `foo.s`. Assembly language is a low-level representation of the program that is closer to machine code but still readable by humans.
 3. **Assembly phase:** `gcc` then send `foo.s` to the assembler (`as`), which translates it into machine code and stored the result in the object file `foo.o`. This is a binary file containing machine code and metadata.
 4. **Linking phase:** Finally, `gcc` sends `foo.o` to the linker (`ld`). The linker then combines foo.o with the necessary .o files from the C standard library. Contains definitions of librayr functions called by foo.c, as well as generic starter code. The output is the executable file foo.
 
