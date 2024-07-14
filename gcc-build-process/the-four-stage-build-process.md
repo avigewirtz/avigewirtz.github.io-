@@ -1,49 +1,29 @@
 # The Big Picture
 
-Suppose we have a C program contained within a single .c file, foo.c. To build our program with gcc, we run the following command:
-
-```
-gcc217 foo.c -o foo
-```
-
-{% hint style="info" %}
-Note that `-o foo` tells `gcc` to name the executable `foo` rather than `a.out`, the default name for executables on Unix systems.
-{% endhint %}
-
-Results in an executable named `foo`, which we can run by typing its name on the command line, prefixed by a `./`:
-
-```bash
-./foo
-```
-
-
-
-
-
-Interestingly, none of these phases is actually performed by the `gcc` binary itself. The programs that perform the work--collectively forming a toolchain--are `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). `gcc` is a driver program that serves as our interface to this toolchain. It parses our command line, figures out what we want to do, and then calls these programs to do the work.
-
-Consider a C program contained within a single `.c` file, `foo.c`. Running the command:
+Suppose we have a C program contained within a single `.c` file, `foo.c`. To build our program with `gcc`, we run the following command:
 
 ```bash
 gcc217 foo.c -o foo
 ```
 
-Results in an executable named `foo`, which we can run by typing its name on the command line, prefixed by a `./`:
+{% hint style="info" %}
+Note that `-o foo` tells `gcc` to name the executable `foo`_,_ rather than the default name `a.out`.
+{% endhint %}
+
+To run `foo`, we type its name on the command line, prefixed by a `./`:
 
 ```bash
 ./foo
 ```
 
-{% hint style="info" %}
-Note that `-o foo` tells `gcc` to name the executable `foo` rather than `a.out`, the default name for executables on Unix systems.
-{% endhint %}
+#### Under the Hood
 
-Here's a bird's eye view of what takes place under the hood:
+As we mentioned earlier, the underlying process of transforming foo.c into the executable foo takes pace in a sequence of four stages: preprocessing, compilation, assembly, and linking. Interestingly, none of these phases is actually performed by the `gcc` itself (that is, the `gcc` binary, typically stored in `usr/bin`). The programs that perform the work--collectively forming a toolchain--are `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). `gcc` is a driver program that serves as our interface to this toolchain. It parses our command line, figures out what we want to do, and then calls these programs to do the work. Here's a bird's eye view of what happens during each stage:
 
-1. **Preprocessing phase.** First, `gcc` sends `foo.c` to the preprocessor (`cpp`). The preprocessor performs basic modifications to the source code, such as removing comments, inserting header files, and expanding macros. Note that the latter two operations are triggered by preprocessor directives--`#include` and `#define`, respectively. More on these directives in the next section. The output of the preprocessor is `foo.i`.
-2. **Compilation phase.** Next, `gcc` sends `foo.i` to the compiler (`cc1`). The compiler translates the preprocessed file `foo.i` into assembly language and stores the result in `foo.s`. Assembly language is a low-level representation of the program that is closer to machine code but still readable by humans.
-3. **Assembly phase:** `gcc` then send `foo.s` to the assembler (`as`), which translates it into machine code and stored the result in the object file `foo.o`. This is a binary file containing machine code and metadata.
-4. **Linking phase:** Finally, `gcc` sends `foo.o` to the linker (`ld`). The linker then combines foo.o with the necessary .o files from the C standard library. Contains definitions of librayr functions called by foo.c, as well as generic starter code. The output is the executable file foo.
+1. **Preprocessing.** First, `gcc` sends `foo.c` to the preprocessor (`cpp`). The preprocessor performs basic modifications to the source code, such as removing comments, inserting header files, and expanding macros. Note that the latter two operations are triggered by preprocessor directives--`#include` and `#define`, respectively. More on these directives in the next section. The output of the preprocessor is `foo.i`.
+2. **Compilation.** Next, `gcc` sends `foo.i` to the compiler (`cc1`). The compiler translates the preprocessed file `foo.i` into assembly language and stores the result in `foo.s`. Assembly language is a low-level representation of the program that is closer to machine code but still readable by humans.
+3. **Assembly.** `gcc` then send `foo.s` to the assembler (`as`), which translates it into machine code and stored the result in the object file `foo.o`. This is a binary file containing machine code and metadata. This file contains binary code that the machine can execute, but it is not yet a complete executable because it may have unresolved references to external symbols (functions and variables defined in other files or libraries).
+4. **Linking.** Finally, `gcc` sends `foo.o` to the linker (`ld`). The linker then combines foo.o with the necessary .o files from the C standard library. Contains definitions of librayr functions called by foo.c, as well as generic starter code. The output is the executable file foo.
 
 This process is summarized in Figure 4.
 
