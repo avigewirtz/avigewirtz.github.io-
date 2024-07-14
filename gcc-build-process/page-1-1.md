@@ -128,7 +128,7 @@ int lcm(int iFirst, int iSecond);
 {% hint style="info" %}
 **`#include` Syntax**
 
-Notice that the include directive for `intmath.h` uses double quotes (i.e, `#include "intmath.h"`) rather than angle brackets, as is used for system headers like `stdio.h`. Using double quotes tells the preprocessor to look in the current directory for the file, instead of just the system directories.
+Notice that the include directive for `intmath.h` uses double quotes (i.e, `#include "intmath.h"`) rather than angle brackets, as is used for system headers like `stdio.h`. Double quotes tells the preprocessor to look in the current directory for the file, instead of just the system directories.
 {% endhint %}
 
 #### Building testintmath
