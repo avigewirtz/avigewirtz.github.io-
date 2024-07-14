@@ -1,6 +1,26 @@
 # The Big Picture
 
-As programmers, we often treat `gcc` as a sort of black box. We pass it one or more C source files, and it outputs an executable file. If we look inside this box, however, we see that the underlying process takes place in a sequence of four phases--preprocessing, compilation, assembly, and linking. Each of these phases transforms the program from one form into another, culminating in an executable. Interestingly, none of these phases is actually performed by the `gcc` binary itself. The programs that perform the work--collectively forming a toolchain--are `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). `gcc` is a driver program that serves as our interface to this toolchain. It parses our command line, figures out what we want to do, and then calls these programs to do the work.
+Suppose we have a C program contained within a single .c file, foo.c. To build our program with gcc, we run the following command:
+
+```
+gcc217 foo.c -o foo
+```
+
+{% hint style="info" %}
+Note that `-o foo` tells `gcc` to name the executable `foo` rather than `a.out`, the default name for executables on Unix systems.
+{% endhint %}
+
+Results in an executable named `foo`, which we can run by typing its name on the command line, prefixed by a `./`:
+
+```bash
+./foo
+```
+
+
+
+
+
+Interestingly, none of these phases is actually performed by the `gcc` binary itself. The programs that perform the work--collectively forming a toolchain--are `cpp` (C preprocessor), `cc1` (C compiler), `as` (assembler), and `ld` (linker). `gcc` is a driver program that serves as our interface to this toolchain. It parses our command line, figures out what we want to do, and then calls these programs to do the work.
 
 Consider a C program contained within a single `.c` file, `foo.c`. Running the command:
 
@@ -27,7 +47,7 @@ Here's a bird's eye view of what takes place under the hood:
 
 This process is summarized in Figure 4.
 
-<figure><img src="../../.gitbook/assets/Frame 27 (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Frame 27 (5).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 A useful analogy is to think of the process as an assembly line, where the product is a C program that begins as C source file and emerges as an executable file. The tools that work on the product are cpp, cc1, as, and ld, and the manager orchestrating the process is gcc.
