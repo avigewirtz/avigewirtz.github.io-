@@ -30,7 +30,7 @@ testintmath: intmath.o
 
 And from observing that the executable is `testintmath`, make would infer that it depends on `testintmath.o` and that the command to build it is `$(CC) testintmath.o intmath.o -o testintmath`. Note, however, that this only works since `testintmath` has the same name as `testintmath.o` (minus the `.o` extension). If we named the executable differently, like `testintmath1`, `make` would incorrectly assume it depends on `testintmath1.o`.
 
-Here's what our makefile looks like incorporating these shortcuts:
+Here's what our makefile looks like after incorporating these shortcuts:
 
 {% code title="makefile version 4" %}
 ```makefile
