@@ -58,3 +58,5 @@ testintmath.o: intmath.h
 intmath.o: intmath.h
 ```
 {% endcode %}
+
+There is no reason to use implicit rules, since they tend to make Makefiles confusing and difficult to interpret. However, it's useful to be aware of them, since many Makefiles you'll encounter do make use of them.&#x20;
