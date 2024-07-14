@@ -33,10 +33,10 @@ int main(void) {
 Our program begins as C source code. We can roughly divide the source code into three categories:
 
 * **Comments**, such as `/* Write to stdout the number of chars in stdin. Return 0. */` on line 8. These are meant for human readers.
-* **Preprocessing language**, meant for preprocessor. The preprocessing language in our program consists of the `#include <stdio.h>` directive and the `EOF` macro.
-* **Raw C code** (i.e., everything else).
+* **Preprocessing language**, which consists of preprocessor directives and macros. These are meant for the preprocessor. The preprocessing language in our program consists of the `#include <stdio.h>` directive and the `EOF` macro.
+* **Raw C code** (i.e., everything else), meant for the compiler.
 
-Of note is that our program make calls to two functions: `printf` and `getchar`. Nowhere in our program is there defintioons for there functions. As we know, of course, these are library functions, and as we saw in the previous section, definitions of library functions are inserted at link time.
+Of note is that our program make calls to two functions: `printf` and `getchar`. Nowhere in our program is there definitions for there functions. As we know, of course, these are library functions, and as we saw in the previous section, definitions of library functions are inserted at link time.
 
 ### Preprocessing
 
@@ -60,7 +60,7 @@ int getChar(void);
 
 Purpose of inserting these is to provide information to the compiler so it can type check that they're used correctly. Compiler wouldn't otherwise be able to type check, since the definitions are only inserted at link time.
 
-Finally, it replaces the `EOF` macro with its value—-1.
+Finally, it replaces the `EOF` macro with its value, -1.
 
 You can view the contents of `charcount.i` with a text editor like emacs. You'll find that our program has expanded significantly, typically to around 500-700 lines. Most of this additional content comes from `stdio.h` . For simplicity, only the relevant parts are shown below.
 
@@ -87,7 +87,7 @@ int main(void) {
 ```
 {% endcode %}
 
-As you can see, this file contains only raw C code—no comments or prwproxessor directives. The contents of stdio.h were inserted, and the EOF macro was replaced with -1.
+As you can see, this file contains only raw C code (i.e., no comments or preprocessing language).&#x20;
 
 {% hint style="success" %}
 You can think of the preprocessor as a "search-and-replace" tool:
@@ -162,7 +162,7 @@ You don't need to understand what any of this means. ARM64 assembly will be cove
 
 #### Assembly
 
-The next step is to translate our code yet again--this time, from assembly to machine code--the sequence of 1s and 0s that the CPU "understands". Because there's typically a one-to-one correspondence between assembly-language instructions and machine-language instructions, this translation is much simpler than compilation. We run the assembler on `charcount.s` with the following command:
+The next step is to translate our code yet again--this time, from assembly to machine code. Machine code is a binary language, consisting of 1s and 0s. Because there's typically a one-to-one correspondence between assembly-language instructions and machine-language instructions, this translation is much simpler than compilation. We run the assembler on `charcount.s` with the following command:
 
 ```c
 gcc217 -c charcount.s
