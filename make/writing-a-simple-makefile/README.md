@@ -1,6 +1,6 @@
 # Writing a Simple Makefile
 
-Assume the working directory contains `testintmath`'s source files (i.e., `testintmath.c`, `intmath.c`, and `intmath.h`). To build `testintmath` with `make`, the first step is to create a makefile in the working directory. You can name the makefile whatever you'd like, but `make` automatically searches for a file named `makefile` or `Makefile`, making these names more convenient. To create the makefile, run the following command:
+Assume the working directory contains `testintmath`'s source files (i.e., `testintmath.c`, `intmath.c`, and `intmath.h`). To build `testintmath` with `make`, the first step is to create a makefile in the working directory. You can name the makefile whatever you like, but `make` automatically searches for a file named `makefile` or `Makefile`, making these names more convenient. To create the makefile, run the following command:
 
 ```bash
 touch Makefile
