@@ -4,6 +4,11 @@ Now that we have a high-level understanding of the four stage build process, let
 
 {% code title="charcount.c" lineNumbers="true" %}
 ```c
+/*--------------------------------------------------------------------*/
+/* testintmath.c                                                      */
+/* Author: Bob Dondero                                                */
+/*--------------------------------------------------------------------*/
+
 #include <stdio.h>
 
 /* Write to stdout the number of chars in stdin. Return 0. */
@@ -27,7 +32,7 @@ int main(void) {
 
 Our program begins as C source code. We can roughly divide the source code into three categories:
 
-* **Comments**, meant for human readers.
+* **Comments**, such as `/* Write to stdout the number of chars in stdin. Return 0. */` on line 8. These are meant for human readers.
 * **Preprocessing language**, meant for preprocessor. The preprocessing language in our program consists of the `#include <stdio.h>` directive and the `EOF` macro.
 * **Raw C code** (i.e., everything else).
 
