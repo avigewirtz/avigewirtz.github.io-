@@ -29,7 +29,7 @@ We see that `make` executes the command `echo "Hello, world!"`, printing `Hello,
 
 Here's how it works. When `make` processes this rule, it assumes that `hello` represents a file. It thus looks for a file named `hello` in the working directory. Because it does not find one, it determines that `hello` needs to be built, and it thus executes the command `echo "Hello, world!"`. At this point, `make` considers its job complete. It does not care whether a file named `hello` is in fact created.
 
-The important point to recognize is that because this rule will never create a file named `hello`, we can run `make hello` as many times as we'd like, and, each time, `make` will execute the command `echo "Hello, world!"`. For example, if we run `make hello` three times in a row:
+The important point to recognize is that because this rule will never create a file named `hello`, it will always be considered out of date. Thus, we can run `make hello` as many times as we'd like, and, each time, `make` will execute the command `echo "Hello, world!"`. For example, if we run `make hello` three times in a row:
 
 ```bash
 $ make hello
@@ -44,30 +44,48 @@ Hello, world!
 $
 ```
 
-In real-world makefiles, the following three phony targets are commonly used: `all`, `clean`, and `clobber`. &#x20;
+It should go without saying that this scheme only works if in fact there is never a file named hello in the working directory. If there is one, the target hello will always be considered up to date (since it has no dependencies) and running make hello will always yield:
 
-* `all`: create the final executable binary file(s), often the first target listed in the Makefile&#x20;
-* `clean`: delete all .o files, executable binary file(s)&#x20;
-* `clobber`: delete all .o files, executable(s), and assorted development cruft (e.g., Emacs backup files)
+```makefile
+$ make hello
+make: `hello' is up to date.
+$
+```
 
-Makfile version 2 incorporates these 3 phony targets.&#x20;
+Thankfully, GNU Make offers a simple solution to this potential issue. Just declare `hello` to be phony, like so:
+
+```makefile
+.PHONY: hello
+```
+
+With this declaration, `make hello` will always run the specified command, even if there is a file named `hello`.
+
+#### Commonly Used Phony Targets
+
+Of course, the `hello` phony target is not particularly useful. In real-world makefiles, the following three phony targets are commonly used: `all`, `clean`, and `clobber`. &#x20;
+
+* `all`: This is used to create the final executable binary file(s), typically the default target in the makefile.&#x20;
+* `clean`: To delete all `.o` files and executable binary file(s).&#x20;
+* `clobber`: To extend clean by also deleting also build related files, such as Emacs backup files.
+
+Here is Makefile version 2, which incorporates these 3 phony targets:
 
 {% code title="makefile version 2" %}
 ```makefile
 # Dependency rules for non-file targets
 
+.PHONY: all clean clobber
 # Default target (i.e., target to use when make is invoked without specifying a target)
 all: testintmath
-
-# Extends clean (see below) by also deleting Emacs backup and autosave files ('*~' specifies 
-# all files that end with a '~', and '\#*\#' specifies all files that start and end with a '#')
-clobber: clean
-  rm -f *~ \#*\# 
   
 # Deletes all object files (.o) and the executable 
 clean:
   rm -f testintmath *.o
   
+# Extends clean by also deleting Emacs backup and autosave files ('*~' specifies 
+# all files that end with a '~', and '\#*\#' specifies all files that start and end with a '#')
+clobber: clean
+  rm -f *~ \#*\# 
   
 # Dependency rules for file targets
 testintmath: testintmath.o intmath.o
