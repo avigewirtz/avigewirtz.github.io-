@@ -30,19 +30,19 @@ This process is summarized in Figure 4.
 <figure><img src="../.gitbook/assets/Frame 27 (5).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-A useful analogy is to think of the process as an assembly line, where the product is a C program, the tools are `cpp`, `cc1`, `as`, and `ld`, and the manager orchestrating the process is `gcc`.
+A useful analogy is to think of this four stage process as an assembly line, where the product is a C program, the tools that work on the product are `cpp`, `cc1`, `as`, and `ld`, and the manager orchestrating the process is `gcc`.
 {% endhint %}
 
 {% hint style="info" %}
 **Note**
 
 * In current GCC implementations, the preprocessor (`cpp`) is integrated into the compiler (`cc1`). The underlying sequence of operations is the same, but technically the first two build steps are performed by a single program (`cc1`).
-* The build model we described assumes _static linking_, where all linking takes place before the file is executed. In practice, however, _dynamic linking_ might be used, where linking is performed when the file is executed.
+* The build model we described assumes _static linking_, where all linking takes place before the file is executed. In practice, however, _dynamic linking_ might be used, where linking is performed at runtime.
 {% endhint %}
 
 #### Saving Intermediate Files
 
-By default, `gcc` does not retain the intermediate files generated during the build process. Thus, if we invoke `ls` after building `foo`, we won't see any of the `.i`, `.s`, or `.o` files in our directory:
+By default, `gcc` does not retain the intermediate files generated during the build process. Thus, if we inovke `ls` after building `foo`, we won't see any of the `.i`, `.s`, or `.o` files in our directory:
 
 ```bash
 $ ls
