@@ -34,7 +34,7 @@ target: dependencies
 
 This syntax should hopefully be pretty self-explanatory, but note a couple of things:
 
-* `dependencies` refer to direct dependencies, _not_ transitive dependencies. So, for example, in the rule for `testintmath`, we list `testintmath.o` and `intmath.o` only. We don't list `testintmath.c`, `intmath.c`, or `intmath.h`.&#x20;
+* `dependencies` refer to direct dependencies, _not_ transitive dependencies. So, for example, in the rule for `testintmath`, we list `testintmath.o` and `intmath.o` only. We do not list `testintmath.c`, `intmath.c`, or `intmath.h`.&#x20;
 * The command must be preceded by a tab (and not spaces). Failure to do so will result in an error.&#x20;
 
 Here is the complete makefile for `testintmath`:
