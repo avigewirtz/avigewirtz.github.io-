@@ -18,7 +18,7 @@ Is equivalent to:
 make testintmath
 ```
 
-In both cases, `make` will attempt to build `testintmath`. If `testintmath` is either out of date or does not exist, make will execute the commands needed to bring testintmath up to date. `make` will execute and display each command it runs to build it. Say we run `make` when all targets are out of date or do not exist. The output will look like this:
+In both cases, `make` will attempt to build `testintmath`. If `testintmath` is either out of date or does not exist, `make` will execute the commands needed to bring `testintmath` up to date. By default, `make` prints each of the commands it executes. Say we run `make` when all targets are out of date or do not exist. The output will look like this:
 
 ```bash
 $ make
