@@ -44,7 +44,7 @@ Hello, world!
 $
 ```
 
-It should go without saying that this scheme only works if in fact there is never a file named hello in the working directory. If there is one, the target hello will always be considered up to date (since it has no dependencies) and running make hello will always yield:
+It should go without saying that this scheme only works if there is in fact never a file named `hello` in the working directory. If there is such a file, it will always be considered up to date (since it has no dependencies) and running `make hello` will always yield:
 
 ```makefile
 $ make hello
@@ -64,11 +64,11 @@ With this declaration, `make hello` will always run the specified command, even 
 
 Of course, the `hello` phony target is not particularly useful. In real-world makefiles, the following three phony targets are commonly used: `all`, `clean`, and `clobber`. &#x20;
 
-* `all`: This is used to create the final executable binary file(s), typically the default target in the makefile.&#x20;
+* `all`: To create the final executable binary file(s), typically the default target in the makefile.&#x20;
 * `clean`: To delete all `.o` files and executable binary file(s).&#x20;
 * `clobber`: To extend clean by also deleting also build related files, such as Emacs backup files.
 
-Here is Makefile version 2, which incorporates these 3 phony targets:
+Here is Makefile version 2, which incorporates these 3 phony targets. Note that the order of the rules does not matter, except for the first tule, which serves as the default rule. Here, the first rule is `all`.&#x20;
 
 {% code title="makefile version 2" %}
 ```makefile
