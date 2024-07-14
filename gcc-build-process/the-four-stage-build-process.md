@@ -23,7 +23,7 @@ As we mentioned earlier, the underlying process of transforming `foo.c` into the
 1. **Preprocessing.** First, `gcc` sends `foo.c` to the preprocessor (`cpp`). The preprocessor performs basic modifications to the source code, such as removing comments, inserting header files, and expanding macros. Note that the latter two operations are triggered by preprocessor directives--`#include` and `#define`, respectively. More on these directives in the next section. The output of the preprocessor is `foo.i`.
 2. **Compilation.** Next, `gcc` sends `foo.i` to the compiler (`cc1`). The compiler translates `foo.i` into assembly language and stores the result in `foo.s`. Assembly language is a low-level representation of the program that is close to machine code but still human-readable.
 3. **Assembly.** `gcc` then send `foo.s` to the assembler (`as`), yet another translator. The assembler translates `foo.s` into machine code and stores the result in the object file `foo.o`. This is a binary file containing machine code and metadata. This file is not yet executable because it may have unresolved references to external symbols (functions and variables defined in other files or libraries).
-4. **Linking.** Finally, `gcc` sends `foo.o` to the linker (`ld`). The linker combines `foo.o` with the necessary object files from the C standard library to produce the executable file `foo`.
+4. **Linking.** Finally, `gcc` sends `foo.o` to the linker (`ld`). The linker combines `foo.o` with necessary object files from the C standard library. The output is the executable file `foo`.
 
 This process is summarized in Figure 4.
 
