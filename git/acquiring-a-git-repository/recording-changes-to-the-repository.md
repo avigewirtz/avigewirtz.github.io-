@@ -264,6 +264,21 @@ By understanding how to add new files, modify them, and track these changes in G
 
 **Deleting a File**
 
+
+
+<mark style="color:red;">Removing a File</mark>
+
+<mark style="color:red;">$ git rm filename</mark>
+
+<mark style="color:red;">Changing the Index | 49</mark>
+
+<mark style="color:red;">This does two things:</mark>
+
+1. <mark style="color:red;">Deletes the file’s entry from the index, scheduling it for re‐ moval in the next commit</mark>
+2. <mark style="color:red;">Deletes the working file as well, as with rm filename</mark>
+
+
+
 Now, let's see what happens when we delete a file in our project. We'll delete the `hi.txt` file.
 
 First, let's check the current status to see the files in our project:

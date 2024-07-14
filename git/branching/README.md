@@ -1,6 +1,63 @@
 # Branching
 
-Branches allow you to work on two versions of a project at the same time. &#x20;
+A Git branch is the simplest thing possible: a pointer to a commit, as a ref. Or rather, that is its implementation; the branch itself is defined as all points reachable in the commit graph from the named commit (the “tip” of the branch). The special ref HEAD determines what branch you are on; if HEAD is a symbolic ref for an existing branch, then you are “on” that branch. If, on the other hand, HEAD is a simple ref directly naming a commit by its SHA-1 ID, then you are not “on” any branch, but rather in “detached HEAD” mode, which happens when you check out some earlier commit to examine.
+
+
+
+The HEAD commit is also often referred to as the “current” com‐ mit. If you are on a branch, it may also be called the “last” or “tip” commit of the branch.
+
+A branch evolves over time; thus, if you are on the branch mas‐ ter and make a commit, Git does the following:
+
+1. Creates a new commit with your changes to the repository content
+2. Makes the commit at the current tip of the master branch the parent of the new commit
+3. Adds the new commit to the object store
+4.  Changes the master branch (specifically, the ref refs/
+
+    heads/master) to point to the new commit
+
+In other words, Git adds the new commit to the end of the branch using the commit’s parent pointer, and advances the branch ref to the new commit.
+
+Note a few consequences of this model:
+
+• Considered individually, a commit is not intrinsically a part of any branch. There is nothing in the commit itself to tell you by name which branches it is or may once have been
+
+20
+
+\| Chapter 1: Understanding Git
+
+on; branch membership is a consequence of the commit graph and the current branch pointers.
+
+* “Deleting” a branch means simply deleting the correspond‐ ing ref; it has no immediate effect on the object store. In particular, deleting a branch does not delete any commits. What it may do, however, is make certain commits unin‐ teresting, in that they are no longer on any branch (that is, no longer reachable in the commit graph from any branch tip or tag). If this state persists, Git will eventually remove such commits from the object store as part of garbage col‐ lection. Until that happens, though, if you have an aban‐ doned commit’s ID you can still directly access it perfectly well by its SHA-1 name; the Git reflog (git log -g) is useful in this regard.
+* By this definition, a branch can include more than just commits made while on that branch; it also contains com‐ mits from branches that flow into this one via an earlier merge. For example: here, the branch topic was merged into master at commit C, then both branches continued to evolve separately, as shown in Figure 1-4.
+
+
+
+
+
+
+
+Branches
+
+The labels on the right side of this picture—master, topic, and release—denote “branches.” The branch name refers to the latest commit on that branch; here, commits F, 4, and Z, respectively, are called the “tip” of the branch. The branch itself is defined as the collection of all commits in the graph that are reachable from the tip by following the parent arrows backward along the history. Here, the branches are:
+
+* release = {A, B, C, X, Y, Z}
+* master = {A, B, C, D, E, F, 1, 2}
+
+Overview | 3
+
+• topic = {A, B, 1, 2, 3, 4}
+
+Note that branches can overlap; here, commits 1 and 2 are on both the master and topic branches, and commits A and B are on all three branches. Usually, you are “on” a branch, looking at the content corresponding to the tip commit on that branch. When you change some files and add a new commit containing the changes (called “committing to the repository”), the branch name advances to the new commit, which in turn points to the old commit as its sole parent; this is the way branches move for‐ ward. From time to time, you will tell Git to “merge” several branches (most often two, but there can be more), tying them together as at commit E in Figure 1-1. The same branches can be merged repeatedly over time, showing that they continued to progress separately while you periodically combined their contents.
+
+The first branch in a new repository is named master by default, and it’s customary to use that name if there is only one branch in the repository, or for the branch that contains the main line of development (if that makes sense for your project). You are not required to do so, however, and there is nothing special about the name “master” apart from convention, and its use as a default by some commands.
+
+
+
+
+
+
+
+Branches allow you to work on two versions of a project at the same time. Each line of development is called a branch.&#x20;
 
 Until now, we've being thinking of a repository as a linear sequence of commits, like the one shown in the commit graph in Figure 3.
 

@@ -71,6 +71,8 @@ In Git terminology, the files and directories descending from git\_playground ma
 
 Let’s now stage and commit our project’s files. The command to stage files is git add, which takes one or more files or directories as arguments. If the argument is a directory, it adds all files descending from it.&#x20;
 
+<mark style="color:red;">In more detail: git add . adds the current directory to the (ini‐ tially empty) index; this includes files as well as directories and their contents, and so on, recursively. git commit then creates a new tree object capturing the current state of the index, as well as a commit object with your comment text, personal identifica‐ tion, the current time, and so on, pointing to that tree. It records these in the object database, and then finally sets the master branch to the new commit; that is, makes the ref refs/heads/ master point to the new commit ID:</mark>
+
 To stage all files in `git_playground`, we run:
 
 ```bash
