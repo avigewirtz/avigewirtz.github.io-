@@ -95,3 +95,5 @@ gcc217 -S foo.i
 `gcc` will infer which stages to perform based on the file's extension--preprocessing and compilation for a `.c` file, and compilation only for a `.i` file. The output will automatically be saved in a `.s` file.
 
 **`-c`:** This instructs `gcc` to halt the build process after assembly. As you might expect, the input can be a `.i`, `.c`, or `.s` file, and `gcc` will infer which stages to perform based on the file's extension. The output will automatically be saved in a `.o` file.
+
+This `-c` option is by far the most commonly used `gcc` option to control the build process, so it pays to remember it. As we'll see in the chapter on Make, it is necessary for implementing incremental builds.&#x20;
