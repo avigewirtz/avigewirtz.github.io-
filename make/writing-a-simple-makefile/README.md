@@ -25,25 +25,16 @@ There is a difference, however, between direct and transitive dependencies. For 
 Note that we're not including the header files `stdio.h` and `stdlib.h` in the dependency graph, even though `testintmath.c` #includes them, since these ar system header files that we don't modify. As such, don't need to be concerned with them in Makefiles.&#x20;
 {% endhint %}
 
-Translating this dependency graph into a Makefile is remarkably straightforward. We create what is known as a _dependency rule_ for each target in the dependency graph. The target's in our dependency graph correspond to the object files (`intmath.o` and `testintmath.o`) and the executable (`testintmath`). Each rule specofies three pieces of information:
-
-1. the target name
-2. the files that the target directly depends on 
-3. the command to build the target 
-
-Dependency rules have the following syntax:
+Translating this dependency graph into a Makefile is remarkably straightforward. We create what is known as a _dependency rule_ for each target in the dependency graph. The target's in our dependency graph correspond to the object files (`intmath.o` and `testintmath.o`) and the executable (`testintmath`). Dependency rules have the following syntax:
 
 ```makefile
 target: dependencies
 <tab> command
 ```
 
-This syntax should hopefully be pretty self-explanatory, but note a couple of things:
+where `target` is the name of the file the rule builds (see, however, phony targets), direvt_dependencies are the files fhe target directly depends on, and command is the command to buuld the target. Note that the command must be preceded by a tab (and not spaces). Failure to do so will result in an error.&#x20;
 
-* `dependencies` refer to direct dependencies, _not_ transitive dependencies. So, for example, in the rule for `testintmath`, we list `testintmath.o` and `intmath.o` only. We do not list `testintmath.c`, `intmath.c`, or `intmath.h`.&#x20;
-* The command must be preceded by a tab (and not spaces). Failure to do so will result in an error.&#x20;
-
-Here is the complete makefile for `testintmath`:
+Here is the complete makefile for our prihram, containing three rules (one for testitnmath, testintmath.o, and intmath.o, respectively):
 
 ```makefile
 testintmath: testintmath.o intmath.o
