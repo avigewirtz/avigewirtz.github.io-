@@ -25,7 +25,13 @@ There is a difference, however, between direct and transitive dependencies. For 
 Note that we're not including the header files `stdio.h` and `stdlib.h` in the dependency graph, even though `testintmath.c` #includes them, since these ar system header files that we don't modify. As such, don't need to be concerned with them in Makefiles.&#x20;
 {% endhint %}
 
-Translating this dependency graph into a Makefile is remarkably straightforward. We create what is known as a _dependency rule_ for each target in the dependency graph. The target's in our dependency graph correspond to the object files (`intmath.o` and `testintmath.o`) and the executable (`testintmath`). Dependency rules have the following syntax:
+Translating this dependency graph into a Makefile is remarkably straightforward. We create what is known as a _dependency rule_ for each target in the dependency graph. The target's in our dependency graph correspond to the object files (`intmath.o` and `testintmath.o`) and the executable (`testintmath`). Each rule specofies three pieces of information:
+
+1. the target name
+2. the files that the target directly depends on 
+3. the command to build the target 
+
+Dependency rules have the following syntax:
 
 ```makefile
 target: dependencies
