@@ -32,40 +32,45 @@ int main(void) {
 
 Our program begins as C source code. We can roughly divide the source code into three categories:
 
-* **Comments**, such as `/* Write to stdout the number of chars in stdin. Return 0. */` on line 8. These are meant for human readers.
-* **Preprocessing language**, which consists of preprocessor directives and macros. These are meant for the preprocessor. The preprocessing language in our program consists of the `#include <stdio.h>` directive and the `EOF` macro.
-* **Raw C code** (i.e., everything else), meant for the compiler.
-
-Of note is that our program make calls to two functions: `printf` and `getchar`. Nowhere in our program is there definitions for there functions. As we know, of course, these are library functions, and as we saw in the previous section, definitions of library functions are inserted at link time.
+* **Comments**, such as `/* Write to stdout the number of chars in stdin. Return 0. */` on line 8. Comments are meant for human readers.
+* **Preprocessing language. Defined by GNU as "**_directives_ to be executed and _macros_ to be expanded." The preprocessing language in our program consists of the preprocessor directive `#include <stdio.h>`  and the macro `EOF`.&#x20;
+* **Raw C code** (i.e., everything else). Raw C code is meant to be translated by the compiler.
 
 ### Preprocessing
 
-The first step to building our program is preprocessing. The command to invoke the preprocessor is:
+* maybe I should mention the three things it does
+
+As we mentioned earlier, we can perform all four build steps via a single `gcc` command, or we can perform each stage individually. Here, we'll perform each stage individually.&#x20;
+
+To run the preprocessor and halt, we use the -E option. output The command to invoke the preprocessor is:
 
 ```bash
 gcc217 -E charcount.c -o charcount.i
 ```
 
-The result is the preprocessed file `charcount.i`. Let's break down what takes place during this stage.
-
-First, the preprocessor removes all comments from the source code. Comments serve to help human readers understand the code, but they are of no use to the compiler. Hence, they can be discarded before compilation begins.
-
-Next, the preprocessor handles preprocessor directives. These are lines in the code that begin with a `#` (hash). Our program contains only one explicit preprocessor directive: `#include <stdio.h>`. This instructs the preprocessor to grab the contents of `stdio.h` and paste it directly into `charcount.c` where the `#include` directive appears. 
+Let's break down what takes place during this stage. The preprocessor is responsible for performing textual transformations on the source code before the actual compilation begins. The preprocessor doesn't understand C syntax; it operates purely on the text level.
 
 
-stdio.h is a large file, containing function declarations and macro definitions. Of note are the following three lines:
+
+First, the preprocessor removes all comments from the source code. Comments serve to help human readers understand the code, but they are of no use to the compiler. Hence, they can be discarded before compilation begins.&#x20;
+
+Next, the preprocessor handles preprocessor directives. Our program contains only one explicit preprocessor directive: `#include <stdio.h>`. This instructs the preprocessor to grab the contents of `stdio.h` and paste it directly into `charcount.c` where the `#include` directive appears.
+
+stdio.h is a large file, containing function declarations and macro definitions. For our purposes, we need only be concerned with the following three lines:
 
 ```c
+...
 int printf(const char *format, ...);
 int getChar(void);
 #define EOF -1
+...
 ```
 
 Purpose of inserting these is to provide information to the compiler so it can type check that they're used correctly. Compiler wouldn't otherwise be able to type check, since the definitions are only inserted at link time.
 
 Finally, it replaces the `EOF` macro with its value, -1.
 
-You can view the contents of `charcount.i` with a text editor like emacs. You'll find that our program has expanded significantly, typically to around 500-700 lines. Most of this additional content comes from `stdio.h` . For simplicity, only the relevant parts are shown below.
+You can view the contents of `charcount.i` with a text editor like emacs. You'll find that the program has expanded to around 500-700 lines. Most of this additional content comes from `stdio.h` . For simplicity, only the relevant parts are shown below.
 
 {% code title="charcount.i" %}
 ```c
@@ -89,8 +94,6 @@ int main(void) {
 }
 ```
 {% endcode %}
-
-As you can see, this file contains only raw C code (i.e., no comments or preprocessing language).&#x20;
 
 {% hint style="success" %}
 You can think of the preprocessor as a "search-and-replace" tool:
