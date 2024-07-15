@@ -1,10 +1,36 @@
-# Going back in history
+# Going Back in History
 
-three commands:
+Three things you might want to do:
 
-* git checkout
-* git revert&#x20;
-* git reset&#x20;
+1. View an old commit
+2. Go back to a previous commit while deleting history
+3. go back but maintain history
+
+In this section, we'll go over how to do all three.&#x20;
+
+To understand how this works, we need to take a step back and examine how Git stores the commit history.&#x20;
+
+#### Commit Graph
+
+Our repository currently has 6 commits. We mentioned earlier that each commit contains a reference to its parent commit (besides for the root commit, which has no parents). The entire history of commits forms a commit graph, which visually looks like the following:
+
+A <- B <- C <- D <- E <- F
+
+In this representation, ‘A’ is the root commit with no parents, and each subsequent commit (B, C, D, E, F) points to its immediate predecessor.
+
+This graph can only be traversed in the direction of the arrows. Meaning, all nodes are reachable from F, but only A and B are reachable from C.
+
+How does Git know which commit we’re currently on? Simple. It stores its hash in a moveable pointer called HEAD. By default, the commit we’re on will be the most recent commit:
+
+A <- B <- C <- D <- E <- F <- HEAD
+
+In fact, this is an oversimplification. HEAD points to another moveable pointer, main, which points to F:
+
+Each time we commit, main automatically moves to the next commit. So, for example, if we were to make a new commit, G, our graph would now look like this:
+
+A <- B <- C <- D <- E <- F <- G <- HEAD
+
+Until we cover reverting history and branching, the reason for two pointers won’t make much sense. For the time being, just note that this is the case.
 
 
 

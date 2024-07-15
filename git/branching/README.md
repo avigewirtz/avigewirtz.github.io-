@@ -1,5 +1,23 @@
 # Branching
 
+Mentioned earlier that each commit points to its parent, and current commit pointed to by HEAD. In theory, this is all we need.&#x20;
+
+
+
+current repo is linear sequence of commits. Looks like this:
+
+<figure><img src="../../.gitbook/assets/Group 45.png" alt="" width="375"><figcaption></figcaption></figure>
+
+main indicates a branch, and HEAD&#x20;
+
+<figure><img src="../../.gitbook/assets/Group 44.png" alt="" width="375"><figcaption></figcaption></figure>
+
+Branches allow you to work on two versions of a project at the same time. Each line of development is called a branch.&#x20;
+
+
+
+
+
 A Git branch is the simplest thing possible: a pointer to a commit, as a ref. Or rather, that is its implementation; the branch itself is defined as all points reachable in the commit graph from the named commit (the “tip” of the branch). The special ref HEAD determines what branch you are on; if HEAD is a symbolic ref for an existing branch, then you are “on” that branch. If, on the other hand, HEAD is a simple ref directly naming a commit by its SHA-1 ID, then you are not “on” any branch, but rather in “detached HEAD” mode, which happens when you check out some earlier commit to examine.
 
 

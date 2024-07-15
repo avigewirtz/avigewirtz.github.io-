@@ -21,4 +21,4 @@ It is precisely these sorts of frustrations that led Stuart Feldman to develop t
 make
 ```
 
-is all it takes to incrementally build the program. `make` will analyze the makefile and, based on the files' dependencies and latest modification timestamps, determine the minimum set of files that need to be rebuilt to bring the program up to date.
+is all it takes to incrementally build the program. `make` will analyze the makefile and, based on the files' dependencies and latest modification timestamps, determine the minimum set of files that need to be rebuilt to bring the program up to date. It's basic algorithm is as follows: If file A depends on B and B has a more recent modification timestamp than A, rebuild A using the specified command.&#x20;

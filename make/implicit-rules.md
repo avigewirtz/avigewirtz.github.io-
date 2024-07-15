@@ -1,6 +1,6 @@
 # Implicit Rules
 
-`make` has implicit rules for compiling and linking C programs. Much of the information we entered in our dependency rules can in fact be inferred by `make`. Consider the following rule, for example:
+`make` has implicit rules for compiling and linking C programs. Much of the information we entered in our makefile can in fact be inferred by `make`. Consider the following rule, for example:
 
 ```makefile
 intmath.o: intmath.c intmath.h
