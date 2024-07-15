@@ -1,6 +1,6 @@
 # Introduction
 
-As programmers, we often view `gcc` as a sort of black box; it takes as input one or more C source files and produces as outputs an executable file. If we take a look inside this box, however, we see that the underlying process takes place in a sequence of four stages--preprocessing, compilation, assembly, and linking. Each of these stages transforms the program from one form into another, culminating in an executable.&#x20;
+As programmers, we often view `gcc` as a sort of black box; it takes as input one or more C source files and produces as output an executable file. If we take a look inside this box, however, we see that the underlying process takes place in a sequence of four stages--preprocessing, compilation, assembly, and linking. Each of these stages transforms the program from one form into another, culminating in an executable.&#x20;
 
 The purpose of this chapter is to provide an overview of this four-stage process. First, we give a high-level overview of the process. Next, we go over the process in detail, using a single-file program as an example. Finally, we go over the process using a multi-file program as an example.&#x20;
 
