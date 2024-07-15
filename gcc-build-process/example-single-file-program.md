@@ -50,7 +50,10 @@ The result is the preprocessed file `charcount.i`. Let's break down what takes p
 
 First, the preprocessor removes all comments from the source code. Comments serve to help human readers understand the code, but they are of no use to the compiler. Hence, they can be discarded before compilation begins.
 
-Next, the preprocessor handles preprocessor directives. These are lines in the code that begin with a `#` (hash). An example of a preprocessor directive is `#include` (e.g., `#include <stdio.h>`), which instructs the preprocessor to grab the contents of the specified file and paste it directly into the current file where the `#include` directive appears. The #include \<stdio.h> directive tells the preprocessor to grab the contents of `stdio.h` (typically located in `/usr/include`) and paste it into our program right where the `#include` directive appears. stdio.h is a large file, containing function declarations and macro definitions. Of note are the following three lines:
+Next, the preprocessor handles preprocessor directives. These are lines in the code that begin with a `#` (hash). Our program contains only one explicit preprocessor directive: `#include <stdio.h>`. This instructs the preprocessor to grab the contents of `stdio.h` and paste it directly into `charcount.c` where the `#include` directive appears. 
+
+
+stdio.h is a large file, containing function declarations and macro definitions. Of note are the following three lines:
 
 ```c
 int printf(const char *format, ...);
