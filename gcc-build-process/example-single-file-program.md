@@ -1,6 +1,6 @@
 # Example: charcount.c
 
-Now that we have a high-level understanding of the four stage build process, let's walk through it in practice. Our example program will be the `charcount` program from lecture 3, whose source code is shown below. This program counts the number of characters input through stdin and outputs the count to stdout.
+Now that we have a high-level understanding of the four stage build process, let's walk through it in practice. Our example program will be the `charcount` program from lecture 3, whose source code is shown below. This program counts the number of characters input through stdin and outputs the count to stdout. It uses two C library functions
 
 {% code title="charcount.c" lineNumbers="true" %}
 ```c
@@ -33,7 +33,7 @@ int main(void) {
 Our program begins as C source code. We can roughly divide the source code into three categories:
 
 * **Comments**, such as `/* Write to stdout the number of chars in stdin. Return 0. */` on line 8. Comments are meant for human readers.
-* **Preprocessing language. Defined by GNU as "**_directives_ to be executed and _macros_ to be expanded." The preprocessing language in our program consists of the preprocessor directive `#include <stdio.h>`  and the macro `EOF`.&#x20;
+* **Preprocessing language. Defined by GNU as "**_directives_ to be executed and _macros_ to be expanded." The preprocessing language in our program consists of `#include <stdio.h>`  and `EOF`. EOF is a macro defined in Stdio.h. &#x20;
 * **Raw C code** (i.e., everything else). Raw C code is meant to be translated by the compiler.
 
 ### Preprocessing
