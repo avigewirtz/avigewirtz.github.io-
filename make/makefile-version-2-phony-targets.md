@@ -64,7 +64,7 @@ With this declaration, `make hello` will always run the specified command, even 
 
 Of course, the `hello` phony target is not particularly useful. In real-world makefiles, the following three phony targets are commonly used: `all`, `clean`, and `clobber`. &#x20;
 
-* `all`: To create the final executable binary file(s), typically the default target in the makefile.&#x20;
+* `all`: This should be the default target.. To create the final executable binary file(s), typically the default target in the makefile.&#x20;
 * `clean`: To delete all `.o` files and executable binary file(s).&#x20;
 * `clobber`: To extend clean by also deleting also build related files, such as Emacs backup files.
 
@@ -98,6 +98,16 @@ intmath.o: intmath.c intmath.h
   gcc -c intmath.c
 ```
 {% endcode %}
+
+\<show how to run these phony targets.>&#x20;
+
+
+
+
+
+
+
+
 
 all, like all phony targets, will always be considered out-of-date. Notice, however, that it doesn't have any command. Thus
 

@@ -1,12 +1,12 @@
 # Macros
 
-Make has a macro facility that performs textual substitution, similar to the macro facility of the C preprocessor. To define a macro, add the following line to the top of your makefile:
+Make has a macro facility that performs textual substitution, similar to the macro facility of the C preprocessor. To define a macro, add the following line to your makefile:
 
 ```makefile
 MACRO_NAME = value
 ```
 
-Where `MACRO_NAME` is the name of the macro you’re defining and `value` is the value you’re assigning to it. To subsequently use the macro in the Makefile, enclose its name in `$()` , like so:
+Where `MACRO_NAME` is the name of the macro you’re defining and `value` is the value you’re assigning to it. To use the macro in the Makefile, enclose its name in `$()` , like so:
 
 ```makefile
 $(MACRO_NAME)
@@ -35,11 +35,11 @@ clean:
     
 # Dependency rules for file targets
 testintmath: testintmath.o intmath.o
-    $(CC) testintmath.o intmath.o -o testintmath
+    $(CC) $(CFLAGS) testintmath.o intmath.o -o testintmath
 testintmath.o: testintmath.c intmath.h
-    $(CC) $(CFLAGS) -c testintmath.c
+    $(CC) -c $(CFLAGS) testintmath.c
 intmath.o: intmath.c intmath.h
-    $(CC) $(CFLAGS) -c intmath.c
+    $(CC) -c $(CFLAGS) intmath.c
 ```
 {% endcode %}
 
