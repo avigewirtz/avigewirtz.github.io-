@@ -32,10 +32,9 @@ target: direct_dependencies
 <tab> command
 ```
 
-Note the tab character on the second line preceding the command. 
+Note the tab character on the second line preceding the command.
 
-
-Our dependency graph has theee targets: the executable testintmath, and the object files testintmath.o and intmath.o. This results in a makefile with three rules. Here is the complete Makefile for our program:
+Our dependency graph has three targets: the executable `testintmath`, and the object files `testintmath.o` and `intmath.o`. This results in a makefile with three rules. Here is the complete Makefile:
 
 ```makefile
 testintmath: testintmath.o intmath.o
@@ -48,4 +47,4 @@ intmath.o: intmath.c intmath.h
     gcc217 -c intmath.c
 ```
 
-Notice how this Makefile is nothing more than a textual representation of the dependency graph we showed above. That is the core of Make. A language for soecifying and interpreting dependency graphs. &#x20;
+Notice how this Makefile is nothing more than a textual representation of the dependency graph we showed above. That is the core of `make`. A language for specifying and interpreting dependency graphs.
