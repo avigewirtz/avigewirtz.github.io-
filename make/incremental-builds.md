@@ -38,7 +38,7 @@ gcc -c intmath.c testintmath.c
 gcc intmath.o testintmath.o -o testintmath
 ```
 
-In general, changes to header file tend to be much more dramatic than changes to `.c` files, since header files, which serve as interfaces, tend to be included in many `.c` files. For that reason, great caution should be taken before modifying header files.
+In general, changes to header file tend to be much more dramatic than changes to `.c` files, since header files, which serve as interfaces, are typically included in many `.c` files. For this reason, great caution should be taken before modifying a header file.
 
 {% hint style="info" %}
 It's important to understand that fundamentally, the underlying GCC build process is the same irrespective of whether we build our program via two commands:
