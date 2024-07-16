@@ -10,7 +10,7 @@ Even for a small program like `testintmath`, these tasks aren't particularly fun
 
 Consider a scenario where you modify header file `A`, which is `#included` in 20 `.c` files. To rebuild the program, you'd have to track down each of these `.c` files and recompile them. Worse yet, imagine header file `A` is also `#included` in header file `B`. You'd then have to also track down each of the `.c` files that `#include` `B` and recompile them as well.
 
-It is precisely these sorts of frustrations that led Stuart Feldman to develop the `make` tool in 1976 while at Bell Labs. Here's a bird's eye view of how `make` works. It takes as input two pieces of information:
+It is precisely these sorts of frustrations that led Stuart Feldman to develop the `make` tool in 1976 while working at Bell Labs. Here's a bird's eye view of how `make` works. It takes as input two pieces of information:
 
 1. The program's dependency graph. This is a directed graph that specifies the dependencies between the program's files as well as the commands to build each file from its dependencies.
 2. The latest modification timestamp of each of the program's files.
