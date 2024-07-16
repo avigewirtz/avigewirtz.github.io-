@@ -99,6 +99,8 @@ intmath.o: intmath.c intmath.h
 ```
 {% endcode %}
 
+all, like all phony targets, will always be considered out-of-date. Notice, however, that it doesn't have any command. Thus
+
 {% hint style="info" %}
 **Purpose of the 'all' target**
 
