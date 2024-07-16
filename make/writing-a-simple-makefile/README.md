@@ -35,7 +35,7 @@ target: direct_dependencies
 Note the tab character on the second line preceding the command. 
 
 
-The target's in our dependency graph correspond to the object files (`intmath.o` and `testintmath.o`) and the executable (`testintmath`). We create a rule for each. Here is the complete Makefile for our program:
+Our dependency graph has theee targets: the executable testintmath, and the object files testintmath.o and intmath.o. This results in a makefile with three rules. Here is the complete Makefile for our program:
 
 ```makefile
 testintmath: testintmath.o intmath.o
@@ -48,11 +48,4 @@ intmath.o: intmath.c intmath.h
     gcc217 -c intmath.c
 ```
 
-
-The first rule tells make how to build the executable testintmath. It states that testitnmath depends on intmath.o and testintmath.o.  The command uses gcc to link the object files together.
-
-The next two rules specify how to build the object files. 
-
-compile the source files into object files. Each .o file depends on its corresponding .c file and the header file intmath.h. The -c flag tells gcc to compile the source file into an object file without linking.
-
-This Makefile is extremely simple. It's nothing more than a textual representation of testintmath's dependency graph.&#x20;
+Notice how this Makefile is nothing more than a textual representation of the dependency graph we showed above. That is the core of Make. A language for soecifying and interpreting dependency graphs. &#x20;
