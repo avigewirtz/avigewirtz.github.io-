@@ -47,4 +47,11 @@ intmath.o: intmath.c intmath.h
     gcc217 -c intmath.c
 ```
 
+
+The first rule tells make how to build the executable testintmath. It states that testitnmath depends on intmath.o and testintmath.o.  The command uses gcc to link the object files together.
+
+The next two rules specify how to build the object files. 
+
+compile the source files into object files. Each .o file depends on its corresponding .c file and the header file intmath.h. The -c flag tells gcc to compile the source file into an object file without linking.
+
 This Makefile is extremely simple. It's nothing more than a textual representation of testintmath's dependency graph.&#x20;
