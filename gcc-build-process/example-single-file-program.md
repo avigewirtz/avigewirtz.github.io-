@@ -1,12 +1,13 @@
 # Example: charcount.c
 
-Now that we have a high-level understanding of the four stage build process, let's walk through it in practice. Our example program will be the `charcount` program from lecture 3, whose source code is shown below. This program counts the number of characters input through stdin and outputs the count to stdout. It uses two C library functions
+Now that we have a high-level understanding of the four stage build process, let's walk through it in practice. Our example program will be the `charcount` program from lecture 3, whose source code is shown below. This program counts the number of characters input through stdin and outputs the count to stdout. It uses two C library functions--getChar, and printf. getchar returns integer value EOF.&#x20;
+
+The program uses getchar() to read characters one by one. getchar() returns an int, not a char, which is why 'c' is declared as an int. integer constant EOF
 
 {% code title="charcount.c" lineNumbers="true" %}
 ```c
 /*--------------------------------------------------------------------*/
-/* testintmath.c                                                      */
-/* Author: Bob Dondero                                                */
+/* charcount.c                                                        */
 /*--------------------------------------------------------------------*/
 
 #include <stdio.h>
@@ -28,21 +29,9 @@ int main(void) {
 ```
 {% endcode %}
 
-#### The Starting Point
-
-Our program begins as C source code. We can roughly divide the source code into three categories:
-
-* **Comments**, such as `/* Write to stdout the number of chars in stdin. Return 0. */` on line 8. Comments are meant for human readers.
-* **Preprocessing language. Defined by GNU as "**_directives_ to be executed and _macros_ to be expanded." The preprocessing language in our program consists of `#include <stdio.h>`  and `EOF`. EOF is a macro defined in Stdio.h. &#x20;
-* **Raw C code** (i.e., everything else). Raw C code is meant to be translated by the compiler.
-
 ### Preprocessing
 
-* maybe I should mention the three things it does
-
-As we mentioned earlier, we can perform all four build steps via a single `gcc` command, or we can perform each stage individually. Here, we'll perform each stage individually.&#x20;
-
-To run the preprocessor and halt, we use the -E option. output The command to invoke the preprocessor is:
+The command to invoke the preprocessor is:
 
 ```bash
 gcc217 -E charcount.c -o charcount.i
@@ -50,9 +39,7 @@ gcc217 -E charcount.c -o charcount.i
 
 Let's break down what takes place during this stage. The preprocessor is responsible for performing textual transformations on the source code before the actual compilation begins. The preprocessor doesn't understand C syntax; it operates purely on the text level.
 
-
-
-First, the preprocessor removes all comments from the source code. Comments serve to help human readers understand the code, but they are of no use to the compiler. Hence, they can be discarded before compilation begins.&#x20;
+First, the preprocessor removes all comments from the source code. Comments serve to help human readers understand the code, but they are of no use to the compiler. Hence, they can be discarded before compilation begins.
 
 Next, the preprocessor handles preprocessor directives. Our program contains only one explicit preprocessor directive: `#include <stdio.h>`. This instructs the preprocessor to grab the contents of `stdio.h` and paste it directly into `charcount.c` where the `#include` directive appears.
 

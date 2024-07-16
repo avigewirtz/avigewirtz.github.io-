@@ -42,7 +42,7 @@ A useful analogy is to think of this four stage process as an assembly line, whe
 
 #### Saving Intermediate Files
 
-By default, `gcc` does not retain the intermediate files generated during the build process. Thus, if we inovke `ls` after building `foo`, we won't see any of the `.i`, `.s`, or `.o` files in our directory:
+By default, `gcc` does not retain the intermediate files generated during the build process. Thus, if we invoke `ls` after building `foo`, we won't see any of the `.i`, `.s`, or `.o` files in our directory:
 
 ```bash
 $ ls
