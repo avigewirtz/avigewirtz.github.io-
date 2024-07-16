@@ -1,4 +1,4 @@
-# Implicit Rules
+# Advanced Features: Automatic Variables and Implicit Rules
 
 `make` has implicit rules for compiling and linking C programs. Much of the information we entered in our makefile can in fact be inferred by `make`. Consider the following rule, for example:
 
@@ -19,7 +19,7 @@ Similarly, consider the rule for the executable:
 
 ```
 testintmath: testintmath.o intmath.o
-    $(CC) testintmath.o intmath.o -o testintmath
+    $(CC) $(LDFLAGS) testintmath.o intmath.o -o testintmath
 ```
 
 We could have written it as:
@@ -28,7 +28,11 @@ We could have written it as:
 testintmath: intmath.o
 ```
 
-And from observing that the executable is `testintmath`, make would infer that it depends on `testintmath.o` and that the command to build it is `$(CC) testintmath.o intmath.o -o testintmath`. Note, however, that this only works since `testintmath` has the same name as `testintmath.o` (minus the `.o` extension). If we named the executable differently, like `testintmath1`, `make` would incorrectly assume it depends on `testintmath1.o`.
+And from observing that the executable is `testintmath`, make would infer that it depends on `testintmath.o` and that the command to build it is.
+
+
+
+&#x20;`$(CC) testintmath.o intmath.o -o testintmath`. Note, however, that this only works since `testintmath` has the same name as `testintmath.o` (minus the `.o` extension). If we named the executable differently, like `testintmath1`, `make` would incorrectly assume it depends on `testintmath1.o`.
 
 Here's what our makefile looks like after incorporating these shortcuts:
 
