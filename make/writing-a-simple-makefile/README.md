@@ -38,13 +38,13 @@ Our dependency graph has three targets: the executable `testintmath`, and the ob
 
 ```makefile
 testintmath: testintmath.o intmath.o
-    gcc217 testintmath.o intmath.o -o testintmath
+    gcc testintmath.o intmath.o -o testintmath
 
 testintmath.o: testintmath.c intmath.h
-    gcc217 -c testintmath.c
+    gcc -c testintmath.c
 
 intmath.o: intmath.c intmath.h
-    gcc217 -c intmath.c
+    gcc -c intmath.c
 ```
 
 Notice how this Makefile is nothing more than a textual representation of the dependency graph we showed above. That is the core of `make`. A language for specifying and interpreting dependency graphs.

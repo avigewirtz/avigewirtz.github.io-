@@ -19,7 +19,7 @@ Makefile version 3, shown below, illustrates two commonly used macros: `CC`, use
 {% code title="Makefile version 3" lineNumbers="true" %}
 ```makefile
 # Macros
-CC = gcc217
+CC = gcc
 # CC = clang
 CFLAGS =
 # CFLAGS = -g

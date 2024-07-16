@@ -4,10 +4,10 @@ In our current makefile, each rule's target is the name of a file that is built 
 
 ```makefile
 intmath.o: intmath.c intmath.h
-  gcc217 -c intmath.c
+  gcc -c intmath.c
 ```
 
-The target is `intmath.o`, which is built when the command `gcc217 -c intmath.c` is executed. Recall that this command will be executed if either `intmath.o` does not exist or if one of its dependencies have a more recent modification timestamp.
+The target is `intmath.o`, which is built when the command `gcc -c intmath.c` is executed. Recall that this command will be executed if either `intmath.o` does not exist or if one of its dependencies have a more recent modification timestamp.
 
 A flexible feature of `make` is that it does not require that the target actually represent a file. Instead, it can represent a label for an arbitrary command or action you want `make` to execute. Such a target is called a _phony target_. Consider the following rule:
 
@@ -52,7 +52,7 @@ make: `hello' is up to date.
 $
 ```
 
-Thankfully, GNU Make offers a simple solution to this potential issue. Just declare `hello` to be phony, like so:
+GNU Make offers a simple solution to this potential issue. Just declare `hello` to be phony, like so:
 
 ```makefile
 .PHONY: hello
@@ -89,13 +89,13 @@ clobber: clean
   
 # Dependency rules for file targets
 testintmath: testintmath.o intmath.o
-  gcc217 testintmath.o intmath.o –o testintmath
+  gcc testintmath.o intmath.o –o testintmath
   
 testintmath.o: testintmath.c intmath.h
-  gcc217 -c testintmath.c
+  gcc -c testintmath.c
   
 intmath.o: intmath.c intmath.h
-  gcc217 -c intmath.c
+  gcc -c intmath.c
 ```
 {% endcode %}
 

@@ -35,7 +35,7 @@ Here's what our makefile looks like after incorporating these shortcuts:
 {% code title="makefile version 4" %}
 ```makefile
 # Macros
-CC = gcc217
+CC = gcc
 # CC = clang
 CFLAGS =
 # CFLAGS = -g

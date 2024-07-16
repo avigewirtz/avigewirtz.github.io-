@@ -22,9 +22,9 @@ In both cases, `make` will attempt to build `testintmath`. If `testintmath` is e
 
 ```bash
 $ make
-gcc217 -c testintmath.c
-gcc217 -c intmath.c
-gcc217 testintmath.o intmath.o -o testintmath
+gcc -c testintmath.c
+gcc -c intmath.c
+gcc testintmath.o intmath.o -o testintmath
 $
 ```
 

@@ -44,14 +44,14 @@ In general, changes to header file tend to be much more dramatic than changes to
 It's important to understand that fundamentally, the underlying GCC build process is the same irrespective of whether we build our program via two commands:
 
 ```bash
-gcc217 -c intmath.c testintmath.c
-gcc217 intmath.o testintmath.o -o testintmath
+gcc -c intmath.c testintmath.c
+gcc intmath.o testintmath.o -o testintmath
 ```
 
 Or via a single command:
 
 ```bash
-gcc217 intmath.c testintmath.c -o testintmath
+gcc intmath.c testintmath.c -o testintmath
 ```
 
 In both cases, `intmath.c` and `testintmath.c` will be independently preprocessed, compiled, and assembled into object files, which are then linked. The difference between these two approaches is that the two-command approach retains the object files while the single-command approach does not.
