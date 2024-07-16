@@ -1,6 +1,6 @@
 # Example: charcount.c
 
-Now that we have a high-level understanding of the four stage build process, let's walk through it using a real program as an example. Our example program will be the `charcount` program from lecture 3, whose source code is shown below. This program counts the number of characters input through stdin and outputs the count to stdout.
+Now that we have a high-level understanding of the four stage build process, let's walk through it in practice. Our example program will be the `charcount` program from lecture 3, whose source code is shown below. This program counts the number of characters input through stdin and outputs the count to stdout.
 
 {% code title="charcount.c" lineNumbers="true" %}
 ```c
