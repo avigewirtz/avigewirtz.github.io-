@@ -16,7 +16,23 @@ hello:
     echo "Hello, world!" 
 ```
 
-The target, `hello`, does not represent a file—that is, there is no file in our directory named `hello`, and the command `echo "hello, world"` does not create such a file. (Also notice that the target does not have any dependencies. That's perfectly valid, as dependencies are optional.) What would happen if we were to add this rule to our makefile and invoke it? Let's give it a shot. First, let's add it to our makefile. 
+The target, `hello`, does not represent a file—that is, there is no file in our directory named `hello`, and the command `echo "hello, world"` does not create such a file. (Also notice that the target does not have any dependencies. That's perfectly valid, as dependencies are optional.) What would happen if we were to add this rule to our makefile and invoke it? Let's give it a shot. First, let's add it to our makefile. The order of rules does not matter, except for the first rule, which is the default rule. 
+
+
+```makefile
+testintmath: testintmath.o intmath.o
+  gcc testintmath.o intmath.o –o testintmath
+  
+testintmath.o: testintmath.c intmath.h
+  gcc -c testintmath.c
+  
+intmath.o: intmath.c intmath.h
+  gcc -c intmath.c
+
+hello: 
+    echo "Hello, world!" 
+```
+
 
 ```bash
 $ make hello
@@ -29,7 +45,10 @@ We see that `make` executes the command `echo "Hello, world!"`, printing `Hello,
 
 Here's how it works. When `make` processes this rule, it assumes that `hello` represents a file. It thus looks for a file named `hello` in the working directory. Because it does not find one, it determines that `hello` needs to be built, and it thus executes the command `echo "Hello, world!"`. At this point, `make` considers its job complete. It does not care whether a file named `hello` is in fact created.
 
-The important point to recognize is that because this rule will never create a file named `hello`, it will always be considered out-of-date. Thus, we can run `make hello` as many times as we'd like, and, each time, `make` will execute the command `echo "Hello, world!"`. For example, if we run `make hello` three times in a row:
+A couple of important things are importance to recognize: 
+
+
+1. Because this rule will never create a file named `hello`, it will always be considered out-of-date. Thus, we can run `make hello` as many times as we'd like, and, each time, `make` will execute the command `echo "Hello, world!"`. For example, if we run `make hello` three times in a row:
 
 ```bash
 $ make hello
@@ -44,7 +63,10 @@ Hello, world!
 $
 ```
 
-It should go without saying that this scheme only works if there is in fact never a file named `hello` in the working directory. If there is such a file, it will always be considered up to date, and running `make hello` will always yield:
+2. This rule will never be invoked unless we explicitly specify it in the command line. 
+
+
+3. This scheme only works if there is in fact never a file named `hello` in the working directory. If there is such a file, it will always be considered up to date, and running `make hello` will always yield:
 
 ```makefile
 $ make hello
@@ -101,17 +123,8 @@ intmath.o: intmath.c intmath.h
 
 with these updates, running our makefile is the same as before. To build the entire program, we run make.&#x20;
 
-However, if we want to&#x20;
-
-
-
-
-
-
-
-
-
-all, like all phony targets, will always be considered out-of-date. Notice, however, that it doesn't have any command. Thus
+To delete...
+&#x20;
 
 {% hint style="info" %}
 **Purpose of the 'all' target**
