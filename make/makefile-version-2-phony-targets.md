@@ -1,6 +1,18 @@
 # Phony targets
 
-In our current makefile, each rule's target is the name of a file that is built when the rule's command is executed. For example, in the following rule:
+In our current makefile, each rule's target is the name of a file that is built when the rule's command is executed.&#x20;
+
+
+
+
+
+
+
+
+
+
+
+For example, in the following rule:
 
 ```makefile
 intmath.o: intmath.c intmath.h
@@ -39,16 +51,22 @@ intmath.o: intmath.c intmath.h
 ```
 {% endcode %}
 
-Let's start with the clean phony target:
+Let's start with the rule for `clean`:
 
 ```
 clean:
     rm -f testintmath *.o
 ```
 
-Notice a couple of things about this rule. First, it does&#x20;
+Notice a couple of things about this rule. First, `clean`, does not represent a file—that is, there is no file in our directory named `clean`, and the command `rm -f testintmath *.o` does not create such a file. Second, it contains no dependencies.&#x20;
 
-The target, `clean`, does not represent a file—that is, there is no file in our directory named `clean`, and the command `rm -f testintmath *.o` does not create such a file. In fact, it serves quite an opposite purpose--to delete the object files and the executable. (Also notice that the target does not have any dependencies. That's perfectly valid, as dependencies are optional. Make will simply skip the dependency checking step and determine whether to run the command based solely on the existence of clean.)
+Thus, the semantic are as follows: if clean does not exist, run the command rm -f testintmath \*.o. We would think this might cause an error since clean isn't created, but make does not. Make does not actauilly verify the cxlean is created.&#x20;
+
+
+
+
+
+&#x20;In fact, it serves quite an opposite purpose--to delete the object files and the executable. (Also notice that the target does not have any dependencies. That's perfectly valid, as dependencies are optional. Make will simply skip the dependency checking step and determine whether to run the command based solely on the existence of clean.)
 
 
 
