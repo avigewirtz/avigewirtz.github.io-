@@ -4,7 +4,7 @@ Recall the underlying process by which `testinmath` is built.  The source files 
 
 <figure><img src="../.gitbook/assets/Frame 31 (2).png" alt=""><figcaption></figcaption></figure>
 
-The key to incremental builds lies in caching object files and reusing them in subsequent builds when the source files they are derived from, or _depend_ on, haven't changed. Put simply, each object file depends on its corresponding `.c` file and `#included` headers.
+The key to incremental builds lies in caching object files and reusing them in subsequent builds when the source files they are derived from, or _depend_ on, haven't changed. Notice that each object file depends on its corresponding `.c` file and `#included` headers.
 
 
 From obersving Figure X, the following dependencies should be apparent:
@@ -12,12 +12,9 @@ From obersving Figure X, the following dependencies should be apparent:
 - testintmath.o depends on testintmath.c, stdio.h, stdlib.h, and intmath.h 
 - intmath.o depends on intmath.c and intmath.h 
 
-In other words, each object file depends on its corresponding `.c` file and `#included` headers. In practical purposes, we need not be concerned with stdio.h and stdlib.h, since these are system headers that we dont modify. 
+In practical purposes, we need not be concerned with stdio.h and stdlib.h, since these are system headers that we dont modify. 
 
-In oractical terms, this means that id we 
-
-
-It does not depend on any other source files. For example, `intmath.o` depends on `intmath.c` and `intmath.h`, but it does not depend on `testintmath.c` (or `stdio.h` and `stdlib.h`). This means that changes to `testntmath.c` have no impact on `intmath.o`. Thus, if we modify only `testintmath.c`, we can rebuild our program by rebuilding `testintmath.o` and linking it with the existing `intmath.o`. (Similarly, if we modify only `intmath.c`, we can rebuild our program by rebuilding `intmath.o` and linking it with the existing `testintmath.o`). Let’s demonstrate this incremental build strategy in action.
+In practical terms, this means that if we modify only `testintmath.c`, we can rebuild our program by rebuilding `testintmath.o` and linking it with the existing `intmath.o`. Similarly, if we modify only `intmath.c`, we can rebuild our program by rebuilding `intmath.o` and linking it with the existing `testintmath.o`. Let’s demonstrate this incremental build strategy in action.
 
 The first time we build `testintmath`, a full build is required; there’s no way around that. Importantly, however, we ensure to save the intermediately generated object files--`intmath.o` and `testintmath.o`--which by default `gcc` discards. How do we save object files? Recall the `-c` option, which tells `gcc` to halt the build process after the assembly stage and output object files. Thus, we build `testintmath` with the following two commands:
 
