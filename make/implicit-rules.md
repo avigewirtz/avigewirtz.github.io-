@@ -32,7 +32,7 @@ And from observing that the executable is `testintmath`, make would infer that i
 
 
 
-&#x20;`$(CC) testintmath.o intmath.o -o testintmath`. Note, however, that this only works since `testintmath` has the same name as `testintmath.o` (minus the `.o` extension). If we named the executable differently, like `testintmath1`, `make` would incorrectly assume it depends on `testintmath1.o`.
+&#x20;`$(CC) testintmath.o intmath.o -o testintmath`. Note, however, that this only works since the executable (`testintmath`)  has the same prefix of one of the object files (`testintmath.o`). If not, this wouldn't work. For example, if the executable were named `testintmath1`, `make` would incorrectly assume it depends on `testintmath1.o`.
 
 Here's what our makefile looks like after incorporating these shortcuts:
 
