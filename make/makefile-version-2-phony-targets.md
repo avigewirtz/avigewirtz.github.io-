@@ -29,7 +29,7 @@ We see that `make` executes the command `echo "Hello, world!"`, printing `Hello,
 
 Here's how it works. When `make` processes this rule, it assumes that `hello` represents a file. It thus looks for a file named `hello` in the working directory. Because it does not find one, it determines that `hello` needs to be built, and it thus executes the command `echo "Hello, world!"`. At this point, `make` considers its job complete. It does not care whether a file named `hello` is in fact created.
 
-The important point to recognize is that because this rule will never create a file named `hello`, it will always be considered out of date. Thus, we can run `make hello` as many times as we'd like, and, each time, `make` will execute the command `echo "Hello, world!"`. For example, if we run `make hello` three times in a row:
+The important point to recognize is that because this rule will never create a file named `hello`, it will always be considered out-of-date. Thus, we can run `make hello` as many times as we'd like, and, each time, `make` will execute the command `echo "Hello, world!"`. For example, if we run `make hello` three times in a row:
 
 ```bash
 $ make hello
@@ -64,7 +64,7 @@ With this declaration, `make hello` will always run the specified command, even 
 
 Of course, the `hello` phony target is not particularly useful. In real-world makefiles, the following three phony targets are commonly used: `all`, `clean`, and `clobber`. &#x20;
 
-* `all`: This should be the default target.. To create the final executable binary file(s), typically the default target in the makefile.&#x20;
+* `all`: This should be the default target..To create the final executable binary file(s), typically the default target in the makefile.&#x20;
 * `clean`: To delete all `.o` files and executable binary file(s).&#x20;
 * `clobber`: To extend clean by also deleting also build related files, such as Emacs backup files.
 
@@ -99,7 +99,9 @@ intmath.o: intmath.c intmath.h
 ```
 {% endcode %}
 
-\<show how to run these phony targets.>&#x20;
+with these updates, running our makefile is the same as before. To build the entire program, we run make.&#x20;
+
+However, if we want to&#x20;
 
 
 
