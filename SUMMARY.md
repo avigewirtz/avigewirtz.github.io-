@@ -99,7 +99,7 @@
   * [How make Processes a Makefile](make/writing-a-simple-makefile/how-make-processes-a-makefile.md)
 * [Phony targets](make/makefile-version-2-phony-targets.md)
 * [Macros](make/makefile-version-3-macros.md)
-* [Advanced Features: Automatic Variables and Implicit Rules](make/implicit-rules.md)
+* [Advanced Features](make/implicit-rules.md)
 * [Further Reading](make/further-reading.md)
 
 ## Emacs

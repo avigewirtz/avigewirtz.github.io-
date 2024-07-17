@@ -1,4 +1,48 @@
-# Advanced Features: Automatic Variables and Implicit Rules
+# Advanced Features
+
+The current features we've covered are all you need to know about make. However, make has other features. Many of them are confusing and make makefiles much less readable, but they are often used in real-world makefiles, so it's useful to have a working familiarity with them.&#x20;
+
+#### Automatic Variables
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Implicit Rules
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Multiple Targets and commands
+
+
+
+`Miscellaneous features:`
+
+* multiple targets. allowed. commands will run for each target.
 
 `make` has implicit rules for compiling and linking C programs. Much of the information we entered in our makefile can in fact be inferred by `make`. Consider the following rule, for example:
 
