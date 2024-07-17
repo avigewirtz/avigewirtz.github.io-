@@ -16,7 +16,7 @@ hello:
     echo "Hello, world!" 
 ```
 
-The target, `hello`, does not represent a file—that is, there is no file in our directory named `hello`, and the command `echo "hello, world"` does not create such a file. (Also notice that the target does not have any dependencies. That's perfectly valid, as dependencies are optional.) What happens when we invoke this rule? Let's give it a shot:
+The target, `hello`, does not represent a file—that is, there is no file in our directory named `hello`, and the command `echo "hello, world"` does not create such a file. (Also notice that the target does not have any dependencies. That's perfectly valid, as dependencies are optional.) What would happen if we were to add this rule to our makefile and invoke it? Let's give it a shot. First, let's add it to our makefile. 
 
 ```bash
 $ make hello
