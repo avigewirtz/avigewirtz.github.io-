@@ -6,7 +6,7 @@ The basic syntax to run `make` is:
 make target
 ```
 
-where `target` is the name of the target in your Makefile that you want `make` to build. If you omit a target, `make` defaults to the first target in the makefile. In our case, that's `testintmath`. Thus, the command:
+where `target` is the name of the file you want make to build (see, however, phony targets). If you omit a target, `make` defaults to the first target in the makefile. In our case, that's `testintmath`. Thus, the command:
 
 ```bash
 make
