@@ -1,6 +1,14 @@
 # How make Processes a Makefile
 
-As we saw, make’s job is to bring a target up-to-date. In order for make to bring a target up-to-date, it must first ensure that the target’s dependencies are up-to-date. For example, in order to bring testintmath up-to-date, make must first ensure that testintmath.o and intmath.o are up-to-date. Thus, make must examine these targets before determining how to proceed with testintmath. 
+As we saw, make’s job is to bring a target up-to-date. A target is considered up-to-date if it exists and it is newer than all it's dependencies.&#x20;
+
+
+
+In order for make to bring a target up-to-date, make must first ensure that the target’s dependencies are up-to-date. A target is considered up-to-date if it exists and it has no dependencies with newer timestamps.&#x20;
+
+
+
+For example, in order to bring testintmath up-to-date, make must first ensure that testintmath.o and intmath.o are up-to-date. Thus, make must examine these targets before determining how to proceed with testintmath.
 
 Any traversal of the graph in which each file is processed only after its dependencies are processed is a valid traversal.
 
