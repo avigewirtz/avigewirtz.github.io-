@@ -44,7 +44,7 @@ Hello, world!
 $
 ```
 
-It should go without saying that this scheme only works if there is in fact never a file named `hello` in the working directory. If there is such a file, it will always be considered up to date (since it has no dependencies) and running `make hello` will always yield:
+It should go without saying that this scheme only works if there is in fact never a file named `hello` in the working directory. If there is such a file, it will always be considered up to date, and running `make hello` will always yield:
 
 ```makefile
 $ make hello
