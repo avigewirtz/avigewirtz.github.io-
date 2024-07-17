@@ -1,5 +1,47 @@
 # Phony targets
 
+Phony targets serve three purposes:
+
+* Action-oriented targets: Phony rules allow you to define targets that represent actions rather than files. Common examples include "clean", "test", or "run".
+* Always execute: Phony rules are designed to be executed every time they're invoked.&#x20;
+* Grouping commands: They can be used to group a set of related commands or dependencies under a single, meaningful name.
+
+
+
+
+
+Target can represent a label for a command or action rather than a file.&#x20;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 In our current makefile, each rule's target is the name of a file that is built when the rule's command is executed.&#x20;
 
 
@@ -30,14 +72,14 @@ A flexible feature of `make` is that it does not require that the target actuall
 # Default target (i.e., target to use when make is invoked without specifying a target)
 all: testintmath
   
-# Deletes all object files (.o) and the executable 
-clean:
-    rm -f testintmath *.o
-  
 # Extends clean by also deleting Emacs backup and autosave files ('*~' specifies 
 # all files that end with a '~', and '\#*\#' specifies all files that start and end with a '#')
 clobber: clean
     rm -f *~ \#*\# 
+
+# Deletes all object files (.o) and the executable 
+clean:
+    rm -f testintmath *.o
   
 # Dependency rules for file targets
 testintmath: testintmath.o intmath.o
