@@ -52,7 +52,7 @@ make: `hello' is up to date.
 $
 ```
 
-GNU Make offers a simple solution to this potential issue. Just declare `hello` to be phony, like so:
+GNU Make offers a simple solution to guard against this potential issue. Just declare `hello` to be phony, like so:
 
 ```makefile
 .PHONY: hello
