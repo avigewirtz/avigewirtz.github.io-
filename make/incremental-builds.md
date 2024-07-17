@@ -4,16 +4,14 @@ Recall the underlying process by which `testinmath` is built.  The source files 
 
 <figure><img src="../.gitbook/assets/Frame 31 (2).png" alt=""><figcaption></figcaption></figure>
 
-The key to incremental builds lies in caching object files and reusing them in subsequent builds when the source files they are derived from, or _depend_ on, haven't changed. 
-
-Notice that each object file depends on its corresponding `.c` file and `#included` headers. Thus, if if one of those source files aren't modified, there's no reason to rebuild the object file. A mere glance at Figure X ahould hopefilly make the dependencies apparent:
+The key to incremental builds lies in caching object files and reusing them in subsequent builds when the source files they are derived from, or _depend_ on, haven't changed. From obersving Figure X, it should be apparent that each object file depends on its corresponding `.c` file and `#included` headers. That is:
 
 - testintmath.o depends on testintmath.c, stdio.h, stdlib.h, and intmath.h 
 - intmath.o depends on intmath.c and intmath.h 
 
 In practical purposes, we need not be concerned with stdio.h and stdlib.h, since these are system headers that we dont modify. 
 
-
+In oractical terms, this means that id we 
 
 
 It does not depend on any other source files. For example, `intmath.o` depends on `intmath.c` and `intmath.h`, but it does not depend on `testintmath.c` (or `stdio.h` and `stdlib.h`). This means that changes to `testntmath.c` have no impact on `intmath.o`. Thus, if we modify only `testintmath.c`, we can rebuild our program by rebuilding `testintmath.o` and linking it with the existing `intmath.o`. (Similarly, if we modify only `intmath.c`, we can rebuild our program by rebuilding `intmath.o` and linking it with the existing `testintmath.o`). Let’s demonstrate this incremental build strategy in action.
