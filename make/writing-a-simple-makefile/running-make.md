@@ -1,6 +1,6 @@
 # Running make
 
-The general syntax to run `make` is:
+The basic syntax to run `make` is:
 
 ```bash
 make target
