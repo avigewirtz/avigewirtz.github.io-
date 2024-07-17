@@ -1,6 +1,8 @@
 # How make Processes a Makefile
 
-<mark style="color:red;">To ensure that a target is up-to-date,</mark> <mark style="color:red;"></mark>_<mark style="color:red;">make</mark>_ <mark style="color:red;"></mark><mark style="color:red;">shall ensure that all of the prerequisites of a target are up-to-date, then check to see if the target itself is up-to-date. If the target is not up-to-date, the target shall be made up-to-date by executing the rule's commands (if any). If the target does not exist after the target has been successfully made up-to-date, the target shall be treated as being newer than any target for which it is a prerequisite.</mark>
+As we saw, make’s job is to bring a target up-to-date. In order for make to bring a target up-to-date, it must first ensure that the target’s dependencies are up-to-date. For example, in order to bring testintmath up-to-date, make must first ensure that testintmath.o and intmath.o are up-to-date. Thus, make must examine these targets before determining how to proceed with testintmath. 
+
+Any traversal of the graph in which each file is processed only after its dependencies are processed is a valid traversal.
 
 `make` processes a Makefile via a [depth first search](https://en.wikipedia.org/wiki/Depth-first\_search) (DFS) traversal of its dependency graph, starting from the default target or from the target specified on the command line. For each target, `make` recursively examines its dependencies, diving deeper until it reaches a leaf node (a file without any dependencies). During the traversal, it notes if each file exists, and if so, its timestamp. When it hits a leaf node, `make` backtracks to the previous target and checks any remaining dependencies.
 
