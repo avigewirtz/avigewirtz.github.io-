@@ -1,176 +1,10 @@
 # Phony targets
 
-
-
-
-
-A pseudotarget is a label used in place of a filename in a dependency line. It is interpreted as a file that does not exist, and so is out-of-date.
-
-
-
-
-
-
-
-When a target is found to be out of date and make runs its command, make does not actually verify that the target was built.&#x20;
-
-
-
-
-
-
-
-We've assumed that a target represents a file, dependencies represent files it's derived from, and the command builds the file. In fact, however, none of these assumptions are necessarily true.  represent files that are build from dependencies. In fact, however, neither of these assumptions need be true. That is, a target need not be a file, and it need not have dependencies.&#x20;
-
-
-
-
-
-
-
-
-
-
-
-Phony targets serve three purposes:
-
-* Action-oriented targets: Phony rules allow you to define targets that represent actions rather than files. Common examples include "clean", "test", or "run".
-* Always execute: Phony rules are designed to be executed every time they're invoked.&#x20;
-* Grouping commands: They can be used to group a set of related commands or dependencies under a single, meaningful name.
-
-
-
-
-
-Target can represent a label for a command or action rather than a file.&#x20;
-
-
-
-
-
-
-
-
-
-
-
-
-
-make treats all targets as files, but it does not actaully&#x20;
-
-
-
-
-
-
-
-
-
-
-
-
-
-```makefile
-hello: 
-    gcc hello.c -o hello1
-```
-
-
-
-In our current makefile, each rule's target is the name of a file that is built when the rule's command is executed. For example, in the following rule:
+In our current makefile, each rule's target is the name of a file that is built when when the rule's command is executed. For example, in the following rule:
 
 ```makefile
 intmath.o: intmath.c intmath.h
-    gcc -c intmath.c
-```
-
-The target is `intmath.o`, which is built when the command `gcc -c intmath.c` is executed.&#x20;
-
-A flexible feature of `make` is that it does not require that the target actually represent a file. Instead, it can represent a label for an arbitrary command or action you want `make` to execute. Such a target is called a _phony target_. Consider the following rule:
-
-```
-clean:
-    rm -f testintmath *.o
-```
-
-The target, `clean`, does not represent a file--that it, there is no file in our directory named `clean`, and the command `rm -f testintmath *.o` does not create such a file. Also notice that this rule does not contain any dependencies. That's perfeclty valid, as dependencies are optional.&#x20;
-
-
-
-
-
-If we were to add this rule to our makefile and invoke it, here's how make would process it:
-
-First, make would check if a file named clean exists in the current working directory. It would see that it does not. Normally, before determining how to proceed with a target, make would evaluate it's dependencies, but because clean doesn't have any dependencies, make can skip that step.&#x20;
-
-
-
-&#x20;In fact, the effect of running rm -f testintmath it does not have any dependencies, and the command. If we were to add this ruile to our makefile&#x20;
-
-
-
-
-
-Phony targets are easiest to illustrate by example, so let's jump right into makefile version 2, which contains three phony targets: all, clean, and clobber. Don't worry about what they mean or how they work for now. We'll go over them one by one.&#x20;
-
-{% code title="makefile version 2" lineNumbers="true" %}
-```makefile
-# Dependency rules for non-file targets
-
-# Default target (i.e., target to use when make is invoked without specifying a target)
-all: testintmath
-  
-# Extends clean by also deleting Emacs backup and autosave files ('*~' specifies 
-# all files that end with a '~', and '\#*\#' specifies all files that start and end with a '#')
-clobber: clean
-    rm -f *~ \#*\# 
-
-# Deletes all object files (.o) and the executable 
-clean:
-    rm -f testintmath *.o
-  
-# Dependency rules for file targets
-testintmath: testintmath.o intmath.o
-    gcc testintmath.o intmath.o –o testintmath
-  
-testintmath.o: testintmath.c intmath.h
-    gcc -c testintmath.c
-  
-intmath.o: intmath.c intmath.h
-    gcc -c intmath.c
-```
-{% endcode %}
-
-Let's start with the rule for `clean`:
-
-```
-clean:
-    rm -f testintmath *.o
-```
-
-Notice a couple of things about this rule. First, `clean`, does not represent a file—that is, there is no file in our directory named `clean`, and the command `rm -f testintmath *.o` does not create such a file. Second, it contains no dependencies.&#x20;
-
-Thus, the semantic are as follows: if clean does not exist, run the command rm -f testintmath \*.o. We would think this might cause an error since clean isn't created, but make does not. Make does not actauilly verify the cxlean is created.&#x20;
-
-
-
-
-
-&#x20;In fact, it serves quite an opposite purpose--to delete the object files and the executable. (Also notice that the target does not have any dependencies. That's perfectly valid, as dependencies are optional. Make will simply skip the dependency checking step and determine whether to run the command based solely on the existence of clean.)
-
-
-
-Here's how it works. When `make` processes this rule, it assumes that `clean` represents a file. It thus looks for a file named `hello` in the working directory. Because it does not find one, it determines that `hello` needs to be built, and it thus executes the command `echo "Hello, world!"`. At this point, `make` considers its job complete. It does not care whether a file named `hello` is in fact created.
-
-Here's how it works. Make assumes that all targets and prerequisites represent files.&#x20;
-
-
-
-In our current makefile, each rule's target is the name of a file that is built when the rule's command is executed. For example, in the following rule:
-
-```makefile
-intmath.o: intmath.c intmath.h
-    gcc -c intmath.c
+  gcc -c intmath.c
 ```
 
 The target is `intmath.o`, which is built when the command `gcc -c intmath.c` is executed. Recall that this command will be executed if either `intmath.o` does not exist or if one of its dependencies have a more recent modification timestamp.
@@ -182,7 +16,7 @@ hello:
     echo "Hello, world!" 
 ```
 
-The target, `hello`, does not represent a file—that is, there is no file in our directory named `hello`, and the command `echo "hello, world"` does not create such a file. (Also notice that the target does not have any dependencies. That's perfectly valid, as dependencies are optional.) What would happen if we were to add this rule to our Makefile and invoke it? Let's give it a shot:
+The target, `hello`, does not represent a file—that is, there is no file in our directory named `hello`, and the command `echo "hello, world"` does not create such a file. (Also notice that the target does not have any dependencies. That's perfectly valid, as dependencies are optional.) What would happen if we were to add this rule to our makefile and invoke it? Let's give it a shot. First, let's add it to our makefile.
 
 ```bash
 $ make hello
@@ -195,9 +29,7 @@ We see that `make` executes the command `echo "Hello, world!"`, printing `Hello,
 
 Here's how it works. When `make` processes this rule, it assumes that `hello` represents a file. It thus looks for a file named `hello` in the working directory. Because it does not find one, it determines that `hello` needs to be built, and it thus executes the command `echo "Hello, world!"`. At this point, `make` considers its job complete. It does not care whether a file named `hello` is in fact created.
 
-A few things are important things are importance to recognize:
-
-1. Because this rule will never create a file named `hello`, it will always be considered out-of-date. Thus, we can run `make hello` as many times as we'd like, and, each time, `make` will execute the command `echo "Hello, world!"`. For example, if we run `make hello` three times in a row:
+The important point to recognize is that because this rule will never create a file named `hello`, it will always be considered out-of-date. Thus, we can run `make hello` as many times as we'd like, and, each time, `make` will execute the command `echo "Hello, world!"`. For example, if we run `make hello` three times in a row:
 
 ```bash
 $ make hello
@@ -212,8 +44,7 @@ Hello, world!
 $
 ```
 
-2. This rule will never be invoked unless we explicitly specify it in the command line.
-3. This scheme only works if there is in fact never a file named `hello` in the working directory. If there is such a file, it will always be considered up to date, and running `make hello` will always yield:
+It should go without saying that this scheme only works if there is in fact never a file named `hello` in the working directory. If there is such a file, it will always be considered up to date, and running `make hello` will always yield:
 
 ```makefile
 $ make hello
@@ -270,7 +101,9 @@ intmath.o: intmath.c intmath.h
 
 with these updates, running our makefile is the same as before. To build the entire program, we run make.
 
-To delete...
+However, if we want to
+
+all, like all phony targets, will always be considered out-of-date. Notice, however, that it doesn't have any command. Thus
 
 {% hint style="info" %}
 **Purpose of the 'all' target**

@@ -1,6 +1,6 @@
 # Advanced Features
 
-The current features we've covered provide all the information you need to effectively use make to incrementally build programs. are all you need to know about make. However, make has other features. Many of them are confusing and make makefiles much less readable, but they are often used in real-world makefiles, so it's useful to have a working familiarity with them.&#x20;
+The current features we've covered are all you need to know about make. However, make has other features. Many of them are confusing and make makefiles much less readable, but they are often used in real-world makefiles, so it's useful to have a working familiarity with them.&#x20;
 
 #### Automatic Variables
 
