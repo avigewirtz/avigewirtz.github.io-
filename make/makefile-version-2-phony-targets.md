@@ -32,31 +32,53 @@ intmath.o: intmath.c intmath.h
 ```
 {% endcode %}
 
-Let's start with the `clean` target. There is no file in our working directory named `clean`, and the command `rm -f testintmath *.o` does not create such a file. Here's how make processes this rule when we run:
+Let's start with the `clean` rule:
+
+```makefile
+clean:
+  rm -f testintmath *.o
+```
+
+There is no file in our working directory named `clean`, and the command `rm -f testintmath *.o` does not create such a file. Here's how make processes this rule when we run:
 
 ```bash
 make clean
 ```
 
-Like any other rule, `make` first checks if a file named `clean` exists in the working directory. Since there is no such file, `make` determines that `clean` is out-of-date and needs to be built. Consequently, Make executes the command its command:
+Like any other rule, `make` checks if a file named `clean` exists in the working directory. Since there is no such file, `make` determines that `clean` is out-of-date and needs to be built. In an attempt to build `clean`, `make` executes its corresponding command:
 
-```
+```makefile
 $ make clean
 rm -f testintmath *.o
 $ 
 ```
 
-This command, of course, does not create a file named `clean`. Quite the opposite. It deletes `testintmath` as well as all object files (.o) in the working directory, effectively "cleaning" our directory. Note that the name `clean` isn't special. We could have named the rule anything we want, for example, `delete_temp_files`. `Clean` is just the conventional name for this kind of task in Makefiles.&#x20;
+Of course, however, this command does not actually create a file named `clean`. Quite the contrary. It deletes `testintmath` as well as all object files (`.o`), effectively "cleaning" the project directory. (Note that the name `clean` isn't special. We could have named the rule anything we want, such as `delete_temp_files`. `Clean` is just the conventional name for this kind of task in Makefiles.)&#x20;
 
-The reason this works is make has no postcondition check to verify that `clean` is in fact created. All it concerned with is that the command is successfully executed (i.e., it returns an exit status of 0).
+The reason this works is make does not have a postcondition check to verify that `clean` is in fact created. All it concerned with is that the command is successfully executed (i.e., it returns an exit status of 0).
 
-The important point to recognize is that because this command will never create a file named clean, each time we run this rule clean will always be consdiered out of date, and the command will be executed.&#x20;
+The important point to recognize is that because this command will never create a file named clean, clean will always be considered out of date, and the command will be executed. For example, here's the output when we run make clean three times in a row:
 
-Let's now consider what happens when we run make clobber.&#x20;
+```makefile
+$ make clean
+rm -f testintmath *.o
+$ make clean
+rm -f testintmath *.o
+$ make clean
+rm -f testintmath *.o
+$
+```
 
+Let's now consider the `clobber` rule:
 
+```
+clobber: clean
+  rm -f *~ \#*\# 
+```
 
+Like `clean`, clobber does not represent a file--that is, there is no file in the working directory named clobber, and the command  `rm -f *~ \#*\#`  does not create such a file. clobber is a bit more interesting than clean, however. Not only is it a phony target itself, it depends on a phony target--clean.&#x20;
 
+make first checks if a file named `clobber` exists in the working directory. Since there is no such file, make determines that `clobber` is out-of-date and needs to be built. Clobber depends on clean, however, so before executing the command, it must first ensure that clean is up-to-date. make sees that clean doesn't exist, so it executes the command rm -f testintmath \*.o. Despite the fact that clean was not created, make considered it up-to-date (for the current invocation of make), and it therefores considers clobbers dependencies satisfied. It therefore runs the command rm -f \*\~ \\#\*\\# . This command has the effect of deleting Emacs backup files.  Make executes the command rm -f testintmath \*.o. Then it returns to clobber.&#x20;
 
 
 
