@@ -32,7 +32,13 @@ intmath.o: intmath.c intmath.h
 ```
 {% endcode %}
 
-Let's start with the `clean` target. There is no file in our working directory named `clean`, and the command `rm -f testintmath *.o` does not create such a file. Here's how make processes this rule if we were to run `make clean`. Like any other rule, Make first checks if a file named `clean` exists in the working directory. Since there is no such file, Make determines that`clean` is out-of-date and needs to be built. Consequently, Make executes the command associated with the `clean` target:
+Let's start with the `clean` target. There is no file in our working directory named `clean`, and the command `rm -f testintmath *.o` does not create such a file. Here's how make processes this rule when we run:
+
+```bash
+make clean
+```
+
+Like any other rule, `make` first checks if a file named `clean` exists in the working directory. Since there is no such file, `make` determines that `clean` is out-of-date and needs to be built. Consequently, Make executes the command associated with `clean`:
 
 ```
 $ make clean
@@ -40,11 +46,17 @@ rm -f testintmath *.o
 $ 
 ```
 
-This command deletes `testintmath` as well as all object files (.o) in the working directory, effectively "cleaning" our directory. Note that the name `clean` isn't special. We could have named the rule  \<fill in> for example. We could have named the rule anything we want, for example, `delete_temp_files`. `Clean` is just the conventional name for this kind of task in Makefiles.&#x20;
+This command, of course, does not create a file named clean. In fact, it does quite the opposite. It deletes `testintmath` as well as all object files (.o) in the working directory, effectively "cleaning" our directory. Note that the name `clean` isn't special. We could have named the rule anything we want, for example, `delete_temp_files`. `Clean` is just the conventional name for this kind of task in Makefiles.&#x20;
 
-Here's how make processes this rule. It anything
+The reason this works is make has no poscondition check to verify that clean is in fact created. All it cares about is that the command is successfully executed (i.e., it returns an exit status of 0).
 
-When we run clean, the effect is that the command `rm -f testintmath *.o` will be executed.&#x20;
+
+
+
+
+
+
+
 
 
 
