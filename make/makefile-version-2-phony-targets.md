@@ -1,5 +1,37 @@
 # Phony targets
 
+
+
+
+
+A pseudotarget is a label used in place of a filename in a dependency line. It is interpreted as a file that does not exist, and so is out-of-date.
+
+
+
+
+
+
+
+When a target is found to be out of date and make runs its command, make does not actually verify that the target was built.&#x20;
+
+
+
+
+
+
+
+We've assumed that a target represents a file, dependencies represent files it's derived from, and the command builds the file. In fact, however, none of these assumptions are necessarily true.  represent files that are build from dependencies. In fact, however, neither of these assumptions need be true. That is, a target need not be a file, and it need not have dependencies.&#x20;
+
+
+
+
+
+
+
+
+
+
+
 Phony targets serve three purposes:
 
 * Action-oriented targets: Phony rules allow you to define targets that represent actions rather than files. Common examples include "clean", "test", or "run".
@@ -24,6 +56,7 @@ Target can represent a label for a command or action rather than a file.&#x20;
 
 
 
+make treats all targets as files, but it does not actaully&#x20;
 
 
 
@@ -37,33 +70,48 @@ Target can represent a label for a command or action rather than a file.&#x20;
 
 
 
+```makefile
+hello: 
+    gcc hello.c -o hello1
+```
 
 
 
-
-
-In our current makefile, each rule's target is the name of a file that is built when the rule's command is executed.&#x20;
-
-
-
-
-
-
-
-
-
-
-
-For example, in the following rule:
+In our current makefile, each rule's target is the name of a file that is built when the rule's command is executed. For example, in the following rule:
 
 ```makefile
 intmath.o: intmath.c intmath.h
     gcc -c intmath.c
 ```
 
-The target is `intmath.o`, which is built when the command `gcc -c intmath.c` is executed. Recall that this command will be executed if either `intmath.o` does not exist or if one of its dependencies have a more recent modification timestamp.
+The target is `intmath.o`, which is built when the command `gcc -c intmath.c` is executed.&#x20;
 
-A flexible feature of `make` is that it does not require that the target actually represent a file. Instead, it can represent a label for an arbitrary command or action you want `make` to execute. Such a target is called a _phony target_. Phony targets are easiest to illustrate by example, so let's jump right into makefile version 2, which contains three phony targets: all, clean, and clobber. Don't worry about what they mean or how they work for now. We'll go over them one-by-one.&#x20;
+A flexible feature of `make` is that it does not require that the target actually represent a file. Instead, it can represent a label for an arbitrary command or action you want `make` to execute. Such a target is called a _phony target_. Consider the following rule:
+
+```
+clean:
+    rm -f testintmath *.o
+```
+
+The target, `clean`, does not represent a file--that it, there is no file in our directory named `clean`, and the command `rm -f testintmath *.o` does not create such a file. Also notice that this rule does not contain any dependencies. That's perfeclty valid, as dependencies are optional.&#x20;
+
+
+
+
+
+If we were to add this rule to our makefile and invoke it, here's how make would process it:
+
+First, make would check if a file named clean exists in the current working directory. It would see that it does not. Normally, before determining how to proceed with a target, make would evaluate it's dependencies, but because clean doesn't have any dependencies, make can skip that step.&#x20;
+
+
+
+&#x20;In fact, the effect of running rm -f testintmath it does not have any dependencies, and the command. If we were to add this ruile to our makefile&#x20;
+
+
+
+
+
+Phony targets are easiest to illustrate by example, so let's jump right into makefile version 2, which contains three phony targets: all, clean, and clobber. Don't worry about what they mean or how they work for now. We'll go over them one by one.&#x20;
 
 {% code title="makefile version 2" lineNumbers="true" %}
 ```makefile
