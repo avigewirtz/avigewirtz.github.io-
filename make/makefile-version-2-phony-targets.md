@@ -72,16 +72,10 @@ The real purpose of `all` is to group multiple independent targets and effective
 ```makefile
 all: hello1 hello2
 
-hello1: hello1.o
-	gcc hello1.o -o hello1
-	
-hello2: hello2.o
-	gcc hello2.o -o hello2
-
-hello1.o: hello1.c
+hello1: hello1.c
 	gcc -c hello1.c
 
-hello2.o: hello2.c
+hello2: hello2.c
 	gcc -c hello2.c
 ```
 {% endhint %}
