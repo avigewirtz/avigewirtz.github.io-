@@ -1,6 +1,6 @@
 # Phony targets
 
-In `make`, a target typically represents a file that is built when its corresponding command is run. However, Make has no verification mechanism to check whether the target file was actually built by the command. Instead, it operates under the assumption that if a target's command is successfully run, the target is up-to-date. This is not a bug in make but a a deliberate design choice, as it enables the use of so-called _phony_ targets—targets that are not intended to correspond to actual files but instead represent labels for commands or actions that `make` should execute.&#x20;
+In `make`, a target typically represents a file that is built when its corresponding command is run. However, Make has no verification mechanism to check whether the target file was actually built by the command. Instead, it operates under the assumption that if a target's command is successfully run, the target is up-to-date. This is not a bug in make but a deliberate design choice, as it enables the use of so-called _phony_ targets—targets that are not intended to correspond to actual files but instead represent labels for arbitrary commands or actions you want `make` to execute.&#x20;
 
 Phony targets are easiest to illustrate by means of an example, so let's jump right into makefile version 2, shown below, which contains three commonly used phony targets:  `all`, `clean`, and `clobber`. Don't worry for now how they work. We'll go over each one by one.&#x20;
 
