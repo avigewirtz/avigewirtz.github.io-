@@ -38,7 +38,7 @@ Let's start with the `clean` target. There is no file in our working directory n
 make clean
 ```
 
-Like any other rule, `make` first checks if a file named `clean` exists in the working directory. Since there is no such file, `make` determines that `clean` is out-of-date and needs to be built. Consequently, Make executes the command associated with `clean`:
+Like any other rule, `make` first checks if a file named `clean` exists in the working directory. Since there is no such file, `make` determines that `clean` is out-of-date and needs to be built. Consequently, Make executes the command its command:
 
 ```
 $ make clean
@@ -46,11 +46,13 @@ rm -f testintmath *.o
 $ 
 ```
 
-This command, of course, does not create a file named clean. In fact, it does quite the opposite. It deletes `testintmath` as well as all object files (.o) in the working directory, effectively "cleaning" our directory. Note that the name `clean` isn't special. We could have named the rule anything we want, for example, `delete_temp_files`. `Clean` is just the conventional name for this kind of task in Makefiles.&#x20;
+This command, of course, does not create a file named `clean`. Quite the opposite. It deletes `testintmath` as well as all object files (.o) in the working directory, effectively "cleaning" our directory. Note that the name `clean` isn't special. We could have named the rule anything we want, for example, `delete_temp_files`. `Clean` is just the conventional name for this kind of task in Makefiles.&#x20;
 
-The reason this works is make has no poscondition check to verify that clean is in fact created. All it cares about is that the command is successfully executed (i.e., it returns an exit status of 0).
+The reason this works is make has no postcondition check to verify that `clean` is in fact created. All it concerned with is that the command is successfully executed (i.e., it returns an exit status of 0).
 
+The important point to recognize is that because this command will never create a file named clean, each time we run this rule clean will always be consdiered out of date, and the command will be executed.&#x20;
 
+Let's now consider what happens when we run make clobber.&#x20;
 
 
 
