@@ -1,74 +1,8 @@
 # Phony targets
 
-In our current makefile, each rule's target is the name of a file that is built when when the rule's command is executed. For example, in the following rule:
+In `make`, a target typically represents a file that is built when its corresponding command is run. However, Make has no verification mechanism to check whether the target file was actually built by the command. Instead, it operates under the assumption that if a target's command is successfully run, the target is up-to-date. This is not a bug in make but a a deliberate design choice, as it enables the use of so-called _phony_ targets—targets that are not intended to correspond to actual files but instead represent labels for commands or actions that `make` should execute.&#x20;
 
-```makefile
-intmath.o: intmath.c intmath.h
-  gcc -c intmath.c
-```
-
-The target is `intmath.o`, which is built when the command `gcc -c intmath.c` is executed. Recall that this command will be executed if either `intmath.o` does not exist or if one of its dependencies have a more recent modification timestamp.
-
-A flexible feature of `make` is that it does not require that the target actually represent a file. Instead, it can represent a label for an arbitrary command or action you want `make` to execute. Such a target is called a _phony target_. Consider the following rule:
-
-```makefile
-hello: 
-    echo "Hello, world!" 
-```
-
-The target, `hello`, does not represent a file—that is, there is no file in our directory named `hello`, and the command `echo "hello, world"` does not create such a file. (Also notice that the target does not have any dependencies. That's perfectly valid, as dependencies are optional.) What would happen if we were to add this rule to our makefile and invoke it? Let's give it a shot. First, let's add it to our makefile.
-
-```bash
-$ make hello
-echo "Hello, world!"
-Hello, world!
-$
-```
-
-We see that `make` executes the command `echo "Hello, world!"`, printing `Hello, world!` on stdout. The fact that this command does not create a file named `hello` does not cause an error.
-
-Here's how it works. When `make` processes this rule, it assumes that `hello` represents a file. It thus looks for a file named `hello` in the working directory. Because it does not find one, it determines that `hello` needs to be built, and it thus executes the command `echo "Hello, world!"`. At this point, `make` considers its job complete. It does not care whether a file named `hello` is in fact created.
-
-The important point to recognize is that because this rule will never create a file named `hello`, it will always be considered out-of-date. Thus, we can run `make hello` as many times as we'd like, and, each time, `make` will execute the command `echo "Hello, world!"`. For example, if we run `make hello` three times in a row:
-
-```bash
-$ make hello
-echo "Hello, world!"
-Hello, world!
-$ make hello
-echo "Hello, world!"
-Hello, world!
-$ make hello
-echo "Hello, world!"
-Hello, world!
-$
-```
-
-It should go without saying that this scheme only works if there is in fact never a file named `hello` in the working directory. If there is such a file, it will always be considered up to date, and running `make hello` will always yield:
-
-```makefile
-$ make hello
-make: `hello' is up to date.
-$
-```
-
-GNU Make offers a simple solution to guard against this potential issue. Just declare `hello` to be phony, like so:
-
-```makefile
-.PHONY: hello
-```
-
-With this declaration, `make hello` will always run the specified command, even if there is a file named `hello`.
-
-#### Commonly Used Phony Targets
-
-Of course, the `hello` phony target is not particularly useful. In real-world makefiles, the following three phony targets are commonly used: `all`, `clean`, and `clobber`.
-
-* `all`: This should be the default target..To create the final executable binary file(s), typically the default target in the makefile.
-* `clean`: To delete all `.o` files and executable binary file(s).
-* `clobber`: To extend clean by also deleting also build related files, such as Emacs backup files.
-
-Here is Makefile version 2, which incorporates these 3 phony targets. Note that the order of the rules does not matter, except for the first tule, which serves as the default rule. Here, the first rule is `all`.
+Phony targets are easiest to illustrate by means of an example, so let's jump right into makefile version 2, shown below, which contains three commonly used phony targets:  `all`, `clean`, and `clobber`. Don't worry for now how they work. We'll go over each one by one.&#x20;
 
 {% code title="makefile version 2" %}
 ```makefile
@@ -99,11 +33,9 @@ intmath.o: intmath.c intmath.h
 ```
 {% endcode %}
 
-with these updates, running our makefile is the same as before. To build the entire program, we run make.
 
-However, if we want to
 
-all, like all phony targets, will always be considered out-of-date. Notice, however, that it doesn't have any command. Thus
+
 
 {% hint style="info" %}
 **Purpose of the 'all' target**
@@ -128,3 +60,25 @@ hello2.o: hello2.c
 	gcc -c hello2.c
 ```
 {% endhint %}
+
+
+
+
+
+#### .PHONY Directive
+
+It should go without saying that this scheme only works if there is in fact never a file named `hello` in the working directory. If there is such a file, it will always be considered up to date, and running `make hello` will always yield:
+
+```makefile
+$ make hello
+make: `hello' is up to date.
+$
+```
+
+GNU Make offers a simple solution to guard against this potential issue. Just declare `hello` to be phony, like so:
+
+```makefile
+.PHONY: hello
+```
+
+With this declaration, `make hello` will always run the specified command, even if there is a file named `hello`.
