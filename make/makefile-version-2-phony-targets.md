@@ -1,14 +1,13 @@
 # Phony targets
 
-In `make`, a target typically represents a file that is built when its corresponding command is run. However, Make has no verification mechanism to check whether the target file was actually built by the command. Instead, it operates under the assumption that if a target's command is successfully run, the target is up-to-date. This is not a bug in make but a deliberate design choice, as it enables the use of so-called _phony_ targets—targets that are not intended to correspond to actual files but instead represent labels for arbitrary commands or actions you want `make` to execute.&#x20;
+`make` assumes that each target represents a file that is built when its corresponding command is run. However, it has no verification mechanism to check whether the target was actually built by the command. Instead, it operates under the assumption that if a target's command is successfully run, the target is up-to-date. This is not a bug in `make` but a deliberate design choice, as it enables the use of so-called _phony_ targets—targets that do not correspond to actual files but represent labels for arbitrary commands or actions you want `make` to execute.&#x20;
 
-Phony targets are easiest to illustrate by means of an example, so let's jump right into makefile version 2, shown below, which contains three commonly used phony targets:  `all`, `clean`, and `clobber`. Don't worry for now how they work. We'll go over each one by one.&#x20;
+Phony targets are easiest to illustrate by means of an example, so let's jump right into makefile version 2, shown below, which contains three commonly used phony targets:  `all`, `clean`, and `clobber`. Don't worry for now how they work for now. We'll go over each one by one.&#x20;
 
 {% code title="makefile version 2" %}
 ```makefile
 # Dependency rules for non-file targets
 
-.PHONY: all clean clobber
 # Default target (i.e., target to use when make is invoked without specifying a target)
 all: testintmath
   
@@ -33,7 +32,19 @@ intmath.o: intmath.c intmath.h
 ```
 {% endcode %}
 
+Let's start with the `clean` target. There is no file in our working directory named `clean`, and the command `rm -f testintmath *.o` does not create such a file. Here's how make processes this rule if we were to run `make clean`. Like any other rule, Make first checks if a file named `clean` exists in the working directory. Since there is no such file, Make determines that`clean` is out-of-date and needs to be built. Consequently, Make executes the command associated with the `clean` target:
 
+```
+$ make clean
+rm -f testintmath *.o
+$ 
+```
+
+This command deletes `testintmath` as well as all object files (.o) in the working directory, effectively "cleaning" our directory. Note that the name `clean` isn't special. We could have named the rule  \<fill in> for example. We could have named the rule anything we want, for example, `delete_temp_files`. `Clean` is just the conventional name for this kind of task in Makefiles.&#x20;
+
+Here's how make processes this rule. It anything
+
+When we run clean, the effect is that the command `rm -f testintmath *.o` will be executed.&#x20;
 
 
 
