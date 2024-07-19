@@ -1,5 +1,23 @@
 # Phony targets
 
+Make's job is to bring target files up-to-date. It would seem that make should verify that the target file exists and is newer than all its dependencies. However, that's not actually how make works. It has no postcondition check to verify that the target is in fact built. Instead, it operates under the assumption that is a target's dependencies (if any) are satisfied and its commands (if any) are successfully run, the target is up-to-date. The implication is that a target need not actually be a file. Such targets are called phony targets. Phony targets have two canonical use cases:
+
+* As a label for one or more arbitrary commands you want make to run
+* As an alias for one or more other targets, such that running the phony target is the same as running the other targets directly
+
+Let's explore both use cases. Suppose we were to add the following rule to our makefile:
+
+```
+clean: 
+    rm -f *.o testintmath
+```
+
+The target is `objects`, which does not represent a file in our project. It depends on `intmath.o` and `testintmath.o`, and it has no command. It would seem that this rule should produce an error, since&#x20;
+
+
+
+
+
 `make` assumes that each target represents a file that is built when its corresponding command is run. However, it has no verification mechanism to check whether the target was actually built by the command. Instead, it operates under the assumption that if a target's command is successfully run, the target is up-to-date. This is not a bug in `make` but a deliberate design choice, as it enables the use of so-called _phony_ targets—targets that do not correspond to actual files but represent labels for arbitrary commands or actions you want `make` to execute.
 
 Phony targets are easiest to illustrate by means of an example, so let's jump right into makefile version 2, shown below, which contains three commonly used phony targets: `all`, `clean`, and `clobber`. Don't worry for now how they work for now. We'll go over each one by one.
@@ -61,7 +79,7 @@ clobber: clean
   rm -f *~ \#*\# 
 ```
 
-When we run this rule, the effect is that both rm -f testintmath \*.o and rm -f \*\~ \\#\*\\#  are executed:&#x20;
+clobber is a phony target that depends on another phony target--clean. When we run this rule, the effect is that both rm -f testintmath \*.o and rm -f \*\~ \\#\*\\#  are executed:&#x20;
 
 ```
 $ make clobber
@@ -70,7 +88,7 @@ rm -f *~ \#*\#
 $ 
 ```
 
-Here's how it works. make first checks if a file named `clobber` exists in the working directory. Since there is no such file, make determines that `clobber` is out-of-date and needs to be built. Clobber depends on clean, however, so before executing the command to "build" clobber, make must first ensure that clean is up-to-date. make sees that clean doesn't exist, so it executes the command rm -f testintmath \*.o in an attempt to build it. At this point, make considers clean up-to-date (despite the fact that it doesn't exist),  and it therefore considers clobbers dependencies satisfied. It therefore runs the command rm -f \*\~ \\#\*\\# . This command has the effect of deleting Emacs backup files.&#x20;
+Here's how it works. make first checks if a file named `clobber` exists in the working directory. Since there is no such file, make determines that `clobber` is out-of-date and needs to be built. Before make can "build" clobber, however, it must first ensure that its dependency, clean, is up-to-date. So make moves on to clean. make sees that clean doesn't exist, so it executes the command rm -f testintmath \*.o in an attempt to build it. Since this command executes successfully, make considers clean up-to-date (for the current invocation of make, that is). Make then go back to clobber and runs the command rm -f \*\~ \\#\*\\# . This command has the effect of deleting Emacs backup files.&#x20;
 
 The clean and clobber phony targets demonstrate how phony tatgets enabke us to use make to execute commands that don't incolve building files. Another canocial use case of phony yatgets is to serve as an alias from one or more other garegts such that run the alias is equivelant to running the target(s) directly.  Consider the all phony target:
 
