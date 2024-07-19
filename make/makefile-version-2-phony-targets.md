@@ -86,7 +86,7 @@ The clean and clobber phony targets demonstrate how phony tatgets enabke us to u
 ```makefile
 all: testintmath
 ```
-all does not represent a file; hiwever, inlike coean and cllbber, it has no corresponding command. Instead, it essentially serves as an alias for testintmath. The affect of running make all is the same as running make testintmath. 
+all does not represent a file; hiwever, unlike coean and cllbber, it has no corresponding command. Instead, it essentially serves as an alias for testintmath, meaning that the affect of running make all is the same as running make testintmath. 
 If we run all, the 
 
 {% hint style="info" %}
