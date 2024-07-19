@@ -5,16 +5,86 @@ Make's job is to bring target files up-to-date. It would seem that make should v
 * As a label for one or more arbitrary commands you want make to run
 * As an alias for one or more other targets, such that running the phony target is the same as running the other targets directly
 
-Let's explore both use cases. Suppose we were to add the following rule to our makefile:
+&#x20;Let's explore both use cases. Suppose we want to use make to automate the task of building our program. In other words, to execute the command ./testintmath. To achieve this, we can add the following rule to our makefile:&#x20;
 
 ```
-clean: 
-    rm -f *.o testintmath
+run: testintmath
+    ./testintmath
 ```
 
-The target is `objects`, which does not represent a file in our project. It depends on `intmath.o` and `testintmath.o`, and it has no command. It would seem that this rule should produce an error, since&#x20;
+In this rule, we name the target run, which does correspind to a file in the working directory, and we provide the command ./testintmath. Additonally, we provide testintmath as a dependency, ensuring that testintmath is up-to-date before ./testintmath is run. \
+\
+When we invoke make run, the effect is that our program is built--after ensuring it's up to date:
 
+```
+$ make run
+./testintmath
+Enter the first positive integer:
+2
+Enter the second positive integer:
+3
+The greatest common divisor of 2 and 3 is 1.
+The least common multiple of 2 and 3 is 6.
+$
+```
 
+Here's how it works. Like any other target, make assumes that run represents a file. It thus checks if a file named run exists in the working directory. Because it does not make determines that run needs to be "built". Before doing so, however, it must first ensure that testintmath, run's dependency, is up-to-date. It therefore processes the rule for testintmath, bringing testintmath up-to-date, if need be. With the dependency check satisfied, it then runs ./testintmath in an attempt to build the target run. This command does not actaully build run, but make has no postcondition check to verify that run is actaully built. So long as the command runs successfuly (that it, returns exit status 0) make considers run as being succesffuly brought up-to-date (for the current invocation of make, that is).&#x20;
+
+We can see this full sequence of operations by invoking make run with the debug=-v option.
+
+```
+~/hello> make run --debug=v
+GNU Make 3.81
+Copyright (C) 2006  Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.
+There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE.
+
+This program built for i386-apple-darwin11.3.0
+Reading makefiles...
+Reading makefile `makefile'...
+Updating goal targets....
+Considering target file `run'.
+ File `run' does not exist.
+  Considering target file `testintmath'.
+    Considering target file `testintmath.o'.
+      Considering target file `testintmath.c'.
+       Finished prerequisites of target file `testintmath.c'.
+      No need to remake target `testintmath.c'.
+      Considering target file `intmath.h'.
+       Finished prerequisites of target file `intmath.h'.
+      No need to remake target `intmath.h'.
+     Finished prerequisites of target file `testintmath.o'.
+     Prerequisite `testintmath.c' is older than target `testintmath.o'.
+     Prerequisite `intmath.h' is older than target `testintmath.o'.
+    No need to remake target `testintmath.o'.
+    Considering target file `intmath.o'.
+      Considering target file `intmath.c'.
+       Finished prerequisites of target file `intmath.c'.
+      No need to remake target `intmath.c'.
+      Pruning file `intmath.h'.
+     Finished prerequisites of target file `intmath.o'.
+     Prerequisite `intmath.c' is older than target `intmath.o'.
+     Prerequisite `intmath.h' is older than target `intmath.o'.
+    No need to remake target `intmath.o'.
+   Finished prerequisites of target file `testintmath'.
+   Prerequisite `testintmath.o' is older than target `testintmath'.
+   Prerequisite `intmath.o' is older than target `testintmath'.
+  No need to remake target `testintmath'.
+ Finished prerequisites of target file `run'.
+Must remake target `run'.
+./testintmath
+Enter the first positive integer:
+3
+Enter the second positive integer:
+2
+The greatest common divisor of 3 and 2 is 1.
+The least common multiple of 3 and 2 is 6.
+Successfully remade target file `run'.
+~/hello> 
+```
+
+Importantly, notice the last line where it says ``Successfully remade target file `run'.``&#x20;
 
 
 
