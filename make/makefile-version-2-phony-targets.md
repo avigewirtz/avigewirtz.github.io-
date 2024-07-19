@@ -81,8 +81,13 @@ Like `clean`, clobber does not represent a file--that is, there is no file in th
 make first checks if a file named `clobber` exists in the working directory. Since there is no such file, make determines that `clobber` is out-of-date and needs to be built. Clobber depends on clean, however, so before executing the command, it must first ensure that clean is up-to-date. make sees that clean doesn't exist, so it executes the command rm -f testintmath \*.o. Despite the fact that clean was not created, make considered it up-to-date (for the current invocation of make), and it therefores considers clobbers dependencies satisfied. It therefore runs the command rm -f \*\~ \\#\*\\# . This command has the effect of deleting Emacs backup files.  Make executes the command rm -f testintmath \*.o. Then it returns to clobber.&#x20;
 
 
+The clean and clobber phony targets demonstrate how phony tatgets enabke us to use make to execute commands that don't incolve building files. Another canocial use case of phony yatgets is to serve as an alias from one or more other garegts. Consider the all phony target:
 
-
+```makefile
+all: testintmath
+```
+all does not represent a file; hiwever, inlike coean and cllbber, it has no corresponding command. Instead, it essentially serves as an alias for testintmath. The affect of running make all is the same as running make testintmath. 
+If we run all, the 
 
 {% hint style="info" %}
 **Purpose of the 'all' target**
