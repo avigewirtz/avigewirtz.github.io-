@@ -1,9 +1,13 @@
 # Phony targets
 
-Make's job is to bring target files up-to-date. It would seem that make should verify that the target file exists and is newer than all its dependencies. However, that's not actually how make works. It has no postcondition check to verify that the target is in fact built. Instead, it operates under the assumption that is a target's dependencies (if any) are satisfied and its commands (if any) are successfully run, the target is up-to-date. The implication is that a target need not actually be a file. Such targets are called phony targets. Phony targets have two canonical use cases:
+Make's job is to targets up-to-date. We've assumed that targets represent files, which are brought up-to-date by creating them or rebuilding them. In fact, however, targets need not represent files. Instead, they can represent labels for arbitrary commands or actions you want make to execute. Such targets are known as _phony_ targets. 
 
-* As a label for one or more arbitrary commands you want make to run
-* As an alias for one or more other targets, such that running the phony target is the same as running the other targets directly
+The mechanism by which make implements phony targets is very simple. After a rule is processed, make has no postcondition check to verify that the target "file" was in fact build. Instead, it operates under the assumption that if a target's dependencies are satisfied and its commands are successfuly run, the target is up-to-date. As we'll see, a target need not even have any corresponding dependencies or commands. 
+
+Phony targets have two canonical use cases:
+
+* As a label for one or more arbitrary commands you want make to run. 
+* As an alias for one or more other targets, such that running the phony target is the same as running the other target(s) directly. 
 
 &#x20;Let's explore both use cases. Suppose we want to use make to automate the task of running our program. In other words, to execute the command `./testintmath`. To achieve this, we can add the following rule to our makefile:&#x20;
 
