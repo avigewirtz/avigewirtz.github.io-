@@ -5,16 +5,16 @@ Make's job is to bring target files up-to-date. It would seem that make should v
 * As a label for one or more arbitrary commands you want make to run
 * As an alias for one or more other targets, such that running the phony target is the same as running the other targets directly
 
-&#x20;Let's explore both use cases. Suppose we want to use make to automate the task of building our program. In other words, to execute the command ./testintmath. To achieve this, we can add the following rule to our makefile:&#x20;
+&#x20;Let's explore both use cases. Suppose we want to use make to automate the task of running our program. In other words, to execute the command `./testintmath`. To achieve this, we can add the following rule to our makefile:&#x20;
 
 ```
 run: testintmath
     ./testintmath
 ```
 
-In this rule, we name the target run, which does correspind to a file in the working directory, and we provide the command ./testintmath. Additonally, we provide testintmath as a dependency, ensuring that testintmath is up-to-date before ./testintmath is run. \
+In this rule, we name the target run, which does not correspond to a file in the working directory, and we provide the command `./testintmath`. Additionally, we list `testintmath` as a dependency, ensuring that `testintmath` is up-to-date before it's run. \
 \
-When we invoke make run, the effect is that our program is built--after ensuring it's up to date:
+When we invoke make run, the effect is that our program is run:&#x20;
 
 ```
 $ make run
