@@ -7,7 +7,7 @@ The mechanism by which make implements phony targets is very simple. After a rul
 Phony targets have two canonical use cases:
 
 * As a label for one or more arbitrary commands you want make to execute. 
-* As an alias for one or more other targets, such that running the phony target is the same as running the other target(s) directly. 
+* As an alias for one or more targets, such that running the phony target is the same as running the target(s) directly. 
 
 &#x20;Let's explore both use cases. Suppose we want to use make to automate the task of running our testintath. In other words, to execute the command `./testintmath`. To achieve this, we can add the following rule to our makefile:&#x20;
 
