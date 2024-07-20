@@ -28,9 +28,9 @@ The least common multiple of 2 and 3 is 6.
 $
 ```
 
-Here's how it works. Like any other target, make assumes that run represents a file. It thus checks if a file named run exists in the working directory. Because it does not make determines that run needs to be "built". Before doing so, however, it must first ensure that testintmath, run's dependency, is up-to-date. It therefore processes the rule for testintmath, bringing testintmath up-to-date, if need be. With the dependency check satisfied, it then runs ./testintmath in an attempt to build the target run. This command does not actaully build run, but make has no postcondition check to verify that run is actaully built. So long as the command runs successfuly (that it, returns exit status 0) make considers run as being succesffuly brought up-to-date (for the current invocation of make, that is).&#x20;
+Here's how it works. Like with any other target, make checks if a file named run exists in the working directory. Because it does not make determines that `run` needs to be "built". Before doing so, however, it must first ensure that run's dependency, testintmath, is up-to-date. It therefore processes the rule for testintmath, bringing testintmath up-to-date, if need be. With the dependency check satisfied, it then runs ./testintmath in an attempt to build the target run. because this command Of course, this command does not actaully build run, but this does not cause an error, This command does not actaully build run, but make has no postcondition check to verify that run is actaully built. So long as the command runs successfuly (that it, returns exit status 0) make considers run as being succesffuly brought up-to-date (for the current invocation of make, that is).&#x20;
 
-We can see this full sequence of operations by invoking make run with the debug=-v option.
+We can see this full sequence of operations by invoking make run with the debug=-v option.&#x20;
 
 ```
 ~/hello> make run --debug=v
