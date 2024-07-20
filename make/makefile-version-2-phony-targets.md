@@ -2,14 +2,14 @@
 
 Make's job is to bring targets up-to-date. We've assumed that targets represent files, which are brought up-to-date by creating them or rebuilding them. In fact, however, targets need not represent files. Instead, they can represent labels for arbitrary commands or actions you want make to execute. Such targets are known as _phony_ targets. 
 
-The mechanism by which make implements phony targets is very simple. After a rule is processed, make has no postcondition check to verify that the target "file" was in fact build. Instead, it operates under the assumption that if a target's dependencies are satisfied and its commands are successfuly run, the target is up-to-date. As we'll see, a target need not even have any corresponding dependencies or commands. 
+The mechanism by which make implements phony targets is very simple. After a rule is processed, make has no postcondition check to verify that the target "file" was in fact build. Instead, it operates under the assumption that if a target's dependencies are satisfied and its commands are successfuly run, the target is up-to-date. As we'll see, a target need not even have any corresponding dependencies or commands, so in the most trivial case, a target can be considered brought "up-to-date" even if no work was actaully done. 
 
 Phony targets have two canonical use cases:
 
 * As a label for one or more arbitrary commands you want make to run. 
 * As an alias for one or more other targets, such that running the phony target is the same as running the other target(s) directly. 
 
-&#x20;Let's explore both use cases. Suppose we want to use make to automate the task of running our program. In other words, to execute the command `./testintmath`. To achieve this, we can add the following rule to our makefile:&#x20;
+&#x20;Let's explore both use cases. Suppose we want to use make to automate the task of running our testintath. In other words, to execute the command `./testintmath`. To achieve this, we can add the following rule to our makefile:&#x20;
 
 ```
 run: testintmath
