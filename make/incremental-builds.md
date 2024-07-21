@@ -157,7 +157,7 @@ gcc -c testintmath.c
 gcc intmath.o testintmath.o -o testintmath
 ```
 
-Suppose, however, that we were to modify `intmath.h`. This renders both `intmath.o` and `testintmath.o` obsolete, since `intmath.h` is #included in both their source files. Thus, we'd have to do a full rebuild:
+Suppose, however, that we were to modify `intmath.h`. This renders both `intmath.o` and `testintmath.o` obsolete, since `intmath.h` is #included in both their source files. As such, a full rebuild is required:
 
 ```
 gcc -c intmath.c testintmath.c
