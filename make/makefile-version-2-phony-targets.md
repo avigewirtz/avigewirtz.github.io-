@@ -36,6 +36,9 @@ intmath.o: intmath.c intmath.h
   gcc -c intmath.c
 ```
 {% endcode %}
+
+#### `clean`
+
 Consider the `clean` rule:
 
 ```
@@ -45,17 +48,17 @@ clean:
 
 The target, `clean`, does not represent a file—that is, there is no file in our project directory named `clean`, and the command `rm -f *.o testintmath` does not create such a file. Nevertheless, we can run this rule, and the effect is that `rm -f *.o testintmath` will be executed:
 
-```
+```bash
 $ make clean
 rm -f *.o testintmath 
 $
 ```
 
-This command deletes the executable testintmath as well, therby "cleaning" our project directory. This is useful in situations where we want to rebuild `testintmath` from scratch. 
+This command deletes the executable `testintmath` as well as all files with a `.o` extension (i.e., `testintmath.o` and `intmath.o`), thereby "cleaning" our project directory. This is useful in situations where we want to rebuild `testintmath` from scratch. Note that the name `clean` isn't special. We could have named the rule anything we want, such as `delete_build_files`. `Clean` is just the conventional name for this kind of task in Makefiles.
 
-Here's how it works. Like any other rule, `make` checks if a file named `clean` exists in the working directory. Since there is no such file, `make` determines that `clean` needs to be built. In an attempt to build `clean`, `make` executes the command rm -f testintmath \*.o. Because this command runs successfuly(that it, returns exit status 0), make considers clean up-to-date (for the current invocation of make, that is). It does not actaully verify that clean is created.
+Here's how it works. Like any other rule, `make` checks if a file named `clean` exists in the working directory. Since there is no such file, `make` determines that `clean` needs to be built. In an attempt to build `clean`, `make` executes the command `rm -f testintmath *.o`. Because this command runs successfully (that it, returns exit status 0), `make` considers `clean` up-to-date (for the current invocation of `make`, that is). It does not actually verify that `clean` is created.
 
-We can see this full sequence of operations by invoking make clean with the debug=-v option. This prints out. Your output should look like the following:
+We can see this full sequence of operations by invoking `make clean` with the `debug=-v` option. Your output should look like the following:
 
 ```
 $ make clean --debug=v
@@ -78,7 +81,9 @@ Successfully remade target file `clean'.
 $ 
 ```
 
-In the above output, notice how after make executes the command `rm -f testintmath *.o`, it reports that ``Successfully remade target file `clean'``.  Of course, however, a file named clean was not in fact created. Therefore, we can run make clean again, and the effect will be that the command `rm -f *.o testintmath` will be executed:
+Notice how after executing the command `rm -f testintmath *.o`, make reports that it ``Successfully remade target file `clean'``. Of course, a file named `clean` was not in fact created.&#x20;
+
+Therefore, we can run make clean again, and the effect will be that the command `rm -f *.o testintmath` will be executed:
 
 ```
 $ make clean
@@ -86,12 +91,48 @@ rm -f *.o testintmath
 $
 ```
 
-{% hint style="info" %}
-Note that the name `clean` isn't special. We could have named the rule anything we want, such as `delete_build_files`. `Clean` is just the conventional name for this kind of task in Makefiles.
-{% endhint %}
+#### `clobber`
+
+Consider the `clobber` rule:
+
+```
+clobber: clean
+  rm -f *~ \#*\# 
+```
+
+clobber is a phony target that depends on another phony target--clean. When we run this rule, the effect is that both rm -f testintmath \*.o and rm -f \*\~ \\#\*\\# are executed:
+
+```
+$ make clobber
+rm -f testintmath *.o
+rm -f *~ \#*\# 
+$ 
+```
+
+Here's how it works. make first checks if a file named `clobber` exists in the working directory. Since there is no such file, make determines that `clobber` is out-of-date and needs to be built. Before make can "build" clobber, however, it must first ensure that its dependency, clean, is up-to-date. So make moves on to clean. make sees that clean doesn't exist, so it executes the command rm -f testintmath \*.o in an attempt to build it. Since this command executes successfully, make considers clean up-to-date (for the current invocation of make, that is). Make then go back to clobber and runs the command rm -f \*\~ \\#\*\\# . This command has the effect of deleting Emacs backup files.
+
+
+
+
+
+#### `all`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 {% hint style="warning" %}
-#### .PHONY Directive
+**.PHONY Directive**
 
 It should go without saying that this scheme only works if there is in fact no file named `clean` in the working directory. If there is such a file, running `make clean` will always yield:
 
@@ -111,22 +152,6 @@ clean:
 
 With this declaration, this rule will work as intended even if there is a file named `clean` in the working directory.
 {% endhint %}
-
-Suppose we want to extend `clean` by also deleting Emacs backup and autosave files. We can achive this by adding the following rule to our Makefile:
-
-```
-clobber: clean
-  rm -f *~ \#*\# 
-```
-
-Here, the rule is clobber--so called because it purpose is to thoroughly clean the project directory--and the command is rm -f \*\~ \\#\*\\#. Notice, however, that clobber depends on clean, so before clobber get's processed, clean will be processed. Invoking this rule:
-
-```
-$ make clobber
-rm -f testintmath *.o
-rm -f *~ \#*\# 
-$ 
-```
 
 #### Phony targets as an alias for other target(s)
 
@@ -148,15 +173,15 @@ and now achieve the same result by simply running:
 make obj
 ```
 
-In other words, obj essentially serves as an alias for testintmath.o intmath.o, whereby running make obj is identical to running make intmath.o testintmath.o.&#x20;
+In other words, obj essentially serves as an alias for testintmath.o intmath.o, whereby running make obj is identical to running make intmath.o testintmath.o.
 
-Notice that this rule has no command. That's perfectly fine. So long as&#x20;
+Notice that this rule has no command. That's perfectly fine. So long as
 
-In makefiles it is common to \<explain all target>.&#x20;
+In makefiles it is common to \<explain all target>.
 
 #### Makefile version 2
 
-Makefile version 2, shown below, integrates three of the phony targets we just discussed: `all`, `clean`, and `clobber`.&#x20;
+Makefile version 2, shown below, integrates three of the phony targets we just discussed: `all`, `clean`, and `clobber`.
 
 {% code title="makefile version 2" %}
 ```makefile
@@ -188,16 +213,6 @@ intmath.o: intmath.c intmath.h
   gcc -c intmath.c
 ```
 {% endcode %}
-
-
-
-
-
-
-
-
-
-
 
 Let's start with the `clean` rule:
 
@@ -261,4 +276,3 @@ hello2: hello2.c
 	gcc -c hello2.c
 ```
 {% endhint %}
-
