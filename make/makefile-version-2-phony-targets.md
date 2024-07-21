@@ -9,90 +9,45 @@ Phony targets have two canonical use cases:
 * As a label for one or more arbitrary commands you want make to execute. 
 * As an alias for one or more other targets, such that running the phony target is the same as running the target(s) directly. 
 
-&#x20;Let's explore both use cases. Suppose we want to use make to automate the task of running our testintath. In other words, to execute the command `./testintmath`. To achieve this, we can add the following rule to our makefile:&#x20;
+&#x20;Let's explore both use cases. Suppose we want to use make to automate the task of deleting all files normally created by buildimg our program—that is, the object files and the executable. To achieve this, we can add the following rule to our makefile:&#x20;
 
 ```
-run: testintmath
-    ./testintmath
+clean: 
+    rm -f *.o testintmath 
 ```
 
-In this rule, we name the target run, which does not correspond to a file in the working directory, and we provide the command `./testintmath`. Additionally, we list `testintmath` as a dependency, ensuring that `testintmath` is up-to-date before it's run. \
-\
-When we invoke make run, the effect is that our program is run:&#x20;
+In this rule, the target is clean, which does not correspond to a file in our project directory, and we give it the command rm -f .o testintmath, which, when run, has the effect of deleting testintmwrh and all objevt files in tje working directiry. When we invoke make clean, the effect is that the command rm -f *.o testintmath gets executed:&#x20;
 
 ```
-$ make run
-./testintmath
-Enter the first positive integer:
-2
-Enter the second positive integer:
-3
-The greatest common divisor of 2 and 3 is 1.
-The least common multiple of 2 and 3 is 6.
+$ make clean
+rm -f *.o testintmath 
 $
 ```
 
-Here's how it works. Like with any other target, make checks if a file named run exists in the working directory. Because it does not make determines that `run` needs to be "built". Before doing so, however, it must first ensure that run's dependency, testintmath, is up-to-date. It therefore processes the rule for testintmath, bringing testintmath up-to-date, if need be. With the dependency check satisfied, it then runs ./testintmath in an attempt to build the target run. because this command Of course, this command does not actaully build run, but this does not cause an error, This command does not actaully build run, but make has no postcondition check to verify that run is actaully built. So long as the command runs successfuly (that it, returns exit status 0) make considers run as being succesffuly brought up-to-date (for the current invocation of make, that is).&#x20;
+Here's how it works. Like any other rule, `make` checks if a file named `clean` exists in the working directory. Since there is no such file, `make` determines that `clean` needs to be built. In an attempt to build `clean`, `make` executes the command rm -f testintmath \*.o. Because this command runs successfuly(that it, returns exit status 0), make considers clean up-to-date (for the current invocation of make, that is). It does not actaully verify that clean is created.&#x20;
 
-We can see this full sequence of operations by invoking make run with the debug=-v option.&#x20;
-
-```
-~/hello> make run --debug=v
-GNU Make 3.81
-Copyright (C) 2006  Free Software Foundation, Inc.
-This is free software; see the source for copying conditions.
-There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE.
-
-This program built for i386-apple-darwin11.3.0
-Reading makefiles...
-Reading makefile `makefile'...
-Updating goal targets....
-Considering target file `run'.
- File `run' does not exist.
-  Considering target file `testintmath'.
-    Considering target file `testintmath.o'.
-      Considering target file `testintmath.c'.
-       Finished prerequisites of target file `testintmath.c'.
-      No need to remake target `testintmath.c'.
-      Considering target file `intmath.h'.
-       Finished prerequisites of target file `intmath.h'.
-      No need to remake target `intmath.h'.
-     Finished prerequisites of target file `testintmath.o'.
-     Prerequisite `testintmath.c' is older than target `testintmath.o'.
-     Prerequisite `intmath.h' is older than target `testintmath.o'.
-    No need to remake target `testintmath.o'.
-    Considering target file `intmath.o'.
-      Considering target file `intmath.c'.
-       Finished prerequisites of target file `intmath.c'.
-      No need to remake target `intmath.c'.
-      Pruning file `intmath.h'.
-     Finished prerequisites of target file `intmath.o'.
-     Prerequisite `intmath.c' is older than target `intmath.o'.
-     Prerequisite `intmath.h' is older than target `intmath.o'.
-    No need to remake target `intmath.o'.
-   Finished prerequisites of target file `testintmath'.
-   Prerequisite `testintmath.o' is older than target `testintmath'.
-   Prerequisite `intmath.o' is older than target `testintmath'.
-  No need to remake target `testintmath'.
- Finished prerequisites of target file `run'.
-Must remake target `run'.
-./testintmath
-Enter the first positive integer:
-3
-Enter the second positive integer:
-2
-The greatest common divisor of 3 and 2 is 1.
-The least common multiple of 3 and 2 is 6.
-Successfully remade target file `run'.
-~/hello> 
-```
+We can see this full sequence of operations by invoking make clean with the debug=-v option.&#x20;
+This prints out 
 
 Importantly, notice the last line where it says ``Successfully remade target file `run'.``&#x20;
 
 
 
-`make` assumes that each target represents a file that is built when its corresponding command is run. However, it has no verification mechanism to check whether the target was actually built by the command. Instead, it operates under the assumption that if a target's command is successfully run, the target is up-to-date. This is not a bug in `make` but a deliberate design choice, as it enables the use of so-called _phony_ targets—targets that do not correspond to actual files but represent labels for arbitrary commands or actions you want `make` to execute.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Phony targets are easiest to illustrate by means of an example, so let's jump right into makefile version 2, shown below, which contains three commonly used phony targets: `all`, `clean`, and `clobber`. Don't worry for now how they work for now. We'll go over each one by one.
 
