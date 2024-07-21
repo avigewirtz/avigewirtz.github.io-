@@ -36,35 +36,16 @@ intmath.o: intmath.c intmath.h
   gcc -c intmath.c
 ```
 {% endcode %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Suppose we want to automate the task of deleting all files normally created by building our program—that is, the object files and the executable. This is helpful if we want to rebuild our project from scratch. To achieve this, we can add the following rule to our Makefile:
+Consider the `clean` rule:
 
 ```
 clean: 
     rm -f *.o testintmath 
 ```
+
+The target, clean, does not represent a file—that is, there is no file in our prohect directory named `clean`, and the command `rm -f *.o testintmath` does not create such a file. Nevertheless, we can run this rule, and the effect is that `rm -f *.o testintmath` will be executed:
+
+
 
 In this rule, the target is clean, which does not correspond to a file in our project directory, and we give it the command rm -f .o testintmath, which, when run, has the effect of deleting testintmwrh and all objevt files in tje working directiry. When we invoke make clean, the effect is that the command rm -f \*.o testintmath gets executed:
 
