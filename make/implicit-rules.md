@@ -6,14 +6,14 @@ The current features we've covered are all you need to know about make. However,
 
 make has macros that can be used in each rule. They're like regular macros except they're defined my make and their definition depends on context.
 
-* $@ - The $@ shall evaluate to the full target name of the current target. Example:
+* $@ - Evaluates to current target. Example:
 
 ```
 testintmath: testintmath.o intmath.o
     $(CC) $(LDFLAGS) testintmath.o intmath.o -o $@
 ```
 
-* $? - The $? macro shall evaluate to the list of prerequisites that are newer than the current target. Example:
+* $? - Evaluate to the list of prerequisites that are newer than the current target. Example:
 
 ```
 testintmath.o: testintmath.c intmath.h

@@ -2,18 +2,18 @@
 
 Make's job is to bring targets up-to-date. Until now, we've assumed that targets represent files, which are brought up-to-date by creating them or updating them. In fact, however, targets need not represent files. They can represent labels for arbitrary commands or actions you want make to execute. Such targets are known as _phony_ targets.
 
-The mechanism by which make implements phony targets is quite simple. After a rule is processed, make has no postcondition check to verify that the target "file" was in fact built. Instead, it operates under the assumption that if a target's dependencies are satisfied and its commands are successfuly run, the target is up-to-date. As we'll see, a target need not even have any corresponding dependencies or commands, so in the most trivial case, a out-of-date target can be considered brought "up-to-date" even if no work was actaully done.
-
-Phony targets have two canonical use cases:
+`make` implements phony targets is quite a simple manner. After a rule is processed, `make` has no postcondition check to verify that the target "file" was in fact built. Instead, it operates under the assumption that if a target's dependencies (if any) are satisfied and its commands (if any) are successfully run, the target is up-to-date. Phony targets have two canonical use cases:
 
 * As a label for one or more arbitrary commands you want make to execute.
 * As an alias for one or more other targets, such that running the phony target is the same as running the target(s) directly.
 
-Let's explore both use cases.&#x20;
+In this section, we'll explore both use cases.&#x20;
 
-#### Phony targets as a label for commands
 
-Suppose we want to use make to automate the task of deleting all files normally created by building our program—that is, the object files and the executable. This is helpful if we want to rebuild our project from scratch. To achieve this, we can add the following rule to our Makefile:
+
+
+
+Suppose we want to automate the task of deleting all files normally created by building our program—that is, the object files and the executable. This is helpful if we want to rebuild our project from scratch. To achieve this, we can add the following rule to our Makefile:
 
 ```
 clean: 
