@@ -7,7 +7,53 @@ Make's job is to bring targets up-to-date. Until now, we've assumed that targets
 * As a label for one or more arbitrary commands you want make to execute.
 * As an alias for one or more other targets, such that running the phony target is the same as running the target(s) directly.
 
-In this section, we'll explore both use cases.&#x20;
+In this section, we'll explore both use cases. Take a look at Makefile version 2, shown below, which contains three commonly used phony targets: `all`, `clean`, and `clobber`. Don't worry for now how they work. We'll go over each one by one.
+
+{% code title="makefile version 2" %}
+```makefile
+# Dependency rules for non-file targets
+
+# Default target (i.e., target to use when make is invoked without specifying a target)
+all: testintmath
+  
+# Deletes all object files (.o) and the executable 
+clean:
+  rm -f testintmath *.o
+  
+# Extends clean by also deleting Emacs backup and autosave files ('*~' specifies 
+# all files that end with a '~', and '\#*\#' specifies all files that start and end with a '#')
+clobber: clean
+  rm -f *~ \#*\# 
+  
+# Dependency rules for file targets
+testintmath: testintmath.o intmath.o
+  gcc testintmath.o intmath.o –o testintmath
+  
+testintmath.o: testintmath.c intmath.h
+  gcc -c testintmath.c
+  
+intmath.o: intmath.c intmath.h
+  gcc -c intmath.c
+```
+{% endcode %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
