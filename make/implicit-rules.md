@@ -2,47 +2,40 @@
 
 The current features we've covered are all you need to know about make. However, make has other features. Many of them are confusing and make makefiles much less readable, but they are often used in real-world makefiles, so it's useful to have a working familiarity with them.&#x20;
 
-#### Automatic Variables
+#### Automatic Macros&#x20;
 
+make has macros that can be used in each rule. They're like regular macros except they're defined my make and their definition depends on context.
 
+* $@ - The $@ shall evaluate to the full target name of the current target. Example:
 
+```
+testintmath: testintmath.o intmath.o
+    $(CC) $(LDFLAGS) testintmath.o intmath.o -o $@
+```
 
+* $? - The $? macro shall evaluate to the list of prerequisites that are newer than the current target. Example:
 
+```
+testintmath.o: testintmath.c intmath.h
+    $(CC) -c $(CFLAGS) $< -o testintmath.o
+```
 
+* In an inference rule, the $< macro shall evaluate to the filename whose existence allowed the inference rule to be chosen for the target. Example:
 
+```
+testintmath: testintmath.o intmath.o
+    $(CC) $(LDFLAGS) $^ -o $@
+```
 
+* The $\* macro shall evaluate to the current target name with its suffix deleted. It shall be evaluated at least for inference rules. Example:
 
-
-
-
-
-
-
-
+```
+testintmath: testintmath.o intmath.o
+    @echo "Rebuilding $@ because $? have changed"
+    $(CC) $(LDFLAGS) $^ -o $@
+```
 
 #### Implicit Rules
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#### Multiple Targets and commands
-
-
-
-`Miscellaneous features:`
-
-* multiple targets. allowed. commands will run for each target.
 
 `make` has implicit rules for compiling and linking C programs. Much of the information we entered in our makefile can in fact be inferred by `make`. Consider the following rule, for example:
 

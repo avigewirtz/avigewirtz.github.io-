@@ -12,7 +12,7 @@ where `MACRO_NAME` is the name of the macro you’re defining and `value` is the
 $(MACRO_NAME)
 ```
 
-When `make` encounters `$(MACRO_NAME)`, it will replace it with `value`.
+When `make` encounters `$(MACRO_NAME)`, it will replace it with `value`. Note that the parenthesis are optional if the macro is a single character.
 
 Makefile version 3, shown below, illustrates three commonly used macros: `CC`, used to specify the compiler, `CFLAGS`, used to specify compiler options, and `LDFLAGS`, used to specify linker options. Notice that we define several values for each macro, with all but the ones we're currently using commented out.
 
