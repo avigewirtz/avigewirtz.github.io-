@@ -35,7 +35,7 @@ testintmath: testintmath.o intmath.o
     $(CC) $(LDFLAGS) $^ -o $@
 ```
 
-#### Implicit Rules
+#### Inference Rules
 
 `make` has implicit rules for compiling and linking C programs. Much of the information we entered in our makefile can in fact be inferred by `make`. Consider the following rule, for example:
 
