@@ -119,7 +119,7 @@ int lcm(int iFirst, int iSecond);
 {% endtabs %}
 
 
-Recall the underlying process by which `testinmath` is built.  The source files `intmath.c` and `testintmath.c` are _independently_ preprocessed, compiled, and assembled into object files, namely `intmath.o` and `testintmath.o`, respectively. Of note is that in the preprocessing stage, headers specified via the `#include` directive are fetched and inserted into each file. To produce the executable `testintmath`, `intmath.o` and `testintmath.o` are linked--along with necessary object files from the C standard library. This multi-stage process is summarized in Figure X.
+Recall the underlying process by which `testinmath` is built.  The source files `intmath.c` and `testintmath.c` are _independently_ preprocessed, compiled, and assembled into object files `intmath.o` and `testintmath.o`, respectively. Of note is that in the preprocessing stage, headers specified via the `#include` directive are fetched and inserted into each file. To produce the executable `testintmath`, `intmath.o` and `testintmath.o` are linked--along with necessary object files from the C standard library. This multi-stage process is summarized in Figure X.
 
 <figure><img src="../.gitbook/assets/Frame 31 (2).png" alt=""><figcaption></figcaption></figure>
 
