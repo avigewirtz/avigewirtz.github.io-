@@ -37,12 +37,12 @@ A useful analogy is to think of this four stage process as an assembly line, whe
 **Note**
 
 * In current GCC implementations, the preprocessor (`cpp`) is integrated into the compiler (`cc1`). The underlying sequence of operations is the same, but technically the first two build steps are performed by a single program (`cc1`).
-* The build model we described assumes _static linking_, where all linking takes place before the file is executed. In practice, however, _dynamic linking_ might be used, where linking is performed at runtime.
+* The build model we described assumes _static linking_, where all linking takes place before the file is executed. In practice, however, _dynamic linking_ might be used, where linking is performed in whole or in part at runtime.
 {% endhint %}
 
 #### Saving Intermediate Files
 
-By default, `gcc` does not retain the intermediate files generated during the build process. Thus, if we invoke `ls` after building `foo`, we won't see any of the `.i`, `.s`, or `.o` files in our directory:
+By default, `gcc` does not retain the intermediate files generated during the build process. Thus, if we invoke `ls` after building `foo`, we won't see the `.i`, `.s`, or `.o` files in our directory:
 
 ```bash
 $ ls
