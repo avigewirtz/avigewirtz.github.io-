@@ -43,17 +43,15 @@ clean:
     rm -f *.o testintmath 
 ```
 
-The target, clean, does not represent a file—that is, there is no file in our prohect directory named `clean`, and the command `rm -f *.o testintmath` does not create such a file. Nevertheless, we can run this rule, and the effect is that `rm -f *.o testintmath` will be executed:
-
-
-
-In this rule, the target is clean, which does not correspond to a file in our project directory, and we give it the command rm -f .o testintmath, which, when run, has the effect of deleting testintmwrh and all objevt files in tje working directiry. When we invoke make clean, the effect is that the command rm -f \*.o testintmath gets executed:
+The target, `clean`, does not represent a file—that is, there is no file in our project directory named `clean`, and the command `rm -f *.o testintmath` does not create such a file. Nevertheless, we can run this rule, and the effect is that `rm -f *.o testintmath` will be executed:
 
 ```
 $ make clean
 rm -f *.o testintmath 
 $
 ```
+
+This command deletes the executable testintmath as well, therby "cleaning" our project directory. This is useful in situations where we want to rebuild `testintmath` from scratch. 
 
 Here's how it works. Like any other rule, `make` checks if a file named `clean` exists in the working directory. Since there is no such file, `make` determines that `clean` needs to be built. In an attempt to build `clean`, `make` executes the command rm -f testintmath \*.o. Because this command runs successfuly(that it, returns exit status 0), make considers clean up-to-date (for the current invocation of make, that is). It does not actaully verify that clean is created.
 
