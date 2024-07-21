@@ -79,7 +79,7 @@ Successfully remade target file `clean'.
 $ 
 ```
 
-In particular, notice how after executing the command `rm -f testintmath *.o`, make reports that it ``Successfully remade target file `clean'``. Of course, a file named `clean` was not in fact created, but make&#x20;
+In particular, notice how after executing the command `rm -f testintmath *.o`, make reports that it ``Successfully remade target file `clean'``. Of course, a file named `clean` was not in fact created, but make
 
 An important aspect to recognize is that because this rule will never create a file named `clean`, `clean` will always be considered out of date. Therefore, its command will be run each time we invoke `make clean`:
 
@@ -104,7 +104,7 @@ make: `clean' is up to date.
 $
 ```
 
-GNU Make offers a simple solution to this potential issue. Just declare `clean` as phony, like so:
+GNU Make offers a simple solution to this potential issue. Just declare `clean` as a dependency of the special target .PHONY, like so:
 
 ```makefile
 .PHONY: clean
@@ -122,7 +122,7 @@ clobber: clean
   rm -f *~ \#*\# 
 ```
 
-This rule is designed to extend the `clean` rule by also deleting Emacs backup and autosave files. Note that `*~` specifies all files that begin with a `*` and  `\#*\#`  specifies all files that begin and end with a `#`. When you run:
+This rule is designed to extend the `clean` rule by also deleting Emacs backup and autosave files. Note that `*~` specifies all files that begin with a `*` and `\#*\#` specifies all files that begin and end with a `#`. When you run:
 
 ```bash
 $ make clobber
@@ -131,7 +131,7 @@ rm -f *~ \#*\#
 $ 
 ```
 
-Here's how it works. make first checks if a file named `clobber` exists in the working directory. Since there is no such file, make determines that `clobber` is out-of-date and needs to be built. Before make can "build" clobber, however, it must first ensure that its dependency, clean, is up-to-date. So make moves on to clean. make sees that clean doesn't exist, so it executes the command rm -f testintmath \*.o in an attempt to build it. Since this command executes successfully, make considers clean up-to-date (for the current invocation of make, that is). Make then go back to clobber and runs the command `rm -f *~ \#*\#` .&#x20;
+Here's how it works. make first checks if a file named `clobber` exists in the working directory. Since there is no such file, make determines that `clobber` is out-of-date and needs to be built. Before make can "build" clobber, however, it must first ensure that its dependency, clean, is up-to-date. So make moves on to clean. make sees that clean doesn't exist, so it executes the command rm -f testintmath \*.o in an attempt to build it. Since this command executes successfully, make considers clean up-to-date (for the current invocation of make, that is). Make then go back to clobber and runs the command `rm -f *~ \#*\#` .
 
 `make` first executes the `clean` rule, ensuring that all `.o` files and the `testintmath` executable are deleted. After successfully running the `clean` rule, `make` proceeds to execute the command `rm -f *~ \#*\#`. This command deletes all files ending in `~` (typically backup files created by text editors) and files with names matching the pattern `#*#` (common for temporary or autosave files).
 
@@ -142,10 +142,6 @@ all: testintmath
 ```
 
 Unlike fhe clean and clobber ohony targets, all does not have any correspomding command. It's sole purpose os to sweve as an alias for testintmath, such that running make all is functinalu identical ro running make testintmath.
-
-
-
-
 
 {% hint style="info" %}
 **Purpose of the 'all' target**
