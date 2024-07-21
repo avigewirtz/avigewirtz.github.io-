@@ -2,7 +2,7 @@
 
 Make's job is to bring targets up-to-date. Until now, we've assumed that targets represent files, which are brought up-to-date by creating them or updating them. In fact, however, targets need not represent files. They can represent labels for arbitrary commands or actions you want make to execute. Such targets are known as _phony_ targets.
 
-`make` implements phony targets is quite a simple manner. After a rule is processed, `make` has no postcondition check to verify that the target "file" was in fact built. Instead, it operates under the assumption that if a target's dependencies (if any) are satisfied and its commands (if any) are successfully run, the target is up-to-date. Phony targets have two canonical use cases:
+`make` implements phony targets in quite a simple manner. After a rule is processed, `make` has no postcondition check to verify that the target "file" was in fact built. Instead, it operates under the assumption that if a target's dependencies (if any) are satisfied and its commands (if any) are successfully run, the target is up-to-date. Phony targets have two canonical use cases:
 
 * As a label for one or more arbitrary commands you want make to execute.
 * As an alias for one or more other targets, such that running the phony target is the same as running the target(s) directly.
@@ -31,7 +31,7 @@ testintmath: testintmath.o intmath.o
   
 testintmath.o: testintmath.c intmath.h
   gcc -c testintmath.c
-  
+  =
 intmath.o: intmath.c intmath.h
   gcc -c intmath.c
 ```
@@ -56,9 +56,9 @@ $
 
 This command deletes the executable `testintmath` as well as all files with a `.o` extension (i.e., `testintmath.o` and `intmath.o`), thereby "cleaning" our project directory. This is useful in situations where we want to rebuild `testintmath` from scratch. Note that the name `clean` isn't special. We could have named the rule anything we want, such as `delete_build_files`. `Clean` is just the conventional name for this kind of task in Makefiles.
 
-Here's how it works. Like any other rule, `make` checks if a file named `clean` exists in the working directory. Since there is no such file, `make` determines that `clean` needs to be built. In an attempt to build `clean`, `make` executes the command `rm -f testintmath *.o`. Because this command runs successfully (that it, returns exit status 0), `make` considers `clean` up-to-date (for the current invocation of `make`, that is). It does not actually verify that `clean` is created.
+Here's how make processes this rule. As with any other rule, `make` begins by checking if a file named `clean` exists in the working directory. Since there is no such file, `make` determines that `clean` needs to be built. In an attempt to build `clean`, `make` executes the command `rm -f testintmath *.o`. Because this command runs successfully (that it, returns exit status 0), `make` considers `clean` up-to-date (for the current invocation of `make`, that is). It does not actually verify whether `clean` is created.
 
-We can see this full sequence of operations by invoking `make clean` with the `debug=-v` option. Your output should look like the following:
+You can see this full sequence of operations by invoking `make clean` with the `debug=-v` option. The output should look like this:
 
 ```
 $ make clean --debug=v
@@ -81,15 +81,41 @@ Successfully remade target file `clean'.
 $ 
 ```
 
-Notice how after executing the command `rm -f testintmath *.o`, make reports that it ``Successfully remade target file `clean'``. Of course, a file named `clean` was not in fact created.&#x20;
+Notice how after executing the command `rm -f testintmath *.o`, make reports that it ``Successfully remade target file `clean'``. Of course, a file named `clean` was not in fact created, but make&#x20;
 
-Therefore, we can run make clean again, and the effect will be that the command `rm -f *.o testintmath` will be executed:
+An important aspect to recognize is that because this rule will never create a file named `clean`, `clean` will always be considered out of date. Therefore, its command will be run each time we invoke `make clean`:
 
-```
+```bash
+$ make clean
+rm -f *.o testintmath 
+$ make clean
+rm -f *.o testintmath 
 $ make clean
 rm -f *.o testintmath 
 $
 ```
+
+{% hint style="warning" %}
+**.PHONY Directive**
+
+It should go without saying that the scheme we just described will only work if there is in fact no file named `clean` in the working directory. If there is such a file, running `make clean` will always yield:
+
+```makefile
+$ make clean
+make: `clean' is up to date.
+$
+```
+
+GNU Make offers a simple solution to this potential issue. Just declare `clean` as phony, like so:
+
+```makefile
+.PHONY: clean
+clean: 
+    rm -f *.o testintmath 
+```
+
+With this declaration, this rule will work as intended even if there is a file named `clean` in the working directory.
+{% endhint %}
 
 #### `clobber`
 
@@ -100,7 +126,7 @@ clobber: clean
   rm -f *~ \#*\# 
 ```
 
-clobber is a phony target that depends on another phony target--clean. When we run this rule, the effect is that both rm -f testintmath \*.o and rm -f \*\~ \\#\*\\# are executed:
+This rule is designed to extend the `clean` rule by not only removing the build artifacts but also other temporary or backup files that might clutter the project directory. When you run:
 
 ```
 $ make clobber
@@ -111,6 +137,8 @@ $
 
 Here's how it works. make first checks if a file named `clobber` exists in the working directory. Since there is no such file, make determines that `clobber` is out-of-date and needs to be built. Before make can "build" clobber, however, it must first ensure that its dependency, clean, is up-to-date. So make moves on to clean. make sees that clean doesn't exist, so it executes the command rm -f testintmath \*.o in an attempt to build it. Since this command executes successfully, make considers clean up-to-date (for the current invocation of make, that is). Make then go back to clobber and runs the command rm -f \*\~ \\#\*\\# . This command has the effect of deleting Emacs backup files.
 
+`make` first executes the `clean` rule, ensuring that all `.o` files and the `testintmath` executable are deleted. After successfully running the `clean` rule, `make` proceeds to execute the command `rm -f *~ \#*\#`. This command deletes all files ending in `~` (typically backup files created by text editors) and files with names matching the pattern `#*#` (common for temporary or autosave files).
+
 #### `all`
 
 Consider the `all` rule:
@@ -119,7 +147,7 @@ Consider the `all` rule:
 all: testintmath
 ```
 
-all does not represent a file, and this rule has no command. The affect of running this rule is that make ; hiwever, unlike coean and cllbber, it has no corresponding command. Instead, it essentially serves as an alias for testintmath, meaning that the affect of running make all is the same as running make testintmath. If we run all, the
+`make` then checks if `testintmath` is up-to-date. If `testintmath` is not present or any of its dependencies are newer than the `testintmath` executable, `make` proceeds to build `testintmath`.. all does not represent a file, and this rule has no command. The affect of running this rule is that make ; hiwever, unlike coean and cllbber, it has no corresponding command. Instead, it essentially serves as an alias for testintmath, meaning that the affect of running make all is the same as running make testintmath. If we run all, the
 
 
 
@@ -173,26 +201,4 @@ hello1: hello1.c
 hello2: hello2.c
 	gcc -c hello2.c
 ```
-{% endhint %}
-
-{% hint style="info" %}
-**.PHONY Directive**
-
-It should go without saying that this scheme only works if there is in fact no file named `clean` in the working directory. If there is such a file, running `make clean` will always yield:
-
-```makefile
-$ make clean
-make: `clean' is up to date.
-$
-```
-
-GNU Make offers a simple solution to this potential issue. Just declare `clean` as phony, like so:
-
-```makefile
-.PHONY: clean
-clean: 
-    rm -f *.o testintmath 
-```
-
-With this declaration, this rule will work as intended even if there is a file named `clean` in the working directory.
 {% endhint %}
