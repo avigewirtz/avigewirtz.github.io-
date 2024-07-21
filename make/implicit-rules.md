@@ -1,43 +1,23 @@
 # Advanced Features
 
-The current features we've covered are all you need to know about make. However, make has other features. Many of them are confusing and make makefiles much less readable, but they are often used in real-world makefiles, so it's useful to have a working familiarity with them.&#x20;
+The current features we've covered capture the core of make. And are all you need to know about make. However, make has other features. Many of them are confusing and make makefiles much less readable, but they are often used in real-world makefiles, so it's useful to have a working familiarity with them.&#x20;
 
 #### Automatic Macros&#x20;
 
-make has macros that can be used in each rule. They're like regular macros except they're defined my make and their definition depends on context.
+make has macros that can be used in each rule. They're like regular predefined macros except that they're only defined when used in rules and their definition depends on the rule they're used in. Below is a few of the commonly used automatic macros. Note that since each of these macros is only a single character, they can be referenced by simply prefixing their name with a $.&#x20;
 
-* $@ - Evaluates to current target. Example:
-
-```
-testintmath: testintmath.o intmath.o
-    $(CC) $(LDFLAGS) testintmath.o intmath.o -o $@
-```
-
-* $? - Evaluate to the list of prerequisites that are newer than the current target. Example:
-
-```
-testintmath.o: testintmath.c intmath.h
-    $(CC) -c $(CFLAGS) $< -o testintmath.o
-```
-
-* In an inference rule, the $< macro shall evaluate to the filename whose existence allowed the inference rule to be chosen for the target. Example:
-
-```
-testintmath: testintmath.o intmath.o
+<table><thead><tr><th width="109">Macro</th><th width="239">Meaning</th><th>Example</th></tr></thead><tbody><tr><td><code>^</code></td><td>All the dependencies.</td><td><pre class="language-makefile"><code class="lang-makefile">testintmath: testintmath.o intmath.o
+    $(CC) $(LDFLAGS) $^ -o testintmath
+</code></pre></td></tr><tr><td><code>@</code></td><td>The target.</td><td><pre class="language-makefile"><code class="lang-makefile">testintmath: testintmath.o intmath.o
     $(CC) $(LDFLAGS) $^ -o $@
-```
-
-* The $\* macro shall evaluate to the current target name with its suffix deleted. It shall be evaluated at least for inference rules. Example:
-
-```
-testintmath: testintmath.o intmath.o
-    @echo "Rebuilding $@ because $? have changed"
-    $(CC) $(LDFLAGS) $^ -o $@
-```
+</code></pre></td></tr><tr><td><code>^</code></td><td>The first dependency.</td><td><pre class="language-makefile"><code class="lang-makefile">intmath.o: intmath.c intmath.h
+    $(CC) $(CFLAGS) -c $^
+</code></pre></td></tr><tr><td><code>?</code></td><td>Dependencies newer than the target.</td><td><pre class="language-makefile"><code class="lang-makefile">
+</code></pre></td></tr></tbody></table>
 
 #### Inference Rules
 
-`make` has implicit rules for compiling and linking C programs. Much of the information we entered in our makefile can in fact be inferred by `make`. Consider the following rule, for example:
+`make` has inference rules for compiling and linking C programs. Much of the information we entered in our makefile can in fact be inferred by `make`. Consider the following rule, for example:
 
 ```makefile
 intmath.o: intmath.c intmath.h
@@ -50,7 +30,7 @@ We could have actually written it as:
 intmath.o: intmath.h
 ```
 
-And from observing that the target is `intmath.o`, `make` would infer that it depends on `intmath.c` and that the command to build it is `$(CC) $(CFLAGS) -c intmath.c`. Of course, `make` cannot infer header file dependencies, so we still need to `intmath.h` as a dependency.&#x20;
+And from observing that the target is `intmath.o`, `make` would infer that it depends on `intmath.c` and that the command to build it is `$(CC) $(CFLAGS) -c intmath.c`. Of course, `make` cannot infer header file dependencies, so we still need to list `intmath.h` as a dependency.&#x20;
 
 Similarly, consider the rule for the executable:
 
@@ -65,11 +45,9 @@ We could have written it as:
 testintmath: intmath.o
 ```
 
-And from observing that the executable is `testintmath`, make would infer that it depends on `testintmath.o` and that the command to build it is.
+And from observing that the executable is `testintmath`, make would infer that it depends on `testintmath.o` and that the command to build it is `$(CC) $(LDFLAGS) testintmath.o intmath.o -o testintmath`.
 
-
-
-&#x20;`$(CC) testintmath.o intmath.o -o testintmath`. Note, however, that this only works since the executable (`testintmath`)  has the same prefix of one of the object files (`testintmath.o`). If not, this wouldn't work. For example, if the executable were named `testintmath1`, `make` would incorrectly assume it depends on `testintmath1.o`.
+Note, however, that this only works since the executable (`testintmath`)  has the same prefix of one of the object files (`testintmath.o`). If not, this wouldn't work. For example, if the executable were named `testintmath1`, `make` would incorrectly assume it depends on `testintmath1.o`.
 
 Here's what our makefile looks like after incorporating these shortcuts:
 
@@ -94,10 +72,11 @@ clean:
 
 testintmath: intmath.o
 
-testintmath.o: intmath.h
-
 intmath.o: intmath.h
+
+testintmath.o: intmath.h 
 ```
 {% endcode %}
 
-There is no reason to use implicit rules, since they tend to make Makefiles confusing and difficult to interpret. However, it's useful to be aware of them, since many Makefiles you'll encounter do make use of them.&#x20;
+#### Pattern rules
+
