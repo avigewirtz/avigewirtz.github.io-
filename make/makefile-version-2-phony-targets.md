@@ -79,7 +79,7 @@ Successfully remade target file `clean'.
 $ 
 ```
 
-Notice how after executing the command `rm -f testintmath *.o`, make reports that it ``Successfully remade target file `clean'``. Of course, a file named `clean` was not in fact created, but make&#x20;
+In particular, notice how after executing the command `rm -f testintmath *.o`, make reports that it ``Successfully remade target file `clean'``. Of course, a file named `clean` was not in fact created, but make&#x20;
 
 An important aspect to recognize is that because this rule will never create a file named `clean`, `clean` will always be considered out of date. Therefore, its command will be run each time we invoke `make clean`:
 
