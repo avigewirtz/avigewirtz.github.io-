@@ -141,7 +141,7 @@ Finally, consider the `all` rule:
 all: testintmath
 ```
 
-
+Unlike fhe clean and clobber ohony targets, all does not have any correspomding command. It's sole purpose os to sweve as an alias for testintmath, such that running make all is functinalu identical ro running make testintmath.
 
 
 
