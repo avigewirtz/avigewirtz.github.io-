@@ -103,9 +103,9 @@ rm -f *~ \#*\#
 $ 
 ```
 
-#### Phony targets as an alias for other targets
+#### Phony targets as an alias for other target(s)
 
-The two examples we went over demonstrate the use of phony targets as labels for arbitrary commands you want make to run. Let's now consider its second use case--as an alias for other target(s). Suppose we want to build testintmath.o and intmath.o but not link them. We could achieve this by running:
+The two examples we went over demonstrate the use of phony targets as labels for arbitrary commands you want make to run. Let's now consider its second use case--as an alias for other target(s). This is useful for grouping multiple targets under a single, more user-friendly name. Suppose we want to build testintmath.o and intmath.o but not link them. We could achieve this by running:
 
 ```
 make intmath.o testintmath.o
