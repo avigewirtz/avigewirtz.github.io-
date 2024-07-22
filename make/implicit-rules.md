@@ -15,6 +15,8 @@ make has macros that can be used in each rule. They're like regular predefined m
 </code></pre></td></tr><tr><td><code>?</code></td><td>Dependencies newer than the target.</td><td><pre class="language-makefile"><code class="lang-makefile">
 </code></pre></td></tr></tbody></table>
 
+#### Pattern Rules
+
 #### Inference Rules
 
 `make` has inference rules for compiling and linking C programs. Much of the information we entered in our makefile can in fact be inferred by `make`. Consider the following rule, for example:
@@ -78,5 +80,8 @@ testintmath.o: intmath.h
 ```
 {% endcode %}
 
-#### Pattern rules
 
+
+#### Special Targets
+
+Specicial targets are builtk in&#x20;

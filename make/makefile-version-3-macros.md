@@ -1,6 +1,6 @@
 # Macros
 
-Make has a macro facility that performs textual substitution, similar to the macro facility of the C preprocessor. To define a macro, add the following line to your makefile:
+Make has a macro facility that performs textual substitution, similar to the macro facility of the C preprocessor. To define a macro, add the following line to your Makefile:
 
 ```makefile
 MACRO_NAME = value
@@ -12,7 +12,13 @@ where `MACRO_NAME` is the name of the macro you’re defining and `value` is the
 $(MACRO_NAME)
 ```
 
-When `make` encounters `$(MACRO_NAME)`, it will replace it with `value`. Note that parenthesis are optional if the macro is a single character.
+When `make` encounters `$(MACRO_NAME)`, it will replace it with `value`.&#x20;
+
+Note a few properties of macros:
+
+* It is not an error to use an undefined macro. It simply collapses to nothing.&#x20;
+* Parenthesis are optional if the macro is a single character.
+* A macro call may appear in the makefile before the definition.
 
 Makefile version 3, shown below, illustrates three commonly used macros: `CC`, which specifies the compiler, `CFLAGS`, which specifies compiler options, and `LDFLAGS`, which specifies linker options. Notice that several versions of each macro is defined, with all but the ones in use commented out.&#x20;
 
@@ -21,11 +27,11 @@ Makefile version 3, shown below, illustrates three commonly used macros: `CC`, w
 # Macros
 CC = gcc
 # CC = clang
-CFLAGS =
+
 # CFLAGS = -g
 # CFLAGS = -D NDEBUG
 # CFLAGS = -D NDEBUG -O
-LDFLAGS = 
+
 # LDFLAGS = -g
 
 # Dependency rules for non-file targets
@@ -48,6 +54,6 @@ intmath.o: intmath.c intmath.h
 The benefit of using macros is that it allows for easy and consistent updates across the entire Makefile. For example, if we want to change the compiler to `clang`, all we need to do is change `CC` to `clang`, instead of manually changing every compilation command.
 
 {% hint style="info" %}
-* `CC` is actually a predefined macro, meaning make sets it automatically. By default, `CC` is set to `cc`, which is not what we want; thus, we change it to gcc.
-* If an undefined macro is used, it will be substituted with a blank space. Thus, lines 4 and 8 of our makefile (where we "defined" `CFLAGS` and `LDFLAGS`) are actually redundant. We could have put them in the rules without defining them as an empty string, since that's the default.&#x20;
+* `CC` is actually a predefined macro, meaning it is set automatically by make. By default, `CC` is set to `cc`.
+* It is not an error to use an undefined macro. It simply collapses to nothing. Thus, it was actaully uneccessary for us to define CLFAGS If an undefined macro is used, it will be substituted with a blank space. Thus, lines 4 and 8 of our makefile (where we "defined" `CFLAGS` and `LDFLAGS`) are actually redundant. We could have put them in the rules without defining them as an empty string, since that's the default.&#x20;
 {% endhint %}
