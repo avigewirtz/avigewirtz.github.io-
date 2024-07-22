@@ -1,6 +1,6 @@
 # Advanced Features
 
-The current features we've covered capture the core of make. And are all you need to know about make. However, make has other features. Many of them are confusing and make makefiles much less readable, but they are often used in real-world makefiles, so it's useful to have a working familiarity with them.&#x20;
+The features we've discussed so far cover the basics of `make` and are enough to use it effectively. However, make has other features, such as automatic macros and implicit rules, which are commonly used in real-world Makefiles.  Therefore, while many of these features can be confusing and make Makefiles less readable, they are useful to have a working familiarity with them.
 
 #### Automatic Macros&#x20;
 
@@ -17,9 +17,27 @@ make has macros that can be used in each rule. They're like regular predefined m
     @echo "Modified dependency(ies): $?"
 </code></pre></td></tr></tbody></table>
 
-Here is our makefile with explicit filenames replaced by the appropriate automatic variable:
+Here is our makefile with explicit filenames replaced by the appropriate automatic variables:
 
+{% code title="Makefile version 4" %}
 ```
+# Macros
+CC = gcc
+# CC = clang
+
+# CFLAGS = -g
+# CFLAGS = -D NDEBUG
+# CFLAGS = -D NDEBUG -O
+
+# LDFLAGS = -g
+
+# Dependency rules for non-file targets
+all: testintmath
+clobber: clean
+    rm -f *~ \#*\#
+clean:
+    rm -f testintmath *.o
+    
 testintmath: testintmath.o intmath.o
     $(CC) $(LDFLAGS) $^ -o @
     
@@ -29,10 +47,11 @@ testintmath.o: testintmath.c intmath.h
 intmath.o: intmath.c intmath.h
     $(CC) $(CFLAGS) -c $<
 ```
+{% endcode %}
 
 #### Implicit Rules
 
-`make` has inference rules for compiling and linking C programs. Much of the information we entered in our makefile can in fact be inferred by `make`. Consider the following rule, for example:
+`make` has built-in rules for compiling and linking C programs. Much of the information we entered in our makefile can in fact be inferred by `make`. Consider the following rule, for example:
 
 ```makefile
 intmath.o: intmath.c intmath.h
@@ -45,7 +64,7 @@ We could have actually written it as:
 intmath.o: intmath.h
 ```
 
-And from observing that the target is `intmath.o`, `make` would infer that it depends on `intmath.c` and that the command to build it is `$(CC) $(CFLAGS) -c intmath.c`. Of course, `make` cannot infer header file dependencies, so we still need to list `intmath.h` as a dependency.&#x20;
+And from observing that the target is `intmath.o`, `make` would infer that it depends on `intmath.c` and that the command to build it is (roughly) `$(CC) $(CFLAGS) -c intmath.c`. Of course, `make` cannot infer header file dependencies, so we still need to list `intmath.h` as a dependency.&#x20;
 
 Similarly, consider the rule for the executable:
 
@@ -60,13 +79,15 @@ We could have written it as:
 testintmath: intmath.o
 ```
 
-And from observing that the executable is `testintmath`, make would infer that it depends on `testintmath.o` and that the command to build it is `$(CC) $(LDFLAGS) testintmath.o intmath.o -o testintmath`.
+And from observing that the executable is `testintmath`, make would infer that it depends on `testintmath.o` and that the command to build it is (roughly) `$(CC) $(LDFLAGS) testintmath.o intmath.o -o testintmath`.
 
+{% hint style="info" %}
 Note, however, that this only works since the executable (`testintmath`)  has the same prefix of one of the object files (`testintmath.o`). If not, this wouldn't work. For example, if the executable were named `testintmath1`, `make` would incorrectly assume it depends on `testintmath1.o`.
+{% endhint %}
 
-By using these built-in rules our 17-line makefile can be reduced to:
+By using these built-in rules our Makefile can be reduced to:
 
-{% code title="makefile version 4" %}
+{% code title="makefile version 5" %}
 ```makefile
 # Macros
 CC = gcc
@@ -93,60 +114,46 @@ testintmath.o: intmath.h
 ```
 {% endcode %}
 
+Running this makefile:
 
+```
+$ touch intmath.h
+$ make
+gcc    -c -o testintmath.o testintmath.c
+gcc    -c -o intmath.o intmath.c
+gcc   testintmath.o intmath.o   -o testintmath
+$
+```
 
 {% hint style="info" %}
 
 
+The implicit rules we discussed are all instances of built-in pattern rules. Pattern rules use wildcards instead of explicit filenames. This allows make to apply the rule any time a target file matching the pattern needs to updated.
 
-
-%: %.c
-
-## recipe to execute (built-in):
+The percent character in a pattern rule is roughly equivalent to \* in a Unix shell. It represents any number of any characters. This makefile works because of two built-in pattern rules. The first specifies how to compile a .o file from a .c file:
 
 ```
-$(LINK.c) $^ $(LOADLIBES) $(LDLIBS) -o $@
+     %.o: %.c
+             $(COMPILE.c) $(OUTPUT_OPTION) $<
 ```
 
-
-
-
-
-%.o: %.c
-
-## recipe to execute (built-in):
+where:
 
 ```
-$(COMPILE.c) $(OUTPUT_OPTION) $<
+COMPILE.c = $(CC) $(CFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -c
+OUTPUT_OPTION = -o $@
 ```
 
-COMPILE.c = $(CC) $(CFLAGS) $(CPPFLAGS) $(TARGET\_ARCH) -c
-
-LINK.c = $(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(TARGET\_ARCH)
-
-OUTPUT\_OPTION = -o $@
-
-
-
-The built-in rules are all instances of pattern rules. A pattern rule looks like the nor- mal rules you have already seen except the stem of the file (the portion before the suf- fix) is represented by a % character. This makefile works because of three built-in rules. The first specifies how to compile a .o file from a .c file:
-
-Pattern rules use wildcards instead of explicit filenames. This allows make to apply the rule any time a target file matching the pattern needs to updated.
-
-The makefile examples we’ve been looking at are a bit verbose. For a small program of a dozen files or less we may not care, but for programs with hundreds or thou- sands of files, specifying each target, prerequisite, and command script becomes unworkable. Furthermore, the commands themselves represent duplicate code in our makefile. If the commands contain a bug or ever change, we would have to update all these rules. This can be a major maintenance problem and source of bugs.
-
-Many programs that read one file type and output another conform to standard con- ventions. For instance, all C compilers assume that files that have a .c suffix contain C source code and that the object filename can be derived by replacing the .c suffix with .o (or .obj for some Windows compilers). In the previous chapter, we noticed that flex input files use the .l suffix and that flex generates .c files.
-
-The percent character in a pattern rule is roughly equivalent to \* in a Unix shell. It represents any number of any characters.&#x20;
-
-The percent character can be placed
-
-GNU make 3.80 has about 90 built-in implicit rules. The built-in implicit rules are applied whenever a target is being considered and there is no explicit rule to update it. So using an implicit rule is easy: simply do not specify a command script when adding your target to the makefile. This causes make to search its built-in database to satisfy the target.
-
-anywhere within the pattern but can occur only once. Here are some valid uses of percent:
+The second specifies how to generate a file with no suffix (always an executable) from a .o file:
 
 ```
-     %,v
-     s%.o
-     wrapper_%
+     %: %.o
+             $(LINK.o) $^ $(LOADLIBES) $(LDLIBS) -o $@
+```
+
+where:
+
+```
+LINK.o = $(CC) $(LDFLAGS) $(TARGET_ARCH)
 ```
 {% endhint %}
