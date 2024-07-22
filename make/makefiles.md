@@ -15,7 +15,7 @@ It is precisely these sorts of frustrations that led Stuart Feldman to develop t
 1. The program's dependency graph. This is a directed graph that specifies the dependencies between the program's files as well as the commands to build each file from its dependencies.
 2. The latest modification timestamp of each of the program's files.
 
-`make` can obtain the files' timestamps on it's own from the filesystem. The dependency graph is provided through a user-written file known as a makefile; (we will describe how to create it in the next section). Once an appropriate makefile is set up, the command:
+`make` can obtain the files' timestamps on it's own from the filesystem. The dependency graph is provided through a user-written file known as a _makefile_ (covered in the next section). Once an appropriate makefile is set up, the command:
 
 ```bash
 make
