@@ -1,5 +1,9 @@
 # Running make
 
+<mark style="color:red;">If the target you specify is already up to date, make will say so and immediately exit, doing nothing else:</mark>
+
+
+
 The basic syntax to run `make` is:
 
 ```bash

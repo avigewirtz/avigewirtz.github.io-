@@ -1,5 +1,29 @@
 # How make Processes a Makefile
 
+<mark style="color:red;">How did make decide what to do? Let’s go over the previous execution in more detail to find out.</mark>
+
+<mark style="color:red;">First make notices that the command line contains no targets so it decides to make the default goal, count\_words. It checks for prerequisites and sees three: count\_words.o, lexer.o, and -lfl. make now considers how to build count\_words.o and sees a rule for it. Again, it checks the prerequisites, notices that count\_words.c has no rules but that the file exists, so make executes the commands to transform count\_words.c into count\_words.o by executing the command:</mark>
+
+```
+     gcc -c count_words.c
+```
+
+<mark style="color:red;">This “chaining” of targets to prerequisites to targets to prerequisites is typical of how make analyzes a makefile to decide the commands to be performed.</mark>
+
+<mark style="color:red;">The next prerequisite make considers is lexer.o. Again the chain of rules leads to lexer. c but this time the file does not exist. make finds the rule for generating lexer.c from lexer.l so it runs the flex program. Now that lexer.c exists it can run the gcc command.</mark>
+
+<mark style="color:red;">Finally, make examines -lfl. The -l option to gcc indicates a system library that must be linked into the application. The actual library name indicated by “fl” is libfl.a. GNU make includes special support for this syntax. When a prerequisite of the form- l\<NAME> is seen, make searches for a file of the form libNAME.so; if no match is found, it then searches for libNAME.a. Here make finds /usr/lib/libfl.a and proceeds with the final action, linking.</mark>
+
+
+
+
+
+
+
+
+
+
+
 As we saw, make’s job is to bring a target up-to-date. A target is considered up-to-date if it exists and it is newer than all it's dependencies.&#x20;
 
 From POSIX: Before any target in the makefile is updated, each of its prerequisites (both explicit and implicit) shall be updated. This shall be accomplished by recursively processing each prerequisite. Upon recursion, each prerequisite shall become a target itself. Its prerequisites in turn shall be processed recursively until a target is found that has no prerequisites, or further recursion would require applying two inference rules one immediately after the other, at which point the recursion shall stop. As an extension, implementations may continue recursion when two or more successive inference rules need to be applied; however, if there are multiple different chains of such rules that could be used to create the target, it is unspecified which chain is used. The recursion shall then back up, updating each target as it goes.
@@ -43,7 +67,7 @@ make
 
 The DFS traversal is summarized in Figure 2.4.
 
-<figure><img src="../../.gitbook/assets/Group 66 (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 66 (7).png" alt=""><figcaption></figcaption></figure>
 
 #### Case 2: Running our makefile when all targets are up to date
 
@@ -57,7 +81,7 @@ $
 
 The DFS traversal is summarized in Figure 2.5.
 
-<figure><img src="../../.gitbook/assets/Group 67 (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 67 (2).png" alt=""><figcaption></figcaption></figure>
 
 #### Case 3: Running our makefile after a source file is modified
 
@@ -72,4 +96,4 @@ $
 
 The DFS traversal is summarized in Figure 2.6.
 
-<figure><img src="../../.gitbook/assets/Group 68 (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Group 68 (4) (1).png" alt=""><figcaption></figcaption></figure>

@@ -1,4 +1,4 @@
-# Phony targets
+# Phony Targets
 
 Make's job is to bring targets up-to-date. Until now, we've assumed that targets represent files, which are brought up-to-date by creating them or updating them. In fact, however, targets need not represent files. They can represent labels for arbitrary commands or actions you want make to execute. Such targets are known as _phony_ targets.
 
@@ -6,6 +6,8 @@ Make's job is to bring targets up-to-date. Until now, we've assumed that targets
 
 * As a label for one or more arbitrary commands you want make to execute.
 * As an alias for one or more other targets, such that running the phony target is the same as running the target(s) directly.
+* Phony targets can also be used to improve the “user interface” of a makefile. Often targets are complex strings containing directory path elements, additional filename components (such as version numbers) and standard suffixes. This can make specify- ing a target filename on the command line a challenge. The problem can be avoided by adding a simple phony target whose prerequisite is the actual target file.
+* By convention there are a set of more or less standard phony targets that many makefiles include. Table 2-1 lists these standard targets.
 
 In this section, we'll explore both use cases. Take a look at Makefile version 2, shown below, which contains three commonly used phony targets: `all`, `clean`, and `clobber`. Don't worry for now how they work. We'll go over each one by one.
 
@@ -104,6 +106,10 @@ make: `clean' is up to date.
 $
 ```
 
+To avoid this problem, GNU make includes a special target, .PHONY, to tell make that a target is not a real file. Any target can be declared phony by including it as a prereq- uisite of .PHONY:
+
+
+
 GNU Make offers a simple solution to this potential issue. Just declare `clean` as a dependency of the special target .PHONY, like so:
 
 ```makefile
@@ -112,10 +118,18 @@ clean:
     rm -f *.o testintmath 
 ```
 
+declares that its prereq- uisite does not refer to an actual file and should always be considered out of date.
+
+Now make will always execute the commands associated with clean even if a file named clean exists.
+
 With this declaration, this rule will work as intended even if there is a file named `clean` in the working directory.
+
+In addition to marking a target as always out of date, specifying that a target is phony tells make that this file does not follow the normal rules for making a target file from a source file. Therefore, make can optimize its normal rule search to improve performance.
+
+It rarely makes sense to use a phony target as a prerequisite of a real file since the phony is always out of date and will always cause the target file to be remade.
 {% endhint %}
 
-Now, let's the `clobber` rule:
+Now, let's the `clobber` rule. Making a phony target a prerequisite of another target will invoke the phony target script before making the actual target.
 
 ```
 clobber: clean
