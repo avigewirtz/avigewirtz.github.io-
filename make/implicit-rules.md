@@ -96,6 +96,38 @@ testintmath.o: intmath.h
 
 
 {% hint style="info" %}
+
+
+
+
+%: %.c
+
+## recipe to execute (built-in):
+
+```
+$(LINK.c) $^ $(LOADLIBES) $(LDLIBS) -o $@
+```
+
+
+
+
+
+%.o: %.c
+
+## recipe to execute (built-in):
+
+```
+$(COMPILE.c) $(OUTPUT_OPTION) $<
+```
+
+COMPILE.c = $(CC) $(CFLAGS) $(CPPFLAGS) $(TARGET\_ARCH) -c
+
+LINK.c = $(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(TARGET\_ARCH)
+
+OUTPUT\_OPTION = -o $@
+
+
+
 The built-in rules are all instances of pattern rules. A pattern rule looks like the nor- mal rules you have already seen except the stem of the file (the portion before the suf- fix) is represented by a % character. This makefile works because of three built-in rules. The first specifies how to compile a .o file from a .c file:
 
 Pattern rules use wildcards instead of explicit filenames. This allows make to apply the rule any time a target file matching the pattern needs to updated.
@@ -118,21 +150,3 @@ anywhere within the pattern but can occur only once. Here are some valid uses of
      wrapper_%
 ```
 {% endhint %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#### Special Targets
-
-Specicial targets are builtk in&#x20;
