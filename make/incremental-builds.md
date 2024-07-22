@@ -15,9 +15,7 @@ The key to incremental builds lies in caching object files and reusing them in s
 
 (In practice, we need not be concerned with `stdio.h` and `stdlib.h`, since these are system headers that we don't modify. Therefore, we'll ignore them for the remainder of this chapter.)
 
-Let’s demonstrate this incremental build strategy in action.
-
-The first time we build `testintmath`, a full build is required; there’s no way around that. Importantly, however, we ensure to save the intermediately generated object files--`intmath.o` and `testintmath.o`--which by default `gcc` discards. How do we save object files? Recall the `-c` option, which tells `gcc` to halt the build process after the assembly stage and output object files. Thus, we build `testintmath` with the following two commands:
+Let’s demonstrate this incremental build strategy in action. The first time we build `testintmath`, a full build is required; there’s no way around that. Importantly, however, we ensure to save the intermediately generated object files--`intmath.o` and `testintmath.o`--which by default `gcc` discards. How do we save object files? Recall the `-c` option, which tells `gcc` to halt the build process after the assembly stage and output object files. Thus, we build `testintmath` with the following two commands:
 
 ```
 gcc -c intmath.c testintmath.c
