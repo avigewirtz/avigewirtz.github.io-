@@ -8,7 +8,7 @@ Recall the underlying process by which `testinmath` is built. The source files `
 
 <figure><img src="../.gitbook/assets/Frame 31 (2).png" alt=""><figcaption><p>Figure X: GCC build process</p></figcaption></figure>
 
-The key to incremental builds lies in caching object files and reusing them in subsequent builds when the source files they are derived from, or _depend_ on, haven't changed. From observing Figure X, the dependencies should be apparent:  Each object file depends on its corresponding `.c` file and all `#included` headers. Specifically:
+The key to incremental builds lies in caching object files and reusing them in subsequent builds when the source files they are derived from, or _depend_ on, haven't changed. From observing Figure X, the relationship between object files and source files should be apparent:  Each object file depends on its corresponding `.c` file and all `#included` headers. Specifically:
 
 * `testintmath.o` depends on `testintmath.c`, `stdio.h`, `stdlib.h`, and `intmath.h`. (Actually, `testintmath.o` depends on many more header files, since `stdio.h` and `stdlib.h` themselves include many header files).&#x20;
 * `intmath.o` depends on `intmath.c` and `intmath.h`.
