@@ -10,7 +10,7 @@ Recall the underlying process by which `testinmath` is built. The source files `
 
 The key to incremental builds lies in caching object files and reusing them in subsequent builds when the source files they are derived from, or _depend_ on, haven't changed. From observing Figure X, the relationship between object files and source files should be apparent:  Each object file depends on its corresponding `.c` file and all `#included` headers. Specifically:
 
-* `testintmath.o` depends on `testintmath.c`, `stdio.h`, `stdlib.h`, and `intmath.h`. (Actually, `testintmath.o` depends on many more header files, since `stdio.h` and `stdlib.h` themselves include many header files).&#x20;
+* `testintmath.o` depends on `testintmath.c`, `stdio.h`, `stdlib.h`, and `intmath.h`. (Actually, `testintmath.o` depends on many more header files, since `stdio.h` and `stdlib.h` themselves `#include` many header files).&#x20;
 * `intmath.o` depends on `intmath.c` and `intmath.h`.
 
 (In practice, we need not be concerned with `stdio.h` and `stdlib.h`, since these are system headers that we don't modify. Therefore, we'll ignore them for the remainder of this chapter.)
