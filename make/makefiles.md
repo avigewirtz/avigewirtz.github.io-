@@ -3,8 +3,8 @@
 As we have seen, implementing incremental builds manually is possible but it requires some work. In particular, you have to:
 
 1. Keep track of which source files (`.c` and `.h`) were modified since the last build.
-2. Keep track of which object files (`.o`) are affected by the changes to the source files.
-3. Run the commands to rebuild the program, in the correct order.
+2. Keep track of which object files (`.o`) depend on the modified source files.&#x20;
+3. Run the commands to rebuild the program, in the correct order (e.g., compilation before linking).&#x20;
 
 Even for a small program like `testintmath`, these tasks aren't particularly fun, though they are admittedly manageable. As programs grow larger, however, and the web of dependencies grows increasingly complex, these tasks quickly spiral out of control.
 
