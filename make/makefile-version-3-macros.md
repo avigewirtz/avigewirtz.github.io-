@@ -50,10 +50,8 @@ The benefit of using macros is that it allows for easy and consistent updates ac
 {% hint style="info" %}
 **Properties of Macros**
 
-The following properties of macros are worth mentioning:
-
 * Some macros are predefined by make. In fact, CC is predefined to cc.&#x20;
-* Using an undefined macro isn't an error; it simply expands to an empty string. This is why we may use CLFAGS and LDFLAGS without defining them.&#x20;
+* It is not an error to use an undefined macro; it simply expands to an empty string. This is why we may use CLFAGS and LDFLAGS without defining them.&#x20;
 * If the macro is a single character, you may call it without enclosing its name in parenthesis (e.g., `$X`). This is why [automatic macros](implicit-rules.md#automatic-macros) can be called without parenthesis.&#x20;
 * Macros are expanded recursively. The effect is that...
 {% endhint %}
