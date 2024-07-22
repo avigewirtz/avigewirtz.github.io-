@@ -97,7 +97,7 @@
 * [Writing a Simple Makefile](make/writing-a-simple-makefile/README.md)
   * [Running make](make/writing-a-simple-makefile/running-make.md)
   * [How make Processes a Makefile](make/writing-a-simple-makefile/how-make-processes-a-makefile.md)
-* [Phony targets](make/makefile-version-2-phony-targets.md)
+* [Phony Targets](make/makefile-version-2-phony-targets.md)
 * [Macros](make/makefile-version-3-macros.md)
 * [Advanced Features](make/implicit-rules.md)
 * [Further Reading](make/further-reading.md)
