@@ -15,7 +15,7 @@ Visually, it looks like this:
 
 <figure><img src="../.gitbook/assets/Frame 33.png" alt="" width="563"><figcaption></figcaption></figure>
 
-The interpretation of this graph should hopefully be self-explanatory.
+Interpreting this graph is straightforward: 
 
 * Arrows indicate dependencies, pointing from a file to the files it depends on. We see that `testintmath` depends on `testintmath.o` and `intmath.o`, which in turn depend on their corresponding source files (`testintmath.c` and `intmath.c`) and the common header file `intmath.h`.
 * Each file with dependencies is labeled with the command to build it from its dependencies. In `make` terminology, these files are known as _targets_. Our dependency graph has three targets: `testintmath`, `testintmath.o` and `intmath.o`. In general, targets typically correspond to binary files. 
