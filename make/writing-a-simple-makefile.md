@@ -42,4 +42,4 @@ intmath.o: intmath.c intmath.h
     gcc -c intmath.c
 ```
 
-Notice how this Makefile is nothing more than a textual representation of the dependency graph we showed above. That is the core of `make`. A language for specifying and interpreting dependency graphs.
+Notice how this Makefile is nothing more than a textual representation of the dependency graph we showed above. That is the core of `make`. A language for specifying dependency graphs.
