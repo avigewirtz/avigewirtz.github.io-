@@ -17,17 +17,12 @@ Visually, it looks like this:
 
 The interpretation of this graph should hopefully be self-explanatory.&#x20;
 
-An arrow from file A to B indicates that file A depends on B. For example, the we see that `intmath.o` depends on `intmath.c` and `intmath.h`. Each file with dependencies is labeled with the command to build it. In make terminology, these files are known as _targets_.
+* Arrows indicate dependencies, pointing from a file to what it depends on.
+* Each file with dependencies is labeled with the command to build it from its dependencies. In `make` terminology, these files are known as _targets_. They correspond to object files and the executable.&#x20;
 
-The neat thing about dependency graphs is they make it really easy to see which files are rendered obsolete by changes to one of the source files. Just follow the arrows. Any file which directly or indirectly points to the modified source file is rendered obsolete. For example, if intmath.c is modified, intmath.o and testintmath are rendered obsolete.
+The neat thing about dependency graphs is they make it extremely easy to see which files are rendered obsolete by changes to one or more of the source files. Just follow the arrows. Any file which directly or indirectly points to the modified source files is rendered obsolete. For example, if `intmath.c` is modified, `intmath.o` and `testintmath` are rendered obsolete, but `testintmath.o` is not.
 
-There is a difference, however, between direct and transitive dependencies. For example, `intmath.o` directly depends on `intmath.c`, but `testintmath` only transitively depends on `intmath.c`.
-
-{% hint style="info" %}
-Note that we're not including the header files `stdio.h` and `stdlib.h` in the dependency graph, even though `testintmath.c` #includes them, since these ar system header files that we don't modify. As such, don't need to be concerned with them in Makefiles.
-{% endhint %}
-
-Translating this dependency graph into a Makefile is remarkably straightforward. We create a _target rule_ for each target in the dependency graph. The rule soecifies which files the target directly depends on and the command to build the target. it's syntax is as follows:
+Translating this dependency graph into a Makefile is remarkably straightforward. We create a _dependency rule_ for each target in the dependency graph. Dependency rules have the following syntax:
 
 ```makefile
 target: direct_dependencies
@@ -37,8 +32,8 @@ target: direct_dependencies
 
 
 *
-
-Our dependency graph has three targets: the executable `testintmath`, and the object files `testintmath.o` and `intmath.o`. This results in a makefile with three rules. Here is the complete Makefile:
+*
+* Our dependency graph has three targets: the executable `testintmath`, and the object files `testintmath.o` and `intmath.o`. This results in a makefile with three rules. Here is the complete Makefile:
 
 ```makefile
 testintmath: testintmath.o intmath.o
