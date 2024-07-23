@@ -18,7 +18,7 @@ Visually, it looks like this:
 The interpretation of this graph should hopefully be self-explanatory.&#x20;
 
 * Arrows indicate dependencies, pointing from a file to what it depends on.
-* Each file with dependencies is labeled with the command to build it from its dependencies. In `make` terminology, these files are known as _targets_. They correspond to object files and the executable.&#x20;
+* Each file with dependencies is labeled with the command to build it from its dependencies. In `make` terminology, these files are known as _targets_. In our case, they correspond to object files and the executable.&#x20;
 
 The neat thing about dependency graphs is they make it extremely easy to see which files are rendered obsolete by changes to one or more of the source files. Just follow the arrows. Any file which directly or indirectly points to the modified source files is rendered obsolete. For example, if `intmath.c` is modified, `intmath.o` and `testintmath` are rendered obsolete, but `testintmath.o` is not.
 
