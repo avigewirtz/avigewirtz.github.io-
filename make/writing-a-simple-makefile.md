@@ -1,12 +1,12 @@
 # Writing a Simple Makefile
 
-Assume the working directory contains `testintmath`'s source files (i.e., `testintmath.c`, `intmath.c`, and `intmath.h`). To build `testintmath` with `make`, the first step is to create a makefile in the working directory. You can name the makefile whatever you like, but `make` automatically searches for a file named `makefile` or `Makefile`, making these names more convenient. To create the makefile, run the following command:
+Assume the working directory contains `testintmath`'s source files (i.e., `testintmath.c`, `intmath.c`, and `intmath.h`). To build `testintmath` with `make`, the first step is to create a makefile in the working directory. You can name the makefile whatever you like, but `make` automatically searches for a file named `makefile` or `Makefile`, making these names more convenient. You can create the Makefile by running the following command:
 
 ```bash
 touch Makefile
 ```
 
-The next step is to populate the Makefile `testintmath`'s dependency graph. As we mentioned earlier, a dependency graph is a directed graph that contains two pieces of information:
+The next step is to populate the Makefile with `testintmath`'s dependency graph. As we mentioned earlier, a dependency graph is a directed graph that contains two pieces of information:
 
 * The dependencies between the source files, object files, and the executable.
 * The commands to build each file from its dependencies.
@@ -15,13 +15,9 @@ Visually, it looks like this:
 
 <figure><img src="../.gitbook/assets/Frame 33.png" alt="" width="563"><figcaption></figcaption></figure>
 
-This graph tells us the following:
+The interpretation of this graph should hopefully be self-explanatory.&#x20;
 
-* `testintmath` depends on `testintmath.o` and `intmath.o`, and the command to build `testintmath` is `gcc testintmath.o intmath.o -o testintmath.`
-* `testintmath.o` depends on `testintmath.c` and `intmath.h`, and the command to build `testintmath.c` is `gcc -c testintmath.c`.
-* `intmath.o` depends on `intmath.c` and `intmath.h`, and the command to build `intmath.c` is `gcc -c intmath.c`.
-
-Each node represents a file is represented by a The nodes represent filesAn arrow from file A to B indicates that file A depends on B. For example, the we see that `intmath.o` depends on `intmath.c` and `intmath.h`. Each file with dependencies is labeled with the command to build it. In make terminology, these files are known as _targets_.
+An arrow from file A to B indicates that file A depends on B. For example, the we see that `intmath.o` depends on `intmath.c` and `intmath.h`. Each file with dependencies is labeled with the command to build it. In make terminology, these files are known as _targets_.
 
 The neat thing about dependency graphs is they make it really easy to see which files are rendered obsolete by changes to one of the source files. Just follow the arrows. Any file which directly or indirectly points to the modified source file is rendered obsolete. For example, if intmath.c is modified, intmath.o and testintmath are rendered obsolete.
 
@@ -38,11 +34,9 @@ target: direct_dependencies
 <tab> command
 ```
 
-The interpretation of this dependency graph should hopefully be pretty self-explanatory.
+
 
 *
-
-Note the tab character on the second line preceding the command.
 
 Our dependency graph has three targets: the executable `testintmath`, and the object files `testintmath.o` and `intmath.o`. This results in a makefile with three rules. Here is the complete Makefile:
 
