@@ -25,11 +25,14 @@ The neat thing about dependency graphs is they make it extremely easy to see whi
 Translating this dependency graph into a Makefile is remarkably straightforward. We create a _dependency rule_ for each target in the dependency graph. Dependency rules have the following syntax:
 
 ```makefile
-target: direct_dependencies
+target: dependencies
 <tab> command
 ```
+This syntax should hopefully be self-explanatory, but note a couple of things: 
+* dependencies refers to direct dependencies, not transitive dependencies.
+* The command must be preceded by a tab character (and not spaces). Failure to do so will result in the following error: 
 
-This results in a Makefile with three rules--one for each target. Here is the complete Makefile:
+Here is the complete Makefile for our program, containing three dependency rules:
 
 ```makefile
 testintmath: testintmath.o intmath.o
