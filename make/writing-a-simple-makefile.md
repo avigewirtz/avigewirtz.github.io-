@@ -15,7 +15,9 @@ Visually, it looks like this:
 
 <figure><img src="../../.gitbook/assets/Frame 33.png" alt="" width="563"><figcaption></figcaption></figure>
 
-The interpretation of this dependency graph should hopefully be pretty self-explanatory. An arrow from file A to B indicates that file A depends on B. For example, the we see that `intmath.o` depends on `intmath.c` and `intmath.h`. Each file with dependencies is labeled with the command to build it. In make terminology, these files are known as _targets_.
+The interpretation of this dependency graph should hopefully be pretty self-explanatory. 
+
+Each node represents a file is represented by a The nodes represent filesAn arrow from file A to B indicates that file A depends on B. For example, the we see that `intmath.o` depends on `intmath.c` and `intmath.h`. Each file with dependencies is labeled with the command to build it. In make terminology, these files are known as _targets_.
 
 The neat thing about dependency graphs is they make it really easy to see which files are rendered obsolete by changes to one of the source files. Just follow the arrows. Any file which directly or indirectly points to the modified source file is rendered obsolete. For example, if intmath.c is modified, intmath.o and testintmath are rendered obsolete.
 
