@@ -17,8 +17,8 @@ Visually, it looks like this:
 
 The interpretation of this graph should hopefully be self-explanatory.
 
-* Arrows indicate dependencies, pointing from a file to what it depends on. We see that testintmath depends on testintmath.o and intmath.o, which in turn depend on their corresponding source files (testintmath.c and intmath.c), and a common header file intmath.h.
-* Each file with dependencies is labeled with the command to build it from its dependencies. In `make` terminology, these files are known as _targets_.
+* Arrows indicate dependencies, pointing from a file to what it depends on. We see that `testintmath` depends on `testintmath.o` and `intmath.o`, which in turn depend on their corresponding source files (`testintmath.c` and `intmath.c`) and the common header file `intmath.h`.
+* Each file with dependencies is labeled with the command to build it from its dependencies. In `make` terminology, these files are known as _targets_. 
 
 The neat thing about dependency graphs is they make it extremely easy to see which files are rendered obsolete by changes to one or more of the source files. Just follow the arrows. Any file which directly or indirectly points to the modified source files is rendered obsolete. For example, if `intmath.c` is modified, we see that `intmath.o` and `testintmath` are rendered obsolete, but `testintmath.o` is not.
 
@@ -29,7 +29,7 @@ target: direct_dependencies
 <tab> command
 ```
 
-Our dependency graph has three targets: the executable `testintmath`, and the object files `testintmath.o` and `intmath.o`. This results in a makefile with three rules. Here is the complete Makefile:
+Our dependency graph has three targets: the executable `testintmath`, and the object files `testintmath.o` and `intmath.o`. This results in a Makefile with three rules. Here is the complete Makefile:
 
 ```makefile
 testintmath: testintmath.o intmath.o
