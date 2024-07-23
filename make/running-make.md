@@ -1,16 +1,12 @@
 # Running make
 
-<mark style="color:red;">If the target you specify is already up to date, make will say so and immediately exit, doing nothing else:</mark>
-
-
-
 The basic syntax to run `make` is:
 
 ```bash
 make target
 ```
 
-where `target` is the name of the file you want make to build (see, however, phony targets). If you omit a target, `make` defaults to the first target in the makefile. In our case, that's `testintmath`. Thus, the command:
+where `target` is the name of the file you want `make` to build (see, however, [phony targets](makefile-version-2-phony-targets.md)). If you omit a target, `make` defaults to the first target in the Makefile. In our case, that's `testintmath`. Thus, the command:
 
 ```bash
 make
@@ -22,7 +18,7 @@ Is equivalent to:
 make testintmath
 ```
 
-In both cases, `make` will attempt to build `testintmath`. If `testintmath` is either out of date or does not exist, `make` will execute the commands needed to bring `testintmath` up to date. By default, `make` prints each of the commands it executes. Say we run `make` when all targets are out of date or do not exist. The output will look like this:
+If `testintmath` is either out of date or does not exist, `make` will execute the commands needed to bring `testintmath` up to date. By default, `make` prints each of the commands it executes. Say we run `make` when all targets are out of date or do not exist. The output will look like this:
 
 ```bash
 $ make
