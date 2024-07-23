@@ -15,6 +15,12 @@ Visually, it looks like this:
 
 <figure><img src="../../.gitbook/assets/Frame 33.png" alt="" width="563"><figcaption></figcaption></figure>
 
+This graph tells us the following:
+
+	1.	testintmath depends on testintmath.o and intmath.o. The command to build testintmath is gcc testintmath.o intmath.o 
+	2.	testintmath.o object file is generated from testintmath.c and intmath.h.
+	3.	The intmath.o object file is generated from intmath.c and intmath.h.
+
 The interpretation of this dependency graph should hopefully be pretty self-explanatory. 
 
 Each node represents a file is represented by a The nodes represent filesAn arrow from file A to B indicates that file A depends on B. For example, the we see that `intmath.o` depends on `intmath.c` and `intmath.h`. Each file with dependencies is labeled with the command to build it. In make terminology, these files are known as _targets_.
