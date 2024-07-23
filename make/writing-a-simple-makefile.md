@@ -15,10 +15,10 @@ Visually, it looks like this:
 
 <figure><img src="../.gitbook/assets/Frame 33.png" alt="" width="563"><figcaption></figcaption></figure>
 
-The interpretation of this graph should hopefully be self-explanatory.&#x20;
+The interpretation of this graph should hopefully be self-explanatory.
 
 * Arrows indicate dependencies, pointing from a file to what it depends on.
-* Each file with dependencies is labeled with the command to build it from its dependencies. In `make` terminology, these files are known as _targets_. In our case, they correspond to object files and the executable.&#x20;
+* Each file with dependencies is labeled with the command to build it from its dependencies. In `make` terminology, these files are known as _targets_. In our case, they correspond to object files and the executable.
 
 The neat thing about dependency graphs is they make it extremely easy to see which files are rendered obsolete by changes to one or more of the source files. Just follow the arrows. Any file which directly or indirectly points to the modified source files is rendered obsolete. For example, if `intmath.c` is modified, `intmath.o` and `testintmath` are rendered obsolete, but `testintmath.o` is not.
 
@@ -28,6 +28,15 @@ Translating this dependency graph into a Makefile is remarkably straightforward.
 target: direct_dependencies
 <tab> command
 ```
+
+To further enhance our Makefile and capture more complex scenarios, we can introduce additional features and customization options. Here are a few common enhancements:
+
+1.
+
+    ```makefile
+    .PHONY: clean
+    clean
+    ```
 
 Our dependency graph has three targets: the executable `testintmath`, and the object files `testintmath.o` and `intmath.o`. This results in a makefile with three rules. Here is the complete Makefile:
 
