@@ -13,15 +13,13 @@ The next step is to populate the Makefile `testintmath`'s dependency graph. As w
 
 Visually, it looks like this:
 
-<figure><img src="../../.gitbook/assets/Frame 33.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Frame 33.png" alt="" width="563"><figcaption></figcaption></figure>
 
 This graph tells us the following:
 
-	1.	testintmath depends on testintmath.o and intmath.o. The command to build testintmath is gcc testintmath.o intmath.o 
-	2.	testintmath.o object file is generated from testintmath.c and intmath.h.
-	3.	The intmath.o object file is generated from intmath.c and intmath.h.
-
-The interpretation of this dependency graph should hopefully be pretty self-explanatory. 
+* `testintmath` depends on `testintmath.o` and `intmath.o`, and the command to build `testintmath` is `gcc testintmath.o intmath.o -o testintmath.`
+* `testintmath.o` depends on `testintmath.c` and `intmath.h`, and the command to build `testintmath.c` is `gcc -c testintmath.c`.
+* `intmath.o` depends on `intmath.c` and `intmath.h`, and the command to build `intmath.c` is `gcc -c intmath.c`.
 
 Each node represents a file is represented by a The nodes represent filesAn arrow from file A to B indicates that file A depends on B. For example, the we see that `intmath.o` depends on `intmath.c` and `intmath.h`. Each file with dependencies is labeled with the command to build it. In make terminology, these files are known as _targets_.
 
@@ -39,6 +37,10 @@ Translating this dependency graph into a Makefile is remarkably straightforward.
 target: direct_dependencies
 <tab> command
 ```
+
+The interpretation of this dependency graph should hopefully be pretty self-explanatory.
+
+*
 
 Note the tab character on the second line preceding the command.
 
