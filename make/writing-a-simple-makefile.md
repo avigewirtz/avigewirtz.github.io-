@@ -34,6 +34,7 @@ target: direct_dependencies
 *
 *
 * Our dependency graph has three targets: the executable `testintmath`, and the object files `testintmath.o` and `intmath.o`. This results in a makefile with three rules. Here is the complete Makefile:
+*
 
 ```makefile
 testintmath: testintmath.o intmath.o
@@ -47,3 +48,5 @@ intmath.o: intmath.c intmath.h
 ```
 
 Notice how this Makefile is nothing more than a textual representation of the dependency graph we showed above. That is the core of `make`. A language for specifying and interpreting dependency graphs.
+
+*
