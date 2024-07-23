@@ -29,12 +29,7 @@ target: direct_dependencies
 <tab> command
 ```
 
-
-
-*
-*
-* Our dependency graph has three targets: the executable `testintmath`, and the object files `testintmath.o` and `intmath.o`. This results in a makefile with three rules. Here is the complete Makefile:
-*
+Our dependency graph has three targets: the executable `testintmath`, and the object files `testintmath.o` and `intmath.o`. This results in a makefile with three rules. Here is the complete Makefile:
 
 ```makefile
 testintmath: testintmath.o intmath.o
