@@ -13,7 +13,7 @@ The key to incremental builds lies in caching object files and reusing them in s
 * `testintmath.o` depends on `testintmath.c`, `stdio.h`, `stdlib.h`, and `intmath.h`. (Actually, `testintmath.o` depends on many more header files, since `stdio.h` and `stdlib.h` themselves `#include` many header files).&#x20;
 * `intmath.o` depends on `intmath.c` and `intmath.h`.
 
- (In practice, we need not be concerned with `stdio.h` and `stdlib.h` or any other system headers, since we don't modify them. Therefore, we'll ignore them for the remainder of this chapter.)
+ (In practice, we need not be concerned with `stdio.h` and `stdlib.h`, since these are system headers that we don't modify them. Therefore, we'll ignore them for the remainder of this chapter.)
 
 The most important thing to recognize is that changes to intmath.c do not impact testintmath.o, and changes to testintmath.c do not impact intmath.o. Therefore, so long as we cache these object files, we can avoid unnecessary recompilations. Let’s demonstrate this incremental build strategy in action. 
 
