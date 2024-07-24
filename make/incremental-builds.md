@@ -13,7 +13,7 @@ The key to incremental builds lies in caching object files and reusing them in s
 * `testintmath.o` depends on `testintmath.c`, `stdio.h`, `stdlib.h`, and `intmath.h`. (Actually, `testintmath.o` depends on many more header files, since `stdio.h` and `stdlib.h` themselves `#include` many header files).&#x20;
 * `intmath.o` depends on `intmath.c` and `intmath.h`.
 
- (In practice, we need not be concerned about `stdio.h` and `stdlib.h`, since these are system headers that we don't modify them. Therefore, we'll ignore them for the remainder of this chapter.)
+ (In practice, we need not be concerned about `stdio.h` and `stdlib.h`, since these are system headers that we don't modify. Therefore, we'll ignore them for the remainder of this chapter.)
 
 The most important thing to recognize is that changes to intmath.c do not impact testintmath.o, and changes to testintmath.c do not impact intmath.o. Therefore, so long as we cache these object files, we can avoid unnecessary recompilations. Let’s demonstrate this incremental build strategy in action. 
 
@@ -24,7 +24,7 @@ gcc -c intmath.c testintmath.c
 gcc intmath.o testintmath.o -o testintmath
 ```
 
-With the object files in hand, subsequent builds can be incremental. For example, suppose we modify `intmath.c`. To rebuild `testintmath`, we run `gcc -c` on `intmath.c` **only**, and then we link the newly created `intmath.o` with `testintmath.o` from the previous build:
+With the object files in hand, subsequent builds can be incremental. For example, suppose we modify `intmath.c`. To rebuild `testintmath`, we run `gcc -c` on `intmath.c` **only**, and then we link the newly created `intmath.o` with the existing `testintmath.o`:
 
 ```
 gcc -c intmath.c
@@ -35,7 +35,7 @@ This incremental build process is summarized in Figure X.
 
 <figure><img src="../.gitbook/assets/Frame 31 (4).png" alt=""><figcaption><p>Figure X: Incremental build</p></figcaption></figure>
 
-Similarly, suppose we modify `testintmath.c`. To rebuild `testintmath`, we run `gcc -c` on `testintmath.c` only, and then we link the newly created `testintmath.o` with `intmath.o` from the previous build:
+Similarly, suppose we modify `testintmath.c`. To rebuild `testintmath`, we run `gcc -c` on `testintmath.c` only, and then we link the newly created `testintmath.o` with the existing `intmath.o`:
 
 ```
 gcc -c testintmath.c
