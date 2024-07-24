@@ -1,6 +1,6 @@
 # Advanced Features
 
-The features we've discussed so far cover the basics of `make` and are enough to use it effectively. However, make has other features, such as automatic macros and implicit rules, which are commonly used in real-world Makefiles.  While many of these features can be confusing and make Makefiles less readable, it is useful to have a working familiarity with them.
+The features we've discussed so far cover the basics of `make` and give you enough information to use it effectively. However, make has other features, such as automatic macros and implicit rules, which are commonly used in real-world Makefiles.  While many of these features can be confusing and make Makefiles less readable, it is useful to have a working familiarity with them.
 
 #### Automatic Macros&#x20;
 
