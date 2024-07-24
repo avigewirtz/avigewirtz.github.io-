@@ -4,7 +4,7 @@ Make's job is to bring targets up-to-date. Until now, we've assumed that targets
 
 `make` implements phony targets in a rather simple manner. After a rule is processed, `make` has no postcondition check to verify that the target "file" was in fact built. Instead, it operates under the assumption that if a target's dependencies (if any) are satisfied and its commands (if any) are successfully run, the target is up-to-date. Phony targets have two canonical use cases:
 
-* As a label for one or more arbitrary commands you want make to execute. Useful to group multiple targets or for a single target if its long and complex.
+* As a label for one or more arbitrary commands you want make to execute.&#x20;
 * As an alias for one or more other targets, such that running the phony target is the same as running the target(s) directly.
 
 In this section, we'll explore both use cases. Take a look at Makefile version 2, shown below, which contains three commonly used phony targets: `all`, `clean`, and `clobber`. Don't worry for now how they work. We'll go over each one by one.

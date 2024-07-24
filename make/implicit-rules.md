@@ -1,10 +1,10 @@
 # Advanced Features
 
-The features we've discussed so far cover the basics of `make` and give you enough information to use it effectively. However, make has other features, such as automatic macros and implicit rules, which are commonly used in real-world Makefiles.  While many of these features can be confusing and make Makefiles less readable, it is useful to have a working familiarity with them.
+The features we've discussed so far cover the basics of `make` and give you enough information to use it effectively. However, make has other features, such as automatic macros and implicit rules, which are commonly used in real-world Makefiles. While many of these features can be confusing and make Makefiles less readable, it is useful to have a working familiarity with them.
 
-#### Automatic Macros&#x20;
+#### Automatic Macros
 
-`make` has _automatic_ macros (also called automatic variables) that can be used in a rule's command. Each of these macros expands to one or more filenames. They're useful as shortcuts but are primarily designed to enable pattern rules (discussed below). The following table lists a few of the commonly used automatic macros. Note that since automatic macros are all a single character, they can be referenced by simply prefixing their name with a `$`.&#x20;
+`make` has _automatic_ macros (also called automatic variables) that can be used in a rule's command. Each of these macros expands to one or more filenames. They're useful as shortcuts but are primarily designed to enable pattern rules (discussed below). The following table lists a few of the commonly used automatic macros. Note that since automatic macros are all a single character, they can be referenced by simply prefixing their name with a `$`.
 
 <table><thead><tr><th width="109">Macro</th><th width="239">Meaning</th><th>Example</th></tr></thead><tbody><tr><td><code>^</code></td><td>List of all dependencies.</td><td><pre class="language-makefile"><code class="lang-makefile">testintmath: testintmath.o intmath.o
     $(CC) $(LDFLAGS) $^ -o testintmath
@@ -64,7 +64,7 @@ We could have actually written it as:
 intmath.o: intmath.h
 ```
 
-And from observing that the target is `intmath.o`, `make` would infer that it depends on `intmath.c` and that the command to build it is (roughly) `$(CC) $(CFLAGS) -c intmath.c`. Of course, `make` cannot infer header file dependencies, so we still need to list `intmath.h` as a dependency.&#x20;
+And from observing that the target is `intmath.o`, `make` would infer that it depends on `intmath.c` and that the command to build it is (roughly) `$(CC) $(CFLAGS) -c intmath.c`. Of course, `make` cannot infer header file dependencies, so we still need to list `intmath.h` as a dependency.
 
 Similarly, consider the rule for building `testintmath`:
 
@@ -82,7 +82,7 @@ testintmath: intmath.o
 And from observing that the executable is `testintmath`, `make` would infer that it depends on `testintmath.o` and that the command to build it is (roughly) `$(CC) $(LDFLAGS) testintmath.o intmath.o -o testintmath`.
 
 {% hint style="warning" %}
-Note that an implicit rule may only be used for an executable if the executable has the same name as one of the object files.&#x20;
+Note that an implicit rule may only be used for an executable if the executable has the same name as one of the object files.
 {% endhint %}
 
 By using these implicit rules our Makefile can be reduced to:
@@ -114,7 +114,7 @@ testintmath.o: intmath.h
 ```
 {% endcode %}
 
-In fact, we can reduce this Makefile further by combining `intmath.o: intmath.h` and `testintmath.o: intmath.h` into a single rule:
+In fact, we can reduce this Makefile further by combining the two object files rules into a single rule:&#x20;
 
 ```makefile
 testintmath.o intmath.o: intmath.h 

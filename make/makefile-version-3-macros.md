@@ -14,7 +14,7 @@ $(MACRO_NAME)
 
 When `make` encounters `$(MACRO_NAME)`, it will replace it with `value`.&#x20;
 
-Makefile version 3, shown below, illustrates three commonly used macros: `CC`, `CFLAGS`, and `LDFLAGS`. These macros specify the compiler, compiler options, and linker options, respectively.
+Makefile version 3, shown below, illustrates three commonly used macros: `CC`, `CFLAGS`, and `LDFLAGS`. These macros specify the compiler, compiler options, and linker options, respectively. The benefit of using macros is that it allows for easy and consistent updates across the entire Makefile. For example, if we want to change the compiler to `clang`, all we need to do is change `CC` to `clang`, instead of manually changing every compilation command.&#x20;
 
 {% code title="Makefile version 3" lineNumbers="true" %}
 ```makefile
@@ -45,13 +45,11 @@ intmath.o: intmath.c intmath.h
 ```
 {% endcode %}
 
-The benefit of using macros is that it allows for easy and consistent updates across the entire Makefile. For example, if we want to change the compiler to `clang`, all we need to do is change `CC` to `clang`, instead of manually changing every compilation command.
-
 {% hint style="info" %}
 **Properties of Macros**
 
 * Some macros are predefined by make. In fact, CC is predefined to cc.&#x20;
-* It is not an error to use an undefined macro; it simply expands to an empty string. This is why we may use CLFAGS and LDFLAGS without defining them.&#x20;
-* If the macro is a single character, you may call it without enclosing its name in parenthesis (e.g., `$X`). This is why [automatic macros](implicit-rules.md#automatic-macros) can be called without parenthesis.&#x20;
+* It is not an error to use an undefined macro; it simply expands to an empty string. This is why we use CLFAGS and LDFLAGS without defining them.&#x20;
+* If the macro is a single character, you may call it without enclosing its name in parenthesis (e.g., `$X`). Thus, you could reference the variable `x` with ‘$x’
 * Macros are expanded recursively. The effect is that...
 {% endhint %}

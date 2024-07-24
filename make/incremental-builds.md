@@ -8,14 +8,14 @@ Recall the underlying process by which `testinmath` is built. The source files `
 
 <figure><img src="../.gitbook/assets/Frame 31 (2).png" alt=""><figcaption><p>Figure X: GCC build process</p></figcaption></figure>
 
-The key to incremental builds lies in caching object files and reusing them in subsequent builds when the source files they are derived from, or _depend_ on, haven't changed. From observing Figure X, the relationship between object files and source files should be apparent:  Each object file depends on its corresponding `.c` file and all `#included` headers. Specifically:
+The key to incremental builds lies in caching object files and reusing them in subsequent builds when the source files they are derived from, or _depend_ on, haven't changed. From observing Figure X, the relationship between object files and source files should be apparent: Each object file depends on its corresponding `.c` file and all `#included` headers. Specifically:
 
-* `testintmath.o` depends on `testintmath.c`, `stdio.h`, `stdlib.h`, and `intmath.h`. (Actually, `testintmath.o` depends on many more header files, since `stdio.h` and `stdlib.h` themselves `#include` many header files).&#x20;
+* `testintmath.o` depends on `testintmath.c`, `stdio.h`, `stdlib.h`, and `intmath.h`. (Actually, `testintmath.o` depends on many more header files, since `stdio.h` and `stdlib.h` themselves `#include` many header files).
 * `intmath.o` depends on `intmath.c` and `intmath.h`.
 
- (In practice, we need not be concerned about `stdio.h` and `stdlib.h`, since these are system headers that we don't modify. Therefore, we'll ignore them for the remainder of this chapter.)
+(In practice, we need not be concerned about `stdio.h` and `stdlib.h`, since these are system headers that we don't modify. Therefore, we'll ignore them for the remainder of this chapter.)
 
-The most important thing to recognize is that changes to intmath.c do not impact testintmath.o, and changes to testintmath.c do not impact intmath.o. Therefore, so long as we cache these object files, we can avoid unnecessary recompilations. Let’s demonstrate this incremental build strategy in action. 
+The most important thing to recognize is that changes to intmath.c do not impact testintmath.o, and changes to testintmath.c do not impact intmath.o. Therefore, so long as we cache these object files, we can avoid unnecessary recompilations. Let’s demonstrate this incremental build strategy in action.
 
 The first time we build `testintmath`, a full build is required; there’s no way around that. Importantly, however, we ensure to save the intermediately generated object files--`intmath.o` and `testintmath.o`--which by default `gcc` discards. How do we save object files? Recall the `-c` option, which tells `gcc` to halt the build process after the assembly stage and output object files. Thus, we build `testintmath` with the following two commands:
 
@@ -52,7 +52,7 @@ gcc intmath.o testintmath.o -o testintmath
 In general, changes to header file tend to be much more dramatic than changes to `.c` files, since header files, which serve as interfaces, are typically included in many `.c` files. For this reason, great caution should be taken before modifying a header file.
 
 {% hint style="info" %}
-It's important to understand that fundamentally, the underlying GCC build process is the same irrespective of whether we build our program via two commands:
+It's important to understand that, fundamentally, the underlying GCC build process is the same irrespective of whether we build our program via two commands:
 
 ```bash
 gcc -c intmath.c testintmath.c
