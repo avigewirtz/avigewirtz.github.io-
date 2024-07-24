@@ -47,10 +47,68 @@ intmath.o: intmath.c intmath.h
     gcc -c intmath.c
 ```
 
-With the Makefile set up, you can now build `testintmath` using `make`. Simply type:
+#### Running `make`
+
+With the Makefile set up, you can now build `testintmath` using `make`. The basic syntax to run `make` is:
+
+```bash
+make target
+```
+
+where `target` is the name of the file you want `make` to build (see, however, [phony targets](makefile-version-2-phony-targets.md)). If you omit a target, make defaults to the first target in the Makefile, which in our case is `testintmath`. Therefore, you can build `testintmath` by simply running:
 
 ```bash
 make
 ```
 
-`make` will read the Makefile, determine which files need to be rebuilt, and execute the necessary commands. If no files have changed since the last build, `make` will report that `testintmath` is up to date.
+make will print the commands it executes. If the target is already up to date, it will simply report that fact and nothing else. To get a sense of how make works, execute the following sequence of commands:
+
+Let's examine the behavior of `make` with our newly created Makefile:
+
+First, we'll execute a complete build:
+
+```bash
+$ make
+gcc -c testintmath.c
+gcc -c intmath.c
+gcc testintmath.o intmath.o -o testintmath
+```
+
+Observe that `make` compiles both source files into object files, then links them to create the `testintmath` executable.
+
+Now, let's run `make` again immediately:
+
+```bash
+$ make
+make: 'testintmath' is up to date.
+```
+
+`make` determines that no files have been modified since the last build, so no action is necessary.
+
+Next, we'll simulate a modification to `intmath.c`:
+
+```bash
+$ touch intmath.c
+```
+
+The `touch` command updates the file's "last modified" timestamp without changing its contents. This simulates the effect of editing and saving the file.
+
+```bash
+$ make
+gcc -c intmath.c
+gcc testintmath.o intmath.o -o testintmath
+```
+
+Note that `make` only recompiles `intmath.c` and relinks the executable. It doesn't recompile `testintmath.c` as it hasn't been modified.
+
+Now, let's simulate a change to the header file:
+
+```bash
+$ touch intmath.h
+$ make
+gcc -c testintmath.c
+gcc -c intmath.c
+gcc testintmath.o intmath.o -o testintmath
+```
+
+In this case, `make` recompiles both source files. This is because both include `intmath.h`, so changes to the header file necessitate recompilation of all dependent source files.

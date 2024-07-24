@@ -6,9 +6,9 @@ The basic syntax to run `make` is:
 make target
 ```
 
-where `target` is the name of the file you want `make` to build (see, however, [phony targets](makefile-version-2-phony-targets.md)). In the previous section, we saw that you can build testintmath by simpy running:
+where `target` is the name of the file you want `make` to build (see, however, [phony targets](makefile-version-2-phony-targets.md)). In the previous section, we saw that you can build `testintmath` by simply running:
 
-```
+```bash
 make
 ```
 
