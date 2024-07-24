@@ -34,7 +34,7 @@ This syntax should hopefully be self-explanatory, but note a couple of things:
 * `dependencies` refers to direct dependencies, not transitive dependencies.&#x20;
 * The command must be preceded by a tab character (and not spaces). Failure to do so will result in the following error: `*** missing separator. Stop.`
 
-Here is the complete Makefile for our program, containing three dependency rules:
+Here is the complete Makefile for our program:
 
 ```makefile
 testintmath: testintmath.o intmath.o
