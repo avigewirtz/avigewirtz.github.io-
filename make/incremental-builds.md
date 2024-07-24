@@ -13,7 +13,9 @@ The key to incremental builds lies in caching object files and reusing them in s
 * `testintmath.o` depends on `testintmath.c`, `stdio.h`, `stdlib.h`, and `intmath.h`. (Actually, `testintmath.o` depends on many more header files, since `stdio.h` and `stdlib.h` themselves `#include` many header files).&#x20;
 * `intmath.o` depends on `intmath.c` and `intmath.h`.
 
-In practice, this means that if only testintmath.c is modified, we rebuild testintmath.o only and then link it with the existing intmath.o. similarly, if only intmath.c is modified, we rebuild our program by rebuikding intmath.o only and then linking it with the existing testintmath.o. (We need not be concerned with `stdio.h` and `stdlib.h` or any other system headers, since we don't modify them. Therefore, we'll ignore them for the remainder of this chapter.)
+ (In practice, we need not be concerned with `stdio.h` and `stdlib.h` or any other system headers, since we don't modify them. Therefore, we'll ignore them for the remainder of this chapter.)
+
+The most important thing to recognize is that changes to intmeth.c do not impact testintmath.o, and changes to testitnmath.c do not impact intmath.o. Therefore, so long as we cache yhese object files, we can avoid unnecessary rebuilding.  
 
 Let’s demonstrate this incremental build strategy in action. The first time we build `testintmath`, a full build is required; there’s no way around that. Importantly, however, we ensure to save the intermediately generated object files--`intmath.o` and `testintmath.o`--which by default `gcc` discards. How do we save object files? Recall the `-c` option, which tells `gcc` to halt the build process after the assembly stage and output object files. Thus, we build `testintmath` with the following two commands:
 
