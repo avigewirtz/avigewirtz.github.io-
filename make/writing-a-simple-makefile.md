@@ -18,7 +18,7 @@ Visually, it looks like this:
 Interpreting this graph is straightforward:
 
 * Arrows indicate dependencies, pointing from a file to the files it depends on. We see that `testintmath` depends on `testintmath.o` and `intmath.o`, which in turn depend on their corresponding source files (`testintmath.c` and `intmath.c`) and the common header file `intmath.h`.
-* Each file with dependencies is labeled with the command to build it from its dependencies. In `make` terminology, these files are known as _targets_. Our dependency graph has three targets: `testintmath`, `testintmath.o` and `intmath.o`. In general, targets typically correspond to binary files.
+* Each file with dependencies is labeled with the command to build it from its dependencies. In `make` terminology, these files are known as _targets_. Our dependency graph has three targets: `testintmath`, `testintmath.o` and `intmath.o`. As a general rule, targets typically correspond to binary files.
 
 The neat thing about dependency graphs is they make it extremely easy to see which files are rendered obsolete by changes to one or more of the source files. Just follow the arrows. Any file which directly or indirectly points to the modified source files is rendered obsolete. For example, if `intmath.c` is modified, we see that `intmath.o` and `testintmath` are rendered obsolete, but `testintmath.o` is not.
 
@@ -47,11 +47,11 @@ intmath.o: intmath.c intmath.h
     gcc -c intmath.c
 ```
 
-#### Running `make`
+#### Running make
 
-With the Makefile set up, you can now build `testintmath` using `make`. The basic syntax to run `make` is:
+With the Makefile set up, you can now build `testintmath` using `make`. The basic syntax to run make is:
 
-```bash
+```makefile
 make target
 ```
 
@@ -61,11 +61,9 @@ where `target` is the name of the file you want `make` to build (see, however, [
 make
 ```
 
-make will print the commands it executes. If the target is already up to date, it will simply report that fact and nothing else. To get a sense of how make works, execute the following sequence of commands:
+If `testintmath` is already up-to-date, make will report that fact and halt. Otherwise, it will execute the necessary commands to bring `testintmath` up-to-date. By default, `make` prints the commands it executes on stdout. Let's examine the behavior of `make` with our newly created Makefile.&#x20;
 
-Let's examine the behavior of `make` with our newly created Makefile:
-
-First, we'll execute a complete build:
+Assume we're building testintmath for the first time. Running make, you should see the following output:
 
 ```bash
 $ make
@@ -74,9 +72,7 @@ gcc -c intmath.c
 gcc testintmath.o intmath.o -o testintmath
 ```
 
-Observe that `make` compiles both source files into object files, then links them to create the `testintmath` executable.
-
-Now, let's run `make` again immediately:
+Observe that `make` compiles both source files into object files, then links them to create the `testintmath` executable. Now, let's run `make` again immediately afterward:
 
 ```bash
 $ make
