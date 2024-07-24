@@ -24,7 +24,7 @@ gcc -c intmath.c testintmath.c
 gcc intmath.o testintmath.o -o testintmath
 ```
 
-With the object files in hand, subsequent builds can be incremental. For example, suppose we modify `intmath.c`. To rebuild `testintmath`, we run `gcc -c` on `intmath.c` **only**, and then we link the newly created `intmath.o` with the existing `testintmath.o`:
+With the object files in hand, subsequent builds can be incremental. For example, suppose we modify `intmath.c`. To rebuild `testintmath`, we run `gcc -c` on `intmath.c` **only**, and then we link the newly generated `intmath.o` with the existing `testintmath.o`:
 
 ```
 gcc -c intmath.c
@@ -35,7 +35,7 @@ This incremental build process is summarized in Figure X.
 
 <figure><img src="../.gitbook/assets/Frame 31 (4).png" alt=""><figcaption><p>Figure X: Incremental build</p></figcaption></figure>
 
-Similarly, suppose we modify `testintmath.c`. To rebuild `testintmath`, we run `gcc -c` on `testintmath.c` only, and then we link the newly created `testintmath.o` with the existing `intmath.o`:
+Similarly, suppose we modify `testintmath.c`. To rebuild `testintmath`, we run `gcc -c` on `testintmath.c` only, and then we link the newly generated `testintmath.o` with the existing `intmath.o`:
 
 ```
 gcc -c testintmath.c
