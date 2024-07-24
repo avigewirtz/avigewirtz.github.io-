@@ -63,13 +63,14 @@ make
 
 If `testintmath` is already up-to-date, make will report that fact and halt. Otherwise, it will execute the necessary commands to bring `testintmath` up-to-date. By default, `make` prints the commands it executes on stdout. Let's examine the behavior of `make` with our newly created Makefile.&#x20;
 
-Assume we're building testintmath for the first time. Running make, you should see the following output:
+Assume we're building `testintmath` for the first time. Running make, you should see the following output:
 
 ```bash
 $ make
 gcc -c testintmath.c
 gcc -c intmath.c
 gcc testintmath.o intmath.o -o testintmath
+$
 ```
 
 Observe that `make` compiles both source files into object files, then links them to create the `testintmath` executable. Now, let's run `make` again immediately afterward:
@@ -77,25 +78,27 @@ Observe that `make` compiles both source files into object files, then links the
 ```bash
 $ make
 make: 'testintmath' is up to date.
+$
 ```
 
 `make` determines that no files have been modified since the last build, so no action is necessary.
 
-Next, we'll simulate a modification to `intmath.c`:
+Next, let's "modify" `intmath.c`. The `touch` command updates the file's "last modified" timestamp without changing its contents. This simulates the effect of editing and saving the file.
 
 ```bash
 $ touch intmath.c
 ```
 
-The `touch` command updates the file's "last modified" timestamp without changing its contents. This simulates the effect of editing and saving the file.
+Running make:
 
 ```bash
 $ make
 gcc -c intmath.c
 gcc testintmath.o intmath.o -o testintmath
+$
 ```
 
-Note that `make` only recompiles `intmath.c` and relinks the executable. It doesn't recompile `testintmath.c` as it hasn't been modified.
+Observe that `make` only recompiles `intmath.c` and relinks the executable. It doesn't recompile `testintmath.c` as it hasn't been modified.
 
 Now, let's simulate a change to the header file:
 
@@ -105,6 +108,7 @@ $ make
 gcc -c testintmath.c
 gcc -c intmath.c
 gcc testintmath.o intmath.o -o testintmath
+$
 ```
 
 In this case, `make` recompiles both source files. This is because both include `intmath.h`, so changes to the header file necessitate recompilation of all dependent source files.
