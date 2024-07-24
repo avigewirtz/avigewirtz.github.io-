@@ -32,6 +32,28 @@ make: `testintmath' is up to date.
 $
 ```
 
+#### Useful Command Line Options
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {% hint style="info" %}
 It's important to recognize that `make` does not read a Makefile from top to bottom, processing all rules within it. It starts with the first rule or the rule specified on the command line and then processes only the rules that are reachable from it. So, for example, if we run:
 
