@@ -31,7 +31,7 @@ target: dependencies
 
 This syntax should hopefully be self-explanatory, but note a couple of things:
 
-* `dependencies` refers to direct dependencies only, not transitive dependencies (indirect dependencies that exist through intermediate files in the dependency graph). Practically, this means we list only the object files as dependencies of `testintmath`, not the source files. The source files will be listed in the rules for the object files.
+* `dependencies` refers to direct dependencies only, not transitive dependencies (indirect dependencies that exist through intermediate files in the dependency graph). Practically, this means we list only the object files as dependencies of `testintmath`, not the source files. The source files are listed in the rules for the object files.
 * The command must be preceded by a tab character (and not spaces). Failure to do so will result in the following error: `*** missing separator. Stop.`
 
 Here is the complete Makefile for our program:
