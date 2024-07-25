@@ -4,12 +4,12 @@ Make's job is to bring targets up-to-date. Until now, we've assumed that targets
 
 `make` implements phony targets in a rather simple manner. After a rule is processed, `make` has no postcondition check to verify that the target "file" was in fact built. Instead, it operates under the assumption that if a target's dependencies (if any) are satisfied and its commands (if any) are successfully run, the target is up-to-date. Phony targets have two canonical use cases:
 
-* As a label for one or more arbitrary commands you want make to execute.&#x20;
+* As a label for one or more arbitrary commands you want make to execute.
 * As an alias for one or more other targets, such that running the phony target is the same as running the target(s) directly.
 
-In this section, we'll explore both use cases. Phony targets are easiest to explain by means of demonstration, so let's jump right into makefile version 2, which contains three commonly used phony targets: `all`, `clean`, and `clobber`. Don't worry for now how they work. We'll go over each one by one.
+In this section, we'll explore both use cases. Phony targets are easiest to explain by means of demonstration, so let's jump right into Makefile version 2, which contains three commonly used phony targets: `all`, `clean`, and `clobber`. Don't worry for now how they work. We'll go over each one in detail.&#x20;
 
-{% code title="makefile version 2" %}
+{% code title="Makefile version 2" %}
 ```makefile
 # Dependency rules for non-file targets
 
@@ -44,7 +44,7 @@ clean:
     rm -f *.o testintmath 
 ```
 
-The target, `clean`, does not represent a file—that is, there is no file in our project directory named `clean`, and the command `rm -f *.o testintmath` does not create such a file. Nevertheless, we can run this rule and the effect is that `rm -f *.o testintmath` will be executed:
+The target, `clean`, does not represent a file—that is, there is no file in our project directory named `clean`, and the command `rm -f *.o testintmath` does not create such a file. Quite the opposite. This command deletes the executable `testintmath` as well as the object files (`.o` ), thereby "cleaning" the project directory. This is useful in situations where we want to rebuild `testintmath` from scratch. When we run make clean, the effect is that this command gets executed:&#x20;
 
 ```bash
 $ make clean
@@ -52,11 +52,9 @@ rm -f *.o testintmath
 $
 ```
 
-This command deletes the executable `testintmath` as well as the object files (`.o` ), thereby "cleaning" the project directory. This is useful in situations where we want to rebuild `testintmath` from scratch. (Note that the name `clean` isn't special. We could have named the rule anything we want, such as `delete_files`. `Clean` is just the conventional name for this kind of task in Makefiles.)
-
 Here's how it works. As with any other rule, `make` begins by checking if a file named `clean` exists in the working directory. Since there is no such file, `make` determines that `clean` needs to be built. In an attempt to build `clean`, `make` executes the command `rm -f testintmath *.o`. Because this command runs successfully (that it, returns exit status 0), `make` considers `clean` up-to-date (for the current invocation of `make`, that is). It does not actually verify whether `clean` is created.
 
-You can see this full sequence of operations by invoking `make clean` with the `debug=-v` option. Here is the relevant part of the output:&#x20;
+You can see this full sequence of operations by invoking `make clean` with the `debug=-v` option. Here is the relevant part of the output:
 
 ```
 $ make clean --debug=v
@@ -69,7 +67,9 @@ Successfully remade target file `clean'.
 $ 
 ```
 
-In particular, notice how after executing the command `rm -f testintmath *.o`, `make` reports that it ``Successfully remade target file `clean'``. Of course, a file named `clean` was not in fact created, but make nevertheless imagine it to be up to date.&#x20;
+In particular, notice how after executing the command `rm -f testintmath *.o`, `make` reports that it ``Successfully remade target file `clean'``. Of course, a file named `clean` was not in fact created, but make nevertheless imagine it to be up to date.
+
+Note that the name `clean` isn't special. We could have named the rule anything we want, such as `delete_files`. `Clean` is just the conventional name for this kind of task in Makefiles.
 
 Next, consider the `clobber` rule:
 
