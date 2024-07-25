@@ -71,48 +71,14 @@ $
 
 In particular, notice how after executing the command `rm -f testintmath *.o`, `make` reports that it ``Successfully remade target file `clean'``. Of course, a file named `clean` was not in fact created, but make nevertheless imagine it to be up to date.&#x20;
 
-{% hint style="warning" %}
-**.PHONY Directive**
-
-It should go without saying that the scheme we just described will only work if there is in fact no file named `clean` in the working directory. If there is such a file, running `make clean` will always yield:
-
-```makefile
-$ make clean
-make: `clean' is up to date.
-$
-```
-
-To avoid this problem, GNU make includes a special target, .PHONY, to tell make that a target is not a real file. Any target can be declared phony by including it as a prereq- uisite of .PHONY:
-
-
-
-GNU Make offers a simple solution to this potential issue. Just declare `clean` as a dependency of the special target .PHONY, like so:
-
-```makefile
-.PHONY: clean
-clean: 
-    rm -f *.o testintmath 
-```
-
-declares that its prereq- uisite does not refer to an actual file and should always be considered out of date.
-
-Now make will always execute the commands associated with clean even if a file named clean exists.
-
-With this declaration, this rule will work as intended even if there is a file named `clean` in the working directory.
-
-In addition to marking a target as always out of date, specifying that a target is phony tells make that this file does not follow the normal rules for making a target file from a source file. Therefore, make can optimize its normal rule search to improve performance.
-
-It rarely makes sense to use a phony target as a prerequisite of a real file since the phony is always out of date and will always cause the target file to be remade.
-{% endhint %}
-
-Now, let's the `clobber` rule. Making a phony target a prerequisite of another target will invoke the phony target script before making the actual target.
+Next, consider the `clobber` rule:
 
 ```
 clobber: clean
   rm -f *~ \#*\# 
 ```
 
-This rule is designed to extend the `clean` rule by also deleting Emacs backup and autosave files. Note that `*~` specifies all files that begin with a `*` and `\#*\#` specifies all files that begin and end with a `#`. When you run:
+Here, . Making a phony target a prerequisite of another target will invoke the phony target script before making the actual target.This rule is designed to extend the `clean` rule by also deleting Emacs backup and autosave files. Note that `*~` specifies all files that begin with a `*` and `\#*\#` specifies all files that begin and end with a `#`. When you run:
 
 ```bash
 $ make clobber
@@ -154,4 +120,23 @@ hello2: hello2.c
 #### Characteritics of phony targets
 
 * will always run
-* generally shouldn't be dependency of real target
+* It rarely makes sense to use a phony target as a prerequisite of a real file since the phony is always out of date and will always cause the target file to be remade.
+*   **.PHONY Directive**
+
+    It should go without saying that the scheme we just described will only work if there is in fact no file named `clean` in the working directory. If there is such a file, running `make clean` will always yield:
+
+    ```makefile
+    $ make clean
+    make: `clean' is up to date.
+    $
+    ```
+
+    GNU Make offers a simple solution to this potential issue. Just list `clean` as a dependency of the special target .PHONY, like so:
+
+    ```makefile
+    .PHONY: clean
+    clean: 
+        rm -f *.o testintmath 
+    ```
+
+    With this declaration, this rule will work as intended even if there is a file named `clean` in the working directory. (Additionally, specifying that a target is phony tells `make` that this file does not follow the normal rules for making a target file from a source file. Therefore, make can optimize its normal rule search to improve performance. This is why declaring a target phony is useful even if you're not concerned about such a file actually existing.)
