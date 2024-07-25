@@ -75,6 +75,3 @@ make intmath.o
 
 make will process the rule for `intmath.o` only. It will not process the rules for `testintmath.o` or `testintmath`, since they are not reachable from it.
 {% endhint %}
-
-#### Useful Command Line Options
-

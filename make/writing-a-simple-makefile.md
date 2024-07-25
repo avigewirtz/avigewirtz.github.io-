@@ -17,10 +17,10 @@ Visually, it looks like this:
 
 Interpreting this graph is straightforward:
 
-* Arrows indicate dependencies, pointing from a file to the files it depends on. We see that `testintmath` depends on `testintmath.o` and `intmath.o`, which in turn depend on their corresponding source files (`testintmath.c` and `intmath.c`) and the common header file `intmath.h`.
+* Arrows indicate dependencies, pointing from a file to the files it depends on. We see that `testintmath` depends on `testintmath.o` and `intmath.o`, which in turn depend on their corresponding source files (`testintmath.c` and `intmath.c`) and the common header file `intmath.h`. &#x20;
 * Each file with dependencies is labeled with the command to build it from its dependencies. In `make` terminology, these files are known as _targets_. Our dependency graph has three targets: `testintmath`, `testintmath.o` and `intmath.o`. As a general rule, targets typically correspond to binary files.
 
-The neat thing about dependency graphs is they make it extremely easy to see which files are rendered obsolete by changes to one or more of the source files. Just follow the arrows. Any file which directly or indirectly points to the modified source files is rendered obsolete. For example, if `intmath.c` is modified, we see that `intmath.o` and `testintmath` are rendered obsolete, but `testintmath.o` is not.
+The neat thing about dependency graphs is they make it extremely easy to see which files are rendered obsolete by changes to one or more of the source files. Just follow the arrows. Any file that directly or indirectly points to the modified source files is rendered obsolete. For example, if `intmath.c` is modified, we see that `intmath.o` and `testintmath` are rendered obsolete (but `testintmath.o` is not).
 
 Translating this dependency graph into a Makefile is remarkably straightforward. We create a _dependency rule_ for each target in the dependency graph. Dependency rules have the following syntax:
 
@@ -31,7 +31,7 @@ target: dependencies
 
 This syntax should hopefully be self-explanatory, but note a couple of things:
 
-* `dependencies` refers to direct dependencies, not transitive dependencies.
+* `dependencies` refers to direct dependencies only. It does not include transitive dependencies (indirect dependencies that exist through intermediate files in the dependency chain). Practically, this means we list only the object files as dependencies of `testintmath`, not the source files. The source files will be listed in the rules for the object files.
 * The command must be preceded by a tab character (and not spaces). Failure to do so will result in the following error: `*** missing separator. Stop.`
 
 Here is the complete Makefile for our program:
