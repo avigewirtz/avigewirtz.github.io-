@@ -65,5 +65,5 @@ Or via a single command:
 gcc intmath.c testintmath.c -o testintmath
 ```
 
-In both cases, `intmath.c` and `testintmath.c` will be independently preprocessed, compiled, and assembled into object files, which are then linked. The difference between these two approaches is that the two-command approach retains the object files while the single-command approach does not.
+In both cases, `intmath.c` and `testintmath.c` will be independently preprocessed, compiled, and assembled into object files, which are then linked. The difference between these two approaches is that the two-command approach retains the intermediately generated object files while the single-command approach does not.
 {% endhint %}
