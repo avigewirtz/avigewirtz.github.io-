@@ -2,12 +2,14 @@
 
 Make's job is to bring targets up-to-date. Until now, we've assumed that targets represent files, which are brought up-to-date by creating them or updating them. In fact, however, targets need not represent files. They can represent labels for arbitrary commands or actions you want make to execute. Such targets are known as _phony_ targets.
 
-`make` implements phony targets in a rather simple manner. After a rule is processed, `make` has no postcondition check to verify that the target "file" was in fact built. Instead, it operates under the assumption that if a target's dependencies (if any) are satisfied and its commands (if any) are successfully run, the target is up-to-date. Phony targets have two canonical use cases:
+`make` implements phony targets in a rather simple manner. After processing a rule, `make` does not verify that the target "file" was in fact built. Instead, it operates under the assumption that if a target's dependencies (if any) are satisfied and its commands (if any) are successfully run, the target is up-to-date.&#x20;
+
+Phony targets have two canonical use cases:
 
 * As a label for one or more arbitrary commands you want make to execute.
 * As an alias for one or more other targets, such that running the phony target is the same as running the target(s) directly.
 
-In this section, we'll explore both use cases. Phony targets are easiest to explain by means of demonstration, so let's jump right into Makefile version 2, which contains three commonly used phony targets: `all`, `clean`, and `clobber`. Don't worry for now how they work. We'll go over each one in detail.&#x20;
+In this section, we'll explore both use cases. Phony targets are easiest to explain by means of demonstration, so let's jump right into Makefile version 2, which contains three commonly used phony targets: `all`, `clean`, and `clobber`. Don't worry for now how they work. We'll go over each one in detail.
 
 {% code title="Makefile version 2" %}
 ```makefile
@@ -69,9 +71,7 @@ Successfully remade target file `clean'.
 $ 
 ```
 
-In particular, notice how after executing the command `rm -f testintmath *.o`, `make` reports that it ``Successfully remade target file `clean'``. Of course, a file named `clean` was not in fact created, but make nevertheless imagine it to be up to date.
-
-
+In particular, notice how after executing the command `rm -f testintmath *.o`, `make` reports that it ``Successfully remade target file `clean'``. This should convince you that make really considers clean to be up-to-date.&#x20;
 
 Next, consider the `clobber` rule:
 
@@ -79,7 +79,10 @@ Next, consider the `clobber` rule:
 clobber: clean
   rm -f *~ \#*\# 
 ```
+
 Here, not only is the target phony, but it depends on a phony target—clean. Making a phony target a dependency of another target will invoke the phony target command before making the actual target.This rule is designed to extend the `clean` rule by also deleting Emacs backup and autosave files. Note that `*~` specifies all files that begin with a `*` and `\#*\#` specifies all files that begin and end with a `#`. When you run:
+
+The `clobber` rule is another example of a phony target. It extends the functionality of `clean` by also removing Emacs backup and autosave files. `clobber` depends on `clean`, which means `make` will first execute the `clean` target before running `clobber`'s commands. After running `clean`, it executes `rm -f *~ \#*\#`, which removes Emacs backup files (ending with `~`) and autosave files (starting and ending with `#`).
 
 ```bash
 $ make clobber
@@ -88,9 +91,7 @@ rm -f *~ \#*\#
 $ 
 ```
 
-Here's how it works. make first checks if a file named `clobber` exists in the working directory. Since there is no such file, make determines that `clobber` is out-of-date and needs to be built. Before make can "build" clobber, however, it must first ensure that its dependency, clean, is up-to-date. So make moves on to clean. make sees that clean doesn't exist, so it executes the command rm -f testintmath \*.o in an attempt to build it. Since this command executes successfully, make considers clean up-to-date (for the current invocation of make, that is). Make then go back to clobber and runs the command `rm -f *~ \#*\#` .
-
-`make` first executes the `clean` rule, ensuring that all `.o` files and the `testintmath` executable are deleted. After successfully running the `clean` rule, `make` proceeds to execute the command `rm -f *~ \#*\#`. This command deletes all files ending in `~` (typically backup files created by text editors) and files with names matching the pattern `#*#` (common for temporary or autosave files).
+Let's break it down. make first checks if a file named `clobber` exists in the working directory. Since there is no such file, make determines that `clobber` is out-of-date and needs to be built. Before make can "build" clobber, however, it must first ensure that its dependency, clean, is up-to-date. So make moves on to clean. make sees that clean doesn't exist, so it executes the command rm -f testintmath \*.o in an attempt to build it. Since this command executes successfully, make considers clean up-to-date (for the current invocation of make, that is). Make then go back to clobber and runs the command `rm -f *~ \#*\#` .
 
 Finally, consider the `all` rule:
 
