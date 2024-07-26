@@ -44,7 +44,7 @@ clean:
     rm -f *.o testintmath 
 ```
 
-The target, `clean`, does not represent a file—that is, there is no file in our project directory named `clean`, and the command `rm -f *.o testintmath` does not create such a file. Quite the opposite. This command deletes the executable `testintmath` as well as the object files (`.o` ), thereby "cleaning" the project directory. This is useful in situations where we want to rebuild `testintmath` from scratch. When we run make clean, the effect is that this command gets executed:&#x20;
+The target, `clean`, does not represent a file—that is, there is no file in our project directory named `clean`, and the command `rm -f *.o testintmath` does not create such a file. Mevertheless, we can run this this rule, and the effect is that the command command `rm -f *.o testintmath` will be executed:
 
 ```bash
 $ make clean
@@ -52,7 +52,9 @@ rm -f *.o testintmath
 $
 ```
 
-Here's how it works. As with any other rule, `make` begins by checking if a file named `clean` exists in the working directory. Since there is no such file, `make` determines that `clean` needs to be built. In an attempt to build `clean`, `make` executes the command `rm -f testintmath *.o`. Because this command runs successfully (that it, returns exit status 0), `make` considers `clean` up-to-date (for the current invocation of `make`, that is). It does not actually verify whether `clean` is created.
+This command deletes the executable `testintmath` as well as the object files (`.o` ), thereby "cleaning" the project directory. This is useful in situations where we want to rebuild `testintmath` from scratch. (Note that the name `clean` isn't special. We could have named the rule anything we want, such as `delete_files`. `Clean` is just the conventional name for this kind of task in Makefiles)
+
+Let's break down how it works. As with any other rule, `make` begins by checking if a file named `clean` exists in the working directory. Since there is no such file, `make` determines that `clean` needs to be built. In an attempt to build `clean`, `make` executes the command `rm -f testintmath *.o`. Because this command runs successfully (that it, returns exit status 0), `make` considers `clean` up-to-date (for the current invocation of `make`, that is). It does not actually verify whether `clean` is created.
 
 You can see this full sequence of operations by invoking `make clean` with the `debug=-v` option. Here is the relevant part of the output:
 
@@ -69,7 +71,7 @@ $
 
 In particular, notice how after executing the command `rm -f testintmath *.o`, `make` reports that it ``Successfully remade target file `clean'``. Of course, a file named `clean` was not in fact created, but make nevertheless imagine it to be up to date.
 
-Note that the name `clean` isn't special. We could have named the rule anything we want, such as `delete_files`. `Clean` is just the conventional name for this kind of task in Makefiles.
+
 
 Next, consider the `clobber` rule:
 
@@ -77,8 +79,7 @@ Next, consider the `clobber` rule:
 clobber: clean
   rm -f *~ \#*\# 
 ```
-
-Here, . Making a phony target a prerequisite of another target will invoke the phony target script before making the actual target.This rule is designed to extend the `clean` rule by also deleting Emacs backup and autosave files. Note that `*~` specifies all files that begin with a `*` and `\#*\#` specifies all files that begin and end with a `#`. When you run:
+Here, not only is the target phony, but it depends on a phony target—clean. Making a phony target a dependency of another target will invoke the phony target command before making the actual target.This rule is designed to extend the `clean` rule by also deleting Emacs backup and autosave files. Note that `*~` specifies all files that begin with a `*` and `\#*\#` specifies all files that begin and end with a `#`. When you run:
 
 ```bash
 $ make clobber
