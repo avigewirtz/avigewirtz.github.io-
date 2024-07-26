@@ -1,6 +1,6 @@
 # Phony Targets
 
-Make's job is to bring targets up-to-date. Until now, we've assumed that targets represent files, which are brought up-to-date by creating them or updating them. In fact, however, targets need not represent files. They can represent labels for arbitrary commands or actions you want make to execute. These non-file targets are known as _phony_ targets.
+Make's job is to bring targets up-to-date. Until now, we've assumed that targets represent files, which are brought up-to-date by creating them or updating them. In fact, however, targets need not represent files. They can represent labels for arbitrary commands or actions you want make to execute. Such targets are known as _phony_ targets.
 
 `make` implements phony targets in a rather simple manner. After a rule is processed, `make` has no postcondition check to verify that the target "file" was in fact built. Instead, it operates under the assumption that if a target's dependencies (if any) are satisfied and its commands (if any) are successfully run, the target is up-to-date. Phony targets have two canonical use cases:
 
