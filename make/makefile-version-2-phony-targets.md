@@ -2,7 +2,7 @@
 
 Make's job is to bring targets up-to-date. Until now, we've assumed that targets represent files, which are brought up-to-date by creating them or updating them. In fact, however, targets need not represent files. They can represent labels for arbitrary commands or actions you want make to execute. Such targets are known as _phony_ targets.
 
-`make` implements phony targets in a rather simple manner. After processing a rule, `make` does not verify that the target "file" was in fact built. Instead, it operates under the assumption that if a target's dependencies (if any) are satisfied and its commands (if any) are successfully run, the target is up-to-date. The implication ia that a rule's command need not have any relationship to the target&#x20;
+`make` implements phony targets in a rather simple manner. After processing a rule, `make` does not verify that the target "file" was in fact built. Instead, it operates under the assumption that if a target's dependencies (if any) are satisfied and its commands (if any) are successfully run, the target is up-to-date. The implication is that a rule's command need not have any relationship to the target&#x20;
 
 Phony targets have two canonical use cases:
 
