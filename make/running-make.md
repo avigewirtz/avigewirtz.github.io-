@@ -1,6 +1,6 @@
 # Running make
 
-With the Makefile set up, you can now build `testintmath` using `make`. The basic syntax to run make is:
+The basic syntax to run make is:
 
 ```makefile
 make target
@@ -12,9 +12,9 @@ where `target` is the name of the file you want `make` to build (see, however, [
 make
 ```
 
-If `testintmath` is already up-to-date, make will simply report that fact and halt. Otherwise, it will execute the necessary commands to bring `testintmath` up-to-date. By default, `make` prints the commands it executes on stdout. Let's examine the behavior of `make` with our newly created Makefile.&#x20;
+If `testintmath` is already up-to-date, make will simply report that fact and halt. Otherwise, it will execute the commands necessary to bring `testintmath` up-to-date. By default, `make` prints the commands it executes on stdout.&#x20;
 
-Assume we're building `testintmath` for the first time. Running make, you should see the following output:
+Let's now examine the behavior of `make` with our newly created Makefile. Assume we're building `testintmath` for the first time. Running `make`, you should see the following output:
 
 ```bash
 $ make
@@ -24,7 +24,7 @@ gcc testintmath.o intmath.o -o testintmath
 $
 ```
 
-Observe that `make` compiles both source files into object files, then links them to create the `testintmath` executable.&#x20;
+Observe that `make` compiles both source files into object files and then links them to create the `testintmath` executable.&#x20;
 
 Now, let's run `make` again immediately afterward:
 
@@ -42,7 +42,7 @@ Next, let's "modify" `intmath.c`. We can do this by running:&#x20;
 $ touch intmath.c
 ```
 
-The `touch` command updates the file's "last modified" timestamp without changing its contents. This simulates the effect of modifying the file. Running make:
+The `touch` command updates the file's last modification timestamp without changing its contents. This simulates the effect of modifying the file. Running make:
 
 ```bash
 $ make
@@ -66,12 +66,18 @@ $
 
 In this case, `make` recompiles both source files. This is because both include `intmath.h`, so changes to the header file necessitate recompilation of all dependent source files.
 
-{% hint style="info" %}
-It's important to recognize that `make` does not read a Makefile from top to bottom, processing all rules within it. It starts with the default rule or the rule specified on the command line and then processes only the rules that are reachable from it. So, for example, if we run:
+Suppose we wanted to build only intmath.o. In practice there's little reason to do so, but this artifical example aims to demonstarte a point. To do so, we list intmath.o as an argument to make:
 
-```bash
-make intmath.o
+```
+touch intmath.c
 ```
 
-make will process the rule for `intmath.o` only. It will not process the rules for `testintmath.o` or `testintmath`, since they are not reachable from it.
-{% endhint %}
+Next, let's build intmath.o only. We do so by listing intmath.o as an argument:
+
+```bash
+$ make intmath.o
+gcc -c intmath.c
+$
+```
+
+Observe that only intmath.o was rebuilt. As this demonstartes, `make` does not read a Makefile from top to bottom, processing all rules within it. It starts with the default rule or the rule specified on the command line and then processes only the rules that are reachable from it. When we ran make intmath.o, make processed only the rule for `intmath.o`. It did not process the rules for `testintmath.o` or `testintmath`.
