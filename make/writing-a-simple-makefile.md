@@ -27,7 +27,7 @@ target: dependencies
 
 This syntax should hopefully be pretty self-explanatory, but note a couple of things:
 
-* `dependencies` refers to _direct_ dependencies, not transitive dependencies (dependencies that exist through intermediate files in the dependency graph). In our case, testintmath directly depends on the object files but only transitively depends on the source files. Therefore, we list only the object files as dependencies of `testintmath`. The source files will be listed in the rules for the object files.
+* `dependencies` refers to _direct_ dependencies, not transitive dependencies (dependencies that exist through intermediate files in the dependency graph). In our case, `testintmath` directly depends on the object files but only transitively depends on the source files. Therefore, we list only the object files as dependencies of `testintmath`. The source files will be listed in the rules for the object files.
 * The command must be preceded by a tab character (and not spaces). Failure to do so will result in the following error: `*** missing separator. Stop.`
 
 Here is the complete Makefile for our program, containing three rules:
@@ -43,4 +43,4 @@ intmath.o: intmath.c intmath.h
     gcc -c intmath.c
 ```
 
-Notice how this Makefile is nothing more than a textual representation of the dependency graph shown above. With the Makefile set up, you can now build `testintmath` using `make`. &#x20;
+Notice how this Makefile is nothing more than a textual representation of the dependency graph shown above. With this Makefile set up, you can now build `testintmath` using `make`. &#x20;
