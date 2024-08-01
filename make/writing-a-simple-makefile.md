@@ -1,12 +1,8 @@
 # Writing a Simple Makefile
 
-Assume the working directory contains `testintmath`'s source files (i.e., `testintmath.c`, `intmath.c`, and `intmath.h`). To build `testintmath` with `make`, the first step is to create a makefile in the working directory. You can name the makefile whatever you like, but `make` automatically searches for a file named `makefile` or `Makefile`, making these names more convenient. You can create the Makefile by running the following command:
+Assume the working directory contains `testintmath`'s source files (i.e., `testintmath.c`, `intmath.c`, and `intmath.h`). To build `testintmath` with `make`, the first step is to create a makefile in the working directory. You can name the makefile whatever you like, but `make` automatically searches for a file named `makefile` or `Makefile`, making these names more convenient.&#x20;
 
-```bash
-touch Makefile
-```
-
-The next step is to populate the Makefile with `testintmath`'s dependency graph. As we mentioned earlier, a dependency graph is a directed graph that contains two pieces of information:
+Once you have created a Makefile, the next step is to populate it with `testintmath`'s dependency graph. As we mentioned earlier, a dependency graph is a directed graph that contains two pieces of information:
 
 * The dependencies between the source files, object files, and the executable.
 * The commands to build each file from its dependencies.
@@ -17,8 +13,8 @@ Visually, it looks like this:
 
 Interpreting this graph is straightforward:
 
-* Arrows indicate dependencies, pointing from a file to the files it depends on. We see that `testintmath` depends on `testintmath.o` and `intmath.o`, which in turn depend on their corresponding source files (`testintmath.c` and `intmath.c`) and the common header file `intmath.h`. &#x20;
-* Each file with dependencies is labeled with the command to build it from its dependencies. In `make` terminology, these files are known as _targets_. Our dependency graph has three targets: `testintmath`, `testintmath.o` and `intmath.o`. As a general rule, targets correspond to binary files.
+* Arrows indicate dependencies, pointing from a file to the files it depends on. We see that `testintmath` depends on `testintmath.o` and `intmath.o`, which in turn depend on their corresponding source files (`testintmath.c` and `intmath.c`) and the common header file `intmath.h`.
+* Each file with dependencies is labeled with the command to build it from its dependencies. In `make` terminology, these files are known as _targets_. Our dependency graph has three targets: `testintmath`, `testintmath.o` and `intmath.o`. For convenience, the targets are circled in red. As a general rule, targets correspond to binary files.
 
 The neat thing about dependency graphs is they make it extremely easy to see which files are rendered obsolete by changes to one or more of the source files. Just follow the arrows. Any file that directly or indirectly points to the modified source files is rendered obsolete. For example, if `intmath.c` is modified, we see that `intmath.o` and `testintmath` are rendered obsolete (but `testintmath.o` is not).
 
@@ -29,12 +25,12 @@ target: dependencies
 <tab> command
 ```
 
-This syntax should hopefully be self-explanatory, but note a couple of things:
+This syntax should hopefully be pretty self-explanatory, but note a couple of things:
 
-* `dependencies` refers to direct dependencies only, not transitive dependencies (indirect dependencies that exist through intermediate files in the dependency graph). Practically, this means we list only the object files as dependencies of `testintmath`, not the source files. The source files are listed in the rules for the object files.
+* `dependencies` refers to _direct_ dependencies, not transitive dependencies (dependencies that exist through intermediate files in the dependency graph). Practically, this means we list only the object files as dependencies of `testintmath`, not the source files. The source files are listed in the rules for the object files.
 * The command must be preceded by a tab character (and not spaces). Failure to do so will result in the following error: `*** missing separator. Stop.`
 
-Here is the complete Makefile for our program:
+Here is the complete Makefile for our program, containing three rules:
 
 ```makefile
 testintmath: testintmath.o intmath.o
@@ -46,3 +42,5 @@ testintmath.o: testintmath.c intmath.h
 intmath.o: intmath.c intmath.h
     gcc -c intmath.c
 ```
+
+Notice how this Makefile is nothing more than a textual representation of the dependency graph shown above.&#x20;
