@@ -1,8 +1,8 @@
 # How make Processes a Makefile
 
-We've seen that make executes the neccesary commands to bring targets up-to-date. But how exactly does make figure out which commands to execute? Let's examine the execution of our makefile in more detail to find out.&#x20;
+We've seen that make executes the necessary commands to bring targets up-to-date. But how exactly does make figure out which commands to execute? Let's examine the execution of our makefile in more detail to find out. This shall be accomplished by recursively processing each prerequisite. Upon recursion, each prerequisite shall become a target itself. Its prerequisites in turn shall be processed recursively until a target is found that has no prerequisites, or further recursion would require applying two inference rules one immediately after the other, at which point the recursion shall stop. The recursion shall then back up, updating each target as it goes.
 
-<mark style="color:red;">How did make decide what to do? Let’s go over the previous execution in more detail to find out.</mark>
+Before any target in the makefile is updated, each of its prerequisites (both explicit and implicit) shall be updated
 
 <mark style="color:red;">First make notices that the command line contains no targets so it decides to make the default goal, count\_words. It checks for prerequisites and sees three: count\_words.o, lexer.o, and -lfl. make now considers how to build count\_words.o and sees a rule for it. Again, it checks the prerequisites, notices that count\_words.c has no rules but that the file exists, so make executes the commands to transform count\_words.c into count\_words.o by executing the command:</mark>
 
@@ -21,20 +21,6 @@ We've seen that make executes the neccesary commands to bring targets up-to-date
 
 
 
-
-
-
-
-
-As we saw, make’s job is to bring a target up-to-date. A target is considered up-to-date if it exists and it is newer than all it's dependencies.&#x20;
-
-From POSIX: Before any target in the makefile is updated, each of its prerequisites (both explicit and implicit) shall be updated. This shall be accomplished by recursively processing each prerequisite. Upon recursion, each prerequisite shall become a target itself. Its prerequisites in turn shall be processed recursively until a target is found that has no prerequisites, or further recursion would require applying two inference rules one immediately after the other, at which point the recursion shall stop. As an extension, implementations may continue recursion when two or more successive inference rules need to be applied; however, if there are multiple different chains of such rules that could be used to create the target, it is unspecified which chain is used. The recursion shall then back up, updating each target as it goes.
-
-In order for make to bring a target up-to-date, make must first ensure that the target’s dependencies are up-to-date. A target is considered up-to-date if it exists and it has no dependencies with newer timestamps.&#x20;
-
-
-
-For example, in order to bring testintmath up-to-date, make must first ensure that testintmath.o and intmath.o are up-to-date. Thus, make must examine these targets before determining how to proceed with testintmath.
 
 Any traversal of the graph in which each file is processed only after its dependencies are processed is a valid traversal.
 
