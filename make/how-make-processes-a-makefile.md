@@ -1,5 +1,7 @@
 # How make Processes a Makefile
 
+We've seen that make executes the neccesary commands to bring targets up-to-date. But how exactly does make figure out which commands to execute? Let's examine the execution of our makefile in more detail to find out.&#x20;
+
 <mark style="color:red;">How did make decide what to do? Let’s go over the previous execution in more detail to find out.</mark>
 
 <mark style="color:red;">First make notices that the command line contains no targets so it decides to make the default goal, count\_words. It checks for prerequisites and sees three: count\_words.o, lexer.o, and -lfl. make now considers how to build count\_words.o and sees a rule for it. Again, it checks the prerequisites, notices that count\_words.c has no rules but that the file exists, so make executes the commands to transform count\_words.c into count\_words.o by executing the command:</mark>
