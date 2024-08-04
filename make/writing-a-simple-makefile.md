@@ -21,7 +21,7 @@ The neat thing about dependency graphs is they make it extremely easy to see whi
 Translating this dependency graph into a Makefile is remarkably straightforward. We create a _dependency rule_ for each target in the dependency graph. Dependency rules have the following syntax:
 
 ```makefile
-target: dependencies
+target: dependencies.
 <tab> command
 ```
 
@@ -42,5 +42,7 @@ testintmath.o: testintmath.c intmath.h
 intmath.o: intmath.c intmath.h
     gcc -c intmath.c
 ```
+
+The first rule declares that testintmath depends on tetsintmath.o and intmath.o and that the command to build testintmath is gcc testintmath.o intmath.o -o testintmath. The next two rules give analogous information for tetsintmath.o and intmath.o.&#x20;
 
 Notice how this Makefile is nothing more than a textual representation of the dependency graph shown above. With this Makefile set up, you can now build `testintmath` using `make`. &#x20;
