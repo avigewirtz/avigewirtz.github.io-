@@ -14,7 +14,7 @@ make
 
 If `testintmath` is already up-to-date, `make` will simply report that fact and halt. Otherwise, it will execute the commands necessary to bring `testintmath` up-to-date. By default, `make` prints the commands it executes on stdout.&#x20;
 
-Let's now examine the behavior of `make` with our newly created Makefile. Assume we're building `testintmath` for the first time. Running `make`, you should see the following output:
+To get a sense of how make works, let's now run some commands to build our program. Let's now examine the behavior of `make` with our newly created Makefile. Assume we're building `testintmath` for the first time. Running `make`, you should see the following output:
 
 ```bash
 $ make
