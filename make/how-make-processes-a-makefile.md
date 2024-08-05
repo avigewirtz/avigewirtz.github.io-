@@ -37,39 +37,23 @@ Assume we're building `testintmath` for the first time. In other words, none of 
 
 Let's walk through the make process for this case where none of the targets exist. We'll use the algorithm provided to update the `testintmath` target.
 
-* make(`testintmath`)&#x20;
-  * make(`testintmath.o`)&#x20;
-    * make(`testintmath.c`)&#x20;
-      * modtime(`testintmath.c`) = x.y.x
-      * no action (source file, no associated command)&#x20;
-      * mark testintmath.c as processed
-    * make(`intmath.h`)&#x20;
-      * modtime(`intmath.h`) = x.y.z
-      * no action (source file, no associated command)&#x20;
-      * mark intmath.h as processed
-    * modtime(testintmath.o) = 0&#x20;
-    * out of date. execute: gcc -c testintmath.c&#x20;
-    * mark testintmath.o as processed&#x20;
-  * make(intmath.o)&#x20;
-    * make(intmath.c)&#x20;
-      * modtime(intmath.c) = x.y.z
-      * no action (source file, no associated command)&#x20;
-      * mark intmath.c as processed
-    * make(intmath.h) already processed, skip&#x20;
-  * modtime(intmath.o) = 0&#x20;
-  * execute: gcc -c intmath.c&#x20;
-  * mark intmath.o as processed&#x20;
-* modtime(testintmath) = 0&#x20;
-* execute: gcc testintmath.o intmath.o -o testintmath&#x20;
-* mark testintmath as processed
 
-In this case, all commands are executed because none of the files exist. The order of execution is:
 
-1. `gcc -c testintmath.c`
-2. `gcc -c intmath.c`
-3. `gcc testintmath.o intmath.o -o testintmath`
 
-This creates all the object files and the final executable.
+
+* <mark style="color:red;">make(</mark><mark style="color:red;">`testintmath`</mark><mark style="color:red;">)</mark>&#x20;
+  * <mark style="color:purple;">make(</mark><mark style="color:purple;">`testintmath.o`</mark><mark style="color:purple;">)</mark>&#x20;
+    * <mark style="color:green;">make(</mark><mark style="color:green;">`testintmath.c`</mark><mark style="color:green;">)</mark>&#x20;
+    * <mark style="color:green;">modtime(</mark><mark style="color:green;">`testintmath.c`</mark><mark style="color:green;">) = x.y.x. Mark</mark> <mark style="color:green;"></mark><mark style="color:green;">`testintmath.c`</mark> <mark style="color:green;"></mark><mark style="color:green;">as processed</mark>
+    * <mark style="color:green;">make(</mark><mark style="color:green;">`intmath.h`</mark><mark style="color:green;">)</mark>&#x20;
+    * <mark style="color:green;">modtime(</mark><mark style="color:green;">`intmath.h`</mark><mark style="color:green;">) = x.y.x. Mark</mark> <mark style="color:green;"></mark><mark style="color:green;">`intmath.h`</mark> <mark style="color:green;"></mark><mark style="color:green;">as processed</mark>
+  * <mark style="color:purple;">modtime(</mark><mark style="color:purple;">`testintmath.o`</mark><mark style="color:purple;">) = 0. Out-of-date. Execute:</mark> <mark style="color:purple;"></mark><mark style="color:purple;">`gcc -c testintmath.c`</mark><mark style="color:purple;">. Mark</mark> <mark style="color:purple;"></mark><mark style="color:purple;">`testintmath.o`</mark> <mark style="color:purple;"></mark><mark style="color:purple;">as processed</mark>
+  * <mark style="color:purple;">make(</mark><mark style="color:purple;">`intmath.o`</mark><mark style="color:purple;">)</mark>&#x20;
+    * <mark style="color:green;">make(</mark><mark style="color:green;">`intmath.c`</mark><mark style="color:green;">)</mark>&#x20;
+    * <mark style="color:green;">modtime(</mark><mark style="color:green;">`intmath.c`</mark><mark style="color:green;">) = x.y.x. Mark</mark> <mark style="color:green;"></mark><mark style="color:green;">`intmath.c`</mark> <mark style="color:green;"></mark><mark style="color:green;">as processed</mark>
+    * <mark style="color:green;">Skips redundant intmath.h check</mark>
+  * <mark style="color:purple;">modtime(</mark><mark style="color:purple;">`intmath.o`</mark><mark style="color:purple;">) = 0. Out-of-date. Execute:</mark> <mark style="color:purple;"></mark><mark style="color:purple;">`gcc -c intmath.c`</mark><mark style="color:purple;">. Mark</mark> <mark style="color:purple;"></mark><mark style="color:purple;">`intmath.o`</mark> <mark style="color:purple;"></mark><mark style="color:purple;">as processed</mark>
+* <mark style="color:red;">modtime(</mark><mark style="color:red;">`testintmath`</mark><mark style="color:red;">) = 0. Out-of-date. Execute:</mark> <mark style="color:red;"></mark><mark style="color:red;">`gcc testintmath.o intmath.o - testintmath`</mark><mark style="color:red;">. Mark</mark> <mark style="color:red;"></mark><mark style="color:red;">`testintmath`</mark> <mark style="color:red;"></mark><mark style="color:red;">as processed</mark>
 
 
 
