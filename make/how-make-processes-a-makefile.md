@@ -1,6 +1,10 @@
 # How make Processes a Makefile
 
-make's job is to bring file's up-to-date. Bringing a file up-to-date is defined recursively as follows. First, bring all of the file’s dependencies up to date. If the file is now older than any of its dependencies or does not exist, execute the command associated with the file.
+We’ve seen after setting up our makefile for testintmath, we can incrementally build it by simply invoking make. In response, make will execute the command necessary to being intmath up to date. But how does make determine what to execute? Let’s examine the process in more detail to find out. 
+
+#### Core Algorithm
+
+Bringing a file up to date is defined recursively as follows. First, bring its dependencies up to date. If the file is now older than any of its dependencies or does not exist, execute its corresponding command.
 
 A simple algorithm for bringing files up to date is shown below. update performs a depth-first search of the dependency graph. A file is marked processed when the search backtracks from the file. The algorithm requires a function modtime that returns the last-modification time of a file. If the file does not exist, modtime returns 0.&#x20;
 
