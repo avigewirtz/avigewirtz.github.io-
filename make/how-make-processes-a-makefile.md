@@ -25,7 +25,7 @@ make(file)
 }
 ```
 
-To make things concrete, let's now examine this traversal at various points in development.&#x20;
+To make things concrete, let's trace this algorithm at varipus states of our files.
 
 #### Case 1: None of the Targets Exist
 
