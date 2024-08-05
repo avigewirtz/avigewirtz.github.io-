@@ -1,29 +1,20 @@
 # How make Processes a Makefile
 
-We saw in the previous section that make make figures out what work to do to update the specified target. But how exactly does make figure out which commands to execute? Let's examine the execution in more detail to find out.&#x20;
+make's job is to bring file's up-to-date. Bringing a file up-to-date is defined recursively as follows. First, bring all of the file’s dependencies up to date. If the file is now older than any of its dependencies or does not exist, execute the command associated with the file.
 
-
-
-
-
-Bringing a file up to date is defined recursively as follows. First, bring all of the file’s dependencies up to date. If the file is now older than one or more of its dependencies, or if it does not yet exist, then execute the command associated with the file.
-
-The recursive update process can be performed by Algorithm 1.
-
-
+The recursive update process can be performed by Algorithm 1. update performs a depth-first search of the dependency graph. A file is marked processed when the search backtracks from the file. The algorithm requires a function modtime that returns the last-modification time of a file. If the file does not exist, modtime returns 0.&#x20;
 
 ```c
 make(file)
 {
-    mark file as active;
     for each of file’s dependencies (in order) {
-        if (the dependency is neither active nor processed) {
+        if (dependency is not processed) {
             make(dependency);
         }
     }
     m_time = modtime(file);
     for each of file’s dependencies {
-        if (dependency is not active and modtime(dependency) > m_time) {
+        if (modtime(dependency) > m_time) {
             record that file is out-of-date;
         }
     }
@@ -34,23 +25,53 @@ make(file)
 }
 ```
 
-
-
-
-
-
-
-update performs a depth-first search> of the dependency graph. A node is marked active when first encountered and marked processed when the search backtracks from the node.
-
-
-
-
-
-
+To make things concrete, let's now examine this traversal at various points in development.&#x20;
 
 #### Case 1: None of the Targets Exist
 
 Assume we're building `testintmath` for the first time. In other words, none of the target files (`testintmath`, `testintmath.o`, `intmath.o`) exist yet. Here's how processed the make file.&#x20;
+
+
+
+
+
+Let's walk through the make process for this case where none of the targets exist. We'll use the algorithm provided to update the `testintmath` target.
+
+* make(`testintmath`)&#x20;
+  * make(`testintmath.o`)&#x20;
+    * make(`testintmath.c`)&#x20;
+      * modtime(`testintmath.c`) = x.y.x
+      * no action (source file, no associated command)&#x20;
+      * mark testintmath.c as processed
+    * make(`intmath.h`)&#x20;
+      * modtime(`intmath.h`) = x.y.z
+      * no action (source file, no associated command)&#x20;
+      * mark intmath.h as processed
+    * modtime(testintmath.o) = 0&#x20;
+    * out of date. execute: gcc -c testintmath.c&#x20;
+    * mark testintmath.o as processed&#x20;
+  * make(intmath.o)&#x20;
+    * make(intmath.c)&#x20;
+      * modtime(intmath.c) = x.y.z
+      * no action (source file, no associated command)&#x20;
+      * mark intmath.c as processed
+    * make(intmath.h) already processed, skip&#x20;
+  * modtime(intmath.o) = 0&#x20;
+  * execute: gcc -c intmath.c&#x20;
+  * mark intmath.o as processed&#x20;
+* modtime(testintmath) = 0&#x20;
+* execute: gcc testintmath.o intmath.o -o testintmath&#x20;
+* mark testintmath as processed
+
+In this case, all commands are executed because none of the files exist. The order of execution is:
+
+1. `gcc -c testintmath.c`
+2. `gcc -c intmath.c`
+3. `gcc testintmath.o intmath.o -o testintmath`
+
+This creates all the object files and the final executable.
+
+
 
 First make notices that the command line contains no targets so it decides to make the default target, testintmath. It sees that testintmath does not exist. It checks for dependencies and sees two: testintmath.o and intmath.o. make now considers how to build testintmath.o and sees a rule for it. Again, it checks the dependencies, notices that count\_words.c has no rules but that the file exists, so make executes the commands to transform count\_words.c into count\_words.o by executing the command:
 
