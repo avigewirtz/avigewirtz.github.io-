@@ -1,14 +1,64 @@
 # How make Processes a Makefile
 
-We saw in the previous section that make  seen that make executes the necessary commands to bring targets up-to-date. But how exactly does make figure out which commands to execute? Let's examine the process in more detail to find out.&#x20;
+We saw in the previous section that make make figures out what work to do to update the specified target. But how exactly does make figure out which commands to execute? Let's examine the execution in more detail to find out.&#x20;
 
-#### Case 1: Running our makefile when all the targets don't exist
 
-Suppose we're building `testintmath` for the first time. In this case, neither `testintmath,` `testintmath.o`, or `intmath.o` exist.&#x20;
 
-make sees
 
-* It starts off by examines the first target, `testintmath`. `make` notes that it does not exist. It might seem that make should immediately invoke the command to build `testintmath` (i.e., `gcc217 testintmath.o intmath.o -o testintmath`) , but make must first ensure that `testintmath`'s dependencies (i.e., `intmath.o`, `testintmath.o`) are up to date. In our case, they don't even exist yet.
+
+Bringing a file up to date is defined recursively as follows. First, bring all of the file’s dependencies up to date. If the file is now older than one or more of its dependencies, or if it does not yet exist, then execute the command associated with the file.
+
+The recursive update process can be performed by Algorithm 1.
+
+
+
+```c
+make(file)
+{
+    mark file as active;
+    for each of file’s dependencies (in order) {
+        if (the dependency is neither active nor processed) {
+            make(dependency);
+        }
+    }
+    m_time = modtime(file);
+    for each of file’s dependencies {
+        if (dependency is not active and modtime(dependency) > m_time) {
+            record that file is out-of-date;
+        }
+    }
+    if (file is out-of-date or m_time == 0) {
+        execute file’s commands;
+    }
+    mark file as processed;
+}
+```
+
+
+
+
+
+
+
+update performs a depth-first search> of the dependency graph. A node is marked active when first encountered and marked processed when the search backtracks from the node.
+
+
+
+
+
+
+
+#### Case 1: None of the Targets Exist
+
+Assume we're building `testintmath` for the first time. In other words, none of the target files (`testintmath`, `testintmath.o`, `intmath.o`) exist yet. Here's how processed the make file.&#x20;
+
+First make notices that the command line contains no targets so it decides to make the default target, testintmath. It sees that testintmath does not exist. It checks for dependencies and sees two: testintmath.o and intmath.o. make now considers how to build testintmath.o and sees a rule for it. Again, it checks the dependencies, notices that count\_words.c has no rules but that the file exists, so make executes the commands to transform count\_words.c into count\_words.o by executing the command:
+
+
+
+count\_words.o, lexer.o, and -lfl. make now considers how to build count\_words.o and sees a rule for it. Again, it checks the prerequisites, notices that count\_words.c has no rules but that the file exists, so make executes the commands to transform count\_words.c into count\_words.o by executing the command:It might seem that make should immediately invoke the command to build `testintmath` (i.e., `gcc217 testintmath.o intmath.o -o testintmath`) , but make must first ensure check for dependencies and ensure that `testintmath`'s dependencies&#x20;
+
+* It starts off by examines the first target, `testintmath`. `make` notes that it does not exist. It might seem that make should immediately invoke the command to build it, but make must first ensure that its dependencies (i.e., `intmath.o`, `testintmath.o`) are up to date. In our case, they don't even exist yet.
   * `make` moves on to `testintmath.o`. It notes that `testintmath.o` does not exist.
     * `make` examines `testintmath.c`. It notes that it exists and is a leaf--meaning, it has no dependencies. Thus, it has no work to do for `testintmath.c`. `make` then backtracks to `testintmath.o`.
     * `make` examines `intmath.h`. It notes that it exists and is a leaf. `make` then backtracks again to `testintmath.o`.
