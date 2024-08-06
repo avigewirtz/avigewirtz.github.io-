@@ -6,10 +6,10 @@ We’ve seen that we can build testintmath incrementally by simply involing make
 
 Bringing a file up-to-date is defined recursively as follows. First, bring its dependencies up to date. If the file is now older than any of its dependencies or does not exist, bring it up-to-date by executing its corresponding command.
 
-The key point is that is that a file's dependenices musy be processed before the file itself. If you've taken COS226, you might recognize that this can be achived via a depth first search of the dependency graph. Here's how it works. make begins the traversal from the default
-target or the target soecified on tje command line. `make` recursively examines its dependencies, diving deeper until it reaches a file without any dependencies. make then processes the file and backtracks. 
+The key point is that is that a file's dependenices must be processed before the file itself. Only then can make determine how to proceed with the current file. If you've taken COS226, you might recognize that this can be achieved via a depth first search of the dependency graph. Here's how it works. make begins the traversal from the default
+target or the target specified on the command line. `make` recursively examines its dependencies, diving deeper until it reaches a file without any dependencies. make then processes the file, backtracks, and repeats the process. after make has finished preprocessing a file's dependencies, it checks if the file is older than any of its dependenies or doesnt exist. If so, it executes the file's command. 
 
-The psuedocode for this algorithm is shown below. Note that this algorithm uses a function, modtime, which returns the last-modification time of a file. If the file does not exist, modtime returns 0
+The psuedocode for this algorithm is shown below. Thid algorithm relies on a function modtime which returns the last-modification time of a file or 0 if the file doesnt exist.
 
 ```c
 make(file)
