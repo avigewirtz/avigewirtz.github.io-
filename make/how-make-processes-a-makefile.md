@@ -32,11 +32,11 @@ make(file)
 }
 ```
 
-To make things concrete, let's trace this algorithm at various states of our files.
+To make things concrete, let's trace this algorithm at various stages of development.
 
 #### Case 1: None of the Targets Exist
 
-Assume we're building `testintmath` for the first time. In other words, none of the target files (`testintmath`, `testintmath.o`, `intmath.o`) exist yet. Here's how processed the make file.
+Assume we're building `testintmath` for the first time. In other words, none of the target files (`testintmath`, `testintmath.o`, `intmath.o`) exist yet. Here's how make would process the dependency graph.
 
 * <mark style="color:red;">make(</mark><mark style="color:red;">`testintmath`</mark><mark style="color:red;">)</mark>
   * <mark style="color:purple;">make(</mark><mark style="color:purple;">`testintmath.o`</mark><mark style="color:purple;">)</mark>
