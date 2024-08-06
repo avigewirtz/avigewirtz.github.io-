@@ -1,6 +1,6 @@
 # How make Processes a Makefile
 
-We've seen that we can build `testintmath` incrementally by simply invoking make. But how exactly does make figure out which commands (if any) to execute to bring `testintmath` up-to-date? Let's examine the execution in more detail to find out.
+We've seen that we can build `testintmath` incrementally by simply invoking make. But how exactly does make figure out what to do? Let's examine the process in more detail to find out.
 
 #### Core Algorithm&#x20;
 
