@@ -11,11 +11,7 @@ Bringing a file up-to-date is defined recursively as follows:
 
 The key point to recognize is that `make` cannot determine how to proceed with a file until it has ensured that its (direct and transitive) dependencies are up-to-date. Any traversal of the dependency graph in which each file's dependencies are processed before the file itself is a valid traversal. If you've taken COS226, one such traversal might immediately come to mind: depth-first search (DFS).
 
-Here's how the DFS traversal of the dependency graph works. `make` begins the traversal from the default target or the target specified on the command line. `make` recursively examines its dependencies, diving deeper until it reaches a file without any dependencies. `make` then processes the file, backtracks to the parent file, and repeats the process for any remaining dependencies. After `make` has finished preprocessing a file's dependencies, it checks if the file is older than any of its dependencies or doesn't exist. If so, it executes the file's command. If an error occurs during the execution of any command, `make` typically stops the build process and reports the error, although this behavior can be modified with flags such as `-k` to continue despite errors.
-
-<figure><img src="../.gitbook/assets/Group 263.png" alt="" width="563"><figcaption></figcaption></figure>
-
-The pseudocode for this algorithm is shown below. This algorithm relies on a function modtime which returns the last-modification time of a file or 0 if the file doesn't exist. This function marks a file as processed when the search backtracks from it. Note that this does not affect the file. It's simply for internal record-keeping to prevent revisiting a file that has already been processed. In our case, it prevents make from processing `intmath.h` twice.
+The pseudocode for the DFS traversal is shown below. This algorithm relies on a function modtime which returns the last-modification time of a file or 0 if the file doesn't exist. This function marks a file as processed when the search backtracks from it. Note that this does not affect the file. It's simply for internal record-keeping to prevent processing a file twice (in our case, `intmath.h`). If an error occurs during the execution of any command, `make` stops the build process and reports the error.
 
 ```c
 make(file)
@@ -41,11 +37,15 @@ make(file)
 }
 ```
 
-To make things concrete, let's trace this algorithm at various stages of development.
+Here is the dependency graph where each file is labeled according to the order in which the DFS traversal encounters and processes it:&#x20;
+
+<figure><img src="../.gitbook/assets/Group 263.png" alt="" width="563"><figcaption></figcaption></figure>
+
+To make things concrete, let's trace this DFS traversal at various stages of development.
 
 #### Case 1: None of the Targets Exist
 
-Assume we're building `testintmath` for the first time. In other words, none of the target files (`testintmath`, `testintmath.o`, `intmath.o`) exist yet. Here's how make processes the dependency graph. Note that I'm using arbitrary integers to represent the files' modification times (besides for 0, which indicates that the file doesn't exist).
+Assume we're building `testintmath` for the first time. Neither `testintmath` nor the object files (`testintmath.o` and `intmath.o`) exist yet. Here's a trace of the above shown algorithm in action. Note that I use arbitrary integers to represent the files' modification times (besides for 0, which indicates that the file doesn't exist).
 
 * <mark style="color:red;">make(</mark><mark style="color:red;">`testintmath`</mark><mark style="color:red;">)</mark>
   * <mark style="color:purple;">make(</mark><mark style="color:purple;">`testintmath.o`</mark><mark style="color:purple;">)</mark>
