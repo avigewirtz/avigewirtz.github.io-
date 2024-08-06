@@ -9,8 +9,6 @@ Bringing a file up-to-date is defined recursively as follows:
 * First, bring its dependencies up to date.
 * If the file is now older than any of its dependencies, or if it does not exist, execute its corresponding command(s).(Note that I include the plural case since a rule may have more than one command.) 
 
-Bringing a file up-to-date is defined recursively as follows:
-
 The key point to recognize is that `make` cannot determine how to proceed with a file until it has ensured that its dependencies are up-to-date. Any traversal of the dependency graph in which each file's dependencies are processed before the file itself is a valid traversal. If you've taken COS226, one such traversal might immediately come to mind: depth-first search (DFS).
 
 Here's how the DFS traversal of the dependency graph works. `make` begins the traversal from the default target or the target specified on the command line. `make` recursively examines its dependencies, diving deeper until it reaches a file without any dependencies. `make` then processes the file, backtracks to the parent file, and repeats the process for any remaining dependencies. After `make` has finished preprocessing a file's dependencies, it checks if the file is older than any of its dependencies or doesn't exist. If so, it executes the file's command. If an error occurs during the execution of any command, `make` typically stops the build process and reports the error, although this behavior can be modified with flags such as `-k` to continue despite errors.
