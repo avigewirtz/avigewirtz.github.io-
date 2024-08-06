@@ -7,7 +7,7 @@ We've seen that we can build `testintmath` incrementally by simply invoking make
 Bringing a file up-to-date is defined recursively as follows:
 
 * First, bring its dependencies up to date.
-* If the file is now older than any of its dependencies, or if it does not exist, execute its corresponding command(s).(Note that I include the plural case since a rule may have more than one command.) 
+* If the file is now older than any of its dependencies, or if it does not exist, execute its corresponding command(s).
 
 The key point to recognize is that `make` cannot determine how to proceed with a file until it has ensured that its (direct and transitive) dependencies are up-to-date. Any traversal of the dependency graph in which each file's dependencies are processed before the file itself is a valid traversal. If you've taken COS226, one such traversal might immediately come to mind: depth-first search (DFS).
 
