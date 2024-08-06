@@ -102,22 +102,6 @@
 * [Advanced Features](make/implicit-rules.md)
 * [Further Reading](make/further-reading.md)
 
-## Emacs
-
-* [Introduction](emacs/background.md)
-* [Emacs Interface](emacs/fundamentals/README.md)
-* [Getting Started](emacs/basic-commands/README.md)
-  * [Launching and Exiting Emacs](emacs/basic-commands/launching-and-existing-emacs.md)
-  * [Moving the cursor](emacs/basic-commands/moving-the-cursor.md)
-  * [Selecting a Region](emacs/basic-commands/selecting-a-region.md)
-  * [Basic Editing Commands](emacs/basic-commands/basic-editing-commands.md)
-* [More Advanced Commands](emacs/more-advanced-commands/README.md)
-  * [Managing Windows and Buffers](emacs/more-advanced-commands/managing-windows-and-buffers.md)
-  * [Search and Replace](emacs/more-advanced-commands/search-and-replace.md)
-  * [Building](emacs/more-advanced-commands/building.md)
-* [Emacs Cheat Sheet](emacs/emacs-cheat-sheet.md)
-* [Further Reading](emacs/further-reading.md)
-
 ## Gprof
 
 * [Background](gprof/background.md)
