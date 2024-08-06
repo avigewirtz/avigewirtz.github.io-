@@ -7,7 +7,7 @@ We've seen that we can build `testintmath` incrementally by simply invoking make
 Bringing a file up-to-date is defined recursively as follows:
 
 * First, bring its dependencies up to date.
-* If the file is now older than any of its dependencies, or if it does not exist, execute its corresponding command(s).
+* If the file is now older than any of its dependencies, or if it does not exist, execute its corresponding command(s).(Note rhat I include the plural case since a rule may have more than one command.) 
 
 Bringing a file up-to-date is defined recursively as follows:
 
