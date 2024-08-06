@@ -1,12 +1,12 @@
 # How make Processes a Makefile
 
-We’ve seen after setting up our makefile for testintmath, we can incrementally build it by simply invoking make. In response, make will execute the command necessary to being intmath up to date. But how does make determine what to execute? Let’s examine the process in more detail to find out. 
+We’ve seen after setting up our makefile for testintmath, we can incrementally build it by simply invoking make. In response, make will execute the command necessary to being intmath up to date. But how does make determine what to execute? Let’s examine the process in more detail to find out.
 
 #### Core Algorithm
 
 Bringing a file up to date is defined recursively as follows. First, bring its dependencies up to date. If the file is now older than any of its dependencies or does not exist, execute its corresponding command.
 
-A simple algorithm for bringing files up to date is shown below. update performs a depth-first search of the dependency graph. A file is marked processed when the search backtracks from the file. The algorithm requires a function modtime that returns the last-modification time of a file. If the file does not exist, modtime returns 0.&#x20;
+A simple algorithm for bringing files up to date is shown below. update performs a depth-first search of the dependency graph. A file is marked processed when the search backtracks from the file. The algorithm requires a function modtime that returns the last-modification time of a file. If the file does not exist, modtime returns 0.
 
 ```c
 make(file)
@@ -24,48 +24,37 @@ make(file)
     }
     if (file is out-of-date or m_time == 0) {
         execute file’s commands;
+        if (commands fails) {
+            exit_with_error;
+        }
     }
     mark file as processed;
 }
 ```
 
-To make things concrete, let's trace this algorithm at varipus states of our files.
+To make things concrete, let's trace this algorithm at various states of our files.
 
 #### Case 1: None of the Targets Exist
 
-Assume we're building `testintmath` for the first time. In other words, none of the target files (`testintmath`, `testintmath.o`, `intmath.o`) exist yet. Here's how processed the make file.&#x20;
+Assume we're building `testintmath` for the first time. In other words, none of the target files (`testintmath`, `testintmath.o`, `intmath.o`) exist yet. Here's how processed the make file.
 
-
-
-
-
-Let's walk through the make process for this case where none of the targets exist. We'll use the algorithm provided to update the `testintmath` target.
-
-
-
-
-
-* <mark style="color:red;">make(</mark><mark style="color:red;">`testintmath`</mark><mark style="color:red;">)</mark>&#x20;
-  * <mark style="color:purple;">make(</mark><mark style="color:purple;">`testintmath.o`</mark><mark style="color:purple;">)</mark>&#x20;
-    * <mark style="color:green;">make(</mark><mark style="color:green;">`testintmath.c`</mark><mark style="color:green;">)</mark>&#x20;
-    * <mark style="color:green;">modtime(</mark><mark style="color:green;">`testintmath.c`</mark><mark style="color:green;">) = x.y.x. Mark</mark> <mark style="color:green;"></mark><mark style="color:green;">`testintmath.c`</mark> <mark style="color:green;"></mark><mark style="color:green;">as processed</mark>
-    * <mark style="color:green;">make(</mark><mark style="color:green;">`intmath.h`</mark><mark style="color:green;">)</mark>&#x20;
-    * <mark style="color:green;">modtime(</mark><mark style="color:green;">`intmath.h`</mark><mark style="color:green;">) = x.y.x. Mark</mark> <mark style="color:green;"></mark><mark style="color:green;">`intmath.h`</mark> <mark style="color:green;"></mark><mark style="color:green;">as processed</mark>
-  * <mark style="color:purple;">modtime(</mark><mark style="color:purple;">`testintmath.o`</mark><mark style="color:purple;">) = 0. Out-of-date. Execute:</mark> <mark style="color:purple;"></mark><mark style="color:purple;">`gcc -c testintmath.c`</mark><mark style="color:purple;">. Mark</mark> <mark style="color:purple;"></mark><mark style="color:purple;">`testintmath.o`</mark> <mark style="color:purple;"></mark><mark style="color:purple;">as processed</mark>
-  * <mark style="color:purple;">make(</mark><mark style="color:purple;">`intmath.o`</mark><mark style="color:purple;">)</mark>&#x20;
-    * <mark style="color:green;">make(</mark><mark style="color:green;">`intmath.c`</mark><mark style="color:green;">)</mark>&#x20;
-    * <mark style="color:green;">modtime(</mark><mark style="color:green;">`intmath.c`</mark><mark style="color:green;">) = x.y.x. Mark</mark> <mark style="color:green;"></mark><mark style="color:green;">`intmath.c`</mark> <mark style="color:green;"></mark><mark style="color:green;">as processed</mark>
-    * <mark style="color:green;">Skips redundant intmath.h check</mark>
-  * <mark style="color:purple;">modtime(</mark><mark style="color:purple;">`intmath.o`</mark><mark style="color:purple;">) = 0. Out-of-date. Execute:</mark> <mark style="color:purple;"></mark><mark style="color:purple;">`gcc -c intmath.c`</mark><mark style="color:purple;">. Mark</mark> <mark style="color:purple;"></mark><mark style="color:purple;">`intmath.o`</mark> <mark style="color:purple;"></mark><mark style="color:purple;">as processed</mark>
-* <mark style="color:red;">modtime(</mark><mark style="color:red;">`testintmath`</mark><mark style="color:red;">) = 0. Out-of-date. Execute:</mark> <mark style="color:red;"></mark><mark style="color:red;">`gcc testintmath.o intmath.o - testintmath`</mark><mark style="color:red;">. Mark</mark> <mark style="color:red;"></mark><mark style="color:red;">`testintmath`</mark> <mark style="color:red;"></mark><mark style="color:red;">as processed</mark>
-
-
+* <mark style="color:red;">make(</mark><mark style="color:red;">`testintmath`</mark><mark style="color:red;">)</mark>
+  * <mark style="color:purple;">make(</mark><mark style="color:purple;">`testintmath.o`</mark><mark style="color:purple;">)</mark>
+    * <mark style="color:green;">make(</mark><mark style="color:green;">`testintmath.c`</mark><mark style="color:green;">)</mark>
+    * <mark style="color:green;">modtime(</mark><mark style="color:green;">`testintmath.c`</mark><mark style="color:green;">) = 1. Mark</mark> <mark style="color:green;">`testintmath.c`</mark> <mark style="color:green;">as processed</mark>
+    * <mark style="color:green;">make(</mark><mark style="color:green;">`intmath.h`</mark><mark style="color:green;">)</mark>
+    * <mark style="color:green;">modtime(</mark><mark style="color:green;">`intmath.h`</mark><mark style="color:green;">) = 2. Mark</mark> <mark style="color:green;">`intmath.h`</mark> <mark style="color:green;">as processed</mark>
+  * <mark style="color:purple;">modtime(</mark><mark style="color:purple;">`testintmath.o`</mark><mark style="color:purple;">) = 0. Out-of-date. Execute:</mark> <mark style="color:purple;">`gcc -c testintmath.c`</mark><mark style="color:purple;">. Mark</mark> <mark style="color:purple;">`testintmath.o`</mark> <mark style="color:purple;">as processed</mark>
+  * <mark style="color:purple;">make(</mark><mark style="color:purple;">`intmath.o`</mark><mark style="color:purple;">)</mark>
+    * <mark style="color:green;">make(</mark><mark style="color:green;">`intmath.c`</mark><mark style="color:green;">)</mark>
+    * <mark style="color:green;">modtime(</mark><mark style="color:green;">`intmath.c`</mark><mark style="color:green;">) = 3. Mark</mark> <mark style="color:green;">`intmath.c`</mark> <mark style="color:green;">as processed</mark>
+      * <mark style="color:green;">Avoids redundant</mark> <mark style="color:green;"></mark><mark style="color:green;">`intmath.h`</mark> <mark style="color:green;"></mark><mark style="color:green;">check</mark>
+  * <mark style="color:purple;">modtime(</mark><mark style="color:purple;">`intmath.o`</mark><mark style="color:purple;">) = 0. Out-of-date. Execute:</mark> <mark style="color:purple;">`gcc -c intmath.c`</mark><mark style="color:purple;">. Mark</mark> <mark style="color:purple;">`intmath.o`</mark> <mark style="color:purple;">as processed</mark>
+* <mark style="color:red;">modtime(</mark><mark style="color:red;">`testintmath`</mark><mark style="color:red;">) = 0. Out-of-date. Execute:</mark> <mark style="color:red;">`gcc testintmath.o intmath.o - testintmath`</mark><mark style="color:red;">. Mark</mark> <mark style="color:red;">`testintmath`</mark> <mark style="color:red;">as processed</mark>
 
 First make notices that the command line contains no targets so it decides to make the default target, testintmath. It sees that testintmath does not exist. It checks for dependencies and sees two: testintmath.o and intmath.o. make now considers how to build testintmath.o and sees a rule for it. Again, it checks the dependencies, notices that count\_words.c has no rules but that the file exists, so make executes the commands to transform count\_words.c into count\_words.o by executing the command:
 
-
-
-count\_words.o, lexer.o, and -lfl. make now considers how to build count\_words.o and sees a rule for it. Again, it checks the prerequisites, notices that count\_words.c has no rules but that the file exists, so make executes the commands to transform count\_words.c into count\_words.o by executing the command:It might seem that make should immediately invoke the command to build `testintmath` (i.e., `gcc217 testintmath.o intmath.o -o testintmath`) , but make must first ensure check for dependencies and ensure that `testintmath`'s dependencies&#x20;
+count\_words.o, lexer.o, and -lfl. make now considers how to build count\_words.o and sees a rule for it. Again, it checks the prerequisites, notices that count\_words.c has no rules but that the file exists, so make executes the commands to transform count\_words.c into count\_words.o by executing the command:It might seem that make should immediately invoke the command to build `testintmath` (i.e., `gcc217 testintmath.o intmath.o -o testintmath`) , but make must first ensure check for dependencies and ensure that `testintmath`'s dependencies
 
 * It starts off by examines the first target, `testintmath`. `make` notes that it does not exist. It might seem that make should immediately invoke the command to build it, but make must first ensure that its dependencies (i.e., `intmath.o`, `testintmath.o`) are up to date. In our case, they don't even exist yet.
   * `make` moves on to `testintmath.o`. It notes that `testintmath.o` does not exist.
@@ -87,8 +76,6 @@ Any traversal of the graph in which each file is processed only after its depend
 `make` processes a Makefile via a [depth first search](https://en.wikipedia.org/wiki/Depth-first\_search) (DFS) traversal of its dependency graph, starting from the default target or from the target specified on the command line. For each target, `make` recursively examines its dependencies, diving deeper until it reaches a leaf node (a file without any dependencies). During the traversal, it notes if each file exists, and if so, its timestamp. When it hits a leaf node, `make` backtracks to the previous target and checks any remaining dependencies.
 
 During backtracking, it executes the command to build each target if either the target does not exist or if one of its deoendencies has a more recent modification timestamp.
-
-
 
 If an error occurs during the execution of any command, `make` typically stops the build process and reports the error, although this behavior can be modified with flags such as `-k` to continue despite errors.
 
