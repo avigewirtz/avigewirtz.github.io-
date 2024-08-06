@@ -6,10 +6,11 @@ We’ve seen that we can build testintmath incrementally by simply involing make
 
 Bringing a file up-to-date is defined recursively as follows. First, bring its dependencies up to date. If the file is now older than any of its dependencies or does not exist, bring it up-to-date by executing its corresponding command.
 
-The key point is that is that a file's dependenices must be processed before the file itself. Only then can make determine how to proceed with the current file. If you've taken COS226, you might recognize that this can be achieved via a depth first search of the dependency graph. Here's how it works. make begins the traversal from the default
+The key point to recognize is that make cannot determine how to proceed with a file
+until it has ensured that its dependencies are up-to-date. Any traversal of the dependency graph in which each file's dependencies are processed before the file itself is a valid traverdal. If you've gaken COS226, one such traversal might immediately come to mind: depth-first search. Here's how it works. make begins the traversal from the default
 target or the target specified on the command line. `make` recursively examines its dependencies, diving deeper until it reaches a file without any dependencies. make then processes the file, backtracks, and repeats the process. after make has finished preprocessing a file's dependencies, it checks if the file is older than any of its dependenies or doesnt exist. If so, it executes the file's command. 
 
-The psuedocode for this algorithm is shown below. Thid algorithm relies on a function modtime which returns the last-modification time of a file or 0 if the file doesnt exist.
+The psuedocode for this algorithm is shown below. Thid algorithm relies on a function modtime which returns the last-modification time of a file or 0 if the file doesnt exist. Note that marking a file processed foes not affevt the file. The purpose is to prevent revisiting a file that has already been processed. In our case, it prevents make from processinf intmath.h twice. 
 
 ```c
 make(file)
@@ -34,8 +35,6 @@ make(file)
     mark file as processed;
 }
 ```
-
-Note that marking a file processed foes not affevt the file. The purpose is to prevent revisiting a file that has already been processed. In our case, it prevents make from processinf intmath.h twice. 
 
 To make things concrete, let's trace this algorithm at various stages of development.
 
