@@ -1,16 +1,21 @@
 # How make Processes a Makefile
 
-We’ve seen that we can build testintmath incrementally by simply involing make. But how exactly does make figure out which commands (if any) to execute to being testintmath up-to-date? lets examine the execution in more detail to find out. 
+We've seen that we can build `testintmath` incrementally by simply invoking make. But how exactly does make figure out which commands (if any) to execute to bring `testintmath` up-to-date? Let's examine the execution in more detail to find out.
 
-#### Core Algorithm
+#### Core Algorithm&#x20;
 
-Bringing a file up-to-date is defined recursively as follows. First, bring its dependencies up to date. If the file is now older than any of its dependencies or does not exist, bring it up-to-date by executing its corresponding command.
+Bringing a file up-to-date is defined recursively as follows:
 
-The key point to recognize is that make cannot determine how to proceed with a file
-until it has ensured that its dependencies are up-to-date. Any traversal of the dependency graph in which each file's dependencies are processed before the file itself is a valid traverdal. If you've gaken COS226, one such traversal might immediately come to mind: depth-first search. Here's how it works. make begins the traversal from the default
-target or the target specified on the command line. `make` recursively examines its dependencies, diving deeper until it reaches a file without any dependencies. make then processes the file, backtracks, and repeats the process. after make has finished preprocessing a file's dependencies, it checks if the file is older than any of its dependenies or doesnt exist. If so, it executes the file's command. 
+* First, bring its dependencies up to date.
+* If the file is now older than any of its dependencies or does not exist, execute its corresponding command(s).
 
-The psuedocode for this algorithm is shown below. Thid algorithm relies on a function modtime which returns the last-modification time of a file or 0 if the file doesnt exist. Note that marking a file processed foes not affevt the file. The purpose is to prevent revisiting a file that has already been processed. In our case, it prevents make from processinf intmath.h twice. 
+Bringing a file up-to-date is defined recursively as follows:
+
+The key point to recognize is that `make` cannot determine how to proceed with a file until it has ensured that its dependencies are up-to-date. Any traversal of the dependency graph in which each file's dependencies are processed before the file itself is a valid traversal. If you've taken COS226, one such traversal might immediately come to mind: depth-first search (DFS).
+
+Here's how the DFS traversal of the dependency graph works. `make` begins the traversal from the default target or the target specified on the command line. `make` recursively examines its dependencies, diving deeper until it reaches a file without any dependencies. `make` then processes the file, backtracks to the parent file, and repeats the process for any remaining dependencies. After `make` has finished preprocessing a file's dependencies, it checks if the file is older than any of its dependencies or doesn't exist. If so, it executes the file's command.
+
+The pseudocode for this algorithm is shown below. This algorithm relies on a function modtime which returns the last-modification time of a file or 0 if the file doesn't exist. This function marks a file as processed when the search backtracks from it. Note that this does not affect the file. It's simply for internal record-keeping to prevent revisiting a file that has already been processed. In our case, it prevents make from processing `intmath.h` twice.
 
 ```c
 make(file)
@@ -40,7 +45,15 @@ To make things concrete, let's trace this algorithm at various stages of develop
 
 #### Case 1: None of the Targets Exist
 
-Assume we're building `testintmath` for the first time. In other words, none of the target files (`testintmath`, `testintmath.o`, `intmath.o`) exist yet. Here's how make would process the dependency graph.
+Assume we're building `testintmath` for the first time. In other words, none of the target files (`testintmath`, `testintmath.o`, `intmath.o`) exist yet. Running make, we see that...
+
+```
+// Some code
+```
+
+
+
+Here's how make processes the dependency graph. Note that I'm using arbitrary integers to represent the files' modification times (besides for 0, which indicates that the file doesn't exist).
 
 * <mark style="color:red;">make(</mark><mark style="color:red;">`testintmath`</mark><mark style="color:red;">)</mark>
   * <mark style="color:purple;">make(</mark><mark style="color:purple;">`testintmath.o`</mark><mark style="color:purple;">)</mark>
@@ -52,28 +65,11 @@ Assume we're building `testintmath` for the first time. In other words, none of 
   * <mark style="color:purple;">make(</mark><mark style="color:purple;">`intmath.o`</mark><mark style="color:purple;">)</mark>
     * <mark style="color:green;">make(</mark><mark style="color:green;">`intmath.c`</mark><mark style="color:green;">)</mark>
     * <mark style="color:green;">modtime(</mark><mark style="color:green;">`intmath.c`</mark><mark style="color:green;">) = 3. Mark</mark> <mark style="color:green;">`intmath.c`</mark> <mark style="color:green;">as processed</mark>
-      * <mark style="color:green;">Avoids redundant</mark> <mark style="color:green;"></mark><mark style="color:green;">`intmath.h`</mark> <mark style="color:green;"></mark><mark style="color:green;">check</mark>
+    * <mark style="color:green;">Avoids redundant</mark> <mark style="color:green;">`intmath.h`</mark> <mark style="color:green;">check</mark>
   * <mark style="color:purple;">modtime(</mark><mark style="color:purple;">`intmath.o`</mark><mark style="color:purple;">) = 0. Out-of-date. Execute:</mark> <mark style="color:purple;">`gcc -c intmath.c`</mark><mark style="color:purple;">. Mark</mark> <mark style="color:purple;">`intmath.o`</mark> <mark style="color:purple;">as processed</mark>
 * <mark style="color:red;">modtime(</mark><mark style="color:red;">`testintmath`</mark><mark style="color:red;">) = 0. Out-of-date. Execute:</mark> <mark style="color:red;">`gcc testintmath.o intmath.o - testintmath`</mark><mark style="color:red;">. Mark</mark> <mark style="color:red;">`testintmath`</mark> <mark style="color:red;">as processed</mark>
 
-First make notices that the command line contains no targets so it decides to make the default target, testintmath. It sees that testintmath does not exist. It checks for dependencies and sees two: testintmath.o and intmath.o. make now considers how to build testintmath.o and sees a rule for it. Again, it checks the dependencies, notices that count\_words.c has no rules but that the file exists, so make executes the commands to transform count\_words.c into count\_words.o by executing the command:
 
-count\_words.o, lexer.o, and -lfl. make now considers how to build count\_words.o and sees a rule for it. Again, it checks the prerequisites, notices that count\_words.c has no rules but that the file exists, so make executes the commands to transform count\_words.c into count\_words.o by executing the command:It might seem that make should immediately invoke the command to build `testintmath` (i.e., `gcc217 testintmath.o intmath.o -o testintmath`) , but make must first ensure check for dependencies and ensure that `testintmath`'s dependencies
-
-* It starts off by examines the first target, `testintmath`. `make` notes that it does not exist. It might seem that make should immediately invoke the command to build it, but make must first ensure that its dependencies (i.e., `intmath.o`, `testintmath.o`) are up to date. In our case, they don't even exist yet.
-  * `make` moves on to `testintmath.o`. It notes that `testintmath.o` does not exist.
-    * `make` examines `testintmath.c`. It notes that it exists and is a leaf--meaning, it has no dependencies. Thus, it has no work to do for `testintmath.c`. `make` then backtracks to `testintmath.o`.
-    * `make` examines `intmath.h`. It notes that it exists and is a leaf. `make` then backtracks again to `testintmath.o`.
-  * Having determined that `testintmath.o`'s dependencies exist and are up to date, `make` now builds `testintmath.o` by invoking: `gcc217 -c testintmath.c`. It then backtracks to `testintmath`.
-  * `make` now examines testintmath's other dependency--intmath.o. It notes that it does not exist.
-    * `make` then examines intmath.c. It notes that it exists and is a leaf.
-    * `make` sees that intmath.o's other dependency is intmath.h. It avoids a redundant check and instead goes back up to intmath.o
-  * `make` now builds `intmath.o` by invoking: `gcc217 -c intmath.c`. It then goes back up to `testintmath`.
-* Finally, `make` builds `testintmath` by invoking: `gcc217 testintmath.o intmath.o -o testintmath`.
-
-The DFS traversal is summarized in Figure 2.4.
-
-<figure><img src="../.gitbook/assets/Group 66 (7).png" alt=""><figcaption></figcaption></figure>
 
 Any traversal of the graph in which each file is processed only after its dependencies are processed is a valid traversal.
 
@@ -85,31 +81,11 @@ If an error occurs during the execution of any command, `make` typically stops t
 
 Let's now examine this DFS traversal at various points in development.
 
-#### Case 2: Running our makefile when all targets are up to date
+#### Case 2: All targets up up-to-date
 
-Suppose we invoke `make` immediately after building `testintmath`. make will respond by notifying us that `testintmath` is up to date, and hence it will not execute any commands:
+Suppose we invoke `make` immediately after building `testintmath`.&#x20;
 
-```bash
-$ make
-make: `testintmath' is up to date.
-$
-```
+#### Case 3:&#x20;
 
-The DFS traversal is summarized in Figure 2.5.
+Suppose we invoke `make` after `intmath.c` is modified, but all the other files remain untouched.&#x20;
 
-<figure><img src="../.gitbook/assets/Group 67 (2).png" alt=""><figcaption></figcaption></figure>
-
-#### Case 3: Running our makefile after a source file is modified
-
-Suppose we invoke `make` after `intmath.c` is modified, but all the other files remain untouched. Make will execute the commands to build `intmath.o` and `testintmath`, but it will not execute the command to build `testintmath.o`:
-
-```bash
-$ make
-gcc -c intmath.c
-gcc testintmath.o intmath.o -o testintmath
-$
-```
-
-The DFS traversal is summarized in Figure 2.6.
-
-<figure><img src="../.gitbook/assets/Group 68 (4) (1).png" alt=""><figcaption></figcaption></figure>
