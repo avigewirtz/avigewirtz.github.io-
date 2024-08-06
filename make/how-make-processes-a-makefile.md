@@ -8,9 +8,9 @@ figure out which commands (if any) to execute to being testintmath up-to-date? l
 Bringing a file up-to-date is defined recursively as follows. First, bring its dependencies up to date. If the file is now older than any of its dependencies or does not exist, bring it up-to-date by executing its corresponding command.
 
 The key point is that is that a file's dependenices musy be processed before the file itself. If you've taken COS226, you might recognize that this can be achived via a depth first search of the dependency graph. Here's how it works. make begins the traversal from the default
-target or the target soecified on tje command line. `make` recursively examines its dependencies, diving deeper until it reaches a file without any dependencies. 
+target or the target soecified on tje command line. `make` recursively examines its dependencies, diving deeper until it reaches a file without any dependencies. make then processes the file and backtracks. 
 
-A simple algorithm for bringing files up to date is shown below. update performs a depth-first search of the dependency graph. A file is marked processed when the search backtracks from the file. The algorithm requires a function modtime that returns the last-modification time of a file. If the file does not exist, modtime returns 0.
+The psuedocode for this algorithm is shown below. Note that this algorithm uses a function, modtime, which returns the last-modification time of a file. If the file does not exist, modtime returns 0
 
 ```c
 make(file)
@@ -35,6 +35,8 @@ make(file)
     mark file as processed;
 }
 ```
+
+Note that marking a file processed foes not affevt the file. The purpose is to prevent revisiting a file that has already been processed. In our case, it prevents make from processinf intmath.h twice. 
 
 To make things concrete, let's trace this algorithm at various stages of development.
 
