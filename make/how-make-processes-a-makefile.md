@@ -6,28 +6,12 @@ We've seen that we can build `testintmath` incrementally by simply invoking make
 
 Bringing a file up-to-date is defined recursively as follows:
 
-* First, bring its dependencies up to date.
-* If the file is now older than any of its dependencies, or if it does not exist, execute its corresponding command(s).
+1. Bring its dependencies up-to-date.
+2. If the file is now older than any of its dependencies, or if it does not exist, execute its corresponding command(s).
 
 The key point to recognize is that `make` cannot determine how to proceed with a file until it has processed all its dependencies. Because dependencies can themselves be targets with their own dependencies, this process is inherently recursive.&#x20;
 
-Any traversal of the dependency graph in which each file's dependencies are processed before the file itself is a valid traversal. If you've taken COS226, one such traversal might immediately come to mind: depth-first search (DFS).&#x20;
-
-Here's how the DFS traversal of the dependency graph works:
-
-* The search begins with the default target or the target specified on the command line.&#x20;
-* For each file, `make` first recursively processes all its dependencies before processing the file itself. This ensures that all prerequisites are up-to-date before deciding whether to rebuild the current file.
-* As the traversal progresses, files are marked as "active" when first encountered and "processed" when completed. This marking strategy prevents infinite looping in the case of circular dependencies and avoids redundant processing.
-* After processing dependencies, `make` compares the file's timestamp with those of its dependencies. If any dependency is newer or if the file doesn't exist, it's marked as out-of-date.
-* If a file is out-of-date, `make` executes the associated commands to rebuild it. A file’s updating commands are executed after the search explores all edges leaving that node, so the ordering of files according to potential command execution gives a postorder listing of the DFS tree.&#x20;
-* After processing a file and its dependencies, the traversal backtracks to the parent in the dependency tree.
-* The process continues until all reachable nodes in the dependency graph have been explored and processed. If an error occurs during the build process, the search halts and the error is reported.
-
-Here is our dependency graph with each file labeled according to the order in which the DFS traversal encounters and processes it:&#x20;
-
-<figure><img src="../.gitbook/assets/Group 263.png" alt="" width="563"><figcaption></figcaption></figure>
-
-And here is the pseudocode for the DFS traversal of the dependency graph:&#x20;
+This process can be achieved via the following algorithm. This is simply a [depth first search](https://en.wikipedia.org/wiki/Depth-first\_search) (DFS) traversal of the dependency graph, where files are marked as "active" when first encountered and "processed" when completed. This marking strategy prevents infinite looping in the case of circular dependencies and avoids redundant processing. This algorithm relies on a function `modtime` which returns the last-modification time of a file or 0 if the file doesn't exist.&#x20;
 
 ```c
 make(file)
@@ -54,10 +38,12 @@ make(file)
 }
 ```
 
-Note that this algorithm relies on a function modtime which returns the last-modification time of a file or 0 if the file doesn't exist.&#x20;
+Here is our dependency graph with each file labeled according to the order in which the DFS traversal encounters and processes it:&#x20;
+
+<figure><img src="../.gitbook/assets/Group 263.png" alt="" width="563"><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-This algorithm is not intended to be a faithful representation of the precise algorithm used by any implementation of make. It is simply intended to. Samples modification time before processing dependencies. Also, allows for phony targets. In this algorithm, won't work if&#x20;
+This algorithm is not intended to faithful represent the precise algorithm used by any implementation of make. It is simply intended to. Samples modification time before processing dependencies. Also, allows for phony targets. In this algorithm, won't work if&#x20;
 {% endhint %}
 
 To make things concrete, let's trace this DFS traversal at various stages of development.
