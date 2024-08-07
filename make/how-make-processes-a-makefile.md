@@ -13,15 +13,22 @@ The key point to recognize is that `make` cannot determine how to proceed with a
 
 Any traversal of the dependency graph in which each file's dependencies are processed before the file itself is a valid traversal. If you've taken COS226, one such traversal might immediately come to mind: depth-first search (DFS).&#x20;
 
-Here's how the DFS traversal of the dependency graph works. \<fill in>.
+Here's how the DFS traversal of the dependency graph works:
+
+* The search begins with the default target or the target specified on the command line.&#x20;
+* For each file, `make` first recursively processes all its dependencies before processing the file itself. This ensures that all prerequisites are up-to-date before deciding whether to rebuild the current file.
+* As the traversal progresses, files are marked as "active" when first encountered and "processed" when completed. This marking strategy prevents infinite looping in the case of circular dependencies and avoids redundant processing.
+* After processing dependencies, `make` compares the file's timestamp with those of its dependencies. If any dependency is newer or if the file doesn't exist, it's marked as out-of-date.
+* If a file is out-of-date, `make` executes the associated commands to rebuild it. A file’s updating commands are executed after the search explores all edges leaving that node, so the ordering of files according to potential command execution gives a postorder listing of the DFS tree.&#x20;
+* After processing a file and its dependencies, the traversal backtracks to the parent in the dependency tree.
+* The process continues until all reachable nodes in the dependency graph have been explored and processed. If an error occurs during the build process, the search halts and the error is reported.
 
 Here is our dependency graph with each file labeled according to the order in which the DFS traversal encounters and processes it:&#x20;
 
 <figure><img src="../.gitbook/assets/Group 263.png" alt="" width="563"><figcaption></figcaption></figure>
 
-The pseudocode for a DFS traversal of the dependency graph is shown below. This algorithm relies on a function modtime which returns the last-modification time of a file or 0 if the file doesn't exist. This function marks a file as processed when the search backtracks from it. It uses a node- marking strategy to avoid both multiple updates for files that are the precursor of several files and infinite looping on dependency graphs containing cycles. The node marks do not affect the actual files, but instead are recorded in internal records about the file’s status. Note that the purpose of marking a file processed is to prevent processing a file twice (in our case, `intmath.h`). If an error occurs during the build process, the search halts and the error is reported. A file’s updating commands are executed after the search explores all edges leaving that node, so the ordering of files according to potential command execution gives a postorder listing of the DFS tree.
+And here is the pseudocode for the DFS traversal of the dependency graph:&#x20;
 
-{% code lineNumbers="true" %}
 ```c
 make(file)
 {
@@ -46,7 +53,8 @@ make(file)
     mark file as processed;
 }
 ```
-{% endcode %}
+
+Note that this algorithm relies on a function modtime which returns the last-modification time of a file or 0 if the file doesn't exist.&#x20;
 
 {% hint style="info" %}
 This algorithm is not intended to be a faithful representation of the precise algorithm used by any implementation of make. It is simply intended to. Samples modification time before processing dependencies. Also, allows for phony targets. In this algorithm, won't work if&#x20;
