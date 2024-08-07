@@ -6,7 +6,7 @@ We've seen that we can build `testintmath` incrementally with `make`. But how ex
 
 Bringing a file up-to-date is defined recursively as follows. First, bring its dependencies up-to-date. If the file is now older than any of its dependencies, or if it does not exist, execute its corresponding command(s). The key point to recognize is that `make` cannot determine how to proceed with a file until it has processed all its dependencies. Because dependencies can themselves be targets with their own dependencies, this process is inherently recursive.
 
-Here is a simple algorithm for bringing files up-to-date:&#x20;
+This recursive update process can be performed via the following algorithm:&#x20;
 
 ```c
 make(file)
@@ -33,14 +33,14 @@ make(file)
 }
 ```
 
-If you've taken COS226, you might recognize that this is simply a [depth first search](https://en.wikipedia.org/wiki/Depth-first\_search) (DFS) traversal of the dependency graph. Files are marked as "active" when first encountered and "processed" when the search backtracks from it. This marking strategy prevents infinite looping in the case of circular dependencies and ensures that the same file isn't processed twice. This algorithm relies on a function `modtime` which returns the last-modification time of the file or 0 if the file doesn't exist.&#x20;
+If you've taken COS226, you might recognize that this is simply a [depth first search](https://en.wikipedia.org/wiki/Depth-first\_search) (DFS) traversal of the dependency graph. Files are marked as "active" when first encountered and "processed" when the search backtracks from it. The "active" mark prevents infinite looping on dependency graphs containing cycles, while the "processed" mark ensures that the same file isn't processed twice. This algorithm relies on a function `modtime` which returns the last-modification time of the file or 0 if the file does not exist.&#x20;
 
-Here is our dependency graph with each file labeled according to the order in which the DFS traversal encounters and processes it:&#x20;
+Here is our dependency graph with each file labeled according to the order in which the DFS traversal both encounters it and processes it:&#x20;
 
 <figure><img src="../.gitbook/assets/Group 263.png" alt="" width="563"><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-This algorithm is not intended to faithful represent the precise algorithm used by any implementation of make. It is simply intended to provide a high-level overview of how target's are brought up-to-date. Actual algorithms differ in at least two respects. First, they sample modification time before processing dependencies. Also, allows for phony targets. In this algorithm, won't work if&#x20;
+The algorithm presented above is not intended to faithfully represent the precise algorithm used by any implementation of `make`. It is simply intended to provide a high-level overview of how how the process works. Actual algorithms differ in at least two respects. First, they sample modification time before processing dependencies. Also, allows for phony targets. In this algorithm, won't work if&#x20;
 {% endhint %}
 
 To make things concrete, let's trace this DFS traversal at various stages of development.
