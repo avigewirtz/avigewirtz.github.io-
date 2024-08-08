@@ -33,7 +33,7 @@ make(file)
 }
 ```
 
-If you've taken COS226, you might recognize that this is simply a [depth first search](https://en.wikipedia.org/wiki/Depth-first\_search) (DFS) traversal of the dependency graph. Files are marked as "active" when first encountered and "processed" when the search backtracks from it. The "active" mark prevents infinite looping on dependency graphs containing cycles, while the "processed" mark ensures that the same file isn't processed twice. This algorithm relies on a function `modtime` which returns the last-modification time of the file or 0 if the file does not exist.&#x20;
+In this algorithm, files are marked as "active" when first encountered and "processed" when the search backtracks from it. The "active" mark prevents infinite looping on dependency graphs containing cycles, while the "processed" mark ensures that the same file isn't processed twice. This algorithm relies on a function `modtime` which returns the last-modification time of the file or 0 if the file does not exist.&#x20;
 
 Here is our dependency graph with each file labeled according to the order in which the DFS traversal both encounters it and processes it:&#x20;
 
