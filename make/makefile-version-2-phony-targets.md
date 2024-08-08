@@ -2,11 +2,26 @@
 
 Make's job is to bring targets up-to-date. Until now, we've assumed that targets represent files, which are brought up-to-date by creating them or updating them. In fact, however, targets need not represent files. They can represent labels for arbitrary commands or actions you want make to execute. Such targets are known as _phony_ targets.
 
-`make` implements phony targets in a rather simple manner. After a rule is processed, `make` has no postcondition check to verify that the target was in fact built. Instead, it operates under the assumption that if a target's dependencies (if any) are satisfied and its commands (if any) are successfully run, the target is up-to-date. The implication is that it is not an error for a rule to not build a target.
+Consider the following rule:
+
+```makefile
+clean: 
+    rm -rf testintmath *.o
+```
+
+The target, clean, does not represent a file—that is, there is no file in our project directory named `clean`, and the command `rm -rf testintmath *.o` does not create such a file. Quite the contrary. This command deletes testintmathh and the object files (.o). Thisnis issue in situations where you want you rebuild testintmath from scratch. 
+
+If we were to add this rule to our makefile and invoke:
+ make clean
+
+The effect is that rm -rf testintmath *.o will be executed, thereby "cleaning" the project directory. (Note that the name `clean` isn't special. We could have given the rule a different name, such as `cleanup`. `Clean` is just the conventional name for this kind of task in Makefiles)
+
+
+`make` implements phony targets in a rather simple manner. After a rule is processed, `make` has no postcondition check to verify that the target was in fact built. Instead, it operates under the assumption that if a target's dependencies (if any) are satisfied and its commands (if any) are successfully run, the target is up-to-date. In the clean example, because the command `rm -rf testintmath *.o` ran successfully (i.e., exit status 0), `make` considers clean to be up-to-date (for the current invocation of `make`, that is). 
 
 Phony targets have two canonical use cases:
 
-* As a label for one or more arbitrary commands you want make to execute.
+* As a label for one or more arbitrary commands you want make to execute. 
 * As an alias for one or more other targets, such that running the phony target is the same as running the target(s) directly.
 
 In this section, we'll explore both use cases. Phony targets are easiest to explain by means of demonstration, so let's jump right into Makefile version 2, which contains three commonly used phony targets: `all`, `clean`, and `clobber`. Don't worry for now how they work. We'll go over each one in detail.
