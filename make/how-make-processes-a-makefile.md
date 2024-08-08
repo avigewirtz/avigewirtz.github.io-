@@ -4,9 +4,9 @@ We've seen that we can build `testintmath` incrementally with `make`. But how ex
 
 #### Core Algorithm
 
-Bringing a file up-to-date is defined recursively as follows. First, bring its dependencies up-to-date. If the file is now older than any of its dependencies, or if it does not exist, execute its corresponding command(s). The key point to recognize is that `make` cannot determine how to proceed with a file until it has processed all its dependencies. Because dependencies can themselves be targets with their own dependencies, this process is inherently recursive.
+Bringing a file up-to-date is defined recursively as follows. First, bring its dependencies up-to-date. If the file is now older than any of its dependencies, or if it does not exist, execute its corresponding command(s). Because dependencies can themselves be targets with their own dependencies, this process is inherently recursive.
 
-This recursive update process can be performed via the following algorithm:&#x20;
+The key point to recognize is that `make` cannot determine how to proceed with a file until it has processed all its dependencies. Any traversal in which each file's dependencies is processed before the file itself is a valid traverssl. If you've taken COS226, one such traversal might immediately come time mind: depth-first search (DFS). Here is the update process can be performed via the following algorithm:&#x20;
 
 ```c
 make(file)
