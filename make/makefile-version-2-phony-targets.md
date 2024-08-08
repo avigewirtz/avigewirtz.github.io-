@@ -21,7 +21,7 @@ The effect is that rm -rf testintmath *.o will be executed, thereby "cleaning" t
 
 Phony targets have two canonical use cases:
 
-* As a label for one or more arbitrary commands you want make to execute. 
+* As a label for one or more arbitrary commands you want make to execute. In the previous example, clean was used as a label for the command `rm -rf testintmath *.o`
 * As an alias for one or more other targets, such that running the phony target is the same as running the target(s) directly.
 
 In this section, we'll explore both use cases. Phony targets are easiest to explain by means of demonstration, so let's jump right into Makefile version 2, which contains three commonly used phony targets: `all`, `clean`, and `clobber`. Don't worry for now how they work. We'll go over each one in detail.
