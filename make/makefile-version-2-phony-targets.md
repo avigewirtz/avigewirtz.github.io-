@@ -17,7 +17,7 @@ If we were to add this rule to our makefile and invoke:
 The effect is that rm -rf testintmath *.o will be executed, thereby "cleaning" the project directory. (Note that the name `clean` isn't special. We could have given the rule a different name, such as `cleanup`. `Clean` is just the conventional name for this kind of task in Makefiles)
 
 
-`make` implements phony targets in a rather simple manner. After a rule is processed, `make` has no postcondition check to verify that the target was in fact built. Instead, it operates under the assumption that if a target's dependencies (if any) are satisfied and its commands (if any) are successfully run, the target is up-to-date. In the clean example, because the command `rm -rf testintmath *.o` ran successfully (i.e., exit status 0), `make` considers clean to be up-to-date (for the current invocation of `make`, that is). 
+`make` implements phony targets in a rather simple manner. After a rule is processed, `make` has no postcondition check to verify that the target was in fact built. Instead, it operates under the assumption that if a target's dependencies (if any) are satisfied and its commands (if any) are successfully run, the target is up-to-date. In the clean example, because the command `rm -rf testintmath *.o` was successfully run (i.e., exit status 0), `make` considers clean to be up-to-date (for the current invocation of `make`, that is). 
 
 Phony targets have two canonical use cases:
 
