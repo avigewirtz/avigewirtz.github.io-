@@ -40,7 +40,7 @@ Here is our dependency graph with each file labeled according to the order in wh
 Notice that `intmath.h` is only processed once.&#x20;
 
 {% hint style="info" %}
-The algorithm presented above is not intended to faithfully represent the precise algorithm used by any implementation of `make`. It is simply intended to provide a high-level overview of how how the process works. Actual algorithms differ in at least two respects. First, they sample modification time before processing dependencies. Also, allows for phony targets. In this algorithm, won't work if
+The algorithm shown above is not intended to faithfully represent the precise algorithm used by any implementation of `make`. It is simply intended to provide a high-level overview of the process. Actual `make` algorithms differ in at least two respects. First, they sample files' modification times before processing their dependencies, whereas our algorithm does so afterward. This distinction has subtle implications for performance and edge cases. Second, they allow [phony targets](makefile-version-2-phony-targets.md) to be dependencies, whereas our algorithm will fail in such cases.
 {% endhint %}
 
 To make things concrete, let's trace this DFS traversal at various stages of development.
