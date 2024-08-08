@@ -6,7 +6,7 @@ We've seen that we can build `testintmath` incrementally with `make`. But how ex
 
 Bringing a file up-to-date is defined recursively as follows. First, bring its dependencies up-to-date. If the file is now older than any of its dependencies, or if it does not exist, execute its corresponding command(s). Because dependencies can themselves be targets with their own dependencies, this process is inherently recursive.
 
-A simple algorithm for the recursive update process is shown below. You might recognize the core of this algorithm is a [depth first search](https://en.wikipedia.org/wiki/Depth-first\_search) (DFS) traversal of the dependency graph. Files are marked _active_ when first encountered and _processed_ when the search backtracks from it. This marking strategy prevents infinite looping on cyclical dependency graphs and ensures that the same file isn't processed twice. The `modtime` function returns a file's last-modification time or 0 if the file does not exist.&#x20;
+A simple algorithm for this recursive update process is shown below. You might recognize the core of this algorithm is a [depth first search](https://en.wikipedia.org/wiki/Depth-first\_search) (DFS) traversal of the dependency graph. Files are marked _active_ when first encountered and _processed_ when the search backtracks from it. This marking strategy prevents infinite looping on cyclical dependency graphs and ensures that the same file isn't processed twice. The `modtime` function returns a file's last-modification time or 0 if the file does not exist.&#x20;
 
 ```c
 make(file)
