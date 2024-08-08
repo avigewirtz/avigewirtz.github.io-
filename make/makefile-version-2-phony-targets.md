@@ -62,9 +62,7 @@ clean:
 With this declaration, the rule will work as intended even if there is a file named `clean` in the working directory.
 {% endhint %}
 
-The clean phony target demonstrates the most common use-case of phony targets--as a label for an arbitrary command.  `clean` was used as a label for the command `rm -rf testintmath *.o`
-
-Another common use case of phony targets is as an alias for one or more other targets, such that running the phony target is the same as running the target(s) directly. Our Makefile doesn't lend itself well to the second use case, so the example that follows will be somewhat contrived.
+The `clean` rule demonstrates the use of phony targets as labels for arbitrary commands. Another common use case of phony targets is as an alias for one or more other targets, such that running the phony target is the same as running the target(s) directly. Our Makefile doesn't lend itself well to the second use case, so the example that follows will be somewhat contrived.
 
 Suppose you often want to build the object files but not link them. You could run:
 
