@@ -37,7 +37,7 @@ Here is our dependency graph with each file labeled according to the order in wh
 
 <figure><img src="../.gitbook/assets/Group 263.png" alt="" width="563"><figcaption></figcaption></figure>
 
-The key point to recognize is that each file is that this traversal ensures that each file's dependencies are processed before the file itself.&#x20;
+The key point to recognize is that this traversal ensures that each file's dependencies are processed before the file itself.&#x20;
 
 {% hint style="info" %}
 The algorithm presented above is not intended to faithfully represent the precise algorithm used by any implementation of `make`. It is simply intended to provide a high-level overview of how how the process works. Actual algorithms differ in at least two respects. First, they sample modification time before processing dependencies. Also, allows for phony targets. In this algorithm, won't work if
