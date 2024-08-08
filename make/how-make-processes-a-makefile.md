@@ -6,7 +6,7 @@ We've seen that we can build `testintmath` incrementally with `make`. But how ex
 
 Bringing a file up-to-date is defined recursively as follows. First, bring its dependencies up-to-date. If the file is now older than any of its dependencies, or if it does not exist, execute its corresponding command(s). Because dependencies can themselves be targets with their own dependencies, this process is inherently recursive.
 
-The key point to recognize is that `make` cannot determine how to proceed with a file until it has processed all of its dependencies. Any traversal of the dependency graph in which each file's dependencies are processed before the file itself is a valid traversal. If you've taken COS226, one such traversal might immediately come to mind: [depth first search](https://en.wikipedia.org/wiki/Depth-first\_search) (DFS).&#x20;
+A simple algorithm for the recursive update process is shown below. You might recognize that this algorithm performs a [depth first search](https://en.wikipedia.org/wiki/Depth-first\_search) (DFS) traversal of the dependency graph. Files are marked as "active" when first encountered and "processed" when the search backtracks from it. This marking strategy prevents infinite looping on cyclical dependency graphs and ensures that the same file isn't processed twice. The `modtime` function returns a file's last-modification time or 0 if the file does not exist.
 
 * can implement this update process with DFS&#x20;
 * show psuedocode
@@ -38,7 +38,7 @@ make(file)
 }
 ```
 
-In this algorithm, files are marked as "active" when first encountered and "processed" when the search backtracks from it. The "active" mark prevents infinite looping in cyclical dependency graphs, while the "processed" mark ensures that the same file isn't processed twice. The `modtime` function returns a file's last-modification time or 0 if the file does not exist.
+If we were to run testintmath. make would mark testintmath as active and then check for dependencies. It would see two: testintmath.o and intmath.o. function would the. be called on testintmath.o. make would mark it as active and check for dependencies. it would see two: testintmath.c and intmath.h. make would then call testintmath.c. it doesn't have any dependencies, so both for loops will be skipped. make will check its last modification timestamp. 
 
 Here is our dependency graph with each file labeled according to the order in which the DFS traversal encounters and processes it:
 
