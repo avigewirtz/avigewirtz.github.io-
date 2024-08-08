@@ -88,9 +88,9 @@ Successfully remade target file `clean'.
 $ 
 ```
 
-In particular, notice how after executing the command `rm -f testintmath *.o`, `make` reports that it ``Successfully remade target file `clean'``. This should convince you that make really considers clean to be up-to-date.
+In particular, notice how after executing the command `rm -f testintmath *.o`, `make` reports that it ``Successfully remade target file `clean'``.
 
-Now, consider the `clobber` rule:
+Next, consider the `clobber` rule:
 
 ```
 clobber: clean
