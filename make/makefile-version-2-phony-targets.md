@@ -9,9 +9,9 @@ clean:
     rm -rf testintmath *.o
 ```
 
-The target, clean, does not represent a file—that is, there is no file in our project directory named `clean`, and the command `rm -rf testintmath *.o` does not create such a file. Quite the contrary. This command deletes `testintmath` and the object files (`.o`). This is useful in situations where you want you rebuild `testintmath` from scratch.
+The target, `clean`, does not represent a file—that is, there is no file in our project directory named `clean`, and the command `rm -rf testintmath *.o` does not create such a file. Quite the contrary. This command deletes `testintmath` and the object files (`.o`). This is useful in situations where you want you rebuild `testintmath` from scratch.
 
-If we were to add this rule to our makefile and invoke `make clean`, the effect is that `rm -f *.o testintmath` will be executed, thereby "cleaning" the project directory:
+If we were to add this rule to our Makefile and invoke `make clean`, the effect is that `rm -f *.o testintmath` will be executed, thereby "cleaning" the project directory:
 
 ```bash
 $ make clean
@@ -19,9 +19,9 @@ rm -f *.o testintmath
 $
 ```
 
-(Note that the name `clean` isn't special. We could have given the rule a different name, such as `cleanup`. `Clean` is simply the conventional name for this kind of task in Makefiles)
+(Note that the name `clean` isn't special. It's simply the conventional name for this kind of task in Makefiles)
 
-`make` implements phony targets in a rather simple manner. After a rule is processed, `make` has no postcondition check to verify that the target was in fact built. Instead, it operates under the assumption that if a target's dependencies (if any) are satisfied and its commands (if any) are successfully run, the target is up-to-date. In the `clean` example, because the command `rm -rf testintmath *.o` executed successfully (i.e., returned exit status 0), `make` considers `clean` to be up-to-date (for the current invocation of `make`, that is). It does not actually verify whether `clean` is created.
+`make` implements phony targets in a rather simple manner. After a rule is processed, `make` has no postcondition check to verify that the target was in fact built. Instead, it operates under the assumption that if a target's dependencies (if any) are satisfied and its commands (if any) are successfully run, the target is up-to-date. In our example, because the command `rm -rf testintmath *.o` executed successfully (i.e., returned exit status 0), `make` considers `clean` to be up-to-date (for the current invocation of `make`, that is). It does not actually verify whether `clean` is created.
 
 You can see the underlying process by which make processes `clean` by invoking this rule with the `debug=-v` option. Here is the relevant part of the output:
 
