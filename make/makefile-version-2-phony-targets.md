@@ -59,7 +59,7 @@ clean:
     rm -f *.o testintmath 
 ```
 
-With this declaration, this rule will work as intended even if there is a file named `clean` in the working directory.
+With this declaration, the rule will work as intended even if there is a file named `clean` in the working directory.
 {% endhint %}
 
 The clean phony target demonstrates the most common use-case of phony targets--as a label for an arbitrary command.  `clean` was used as a label for the command `rm -rf testintmath *.o`
