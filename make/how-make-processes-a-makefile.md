@@ -6,7 +6,12 @@ We've seen that we can build `testintmath` incrementally with `make`. But how ex
 
 Bringing a file up-to-date is defined recursively as follows. First, bring its dependencies up-to-date. If the file is now older than any of its dependencies, or if it does not exist, execute its corresponding command(s). Because dependencies can themselves be targets with their own dependencies, this process is inherently recursive.
 
-The key point to recognize is that `make` cannot determine how to proceed with a file until it has processed all its dependencies. Any traversal in which each file's dependencies is processed before the file itself is a valid traverssl. If you've taken COS226, one such traversal might immediately come to mind: [depth first search](https://en.wikipedia.org/wiki/Depth-first\_search) (DFS)  (DFS). Here is the pseudocode for a DFS algorithm to update a file:&#x20;
+The key point to recognize is that `make` cannot determine how to proceed with a file until it has processed all of its dependencies. Any traversal of the dependency graph in which each file's dependencies are processed before the file itself is a valid traversal. If you've taken COS226, one such traversal might immediately come to mind: [depth first search](https://en.wikipedia.org/wiki/Depth-first\_search) (DFS).&#x20;
+
+* can implement this update process with DFS&#x20;
+* show psuedocode
+
+Here is the pseudocode for the DFS algorithm:
 
 ```c
 make(file)
@@ -33,14 +38,14 @@ make(file)
 }
 ```
 
-In this algorithm, files are marked as "active" when first encountered and "processed" when the search backtracks from it. The "active" mark prevents infinite looping on dependency graphs containing cycles, while the "processed" mark ensures that the same file isn't processed twice. This algorithm relies on a function `modtime` which returns the last-modification time of the file or 0 if the file does not exist.&#x20;
+In this algorithm, files are marked as "active" when first encountered and "processed" when the search backtracks from it. The "active" mark prevents infinite looping in cyclical dependency graphs, while the "processed" mark ensures that the same file isn't processed twice. The `modtime` function returns a file's last-modification time or 0 if the file does not exist.
 
-Here is our dependency graph with each file labeled according to the order in which the DFS traversal both encounters it and processes it:&#x20;
+Here is our dependency graph with each file labeled according to the order in which the DFS traversal encounters and processes it:
 
 <figure><img src="../.gitbook/assets/Group 263.png" alt="" width="563"><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-The algorithm presented above is not intended to faithfully represent the precise algorithm used by any implementation of `make`. It is simply intended to provide a high-level overview of how how the process works. Actual algorithms differ in at least two respects. First, they sample modification time before processing dependencies. Also, allows for phony targets. In this algorithm, won't work if&#x20;
+The algorithm presented above is not intended to faithfully represent the precise algorithm used by any implementation of `make`. It is simply intended to provide a high-level overview of how how the process works. Actual algorithms differ in at least two respects. First, they sample modification time before processing dependencies. Also, allows for phony targets. In this algorithm, won't work if
 {% endhint %}
 
 To make things concrete, let's trace this DFS traversal at various stages of development.
@@ -65,7 +70,7 @@ Assume we're building `testintmath` for the first time. Neither `testintmath` no
 
 #### Case 2: All targets up up-to-date
 
-Suppose we invoke `make` again immediately after building `testintmath`--in other words, when all files are up-to-date.&#x20;
+Suppose we invoke `make` again immediately after building `testintmath`--in other words, when all files are up-to-date.
 
 * <mark style="color:red;">make(</mark><mark style="color:red;">`testintmath`</mark><mark style="color:red;">)</mark>
   * <mark style="color:purple;">make(</mark><mark style="color:purple;">`testintmath.o`</mark><mark style="color:purple;">)</mark>
@@ -81,11 +86,11 @@ Suppose we invoke `make` again immediately after building `testintmath`--in othe
   * <mark style="color:purple;">modtime(</mark><mark style="color:purple;">`intmath.o`</mark><mark style="color:purple;">) = 5. Up-to-date. Mark</mark> <mark style="color:purple;">`intmath.o`</mark> <mark style="color:purple;">as processed</mark>
 * <mark style="color:red;">modtime(</mark><mark style="color:red;">`testintmath`</mark><mark style="color:red;">) = 6.</mark> <mark style="color:red;">Up-to-date. Mark</mark> <mark style="color:red;">`testintmath`</mark> <mark style="color:red;">as processed</mark>
 
-Observe that even though all files are up-to-date, make still have to traverse the entire graph.&#x20;
+Observe that even though all files are up-to-date, make still have to traverse the entire graph.
 
 #### Case 3: intmath.c is modified
 
-Suppose we modify intmath.c but leave testintmath.c and intmath.h untouched.&#x20;
+Suppose we modify intmath.c but leave testintmath.c and intmath.h untouched.
 
 * <mark style="color:red;">make(</mark><mark style="color:red;">`testintmath`</mark><mark style="color:red;">)</mark>
   * <mark style="color:purple;">make(</mark><mark style="color:purple;">`testintmath.o`</mark><mark style="color:purple;">)</mark>
