@@ -85,7 +85,7 @@ Observe that even though all files are up-to-date and no work had to be done, `m
 
 #### Case 3: intmath.c is modified
 
-Suppose we modify intmath.c but leave testintmath.c and intmath.h untouched.This renders only 
+Suppose we modify intmath.c but leave testintmath.c and intmath.h untouched.This renders intmath.o and testintmath out-of-date. Here's the trace of the search:
 
 * <mark style="color:red;">make(</mark><mark style="color:red;">`testintmath`</mark><mark style="color:red;">)</mark>
   * <mark style="color:purple;">make(</mark><mark style="color:purple;">`testintmath.o`</mark><mark style="color:purple;">)</mark>
