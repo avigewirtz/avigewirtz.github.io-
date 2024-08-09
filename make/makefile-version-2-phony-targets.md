@@ -82,7 +82,9 @@ Now, you can build both targets by simply invoking:
 make obj
 ```
 
-Essentially, `obj` serves as an alias for `testintmath.o` and `intmath.o`, whereby running `make obj` is functionally equivalent to running `make testintmath.o intmath.o`. We mentioned eariler that so-long as a target's commands are satisfied, make considers the target up-to-date. The target obj does not have any command, so this condition is trivially satisfied.&#x20;
+Essentially, `obj` serves as an alias for `testintmath.o` and `intmath.o`. This rule takes advantage of the fact that 
+
+An interesting observation is that in this use case of phony targets, it does not actually matter if a file named obj in fact exists in the project directory, since whereby running `make obj` is functionally equivalent to running `make testintmath.o intmath.o`. We mentioned eariler that so-long as a target's commands are satisfied, make considers the target up-to-date. The target obj does not have any command, so this condition is trivially satisfied.&#x20;
 
 #### Standard Phony Targets
 
