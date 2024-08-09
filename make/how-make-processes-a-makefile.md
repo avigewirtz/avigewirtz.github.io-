@@ -65,7 +65,7 @@ Assume we're building `testintmath` for the first time. Neither `testintmath` no
 
 #### Case 2: All targets up up-to-date
 
-Suppose we invoke `make` again immediately after building `testintmath`--in other words, when all targets are up-to-date. Here's a trace of the DFS algorithm:
+Suppose we invoke `make` again immediately after building `testintmath`--in other words, when all targets are up-to-date. Here's a trace of the DFS traversal:
 
 * <mark style="color:red;">make(</mark><mark style="color:red;">`testintmath`</mark><mark style="color:red;">)</mark>
   * <mark style="color:purple;">make(</mark><mark style="color:purple;">`testintmath.o`</mark><mark style="color:purple;">)</mark>
