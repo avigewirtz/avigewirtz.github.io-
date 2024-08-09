@@ -65,7 +65,7 @@ Assume we're building `testintmath` for the first time. Neither `testintmath` no
 
 #### Case 2: All targets up up-to-date
 
-Suppose we invoke `make` again immediately after building `testintmath`--in other words, when all files are up-to-date.
+Suppose we invoke `make` again immediately after building `testintmath`--in other words, when all targets are up-to-date. Here's a trace of the DFS algorithm:
 
 * <mark style="color:red;">make(</mark><mark style="color:red;">`testintmath`</mark><mark style="color:red;">)</mark>
   * <mark style="color:purple;">make(</mark><mark style="color:purple;">`testintmath.o`</mark><mark style="color:purple;">)</mark>
@@ -81,11 +81,11 @@ Suppose we invoke `make` again immediately after building `testintmath`--in othe
   * <mark style="color:purple;">modtime(</mark><mark style="color:purple;">`intmath.o`</mark><mark style="color:purple;">) = 5. Up-to-date. Mark</mark> <mark style="color:purple;">`intmath.o`</mark> <mark style="color:purple;">as processed</mark>
 * <mark style="color:red;">modtime(</mark><mark style="color:red;">`testintmath`</mark><mark style="color:red;">) = 6.</mark> <mark style="color:red;">Up-to-date. Mark</mark> <mark style="color:red;">`testintmath`</mark> <mark style="color:red;">as processed</mark>
 
-Observe that even though all files are up-to-date, make still have to traverse the entire graph.
+Observe that even though all files are up-to-date and no work had to be done, `make` had to traverse the entire dependency graph to figure that out. 
 
 #### Case 3: intmath.c is modified
 
-Suppose we modify intmath.c but leave testintmath.c and intmath.h untouched.
+Suppose we modify intmath.c but leave testintmath.c and intmath.h untouched.This renders only 
 
 * <mark style="color:red;">make(</mark><mark style="color:red;">`testintmath`</mark><mark style="color:red;">)</mark>
   * <mark style="color:purple;">make(</mark><mark style="color:purple;">`testintmath.o`</mark><mark style="color:purple;">)</mark>
