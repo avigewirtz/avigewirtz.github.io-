@@ -82,9 +82,12 @@ Now, you can build both targets by simply invoking:
 make obj
 ```
 
-Essentially, `obj` serves as an alias for `testintmath.o` and `intmath.o`. This rule takes advantage of the fact that 
+Essentially, `obj` serves as an alias for `testintmath.o` and `intmath.o`. This rule takes advantage of the fact that calling a target causes its dependencies to be processed. 
 
-An interesting observation is that in this use case of phony targets, it does not actually matter if a file named obj in fact exists in the project directory, since whereby running `make obj` is functionally equivalent to running `make testintmath.o intmath.o`. We mentioned eariler that so-long as a target's commands are satisfied, make considers the target up-to-date. The target obj does not have any command, so this condition is trivially satisfied.&#x20;
+An interesting observation that we're not actually concerned about a file named obj existing in the project directory, since even if it did exist this rule would work as intended. Nevertheless, declaring it .PHONY is good practice, this allows make to optimize its rule handling procedure (For example, many will not look for an implicit time to build obj). 
+
+
+#x20;
 
 #### Standard Phony Targets
 
@@ -126,7 +129,7 @@ intmath.o: intmath.c intmath.h
 {% hint style="info" %}
 **Purpose of the 'all' target**
 
-&#x20;(Additionally, declaring a target phony tells `make` that this file does not follow the normal rules for making a target file from a source file. Therefore, make can optimize its normal rule search to improve performance. This is why declaring a target phony is useful even if you're not concerned about such a file actually existing.)
+&#x20;
 
 You might be wondering what purpose the `all` target serves in our program compared to simply using `testintmath` as the default target. Truthfully, it doesn't serve any real purpose, except perhaps for accommodating users who might invoke `make all` out of habit.
 {% endhint %}
